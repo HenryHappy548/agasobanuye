@@ -17,16 +17,16 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         src: "https://duck.nebula.to/aa3/Weapons.2025.1080p.REPACK.WEBRip.DDP.5.1.Atmos.10bit.H.265-iVy.WT11.mp4?md5=5lfrxp8SpZzuFksB-WuUjQ&expires=1758904879&fn=31d3ba1b9c9414adf8c490724e2ccade34b90a69.mp4"
       },
       "movie-1": {
-        title: "Quantum Edge",
-        src: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
+        title: "Frekier Friday (2025)",
+        src: "https://porto2.nebula.to/aa3/Freakier.Friday.2025.1080p.WEBRip.x265.10bit.AAC-LAMA.WT11.mp4?md5=jH4aVFGLgcUlDzLACH4P8Q&expires=1758916200&fn=796e0bef3a9b1d92c8e35c360ca86d9570db6167.mp4"
       },
       "movie-2": {
-        title: "Midnight in Paris",
-        src: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"
+        title: "Relay (2024)",
+        src: "https://rosario2.nebula.to/aa3/Relay.2024.1080p.WEBRip.x265-DH.WT11.mp4?md5=L6wCvtVgxqP6OOT_0Rgw9A&expires=1758916230&fn=84ed344ebe262fcbabbb3633d685655854760115.mp4"
       },
       "movie-3": {
-        title: "Desert Storm",
-        src: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4"
+        title: "Naked Gun (2025)",
+        src: "https://drw.jabroni.mov/aa3/The.Naked.Gun.2025.1080p.WEBRip.10Bit.DDP5.1.x265-NeoNoir.WT11.mp4?md5=hUuY7ZpEBiCFOS3ju4tGFg&expires=1758915967&fn=d40223c76c476f38c46354ab31b19ad2950e0a66.mp4"
       },
       "movie-4": {
         title: "Fantastic Four",
