@@ -1,4 +1,4 @@
-import movie1 from "@/assets/movie-1.jpg";
+import movie1 from "@/assets/movie-1.jpeg";
 import movie2 from "@/assets/movie-2.jpeg";
 import movie3 from "@/assets/movie-3.jpg";
 import movie4 from "@/assets/movie-4.jpg"; 
