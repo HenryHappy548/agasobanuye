@@ -43,7 +43,7 @@ export const mockMovies: Movie[] = [
   {
     id: "movie-4",
     title: "Fantastic Four",
-    poster: movie1,
+    poster: movie4, 
     year: "2025",
     genre: "Mystery Thriller",
     rating: "7.9",
