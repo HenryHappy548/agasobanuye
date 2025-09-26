@@ -13,7 +13,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
   const getVideoInfo = (id: string) => {
     const videos: Record<string, { title: string; src: string }> = {
       "featured-movie": {
-        title: "Shadow Protocol",
+        title: "Weapons (2025) ",
         src: "https://duck.nebula.to/aa3/Weapons.2025.1080p.REPACK.WEBRip.DDP.5.1.Atmos.10bit.H.265-iVy.WT11.mp4?md5=5lfrxp8SpZzuFksB-WuUjQ&expires=1758904879&fn=31d3ba1b9c9414adf8c490724e2ccade34b90a69.mp4"
       },
       "movie-1": {
