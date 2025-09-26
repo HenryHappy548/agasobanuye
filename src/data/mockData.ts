@@ -1,7 +1,7 @@
 import movie1 from "@/assets/movie-1.jpg";
 import movie2 from "@/assets/movie-2.jpg";
 import movie3 from "@/assets/movie-3.jpg";
-
+import movie4 from "@/assets/movie-4.jpg"; 
 export interface Movie {
   id: string;
   title: string;
