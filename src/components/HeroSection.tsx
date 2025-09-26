@@ -19,11 +19,10 @@ const HeroSection = ({ onPlayVideo }: HeroSectionProps) => {
       <div className="relative z-10 container mx-auto px-4">
         <div className="max-w-lg">
           <h1 className="text-5xl font-bold text-foreground mb-4">
-            Shadow Protocol
+            Weapons (2025) 
           </h1>
           <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-            An elite team of operatives must navigate a dangerous conspiracy that threatens to tear apart everything they've sworn to protect. Action, suspense, and betrayal collide in this thrilling series.
-          </p>
+            Weapons is a 2025 American mystery horror film directed, written, produced, and co-scored by Zach Cregger. The film stars an ensemble cast including Josh Brolin, Julia Garner, Alden Ehrenreich, Austin Abrams, Cary Christopher, Toby Huss, Benedict Wong, and Amy Madigan. Its plot follows the seemingly inexplicable case of seventeen children from the same classroom who mysteriously run away on the same night at the same time.          </p>
           <div className="flex space-x-4">
             <Button 
               size="lg" 
