@@ -1,5 +1,5 @@
 import movie1 from "@/assets/movie-1.jpg";
-import movie2 from "@/assets/movie-2.jpg";
+import movie2 from "@/assets/movie-2.jpeg";
 import movie3 from "@/assets/movie-3.jpg";
 import movie4 from "@/assets/movie-4.jpg"; 
 export interface Movie {
@@ -48,23 +48,6 @@ export const mockMovies: Movie[] = [
     genre: "Mystery Thriller",
     rating: "7.9",
     category: "trending"
-  },
-  {
-    id: "movie-5",
-    title: "Space Odyssey",
-    poster: movie2,
-    year: "2024",
-    genre: "Sci-Fi Epic",
-    rating: "9.1",
-    category: "trending"
-  },
-  {
-    id: "movie-6",
-    title: "Lost Kingdom",
-    poster: movie3,
-    year: "2023",
-    genre: "Fantasy Adventure",
-    rating: "8.7",
-    category: "tv"
+  
   }
 ];
