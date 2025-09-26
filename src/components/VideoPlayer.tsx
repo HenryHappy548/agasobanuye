@@ -14,23 +14,23 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
     const videos: Record<string, { title: string; src: string }> = {
       "featured-movie": {
         title: "Weapons (2025) ",
-        src: "https://duck.nebula.to/aa3/Weapons.2025.1080p.REPACK.WEBRip.DDP.5.1.Atmos.10bit.H.265-iVy.WT11.mp4?md5=5lfrxp8SpZzuFksB-WuUjQ&expires=1758904879&fn=31d3ba1b9c9414adf8c490724e2ccade34b90a69.mp4"
+        src: "https://web.wootly.ch/source?id=31d3ba1b9c9414adf8c490724e2ccade34b90a69&sig=Djg2H-DXiz1uutjyPWH_SA&expire=1758929907&ofs=11&usr=194949"
       },
       "movie-1": {
-        title: "Frekier Friday (2025)",
-        src: "https://porto2.nebula.to/aa3/Freakier.Friday.2025.1080p.WEBRip.x265.10bit.AAC-LAMA.WT11.mp4?md5=jH4aVFGLgcUlDzLACH4P8Q&expires=1758916200&fn=796e0bef3a9b1d92c8e35c360ca86d9570db6167.mp4"
+        title: "Freakier Friday (2025)",
+        src: "https://web.wootly.ch/source?id=796e0bef3a9b1d92c8e35c360ca86d9570db6167&sig=XUnZKcq7V7jVlKeylFu9sA&expire=1758929815&ofs=11&usr=195111"
       },
       "movie-2": {
         title: "Relay (2024)",
-        src: "https://rosario2.nebula.to/aa3/Relay.2024.1080p.WEBRip.x265-DH.WT11.mp4?md5=L6wCvtVgxqP6OOT_0Rgw9A&expires=1758916230&fn=84ed344ebe262fcbabbb3633d685655854760115.mp4"
+        src: "https://web.wootly.ch/source?id=84ed344ebe262fcbabbb3633d685655854760115&sig=rZGY3aPBFanZjWGfrrExYQ&expire=1758929761&ofs=11&usr=195096"
       },
       "movie-3": {
         title: "Naked Gun (2025)",
-        src: "https://drw.jabroni.mov/aa3/The.Naked.Gun.2025.1080p.WEBRip.10Bit.DDP5.1.x265-NeoNoir.WT11.mp4?md5=hUuY7ZpEBiCFOS3ju4tGFg&expires=1758915967&fn=d40223c76c476f38c46354ab31b19ad2950e0a66.mp4"
+        src: "https://web.wootly.ch/source?id=d40223c76c476f38c46354ab31b19ad2950e0a66&sig=OD0JHUcygxY9TTI3VP7Mkw&expire=1758929702&ofs=11&usr=194864"
       },
       "movie-4": {
         title: "Fantastic Four",
-        src: "https://awz.jabroni.mov/aa3/The.Fantastic.Four.First.Steps.2025.1080p.WEBRip.x265-DH.WT11.mp4?md5=rZYKYbhAWg98wSnYIt021g&expires=1758906423&fn=b5424a44e305c99a7e580c5d622d52225b30f0d2.mp4"
+        src: "https://web.wootly.ch/source?id=b5424a44e305c99a7e580c5d622d52225b30f0d2&sig=h9eYaHWKUAyBcuoTlCagCA&expire=1758929526&ofs=11&usr=195119"
       }
     };
     return videos[id] || { title: "Unknown", src: "" };
