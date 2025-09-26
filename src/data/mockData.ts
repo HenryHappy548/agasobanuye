@@ -15,28 +15,28 @@ export interface Movie {
 export const mockMovies: Movie[] = [
   {
     id: "movie-1",
-    title: "Quantum Edge",
+    title: "Freakier Friday",
     poster: movie1,
-    year: "2024",
-    genre: "Sci-Fi Thriller",
-    rating: "8.5",
+    year: "2025",
+    genre: "Comedy Fantasy",
+    rating: "6.8",
     category: "movie"
   },
   {
     id: "movie-2", 
-    title: "Midnight in Paris",
+    title: "Relay",
     poster: movie2,
-    year: "2023",
-    genre: "Romance Drama",
+    year: "2024",
+    genre: "paranoia thriller",
     rating: "7.8",
     category: "movie"
   },
   {
     id: "movie-3",
-    title: "Desert Storm",
+    title: "Naked gun",
     poster: movie3,
-    year: "2024",
-    genre: "Action Adventure",
+    year: "2025",
+    genre: "Comedy Action Adventure",
     rating: "8.2",
     category: "movie"
   },
