@@ -27,6 +27,10 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
       "movie-3": {
         title: "Desert Storm",
         src: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4"
+      },
+      "movie-4": {
+        title: "Fantastic Four",
+        src: "https://awz.jabroni.mov/aa3/The.Fantastic.Four.First.Steps.2025.1080p.WEBRip.x265-DH.WT11.mp4?md5=rZYKYbhAWg98wSnYIt021g&expires=1758906423&fn=b5424a44e305c99a7e580c5d622d52225b30f0d2.mp4"
       }
     };
     return videos[id] || { title: "Unknown", src: "" };
