@@ -1,6 +1,7 @@
-import { Search } from "lucide-react";
+import { Search, Upload } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 interface StreamingHeaderProps {
   onSearch: (query: string) => void;
@@ -40,6 +41,12 @@ const StreamingHeader = ({ onSearch, searchQuery }: StreamingHeaderProps) => {
                 onChange={(e) => onSearch(e.target.value)}
               />
             </div>
+            <Link to="/admin">
+              <Button variant="outline" size="sm">
+                <Upload className="h-4 w-4 mr-2" />
+                Admin Upload
+              </Button>
+            </Link>
           </div>
         </div>
       </div>
