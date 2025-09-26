@@ -42,9 +42,9 @@ export const mockMovies: Movie[] = [
   },
   {
     id: "movie-4",
-    title: "Ocean's Mystery",
+    title: "Fantastic Four",
     poster: movie1,
-    year: "2023",
+    year: "2025",
     genre: "Mystery Thriller",
     rating: "7.9",
     category: "trending"
