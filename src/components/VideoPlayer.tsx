@@ -9,36 +9,36 @@ interface VideoPlayerProps {
 }
 
 const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
-  // Mock video data
+  // Streamtape video data - using Streamtape embed codes
   const getVideoInfo = (id: string) => {
-    const videos: Record<string, { title: string; src: string }> = {
+    const videos: Record<string, { title: string; embedUrl: string }> = {
       "featured-movie": {
-        title: "Weapons (2025) ",
-        src: "https://ok.ru/video/9496103422476"
+        title: "Weapons (2025)",
+        embedUrl: "https://streamtape.com/e/pxY2w08gMpFrrzl/" // Example Streamtape embed URL
       },
       "movie-1": {
         title: "Freakier Friday (2025)",
-        src: "https://web.wootly.ch/source?id=796e0bef3a9b1d92c8e35c360ca86d9570db6167&sig=XUnZKcq7V7jVlKeylFu9sA&expire=1758929815&ofs=11&usr=195111"
+        embedUrl: "https://streamtape.com/e/your-streamtape-id-1/"
       },
       "movie-2": {
         title: "Relay (2024)",
-        src: "https://web.wootly.ch/source?id=84ed344ebe262fcbabbb3633d685655854760115&sig=rZGY3aPBFanZjWGfrrExYQ&expire=1758929761&ofs=11&usr=195096"
+        embedUrl: "https://streamtape.com/e/your-streamtape-id-2/"
       },
       "movie-3": {
         title: "Naked Gun (2025)",
-        src: "https://media.agasobanuyenow.com/The%20Naked%20Gun.mp4"
+        embedUrl: "https://streamtape.com/e/your-streamtape-id-3/"
       },
       "movie-4": {
         title: "Fantastic Four",
-        src: "https://web.wootly.ch/source?id=b5424a44e305c99a7e580c5d622d52225b30f0d2&sig=h9eYaHWKUAyBcuoTlCagCA&expire=1758929526&ofs=11&usr=195119"
+        embedUrl: "https://streamtape.com/e/your-streamtape-id-4/"
       },
-       "movie-5": {
+      "movie-5": {
         title: "I Kill You Ep1",
-        src: "https://streamtape.com/v/pxY2w08gMpFrrzl/I.Kill.You.S01E01.%28NKIRI.COM%29.mkv
+        embedUrl: "https://streamtape.com/v/pxY2w08gMpFrrzl/I.Kill.You.S01E01.%28NKIRI.COM%29.mkv
 "
       }
     };
-    return videos[id] || { title: "Unknown", src: "" };
+    return videos[id] || { title: "Unknown", embedUrl: "" };
   };
 
   const videoInfo = videoId ? getVideoInfo(videoId) : null;
@@ -58,15 +58,13 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
           
           {videoInfo && (
             <div className="aspect-video">
-              <video
-                controls
-                autoPlay
-                className="w-full h-full rounded-lg"
-                poster="/placeholder.svg"
-              >
-                <source src={videoInfo.src} type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
+              <iframe
+                src={videoInfo.embedUrl}
+                className="w-full h-full rounded-lg border-0"
+                allowFullScreen
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                title={videoInfo.title}
+              />
             </div>
           )}
           
@@ -76,7 +74,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
                 {videoInfo.title}
               </h2>
               <p className="text-muted-foreground">
-                Enjoy this sample video content. In a real streaming service, this would be connected to your video library.
+                Streaming via Streamtape.com
               </p>
             </div>
           )}
