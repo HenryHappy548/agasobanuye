@@ -60,7 +60,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
       },
       "movie-4": {
         title: "Fantastic Four",
-        embedUrl: "https://streamtape.com/e/your-video-id-here/",
+        embedUrl: "",
         directUrl: "https://web.wootly.ch/source?id=b5424a44e305c99a7e580c5d622d52225b30f0d2",
         fallbackUrl: "https://example.com/fallback/fantastic-four.mp4",
         host: "Wootly",
@@ -68,7 +68,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
       },
       "movie-5": {
         title: "I Kill You Ep1",
-        embedUrl: "https://streamtape.com/e/pxY2w08gMpFrrzl/",
+        embedUrl: "https://hglink.to/e/np131q6tst6i",
         directUrl: "https://streamtape.com/v/pxY2w08gMpFrrzl/I.Kill.You.S01E01.mkv",
         fallbackUrl: "https://example.com/fallback/i-kill-you.mp4",
         host: "StreamTape",
