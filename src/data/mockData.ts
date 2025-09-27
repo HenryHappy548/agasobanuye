@@ -4,6 +4,8 @@ import movie3 from "@/assets/movie-3.jpg";
 import movie4 from "@/assets/movie-4.jpg";
 import movie5 from "@/assets/iland.jpg";
 import movie6 from "@/assets/iland.jpg";
+import movie13 from "@/assets/Of king.jpg"; 
+import movie14 from "@/assets/Of king.jpg
 export interface Movie {
   id: string;
   title: string;
@@ -71,5 +73,25 @@ export const mockMovies: Movie[] = [
     rating: "8.1",
     category: "tv"
   
+  },
+  {
+    id: "movie-13",
+    title: "Of king and prophets Ep1",
+    poster: movie13, 
+    year: "2016",
+    genre: "Action Thriller",
+    rating: "9.1",
+    category: "tv"
+  
   }
+  {
+    id: "movie-14",
+    title: "Of king and prophets Ep2",
+    poster: movie14, 
+    year: "2016",
+    genre: "Action Thriller",
+    rating: "9.1",
+    category: "tv"
+  
+}
 ];
