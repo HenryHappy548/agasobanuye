@@ -27,9 +27,8 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         embedCode: '<iframe src="https://hglink.to/e/np131q6tst6i" frameborder=0 marginwidth=0 marginheight=0 scrolling=no width=640 height=360 allowfullscreen></iframe>',
         host: "HG Link",
         downloadLinks: [
-          { quality: "1080p", size: "1.5GB", url: "https://download.example.com/weapons-1080p.mp4", type: "MP4" },
-          { quality: "720p", size: "800MB", url: "https://download.example.com/weapons-720p.mp4", type: "MP4" },
-          { quality: "480p", size: "400MB", url: "https://download.example.com/weapons-480p.mp4", type: "MP4" }
+          { quality: "1080p", size: "1.5GB", url: "https://download.example.com/weapons-1080p.mp4", type: "MP4" }
+          
         ]
       },
       "movie-1": {
@@ -37,8 +36,8 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         embedCode: '<iframe src="https://hglink.to/e/abc123" frameborder=0 marginwidth=0 marginheight=0 scrolling=no width=640 height=360 allowfullscreen></iframe>',
         host: "HG Link",
         downloadLinks: [
-          { quality: "1080p", size: "1.2GB", url: "https://download.example.com/freakier-friday-1080p.mp4", type: "MP4" },
-          { quality: "720p", size: "700MB", url: "https://download.example.com/freakier-friday-720p.mp4", type: "MP4" }
+          { quality: "1080p", size: "1.2GB", url: "https://download.example.com/freakier-friday-1080p.mp4", type: "MP4" }
+       
         ]
       },
       "movie-2": {
@@ -46,9 +45,8 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         embedCode: '<iframe src="https://hglink.to/e/def456" frameborder=0 marginwidth=0 marginheight=0 scrolling=no width=640 height=360 allowfullscreen></iframe>',
         host: "HG Link",
         downloadLinks: [
-          { quality: "4K", size: "3.2GB", url: "https://download.example.com/relay-4k.mp4", type: "MP4" },
-          { quality: "1080p", size: "1.8GB", url: "https://download.example.com/relay-1080p.mp4", type: "MP4" },
-          { quality: "720p", size: "900MB", url: "https://download.example.com/relay-720p.mp4", type: "MP4" }
+          { quality: "4K", size: "3.2GB", url: "https://download.example.com/relay-4k.mp4", type: "MP4" }
+         
         ]
       },
       "movie-3": {
@@ -56,8 +54,8 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         embedCode: '<iframe src="https://hglink.to/e/ghi789" frameborder=0 marginwidth=0 marginheight=0 scrolling=no width=640 height=360 allowfullscreen></iframe>',
         host: "HG Link",
         downloadLinks: [
-          { quality: "1080p", size: "1.6GB", url: "https://download.example.com/naked-gun-1080p.mp4", type: "MP4" },
-          { quality: "720p", size: "850MB", url: "https://download.example.com/naked-gun-720p.mp4", type: "MP4" }
+          { quality: "1080p", size: "1.6GB", url: "https://download.example.com/naked-gun-1080p.mp4", type: "MP4" }
+         
         ]
       },
       "movie-4": {
@@ -65,20 +63,25 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         embedCode: '<iframe src="https://hglink.to/e/jkl012" frameborder=0 marginwidth=0 marginheight=0 scrolling=no width=640 height=360 allowfullscreen></iframe>',
         host: "HG Link",
         downloadLinks: [
-          { quality: "1080p", size: "2.1GB", url: "https://download.example.com/fantastic-four-1080p.mp4", type: "MP4" },
-          { quality: "720p", size: "1.1GB", url: "https://download.example.com/fantastic-four-720p.mp4", type: "MP4" },
-          { quality: "480p", size: "550MB", url: "https://download.example.com/fantastic-four-480p.mp4", type: "MP4" }
+          { quality: "1080p", size: "2.1GB", url: "https://download.example.com/fantastic-four-1080p.mp4", type: "MP4" }
         ]
       },
       "movie-5": {
         title: "I Kill You Ep1",
-        embedCode: '<iframe src="https://hglink.to/e/mno345" frameborder=0 marginwidth=0 marginheight=0 scrolling=no width=640 height=360 allowfullscreen></iframe>',
+        embedCode: '<iframe src="https://streamtape.com/e/pxY2w08gMpFrrzl/" width="800" height="600" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
         host: "HG Link",
         downloadLinks: [
-          { quality: "720p", size: "450MB", url: "https://download.example.com/i-kill-you-ep1-720p.mp4", type: "MP4" },
-          { quality: "480p", size: "250MB", url: "https://download.example.com/i-kill-you-ep1-480p.mp4", type: "MP4" }
+          { quality: "720p", size: "164.72 MB", url: "https://2475163186.tapecontent.net/radosgw/pxY2w08gMpFrrzl/lwWPla1jYKTMj8gXJ0nAzRL5b6ovyMCj36C7fj2MrHnVBGKj4RWz-TGtvKBiXBDMS4zlKdUDe-E0JyptmKuSnqU9zUDaNheh-jklOxRw1hovDHEuYljtHIyaKMjAC6OIUJGYWlhGth_bGdsg7_Cs5C41lheAhpurXY47KwEO0DwhH-UOifHRzrd9elkEKUiXXtuC2IZYEvx-3GXmNiB6DQ6BRMprUa4Qso6CWFYqisVnFZuqWGbu0BKp6vkTkExYtbJE4guJXjLevTNivIFG4uMnQweLr0WFgjd4WdeXomFkFVaMKBrv_G3g3-87-UCTc0sZrxS7CzRBD3yq/I.Kill.You.S01E01.%28NKIRI.COM%29.mkv.mp4?dl=1", type: "MP4" }
         ]
-      }
+      },
+       "movie-5": {
+        title: "I Kill You Ep2",
+        embedCode: '<iframe src="https://streamtape.com/v/6BPKjeGy9lHob2/" width="800" height="600" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
+        host: "Streamtape",
+        downloadLinks: [
+          { quality: "720p", size: "450MB", url: "https://download.example.com/i-kill-you-ep1-720p.mp4", type: "MP4" }
+        ]
+      },
     };
     return videos[id] || { 
       title: "Unknown", 
