@@ -48,7 +48,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
       },
       "movie-3": {
         title: "Naked Gun (2025)",
-        embedUrl: "https://streamtape.com/e/pxY2w08gMpFrrzl/",
+        embedUrl: "https://hglink.to/e/np131q6tst6i",
         directUrl: "https://media.agasobanuyenow.com/The%20Naked%20Gun.mp4",
         fallbackUrl: "https://media.agasobanuyenow.com/The%20Naked%20Gun.mp4",
         host: "Direct Stream",
