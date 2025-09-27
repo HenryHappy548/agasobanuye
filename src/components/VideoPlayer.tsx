@@ -28,8 +28,8 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
       },
       "movie-5": {
         title: "I Kill You Ep1",
-        embedUrl: "https://streamtape.com/e/pxY2w08gMpFrrzl/",
-        directUrl: "https://streamtape.com/v/pxY2w08gMpFrrzl/I.Kill.You.S01E01.mkv",
+        embedUrl: "<IFRAME SRC="https://hglink.to/e/np131q6tst6i",
+        directUrl: "",
         host: "StreamTape"
       }
     };
