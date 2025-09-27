@@ -21,7 +21,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
       "featured-movie": {
         title: "Weapons (2025)",
         sources: [
-          { src: "https://ok.ru/video/9496103422476", type: "video/mp4", quality: "1080p" }
+          { src: "Project 1.mp4", type: "video/mp4", quality: "1080p" }
         ],
         poster: "/placeholder.svg"
       },
