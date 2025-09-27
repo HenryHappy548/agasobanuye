@@ -83,7 +83,7 @@ export const mockMovies: Movie[] = [
     rating: "9.1",
     category: "tv"
   
-  }
+  },
   {
     id: "movie-14",
     title: "Of king and prophets Ep2",
