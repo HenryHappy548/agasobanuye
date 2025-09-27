@@ -11,7 +11,7 @@ interface VideoPlayerProps {
 const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
   const getVideoInfo = (id: string) => {
     const videos: Record<string, { title: string; url: string; host: string }> = {
-      "featured-movie": { title: "Weapons (2025)", url: "https://short.icu/126LceIOT", host: "obyss.to" },
+      "featured-movie": { title: "Weapons (2025)", url: "https://davioad.com/6n6tmvoiniq0", host: "obyss.to" },
       "movie-1": { title: "Freakier Friday (2025)", url: "https://web.wootly.ch/source?id=796e0bef3a9b1d92c8e35c360ca86d9570db6167&sig=XUnZKcq7V7jVlKeylFu9sA&expire=1758929815&ofs=11&usr=195111", host: "Wootly" },
       "movie-2": { title: "Relay (2024)", url: "https://web.wootly.ch/source?id=84ed344ebe262fcbabbb3633d685655854760115&sig=rZGY3aPBFanZjWGfrrExYQ&expire=1758929761&ofs=11&usr=195096", host: "Wootly" },
       "movie-3": { title: "Naked Gun (2025)", url: "https://media.agasobanuyenow.com/The%20Naked%20Gun.mp4", host: "Direct Video" },
