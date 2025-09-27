@@ -1,4 +1,4 @@
-import { X, ExternalLink, Monitor, Video } from "lucide-react";
+(import { X, ExternalLink, Monitor, Video } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { useState, useEffect } from "react";
@@ -28,9 +28,9 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
       },
       "movie-5": {
         title: "I Kill You Ep1",
-        embedUrl: "<IFRAME SRC="https://hglink.to/e/np131q6tst6i",
+        embedUrl: "https://hglink.to/e/np131q6tst6i",
         directUrl: "",
-        host: "StreamTape"
+        host: "hglink"
       }
     };
     return videos[id] || { title: "Unknown", embedUrl: "", directUrl: "", host: "Unknown" };
