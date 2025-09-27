@@ -1,7 +1,6 @@
-import { X, ExternalLink, Monitor, Video } from "lucide-react";
+import { X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
-import { useState, useEffect } from "react";
 
 interface VideoPlayerProps {
   isOpen: boolean;
@@ -10,79 +9,75 @@ interface VideoPlayerProps {
 }
 
 const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
-  const [isLoading, setIsLoading] = useState(true);
-  const [hasError, setHasError] = useState(false);
-
-  // Video data with only embed options
   const getVideoInfo = (id: string) => {
-    const videos: Record<string, { 
-      title: string; 
-      embedUrl: string;
-      host: string;
-      aspectRatio: string;
-    }> = {
+    const videos: Record<string, { title: string; embedUrl: string }> = {
       "featured-movie": {
         title: "Weapons (2025)",
-        embedUrl: "https://ok.ru/video/embed/9496103422476",
-        host: "OK.ru",
-        aspectRatio: "16/9"
+        embedUrl: "https://ok.ru/video/embed/9496103422476"
       },
       "movie-1": {
         title: "Freakier Friday (2025)",
-        embedUrl: "https://www.dailymotion.com/embed/video/x8y9z0a",
-        host: "Dailymotion",
-        aspectRatio: "16/9"
+        embedUrl: "https://www.dailymotion.com/embed/video/x8y9z0a"
       },
       "movie-2": {
         title: "Relay (2024)",
-        embedUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-        host: "YouTube",
-        aspectRatio: "16/9"
+        embedUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ"
       },
       "movie-3": {
         title: "Naked Gun (2025)",
-        embedUrl: "https://hglink.to/np131q6tst6i",
-        host: "StreamTape",
-        aspectRatio: "16/9"
+        embedUrl: "https://streamtape.com/e/pxY2w08gMpFrrzl/"
       },
       "movie-4": {
         title: "Fantastic Four",
-        embedUrl: "https://streamtape.com/e/your-video-id-here/",
-        host: "StreamTape",
-        aspectRatio: "16/9"
+        embedUrl: "https://streamtape.com/e/your-video-id-here/"
       },
       "movie-5": {
         title: "I Kill You Ep1",
-        embedUrl: "https://streamtape.com/e/pxY2w08gMpFrrzl/",
-        host: "StreamTape",
-        aspectRatio: "16/9"
+        embedUrl: "https://streamtape.com/e/pxY2w08gMpFrrzl/"
       }
     };
-    return videos[id] || { 
-      title: "Unknown", 
-      embedUrl: "", 
-      host: "Unknown",
-      aspectRatio: "16/9"
-    };
+    return videos[id] || { title: "Unknown", embedUrl: "" };
   };
 
   const videoInfo = videoId ? getVideoInfo(videoId) : null;
 
-  // Reset loading state when dialog opens or video changes
-  useEffect(() => {
-    if (isOpen && videoInfo) {
-      setIsLoading(true);
-      setHasError(false);
-      
-      // Fallback: hide loading after 5 seconds if iframe doesn't load
-      const fallbackTimer = setTimeout(() => {
-        if (isLoading) {
-          setIsLoading(false);
-          setHasError(true);
-        }
-      }, 5000);
+  return (
+    <Dialog open={isOpen} onOpenChange={onClose}>
+      <DialogContent className="max-w-6xl w-full p-0 bg-black">
+        <div className="relative">
+          <Button
+            variant="secondary"
+            size="sm"
+            className="absolute top-3 right-3 z-10 bg-black/80 hover:bg-black text-white"
+            onClick={onClose}
+          >
+            <X className="h-5 w-5" />
+          </Button>
+          
+          {videoInfo && (
+            <>
+              <div style={{ aspectRatio: "16/9" }}>
+                <iframe
+                  src={videoInfo.embedUrl}
+                  className="w-full h-full border-0"
+                  allowFullScreen
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  title={videoInfo.title}
+                />
+              </div>
+              
+              <div className="p-4 bg-gray-900 text-white">
+                <h2 className="text-xl font-bold">{videoInfo.title}</h2>
+              </div>
+            </>
+          )}
+        </div>
+      </DialogContent>
+    </Dialog>
+  );
+};
 
-      return () => clearTimeout(fallbackTimer);
+export default VideoPlayer;      return () => clearTimeout(fallbackTimer);
     }
   }, [isOpen, videoInfo]);
 
