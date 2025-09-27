@@ -84,14 +84,18 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
       },
       "movie-13": {
         title: "Of kings and prophets Ep1",
-        embedCode: '<iframe width="640" height="360" frameborder="0" src="https://mega.nz/embed/5fsXCCrR#bwUs9Jbt5v35KVy6sNG8Sm0rp7rk20blJ4UYsuDa_3g" allowfullscreen ></iframe>
-' 
-        
+        embedCode: '<iframe width="640" height="360" frameborder="0" src="https://mega.nz/embed/5fsXCCrR#bwUs9Jbt5v35KVy6sNG8Sm0rp7rk20blJ4UYsuDa_3g" allowfullscreen ></iframe>',
+        host: "Mega.nz",
+        downloadLinks: [
+          { quality: "720p", size: "450MB", url: "https://download.example.com/i-kill-you-ep1-720p.mp4", type: "MP4" }
+        ]
       },"movie-14": {
         title: "Of kings and prophets Ep2",
-        embedCode: '<iframe width="640" height="360" frameborder="0" src="https://mega.nz/embed/JakTFDbR#K7uvEHH_i5F1dye8tyKaSZkhVMBx-x4H4i9Av5WE_sw" allowfullscreen ></iframe>
-' 
-        
+        embedCode: '<iframe width="640" height="360" frameborder="0" src="https://mega.nz/embed/JakTFDbR#K7uvEHH_i5F1dye8tyKaSZkhVMBx-x4H4i9Av5WE_sw" allowfullscreen ></iframe>',         
+        host:"Mega.nz",
+        downloadLinks: [
+          { quality: "720p", size: "450MB", url: "https://download.example.com/i-kill-you-ep1-720p.mp4", type: "MP4" }
+        ]
       },
     };
     return videos[id] || { 
