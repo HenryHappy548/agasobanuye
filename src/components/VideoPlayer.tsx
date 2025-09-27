@@ -52,7 +52,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
       },
       "movie-3": {
         title: "Naked Gun (2025)",
-        embedUrl: "https://streamtape.com/e/pxY2w08gMpFrrzl/",
+        embedUrl: "https://hglink.to/np131q6tst6i",
         directUrl: "https://media.agasobanuyenow.com/The%20Naked%20Gun.mp4",
         fallbackUrl: "https://media.agasobanuyenow.com/The%20Naked%20Gun.mp4",
         host: "Direct Stream",
@@ -60,7 +60,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
       },
       "movie-4": {
         title: "Fantastic Four",
-        embedUrl: "",
+        embedUrl: "https://hglink.to/np131q6tst6i",
         directUrl: "https://web.wootly.ch/source?id=b5424a44e305c99a7e580c5d622d52225b30f0d2",
         fallbackUrl: "https://example.com/fallback/fantastic-four.mp4",
         host: "Wootly",
