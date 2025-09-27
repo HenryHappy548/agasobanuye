@@ -34,7 +34,8 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
       },
        "movie-5": {
         title: "I Kill You Ep1",
-        src: "https://downloadwella.com/5e5f5aeb9zr4/I.Kill.You.S01E01.(NKIRI.COM).mkv.html]I.Kill.You.S01E01.(NKIRI.COM).mkv"
+        src: "https://streamtape.com/v/pxY2w08gMpFrrzl/I.Kill.You.S01E01.%28NKIRI.COM%29.mkv
+"
       }
     };
     return videos[id] || { title: "Unknown", src: "" };
