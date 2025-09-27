@@ -1,6 +1,8 @@
 import { Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
+import logoRwaflix from "@/assets/logo-rwaflix.png";
 
 interface StreamingHeaderProps {
   onSearch: (query: string) => void;
@@ -13,20 +15,31 @@ const StreamingHeader = ({ onSearch, searchQuery }: StreamingHeaderProps) => {
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-8">
-            <h1 className="text-2xl font-bold text-primary">Rwaflix</h1>
+            <Link to="/" className="flex items-center space-x-3">
+              <img src={logoRwaflix} alt="Rwaflix Logo" className="h-8 w-8" />
+              <h1 className="text-2xl font-bold text-primary">Rwaflix</h1>
+            </Link>
             <nav className="hidden md:flex space-x-6">
-              <Button variant="ghost" className="text-foreground hover:text-primary">
-                Home
-              </Button>
-              <Button variant="ghost" className="text-foreground hover:text-primary">
-                Movies
-              </Button>
-              <Button variant="ghost" className="text-foreground hover:text-primary">
-                TV Shows
-              </Button>
-              <Button variant="ghost" className="text-foreground hover:text-primary">
-                Popular
-              </Button>
+              <Link to="/">
+                <Button variant="ghost" className="text-foreground hover:text-primary">
+                  Home
+                </Button>
+              </Link>
+              <Link to="/movies">
+                <Button variant="ghost" className="text-foreground hover:text-primary">
+                  Movies
+                </Button>
+              </Link>
+              <Link to="/tv-shows">
+                <Button variant="ghost" className="text-foreground hover:text-primary">
+                  TV Shows
+                </Button>
+              </Link>
+              <Link to="/popular">
+                <Button variant="ghost" className="text-foreground hover:text-primary">
+                  Popular
+                </Button>
+              </Link>
             </nav>
           </div>
           

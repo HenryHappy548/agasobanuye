@@ -3,6 +3,7 @@ import StreamingHeader from "@/components/StreamingHeader";
 import HeroSection from "@/components/HeroSection";
 import MovieCard from "@/components/MovieCard";
 import VideoPlayer from "@/components/VideoPlayer";
+import Footer from "@/components/Footer";
 import { mockMovies } from "@/data/mockData";
 
 const Index = () => {
@@ -111,6 +112,8 @@ const Index = () => {
         onClose={handleClosePlayer}
         videoId={selectedVideoId}
       />
+      
+      <Footer />
     </div>
   );
 };
