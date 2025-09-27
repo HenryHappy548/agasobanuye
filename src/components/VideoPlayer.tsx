@@ -14,7 +14,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
     const videos: Record<string, { title: string; src: string }> = {
       "featured-movie": {
         title: "Weapons (2025) ",
-        src: "https://web.wootly.ch/source?id=31d3ba1b9c9414adf8c490724e2ccade34b90a69&sig=Djg2H-DXiz1uutjyPWH_SA&expire=1758929907&ofs=11&usr=194949"
+        src: "https://ok.ru/video/9496103422476"
       },
       "movie-1": {
         title: "Freakier Friday (2025)",
