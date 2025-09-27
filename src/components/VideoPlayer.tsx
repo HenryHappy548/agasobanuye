@@ -42,7 +42,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
       "movie-3": {
         title: "Naked Gun (2025)",
         sources: [
-          { src: "https://short.icu/126LceIOT", type: "video/mp4", quality: "720p" }
+          { src: "<iframe width="640" height="360" src="https://short.icu/126LceIOT" frameborder="0" scrolling="0" allowfullscreen></iframe>", type: "video/mp4", quality: "720p" }
         ],
         poster: "/placeholder.svg"
       },
