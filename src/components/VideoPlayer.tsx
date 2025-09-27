@@ -1,6 +1,7 @@
-import { X, ExternalLink, Download, Play } from "lucide-react";
+import { X, Copy, Download, Play, Settings, Monitor } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { useState } from "react";
 
 interface VideoPlayerProps {
   isOpen: boolean;
@@ -9,35 +10,67 @@ interface VideoPlayerProps {
 }
 
 const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
+  const [copied, setCopied] = useState(false);
+
   const getVideoInfo = (id: string) => {
-    const videos: Record<string, { title: string; url: string; host: string }> = {
-      "featured-movie": { title: "Weapons (2025)", url: "https://davioad.com/6n6tmvoiniq0", host: "obyss.to" },
-      "movie-1": { title: "Freakier Friday (2025)", url: "https://web.wootly.ch/source?id=796e0bef3a9b1d92c8e35c360ca86d9570db6167&sig=XUnZKcq7V7jVlKeylFu9sA&expire=1758929815&ofs=11&usr=195111", host: "Wootly" },
-      "movie-2": { title: "Relay (2024)", url: "https://web.wootly.ch/source?id=84ed344ebe262fcbabbb3633d685655854760115&sig=rZGY3aPBFanZjWGfrrExYQ&expire=1758929761&ofs=11&usr=195096", host: "Wootly" },
-      "movie-3": { title: "Naked Gun (2025)", url: "https://media.agasobanuyenow.com/The%20Naked%20Gun.mp4", host: "Direct Video" },
-      "movie-4": { title: "Fantastic Four", url: "https://web.wootly.ch/source?id=b5424a44e305c99a7e580c5d622d52225b30f0d2&sig=h9eYaHWKUAyBcuoTlCagCA&expire=1758929526&ofs=11&usr=195119", host: "Wootly" },
-      "movie-5": { title: "I Kill You Ep1", url: "https://streamtape.com/v/pxY2w08gMpFrrzl/I.Kill.You.S01E01.%28NKIRI.COM%29.mkv", host: "StreamTape" }
+    const videos: Record<string, { 
+      title: string; 
+      streams: {
+        url: string;
+        quality: string;
+        type: 'direct' | 'm3u8' | 'torrent' | 'embed';
+        codec?: string;
+      }[];
+    }> = {
+      "featured-movie": {
+        title: "Weapons (2025)",
+        streams: [
+          { url: "https://ok.ru/video/9496103422476", quality: "1080p", type: 'embed' },
+          { url: "https://example.com/weapons/1080p.mp4", quality: "1080p", type: 'direct', codec: "H.264" },
+          { url: "https://example.com/weapons/playlist.m3u8", quality: "Adaptive", type: 'm3u8' },
+        ]
+      },
+      "movie-5": {
+        title: "I Kill You Ep1",
+        streams: [
+          { url: "https://streamtape.com/v/pxY2w08gMpFrrzl/I.Kill.You.S01E01.mkv", quality: "720p", type: 'direct' },
+          { url: "https://streamtape.com/e/pxY2w08gMpFrrzl/", quality: "720p", type: 'embed' },
+        ]
+      }
     };
-    return videos[id] || { title: "Unknown", url: "", host: "Unknown" };
+    return videos[id] || { title: "Unknown", streams: [] };
   };
 
   const videoInfo = videoId ? getVideoInfo(videoId) : null;
 
-  const openInNewTab = () => {
-    if (videoInfo?.url) {
-      window.open(videoInfo.url, '_blank', 'noopener,noreferrer');
+  const copyToClipboard = (text: string) => {
+    navigator.clipboard.writeText(text);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  const openInPlayer = (url: string, type: string) => {
+    if (type === 'm3u8') {
+      // For M3U8 streams, try to open in external player
+      window.open(`vlc://${url}`, '_self');
+    } else {
+      window.open(url, '_blank');
     }
   };
 
-  const openInSameTab = () => {
-    if (videoInfo?.url) {
-      window.location.href = videoInfo.url;
+  const getStreamIcon = (type: string) => {
+    switch (type) {
+      case 'direct': return <Play className="h-4 w-4" />;
+      case 'm3u8': return <Monitor className="h-4 w-4" />;
+      case 'torrent': return <Download className="h-4 w-4" />;
+      case 'embed': return <Settings className="h-4 w-4" />;
+      default: return <Play className="h-4 w-4" />;
     }
   };
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-sm w-full p-0 bg-background border-border">
+      <DialogContent className="max-w-md w-full p-0 bg-background border-border">
         <div className="relative">
           <Button
             variant="ghost"
@@ -49,52 +82,67 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
           </Button>
           
           {videoInfo && (
-            <div className="p-6 pt-8">
+            <div className="p-6">
               <div className="text-center mb-6">
-                <h3 className="text-lg font-semibold text-foreground mb-1">
+                <h2 className="text-xl font-bold text-foreground mb-2">
                   {videoInfo.title}
-                </h3>
+                </h2>
                 <p className="text-sm text-muted-foreground">
-                  {videoInfo.host}
+                  Choose streaming method:
                 </p>
               </div>
 
-              <div className="grid grid-cols-2 gap-3 mb-4">
-                <Button
-                  onClick={openInNewTab}
-                  className="flex flex-col h-16 gap-1"
-                  variant="outline"
-                >
-                  <ExternalLink className="h-4 w-4" />
-                  <span className="text-xs">New Tab</span>
-                </Button>
+              <div className="space-y-2 max-h-64 overflow-y-auto">
+                {videoInfo.streams.map((stream, index) => (
+                  <div key={index} className="flex items-center justify-between p-3 border rounded-lg">
+                    <div className="flex items-center gap-3">
+                      {getStreamIcon(stream.type)}
+                      <div>
+                        <div className="font-medium">{stream.quality}</div>
+                        <div className="text-xs text-muted-foreground capitalize">
+                          {stream.type} {stream.codec && `• ${stream.codec}`}
+                        </div>
+                      </div>
+                    </div>
+                    <div className="flex gap-1">
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        onClick={() => openInPlayer(stream.url, stream.type)}
+                      >
+                        Open
+                      </Button>
+                      <Button
+                        size="sm"
+                        variant="ghost"
+                        onClick={() => copyToClipboard(stream.url)}
+                      >
+                        <Copy className="h-3 w-3" />
+                      </Button>
+                    </div>
+                  </div>
+                ))}
+              </div>
 
-                <Button
-                  onClick={openInSameTab}
-                  className="flex flex-col h-16 gap-1"
-                  variant="outline"
-                >
-                  <Play className="h-4 w-4" />
-                  <span className="text-xs">Current Tab</span>
-                </Button>
+              {copied && (
+                <div className="mt-3 p-2 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-sm text-center rounded">
+                  URL copied to clipboard!
+                </div>
+              )}
 
-                <Button
-                  onClick={() => window.open(videoInfo.url, '_blank', 'noopener,noreferrer')}
-                  className="flex flex-col h-16 gap-1 col-span-2"
-                  variant="default"
-                >
-                  <Download className="h-4 w-4" />
-                  <span className="text-xs">Download</span>
-                </Button>
+              <div className="mt-4 p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
+                <p className="text-sm text-blue-800 dark:text-blue-200">
+                  <strong>Tip:</strong> Copy the URL and paste it in VLC, PotPlayer, 
+                  or any media player that supports network streams.
+                </p>
               </div>
 
               <Button
                 onClick={onClose}
                 variant="ghost"
-                className="w-full"
-                size="sm"
+                className="w-full mt-4"
               >
-                Cancel
+                Close
               </Button>
             </div>
           )}
