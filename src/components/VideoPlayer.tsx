@@ -33,8 +33,6 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
       },
       "movie-3": {
         title: "Naked Gun (2025)",
-        embedCode: '<IFRAME SRC="https://hglink.to/e/np131q6tst6i" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=1280 HEIGHT=1080 allowfullscreen></IFRAME>' 
-      },
       "movie-4": {
         title: "Fantastic Four",
         embedCode: '<iframe src="https://hglink.to/e/jkl012" frameborder=0 marginwidth=0 marginheight=0 scrolling=no width=640 height=360 allowfullscreen></iframe>',
