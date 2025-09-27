@@ -193,49 +193,4 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
   );
 };
 
-export default VideoPlayer;            <X className="h-5 w-5" />
-          </Button>
-          
-          {videoInfo && (
-            <>
-              {/* Video Player Area */}
-              <div className="relative bg-black flex items-center justify-center min-h-[500px]">
-                <div 
-                  className="w-full max-w-4xl"
-                  dangerouslySetInnerHTML={{ __html: videoInfo.embedCode }}
-                />
-              </div>
-
-              {/* Video Info */}
-              <div className="p-4 bg-gray-900 text-white">
-                <div className="flex justify-between items-center">
-                  <h2 className="text-xl font-bold">{videoInfo.title}</h2>
-                  <span className="text-sm text-gray-300">
-                    Host: {videoInfo.host}
-                  </span>
-                </div>
-                
-                <div className="flex justify-between items-center mt-2">
-                  <span className="text-sm text-gray-300">
-                    Embedded Player
-                  </span>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={() => window.open(getSrcFromEmbedCode(videoInfo.embedCode), '_blank')}
-                    className="text-white border-white/30"
-                  >
-                    <ExternalLink className="h-3 w-3 mr-1" />
-                    Open Original
-                  </Button>
-                </div>
-              </div>
-            </>
-          )}
-        </div>
-      </DialogContent>
-    </Dialog>
-  );
-};
-
 export default VideoPlayer;
