@@ -54,7 +54,7 @@ export const mockMovies: Movie[] = [
   },
     {
     id: "movie-5",
-    title: "I land Ep1",
+    title: "I land Ep2",
     poster: movie5, 
     year: "2025",
     genre: "Action Thriller",
@@ -64,7 +64,7 @@ export const mockMovies: Movie[] = [
   },
   {
     id: "movie-6",
-    title: "I land Ep2",
+    title: "I land Ep1",
     poster: movie5, 
     year: "2025",
     genre: "Action Thriller",
