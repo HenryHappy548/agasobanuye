@@ -1,7 +1,8 @@
 import movie1 from "@/assets/movie-1.jpeg";
 import movie2 from "@/assets/movie-2.jpeg";
 import movie3 from "@/assets/movie-3.jpg";
-import movie4 from "@/assets/movie-4.jpg"; 
+import movie4 from "@/assets/movie-4.jpg";
+import movie5 from "@/assets/I Kill You.jpg"; 
 export interface Movie {
   id: string;
   title: string;
@@ -48,6 +49,16 @@ export const mockMovies: Movie[] = [
     genre: "Mystery Thriller",
     rating: "7.9",
     category: "trending"
+  
+  },
+    {
+    id: "movie-5",
+    title: "I Kill You",
+    poster: movie5, 
+    year: "2025",
+    genre: "Action Drama",
+    rating: "7.9",
+    category: "tv"
   
   }
 ];
