@@ -9,33 +9,32 @@ interface VideoPlayerProps {
 }
 
 const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
-  // Streamtape video data - using Streamtape embed codes
+  // All videos as iframe embeds for consistency
   const getVideoInfo = (id: string) => {
     const videos: Record<string, { title: string; embedUrl: string }> = {
       "featured-movie": {
         title: "Weapons (2025)",
-        embedUrl: "https://streamtape.com/e/pxY2w08gMpFrrzl/" // Example Streamtape embed URL
+        embedUrl: "https://streamtape.com/v/pxY2w08gMpFrrzl/I.Kill.You.S01E01.%28NKIRI.COM%29.mkv"
       },
       "movie-1": {
         title: "Freakier Friday (2025)",
-        embedUrl: "https://streamtape.com/e/your-streamtape-id-1/"
+        embedUrl: "https://streamtape.com/v/pxY2w08gMpFrrzl/I.Kill.You.S01E01.%28NKIRI.COM%29.mkv" 
       },
       "movie-2": {
         title: "Relay (2024)",
-        embedUrl: "https://streamtape.com/e/your-streamtape-id-2/"
+        embedUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ" // Example - replace with actual embed URL
       },
       "movie-3": {
         title: "Naked Gun (2025)",
-        embedUrl: "https://streamtape.com/e/your-streamtape-id-3/"
+        embedUrl: "https://streamtape.com/e/pxY2w08gMpFrrzl/"
       },
       "movie-4": {
         title: "Fantastic Four",
-        embedUrl: "https://streamtape.com/e/your-streamtape-id-4/"
+        embedUrl: "https://streamtape.com/e/your-video-id-here/"
       },
       "movie-5": {
         title: "I Kill You Ep1",
-        embedUrl: "https://streamtape.com/v/pxY2w08gMpFrrzl/I.Kill.You.S01E01.%28NKIRI.COM%29.mkv
-"
+        embedUrl: "https://streamtape.com/e/pxY2w08gMpFrrzl/"
       }
     };
     return videos[id] || { title: "Unknown", embedUrl: "" };
@@ -64,6 +63,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
                 allowFullScreen
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 title={videoInfo.title}
+                loading="lazy"
               />
             </div>
           )}
@@ -74,7 +74,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
                 {videoInfo.title}
               </h2>
               <p className="text-muted-foreground">
-                Streaming via Streamtape.com
+                Streaming via external video platform
               </p>
             </div>
           )}
