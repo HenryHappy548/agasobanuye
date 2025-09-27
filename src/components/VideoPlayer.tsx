@@ -21,7 +21,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
       "featured-movie": {
         title: "Weapons (2025)",
         sources: [
-          { src: "Project 1.mp4", type: "video/mp4", quality: "1080p" }
+          { src: "https://www.wootly.ch/netmin.js?rand=YU1ZbVJKLzJZSnlUTU9iMHQvSS9CZHZjRTIwRE1wSVY3SVNYZWtqcVNVU0IyMUM4YlRReHpjT3o3aWpMei8wdTJHSDZSSEl2V3lCQk1aSHkwbFU4TWlYMWFyd0pjWHh3", type: "video/mp4", quality: "1080p" }
         ],
         poster: "/placeholder.svg"
       },
