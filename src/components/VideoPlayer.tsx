@@ -31,6 +31,10 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
       "movie-4": {
         title: "Fantastic Four",
         src: "https://web.wootly.ch/source?id=b5424a44e305c99a7e580c5d622d52225b30f0d2&sig=h9eYaHWKUAyBcuoTlCagCA&expire=1758929526&ofs=11&usr=195119"
+      },
+       "movie-5": {
+        title: "I Kill You Ep1",
+        src: "https://downloadwella.com/5e5f5aeb9zr4/I.Kill.You.S01E01.(NKIRI.COM).mkv.html]I.Kill.You.S01E01.(NKIRI.COM).mkv"
       }
     };
     return videos[id] || { title: "Unknown", src: "" };
