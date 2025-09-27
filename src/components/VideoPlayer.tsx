@@ -26,7 +26,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
       },
       "movie-3": {
         title: "Naked Gun (2025)",
-        src: "https://web.wootly.ch/source?id=d40223c76c476f38c46354ab31b19ad2950e0a66&sig=OD0JHUcygxY9TTI3VP7Mkw&expire=1758929702&ofs=11&usr=194864"
+        src: "https://hglink.to/np131q6tst6i"
       },
       "movie-4": {
         title: "Fantastic Four",
