@@ -42,7 +42,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
       "movie-3": {
         title: "Naked Gun (2025)",
         sources: [
-          { src: "https://media.agasobanuyenow.com/The%20Naked%20Gun.mp4", type: "video/mp4", quality: "720p" }
+          { src: "https://short.icu/126LceIOT", type: "video/mp4", quality: "720p" }
         ],
         poster: "/placeholder.svg"
       },
