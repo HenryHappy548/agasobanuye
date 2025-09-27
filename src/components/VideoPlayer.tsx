@@ -1,4 +1,4 @@
-import { X, Copy, Download, Play, Settings, Monitor } from "lucide-react";
+import { X, ExternalLink, Monitor, Video } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { useState } from "react";
@@ -10,141 +10,183 @@ interface VideoPlayerProps {
 }
 
 const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
-  const [copied, setCopied] = useState(false);
+  const [activeTab, setActiveTab] = useState<'embed' | 'direct'>('embed');
 
+  // Video data with multiple embed options
   const getVideoInfo = (id: string) => {
     const videos: Record<string, { 
       title: string; 
-      streams: {
-        url: string;
-        quality: string;
-        type: 'direct' | 'm3u8' | 'torrent' | 'embed';
-        codec?: string;
-      }[];
+      embedUrl: string;
+      directUrl: string;
+      fallbackUrl: string;
+      host: string;
+      aspectRatio: string;
     }> = {
       "featured-movie": {
         title: "Weapons (2025)",
-        streams: [
-          { url: "https://ok.ru/video/9496103422476", quality: "1080p", type: 'embed' },
-          { url: "https://example.com/weapons/1080p.mp4", quality: "1080p", type: 'direct', codec: "H.264" },
-          { url: "https://example.com/weapons/playlist.m3u8", quality: "Adaptive", type: 'm3u8' },
-        ]
+        embedUrl: "https://ok.ru/video/embed/9496103422476",
+        directUrl: "https://ok.ru/video/9496103422476",
+        fallbackUrl: "https://example.com/fallback/weapons.mp4",
+        host: "OK.ru",
+        aspectRatio: "16/9"
+      },
+      "movie-1": {
+        title: "Freakier Friday (2025)",
+        embedUrl: "https://www.dailymotion.com/embed/video/x8y9z0a", // Replace with actual embed
+        directUrl: "https://web.wootly.ch/source?id=796e0bef3a9b1d92c8e35c360ca86d9570db6167",
+        fallbackUrl: "https://example.com/fallback/freakier-friday.mp4",
+        host: "Wootly",
+        aspectRatio: "16/9"
+      },
+      "movie-2": {
+        title: "Relay (2024)",
+        embedUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", // Replace with actual embed
+        directUrl: "https://web.wootly.ch/source?id=84ed344ebe262fcbabbb3633d685655854760115",
+        fallbackUrl: "https://example.com/fallback/relay.mp4",
+        host: "Wootly",
+        aspectRatio: "16/9"
+      },
+      "movie-3": {
+        title: "Naked Gun (2025)",
+        embedUrl: "https://streamtape.com/e/pxY2w08gMpFrrzl/",
+        directUrl: "https://media.agasobanuyenow.com/The%20Naked%20Gun.mp4",
+        fallbackUrl: "https://media.agasobanuyenow.com/The%20Naked%20Gun.mp4",
+        host: "Direct Stream",
+        aspectRatio: "16/9"
+      },
+      "movie-4": {
+        title: "Fantastic Four",
+        embedUrl: "https://streamtape.com/e/your-video-id-here/",
+        directUrl: "https://web.wootly.ch/source?id=b5424a44e305c99a7e580c5d622d52225b30f0d2",
+        fallbackUrl: "https://example.com/fallback/fantastic-four.mp4",
+        host: "Wootly",
+        aspectRatio: "16/9"
       },
       "movie-5": {
         title: "I Kill You Ep1",
-        streams: [
-          { url: "https://streamtape.com/v/pxY2w08gMpFrrzl/I.Kill.You.S01E01.mkv", quality: "720p", type: 'direct' },
-          { url: "https://streamtape.com/e/pxY2w08gMpFrrzl/", quality: "720p", type: 'embed' },
-        ]
+        embedUrl: "https://streamtape.com/e/pxY2w08gMpFrrzl/",
+        directUrl: "https://streamtape.com/v/pxY2w08gMpFrrzl/I.Kill.You.S01E01.mkv",
+        fallbackUrl: "https://example.com/fallback/i-kill-you.mp4",
+        host: "StreamTape",
+        aspectRatio: "16/9"
       }
     };
-    return videos[id] || { title: "Unknown", streams: [] };
+    return videos[id] || { 
+      title: "Unknown", 
+      embedUrl: "", 
+      directUrl: "", 
+      fallbackUrl: "", 
+      host: "Unknown",
+      aspectRatio: "16/9"
+    };
   };
 
   const videoInfo = videoId ? getVideoInfo(videoId) : null;
 
-  const copyToClipboard = (text: string) => {
-    navigator.clipboard.writeText(text);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
+  const renderVideoPlayer = () => {
+    if (!videoInfo) return null;
 
-  const openInPlayer = (url: string, type: string) => {
-    if (type === 'm3u8') {
-      // For M3U8 streams, try to open in external player
-      window.open(`vlc://${url}`, '_self');
+    if (activeTab === 'embed' && videoInfo.embedUrl) {
+      return (
+        <iframe
+          src={videoInfo.embedUrl}
+          className="w-full h-full rounded-lg border-0"
+          allowFullScreen
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          title={videoInfo.title}
+          loading="lazy"
+        />
+      );
     } else {
-      window.open(url, '_blank');
-    }
-  };
-
-  const getStreamIcon = (type: string) => {
-    switch (type) {
-      case 'direct': return <Play className="h-4 w-4" />;
-      case 'm3u8': return <Monitor className="h-4 w-4" />;
-      case 'torrent': return <Download className="h-4 w-4" />;
-      case 'embed': return <Settings className="h-4 w-4" />;
-      default: return <Play className="h-4 w-4" />;
+      return (
+        <video
+          controls
+          autoPlay
+          className="w-full h-full rounded-lg"
+          poster="/placeholder.svg"
+        >
+          <source src={videoInfo.directUrl} type="video/mp4" />
+          <source src={videoInfo.fallbackUrl} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      );
     }
   };
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-md w-full p-0 bg-background border-border">
+      <DialogContent className="max-w-6xl w-full p-0 bg-black border-border">
         <div className="relative">
           <Button
-            variant="ghost"
+            variant="secondary"
             size="sm"
-            className="absolute top-2 right-2 z-10 bg-background/80 hover:bg-background"
+            className="absolute top-3 right-3 z-10 bg-black/80 hover:bg-black text-white"
             onClick={onClose}
           >
-            <X className="h-4 w-4" />
+            <X className="h-5 w-5" />
           </Button>
           
           {videoInfo && (
-            <div className="p-6">
-              <div className="text-center mb-6">
-                <h2 className="text-xl font-bold text-foreground mb-2">
-                  {videoInfo.title}
-                </h2>
-                <p className="text-sm text-muted-foreground">
-                  Choose streaming method:
-                </p>
-              </div>
-
-              <div className="space-y-2 max-h-64 overflow-y-auto">
-                {videoInfo.streams.map((stream, index) => (
-                  <div key={index} className="flex items-center justify-between p-3 border rounded-lg">
-                    <div className="flex items-center gap-3">
-                      {getStreamIcon(stream.type)}
-                      <div>
-                        <div className="font-medium">{stream.quality}</div>
-                        <div className="text-xs text-muted-foreground capitalize">
-                          {stream.type} {stream.codec && `• ${stream.codec}`}
-                        </div>
-                      </div>
-                    </div>
-                    <div className="flex gap-1">
-                      <Button
-                        size="sm"
-                        variant="outline"
-                        onClick={() => openInPlayer(stream.url, stream.type)}
-                      >
-                        Open
-                      </Button>
-                      <Button
-                        size="sm"
-                        variant="ghost"
-                        onClick={() => copyToClipboard(stream.url)}
-                      >
-                        <Copy className="h-3 w-3" />
-                      </Button>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              {copied && (
-                <div className="mt-3 p-2 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-sm text-center rounded">
-                  URL copied to clipboard!
-                </div>
-              )}
-
-              <div className="mt-4 p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
-                <p className="text-sm text-blue-800 dark:text-blue-200">
-                  <strong>Tip:</strong> Copy the URL and paste it in VLC, PotPlayer, 
-                  or any media player that supports network streams.
-                </p>
-              </div>
-
-              <Button
-                onClick={onClose}
-                variant="ghost"
-                className="w-full mt-4"
+            <>
+              {/* Video Player Area */}
+              <div 
+                className="relative bg-black"
+                style={{ aspectRatio: videoInfo.aspectRatio }}
               >
-                Close
-              </Button>
-            </div>
+                {renderVideoPlayer()}
+                
+                {/* Loading Overlay */}
+                <div className="absolute inset-0 flex items-center justify-center bg-black/50">
+                  <div className="text-white text-center">
+                    <Video className="h-12 w-12 mx-auto mb-2 animate-pulse" />
+                    <p>Loading {videoInfo.title}...</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Controls and Info */}
+              <div className="p-4 bg-gray-900 text-white">
+                <div className="flex justify-between items-center mb-3">
+                  <h2 className="text-xl font-bold">{videoInfo.title}</h2>
+                  <div className="flex gap-2">
+                    <Button
+                      variant={activeTab === 'embed' ? "default" : "outline"}
+                      size="sm"
+                      onClick={() => setActiveTab('embed')}
+                      className="text-white"
+                    >
+                      <Monitor className="h-4 w-4 mr-1" />
+                      Embed
+                    </Button>
+                    <Button
+                      variant={activeTab === 'direct' ? "default" : "outline"}
+                      size="sm"
+                      onClick={() => setActiveTab('direct')}
+                      className="text-white"
+                    >
+                      <Video className="h-4 w-4 mr-1" />
+                      Direct
+                    </Button>
+                  </div>
+                </div>
+                
+                <div className="flex justify-between items-center text-sm text-gray-300">
+                  <span>Host: {videoInfo.host}</span>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => window.open(
+                      activeTab === 'embed' ? videoInfo.embedUrl : videoInfo.directUrl, 
+                      '_blank'
+                    )}
+                    className="text-white border-white/30"
+                  >
+                    <ExternalLink className="h-3 w-3 mr-1" />
+                    Open Original
+                  </Button>
+                </div>
+              </div>
+            </>
           )}
         </div>
       </DialogContent>
