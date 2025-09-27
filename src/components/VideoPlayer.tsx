@@ -26,7 +26,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
       },
       "movie-3": {
         title: "Naked Gun (2025)",
-        src: "https://hglink.to/np131q6tst6i"
+        src: "https://media.agasobanuyenow.com/The%20Naked%20Gun.mp4"
       },
       "movie-4": {
         title: "Fantastic Four",
