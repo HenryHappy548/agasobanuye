@@ -61,7 +61,7 @@ export const mockMovies: Movie[] = [
     rating: "7.9",
     category: "tv"
   
-  }
+  },
   {
     id: "movie-6",
     title: "I Kill You Ep2",
