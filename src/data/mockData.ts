@@ -1,7 +1,7 @@
 import movie1 from "@/assets/Home sweet home.jpeg";
 import movie2 from "@/assets/Home sweet home.jpeg";
 import movie3 from "@/assets/movie-3.jpg";
-import movie4 from "@/assets/movie-4.jpg";
+import movie4 from "@/assets/hero-featured.jpeg";
 import movie5 from "@/assets/iland.jpg";
 import movie6 from "@/assets/iland.jpg";
 import movie13 from "@/assets/Of king.jpg"; 
