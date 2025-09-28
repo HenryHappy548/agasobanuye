@@ -6,7 +6,7 @@ import movie5 from "@/assets/iland.jpg";
 import movie6 from "@/assets/iland.jpg";
 import movie13 from "@/assets/Of king.jpg"; 
 import movie14 from "@/assets/Of king.jpg";
-import shadowforce from "@/assets/Shadow force.jpeg"
+import shadowforce from "@/assets/Shadow force.jpeg";
 export interface Movie {
   id: string;
   title: string;
