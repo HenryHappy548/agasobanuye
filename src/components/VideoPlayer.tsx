@@ -110,7 +110,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         downloadLinks: [
           { quality: "720p", size: "1.09GB", url: "https://mega.nz/embed/T05RCQwa#KdQ2EefSUMgt0pIPn-XllHQAzCj5qe2B_oJqtUb2eJc", type: "MP4" }
         ]
-      };
+      }
     };
     return videos[id] || { 
       title: "Unknown", 
