@@ -75,16 +75,7 @@ export const mockMovies: Movie[] = [
     category: "tv"
   
   },
-  {
-    id: "movie-13",
-    title: "Of king and prophets Ep1",
-    poster: movie13, 
-    year: "2016",
-    genre: "Action Thriller",
-    rating: "8.1",
-    category: "tv"
   
-  },
   {
     id: "movie-14",
     title: "Of king and prophets Ep2",
@@ -95,6 +86,16 @@ export const mockMovies: Movie[] = [
     category: "tv"
   
 },
+  {
+    id: "movie-13",
+    title: "Of king and prophets Ep1",
+    poster: movie13, 
+    year: "2016",
+    genre: "Action Thriller",
+    rating: "8.1",
+    category: "tv"
+  
+  },
   {
     id: "sweeta",
     title: "Home sweet Home A",
