@@ -6,6 +6,7 @@ import movie5 from "@/assets/iland.jpg";
 import movie6 from "@/assets/iland.jpg";
 import movie13 from "@/assets/Of king.jpg"; 
 import movie14 from "@/assets/Of king.jpg";
+import home from "@/assets/Home sweet home.jpeg";
 export interface Movie {
   id: string;
   title: string;
@@ -92,6 +93,16 @@ export const mockMovies: Movie[] = [
     genre: "Action Thriller",
     rating: "9.1",
     category: "tv"
+  
+},
+  {
+    id: "sweeta",
+    title: "Home sweet Home A",
+    poster: home, 
+    year: "2025",
+    genre: "Action Thriller",
+    rating: "9.1",
+    category: "trending"
   
 }
 ];
