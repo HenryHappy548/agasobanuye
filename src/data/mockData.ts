@@ -1,5 +1,5 @@
 import movie1 from "@/assets/movie-1.jpeg";
-import movie2 from "@/assets/movie-2.jpeg";
+import movie2 from "@/assets/knight.jpeg";
 import movie3 from "@/assets/movie-3.jpg";
 import movie4 from "@/assets/Home sweet home.jpeg";
 import movie5 from "@/assets/Of king.jpg";
@@ -29,9 +29,9 @@ export const mockMovies: Movie[] = [
   },
   {
     id: "movie-2", 
-    title: "Relay",
+    title: "Knight and day",
     poster: movie2,
-    year: "2024",
+    year: "2010",
     genre: "paranoia thriller",
     rating: "7.8",
     category: "movie"
