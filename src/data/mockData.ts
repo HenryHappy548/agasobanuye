@@ -104,7 +104,7 @@ export const mockMovies: Movie[] = [
     rating: "9.1",
     category: "treading"
   
-}
+},
   {
     id: "shadow",
     title: "Shadow Force A ",
