@@ -19,11 +19,10 @@ const HeroSection = ({ onPlayVideo }: HeroSectionProps) => {
       <div className="relative z-10 container mx-auto px-4 sm:px-6">
         <div className="max-w-xs sm:max-w-md lg:max-w-lg xl:max-w-xl">
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3 sm:mb-4 leading-tight">
-            Weapons (2025) 
+            Naked Gun (2025) 
           </h1>
           <p className="text-sm sm:text-base lg:text-lg text-muted-foreground mb-4 sm:mb-6 leading-relaxed line-clamp-3 sm:line-clamp-none">
-            Weapons is a 2025 American mystery horror film directed, written, produced, and co-scored by Zach Cregger. The film stars an ensemble cast including Josh Brolin, Julia Garner, Alden Ehrenreich, Austin Abrams, Cary Christopher, Toby Huss, Benedict Wong, and Amy Madigan.
-          </p>
+           Now leading the Police Squad, the well-meaning but hopelessly clueless lieutenant follows in his father's footsteps as he stumbles from one chaotic situation to the next. After the death of her brother, Beth (Pamela Anderson) teams up with Frank to take down the individual responsible.</p>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
             <Button 
               size="lg" 
