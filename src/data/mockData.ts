@@ -96,8 +96,8 @@ export const mockMovies: Movie[] = [
   
 },
   {
-    id: "Shadow",
-    title: "Shadow Force A ",
+    id: "Shadow1",
+    title: "Shadow Force B ",
     poster: Shadowforce, 
     year: "2025",
     genre: "Action Thriller",
@@ -105,4 +105,13 @@ export const mockMovies: Movie[] = [
     category: "treading"
   
 }
+  {
+    id: "Shadow",
+    title: "Shadow Force A ",
+    poster: Shadowforce, 
+    year: "2025",
+    genre: "Action Thriller",
+    rating: "9.1",
+    category: "treading"
+  }
 ];
