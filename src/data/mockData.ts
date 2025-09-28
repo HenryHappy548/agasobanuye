@@ -2,8 +2,8 @@ import movie1 from "@/assets/movie-1.jpeg";
 import movie2 from "@/assets/movie-2.jpeg";
 import movie3 from "@/assets/movie-3.jpg";
 import movie4 from "@/assets/Home sweet home.jpeg";
-import movie5 from "@/assets/iland.jpg";
-import movie6 from "@/assets/iland.jpg";
+import movie5 from "@/assets/Of king.jpg";
+import movie6 from "@/assets/Of king.jpg";
 import movie13 from "@/assets/Of king.jpg"; 
 import movie14 from "@/assets/Of king.jpg";
 import home from "@/assets/Home sweet home.jpeg";
@@ -57,9 +57,9 @@ export const mockMovies: Movie[] = [
   },
     {
     id: "movie-5",
-    title: "I land Ep2",
+    title: "Of king and Prophet Ep4",
     poster: movie5, 
-    year: "2025",
+    year: "2016",
     genre: "Action Thriller",
     rating: "8.1",
     category: "tv"
@@ -67,9 +67,9 @@ export const mockMovies: Movie[] = [
   },
   {
     id: "movie-6",
-    title: "I land Ep1",
+    title: "Of king and prophet Ep3",
     poster: movie5, 
-    year: "2025",
+    year: "2016",
     genre: "Action Thriller",
     rating: "8.1",
     category: "tv"
@@ -81,7 +81,7 @@ export const mockMovies: Movie[] = [
     poster: movie13, 
     year: "2016",
     genre: "Action Thriller",
-    rating: "9.1",
+    rating: "8.1",
     category: "tv"
   
   },
@@ -91,7 +91,7 @@ export const mockMovies: Movie[] = [
     poster: movie14, 
     year: "2016",
     genre: "Action Thriller",
-    rating: "9.1",
+    rating: "8.1",
     category: "tv"
   
 },
