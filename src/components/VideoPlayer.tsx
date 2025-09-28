@@ -97,6 +97,14 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
           { quality: "720p", size: "450MB", url: "https://download.example.com/i-kill-you-ep1-720p.mp4", type: "MP4" }
         ]
       },
+       "sweeta": {
+        title: "Home sweet Home A",
+        embedCode: '<iframe width="640" height="360" frameborder="0" src="https://mega.nz/embed/7kpSDJDB#a7S8qGFtH23UKcJZTVT7oPYstxox6KQP4c1Ilr06ht8" allowfullscreen ></iframe>',         
+        host:"Savimbi",
+        downloadLinks: [
+          { quality: "720p", size: "450MB", url: "https://mega.nz/embed/7kpSDJDB#a7S8qGFtH23UKcJZTVT7oPYstxox6KQP4c1Ilr06ht8", type: "MP4" }
+        ]
+      },
     };
     return videos[id] || { 
       title: "Unknown", 
