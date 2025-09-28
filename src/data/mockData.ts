@@ -6,7 +6,8 @@ import movie5 from "@/assets/iland.jpg";
 import movie6 from "@/assets/iland.jpg";
 import movie13 from "@/assets/Of king.jpg"; 
 import movie14 from "@/assets/Of king.jpg";
-import shadowforce from "@/assets/Shadow force.jpeg";
+import shadow from "@/assets/Shadow force.jpeg";
+import force from "@/assets/Shadoe force.jpeg";
 export interface Movie {
   id: string;
   title: string;
@@ -96,9 +97,9 @@ export const mockMovies: Movie[] = [
   
 },
   {
-    id: "shadow1",
+    id: "force",
     title: "Shadow Force B ",
-    poster: shadowforce, 
+    poster: force, 
     year: "2025",
     genre: "Action Thriller",
     rating: "9.1",
@@ -108,7 +109,7 @@ export const mockMovies: Movie[] = [
   {
     id: "shadow",
     title: "Shadow Force A ",
-    poster: shadowforce, 
+    poster: shadow, 
     year: "2025",
     genre: "Action Thriller",
     rating: "9.1",
