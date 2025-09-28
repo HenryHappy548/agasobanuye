@@ -46,9 +46,9 @@ export const mockMovies: Movie[] = [
   },
   {
     id: "movie-4",
-    title: "Fantastic Four",
+    title: "Knight and Day",
     poster: movie4, 
-    year: "2025",
+    year: "2010",
     genre: "Mystery Thriller",
     rating: "7.9",
     category: "trending"
