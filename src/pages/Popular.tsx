@@ -31,16 +31,16 @@ const Popular = () => {
     <div className="min-h-screen bg-background text-foreground">
       <StreamingHeader onSearch={setSearchQuery} searchQuery={searchQuery} />
       
-      <main className="container mx-auto px-4 py-8">
-        <div className="mb-8">
-          <h1 className="text-4xl font-bold text-primary mb-4">Popular Content</h1>
-          <p className="text-lg text-muted-foreground">
+      <main className="container mx-auto px-4 py-6 sm:py-8">
+        <div className="mb-6 sm:mb-8">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary mb-2 sm:mb-4">Popular Content</h1>
+          <p className="text-sm sm:text-base lg:text-lg text-muted-foreground">
             The most watched movies and shows right now
           </p>
         </div>
 
         <section>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 sm:gap-4">
             {filteredContent.map((content) => (
               <MovieCard
                 key={content.id}
@@ -51,7 +51,7 @@ const Popular = () => {
           </div>
           
           {filteredContent.length === 0 && (
-            <div className="text-center py-12">
+            <div className="text-center py-8 sm:py-12">
               <p className="text-muted-foreground">
                 {searchQuery ? `No popular content found matching "${searchQuery}"` : "No popular content available"}
               </p>

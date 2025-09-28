@@ -126,33 +126,33 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-6xl w-full p-0 bg-black border-border">
+      <DialogContent className="max-w-[95vw] sm:max-w-4xl lg:max-w-6xl w-full p-0 bg-black border-border max-h-[95vh] overflow-hidden">
         <div className="relative">
           <Button
             variant="secondary"
             size="sm"
-            className="absolute top-3 right-3 z-10 bg-black/80 hover:bg-black text-white"
+            className="absolute top-2 right-2 sm:top-3 sm:right-3 z-10 bg-black/80 hover:bg-black text-white"
             onClick={onClose}
           >
-            <X className="h-5 w-5" />
+            <X className="h-4 w-4 sm:h-5 sm:w-5" />
           </Button>
           
           {videoInfo && (
             <>
               {/* Video Player Area */}
-              <div className="relative bg-black flex items-center justify-center min-h-[500px]">
+              <div className="relative bg-black flex items-center justify-center min-h-[200px] sm:min-h-[300px] lg:min-h-[500px]">
                 <div 
-                  className="w-full max-w-4xl"
+                  className="w-full max-w-full aspect-video"
                   dangerouslySetInnerHTML={{ __html: videoInfo.embedCode }}
                 />
               </div>
 
               {/* Video Info and Download Section */}
-              <div className="p-4 bg-gray-900 text-white">
-                <div className="flex justify-between items-center mb-4">
+              <div className="p-3 sm:p-4 lg:p-6 bg-gray-900 text-white max-h-[40vh] overflow-y-auto">
+                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-4 gap-3">
                   <div>
-                    <h2 className="text-xl font-bold">{videoInfo.title}</h2>
-                    <span className="text-sm text-gray-300">
+                    <h2 className="text-lg sm:text-xl font-bold">{videoInfo.title}</h2>
+                    <span className="text-xs sm:text-sm text-gray-300">
                       Host: {videoInfo.host}
                     </span>
                   </div>
@@ -160,7 +160,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
                     variant="outline"
                     size="sm"
                     onClick={() => window.open(getSrcFromEmbedCode(videoInfo.embedCode), '_blank')}
-                    className="text-white border-white/30"
+                    className="text-white border-white/30 w-full sm:w-auto"
                   >
                     <ExternalLink className="h-3 w-3 mr-1" />
                     Open Original
@@ -169,25 +169,25 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
                 
                 {/* Download Section */}
                 <div className="mt-4">
-                  <h3 className="text-lg font-semibold mb-3 flex items-center">
+                  <h3 className="text-base sm:text-lg font-semibold mb-3 flex items-center">
                     <Download className="h-4 w-4 mr-2" />
                     Download Options
                   </h3>
                   
                   {videoInfo.downloadLinks.length > 0 ? (
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                       {videoInfo.downloadLinks.map((link, index) => (
                         <div key={index} className="border border-gray-600 rounded-lg p-3">
                           <div className="flex justify-between items-center mb-2">
-                            <span className="font-medium text-blue-300">{link.quality}</span>
-                            <span className="text-sm text-gray-400">{link.size}</span>
+                            <span className="font-medium text-blue-300 text-sm">{link.quality}</span>
+                            <span className="text-xs text-gray-400">{link.size}</span>
                           </div>
-                          <div className="flex justify-between items-center">
-                            <span className="text-sm text-gray-300">{link.type}</span>
+                          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2">
+                            <span className="text-xs text-gray-300">{link.type}</span>
                             <Button
                               size="sm"
                               onClick={() => handleDownload(link.url, `${videoInfo.title} - ${link.quality}.mp4`)}
-                              className="bg-green-600 hover:bg-green-700"
+                              className="bg-green-600 hover:bg-green-700 text-xs w-full sm:w-auto"
                             >
                               <Download className="h-3 w-3 mr-1" />
                               Download
@@ -197,7 +197,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
                       ))}
                     </div>
                   ) : (
-                    <div className="text-center py-4 text-gray-400">
+                    <div className="text-center py-4 text-gray-400 text-sm">
                       No download links available for this movie.
                     </div>
                   )}

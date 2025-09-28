@@ -5,11 +5,11 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-background/95 border-t border-border mt-16">
-      <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+    <footer className="bg-background/95 border-t border-border mt-8 sm:mt-12 lg:mt-16">
+      <div className="container mx-auto px-4 py-8 sm:py-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
           {/* Company Info */}
-          <div className="space-y-4">
+          <div className="space-y-4 sm:col-span-2 lg:col-span-1">
             <h3 className="text-lg font-semibold text-primary">Rwaflix</h3>
             <p className="text-sm text-muted-foreground">
               Stream your favorite movies and TV shows online with premium quality content.
@@ -113,12 +113,12 @@ const Footer = () => {
         </div>
 
         {/* Copyright */}
-        <div className="mt-8 pt-8 border-t border-border">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-sm text-muted-foreground">
+        <div className="mt-6 sm:mt-8 pt-6 sm:pt-8 border-t border-border">
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
+            <p className="text-sm text-muted-foreground text-center sm:text-left">
               © {currentYear} Rwaflix. All rights reserved.
             </p>
-            <div className="flex items-center space-x-4 mt-4 md:mt-0">
+            <div className="flex items-center justify-center sm:justify-end">
               <a 
                 href="https://wa.me/250791114163" 
                 target="_blank" 

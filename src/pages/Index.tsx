@@ -36,13 +36,13 @@ const Index = () => {
       
       {!searchQuery && <HeroSection onPlayVideo={handlePlayVideo} />}
       
-      <main className="container mx-auto px-4 py-8 space-y-12">
+      <main className="container mx-auto px-4 py-6 sm:py-8 space-y-8 sm:space-y-12">
         {searchQuery ? (
           <section>
-            <h2 className="text-2xl font-bold mb-6">
+            <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">
               Search Results for "{searchQuery}"
             </h2>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 sm:gap-4">
               {filteredMovies.map((movie) => (
                 <MovieCard
                   key={movie.id}
@@ -52,7 +52,7 @@ const Index = () => {
               ))}
             </div>
             {filteredMovies.length === 0 && (
-              <p className="text-muted-foreground text-center py-12">
+              <p className="text-muted-foreground text-center py-8 sm:py-12">
                 No results found. Try searching for something else.
               </p>
             )}
@@ -60,10 +60,10 @@ const Index = () => {
         ) : (
           <>
             <section>
-              <h2 className="text-2xl font-bold mb-6 text-foreground">
+              <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-foreground">
                 Trending Now
               </h2>
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4">
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 sm:gap-4">
                 {trendingMovies.map((movie) => (
                   <MovieCard
                     key={movie.id}
@@ -75,10 +75,10 @@ const Index = () => {
             </section>
 
             <section>
-              <h2 className="text-2xl font-bold mb-6 text-foreground">
+              <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-foreground">
                 Popular Movies
               </h2>
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4">
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 sm:gap-4">
                 {movies.map((movie) => (
                   <MovieCard
                     key={movie.id}
@@ -90,10 +90,10 @@ const Index = () => {
             </section>
 
             <section>
-              <h2 className="text-2xl font-bold mb-6 text-foreground">
+              <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-foreground">
                 TV Shows
               </h2>
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4">
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 sm:gap-4">
                 {tvShows.map((movie) => (
                   <MovieCard
                     key={movie.id}
