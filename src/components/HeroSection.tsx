@@ -1,6 +1,6 @@
 import { Play, Info } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import heroImage from "@/assets/hero-featured.jpg";
+import heroImage from "@/assets/hero-featured.jpeg";
 
 interface HeroSectionProps {
   onPlayVideo: (videoId: string) => void;
