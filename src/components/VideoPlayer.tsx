@@ -32,14 +32,24 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         ]
       },
       "movie-1": {
-        title: "Freakier Friday (2025)",
-        embedCode: '<iframe src="https://hglink.to/e/abc123" frameborder=0 marginwidth=0 marginheight=0 scrolling=no width=640 height=360 allowfullscreen></iframe>',
-        host: "HG Link",
+        title: "Shadow Force B (2025)",
+        embedCode: '<iframe width="1024" height="640" frameborder="0" src="https://mega.nz/embed/D4Q0EZgZ#Jb7ecJ2f_21LL3BlF-Vrm2Ks51ECr_Pr81W18hpw_tY" allowfullscreen ></iframe>',
+        host: "Gaheza",
         downloadLinks: [
           { quality: "1080p", size: "1.2GB", url: "https://download.example.com/freakier-friday-1080p.mp4", type: "MP4" }
        
         ]
       },
+      "forcea": {
+        title: "Shadow Force A (2025)",
+        embedCode: '<iframe width="1024" height="640" frameborder="0" src="https://mega.nz/embed/T05RCQwa#KdQ2EefSUMgt0pIPn-XllHQAzCj5qe2B_oJqtUb2eJc" allowfullscreen ></iframe>',
+        host: "Gaheza",
+        downloadLinks: [
+          { quality: "1080p", size: "1.2GB", url: "https://download.example.com/freakier-friday-1080p.mp4", type: "MP4" }
+       
+        ]
+      },
+     
       "movie-2": {
         title: "Knight and Day (2010)",
         embedCode: '<iframe width="1024" height="640" frameborder="0" src="https://mega.nz/embed/XpoBgIJQ#T7SgXb5MXaKRNP1jdGRet19TLCKFFJuNwY43ZIjwJTQ" allowfullscreen ></iframe>',
@@ -51,8 +61,8 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
       },
       "movie-3": {
         title: "Naked Gun (2025)",
-        embedCode: '<iframe src="https://hglink.to/e/ghi789" frameborder=0 marginwidth=0 marginheight=0 scrolling=no width=640 height=360 allowfullscreen></iframe>',
-        host: "HG Link",
+        embedCode: '<iframe width="1024" height="640" frameborder="0" src="https://mega.nz/embed/nsBzHRIa#4FN0eDHfhSNWQVS79zsPr8szuGaLXT3GrjLcQBdcj2c" allowfullscreen ></iframe>',
+        host: "Gaheza",
         downloadLinks: [
           { quality: "1080p", size: "1.6GB", url: "https://download.example.com/naked-gun-1080p.mp4", type: "MP4" }
          
