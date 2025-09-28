@@ -59,11 +59,11 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         ]
       },
       "movie-4": {
-        title: "Fantastic Four",
-        embedCode: '<iframe src="https://hglink.to/e/jkl012" frameborder=0 marginwidth=0 marginheight=0 scrolling=no width=640 height=360 allowfullscreen></iframe>',
-        host: "HG Link",
+        title: "Home sweet Home B",
+        embedCode: '<iframe width="1024" height="630" frameborder="0" src="https://mega.nz/embed/CgRjkRQB#JsRPi4bihFKOMLaJRuWLDwRncChSnqBFkhigl_GkOfc" allowfullscreen ></iframe>',
+        host: "Savimbi",
         downloadLinks: [
-          { quality: "1080p", size: "2.1GB", url: "https://download.example.com/fantastic-four-1080p.mp4", type: "MP4" }
+          { quality: "1080p", size: "2.1GB", url: "https://mega.nz/embed/CgRjkRQB#JsRPi4bihFKOMLaJRuWLDwRncChSnqBFkhigl_GkOfc", type: "MP4" }
         ]
       },
       "movie-5": {
