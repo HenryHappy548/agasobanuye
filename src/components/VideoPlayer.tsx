@@ -28,7 +28,6 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         host: "Savimbi",
         downloadLinks: [
           { quality: "1080p", size: "704MB", url: "https://mega.nz/file/XpoBgIJQ#T7SgXb5MXaKRNP1jdGRet19TLCKFFJuNwY43ZIjwJTQ", type: "MP4" }
-          
         ]
       },
       "movie-2": {
@@ -37,7 +36,6 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         host: "HG Link",
         downloadLinks: [
           { quality: "1080p", size: "536MB", url: "https://mega.nz/file/7kpSDJDB#a7S8qGFtH23UKcJZTVT7oPYstxox6KQP4c1Ilr06ht8", type: "MP4" }
-       
         ]
       },
       "movie-1": {
@@ -46,16 +44,14 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         host: "HG Link",
         downloadLinks: [
           { quality: "1080p", size: "800MB", url: "https://mega.nz/file/uwgW1ZSJ#JsRPi4bihFKOMLaJRuWLDwRncChSnqBFkhigl_GkOfc", type: "MP4" }
-         
         ]
       },
       "movie-3": {
         title: "Naked Gun (2025)",
-        embedCode: '<iframe src="https://hglink.to/e/ghi789" frameborder=0 marginwidth=0 marginheight=0 scrolling=no width=640 height=360 allowfullscreen></iframe>',
+        embedCode: '<iframe src="https://hglink.to/e/ghi789" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" width="640" height="360" allowfullscreen></iframe>',
         host: "HG Link",
         downloadLinks: [
           { quality: "1080p", size: "1.6GB", url: "https://download.example.com/naked-gun-1080p.mp4", type: "MP4" }
-         
         ]
       },
       "movie-4": {
@@ -74,7 +70,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
           { quality: "720p", size: "164.72 MB", url: "https://2475163186.tapecontent.net/radosgw/pxY2w08gMpFrrzl/lwWPla1jYKTMj8gXJ0nAzRL5b6ovyMCj36C7fj2MrHnVBGKj4RWz-TGtvKBiXBDMS4zlKdUDe-E0JyptmKuSnqU9zUDaNheh-jklOxRw1hovDHEuYljtHIyaKMjAC6OIUJGYWlhGth_bGdsg7_Cs5C41lheAhpurXY47KwEO0DwhH-UOifHRzrd9elkEKUiXXtuC2IZYEvx-3GXmNiB6DQ6BRMprUa4Qso6CWFYqisVnFZuqWGbu0BKp6vkTkExYtbJE4guJXjLevTNivIFG4uMnQweLr0WFgjd4WdeXomFkFVaMKBrv_G3g3-87-UCTc0sZrxS7CzRBD3yq/I.Kill.You.S01E01.%28NKIRI.COM%29.mkv.mp4?dl=1", type: "MP4" }
         ]
       },
-       "movie-6": {
+      "movie-6": {
         title: "I land Ep1",
         embedCode: '<div class="sp-embed-player" data-id="cTQtbinDuXy"><script src="https://go.screenpal.com/player/appearance/cTQtbinDuXy"></script><iframe width="100%" height="100%" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTQtbinDuXy?width=100%&height=100%&ff=1&title=0" allowfullscreen="true"></iframe></div>',
         host: "Rocky kimomo",
@@ -89,28 +85,31 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         downloadLinks: [
           { quality: "720p", size: "450MB", url: "https://download.example.com/i-kill-you-ep1-720p.mp4", type: "MP4" }
         ]
-      },"movie-14": {
+      },
+      "movie-14": {
         title: "Of kings and prophets Ep2",
         embedCode: '<iframe width="426" height="240" frameborder="0" src="https://mega.nz/embed/JakTFDbR#K7uvEHH_i5F1dye8tyKaSZkhVMBx-x4H4i9Av5WE_sw" allowfullscreen ></iframe>',         
-        host:"Rocky kimomo",
+        host: "Rocky kimomo",
         downloadLinks: [
           { quality: "720p", size: "450MB", url: "https://download.example.com/i-kill-you-ep1-720p.mp4", type: "MP4" }
         ]
-      },"force": {
+      },
+      "force": {
         title: "Shadow Force B (2025)",
         embedCode: '<iframe width="426" height="240" frameborder="0" src="https://mega.nz/embed/D4Q0EZgZ#Jb7ecJ2f_21LL3BlF-Vrm2Ks51ECr_Pr81W18hpw_tY" allowfullscreen ></iframe>',        
-        host:"Rocky kimomo",
+        host: "Rocky kimomo",
         downloadLinks: [
-          { quality: "720p", size: "450MB", url: "https://mega.nz/embed/D4Q0EZgZ#Jb7ecJ2f_21LL3BlF-Vrm2Ks51ECr_Pr81W18hpw_tY", type: "MP4" }
+          { quality: "720p", size: "450MB", url: "https://mega.nz/file/D4Q0EZgZ#Jb7ecJ2f_21LL3BlF-Vrm2Ks51ECr_Pr81W18hpw_tY", type: "MP4" }
         ]
-      },"shadow": {
+      },
+      "shadow": {
         title: "Shadow Force A (2025)",
         embedCode: '<iframe width="426" height="240" frameborder="0" src="https://mega.nz/embed/T05RCQwa#KdQ2EefSUMgt0pIPn-XllHQAzCj5qe2B_oJqtUb2eJc" allowfullscreen ></iframe>',         
-        host:"Gaheza Simba",
+        host: "Gaheza Simba",
         downloadLinks: [
-          { quality: "720p", size: "1.09GB", url: "https://mega.nz/embed/T05RCQwa#KdQ2EefSUMgt0pIPn-XllHQAzCj5qe2B_oJqtUb2eJc", type: "MP4" }
+          { quality: "720p", size: "1.09GB", url: "https://mega.nz/file/T05RCQwa#KdQ2EefSUMgt0pIPn-XllHQAzCj5qe2B_oJqtUb2eJc", type: "MP4" }
         ]
-      }:
+      }
     };
     return videos[id] || { 
       title: "Unknown", 
@@ -131,11 +130,6 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
   // Handle download
   const handleDownload = (url: string, filename: string) => {
     window.open(url, '_blank');
-    // Alternative method for direct download
-    // const link = document.createElement('a');
-    // link.href = url;
-    // link.download = filename;
-    // link.click();
   };
 
   return (
