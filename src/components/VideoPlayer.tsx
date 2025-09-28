@@ -24,8 +24,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
     }> = {
       "featured-movie": {
         title: "Knight and Day (2010)",
-        embedCode: '<iframe width="640" height="360" frameborder="0" src="https://mega.nz/embed/XpoBgIJQ#T7SgXb5MXaKRNP1jdGRet19TLCKFFJuNwY43ZIjwJTQ" allowfullscreen ></iframe>
-',
+        embedCode: '<iframe width="640" height="360" frameborder="0" src="https://mega.nz/embed/XpoBgIJQ#T7SgXb5MXaKRNP1jdGRet19TLCKFFJuNwY43ZIjwJTQ" allowfullscreen ></iframe>',
         host: "Rocky Kimomo",
         downloadLinks: [
           { quality: "1080p", size: "704MB", url: "https://mega.nz/file/XpoBgIJQ#T7SgXb5MXaKRNP1jdGRet19TLCKFFJuNwY43ZIjwJTQ", type: "MP4" }
@@ -34,8 +33,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
       },
       "movie-2": {
         title: "Home sweet Home A (2025)",
-        embedCode: '<iframe width="640" height="360" frameborder="0" src="https://mega.nz/embed/7kpSDJDB#a7S8qGFtH23UKcJZTVT7oPYstxox6KQP4c1Ilr06ht8" allowfullscreen ></iframe>
-',
+        embedCode: '<iframe width="640" height="360" frameborder="0" src="https://mega.nz/embed/7kpSDJDB#a7S8qGFtH23UKcJZTVT7oPYstxox6KQP4c1Ilr06ht8" allowfullscreen ></iframe>',
         host: "HG Link",
         downloadLinks: [
           { quality: "1080p", size: "536MB", url: "https://mega.nz/file/7kpSDJDB#a7S8qGFtH23UKcJZTVT7oPYstxox6KQP4c1Ilr06ht8", type: "MP4" }
@@ -44,8 +42,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
       },
       "movie-1": {
         title: "Home sweet Home B (2025)",
-        embedCode: '<iframe width="640" height="360" frameborder="0" src="https://mega.nz/embed/uwgW1ZSJ#JsRPi4bihFKOMLaJRuWLDwRncChSnqBFkhigl_GkOfc" allowfullscreen ></iframe>
-',
+        embedCode: '<iframe width="640" height="360" frameborder="0" src="https://mega.nz/embed/uwgW1ZSJ#JsRPi4bihFKOMLaJRuWLDwRncChSnqBFkhigl_GkOfc" allowfullscreen ></iframe>',
         host: "HG Link",
         downloadLinks: [
           { quality: "1080p", size: "800MB", url: "https://mega.nz/file/uwgW1ZSJ#JsRPi4bihFKOMLaJRuWLDwRncChSnqBFkhigl_GkOfc", type: "MP4" }
