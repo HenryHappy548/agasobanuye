@@ -1,4 +1,5 @@
-import movie1 from "@/assets/movie-1.jpeg";
+import movie1 from "@/assets/force.jpeg";
+import forca from "@/assets/force.jpeg"
 import movie2 from "@/assets/knight.jpeg";
 import movie3 from "@/assets/movie-3.jpg";
 import movie4 from "@/assets/Home sweet home.jpeg";
@@ -18,12 +19,22 @@ export interface Movie {
 }
 
 export const mockMovies: Movie[] = [
+ 
   {
     id: "movie-1",
-    title: "Freakier Friday",
+    title: "Shadow force B",
     poster: movie1,
     year: "2025",
-    genre: "Comedy Fantasy",
+    genre: "Action Familyy",
+    rating: "6.8",
+    category: "movie"
+  },
+    {
+    id: "forcea",
+    title: "Shadow force A",
+    poster: forcea,
+    year: "2025",
+    genre: "Action Familyy",
     rating: "6.8",
     category: "movie"
   },
