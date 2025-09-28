@@ -23,57 +23,61 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
       }[];
     }> = {
       "featured-movie": {
-        title: "Knight and Day (2010)",
-        embedCode: '<iframe width="640" height="360" frameborder="0" src="https://mega.nz/embed/XpoBgIJQ#T7SgXb5MXaKRNP1jdGRet19TLCKFFJuNwY43ZIjwJTQ" allowfullscreen ></iframe>',
-        host: "Savimbi",
-        downloadLinks: [
-          { quality: "1080p", size: "704MB", url: "https://mega.nz/file/XpoBgIJQ#T7SgXb5MXaKRNP1jdGRet19TLCKFFJuNwY43ZIjwJTQ", type: "MP4" }
-        ]
-      },
-      "movie-2": {
-        title: "Home sweet Home A (2025)",
-        embedCode: '<iframe width="640" height="360" frameborder="0" src="https://mega.nz/embed/7kpSDJDB#a7S8qGFtH23UKcJZTVT7oPYstxox6KQP4c1Ilr06ht8" allowfullscreen ></iframe>',
+        title: "Weapons (2025)",
+        embedCode: '<iframe src="https://hglink.to/e/np131q6tst6i" frameborder=0 marginwidth=0 marginheight=0 scrolling=no width=640 height=360 allowfullscreen></iframe>',
         host: "HG Link",
         downloadLinks: [
-          { quality: "1080p", size: "536MB", url: "https://mega.nz/file/7kpSDJDB#a7S8qGFtH23UKcJZTVT7oPYstxox6KQP4c1Ilr06ht8", type: "MP4" }
+          { quality: "1080p", size: "1.5GB", url: "https://download.example.com/weapons-1080p.mp4", type: "MP4" }
+          
         ]
       },
       "movie-1": {
-        title: "Home sweet Home B (2025)",
-        embedCode: '<iframe width="640" height="360" frameborder="0" src="https://mega.nz/embed/uwgW1ZSJ#JsRPi4bihFKOMLaJRuWLDwRncChSnqBFkhigl_GkOfc" allowfullscreen ></iframe>',
+        title: "Freakier Friday (2025)",
+        embedCode: '<iframe src="https://hglink.to/e/abc123" frameborder=0 marginwidth=0 marginheight=0 scrolling=no width=640 height=360 allowfullscreen></iframe>',
         host: "HG Link",
         downloadLinks: [
-          { quality: "1080p", size: "800MB", url: "https://mega.nz/file/uwgW1ZSJ#JsRPi4bihFKOMLaJRuWLDwRncChSnqBFkhigl_GkOfc", type: "MP4" }
+          { quality: "1080p", size: "1.2GB", url: "https://download.example.com/freakier-friday-1080p.mp4", type: "MP4" }
+       
+        ]
+      },
+      "movie-2": {
+        title: "Relay (2024)",
+        embedCode: '<iframe src="https://hglink.to/e/def456" frameborder=0 marginwidth=0 marginheight=0 scrolling=no width=640 height=360 allowfullscreen></iframe>',
+        host: "HG Link",
+        downloadLinks: [
+          { quality: "4K", size: "3.2GB", url: "https://download.example.com/relay-4k.mp4", type: "MP4" }
+         
         ]
       },
       "movie-3": {
         title: "Naked Gun (2025)",
-        embedCode: '<iframe src="https://hglink.to/e/ghi789" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" width="640" height="360" allowfullscreen></iframe>',
+        embedCode: '<iframe src="https://hglink.to/e/ghi789" frameborder=0 marginwidth=0 marginheight=0 scrolling=no width=640 height=360 allowfullscreen></iframe>',
         host: "HG Link",
         downloadLinks: [
           { quality: "1080p", size: "1.6GB", url: "https://download.example.com/naked-gun-1080p.mp4", type: "MP4" }
+         
         ]
       },
       "movie-4": {
-        title: "Knight and day (2010)",
-        embedCode: '<iframe width="640" height="360" frameborder="0" src="https://mega.nz/embed/XpoBgIJQ#T7SgXb5MXaKRNP1jdGRet19TLCKFFJuNwY43ZIjwJTQ" allowfullscreen ></iframe>',
-        host: "Savimbi",
+        title: "Fantastic Four",
+        embedCode: '<iframe src="https://hglink.to/e/jkl012" frameborder=0 marginwidth=0 marginheight=0 scrolling=no width=640 height=360 allowfullscreen></iframe>',
+        host: "HG Link",
         downloadLinks: [
-          { quality: "1080p", size: "2.1GB", url: "https://mega.nz/file/XpoBgIJQ#T7SgXb5MXaKRNP1jdGRet19TLCKFFJuNwY43ZIjwJTQ", type: "MP4" }
+          { quality: "1080p", size: "2.1GB", url: "https://download.example.com/fantastic-four-1080p.mp4", type: "MP4" }
         ]
       },
       "movie-5": {
         title: "I land Ep2",
         embedCode: '<iframe src="https://streamtape.com/e/pxY2w08gMpFrrzl/" width="800" height="600" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
-        host: "Rocky Kimomo",
+        host: "HG Link",
         downloadLinks: [
           { quality: "720p", size: "164.72 MB", url: "https://2475163186.tapecontent.net/radosgw/pxY2w08gMpFrrzl/lwWPla1jYKTMj8gXJ0nAzRL5b6ovyMCj36C7fj2MrHnVBGKj4RWz-TGtvKBiXBDMS4zlKdUDe-E0JyptmKuSnqU9zUDaNheh-jklOxRw1hovDHEuYljtHIyaKMjAC6OIUJGYWlhGth_bGdsg7_Cs5C41lheAhpurXY47KwEO0DwhH-UOifHRzrd9elkEKUiXXtuC2IZYEvx-3GXmNiB6DQ6BRMprUa4Qso6CWFYqisVnFZuqWGbu0BKp6vkTkExYtbJE4guJXjLevTNivIFG4uMnQweLr0WFgjd4WdeXomFkFVaMKBrv_G3g3-87-UCTc0sZrxS7CzRBD3yq/I.Kill.You.S01E01.%28NKIRI.COM%29.mkv.mp4?dl=1", type: "MP4" }
         ]
       },
-      "movie-6": {
+       "movie-6": {
         title: "I land Ep1",
         embedCode: '<div class="sp-embed-player" data-id="cTQtbinDuXy"><script src="https://go.screenpal.com/player/appearance/cTQtbinDuXy"></script><iframe width="100%" height="100%" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTQtbinDuXy?width=100%&height=100%&ff=1&title=0" allowfullscreen="true"></iframe></div>',
-        host: "Rocky kimomo",
+        host: "Streamtape",
         downloadLinks: [
           { quality: "720p", size: "450MB", url: "https://download.example.com/i-kill-you-ep1-720p.mp4", type: "MP4" }
         ]
@@ -81,35 +85,18 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
       "movie-13": {
         title: "Of kings and prophets Ep1",
         embedCode: '<iframe width="640" height="360" frameborder="0" src="https://mega.nz/embed/5fsXCCrR#bwUs9Jbt5v35KVy6sNG8Sm0rp7rk20blJ4UYsuDa_3g" allowfullscreen ></iframe>',
-        host: "Rocky kimomo",
+        host: "Mega.nz",
         downloadLinks: [
           { quality: "720p", size: "450MB", url: "https://download.example.com/i-kill-you-ep1-720p.mp4", type: "MP4" }
         ]
-      },
-      "movie-14": {
+      },"movie-14": {
         title: "Of kings and prophets Ep2",
-        embedCode: '<iframe width="426" height="240" frameborder="0" src="https://mega.nz/embed/JakTFDbR#K7uvEHH_i5F1dye8tyKaSZkhVMBx-x4H4i9Av5WE_sw" allowfullscreen ></iframe>',         
-        host: "Rocky kimomo",
+        embedCode: '<iframe width="640" height="360" frameborder="0" src="https://mega.nz/embed/JakTFDbR#K7uvEHH_i5F1dye8tyKaSZkhVMBx-x4H4i9Av5WE_sw" allowfullscreen ></iframe>',         
+        host:"Mega.nz",
         downloadLinks: [
           { quality: "720p", size: "450MB", url: "https://download.example.com/i-kill-you-ep1-720p.mp4", type: "MP4" }
         ]
       },
-      "force": {
-        title: "Shadow Force B (2025)",
-        embedCode: '<iframe width="426" height="240" frameborder="0" src="https://mega.nz/embed/D4Q0EZgZ#Jb7ecJ2f_21LL3BlF-Vrm2Ks51ECr_Pr81W18hpw_tY" allowfullscreen ></iframe>',        
-        host: "Rocky kimomo",
-        downloadLinks: [
-          { quality: "720p", size: "450MB", url: "https://mega.nz/file/D4Q0EZgZ#Jb7ecJ2f_21LL3BlF-Vrm2Ks51ECr_Pr81W18hpw_tY", type: "MP4" }
-        ]
-      },
-      "shadow": {
-        title: "Shadow Force A (2025)",
-        embedCode: '<iframe width="426" height="240" frameborder="0" src="https://mega.nz/embed/T05RCQwa#KdQ2EefSUMgt0pIPn-XllHQAzCj5qe2B_oJqtUb2eJc" allowfullscreen ></iframe>',         
-        host: "Gaheza Simba",
-        downloadLinks: [
-          { quality: "720p", size: "1.09GB", url: "https://mega.nz/file/T05RCQwa#KdQ2EefSUMgt0pIPn-XllHQAzCj5qe2B_oJqtUb2eJc", type: "MP4" }
-        ]
-      }
     };
     return videos[id] || { 
       title: "Unknown", 
@@ -130,6 +117,11 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
   // Handle download
   const handleDownload = (url: string, filename: string) => {
     window.open(url, '_blank');
+    // Alternative method for direct download
+    // const link = document.createElement('a');
+    // link.href = url;
+    // link.download = filename;
+    // link.click();
   };
 
   return (

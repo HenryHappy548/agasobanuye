@@ -1,13 +1,11 @@
-import movie1 from "@/assets/Home sweet home.jpeg";
-import movie2 from "@/assets/Home sweet home.jpeg";
+import movie1 from "@/assets/movie-1.jpeg";
+import movie2 from "@/assets/movie-2.jpeg";
 import movie3 from "@/assets/movie-3.jpg";
-import movie4 from "@/assets/hero-featured.jpeg";
+import movie4 from "@/assets/movie-4.jpg";
 import movie5 from "@/assets/iland.jpg";
 import movie6 from "@/assets/iland.jpg";
 import movie13 from "@/assets/Of king.jpg"; 
 import movie14 from "@/assets/Of king.jpg";
-import shadow from "@/assets/Shadow force.jpeg";
-import force from "@/assets/Shadow force.jpeg";
 export interface Movie {
   id: string;
   title: string;
@@ -21,20 +19,20 @@ export interface Movie {
 export const mockMovies: Movie[] = [
   {
     id: "movie-1",
-    title: "Home Sweet Home B",
+    title: "Freakier Friday",
     poster: movie1,
     year: "2025",
-    genre: "Horror Thriller Action",
-    rating: "8.9",
+    genre: "Comedy Fantasy",
+    rating: "6.8",
     category: "movie"
   },
   {
     id: "movie-2", 
-    title: "Home Sweet Home A",
+    title: "Relay",
     poster: movie2,
-    year: "2025",
-    genre: "Horror Thriller Action",
-    rating: "8.9",
+    year: "2024",
+    genre: "paranoia thriller",
+    rating: "7.8",
     category: "movie"
   },
   {
@@ -48,9 +46,9 @@ export const mockMovies: Movie[] = [
   },
   {
     id: "movie-4",
-    title: "Knight and Day",
+    title: "Fantastic Four",
     poster: movie4, 
-    year: "2010",
+    year: "2025",
     genre: "Mystery Thriller",
     rating: "7.9",
     category: "trending"
@@ -95,24 +93,5 @@ export const mockMovies: Movie[] = [
     rating: "9.1",
     category: "tv"
   
-},
-  {
-    id: "force",
-    title: "Shadow Force B ",
-    poster: force, 
-    year: "2025",
-    genre: "Action Thriller",
-    rating: "9.1",
-    category: "treading"
-  
-},
-  {
-    id: "shadow",
-    title: "Shadow Force A ",
-    poster: shadow, 
-    year: "2025",
-    genre: "Action Thriller",
-    rating: "9.1",
-    category: "treading"
-  }
+}
 ];
