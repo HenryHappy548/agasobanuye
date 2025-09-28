@@ -1,5 +1,5 @@
-import movie1 from "@/assets/Home sweet home.jpeg";
-import movie2 from "@/assets/Home sweet home..jpeg";
+import movie1 from "@/assets/movie-1.jpeg";
+import movie2 from "@/assets/movie-2.jpeg";
 import movie3 from "@/assets/movie-3.jpg";
 import movie4 from "@/assets/movie-4.jpg";
 import movie5 from "@/assets/iland.jpg";
@@ -19,20 +19,20 @@ export interface Movie {
 export const mockMovies: Movie[] = [
   {
     id: "movie-1",
-    title: "Home Sweet Home A",
+    title: "Freakier Friday",
     poster: movie1,
     year: "2025",
-    genre: "Horror Thriller Action",
-    rating: "8.9",
+    genre: "Comedy Fantasy",
+    rating: "6.8",
     category: "movie"
   },
   {
     id: "movie-2", 
-    title: "Home Sweet Home B",
+    title: "Relay",
     poster: movie2,
-    year: "2025",
-    genre: "Horror Thriller Action",
-    rating: "8.9",
+    year: "2024",
+    genre: "paranoia thriller",
+    rating: "7.8",
     category: "movie"
   },
   {
