@@ -23,9 +23,9 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
       }[];
     }> = {
       "featured-movie": {
-        title: "Weapons (2025)",
-        embedCode: '<iframe src="https://hglink.to/e/np131q6tst6i" frameborder=0 marginwidth=0 marginheight=0 scrolling=no width=640 height=360 allowfullscreen></iframe>',
-        host: "HG Link",
+        title: "Naked Gun (2025)",
+        embedCode: '<iframe width="1024" height="640" frameborder="0" src="https://mega.nz/embed/nsBzHRIa#4FN0eDHfhSNWQVS79zsPr8szuGaLXT3GrjLcQBdcj2c" allowfullscreen ></iframe>',
+        host: "Gaheza",
         downloadLinks: [
           { quality: "1080p", size: "1.5GB", url: "https://download.example.com/weapons-1080p.mp4", type: "MP4" }
           
