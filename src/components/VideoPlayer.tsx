@@ -96,15 +96,14 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         downloadLinks: [
           { quality: "720p", size: "450MB", url: "https://download.example.com/i-kill-you-ep1-720p.mp4", type: "MP4" }
         ]
-      },"Shadow1": {
+      },"shadow1": {
         title: "Shadow Force B (2025)",
         embedCode: '<iframe width="426" height="240" frameborder="0" src="https://mega.nz/embed/D4Q0EZgZ#Jb7ecJ2f_21LL3BlF-Vrm2Ks51ECr_Pr81W18hpw_tY" allowfullscreen ></iframe>',        
         host:"Rocky kimomo",
         downloadLinks: [
           { quality: "720p", size: "450MB", url: "https://mega.nz/embed/D4Q0EZgZ#Jb7ecJ2f_21LL3BlF-Vrm2Ks51ECr_Pr81W18hpw_tY", type: "MP4" }
         ]
-      },
-      "Shadow": {
+      },"shadow": {
         title: "Shadow Force A (2025)",
         embedCode: '<iframe width="426" height="240" frameborder="0" src="https://mega.nz/embed/T05RCQwa#KdQ2EefSUMgt0pIPn-XllHQAzCj5qe2B_oJqtUb2eJc" allowfullscreen ></iframe>',         
         host:"Gaheza Simba",
