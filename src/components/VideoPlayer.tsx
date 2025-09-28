@@ -67,39 +67,41 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         ]
       },
       "movie-5": {
-        title: "I land Ep2",
-        embedCode: '<iframe src="https://streamtape.com/e/pxY2w08gMpFrrzl/" width="800" height="600" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
-        host: "HG Link",
+        title: "Of king and prophet Ep4",
+        embedCode: '<iframe width="1024" height="640" frameborder="0" src="https://mega.nz/file/JakTFDbR#K7uvEHH_i5F1dye8tyKaSZkhVMBx-x4H4i9Av5WE_sw" allowfullscreen ></iframe>
+',
+        host: "Rocky",
         downloadLinks: [
-          { quality: "720p", size: "164.72 MB", url: "https://2475163186.tapecontent.net/radosgw/pxY2w08gMpFrrzl/lwWPla1jYKTMj8gXJ0nAzRL5b6ovyMCj36C7fj2MrHnVBGKj4RWz-TGtvKBiXBDMS4zlKdUDe-E0JyptmKuSnqU9zUDaNheh-jklOxRw1hovDHEuYljtHIyaKMjAC6OIUJGYWlhGth_bGdsg7_Cs5C41lheAhpurXY47KwEO0DwhH-UOifHRzrd9elkEKUiXXtuC2IZYEvx-3GXmNiB6DQ6BRMprUa4Qso6CWFYqisVnFZuqWGbu0BKp6vkTkExYtbJE4guJXjLevTNivIFG4uMnQweLr0WFgjd4WdeXomFkFVaMKBrv_G3g3-87-UCTc0sZrxS7CzRBD3yq/I.Kill.You.S01E01.%28NKIRI.COM%29.mkv.mp4?dl=1", type: "MP4" }
+          { quality: "720p", size: "164.72 MB", url: "https://mega.nz/file/JakTFDbR#K7uvEHH_i5F1dye8tyKaSZkhVMBx-x4H4i9Av5WE_sw", type: "MP4" }
         ]
       },
        "movie-6": {
-        title: "I land Ep1",
-        embedCode: '<div class="sp-embed-player" data-id="cTQtbinDuXy"><script src="https://go.screenpal.com/player/appearance/cTQtbinDuXy"></script><iframe width="100%" height="100%" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTQtbinDuXy?width=100%&height=100%&ff=1&title=0" allowfullscreen="true"></iframe></div>',
-        host: "Streamtape",
+        title: "Of king and phophet Ep3",
+        embedCode: '<iframe width="1024" height="640" frameborder="0" src="https://mega.nz/embed/JP8WXBSY#kbExvoxlS7h2N3J-mZIZtjkRUpHY2vk6qKfYlfct5Sg" allowfullscreen ></iframe>',
+        host: "Rocky",
+        downloadLinks: [
+          { quality: "720p", size: "450MB", url: "https://mega.nz/embed/JP8WXBSY#kbExvoxlS7h2N3J-mZIZtjkRUpHY2vk6qKfYlfct5Sg", type: "MP4" }
+        ]
+      },
+      "movie-14": {
+        title: "Of kings and prophets Ep2",
+        embedCode: '<iframe width="1024" height="624" frameborder="0" src="https://mega.nz/embed/JakTFDbR#K7uvEHH_i5F1dye8tyKaSZkhVMBx-x4H4i9Av5WE_sw" allowfullscreen ></iframe>',         
+        host:"Mega.nz",
         downloadLinks: [
           { quality: "720p", size: "450MB", url: "https://download.example.com/i-kill-you-ep1-720p.mp4", type: "MP4" }
         ]
       },
       "movie-13": {
         title: "Of kings and prophets Ep1",
-        embedCode: '<iframe width="640" height="360" frameborder="0" src="https://mega.nz/embed/5fsXCCrR#bwUs9Jbt5v35KVy6sNG8Sm0rp7rk20blJ4UYsuDa_3g" allowfullscreen ></iframe>',
+        embedCode: '<iframe width="1024" height="624" frameborder="0" src="https://mega.nz/embed/5fsXCCrR#bwUs9Jbt5v35KVy6sNG8Sm0rp7rk20blJ4UYsuDa_3g" allowfullscreen ></iframe>',
         host: "Mega.nz",
-        downloadLinks: [
-          { quality: "720p", size: "450MB", url: "https://download.example.com/i-kill-you-ep1-720p.mp4", type: "MP4" }
-        ]
-      },"movie-14": {
-        title: "Of kings and prophets Ep2",
-        embedCode: '<iframe width="640" height="360" frameborder="0" src="https://mega.nz/embed/JakTFDbR#K7uvEHH_i5F1dye8tyKaSZkhVMBx-x4H4i9Av5WE_sw" allowfullscreen ></iframe>',         
-        host:"Mega.nz",
         downloadLinks: [
           { quality: "720p", size: "450MB", url: "https://download.example.com/i-kill-you-ep1-720p.mp4", type: "MP4" }
         ]
       },
        "sweeta": {
         title: "Home sweet Home A",
-        embedCode: '<iframe width="640" height="360" frameborder="0" src="https://mega.nz/embed/7kpSDJDB#a7S8qGFtH23UKcJZTVT7oPYstxox6KQP4c1Ilr06ht8" allowfullscreen ></iframe>',         
+        embedCode: '<iframe width="1024" height="624" frameborder="0" src="https://mega.nz/embed/7kpSDJDB#a7S8qGFtH23UKcJZTVT7oPYstxox6KQP4c1Ilr06ht8" allowfullscreen ></iframe>',         
         host:"Savimbi",
         downloadLinks: [
           { quality: "720p", size: "450MB", url: "https://mega.nz/embed/7kpSDJDB#a7S8qGFtH23UKcJZTVT7oPYstxox6KQP4c1Ilr06ht8", type: "MP4" }
