@@ -68,8 +68,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
       },
       "movie-5": {
         title: "Of king and prophet Ep4",
-        embedCode: '<iframe width="1024" height="640" frameborder="0" src="https://mega.nz/file/JakTFDbR#K7uvEHH_i5F1dye8tyKaSZkhVMBx-x4H4i9Av5WE_sw" allowfullscreen ></iframe>
-',
+        embedCode: '<iframe width="1024" height="640" frameborder="0" src="https://mega.nz/file/JakTFDbR#K7uvEHH_i5F1dye8tyKaSZkhVMBx-x4H4i9Av5WE_sw" allowfullscreen ></iframe>',
         host: "Rocky",
         downloadLinks: [
           { quality: "720p", size: "164.72 MB", url: "https://mega.nz/file/JakTFDbR#K7uvEHH_i5F1dye8tyKaSZkhVMBx-x4H4i9Av5WE_sw", type: "MP4" }
