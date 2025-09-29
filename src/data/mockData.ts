@@ -13,6 +13,7 @@ import mana from "@/assets/A working man.jpeg";
 import men from "@/assets/men.jpeg";
 import mena from "@/assets/men.jpeg";
 import naked from "@/assets/hero-featured.jpeg";
+import osi from "@/assets/Osiris.jpg";
 export interface Movie {
   id: string;
   title: string;
@@ -24,6 +25,15 @@ export interface Movie {
 }
 
 export const mockMovies: Movie[] = [
+  {
+    id: "osi",
+    title: "Osiris (2025)",
+    poster: osi,
+    year: "2025",
+    genre: "Action Mystery",
+    rating: "Sikovo",
+    category: "trending"
+  }, 
 
    {
     id: "men",
