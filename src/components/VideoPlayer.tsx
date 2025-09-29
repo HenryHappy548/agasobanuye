@@ -30,6 +30,26 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
           { quality: "1080p", size: "1.5GB", url: "https://download.example.com/weapons-1080p.mp4", type: "MP4" }
           
         ]
+        },
+      "man": {
+        title: "A working man A(2025)",
+        embedCode: '<iframe width="1024" height="640" frameborder="0" src="https://mega.nz/embed/C4B0wCrB#jar_rBf8_BNXRUsFEKDJ1vgt-PK62_MDDDK5zze9SAg" allowfullscreen ></iframe>',
+        host: "Gaheza",
+        downloadLinks: [
+          { quality: "1080p", size: "1.2GB", url: "https://download.example.com/freakier-friday-1080p.mp4", type: "MP4" }
+       
+        ]
+      },
+        },
+      "mana": {
+        title: "A working man B (2025)",
+        embedCode: '<iframe width="1024" height="640" frameborder="0" src="https://mega.nz/embed/HsBnBKBK#ukkT0LJ4fGrdghjR9bwRrmRJYTi5cvYiN93wq5bz0fk" allowfullscreen ></iframe>',
+        host: "Gaheza",
+        downloadLinks: [
+          { quality: "1080p", size: "1.2GB", url: "https://download.example.com/freakier-friday-1080p.mp4", type: "MP4" }
+       
+        ]
+      },
       },
       "movie-1": {
         title: "Shadow Force B (2025)",
