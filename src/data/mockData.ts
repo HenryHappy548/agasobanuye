@@ -10,9 +10,9 @@ import movie14 from "@/assets/Of king.jpg";
 import home from "@/assets/Home sweet home.jpeg";
 import man from "@/assets/A working man.jpeg";
 import mana from "@/assets/A working man.jpeg";
-import men from "/@assets/men of honor.jpeg";
-import mena from "/@assets/men of honor.jpeg";
-import naked from "/@assets/hero-featured.jpeg";
+import men from "@/assets/men.jpeg";
+import mena from "@/assets/men.jpeg";
+import naked from "@/assets/hero-featured.jpeg";
 export interface Movie {
   id: string;
   title: string;
