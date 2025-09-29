@@ -33,7 +33,7 @@ export const mockMovies: Movie[] = [
   {
     id: "mana",
     title: "A working man B",
-    poster: movie1,
+    poster: mana,
     year: "2025",
     genre: "Action Family",
     rating: "Rocky kimomo",
@@ -42,10 +42,10 @@ export const mockMovies: Movie[] = [
  
   {
     id: "movie-1",
-    title: "A working man A",
-    poster: mana,
+    title: "Shadow force B",
+    poster: movie1,
     year: "2025",
-    genre: "Action Familyy",
+    genre: "Action Family",
     rating: "Gaheza simba",
     category: "movie"
   },
@@ -54,7 +54,7 @@ export const mockMovies: Movie[] = [
     title: "Shadow force A",
     poster: forcea,
     year: "2025",
-    genre: "Action Familyy",
+    genre: "Action Family",
     rating: "Gaheza simba",
     category: "movie"
   },
