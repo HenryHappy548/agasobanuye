@@ -15,7 +15,7 @@ import mena from "@/assets/men.jpeg";
 import naked from "@/assets/hero-featured.jpeg";
 import osi from "@/assets/Osiris.jpg";
 import foua from "@/assets/fountain.jpeg";
-import fou from "@/assets/fountain.jpeg"
+
 export interface Movie {
   id: string;
   title: string;
@@ -30,7 +30,7 @@ export const mockMovies: Movie[] = [
     {
     id: "fou",
     title: "Fountain of youth B",
-    poster: osi,
+    poster: foua,
     year: "2025",
     genre: "Adventure Action Mystery ",
     rating: "Rocky kimomo",
@@ -39,7 +39,7 @@ export const mockMovies: Movie[] = [
   {
     id: "foua",
     title: "Fountain of youth A",
-    poster: osi,
+    poster: foua,
     year: "2025",
     genre: "Adventure Action Mystery ",
     rating: "Rocky kimomo",
