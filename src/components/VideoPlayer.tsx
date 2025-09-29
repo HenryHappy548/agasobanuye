@@ -32,7 +32,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         ]
         },
       "man": {
-        title: "A working man A(2025)",
+        title: "A working man B (2025)",
         embedCode: '<iframe width="1024" height="640" frameborder="0" src="https://mega.nz/embed/C4B0wCrB#jar_rBf8_BNXRUsFEKDJ1vgt-PK62_MDDDK5zze9SAg" allowfullscreen ></iframe>',
         host: "Gaheza",
         downloadLinks: [
@@ -40,9 +40,9 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
        
         ]
       },
-        },
+        
       "mana": {
-        title: "A working man B (2025)",
+        title: "A working man A (2025)",
         embedCode: '<iframe width="1024" height="640" frameborder="0" src="https://mega.nz/embed/HsBnBKBK#ukkT0LJ4fGrdghjR9bwRrmRJYTi5cvYiN93wq5bz0fk" allowfullscreen ></iframe>',
         host: "Gaheza",
         downloadLinks: [
@@ -50,7 +50,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
        
         ]
       },
-      },
+     
       "movie-1": {
         title: "Shadow Force B (2025)",
         embedCode: '<iframe width="1024" height="640" frameborder="0" src="https://mega.nz/embed/D4Q0EZgZ#Jb7ecJ2f_21LL3BlF-Vrm2Ks51ECr_Pr81W18hpw_tY" allowfullscreen ></iframe>',
