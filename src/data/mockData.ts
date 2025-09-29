@@ -12,6 +12,7 @@ import man from "@/assets/A working man.jpeg";
 import mana from "@/assets/A working man.jpeg";
 import men from "/@assets/men of honor.jpeg";
 import mena from "/@assets/men of honor.jpeg";
+import naked from "/@assets/hero-featured.jpeg"
 export interface Movie {
   id: string;
   title: string;
@@ -23,6 +24,16 @@ export interface Movie {
 }
 
 export const mockMovies: Movie[] = [
+  {
+    id: "naked",
+    title: "Naked Gun (2025)",
+    poster: naked,
+    year: "2025",
+    genre: "Action Family",
+    rating: "Rocky Kimomo",
+    category: "trending"
+  }, 
+  
    {
     id: "men",
     title: "Men of honor B",
