@@ -10,6 +10,8 @@ import movie14 from "@/assets/Of king.jpg";
 import home from "@/assets/Home sweet home.jpeg";
 import man from "@/assets/A working man.jpeg";
 import mana from "@/assets/A working man.jpeg";
+import men from "/@assets/men of honor.jpeg";
+import mena from "/@assets/men of honor.jpeg";
 export interface Movie {
   id: string;
   title: string;
@@ -21,6 +23,24 @@ export interface Movie {
 }
 
 export const mockMovies: Movie[] = [
+   {
+    id: "men",
+    title: "Men of honor B",
+    poster: men,
+    year: "2000",
+    genre: "Action Documentation",
+    rating: "Rocky Kimomo",
+    category: "movie"
+  }, 
+   {
+    id: "mena",
+    title: "Men of honor A",
+    poster: mena,
+    year: "2000",
+    genre: "Action Documentation",
+    rating: "Rocky Kimomo",
+    category: "movie"
+  }, 
    {
     id: "man",
     title: "A working man B",
