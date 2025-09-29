@@ -24,7 +24,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
     }> = {
       "featured-movie": {
         title: "Naked Gun (2025)",
-        embedCode: '<iframe class="rumble" width="640" height="360" src="https://rumble.com/embed/v6xfzim/?pub=4nb56a" frameborder="0" allowfullscreen></iframe>',
+        embedCode: '<iframe src="https://streamtape.com/e/Ba7L4dpbgQHVmv/" width="800" height="600" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
         host: "Gaheza",
         downloadLinks: [
           { quality: "1080p", size: "1.5GB", url: "https://download.example.com/weapons-1080p.mp4", type: "MP4" }
