@@ -30,11 +30,29 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
           { quality: "1080p", size: "1.5GB", url: "https://download.example.com/weapons-1080p.mp4", type: "MP4" }
           
         ]
+        },
+      "fou": {
+        title: "Fountain of youth B",
+        embedCode: '<iframe src="https://streamtape.com/e/mYkXGrGrYJHbLRw/" width="800" height="600" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
+        host: "Rocky kimomo",
+        downloadLinks: [
+          { quality: "1080p", size: "1.2GB", url: "https://download.example.com/freakier-friday-1080p.mp4", type: "MP4" }
+       
+        ]
+        },
+      "foua": {
+        title: "Fountain of youth A",
+        embedCode: '<iframe src="https://streamtape.com/e/xeeoAxOV9lTQ2e/" width="800" height="600" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
+        host: "Rocky kimomo",
+        downloadLinks: [
+          { quality: "1080p", size: "1.2GB", url: "https://download.example.com/freakier-friday-1080p.mp4", type: "MP4" }
+       
+        ]
          },
       "osi": {
         title: "Osiris (2025)",
         embedCode: '<iframe src="https://streamtape.com/e/2LgA0xM3abiZYQR/" width="800" height="600" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
-        host: "Osiris",
+        host: "Sickov",
         downloadLinks: [
           { quality: "1080p", size: "1.2GB", url: "https://download.example.com/freakier-friday-1080p.mp4", type: "MP4" }
        
