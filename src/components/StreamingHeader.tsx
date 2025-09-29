@@ -1,8 +1,10 @@
-import { Search, Menu, X } from "lucide-react";
+import { Search, Menu, X, User, Settings, LogOut, LogIn } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { useAuth } from "@/hooks/useAuth";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import logoRwaflix from "@/assets/logo-rwaflix.png";
 
 interface StreamingHeaderProps {
@@ -13,6 +15,7 @@ interface StreamingHeaderProps {
 const StreamingHeader = ({ onSearch, searchQuery }: StreamingHeaderProps) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const { user, profile, signOut, isAdmin } = useAuth();
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -81,6 +84,49 @@ const StreamingHeader = ({ onSearch, searchQuery }: StreamingHeaderProps) => {
               <Search className="h-5 w-5" />
             </Button>
 
+            {/* Authentication */}
+            <div className="hidden sm:flex items-center space-x-2">
+              {user ? (
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button variant="ghost" size="sm" className="flex items-center space-x-2">
+                      <User className="h-4 w-4" />
+                      <span className="hidden md:inline">{profile?.username}</span>
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end" className="w-48">
+                    <DropdownMenuItem disabled>
+                      <User className="mr-2 h-4 w-4" />
+                      {profile?.username}
+                    </DropdownMenuItem>
+                    <DropdownMenuSeparator />
+                    {isAdmin() && (
+                      <>
+                        <DropdownMenuItem asChild>
+                          <Link to="/admin">
+                            <Settings className="mr-2 h-4 w-4" />
+                            Admin CMS
+                          </Link>
+                        </DropdownMenuItem>
+                        <DropdownMenuSeparator />
+                      </>
+                    )}
+                    <DropdownMenuItem onClick={signOut}>
+                      <LogOut className="mr-2 h-4 w-4" />
+                      Sign Out
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              ) : (
+                <Link to="/auth">
+                  <Button variant="ghost" size="sm">
+                    <LogIn className="mr-2 h-4 w-4" />
+                    Sign In
+                  </Button>
+                </Link>
+              )}
+            </div>
+
             {/* Mobile Menu Button */}
             <Button 
               variant="ghost" 
@@ -132,6 +178,43 @@ const StreamingHeader = ({ onSearch, searchQuery }: StreamingHeaderProps) => {
                   Popular
                 </Button>
               </Link>
+              
+              {/* Mobile Auth */}
+              <div className="sm:hidden pt-2 border-t border-border mt-2">
+                {user ? (
+                  <>
+                    <div className="px-3 py-2 text-sm text-muted-foreground">
+                      {profile?.username}
+                    </div>
+                    {isAdmin() && (
+                      <Link to="/admin" onClick={() => setIsMobileMenuOpen(false)}>
+                        <Button variant="ghost" className="w-full justify-start text-foreground hover:text-primary">
+                          <Settings className="mr-2 h-4 w-4" />
+                          Admin CMS
+                        </Button>
+                      </Link>
+                    )}
+                    <Button 
+                      variant="ghost" 
+                      className="w-full justify-start text-foreground hover:text-primary"
+                      onClick={() => {
+                        signOut();
+                        setIsMobileMenuOpen(false);
+                      }}
+                    >
+                      <LogOut className="mr-2 h-4 w-4" />
+                      Sign Out
+                    </Button>
+                  </>
+                ) : (
+                  <Link to="/auth" onClick={() => setIsMobileMenuOpen(false)}>
+                    <Button variant="ghost" className="w-full justify-start text-foreground hover:text-primary">
+                      <LogIn className="mr-2 h-4 w-4" />
+                      Sign In
+                    </Button>
+                  </Link>
+                )}
+              </div>
             </nav>
           </div>
         )}
