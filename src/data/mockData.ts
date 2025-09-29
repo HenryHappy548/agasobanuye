@@ -8,6 +8,8 @@ import movie6 from "@/assets/Of king.jpg";
 import movie13 from "@/assets/Of king.jpg"; 
 import movie14 from "@/assets/Of king.jpg";
 import home from "@/assets/Home sweet home.jpeg";
+import man from "@/assets/A working man.jpeg";
+import mana from "@/assets/A working man.jpeg";
 export interface Movie {
   id: string;
   title: string;
@@ -19,6 +21,24 @@ export interface Movie {
 }
 
 export const mockMovies: Movie[] = [
+   {
+    id: "man",
+    title: "A working man B",
+    poster: man,
+    year: "2025",
+    genre: "Action Family",
+    rating: "Rocky Kimomo",
+    category: "movie"
+  }, 
+  {
+    id: "mana",
+    title: "A working man B",
+    poster: movie1,
+    year: "2025",
+    genre: "Action Family",
+    rating: "Rocky kimomo",
+    category: "movie"
+  },
  
   {
     id: "movie-1",
@@ -26,7 +46,7 @@ export const mockMovies: Movie[] = [
     poster: movie1,
     year: "2025",
     genre: "Action Familyy",
-    rating: "6.8",
+    rating: "Gaheza simba",
     category: "movie"
   },
     {
@@ -35,7 +55,7 @@ export const mockMovies: Movie[] = [
     poster: forcea,
     year: "2025",
     genre: "Action Familyy",
-    rating: "6.8",
+    rating: "Gaheza simba",
     category: "movie"
   },
   {
@@ -44,7 +64,7 @@ export const mockMovies: Movie[] = [
     poster: movie2,
     year: "2010",
     genre: "paranoia thriller",
-    rating: "7.8",
+    rating: "Gaheza simba",
     category: "movie"
   },
   {
@@ -53,7 +73,7 @@ export const mockMovies: Movie[] = [
     poster: movie3,
     year: "2025",
     genre: "Comedy Action Adventure",
-    rating: "8.2",
+    rating: "Gaheza simba",
     category: "movie"
   },
   {
@@ -62,7 +82,7 @@ export const mockMovies: Movie[] = [
     poster: movie4, 
     year: "2025",
     genre: "Action Thriller",
-    rating: "7.9",
+    rating: "Savimbi",
     category: "trending"
   
   },
@@ -72,7 +92,7 @@ export const mockMovies: Movie[] = [
     poster: movie5, 
     year: "2016",
     genre: "Action Thriller",
-    rating: "8.1",
+    rating: "Rocky kimomo",
     category: "tv"
   
   },
@@ -82,7 +102,7 @@ export const mockMovies: Movie[] = [
     poster: movie5, 
     year: "2016",
     genre: "Action Thriller",
-    rating: "8.1",
+    rating: "Rocky kimomo",
     category: "tv"
   
   },
@@ -93,7 +113,7 @@ export const mockMovies: Movie[] = [
     poster: movie14, 
     year: "2016",
     genre: "Action Thriller",
-    rating: "8.1",
+    rating: "Rocky kimomo",
     category: "tv"
   
 },
@@ -103,7 +123,7 @@ export const mockMovies: Movie[] = [
     poster: movie13, 
     year: "2016",
     genre: "Action Thriller",
-    rating: "8.1",
+    rating: "Rocky kimomo",
     category: "tv"
   
   },
@@ -113,7 +133,7 @@ export const mockMovies: Movie[] = [
     poster: home, 
     year: "2025",
     genre: "Action Thriller",
-    rating: "9.1",
+    rating: "Savimbi",
     category: "trending"
   
 }
