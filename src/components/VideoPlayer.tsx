@@ -31,6 +31,15 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
           
         ]
          },
+      "osi": {
+        title: "Osiris (2025)",
+        embedCode: '<iframe src="https://streamtape.com/e/2LgA0xM3abiZYQR/" width="800" height="600" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
+        host: "Osiris",
+        downloadLinks: [
+          { quality: "1080p", size: "1.2GB", url: "https://download.example.com/freakier-friday-1080p.mp4", type: "MP4" }
+       
+        ]
+         },
       "men": {
         title: "Men of honor B (2000)",
         embedCode: '<iframe width="1024" height="640" frameborder="0" src="https://mega.nz/embed/ka0xHCSR#IOJNsVw8qMz9rdSB0mIiarSfYE95P6u78PPAhA4hAto" allowfullscreen ></iframe>',
