@@ -24,7 +24,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
     }> = {
       "featured-movie": {
         title: "Naked Gun (2025)",
-        embedCode: '<iframe width="1024" height="640" frameborder="0" src="https://mega.nz/embed/nsBzHRIa#4FN0eDHfhSNWQVS79zsPr8szuGaLXT3GrjLcQBdcj2c" allowfullscreen ></iframe>',
+        embedCode: '<iframe class="rumble" width="640" height="360" src="https://rumble.com/embed/v6xfzim/?pub=4nb56a" frameborder="0" allowfullscreen></iframe>',
         host: "Gaheza",
         downloadLinks: [
           { quality: "1080p", size: "1.5GB", url: "https://download.example.com/weapons-1080p.mp4", type: "MP4" }
@@ -48,8 +48,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
           { quality: "1080p", size: "1.2GB", url: "https://download.example.com/freakier-friday-1080p.mp4", type: "MP4" }
        
         ]
-        },
-      "man": {
+        },"man": {
         title: "A working man B (2025)",
         embedCode: '<iframe width="1024" height="640" frameborder="0" src="https://mega.nz/embed/C4B0wCrB#jar_rBf8_BNXRUsFEKDJ1vgt-PK62_MDDDK5zze9SAg" allowfullscreen ></iframe>',
         host: "Gaheza",
