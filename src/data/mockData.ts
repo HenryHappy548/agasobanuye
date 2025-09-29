@@ -32,7 +32,7 @@ export const mockMovies: Movie[] = [
   }, 
   {
     id: "mana",
-    title: "A working man B",
+    title: "A working man A",
     poster: mana,
     year: "2025",
     genre: "Action Family",
