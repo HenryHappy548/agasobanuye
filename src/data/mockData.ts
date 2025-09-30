@@ -18,7 +18,8 @@ import foua from "@/assets/fountain.jpeg";
 import sar from "@/assets/sarza.jpeg";
 import exo from "@/assets/exo.jpeg";
 import sin from "@/assets/sinners.jpeg";
-import dep from "@/assets/deep.jpg"
+import dep from "@/assets/deep.jpg";
+import goh from "@/assets/goh.jpeg";
 
 export interface Movie {
   id: string;
@@ -31,6 +32,15 @@ export interface Movie {
 }
 
 export const mockMovies: Movie[] = [
+    {
+    id: "goh",
+    title: "Ghost Rider",
+    poster: goh,
+    year: "2007",
+    genre: "Action Fantasy",
+    rating: "Sankara",
+    category: "movie"
+  },
   {
     id: "dep",
     title: "Deep water",
