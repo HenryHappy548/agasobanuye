@@ -1,9 +1,12 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
 import StreamingHeader from "@/components/StreamingHeader";
 import HeroSection from "@/components/HeroSection";
 import MovieCard from "@/components/MovieCard";
 import VideoPlayer from "@/components/VideoPlayer";
 import Footer from "@/components/Footer";
+import { Button } from "@/components/ui/button";
 import { mockMovies } from "@/data/mockData";
 
 const Index = () => {
@@ -26,9 +29,9 @@ const Index = () => {
     setSelectedVideoId(null);
   };
 
-  const trendingMovies = mockMovies.filter(movie => movie.category === 'trending');
-  const movies = mockMovies.filter(movie => movie.category === 'movie');
-  const tvShows = mockMovies.filter(movie => movie.category === 'tv');
+  const trendingMovies = mockMovies.filter(movie => movie.category === 'trending').slice(0, 6);
+  const movies = mockMovies.filter(movie => movie.category === 'movie').slice(0, 6);
+  const tvShows = mockMovies.filter(movie => movie.category === 'tv').slice(0, 6);
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -60,9 +63,17 @@ const Index = () => {
         ) : (
           <>
             <section>
-              <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-foreground">
-                Trending Now
-              </h2>
+              <div className="flex items-center justify-between mb-4 sm:mb-6">
+                <h2 className="text-xl sm:text-2xl font-bold text-foreground">
+                  Trending Now
+                </h2>
+                <Link to="/popular">
+                  <Button variant="ghost" className="group">
+                    View More
+                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </Button>
+                </Link>
+              </div>
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 sm:gap-4">
                 {trendingMovies.map((movie) => (
                   <MovieCard
@@ -75,9 +86,17 @@ const Index = () => {
             </section>
 
             <section>
-              <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-foreground">
-                Popular Movies
-              </h2>
+              <div className="flex items-center justify-between mb-4 sm:mb-6">
+                <h2 className="text-xl sm:text-2xl font-bold text-foreground">
+                  Popular Movies
+                </h2>
+                <Link to="/movies">
+                  <Button variant="ghost" className="group">
+                    View More
+                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </Button>
+                </Link>
+              </div>
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 sm:gap-4">
                 {movies.map((movie) => (
                   <MovieCard
@@ -90,9 +109,17 @@ const Index = () => {
             </section>
 
             <section>
-              <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-foreground">
-                TV Shows
-              </h2>
+              <div className="flex items-center justify-between mb-4 sm:mb-6">
+                <h2 className="text-xl sm:text-2xl font-bold text-foreground">
+                  TV Shows
+                </h2>
+                <Link to="/tvshows">
+                  <Button variant="ghost" className="group">
+                    View More
+                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </Button>
+                </Link>
+              </div>
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 sm:gap-4">
                 {tvShows.map((movie) => (
                   <MovieCard
