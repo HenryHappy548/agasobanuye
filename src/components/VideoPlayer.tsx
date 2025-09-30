@@ -31,6 +31,24 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
           
         ]
          },
+      "sin": {
+        title: "Sinners B",
+        embedCode: '<iframe src="https://streamtape.com/e/ApoJ9j7dWecXdXz/" width="800" height="600" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
+        host: "Rocky kimomo",
+        downloadLinks: [
+          { quality: "1080p", size: "1.2GB", url: "https://download.example.com/freakier-friday-1080p.mp4", type: "MP4" }
+       
+        ]
+        },
+      "sina": {
+        title: "Sinners A ",
+        embedCode: '<iframe src="https://streamtape.com/e/pz2PGjzal9tAzq/" width="800" height="600" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
+        host: "Rocky kimomo",
+        downloadLinks: [
+          { quality: "1080p", size: "1.2GB", url: "https://download.example.com/freakier-friday-1080p.mp4", type: "MP4" }
+       
+        ]
+         },
       "exo": {
         title: "The exorcism of God ",
         embedCode: '<iframe src="https://streamtape.com/e/p43Z8lPL2xTrg48/" width="800" height="600" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
@@ -103,7 +121,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         ]
       },"mana": {
         title: "A working man A (2025)",
-        embedCode: '<iframe src="https://streamtape.com/e/VBmDG0aQoVF992/" width="800" height="600" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
+        embedCode: '<iframe src="https://streamtape.com/e/3w9yJZGmmAHdgqv/" width="800" height="600" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
         host: "Gaheza",
         downloadLinks: [
           { quality: "1080p", size: "1.2GB", url: "https://download.example.com/freakier-friday-1080p.mp4", type: "MP4" }
@@ -113,7 +131,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
      
       "movie-1": {
         title: "Shadow Force B (2025)",
-        embedCode: '<iframe width="1024" height="640" frameborder="0" src="https://mega.nz/embed/D4Q0EZgZ#Jb7ecJ2f_21LL3BlF-Vrm2Ks51ECr_Pr81W18hpw_tY" allowfullscreen ></iframe>',
+        embedCode: '<iframe src="https://streamtape.com/e/jgd9o0wAz9hzwL0/" width="800" height="600" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
         host: "Gaheza",
         downloadLinks: [
           { quality: "1080p", size: "1.2GB", url: "https://download.example.com/freakier-friday-1080p.mp4", type: "MP4" }
@@ -122,7 +140,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
       },
       "forcea": {
         title: "Shadow Force A (2025)",
-        embedCode: '<iframe width="1024" height="640" frameborder="0" src="https://mega.nz/embed/T05RCQwa#KdQ2EefSUMgt0pIPn-XllHQAzCj5qe2B_oJqtUb2eJc" allowfullscreen ></iframe>',
+        embedCode: '<iframe src="https://streamtape.com/e/xPMllybbdoTlXP/" width="800" height="600" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
         host: "Gaheza",
         downloadLinks: [
           { quality: "1080p", size: "1.2GB", url: "https://download.example.com/freakier-friday-1080p.mp4", type: "MP4" }
