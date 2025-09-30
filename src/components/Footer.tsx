@@ -1,5 +1,6 @@
 import { Phone, Mail, ExternalLink, Home, Film, Tv, TrendingUp, HelpCircle } from "lucide-react";
 import { Link } from "react-router-dom";
+import CommentSection from "./CommentSection";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -110,6 +111,11 @@ const Footer = () => {
               Enjoy unlimited access to movies and TV shows.
             </p>
           </div>
+        </div>
+
+        {/* Comments Section */}
+        <div className="mt-8 sm:mt-12 pt-8 sm:pt-12 border-t border-border">
+          <CommentSection />
         </div>
 
         {/* Copyright */}
