@@ -16,7 +16,8 @@ import naked from "@/assets/hero-featured.jpeg";
 import osi from "@/assets/Osiris.jpg";
 import foua from "@/assets/fountain.jpeg";
 import sar from "@/assets/sarza.jpeg";
-import exo from "@/assets/exo.jpeg"
+import exo from "@/assets/exo.jpeg";
+import sin from "@/assets/sinners.jpeg";
 
 export interface Movie {
   id: string;
@@ -29,6 +30,24 @@ export interface Movie {
 }
 
 export const mockMovies: Movie[] = [
+    {
+    id: "sin",
+    title: "Sinners B",
+    poster: sin,
+    year: "2025",
+    genre: "Horror Action Mystery ",
+    rating: "Rocky kimomo",
+    category: "trending"
+  }, 
+    {
+    id: "sinb",
+    title: "Sinners A",
+    poster: sin,
+    year: "2025",
+    genre: "Horror Action Mystery ",
+    rating: "Rocky kimomo",
+    category: "trending"
+  }, 
   {
     id: "exo",
     title: "The exorcism of God",
