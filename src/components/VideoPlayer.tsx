@@ -27,7 +27,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         embedCode: '<iframe src="https://streamtape.com/e/Ba7L4dpbgQHVmv/" width="426" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
         host: "Gaheza",
         downloadLinks: [
-          { quality: "1080p", size: "1.5GB", url: "https://860698157.tapecontent.net/radosgw/Ba7L4dpbgQHVmv/jP0FRfW1SLjq99twWjbHWtELClSfINWSOxpjvKmX_lwCpPBRLMVw4PDiDHx6eElOvFQYDpj2AAOK2kDY-c14Cu4rMVO7M2CfC_QrYikHweGSvIvqseSDxIHW3SMLCCmp5B4hkhROehrn-Q1HQGZkIx-8KsChkSC6UBujgQgAvpz5fb07XyZGJr5YfLH2ygDYZ-uWcvbRZfdMMvZx75z7rYFwaC4pwdAhlk6sLSIB-UeRpJrH3EubmZdwT17QIvVYfeC6zcHRO7JZEuMvMGh-k5vmDCoUWZhp5cgf_Zul0B3f4_MYVph880KcpGA/THE+NAKED+GUN+BY+GAHEZA.MP4.mp4?dl=1", type: "MP4" }
+          { quality: "1080p", size: "1.5GB", url: "https://streamtape.com/v/Ba7L4dpbgQHVmv/THE_NAKED_GUN_BY_GAHEZA.MP4.mp4", type: "MP4" }
           
         ]
         },
@@ -36,8 +36,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         embedCode: '<iframe src="https://streamtape.com/e/8vKRRY1dV9ioAwv/" width="426" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
         host: "Sankara",
         downloadLinks: [
-          { quality: "1080p", size: "1.2GB", url: "https://2448360001.tapecontent.net/radosgw/8vKRRY1dV9ioAwv/XaYqMhRrH_a7Ksh-MkHyB0fan40_EcREW7KCTENqtqgwd7BBTUodhEKlX3tn1U-r-ZQ0AfcNwlACoZJ1r_uve9wrMY6Wu-H6aVRTQg1CAZ7VxKwGH-q0aHtDDDJq_FsC9dW93E2tycAIszM61UCUuHCBghazUmR99UxHigEuBorAqnOYdQdh1ryEmdKdK2UoZU3ox4po_3amtAMXeDsB-w3uLChJhXoMGkpfNkErEORZmRHHhwG75uBaibYZm6r0SxXZeGuO8OJ5IhRcWKBIWFwKD8DbDBevP6mriQ/Deep_Water.mp4?dl=1", type: "MP4" }
-       
+          { quality: "1080p", size: "1.2GB", url: "https://streamtape.com/v/8vKRRY1dV9ioAwv/Deep_Water.mp4", type: "MP4" }
         ]
          },
       "sin": {
@@ -45,8 +44,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         embedCode: '<iframe src="https://streamtape.com/e/ApoJ9j7dWecXdXz/" width="426" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
         host: "Rocky kimomo",
         downloadLinks: [
-          { quality: "1080p", size: "1.2GB", url: "https://2565136225.tapecontent.net/radosgw/ApoJ9j7dWecXdXz/JCJsGeig2bdGewyPK4hwLLHn34VcZp8U2b2ldJQhL6q9r4wtDjvGB6nrEH2bjXN4Mi7qvGtCwMNXOqVLbzMuFTAdPflctI879zAAJb8v9xZuBJnKn3nTCWBC-aW6yqn7gnIzAem_N2WQVyOsaMBS4HOd9RAdgozLrAUW22BY2xc2k1Qd8PF9PwcpTrjG1JTdQyA2kL_X0up4tAS0EAGCmab_lYHViZck8zDOu4YvakLtuDbmB-9nGq2bI2kptVJ1yjH8uBxo-klYzSjdklcjtlRZn1bN2tyC7zAj7A/SINNERS+B.mp4?dl=1", type: "MP4" }
-       
+          { quality: "1080p", size: "1.2GB", url: "https://streamtape.com/v/ApoJ9j7dWecXdXz/SINNERS_B.mp4",type: "MP4" }
         ]
         },
       "sina": {
@@ -54,17 +52,16 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         embedCode: '<iframe src="https://streamtape.com/e/pz2PGjzal9tAzq/" width="426" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
         host: "Rocky kimomo",
         downloadLinks: [
-          { quality: "1080p", size: "1.2GB", url: "https://858139431.tapecontent.net/radosgw/pz2PGjzal9tAzq/q-UlIeuXGp6s1BfUiVT4qtQ5x5LxMnLiEa51vu91AF5TCheFgvTqw7CM-J4_ZCghB2LmckecdRoQCrtSAzLzkn0e1EGvRY2pYuh_PNR-TxM2O1MYaYWSKXWQuHojzMfoNlrAjdjWgFuXYoQJGY3C4huUcKruNqmb93JXyqqzkdy1aYWkscFlZyOZ8QXeT1mI4uSf0ecl_plndSg7JUVCSLEbAs9RDdntWXfosEbn9kBDIHwEAz-PUlunB-5H-wtXPrn89_UOzJs22sEPslLmlhJan09bexjl3qiYfw/SINNERS+.mp4?dl=1", type: "MP4" }
+          { quality: "1080p", size: "1.2GB", url: "https://streamtape.com/v/pz2PGjzal9tAzq/SINNERS_.mp4", type: "MP4" }
        
         ]
          },
       "exo": {
         title: "The exorcism of God ",
         embedCode: '<iframe src="https://streamtape.com/e/p43Z8lPL2xTrg48/" width="426" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
-        host: "Rocky kimomo",
+        host: "Sankara",
         downloadLinks: [
-          { quality: "1080p", size: "1.2GB", url: "https://964698247.tapecontent.net/radosgw/p43Z8lPL2xTrg48/rjNUpXoWdo1D4ObMU02zzIx9jy9fn7tcfXiB2SDUBPvgGGv96kLezQS5iryS9UWyYmxtKXjJsL0wQkXHSK1Gbk4gIouaMW9T2T0LoGHQ_Q0Vz_9Fxm-Wjfv-K9zBtxWowfc-v98ngOiuTIycibrVr4RHL8kzOEtY15gttEWTJtjwKnGkr6nKHkQoN6qVzYpk2ABUA82d3SVqCTLsrw85ZYLyoR8fVVxAtAdjUfcB4rEXxwmKc3EvLRqkC1yHg3ZKij4WdNOlhbaXosdHzjmnlaaJOMCAgPPghlwaXzk4sgOIC6jTbwAHcu_JU-w/THE_EXORRCISM_OF_THE_GOD_BY_SANKRA.mp4?dl=1", type: "MP4" }
-       
+          { quality: "1080p", size: "1.2GB", url: "https://streamtape.com/v/p43Z8lPL2xTrg48/THE_EXORRCISM_OF_THE_GOD_BY_SANKRA.mp4", type: "MP4"}
         ]
         },
       "fou": {
@@ -72,8 +69,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         embedCode: '<iframe src="https://streamtape.com/e/mYkXGrGrYJHbLRw/" width="426" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
         host: "Rocky kimomo",
         downloadLinks: [
-          { quality: "1080p", size: "1.2GB", url: "https://908360630.tapecontent.net/radosgw/mYkXGrGrYJHbLRw/XW4jLGeh9DPEwIa4CbxOuBkdC5G37c8U-32kwTQsdhpraxNRA2EgNp3LYJXemTRM_7BnVrQ7hqTEe5y2FMrOdFzJU5-8yhE2THDeqwp2cABH-dn47LmmiQzo5e5guZd9s9TpOSDdhJ1PJtOCWuH3sM64KO26fL95S46BgDOIo4rMrBcXo85T4luf1VchzE3A9R8ndLSM93gfOfNKxwRMSl3DfrziWECoSYIt5XMq2S87or1JIfACrIdMYAYi-HpuAg_IFtuGKXxx15-Q7Qtsu6R3qip9f2ekMNKjuaMxmiSdDlhSOXD4wWAaMrw/FOUNTAIN+OF+YOUTH+B.mp4?dl=1", type: "MP4" }
-       
+          { quality: "1080p", size: "1.2GB", url: "https://streamtape.com/v/mYkXGrGrYJHbLRw/FOUNTAIN_OF_YOUTH_B.mp4", type: "MP4"}
         ]
          },
       "sar": {
@@ -81,7 +77,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         embedCode: '<iframe src="https://streamtape.com/e/9bYWMkpB3Xc1k9/" width="426" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
         host: "Sickov",
         downloadLinks: [
-          { quality: "1080p", size: "1.2GB", url: "https://download.example.com/freakier-friday-1080p.mp4", type: "MP4" }
+          { quality: "1080p", size: "1.2GB", url: "https://streamtape.com/v/9bYWMkpB3Xc1k9/Sarzameen.mp4", type: "MP4" }
        
         ]
         },
@@ -90,7 +86,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         embedCode: '<iframe src="https://streamtape.com/e/xeeoAxOV9lTQ2e/" width="426" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
         host: "Rocky kimomo",
         downloadLinks: [
-          { quality: "1080p", size: "1.2GB", url: "https://908359905.tapecontent.net/radosgw/xeeoAxOV9lTQ2e/_ZhtWtJZhmhPweMUih_RqsYyDnjh_HzSPkxD6snlaH5Z5QqUNKbrCtNH4Yr8ZkqZlPoq3tJ1NgGLnShY-ydPDeLkjuL7Sw1ZfNUkLAd5zcLpVYUhDUF50bokTM30r4HUK_uvdmkijtjR4Z8s29fP12qSl0qCapW2fMCG3kpHfjIIob0MYhf6gNjLQ8ofwdW_Fk-ib-wX-9jDK66A_Z_NFzYDwrrXk1B3S_JJICX_jecLobNlzmydbWaqWIiNgLit1H_cMfKmi0tWiQ-oVUjDuXJhG_0IO00fEr54Mw/FOUNTAIN+OF+YOUTH+.mp4?dl=1", type: "MP4" }
+          { quality: "1080p", size: "1.2GB", url: "https://streamtape.com/v/xeeoAxOV9lTQ2e/FOUNTAIN_OF_YOUTH_.mp4", type: "MP4" }
        
         ]
          },
@@ -99,7 +95,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         embedCode: '<iframe src="https://streamtape.com/e/2LgA0xM3abiZYQR/" width="426" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
         host: "Sickov",
         downloadLinks: [
-          { quality: "1080p", size: "1.2GB", url: "https://861520586.tapecontent.net/radosgw/2LgA0xM3abiZYQR/g1ywUOiA_j8xQos1W7zVcmGoa1K4OQCDGqv4TRaQL0EY-lHLVmGQL0iJ9UHmguL1RWj5TWcVVlTKjRwbNdIreIIF9bUHQRQNlCw9gApERJoNRimGB3AVl0dQ2rxnePJ_YIZDePJlrZwv7oCAH-1AF6nvWVXg_g5kJs9UZA8doBavyJB7PiK1yum79Uu1JZrjCsuJWLInBdAwdNRymVQCsr95j4Xb7uhQGw42eNxI5gbB08Ie1DghSCOgT5HYe03X_yoOyV-P8c_23u3X9iecT8Mpq3UTnHzuIBWubg/OSIRIS.+Sikov.mp4?dl=1", type: "MP4" }
+          { quality: "1080p", size: "1.2GB", url: "https://streamtape.com/v/2LgA0xM3abiZYQR/OSIRIS._Sikov.mp4", type: "MP4" }
        
         ]
          },
@@ -113,9 +109,9 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         ]
          },
       "mena": {
-        title: "Men of honor B (2000)",
+        title: "Men of honor A (2000)",
         embedCode: '<iframe width="426" height="240" frameborder="0" src="https://mega.nz/embed/C4B0wCrB#jar_rBf8_BNXRUsFEKDJ1vgt-PK62_MDDDK5zze9SAg" allowfullscreen ></iframe>',
-        host: "Gaheza",
+        host: "Rocky kimomo",
         downloadLinks: [
           { quality: "1080p", size: "1.2GB", url: "https://download.example.com/freakier-friday-1080p.mp4", type: "MP4" }
        
@@ -125,7 +121,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         embedCode: '<iframe src="https://streamtape.com/e/3w9yJZGmmAHdgqv/" width="426" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
         host: "Gaheza",
         downloadLinks: [
-          { quality: "1080p", size: "1.2GB", url: "https://download.example.com/freakier-friday-1080p.mp4", type: "MP4" }
+          { quality: "1080p", size: "1.2GB", url: "https://streamtape.com/v/3w9yJZGmmAHdgqv/A_WORKING_MAN_B.mp4", type: "MP4" }
        
         ]
       },"mana": {
@@ -133,7 +129,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         embedCode: '<iframe src="https://streamtape.com/e/3w9yJZGmmAHdgqv/" width="426" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
         host: "Gaheza",
         downloadLinks: [
-          { quality: "1080p", size: "1.2GB", url: "https://download.example.com/freakier-friday-1080p.mp4", type: "MP4" }
+          { quality: "1080p", size: "1.2GB", url: "https://streamtape.com/v/VBmDG0aQoVF992/A_WARKING_MAN_A.mp4", type: "MP4" }
        
         ]
       },
@@ -143,7 +139,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         embedCode: '<iframe src="https://streamtape.com/e/jgd9o0wAz9hzwL0/" width="426" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
         host: "Gaheza",
         downloadLinks: [
-          { quality: "1080p", size: "1.2GB", url: "https://download.example.com/freakier-friday-1080p.mp4", type: "MP4" }
+          { quality: "1080p", size: "1.2GB", url: "https://streamtape.com/v/jgd9o0wAz9hzwL0/SHADOW_FORCE_B.mp4", type: "MP4" }
        
         ]
       },
@@ -152,7 +148,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         embedCode: '<iframe src="https://streamtape.com/e/xPMllybbdoTlXP/" width="426" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
         host: "Gaheza",
         downloadLinks: [
-          { quality: "1080p", size: "1.2GB", url: "https://download.example.com/freakier-friday-1080p.mp4", type: "MP4" }
+          { quality: "1080p", size: "1.2GB", url: "https://streamtape.com/v/xPMllybbdoTlXP/SHADOW_FORCE_A.mp4", type: "MP4" }
        
         ]
       },
@@ -162,16 +158,16 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         embedCode: '<iframe width="426" height="240" frameborder="0" src="https://mega.nz/embed/XpoBgIJQ#T7SgXb5MXaKRNP1jdGRet19TLCKFFJuNwY43ZIjwJTQ" allowfullscreen ></iframe>',
         host: "Savimbi",
         downloadLinks: [
-          { quality: "4K", size: "3.2GB", url: "https://download.example.com/relay-4k.mp4", type: "MP4" }
+          { quality: "4K", size: "3.2GB", url: "", type: "MP4" }
          
         ]
       },
       "movie-3": {
         title: "Naked Gun (2025)",
-        embedCode: '<iframe width="426" height="240" frameborder="0" src="https://mega.nz/embed/nsBzHRIa#4FN0eDHfhSNWQVS79zsPr8szuGaLXT3GrjLcQBdcj2c" allowfullscreen ></iframe>',
+        embedCode: '<iframe src="https://streamtape.com/e/Ba7L4dpbgQHVmv/" width="426" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
         host: "Gaheza",
         downloadLinks: [
-          { quality: "1080p", size: "1.6GB", url: "https://download.example.com/naked-gun-1080p.mp4", type: "MP4" }
+          { quality: "1080p", size: "1.6GB", url: "https://streamtape.com/v/Ba7L4dpbgQHVmv/THE_NAKED_GUN_BY_GAHEZA.MP4.mp4", type: "MP4" }
          
         ]
       },
@@ -180,7 +176,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         embedCode: '<iframe src="https://streamtape.com/e/XYDKrBZOJJHDpgJ/" width="426" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
         host: "Savimbi",
         downloadLinks: [
-          { quality: "1080p", size: "2.1GB", url: "https://mega.nz/embed/CgRjkRQB#JsRPi4bihFKOMLaJRuWLDwRncChSnqBFkhigl_GkOfc", type: "MP4" }
+          { quality: "1080p", size: "2.1GB", url: "https://streamtape.com/v/XYDKrBZOJJHDpgJ/HOME_SWEET_HOME_B.mp4", type: "MP4" }
         ]
       },
       "movie-5": {
@@ -220,7 +216,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         embedCode: '<iframe src="https://streamtape.com/e/BzWdVbXQbQiybJ2/" width="426" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',         
         host:"Savimbi",
         downloadLinks: [
-          { quality: "720p", size: "450MB", url: "https://mega.nz/embed/7kpSDJDB#a7S8qGFtH23UKcJZTVT7oPYstxox6KQP4c1Ilr06ht8", type: "MP4" }
+          { quality: "720p", size: "450MB", url: "https://streamtape.com/v/BzWdVbXQbQiybJ2/HOME_SWEET_HOME_A.mp4", type: "MP4" }
         ]
       },
     };
