@@ -30,6 +30,15 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
           { quality: "1080p", size: "1.5GB", url: "https://download.example.com/weapons-1080p.mp4", type: "MP4" }
           
         ]
+         },
+      "exo": {
+        title: "The exorcism of God ",
+        embedCode: '<iframe src="https://streamtape.com/e/p43Z8lPL2xTrg48/" width="800" height="600" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
+        host: "Rocky kimomo",
+        downloadLinks: [
+          { quality: "1080p", size: "1.2GB", url: "https://download.example.com/freakier-friday-1080p.mp4", type: "MP4" }
+       
+        ]
         },
       "fou": {
         title: "Fountain of youth B",
