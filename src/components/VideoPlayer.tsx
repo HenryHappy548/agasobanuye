@@ -39,6 +39,15 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
           { quality: "1080p", size: "1.2GB", url: "https://download.example.com/freakier-friday-1080p.mp4", type: "MP4" }
        
         ]
+         },
+      "sar": {
+        title: "Sarzamen",
+        embedCode: '<iframe src="https://streamtape.com/e/9bYWMkpB3Xc1k9/" width="800" height="600" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
+        host: "Sickov",
+        downloadLinks: [
+          { quality: "1080p", size: "1.2GB", url: "https://download.example.com/freakier-friday-1080p.mp4", type: "MP4" }
+       
+        ]
         },
       "foua": {
         title: "Fountain of youth A",
@@ -77,7 +86,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         ]
         },"man": {
         title: "A working man B (2025)",
-        embedCode: '<iframe width="1024" height="640" frameborder="0" src="https://mega.nz/embed/C4B0wCrB#jar_rBf8_BNXRUsFEKDJ1vgt-PK62_MDDDK5zze9SAg" allowfullscreen ></iframe>',
+        embedCode: '<iframe src="https://streamtape.com/e/3w9yJZGmmAHdgqv/" width="800" height="600" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
         host: "Gaheza",
         downloadLinks: [
           { quality: "1080p", size: "1.2GB", url: "https://download.example.com/freakier-friday-1080p.mp4", type: "MP4" }
@@ -85,7 +94,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         ]
       },"mana": {
         title: "A working man A (2025)",
-        embedCode: '<iframe width="1024" height="640" frameborder="0" src="https://mega.nz/embed/HsBnBKBK#ukkT0LJ4fGrdghjR9bwRrmRJYTi5cvYiN93wq5bz0fk" allowfullscreen ></iframe>',
+        embedCode: '<iframe src="https://streamtape.com/e/VBmDG0aQoVF992/" width="800" height="600" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
         host: "Gaheza",
         downloadLinks: [
           { quality: "1080p", size: "1.2GB", url: "https://download.example.com/freakier-friday-1080p.mp4", type: "MP4" }
@@ -132,7 +141,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
       },
       "movie-4": {
         title: "Home sweet Home B",
-        embedCode: '<iframe width="1024" height="630" frameborder="0" src="https://mega.nz/embed/CgRjkRQB#JsRPi4bihFKOMLaJRuWLDwRncChSnqBFkhigl_GkOfc" allowfullscreen ></iframe>',
+        embedCode: '<iframe src="https://streamtape.com/e/XYDKrBZOJJHDpgJ/" width="800" height="600" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
         host: "Savimbi",
         downloadLinks: [
           { quality: "1080p", size: "2.1GB", url: "https://mega.nz/embed/CgRjkRQB#JsRPi4bihFKOMLaJRuWLDwRncChSnqBFkhigl_GkOfc", type: "MP4" }
@@ -172,7 +181,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
       },
        "sweeta": {
         title: "Home sweet Home A",
-        embedCode: '<iframe width="1024" height="624" frameborder="0" src="https://mega.nz/embed/7kpSDJDB#a7S8qGFtH23UKcJZTVT7oPYstxox6KQP4c1Ilr06ht8" allowfullscreen ></iframe>',         
+        embedCode: '<iframe src="https://streamtape.com/e/BzWdVbXQbQiybJ2/" width="800" height="600" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',         
         host:"Savimbi",
         downloadLinks: [
           { quality: "720p", size: "450MB", url: "https://mega.nz/embed/7kpSDJDB#a7S8qGFtH23UKcJZTVT7oPYstxox6KQP4c1Ilr06ht8", type: "MP4" }
