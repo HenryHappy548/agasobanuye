@@ -243,16 +243,11 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
   // Handle download
   const handleDownload = (url: string, filename: string) => {
     window.open(url, '_blank');
-    // Alternative method for direct download
-    // const link = document.createElement('a');
-    // link.href = url;
-    // link.download = filename;
-    // link.click();
   };
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-[95vw] sm:max-w-4xl lg:max-w-6xl w-full p-0 bg-black border-border max-h-[95vh] overflow-hidden">
+      <DialogContent className="max-w-[95vw] sm:max-w-4xl lg:max-w-5xl w-full p-0 bg-black border-border max-h-[95vh] overflow-hidden">
         <div className="relative">
           <Button
             variant="secondary"
@@ -265,10 +260,10 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
           
           {videoInfo && (
             <>
-              {/* Video Player Area */}
-              <div className="relative bg-black flex items-center justify-center min-h-[10px] sm:min-h-[10px] lg:min-h-[5px]">
+              {/* Video Player Area - Reduced aspect ratio */}
+              <div className="relative bg-black flex items-center justify-center">
                 <div 
-                  className="w-full max-w-full aspect-video"
+                  className="w-full max-w-full aspect-[4/3]"
                   dangerouslySetInnerHTML={{ __html: videoInfo.embedCode }}
                 />
               </div>
