@@ -16,6 +16,7 @@ import naked from "@/assets/hero-featured.jpeg";
 import osi from "@/assets/Osiris.jpg";
 import foua from "@/assets/fountain.jpeg";
 import sar from "@/assets/sarza.jpeg";
+import exo from "@/assets/exo.jpeg"
 
 export interface Movie {
   id: string;
@@ -28,6 +29,15 @@ export interface Movie {
 }
 
 export const mockMovies: Movie[] = [
+  {
+    id: "exo",
+    title: "The exorcism of God",
+    poster: exo,
+    year: "2025",
+    genre: "Horror Mystery ",
+    rating: "Rocky kimomo",
+    category: "trending"
+  }, 
   {
     id: "sar",
     title: "Sarzameen",
