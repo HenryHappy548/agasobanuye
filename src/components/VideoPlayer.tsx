@@ -266,7 +266,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
           {videoInfo && (
             <>
               {/* Video Player Area */}
-              <div className="relative bg-black flex items-center justify-center min-h-[30px] sm:min-h-[180px] lg:min-h-[80px]">
+              <div className="relative bg-black flex items-center justify-center min-h-[10px] sm:min-h-[10px] lg:min-h-[5px]">
                 <div 
                   className="w-full max-w-full aspect-video"
                   dangerouslySetInnerHTML={{ __html: videoInfo.embedCode }}
