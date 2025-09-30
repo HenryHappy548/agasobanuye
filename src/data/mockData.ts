@@ -15,6 +15,7 @@ import mena from "@/assets/men.jpeg";
 import naked from "@/assets/hero-featured.jpeg";
 import osi from "@/assets/Osiris.jpg";
 import foua from "@/assets/fountain.jpeg";
+import sar from "@/assets/sarza.jpeg";
 
 export interface Movie {
   id: string;
@@ -27,6 +28,15 @@ export interface Movie {
 }
 
 export const mockMovies: Movie[] = [
+  {
+    id: "sar",
+    title: "Sarzameen",
+    poster: sar,
+    year: "2025",
+    genre: "Adventure Action",
+    rating: "Sickov",
+    category: "trending"
+  }, 
     {
     id: "fou",
     title: "Fountain of youth B",
