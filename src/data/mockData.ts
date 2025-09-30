@@ -18,6 +18,7 @@ import foua from "@/assets/fountain.jpeg";
 import sar from "@/assets/sarza.jpeg";
 import exo from "@/assets/exo.jpeg";
 import sin from "@/assets/sinners.jpeg";
+import dep from "@/assets/deep.jpg"
 
 export interface Movie {
   id: string;
@@ -30,6 +31,16 @@ export interface Movie {
 }
 
 export const mockMovies: Movie[] = [
+  {
+    id: "dep",
+    title: "Deep water",
+    poster: dep,
+    year: "2025",
+    genre: "Romance Documentation",
+    rating: "Sankara",
+    category: "movie"
+  }, 
+  
     {
     id: "sin",
     title: "Sinners B",
