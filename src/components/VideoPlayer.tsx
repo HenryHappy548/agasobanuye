@@ -31,6 +31,14 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
           
         ]
         },
+      "goh": {
+        title: "Ghost Rider",
+        embedCode: '<iframe src="https://streamtape.com/e/0d1qxpvz3xtb7Pr/" width="800" height="600" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
+        host: "Sankara",
+        downloadLinks: [
+          { quality: "1080p", size: "1.3GB", url: "https://streamtape.com/v/0d1qxpvz3xtb7Pr/Ghost_Rider_Sankara.mp4", type: "MP4" }
+        ]
+        },
       "dep": {
         title: "Deep Water (2025)",
         embedCode: '<iframe src="https://streamtape.com/e/8vKRRY1dV9ioAwv/" width="426" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
@@ -155,10 +163,10 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
      
       "movie-2": {
         title: "Knight and Day (2010)",
-        embedCode: '<iframe width="426" height="240" frameborder="0" src="https://mega.nz/embed/XpoBgIJQ#T7SgXb5MXaKRNP1jdGRet19TLCKFFJuNwY43ZIjwJTQ" allowfullscreen ></iframe>',
+        embedCode: '<iframe src="https://streamtape.com/e/MqRGVMed3dSB4B/" width="800" height="600" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
         host: "Savimbi",
         downloadLinks: [
-          { quality: "4K", size: "3.2GB", url: "", type: "MP4" }
+          { quality: "4K", size: "3.2GB", url: "https://streamtape.com/v/MqRGVMed3dSB4B/Knight_And_Day.mp4", type: "MP4" }
          
         ]
       },
