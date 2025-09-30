@@ -263,13 +263,13 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
               {/* Video Player Area - Reduced aspect ratio */}
               <div className="relative bg-black flex items-center justify-center">
                 <div 
-                  className="w-full max-w-full aspect-[4/3]"
+                  className="w-full max-w-full aspect-[2/3]"
                   dangerouslySetInnerHTML={{ __html: videoInfo.embedCode }}
                 />
               </div>
 
               {/* Video Info and Download Section */}
-              <div className="p-3 sm:p-4 lg:p-6 bg-gray-900 text-white max-h-[40vh] overflow-y-auto">
+              <div className="p-3 sm:p-4 lg:p-6 bg-gray-900 text-white max-h-[5vh] overflow-y-auto">
                 <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-4 gap-3">
                   <div>
                     <h2 className="text-lg sm:text-xl font-bold">{videoInfo.title}</h2>
