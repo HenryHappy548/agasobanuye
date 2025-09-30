@@ -30,6 +30,15 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
           { quality: "1080p", size: "1.5GB", url: "https://download.example.com/weapons-1080p.mp4", type: "MP4" }
           
         ]
+        },
+      "dep": {
+        title: "Deep Water (2025)",
+        embedCode: '<iframe src="https://streamtape.com/e/8vKRRY1dV9ioAwv/" width="800" height="600" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
+        host: "Sankara",
+        downloadLinks: [
+          { quality: "1080p", size: "1.2GB", url: "https://download.example.com/freakier-friday-1080p.mp4", type: "MP4" }
+       
+        ]
          },
       "sin": {
         title: "Sinners B",
