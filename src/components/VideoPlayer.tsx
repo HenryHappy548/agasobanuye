@@ -29,14 +29,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         downloadLinks: [
           { quality: "1080p", size: "1.5GB", url: "https://streamtape.com/v/Ba7L4dpbgQHVmv/THE_NAKED_GUN_BY_GAHEZA.MP4.mp4", type: "MP4" }
           
-        ]   },
-        "bac": {
-        title: "Back on Society",
-        embedCode: '<iframe src="https://streamtape.com/e/7Bp2kAPj4QiAeKX/" width="500" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
-        host: "Junior Giti",
-        downloadLinks: [
-          { quality: "1080p", size: "1.06GB", url: "https://streamtape.com/v/7Bp2kAPj4QiAeKX/BACK_ON_SOCIETY.mp4", type: "MP4" }
-      ]
+        ]   
           },
       
         "dir": {
@@ -144,6 +137,14 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
        
         ]
          },
+        "bac": {
+        title: "Back on Society",
+        embedCode: '<iframe src="https://streamtape.com/e/7Bp2kAPj4QiAeKX/" width="500" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
+        host: "Junior Giti",
+        downloadLinks: [
+          { quality: "1080p", size: "1.06GB", url: "https://streamtape.com/v/7Bp2kAPj4QiAeKX/BACK_ON_SOCIETY.mp4", type: "MP4" }
+      ]
+           },
       "exo": {
         title: "The exorcism of God ",
         embedCode: '<iframe src="https://streamtape.com/e/p43Z8lPL2xTrg48/" width="500" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
