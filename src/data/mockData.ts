@@ -44,6 +44,16 @@ export const mockMovies: Movie[] = [
     rating: "Savimbi",
     category: "trending"
   },
+  
+    {
+    id: "bac",
+    title: "Back on society",
+    poster: bac,
+    year: "2021",
+    genre: "Action Thriller",
+    rating: "Junior Giti",
+    category: "movie"
+  },
      {
     id: "lost8",
     title: "Lost In Love Ep8",
@@ -116,15 +126,6 @@ export const mockMovies: Movie[] = [
     genre: "Romance Drama",
     rating: "Rocky Kimomo",
     category: "tv"
-  },
-    {
-    id: "bac",
-    title: "Back on society",
-    poster: bac,
-    year: "2021",
-    genre: "Action Thriller",
-    rating: "Junior Giti",
-    category: "movie"
   },
   {
     id: "dep",
