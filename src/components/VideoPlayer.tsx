@@ -36,7 +36,9 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         host: "Junior Giti",
         downloadLinks: [
           { quality: "1080p", size: "1.06GB", url: "https://streamtape.com/v/7Bp2kAPj4QiAeKX/BACK_ON_SOCIETY.mp4", type: "MP4" }
-      },
+      ]
+          },
+      
         "dir": {
         title: "Dirty Angel",
         embedCode: '<iframe src="https://streamtape.com/e/093OdWOPP4S6wo/" width="500" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
