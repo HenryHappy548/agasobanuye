@@ -21,6 +21,8 @@ import sin from "@/assets/sinners.jpeg";
 import dep from "@/assets/deep.jpg";
 import goh from "@/assets/goh.jpeg";
 import lost from "@/assets/Lost.avif";
+import dir from "@/assets/dirty.jpeg";
+import bac from "@/assets/bac.jpeg";
 export interface Movie {
   id: string;
   title: string;
@@ -32,6 +34,16 @@ export interface Movie {
 }
 
 export const mockMovies: Movie[] = [
+    
+    {
+    id: "dir",
+    title: "Dirty Angels",
+    poster: dir,
+    year: "2024",
+    genre: "Action Thriller",
+    rating: "Savimbi",
+    category: "trending"
+  },
      {
     id: "lost8",
     title: "Lost In Love Ep8",
@@ -123,7 +135,15 @@ export const mockMovies: Movie[] = [
     rating: "Sankara",
     category: "movie"
   }, 
-  
+  {
+    id: "bac",
+    title: "Back on Society ,
+    poster: bac,
+    year: "2021",
+    genre: "Action Thriller",
+    rating: "Junior Giti",
+    category: "movie"
+  },
     {
     id: "sin",
     title: "Sinners B",
