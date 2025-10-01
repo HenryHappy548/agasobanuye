@@ -47,15 +47,6 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
           { quality: "1080p", size: "538MB", url: "https://streamtape.com/v/9WL1OBMLbMcYLm/Lost_In_Love_Ep7.mp4", type: "MP4" }
         ]
       },
-        "lost6": {
-        title: "Lost in Love Ep6",
-        embedCode: '<iframe src="https://streamtape.com/e/PvO9GrMWWBhg8m/" width="426" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
-        host: "Rocky kimomo",
-        downloadLinks: [
-          { quality: "1080p", size: "538MB", url: "https://streamtape.com/v/PvO9GrMWWBhg8m/Lost_In_Love_Ep6.mp4", type: "MP4" }
-        ]
-        
-      },
         "lost5": {
         title: "Lost in Love Ep5",
         embedCode: '<iframe src="https://streamtape.com/e/o61WQ802WQCjXB/" width="426" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
