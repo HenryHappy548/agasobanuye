@@ -11,12 +11,14 @@ const HeroSection = ({ onPlayVideo }: HeroSectionProps) => {
   const [showInfo, setShowInfo] = useState(false);
   return (
     <section className="relative h-[50vh] sm:h-[60vh] lg:h-[70vh] flex items-center justify-start overflow-hidden">
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${heroImage})` }}
-      >
-        <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/60 to-background/20 sm:from-background/90 sm:via-background/50 sm:to-transparent" />
-      </div>
+      <img
+        src={heroImage}
+        alt="Featured movie"
+        loading="eager"
+        decoding="async"
+        className="absolute inset-0 w-full h-full object-cover"
+      />
+      <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/60 to-background/20 sm:from-background/90 sm:via-background/50 sm:to-transparent" />
       
       <div className="relative z-10 container mx-auto px-4 sm:px-6">
         <div className="max-w-xs sm:max-w-md lg:max-w-lg xl:max-w-xl">

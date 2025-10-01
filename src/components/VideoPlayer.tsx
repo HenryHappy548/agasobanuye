@@ -291,10 +291,16 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
             <>
               {/* Video Player Area - Reduced aspect ratio */}
               <div className="relative bg-black flex items-center justify-center">
-                <div 
-                  className="w-full max-w-full aspect-[16/4]"
-                  dangerouslySetInnerHTML={{ __html: videoInfo.embedCode }}
-                />
+                {videoInfo.embedCode ? (
+                  <div 
+                    className="w-full max-w-full aspect-[16/4]"
+                    dangerouslySetInnerHTML={{ __html: videoInfo.embedCode }}
+                  />
+                ) : (
+                  <div className="w-full aspect-[16/4] flex items-center justify-center text-white">
+                    Loading video player...
+                  </div>
+                )}
               </div>
 
               {/* Video Info and Download Section */}

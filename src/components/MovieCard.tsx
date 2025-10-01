@@ -1,4 +1,5 @@
 import { Play } from "lucide-react";
+import { memo } from "react";
 import { Button } from "@/components/ui/button";
 
 interface Movie {
@@ -15,13 +16,15 @@ interface MovieCardProps {
   onPlay: (movieId: string) => void;
 }
 
-const MovieCard = ({ movie, onPlay }: MovieCardProps) => {
+const MovieCard = memo(({ movie, onPlay }: MovieCardProps) => {
   return (
     <div className="group relative overflow-hidden rounded-lg bg-card border border-border hover:border-primary/50 transition-all duration-300 hover:scale-105 hover:shadow-glow">
       <div className="aspect-[2/3] overflow-hidden">
         <img
           src={movie.poster}
           alt={movie.title}
+          loading="lazy"
+          decoding="async"
           className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -52,6 +55,8 @@ const MovieCard = ({ movie, onPlay }: MovieCardProps) => {
       </div>
     </div>
   );
-};
+});
+
+MovieCard.displayName = "MovieCard";
 
 export default MovieCard;
