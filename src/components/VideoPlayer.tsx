@@ -40,12 +40,12 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
           { quality: "1080p", size: "1.06GB", url: "https://streamtape.com/v/093OdWOPP4S6wo/DIRTY_ANGELS.mp4", type: "MP4" }
         ]
           },
-        "lost6": {
-        title: "Lost in Love Ep6",
+        "lost8": {
+        title: "Lost in Love Ep8",
         embedCode: '<iframe src="https://streamtape.com/e/PvO9GrMWWBhg8m/" width="500" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
         host: "Rocky kimomo",
         downloadLinks: [
-          { quality: "1080p", size: "538MB", url: "https://streamtape.com/v/PvO9GrMWWBhg8m/Lost_In_Love_Ep6.mp4", type: "MP4" }
+          { quality: "1080p", size: "538MB", url: "https://streamtape.com/v/PvO9GrMWWBhg8m/Lost_In_Love_Ep8.mp4", type: "MP4" }
         ]
         },
         "lost6": {
