@@ -34,7 +34,7 @@ export interface Movie {
 }
 
 export const mockMovies: Movie[] = [
-    
+ 
     {
     id: "dir",
     title: "Dirty Angels",
@@ -118,12 +118,12 @@ export const mockMovies: Movie[] = [
     category: "tv"
   },
     {
-    id: "goh",
-    title: "Ghost Rider",
-    poster: goh,
-    year: "2007",
-    genre: "Action Fantasy",
-    rating: "Sankara",
+    id: "bac",
+    title: "Back on society",
+    poster: bac,
+    year: "2021",
+    genre: "Action Thriller",
+    rating: "Junior Giti",
     category: "movie"
   },
   {
