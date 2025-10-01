@@ -20,7 +20,7 @@ import exo from "@/assets/exo.jpeg";
 import sin from "@/assets/sinners.jpeg";
 import dep from "@/assets/deep.jpg";
 import goh from "@/assets/goh.jpeg";
-
+import lost from "@/assets/lost.jpg";
 export interface Movie {
   id: string;
   title: string;
@@ -32,6 +32,79 @@ export interface Movie {
 }
 
 export const mockMovies: Movie[] = [
+     {
+    id: "lost8",
+    title: "Lost In Love Ep8",
+    poster: lost,
+    year: "2023",
+    genre: "Romance Drama",
+    rating: "Rocky Kimomo",
+    category: "tv"
+  },
+  
+        {
+    id: "lost7",
+    title: "Lost In Love Ep7",
+    poster: lost,
+    year: "2023",
+    genre: "Romance Drama",
+    rating: "Rocky Kimomo",
+    category: "tv"
+  },
+        {
+    id: "lost6",
+    title: "Lost In Love Ep6",
+    poster: lost,
+    year: "2023",
+    genre: "Romance Drama",
+    rating: "Rocky Kimomo",
+    category: "tv"
+  },
+        {
+    id: "lost5",
+    title: "Lost In Love Ep5",
+    poster: lost,
+    year: "2023",
+    genre: "Romance Drama",
+    rating: "Rocky Kimomo",
+    category: "tv"
+  },
+        {
+    id: "lost4",
+    title: "Lost In Love Ep4",
+    poster: lost,
+    year: "2023",
+    genre: "Romance Drama",
+    rating: "Rocky Kimomo",
+    category: "tv"
+  },
+      {
+    id: "lost3",
+    title: "Lost In Love Ep3",
+    poster: lost,
+    year: "2023",
+    genre: "Romance Drama",
+    rating: "Rocky Kimomo",
+    category: "tv"
+  },
+      {
+    id: "lost2",
+    title: "Lost In Love Ep2",
+    poster: lost,
+    year: "2023",
+    genre: "Romance Drama",
+    rating: "Rocky Kimomo",
+    category: "tv"
+  },
+      {
+    id: "lost1",
+    title: "Lost In Love Ep1",
+    poster: lost,
+    year: "2023",
+    genre: "Romance Drama",
+    rating: "Rocky Kimomo",
+    category: "tv"
+  },
     {
     id: "goh",
     title: "Ghost Rider",
@@ -198,47 +271,7 @@ export const mockMovies: Movie[] = [
     category: "trending"
   
   },
-    {
-    id: "movie-5",
-    title: "Of king and Prophet Ep4",
-    poster: movie5, 
-    year: "2016",
-    genre: "Action Thriller",
-    rating: "Rocky kimomo",
-    category: "tv"
-  
-  },
-  {
-    id: "movie-6",
-    title: "Of king and prophet Ep3",
-    poster: movie5, 
-    year: "2016",
-    genre: "Action Thriller",
-    rating: "Rocky kimomo",
-    category: "tv"
-  
-  },
-  
-  {
-    id: "movie-14",
-    title: "Of king and prophets Ep2",
-    poster: movie14, 
-    year: "2016",
-    genre: "Action Thriller",
-    rating: "Rocky kimomo",
-    category: "tv"
-  
-},
-  {
-    id: "movie-13",
-    title: "Of king and prophets Ep1",
-    poster: movie13, 
-    year: "2016",
-    genre: "Action Thriller",
-    rating: "Rocky kimomo",
-    category: "tv"
-  
-  },
+   
   {
     id: "sweeta",
     title: "Home sweet Home A",
