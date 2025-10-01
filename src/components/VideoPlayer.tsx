@@ -29,6 +29,71 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         downloadLinks: [
           { quality: "1080p", size: "1.5GB", url: "https://streamtape.com/v/Ba7L4dpbgQHVmv/THE_NAKED_GUN_BY_GAHEZA.MP4.mp4", type: "MP4" }
           
+        ] 
+        },
+        "lost6": {
+        title: "Lost in Love Ep6",
+        embedCode: '<iframe src="https://streamtape.com/e/PvO9GrMWWBhg8m/" width="426" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
+        host: "Rocky kimomo",
+        downloadLinks: [
+          { quality: "1080p", size: "538MB", url: "https://streamtape.com/v/PvO9GrMWWBhg8m/Lost_In_Love_Ep6.mp4", type: "MP4" }
+        ]
+        },
+        "lost7": {
+        title: "Lost in Love Ep7",
+        embedCode: '<iframe src="https://streamtape.com/e/9WL1OBMLbMcYLm/" width="426" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
+        host: "Rocky kimomo",
+        downloadLinks: [
+          { quality: "1080p", size: "538MB", url: "https://streamtape.com/v/9WL1OBMLbMcYLm/Lost_In_Love_Ep7.mp4", type: "MP4" }
+        ]
+      },
+        "lost6": {
+        title: "Lost in Love Ep6",
+        embedCode: '<iframe src="https://streamtape.com/e/PvO9GrMWWBhg8m/" width="426" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
+        host: "Rocky kimomo",
+        downloadLinks: [
+          { quality: "1080p", size: "538MB", url: "https://streamtape.com/v/PvO9GrMWWBhg8m/Lost_In_Love_Ep6.mp4", type: "MP4" }
+        ]
+        
+      },
+        "lost5": {
+        title: "Lost in Love Ep5",
+        embedCode: '<iframe src="https://streamtape.com/e/o61WQ802WQCjXB/" width="426" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
+        host: "Rocky kimomo",
+        downloadLinks: [
+          { quality: "1080p", size: "538MB", url: "https://streamtape.com/v/o61WQ802WQCjXB/Lost_In_Love_Ep5.mp4", type: "MP4" }
+        ]
+      },
+      "lost4": {
+        title: "Lost in Love Ep4",
+        embedCode: '<iframe src="https://streamtape.com/e/dP30X719vaTkwwx/" width="426" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
+        host: "Rocky kimomo",
+        downloadLinks: [
+          { quality: "1080p", size: "523MB", url: "https://streamtape.com/v/dP30X719vaTkwwx/Lost_In_Love_Ep4.mp4", type: "MP4" }
+        ]
+          },
+      "lost3": {
+        title: "Lost in Love Ep3",
+        embedCode: '<iframe src="https://streamtape.com/e/XJ8m9bv1BbhZAa/" width="426" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
+        host: "Rocky kimomo",
+        downloadLinks: [
+          { quality: "1080p", size: "518MB", url: "https://streamtape.com/v/XJ8m9bv1BbhZAa/Lost_In_Love_Ep3.mp4", type: "MP4" }
+        ]
+          },
+      "lost2": {
+        title: "Lost in Love Ep2",
+        embedCode: '<iframe src="https://streamtape.com/e/GQz4jgq7K8CY88/" width="426" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
+        host: "Rocky kimomo",
+        downloadLinks: [
+          { quality: "1080p", size: "534MB", url: "https://streamtape.com/v/GQz4jgq7K8CY88/Lost_In_Love_Ep2.mp4", type: "MP4" }
+        ]
+        },
+      "lost1": {
+        title: "Lost in Love Ep1",
+        embedCode: '<iframe src="https://streamtape.com/e/Dlo1PyjrZ4tkzxp/" width="426" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
+        host: "Sankara",
+        downloadLinks: [
+          { quality: "1080p", size: "538MB", url: "https://streamtape.com/v/Dlo1PyjrZ4tkzxp/Lost_In_Love_Ep1.mp4", type: "MP4" }
         ]
         },
       "goh": {
@@ -186,38 +251,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         downloadLinks: [
           { quality: "1080p", size: "2.1GB", url: "https://streamtape.com/v/XYDKrBZOJJHDpgJ/HOME_SWEET_HOME_B.mp4", type: "MP4" }
         ]
-      },
-      "movie-5": {
-        title: "Of king and prophet Ep4",
-        embedCode: '<iframe width="426" height="240" frameborder="0" src="https://mega.nz/file/JakTFDbR#K7uvEHH_i5F1dye8tyKaSZkhVMBx-x4H4i9Av5WE_sw" allowfullscreen ></iframe>',
-        host: "Rocky",
-        downloadLinks: [
-          { quality: "720p", size: "164.72 MB", url: "https://mega.nz/file/JakTFDbR#K7uvEHH_i5F1dye8tyKaSZkhVMBx-x4H4i9Av5WE_sw", type: "MP4" }
-        ]
-      },
-       "movie-6": {
-        title: "Of king and phophet Ep3",
-        embedCode: '<iframe width="426" height="240" frameborder="0" src="https://mega.nz/embed/JP8WXBSY#kbExvoxlS7h2N3J-mZIZtjkRUpHY2vk6qKfYlfct5Sg" allowfullscreen ></iframe>',
-        host: "Rocky",
-        downloadLinks: [
-          { quality: "720p", size: "450MB", url: "https://mega.nz/embed/JP8WXBSY#kbExvoxlS7h2N3J-mZIZtjkRUpHY2vk6qKfYlfct5Sg", type: "MP4" }
-        ]
-      },
-      "movie-14": {
-        title: "Of kings and prophets Ep2",
-        embedCode: '<iframe width="426" height="240" frameborder="0" src="https://mega.nz/embed/JakTFDbR#K7uvEHH_i5F1dye8tyKaSZkhVMBx-x4H4i9Av5WE_sw" allowfullscreen ></iframe>',         
-        host:"Mega.nz",
-        downloadLinks: [
-          { quality: "720p", size: "450MB", url: "https://download.example.com/i-kill-you-ep1-720p.mp4", type: "MP4" }
-        ]
-      },
-      "movie-13": {
-        title: "Of kings and prophets Ep1",
-        embedCode: '<iframe width="240" height="624" frameborder="0" src="https://mega.nz/embed/5fsXCCrR#bwUs9Jbt5v35KVy6sNG8Sm0rp7rk20blJ4UYsuDa_3g" allowfullscreen ></iframe>',
-        host: "Mega.nz",
-        downloadLinks: [
-          { quality: "720p", size: "450MB", url: "https://download.example.com/i-kill-you-ep1-720p.mp4", type: "MP4" }
-        ]
+      
       },
        "sweeta": {
         title: "Home sweet Home A",
