@@ -44,15 +44,7 @@ export const mockMovies: Movie[] = [
     rating: "Savimbi",
     category: "trending"
   },
-  
-    {
-    id: "bac",
-    title: "Back on society",
-    poster: bac,
-    year: "2021",
-    genre: "Action Thriller",
-    rating: "Junior Giti",
-    category: "movie"
+
   },
      {
     id: "lost8",
@@ -138,7 +130,7 @@ export const mockMovies: Movie[] = [
   }, 
   {
     id: "bac",
-    title: "Back on Society ,
+    title: "Back on Society",
     poster: bac,
     year: "2021",
     genre: "Action Thriller",
