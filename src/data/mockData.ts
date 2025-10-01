@@ -20,7 +20,7 @@ import exo from "@/assets/exo.jpeg";
 import sin from "@/assets/sinners.jpeg";
 import dep from "@/assets/deep.jpg";
 import goh from "@/assets/goh.jpeg";
-import lost from "@/assets/lost.jpg";
+import lost from "@/assets/Lost.avif";
 export interface Movie {
   id: string;
   title: string;
