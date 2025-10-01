@@ -45,7 +45,7 @@ export const mockMovies: Movie[] = [
     category: "trending"
   },
 
-  },
+ 
      {
     id: "lost8",
     title: "Lost In Love Ep8",
