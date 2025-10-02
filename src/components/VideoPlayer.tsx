@@ -33,7 +33,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
       },
         "blo": {
         title: "Blood Brothers B",
-        embedCode: '<iframe src="https://streamtape.com/e/elbA18jKdyTJWl/" width="800" height="600" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
+        embedCode: '<iframe src="https://streamtape.com/e/elbA18jKdyTJWl/" width="500" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
         host: "Gaheza",
         downloadLinks: [
           { quality: "1080p", size: "1.06GB", url: "https://streamtape.com/v/elbA18jKdyTJWl/Blood_Brothers_B.mp4", type: "MP4" }
@@ -43,7 +43,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
 
         "bloa": {
         title: "Blood Brothers A",
-        embedCode: '<iframe src="https://streamtape.com/e/6x9wrjZZ7KuVoK/" width="800" height="600" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
+        embedCode: '<iframe src="https://streamtape.com/e/6x9wrjZZ7KuVoK/" width="500" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
         host: "Gaheza",
         downloadLinks: [
           { quality: "1080p", size: "1.06GB", url: "https://streamtape.com/v/6x9wrjZZ7KuVoK/Blood_Brothers_A.mp4", type: "MP4" }
@@ -261,7 +261,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
      
       "movie-2": {
         title: "Knight and Day (2010)",
-        embedCode: '<iframe src="https://streamtape.com/e/MqRGVMed3dSB4B/" width="800" height="500" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
+        embedCode: '<iframe src="https://streamtape.com/e/MqRGVMed3dSB4B/" width="500" height="500" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
         host: "Savimbi",
         downloadLinks: [
           { quality: "4K", size: "3.2GB", url: "https://streamtape.com/v/MqRGVMed3dSB4B/Knight_And_Day.mp4", type: "MP4" }
