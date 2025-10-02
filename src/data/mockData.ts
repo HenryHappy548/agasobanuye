@@ -23,6 +23,7 @@ import goh from "@/assets/goh.jpeg";
 import lost from "@/assets/Lost.avif";
 import dir from "@/assets/dirty.jpeg";
 import bac from "@/assets/bac.jpeg";
+import blo from "@/assets/blood.jpeg";
 export interface Movie {
   id: string;
   title: string;
@@ -34,6 +35,15 @@ export interface Movie {
 }
 
 export const mockMovies: Movie[] = [
+   {
+    id: "blo",
+    title: "Blood Brother",
+    poster: blo,
+    year: "2025",
+    genre: "Action",
+    rating: "Gaheza",
+    category: "trending"
+  },
  
     {
     id: "dir",
