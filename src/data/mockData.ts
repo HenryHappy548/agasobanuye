@@ -25,6 +25,7 @@ import dir from "@/assets/dirty.jpeg";
 import bac from "@/assets/bac.jpeg";
 import blo from "@/assets/blood.jpeg";
 import ski from "@/assets/skin.jpeg";
+import boy from "@/assets/boy.jpeg";
 export interface Movie {
   id: string;
   title: string;
@@ -36,12 +37,21 @@ export interface Movie {
 }
 
 export const mockMovies: Movie[] = [
+  {
+    id: "boy",
+    title: "Boy kills World",
+    poster: boy,
+    year: "2023",
+    genre: "Action Thriller",
+    rating: "Sankara",
+    category: "trending"
+  },
    {
     id: "ski",
     title: "Skinfold: Death sentence",
     poster: ski,
     year: "2017",
-    genre: "Action",
+    genre: "Horror Thriller",
     rating: "Sankara",
     category: "trending"
   },
