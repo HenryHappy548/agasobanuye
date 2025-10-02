@@ -30,13 +30,21 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
           { quality: "1080p", size: "1.5GB", url: "https://streamtape.com/v/Ba7L4dpbgQHVmv/THE_NAKED_GUN_BY_GAHEZA.MP4.mp4", type: "MP4" }
           
         ]   
+        },  
+      "boy": {
+        title: "Boy Kills World",
+        embedCode: '<iframe src="https://streamtape.com/e/6qVW4oYPWzI9Xko/" width="800" height="600" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
+        host: "Sankara",
+        downloadLinks: [
+          { quality: "1080p", size: "800MB", url: "https://streamtape.com/v/6qVW4oYPWzI9Xko/THE_BOY_KILLS_THE_WORLD.mp4", type: "MP4" }
+        ]
       },  
       "ski": {
         title: "Skinfold: Death sentence",
         embedCode: '<iframe src="https://streamtape.com/e/A2RoJddeyRiBpJ/" width="500" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
         host: "Sankara",
         downloadLinks: [
-          { quality: "1080p", size: "B00MB", url: "https://streamtape.com/v/A2RoJddeyRiBpJ/%21SKINFOLD_DEATH_SENTENCE.mp4", type: "MP4" }
+          { quality: "1080p", size: "800MB", url: "https://streamtape.com/v/A2RoJddeyRiBpJ/%21SKINFOLD_DEATH_SENTENCE.mp4", type: "MP4" }
         ]
       },
         "blo": {
