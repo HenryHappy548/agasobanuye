@@ -35,9 +35,19 @@ export interface Movie {
 }
 
 export const mockMovies: Movie[] = [
-   {
+  {
     id: "blo",
-    title: "Blood Brother",
+    title: "Blood Brother B",
+    poster: blo,
+    year: "2025",
+    genre: "Action",
+    rating: "Gaheza",
+    category: "trending"
+  },
+  
+   {
+    id: "bloa",
+    title: "Blood Brother A",
     poster: blo,
     year: "2025",
     genre: "Action",
