@@ -26,6 +26,7 @@ import bac from "@/assets/bac.jpeg";
 import blo from "@/assets/blood.jpeg";
 import ski from "@/assets/skin.jpeg";
 import boy from "@/assets/boy.jpeg";
+import over from "@/assets/over.jpeg";
 export interface Movie {
   id: string;
   title: string;
@@ -37,6 +38,15 @@ export interface Movie {
 }
 
 export const mockMovies: Movie[] = [
+  {
+    id: "over",
+    title: "Overdrive",
+    poster: over,
+    year: "2017",
+    genre: "Action Thriller",
+    rating: "Gaheza",
+    category: "movie"
+  },
   {
     id: "boy",
     title: "Boy kills World",
