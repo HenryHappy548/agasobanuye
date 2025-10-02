@@ -30,8 +30,18 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
           { quality: "1080p", size: "1.5GB", url: "https://streamtape.com/v/Ba7L4dpbgQHVmv/THE_NAKED_GUN_BY_GAHEZA.MP4.mp4", type: "MP4" }
           
         ]   
+        
           },
+
       
+        "blo": {
+        title: "Blood Brothers A",
+        embedCode: '<iframe src="https://streamtape.com/e/6x9wrjZZ7KuVoK/" width="800" height="600" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
+        host: "Gaheza",
+        downloadLinks: [
+          { quality: "1080p", size: "1.06GB", url: "https://streamtape.com/v/6x9wrjZZ7KuVoK/Blood_Brothers_A.mp4", type: "MP4" }
+        ]
+        },
         "dir": {
         title: "Dirty Angel",
         embedCode: '<iframe src="https://streamtape.com/e/093OdWOPP4S6wo/" width="500" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
