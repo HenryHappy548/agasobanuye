@@ -31,6 +31,14 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
           
         ]   
         },  
+      "over": {
+        title: "Override",
+        embedCode: '<iframe src="https://streamtape.com/e/QAlm693QDAT0m0v/" width="800" height="600" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
+        host: "Sankara",
+        downloadLinks: [
+          { quality: "1080p", size: "800MB", url: "https://streamtape.com/v/QAlm693QDAT0m0v/OVERDRIVE.mp4", type: "MP4" }
+        ]
+        },  
       "boy": {
         title: "Boy Kills World",
         embedCode: '<iframe src="https://streamtape.com/e/6qVW4oYPWzI9Xko/" width="800" height="600" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
