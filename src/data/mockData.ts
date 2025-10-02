@@ -24,6 +24,7 @@ import lost from "@/assets/Lost.avif";
 import dir from "@/assets/dirty.jpeg";
 import bac from "@/assets/bac.jpeg";
 import blo from "@/assets/blood.jpeg";
+import ski from "@/assets/skin.jpeg";
 export interface Movie {
   id: string;
   title: string;
@@ -35,6 +36,16 @@ export interface Movie {
 }
 
 export const mockMovies: Movie[] = [
+   {
+    id: "ski",
+    title: "Skinfold: Death sentence",
+    poster: ski,
+    year: "2017",
+    genre: "Action",
+    rating: "Sankara",
+    category: "trending"
+  },
+  
   {
     id: "blo",
     title: "Blood Brother B",
