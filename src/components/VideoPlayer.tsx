@@ -29,7 +29,15 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         downloadLinks: [
           { quality: "1080p", size: "1.5GB", url: "https://streamtape.com/v/Ba7L4dpbgQHVmv/THE_NAKED_GUN_BY_GAHEZA.MP4.mp4", type: "MP4" }
           
-        ]   
+        ]
+        },  
+      "cov": {
+        title: "Coverant War",
+        embedCode: '<iframe src="https://streamtape.com/e/BqoAQaZOe0UyJJx/" width="800" height="600" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
+        host: "Dylan Kabaka",
+        downloadLinks: [
+          { quality: "1080p", size: "1.1GB", url: "https://streamtape.com/v/BqoAQaZOe0UyJJx/THE_COVENAT_WAR_2023.mp4", type: "MP4" }
+        ]
         },  
       "over": {
         title: "Override",
