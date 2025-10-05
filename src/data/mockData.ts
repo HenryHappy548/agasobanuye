@@ -28,7 +28,7 @@ import ski from "@/assets/skin.jpeg";
 import boy from "@/assets/boy.jpeg";
 import over from "@/assets/over.jpeg";
 import cov from "@/assets/cov.jpeg";
-
+import aar from "@/assets/aar.jpeg";
 export interface Movie {
   id: string;
   title: string;
@@ -40,6 +40,79 @@ export interface Movie {
 }
 
 export const mockMovies: Movie[] = [
+    {
+    id: "aar8",
+    title: "Aar Ya Paar EP8",
+    poster: aar,
+    year: "2022",
+    genre: "Action Thriller",
+    rating: "Sankara",
+    category: "tv"
+  },
+    {
+    id: "aar7",
+    title: "Aar Ya Paar EP7",
+    poster: aar,
+    year: "2022",
+    genre: "Action Thriller",
+    rating: "Sankara",
+    category: "tv"
+  },
+    {
+    id: "aar6",
+    title: "Aar Ya Paar EP6",
+    poster: aar,
+    year: "2022",
+    genre: "Action Thriller",
+    rating: "Sankara",
+    category: "tv"
+  },
+  
+    {
+    id: "aar5",
+    title: "Aar Ya Paar EP5",
+    poster: aar,
+    year: "2022",
+    genre: "Action Thriller",
+    rating: "Sankara",
+    category: "tv"
+  },
+    {
+    id: "aar4",
+    title: "Aar Ya Paar EP4",
+    poster: aar,
+    year: "2022",
+    genre: "Action Thriller",
+    rating: "Sankara",
+    category: "tv"
+  },
+    {
+    id: "aar3",
+    title: "Aar Ya Paar EP3",
+    poster: aar,
+    year: "2022",
+    genre: "Action Thriller",
+    rating: "Sankara",
+    category: "tv"
+  },
+    {
+    id: "aar2",
+    title: "Aar Ya Paar EP2",
+    poster: aar,
+    year: "2022",
+    genre: "Action Thriller",
+    rating: "Sankara",
+    category: "tv"
+  },
+  {
+    id: "aar1",
+    title: "Aar Ya Paar EP1",
+    poster: aar,
+    year: "2022",
+    genre: "Action Thriller",
+    rating: "Sankara",
+    category: "tv"
+  },
   {
     id: "cov",
     title: "Coverant War",
