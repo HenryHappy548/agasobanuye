@@ -28,7 +28,7 @@ import ski from "@/assets/skin.jpeg";
 import boy from "@/assets/boy.jpeg";
 import over from "@/assets/over.jpeg";
 import cov from "@/assets/cov.jpeg";
-import aar from "@/assets/aar.jpeg";
+import aar from "@/assets/aar.jpg";
 export interface Movie {
   id: string;
   title: string;
