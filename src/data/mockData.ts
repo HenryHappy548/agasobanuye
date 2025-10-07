@@ -1,4 +1,4 @@
-import movie1 from "@/assets/force.jpeg";
+uimport movie1 from "@/assets/force.jpeg";
 import forcea from "@/assets/force.jpeg"
 import movie2 from "@/assets/knight.jpeg";
 import movie3 from "@/assets/movie-3.jpg";
@@ -11,6 +11,7 @@ import home from "@/assets/Home sweet home.jpeg";
 import man from "@/assets/A working man.jpeg";
 import mana from "@/assets/A working man.jpeg";
 import men from "@/assets/men.jpeg";
+import ila from "@/assets/iland.jpeg";
 import mena from "@/assets/men.jpeg";
 import naked from "@/assets/hero-featured.jpeg";
 import osi from "@/assets/Osiris.jpg";
@@ -40,6 +41,79 @@ export interface Movie {
 }
 
 export const mockMovies: Movie[] = [
+    {
+    id: "ila8",
+    title: "I land EP8",
+    poster: ila,
+    year: "2019",
+    genre: "Action Thriller",
+    rating: "Rocky kimomo",
+    category: "tv"
+  },
+    {
+    id: "ila7",
+    title: "I land EP7",
+    poster: ila,
+    year: "2019",
+    genre: "Action Thriller",
+    rating: "Rocky kimomo",
+    category: "tv"
+  },
+    {
+    id: "ila6",
+    title: "I land EP6",
+    poster: ila,
+    year: "2019",
+    genre: "Action Thriller",
+    rating: "Rocky kimomo",
+    category: "tv"
+  },
+    {
+    id: "ila5",
+    title: "I land EP5",
+    poster: ila,
+    year: "2019",
+    genre: "Action Thriller",
+    rating: "Rocky kimomo",
+    category: "tv"
+  },
+    {
+    id: "ila4",
+    title: "I land EP4",
+    poster: ila,
+    year: "2019",
+    genre: "Action Thriller",
+    rating: "Rocky kimomo",
+    category: "tv"
+  },
+    {
+    id: "ila3",
+    title: "I land EP3",
+    poster: ila,
+    year: "2019",
+    genre: "Action Thriller",
+    rating: "Rocky kimomo",
+    category: "tv"
+  },
+    {
+    id: "ila2",
+    title: "I land EP2",
+    poster: ila,
+    year: "2019",
+    genre: "Action Thriller",
+    rating: "Rocky kimomo",
+    category: "tv"
+  },
+  {
+    id: "ila1",
+    title: "I land EP1",
+    poster: ila,
+    year: "2019",
+    genre: "Action Thriller",
+    rating: "Rocky kimomo",
+    category: "tv"
+  },
+  
     {
     id: "aar8",
     title: "Aar Ya Paar EP8",
