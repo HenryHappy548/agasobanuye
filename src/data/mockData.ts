@@ -1,5 +1,5 @@
 import movie1 from "@/assets/force.jpeg";
-import forcea from "@/assets/force.jpeg"
+import forcea from "@/assets/force.jpeg";
 import movie2 from "@/assets/knight.jpeg";
 import movie3 from "@/assets/movie-3.jpg";
 import movie4 from "@/assets/Home sweet home.jpeg";
