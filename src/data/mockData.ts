@@ -11,7 +11,7 @@ import home from "@/assets/Home sweet home.jpeg";
 import man from "@/assets/A working man.jpeg";
 import mana from "@/assets/A working man.jpeg";
 import men from "@/assets/men.jpeg";
-import ila from "@/assets/iland.jpeg";
+import ila from "@/assets/iland.jpg";
 import mena from "@/assets/men.jpeg";
 import naked from "@/assets/hero-featured.jpeg";
 import osi from "@/assets/Osiris.jpg";
