@@ -34,7 +34,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         },  
       "ila7": {
         title: "I Land EP7 Final",
-        embedCode: '<iframe src="https://streamtape.com/e/MeaXj9MWb7Hm73z/" width="800" height="600" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
+        embedCode: '<iframe src="https://streamtape.com/e/MeaXj9MWb7Hm73z/" width="420" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
         host: "Rocky kimomo",
         downloadLinks: [
           { quality: "1080p", size: "330MB", url: "https://streamtape.com/v/MeaXj9MWb7Hm73z/S01_-_EP07_-_Final_-_The_I-Land.mp4", type: "MP4" }
@@ -42,7 +42,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         },  
       "ila6": {
         title: "I Land EP6",
-        embedCode: '<iframe src="https://streamtape.com/e/0d4q1xgALgs60v/" width="800" height="600" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
+        embedCode: '<iframe src="https://streamtape.com/e/0d4q1xgALgs60v/" width="420" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
         host: "Rocky kimomo",
         downloadLinks: [
           { quality: "1080p", size: "330MB", url: "https://streamtape.com/v/0d4q1xgALgs60v/S01_-_EP06_-_The_I-Land.mp4", type: "MP4" }
@@ -50,7 +50,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         },  
       "ila5": {
         title: "I Land EP5",
-        embedCode: '<iframe src="https://streamtape.com/e/46Jy0gZ2MGUy8K/" width="800" height="600" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
+        embedCode: '<iframe src="https://streamtape.com/e/46Jy0gZ2MGUy8K/" width="420" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
         host: "Rocky kimomo",
         downloadLinks: [
           { quality: "1080p", size: "330MB", url: "https://streamtape.com/v/46Jy0gZ2MGUy8K/S01_-_EP05_-_The_I-Land.mp4", type: "MP4" }
@@ -58,7 +58,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         },  
       "ila4": {
         title: "I Land EP4",
-        embedCode: '<iframe src="https://streamtape.com/e/9WaX3egBBoiawpk/" width="800" height="600" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
+        embedCode: '<iframe src="https://streamtape.com/e/9WaX3egBBoiawpk/" width="420" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
         host: "Rocky kimomo",
         downloadLinks: [
           { quality: "1080p", size: "330MB", url: "https://streamtape.com/v/9WaX3egBBoiawpk/S01_-_EP04_-_The_I-Land.mp4", type: "MP4" }
@@ -66,7 +66,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         },  
       "ila3": {
         title: "I Land EP3",
-        embedCode: '<iframe src="https://streamtape.com/e/WyD3QPGyvWfbJdv/" width="800" height="600" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
+        embedCode: '<iframe src="https://streamtape.com/e/WyD3QPGyvWfbJdv/" width="420" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
         host: "Rocky kimomo",
         downloadLinks: [
           { quality: "1080p", size: "330MB", url: "https://streamtape.com/v/WyD3QPGyvWfbJdv/S01_-_EP03_-_The_I-Land.mp4", type: "MP4" }
@@ -74,7 +74,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         },  
       "ila2": {
         title: "I Land EP2",
-        embedCode: '<iframe src="https://streamtape.com/e/ePBwrry69wfYW4O/" width="800" height="600" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
+        embedCode: '<iframe src="https://streamtape.com/e/ePBwrry69wfYW4O/" width="420" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
         host: "Rocky kimomo",
         downloadLinks: [
           { quality: "1080p", size: "330MB", url: "https://streamtape.com/v/ePBwrry69wfYW4O/S01_-_EP02_-_The_I-Land.mp4", type: "MP4" }
@@ -82,7 +82,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
          },  
       "ila1": {
         title: "I Land EP1",
-        embedCode: '<iframe src="https://streamtape.com/e/ab4jBZwm9RHxyje/" width="800" height="600" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
+        embedCode: '<iframe src="https://streamtape.com/e/ab4jBZwm9RHxyje/" width="420" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
         host: "Rocky kimomo",
         downloadLinks: [
           { quality: "1080p", size: "330MB", url: "https://streamtape.com/v/ab4jBZwm9RHxyje/S01_-_EP01_-_The_I-Land.mp4", type: "MP4" }
