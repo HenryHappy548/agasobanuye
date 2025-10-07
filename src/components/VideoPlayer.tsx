@@ -1,6 +1,8 @@
 import { X, ExternalLink, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { supabase } from "@/integrations/supabase/client";
+import { useState, useEffect } from "react";
 
 interface VideoPlayerProps {
   isOpen: boolean;
@@ -8,8 +10,64 @@ interface VideoPlayerProps {
   videoId: string | null;
 }
 
+interface DownloadLink {
+  quality: string;
+  size: string | null;
+  url: string;
+  type: string;
+}
+
+interface VideoData {
+  title: string;
+  embedCode: string;
+  host: string;
+  downloadLinks: DownloadLink[];
+}
+
 const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
-  // Video data with full embed codes and download links
+  const [dbVideo, setDbVideo] = useState<VideoData | null>(null);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (videoId && isOpen) {
+      fetchVideoFromDB(videoId);
+    }
+  }, [videoId, isOpen]);
+
+  const fetchVideoFromDB = async (id: string) => {
+    setLoading(true);
+    
+    const { data: video } = await supabase
+      .from("videos")
+      .select("*")
+      .eq("video_key", id)
+      .maybeSingle();
+
+    if (video) {
+      const { data: links } = await supabase
+        .from("download_links")
+        .select("*")
+        .eq("video_id", video.id);
+
+      setDbVideo({
+        title: video.title,
+        embedCode: video.embed_code,
+        host: video.host || "",
+        downloadLinks: (links || []).map(link => ({
+          quality: link.quality,
+          size: link.size || "",
+          url: link.url,
+          type: link.type,
+        })),
+      });
+    } else {
+      setDbVideo(null);
+    }
+    
+    setLoading(false);
+  };
+
+  // Video data with full embed codes and download links (FALLBACK)
   const getVideoInfo = (id: string) => {
     const videos: Record<string, { 
       title: string; 
@@ -475,7 +533,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
     };
   };
 
-  const videoInfo = videoId ? getVideoInfo(videoId) : null;
+  const videoInfo = videoId ? (dbVideo || getVideoInfo(videoId)) : null;
 
   // Extract just the src URL from the embed code
   const getSrcFromEmbedCode = (embedCode: string) => {
