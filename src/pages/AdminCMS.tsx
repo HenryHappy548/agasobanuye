@@ -4,9 +4,11 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { toast } from "@/hooks/use-toast";
-import { Plus, Trash2, Edit } from "lucide-react";
+import { Plus, Trash2, Edit, Lock } from "lucide-react";
+
+const ADMIN_PASSWORD = "killo0";
 
 interface Video {
   id: string;
@@ -30,6 +32,8 @@ interface DownloadLink {
 
 const AdminCMS = () => {
   const navigate = useNavigate();
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [password, setPassword] = useState("");
   const [isAdmin, setIsAdmin] = useState(false);
   const [loading, setLoading] = useState(true);
   const [videos, setVideos] = useState<Video[]>([]);
@@ -55,8 +59,26 @@ const AdminCMS = () => {
   });
 
   useEffect(() => {
-    checkAdmin();
+    const savedAuth = sessionStorage.getItem("admin_auth");
+    if (savedAuth === "true") {
+      setIsAuthenticated(true);
+      checkAdmin();
+    } else {
+      setLoading(false);
+    }
   }, []);
+
+  const handlePasswordSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (password === ADMIN_PASSWORD) {
+      setIsAuthenticated(true);
+      sessionStorage.setItem("admin_auth", "true");
+      checkAdmin();
+      toast({ title: "Access granted" });
+    } else {
+      toast({ title: "Incorrect password", variant: "destructive" });
+    }
+  };
 
   const checkAdmin = async () => {
     try {
@@ -215,6 +237,40 @@ const AdminCMS = () => {
     });
     setShowForm(true);
   };
+
+  if (!isAuthenticated) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center p-4">
+        <Card className="w-full max-w-md">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Lock className="h-5 w-5" />
+              Admin Access
+            </CardTitle>
+            <CardDescription>Enter password to continue</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <form onSubmit={handlePasswordSubmit} className="space-y-4">
+              <div className="space-y-2">
+                <label htmlFor="password" className="text-sm font-medium">Password</label>
+                <Input
+                  id="password"
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="Enter admin password"
+                  autoFocus
+                />
+              </div>
+              <Button type="submit" className="w-full">
+                Access Admin Panel
+              </Button>
+            </form>
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
 
   if (loading) {
     return <div className="min-h-screen flex items-center justify-center">Loading...</div>;

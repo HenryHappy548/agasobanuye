@@ -124,7 +124,7 @@ const Footer = () => {
             <p className="text-sm text-muted-foreground text-center sm:text-left">
               © {currentYear} Rwaflix. All rights reserved.
             </p>
-            <div className="flex items-center justify-center sm:justify-end">
+            <div className="flex items-center justify-center sm:justify-end gap-4">
               <a 
                 href="https://wa.me/250791114163" 
                 target="_blank" 
@@ -133,6 +133,13 @@ const Footer = () => {
               >
                 WhatsApp Support
               </a>
+              <span className="text-muted-foreground">•</span>
+              <Link 
+                to="/secret-admin-panel"
+                className="text-sm text-muted-foreground hover:text-primary transition-colors"
+              >
+                Admin
+              </Link>
             </div>
           </div>
         </div>
