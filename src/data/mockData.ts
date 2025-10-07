@@ -41,18 +41,10 @@ export interface Movie {
 }
 
 export const mockMovies: Movie[] = [
-    {
-    id: "ila8",
-    title: "I land EP8",
-    poster: ila,
-    year: "2019",
-    genre: "Action Thriller",
-    rating: "Rocky kimomo",
-    category: "tv"
-  },
+ 
     {
     id: "ila7",
-    title: "I land EP7",
+    title: "I land EP7 Final",
     poster: ila,
     year: "2019",
     genre: "Action Thriller",
