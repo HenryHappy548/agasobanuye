@@ -44,7 +44,7 @@ export interface Movie {
 export const mockMovies: Movie[] = [
   {
     id: "ele8",
-    title: "I land EP 8 Final",
+    title: "Twelve EP 8 Final",
     poster: ele,
     year: "2021",
     genre: "Action Thriller",
@@ -53,7 +53,7 @@ export const mockMovies: Movie[] = [
   },
   {
     id: "ele7",
-    title: "I land EP7",
+    title: "Twelve EP 7",
     poster: ele,
     year: "2021",
     genre: "Action Thriller",
@@ -62,7 +62,7 @@ export const mockMovies: Movie[] = [
   },
   {
     id: "ele6",
-    title: "I land EP6",
+    title: "Twelve EP 6",
     poster: ele,
     year: "2021",
     genre: "Action Thriller",
@@ -71,7 +71,7 @@ export const mockMovies: Movie[] = [
   },
   {
     id: "ele5",
-    title: "I land EP 5",
+    title: "Twelve EP 5",
     poster: ele,
     year: "2021",
     genre: "Action Thriller",
@@ -80,7 +80,7 @@ export const mockMovies: Movie[] = [
   },
   {
     id: "ele4",
-    title: "I land EP4",
+    title: "Twelve EP 4",
     poster: ele,
     year: "2021",
     genre: "Action Thriller",
@@ -89,7 +89,7 @@ export const mockMovies: Movie[] = [
   },
   {
     id: "ele3",
-    title: "I land EP3",
+    title: "Twelve EP 3",
     poster: ele,
     year: "2021",
     genre: "Action Thriller",
@@ -98,7 +98,7 @@ export const mockMovies: Movie[] = [
   },
   {
     id: "ele2",
-    title: "I land EP2",
+    title: "Twelve EP 2",
     poster: ele,
     year: "2021",
     genre: "Action Thriller",
@@ -107,7 +107,7 @@ export const mockMovies: Movie[] = [
   },
    {
     id: "ele1",
-    title: "I land EP1",
+    title: "Twelve EP 1",
     poster: ele,
     year: "2021",
     genre: "Action Thriller",
