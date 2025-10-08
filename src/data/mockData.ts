@@ -30,6 +30,7 @@ import boy from "@/assets/boy.jpeg";
 import over from "@/assets/over.jpeg";
 import cov from "@/assets/cov.jpeg";
 import aar from "@/assets/aar.jpg";
+import ele from "@/assets/ele.jpeg";
 export interface Movie {
   id: string;
   title: string;
@@ -41,6 +42,78 @@ export interface Movie {
 }
 
 export const mockMovies: Movie[] = [
+  {
+    id: "ele8",
+    title: "I land EP 8 Final",
+    poster: ele,
+    year: "2021",
+    genre: "Action Thriller",
+    rating: "Mungeli",
+    category: "tv"
+  },
+  {
+    id: "ele7",
+    title: "I land EP7",
+    poster: ele,
+    year: "2021",
+    genre: "Action Thriller",
+    rating: "Mungeli",
+    category: "tv"
+  },
+  {
+    id: "ele6",
+    title: "I land EP6",
+    poster: ele,
+    year: "2021",
+    genre: "Action Thriller",
+    rating: "Mungeli",
+    category: "tv"
+  },
+  {
+    id: "ele5",
+    title: "I land EP 5",
+    poster: ele,
+    year: "2021",
+    genre: "Action Thriller",
+    rating: "Mungeli",
+    category: "tv"
+  },
+  {
+    id: "ele4",
+    title: "I land EP4",
+    poster: ele,
+    year: "2021",
+    genre: "Action Thriller",
+    rating: "Mungeli",
+    category: "tv"
+  },
+  {
+    id: "ele3",
+    title: "I land EP3",
+    poster: ele,
+    year: "2021",
+    genre: "Action Thriller",
+    rating: "Mungeli",
+    category: "tv"
+  },
+  {
+    id: "ele2",
+    title: "I land EP2",
+    poster: ele,
+    year: "2021",
+    genre: "Action Thriller",
+    rating: "Mungeli",
+    category: "tv"
+  },
+   {
+    id: "ele1",
+    title: "I land EP1",
+    poster: ele,
+    year: "2021",
+    genre: "Action Thriller",
+    rating: "Mungeli",
+    category: "tv"
+  },
  
     {
     id: "ila7",
