@@ -90,64 +90,64 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         ]
         },  
       "ele8": {
-        title: "Eleven  S01 EP8",
-        embedCode: '<iframe src="https://streamtape.com/e/W3xxRp71aQhb3Z4/" width="800" height="600" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
+        title: "Twelve  S01 EP8",
+        embedCode: '<iframe src="https://streamtape.com/e/W3xxRp71aQhb3Z4/" width="420" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
         host: "Mungeli",
         downloadLinks: [
           { quality: "1080p", size: "680MB", url: "https://streamtape.com/v/W3xxRp71aQhb3Z4/S01_-_EP08_-_Final_-_Twelve.mp4", type: "MP4" }
         ]
         },  
       "ele7": {
-        title: "Eleven  S01 EP7",
-        embedCode: '<iframe src="https://streamtape.com/e/XYd6XVMO41uDVl2/" width="800" height="600" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
+        title: "Twelve  S01 EP7",
+        embedCode: '<iframe src="https://streamtape.com/e/XYd6XVMO41uDVl2/" width="420" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
         host: "Mungeli",
         downloadLinks: [
           { quality: "1080p", size: "680MB", url: "https://streamtape.com/v/XYd6XVMO41uDVl2/S01_-_EP07_-_Twelve.mp4", type: "MP4" }
         ]
         },  
       "ele6": {
-        title: "Eleven  S01 EP6",
-        embedCode: '<iframe src="https://streamtape.com/e/7zXMDa8R4piVwK/" width="800" height="600" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
+        title: "Twelve  S01 EP6",
+        embedCode: '<iframe src="https://streamtape.com/e/7zXMDa8R4piVwK/" width="420" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
         host: "Mungeli",
         downloadLinks: [
           { quality: "1080p", size: "680MB", url: "https://streamtape.com/v/7zXMDa8R4piVwK/S01_-_EP06_-_Twelve.mp4", type: "MP4" }
         ]
         },  
       "ele5": {
-        title: "Eleven  S01 EP5",
-        embedCode: '<iframe src="https://streamtape.com/e/qyWwjbqzpwCzG9g/" width="800" height="600" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
+        title: "Twelve  S01 EP5",
+        embedCode: '<iframe src="https://streamtape.com/e/qyWwjbqzpwCzG9g/" width="420" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
         host: "Mungeli",
         downloadLinks: [
           { quality: "1080p", size: "680MB", url: "https://streamtape.com/v/qyWwjbqzpwCzG9g/S01_-_EP05_-_Twelve.mp4", type: "MP4" }
         ]
         },  
       "ele4": {
-        title: "Eleven  S01 EP4",
-        embedCode: '<iframe src="https://streamtape.com/e/2BrXX6ZPeXTZ9gJ/" width="800" height="600" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
+        title: "Twelve  S01 EP4",
+        embedCode: '<iframe src="https://streamtape.com/e/2BrXX6ZPeXTZ9gJ/" width="420" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
         host: "Mungeli",
         downloadLinks: [
           { quality: "1080p", size: "680MB", url: "https://streamtape.com/v/2BrXX6ZPeXTZ9gJ/S01_-_EP04_-_Twelve.mp4", type: "MP4" }
         ]
         },  
       "ele3": {
-        title: "Eleven  S01 EP3",
-        embedCode: '<iframe src="https://streamtape.com/e/BO8AOlYzOdHyL07/" width="800" height="600" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
+        title: "Twelve  S01 EP3",
+        embedCode: '<iframe src="https://streamtape.com/e/BO8AOlYzOdHyL07/" width="420" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
         host: "Mungeli",
         downloadLinks: [
           { quality: "1080p", size: "680MB", url: "https://streamtape.com/v/BO8AOlYzOdHyL07/S01_-_EP03_-_Twelve.mp4", type: "MP4" }
         ]
         },  
       "ele2": {
-        title: "Eleven  S01 EP2",
-        embedCode: '<iframe src="https://streamtape.com/e/yl80Qvrvzyu3Jj/" width="800" height="600" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
+        title: "Twelve  S01 EP2",
+        embedCode: '<iframe src="https://streamtape.com/e/yl80Qvrvzyu3Jj/" width="420" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
         host: "Mungeli",
         downloadLinks: [
           { quality: "1080p", size: "680MB", url: "https://streamtape.com/v/yl80Qvrvzyu3Jj/S01_-_EP02_-_Twelve.mp4", type: "MP4" }
         ]
         },  
       "ele1": {
-        title: "Eleven  S01 EP1",
-        embedCode: '<iframe src="https://streamtape.com/e/RmW2mxxXPgSdM73/" width="800" height="600" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
+        title: "Twelve  S01 EP1",
+        embedCode: '<iframe src="https://streamtape.com/e/RmW2mxxXPgSdM73/" width="420" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
         host: "Mungeli",
         downloadLinks: [
           { quality: "1080p", size: "680MB", url: "https://streamtape.com/v/RmW2mxxXPgSdM73/S01_-_EP01_-_Twelve.mp4", type: "MP4" }
