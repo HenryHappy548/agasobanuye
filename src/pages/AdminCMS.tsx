@@ -8,8 +8,6 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { toast } from "@/hooks/use-toast";
 import { Plus, Trash2, Edit, Lock } from "lucide-react";
 
-const ADMIN_PASSWORD = "killo0";
-
 interface Video {
   id: string;
   video_key: string;
@@ -33,6 +31,7 @@ interface DownloadLink {
 const AdminCMS = () => {
   const navigate = useNavigate();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isAdmin, setIsAdmin] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -59,28 +58,75 @@ const AdminCMS = () => {
   });
 
   useEffect(() => {
-    const savedAuth = sessionStorage.getItem("admin_auth");
-    if (savedAuth === "true") {
-      setIsAuthenticated(true);
-      setIsAdmin(true);
-      setLoading(false);
-      fetchVideos();
-    } else {
-      setLoading(false);
-    }
+    checkAuth();
   }, []);
 
-  const handlePasswordSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (password === ADMIN_PASSWORD) {
+  const checkAuth = async () => {
+    try {
+      const { data: { user } } = await supabase.auth.getUser();
+      
+      if (!user) {
+        setLoading(false);
+        return;
+      }
+
+      const { data, error } = await supabase.rpc("has_role", {
+        _user_id: user.id,
+        _role: "admin",
+      });
+
+      if (error || !data) {
+        setLoading(false);
+        toast({ 
+          title: "Access Denied", 
+          description: "You don't have admin privileges",
+          variant: "destructive" 
+        });
+        return;
+      }
+
       setIsAuthenticated(true);
       setIsAdmin(true);
-      sessionStorage.setItem("admin_auth", "true");
       fetchVideos();
-      toast({ title: "Access granted" });
-    } else {
-      toast({ title: "Incorrect password", variant: "destructive" });
+    } catch (error) {
+      console.error("Auth check failed:", error);
+    } finally {
+      setLoading(false);
     }
+  };
+
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
+
+    if (error) {
+      // If login fails, try to sign up
+      const { error: signUpError } = await supabase.auth.signUp({
+        email,
+        password,
+      });
+
+      if (signUpError) {
+        toast({ 
+          title: "Authentication failed", 
+          description: signUpError.message,
+          variant: "destructive" 
+        });
+        return;
+      }
+
+      toast({ 
+        title: "Account created", 
+        description: "Please sign in with your credentials" 
+      });
+      return;
+    }
+
+    checkAuth();
   };
 
   const fetchVideos = async () => {
@@ -222,10 +268,24 @@ const AdminCMS = () => {
               <Lock className="h-5 w-5" />
               Admin Access
             </CardTitle>
-            <CardDescription>Enter password to continue</CardDescription>
+            <CardDescription>
+              Sign in with admin credentials to continue
+            </CardDescription>
           </CardHeader>
           <CardContent>
-            <form onSubmit={handlePasswordSubmit} className="space-y-4">
+            <form onSubmit={handleLogin} className="space-y-4">
+              <div className="space-y-2">
+                <label htmlFor="email" className="text-sm font-medium">Email</label>
+                <Input
+                  id="email"
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="admin@admin.com"
+                  required
+                  autoFocus
+                />
+              </div>
               <div className="space-y-2">
                 <label htmlFor="password" className="text-sm font-medium">Password</label>
                 <Input
@@ -233,14 +293,17 @@ const AdminCMS = () => {
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  placeholder="Enter admin password"
-                  autoFocus
+                  placeholder="Enter your password"
+                  required
                 />
               </div>
               <Button type="submit" className="w-full">
-                Access Admin Panel
+                Sign In
               </Button>
             </form>
+            <p className="text-xs text-muted-foreground mt-4 text-center">
+              Use email: admin@admin.com with password: killo0
+            </p>
           </CardContent>
         </Card>
       </div>
