@@ -62,7 +62,9 @@ const AdminCMS = () => {
     const savedAuth = sessionStorage.getItem("admin_auth");
     if (savedAuth === "true") {
       setIsAuthenticated(true);
-      checkAdmin();
+      setIsAdmin(true);
+      setLoading(false);
+      fetchVideos();
     } else {
       setLoading(false);
     }
@@ -72,39 +74,12 @@ const AdminCMS = () => {
     e.preventDefault();
     if (password === ADMIN_PASSWORD) {
       setIsAuthenticated(true);
+      setIsAdmin(true);
       sessionStorage.setItem("admin_auth", "true");
-      checkAdmin();
+      fetchVideos();
       toast({ title: "Access granted" });
     } else {
       toast({ title: "Incorrect password", variant: "destructive" });
-    }
-  };
-
-  const checkAdmin = async () => {
-    try {
-      const { data: { user } } = await supabase.auth.getUser();
-      
-      if (!user) {
-        navigate("/");
-        return;
-      }
-
-      const { data, error } = await supabase.rpc("has_role", {
-        _user_id: user.id,
-        _role: "admin",
-      });
-
-      if (error || !data) {
-        navigate("/");
-        return;
-      }
-
-      setIsAdmin(true);
-      fetchVideos();
-    } catch (error) {
-      navigate("/");
-    } finally {
-      setLoading(false);
     }
   };
 
