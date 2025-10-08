@@ -37,6 +37,7 @@ const AdminCMS = () => {
   const [loading, setLoading] = useState(true);
   const [videos, setVideos] = useState<Video[]>([]);
   const [downloadLinks, setDownloadLinks] = useState<DownloadLink[]>([]);
+  const [isSignUp, setIsSignUp] = useState(false);
   const [editingVideo, setEditingVideo] = useState<Video | null>(null);
   const [showForm, setShowForm] = useState(false);
 
@@ -98,6 +99,26 @@ const AdminCMS = () => {
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     
+    if (isSignUp) {
+      const { error } = await supabase.auth.signUp({
+        email,
+        password,
+      });
+
+      if (error) {
+        toast({ 
+          title: "Signup failed", 
+          description: error.message,
+          variant: "destructive" 
+        });
+        return;
+      }
+
+      toast({ title: "Account created! Now please sign in." });
+      setIsSignUp(false);
+      return;
+    }
+
     const { error } = await supabase.auth.signInWithPassword({
       email,
       password,
@@ -253,10 +274,12 @@ const AdminCMS = () => {
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Lock className="h-5 w-5" />
-              Admin Access
+              {isSignUp ? "Create Admin Account" : "Admin Access"}
             </CardTitle>
             <CardDescription>
-              Sign in with admin credentials to continue
+              {isSignUp 
+                ? "Create your admin account to get started" 
+                : "Sign in with admin credentials to continue"}
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -285,14 +308,17 @@ const AdminCMS = () => {
                 />
               </div>
               <Button type="submit" className="w-full">
-                Sign In
+                {isSignUp ? "Create Account" : "Sign In"}
+              </Button>
+              <Button 
+                type="button" 
+                variant="ghost" 
+                className="w-full mt-2"
+                onClick={() => setIsSignUp(!isSignUp)}
+              >
+                {isSignUp ? "Already have an account? Sign In" : "Need an account? Sign Up"}
               </Button>
             </form>
-            <div className="mt-4 p-3 bg-muted rounded-lg">
-              <p className="text-xs font-semibold mb-2">Admin Credentials:</p>
-              <p className="text-xs text-muted-foreground">Email: <span className="font-mono">admin@admin.com</span></p>
-              <p className="text-xs text-muted-foreground">Password: <span className="font-mono">killo0</span></p>
-            </div>
           </CardContent>
         </Card>
       </div>
