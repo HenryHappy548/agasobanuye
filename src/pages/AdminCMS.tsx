@@ -98,34 +98,21 @@ const AdminCMS = () => {
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    const { data, error } = await supabase.auth.signInWithPassword({
+    const { error } = await supabase.auth.signInWithPassword({
       email,
       password,
     });
 
     if (error) {
-      // If login fails, try to sign up
-      const { error: signUpError } = await supabase.auth.signUp({
-        email,
-        password,
-      });
-
-      if (signUpError) {
-        toast({ 
-          title: "Authentication failed", 
-          description: signUpError.message,
-          variant: "destructive" 
-        });
-        return;
-      }
-
       toast({ 
-        title: "Account created", 
-        description: "Please sign in with your credentials" 
+        title: "Login failed", 
+        description: error.message,
+        variant: "destructive" 
       });
       return;
     }
 
+    toast({ title: "Login successful" });
     checkAuth();
   };
 
@@ -301,9 +288,11 @@ const AdminCMS = () => {
                 Sign In
               </Button>
             </form>
-            <p className="text-xs text-muted-foreground mt-4 text-center">
-              Use email: admin@admin.com with password: killo0
-            </p>
+            <div className="mt-4 p-3 bg-muted rounded-lg">
+              <p className="text-xs font-semibold mb-2">Admin Credentials:</p>
+              <p className="text-xs text-muted-foreground">Email: <span className="font-mono">admin@admin.com</span></p>
+              <p className="text-xs text-muted-foreground">Password: <span className="font-mono">killo0</span></p>
+            </div>
           </CardContent>
         </Card>
       </div>
