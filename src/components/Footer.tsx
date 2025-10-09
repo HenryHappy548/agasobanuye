@@ -133,13 +133,6 @@ const Footer = () => {
               >
                 WhatsApp Support
               </a>
-              <span className="text-muted-foreground">•</span>
-              <Link 
-                to="/secret-admin-panel"
-                className="text-sm text-muted-foreground hover:text-primary transition-colors"
-              >
-                Admin
-              </Link>
             </div>
           </div>
         </div>
