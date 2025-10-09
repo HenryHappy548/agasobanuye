@@ -31,6 +31,7 @@ import over from "@/assets/over.jpeg";
 import cov from "@/assets/cov.jpeg";
 import aar from "@/assets/aar.jpg";
 import ele from "@/assets/ele.jpeg";
+import mah from "@/assets/mah.jpeg";
 export interface Movie {
   id: string;
   title: string;
@@ -42,6 +43,15 @@ export interface Movie {
 }
 
 export const mockMovies: Movie[] = [
+   {
+    id: "mah",
+    title: "Mahrashi",
+    poster: mah,
+    year: "2019",
+    genre: "Action Drama",
+    rating: "Rocky",
+    category: "movie"
+  },
   {
     id: "ele8",
     title: "Twelve EP 8 Final",
