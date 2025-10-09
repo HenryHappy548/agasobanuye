@@ -91,7 +91,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
          },  
       "mah": {
         title: "Mahrashi",
-        embedCode: '<iframe src="https://streamtape.com/e/Q2Dk2gQeXJsw0D/" width="800" height="600" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
+        embedCode: '<iframe src="https://streamtape.com/e/Q2Dk2gQeXJsw0D/" width="420" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
         host: "Rocky kimomo",
         downloadLinks: [
           { quality: "1080p", size: "1.58GB", url: "https://streamtape.com/v/Q2Dk2gQeXJsw0D/Maharshi_New_Hd.mp4", type: "MP4" }
