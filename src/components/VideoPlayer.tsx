@@ -88,6 +88,14 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
           { quality: "1080p", size: "1.5GB", url: "https://streamtape.com/v/Ba7L4dpbgQHVmv/THE_NAKED_GUN_BY_GAHEZA.MP4.mp4", type: "MP4" }
           
         ]
+         },  
+      "mah": {
+        title: "Mahrashi",
+        embedCode: '<iframe src="https://streamtape.com/e/Q2Dk2gQeXJsw0D/" width="800" height="600" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
+        host: "Rocky kimomo",
+        downloadLinks: [
+          { quality: "1080p", size: "1.58GB", url: "https://streamtape.com/v/Q2Dk2gQeXJsw0D/Maharshi_New_Hd.mp4", type: "MP4" }
+        ]
         },  
       "ele8": {
         title: "Twelve  S01 EP8",
