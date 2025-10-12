@@ -1,5 +1,7 @@
-<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-<sitemap>
-<loc>https://rwaflix.vercel.app/sitemap.xml</loc>
-</sitemap>
-</sitemapindex>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+<url>
+<loc>https://rwaflix.vercel.app/</loc>
+<lastmod>2025-10-12T17:37:53+00:00</lastmod>
+</url>
+</urlset>
