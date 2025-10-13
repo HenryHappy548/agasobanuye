@@ -1,6 +1,31 @@
+# Rwaflix - Robots.txt
+# Allow all search engines to crawl the site
 
+User-agent: *
+Allow: /
+
+# Disallow specific paths if needed
+Disallow: /api/
+Disallow: /admin/
+
+# Crawl-delay for better server performance
+Crawl-delay: 1
+
+# Sitemap location
+Sitemap: https://rwaflix.vercel.app/sitemap.xml
+
+# Popular search engine bots
 User-agent: Googlebot
 Allow: /
 
+User-agent: Bingbot
+Allow: /
 
-Sitemap: https://rwaflix.vercel.app/sitemap.xml
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
