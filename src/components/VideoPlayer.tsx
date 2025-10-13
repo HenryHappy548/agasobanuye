@@ -1,8 +1,6 @@
 import { X, ExternalLink, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
-import { supabase } from "@/integrations/supabase/client";
-import { useState, useEffect } from "react";
 
 interface VideoPlayerProps {
   isOpen: boolean;
@@ -10,64 +8,8 @@ interface VideoPlayerProps {
   videoId: string | null;
 }
 
-interface DownloadLink {
-  quality: string;
-  size: string | null;
-  url: string;
-  type: string;
-}
-
-interface VideoData {
-  title: string;
-  embedCode: string;
-  host: string;
-  downloadLinks: DownloadLink[];
-}
-
 const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
-  const [dbVideo, setDbVideo] = useState<VideoData | null>(null);
-  const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    if (videoId && isOpen) {
-      fetchVideoFromDB(videoId);
-    }
-  }, [videoId, isOpen]);
-
-  const fetchVideoFromDB = async (id: string) => {
-    setLoading(true);
-    
-    const { data: video } = await supabase
-      .from("videos")
-      .select("*")
-      .eq("video_key", id)
-      .maybeSingle();
-
-    if (video) {
-      const { data: links } = await supabase
-        .from("download_links")
-        .select("*")
-        .eq("video_id", video.id);
-
-      setDbVideo({
-        title: video.title,
-        embedCode: video.embed_code,
-        host: video.host || "",
-        downloadLinks: (links || []).map(link => ({
-          quality: link.quality,
-          size: link.size || "",
-          url: link.url,
-          type: link.type,
-        })),
-      });
-    } else {
-      setDbVideo(null);
-    }
-    
-    setLoading(false);
-  };
-
-  
+  // Video data with full embed codes and download links
   const getVideoInfo = (id: string) => {
     const videos: Record<string, { 
       title: string; 
@@ -82,358 +24,16 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
     }> = {
       "featured-movie": {
         title: "Naked Gun (2025)",
-        embedCode: '<iframe src="https://streamtape.com/e/Ba7L4dpbgQHVmv/" width="420" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
+        embedCode: '<iframe src="https://streamtape.com/e/Ba7L4dpbgQHVmv/" width="426" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
         host: "Gaheza",
         downloadLinks: [
           { quality: "1080p", size: "1.5GB", url: "https://streamtape.com/v/Ba7L4dpbgQHVmv/THE_NAKED_GUN_BY_GAHEZA.MP4.mp4", type: "MP4" }
           
         ]
-         },  
-      "mah": {
-        title: "Mahrashi",
-        embedCode: '<iframe src="https://streamtape.com/e/Q2Dk2gQeXJsw0D/" width="420" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
-        host: "Rocky kimomo",
-        downloadLinks: [
-          { quality: "1080p", size: "1.58GB", url: "https://streamtape.com/v/Q2Dk2gQeXJsw0D/Maharshi_New_Hd.mp4", type: "MP4" }
-        ]
-        },  
-      "ele8": {
-        title: "Twelve  S01 EP8",
-        embedCode: '<iframe src="https://streamtape.com/e/W3xxRp71aQhb3Z4/" width="420" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
-        host: "Mungeli",
-        downloadLinks: [
-          { quality: "1080p", size: "680MB", url: "https://streamtape.com/v/W3xxRp71aQhb3Z4/S01_-_EP08_-_Final_-_Twelve.mp4", type: "MP4" }
-        ]
-        },  
-      "ele7": {
-        title: "Twelve  S01 EP7",
-        embedCode: '<iframe src="https://streamtape.com/e/XYd6XVMO41uDVl2/" width="420" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
-        host: "Mungeli",
-        downloadLinks: [
-          { quality: "1080p", size: "680MB", url: "https://streamtape.com/v/XYd6XVMO41uDVl2/S01_-_EP07_-_Twelve.mp4", type: "MP4" }
-        ]
-        },  
-      "ele6": {
-        title: "Twelve  S01 EP6",
-        embedCode: '<iframe src="https://streamtape.com/e/7zXMDa8R4piVwK/" width="420" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
-        host: "Mungeli",
-        downloadLinks: [
-          { quality: "1080p", size: "680MB", url: "https://streamtape.com/v/7zXMDa8R4piVwK/S01_-_EP06_-_Twelve.mp4", type: "MP4" }
-        ]
-        },  
-      "ele5": {
-        title: "Twelve  S01 EP5",
-        embedCode: '<iframe src="https://streamtape.com/e/qyWwjbqzpwCzG9g/" width="420" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
-        host: "Mungeli",
-        downloadLinks: [
-          { quality: "1080p", size: "680MB", url: "https://streamtape.com/v/qyWwjbqzpwCzG9g/S01_-_EP05_-_Twelve.mp4", type: "MP4" }
-        ]
-        },  
-      "ele4": {
-        title: "Twelve  S01 EP4",
-        embedCode: '<iframe src="https://streamtape.com/e/2BrXX6ZPeXTZ9gJ/" width="420" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
-        host: "Mungeli",
-        downloadLinks: [
-          { quality: "1080p", size: "680MB", url: "https://streamtape.com/v/2BrXX6ZPeXTZ9gJ/S01_-_EP04_-_Twelve.mp4", type: "MP4" }
-        ]
-        },  
-      "ele3": {
-        title: "Twelve  S01 EP3",
-        embedCode: '<iframe src="https://streamtape.com/e/BO8AOlYzOdHyL07/" width="420" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
-        host: "Mungeli",
-        downloadLinks: [
-          { quality: "1080p", size: "680MB", url: "https://streamtape.com/v/BO8AOlYzOdHyL07/S01_-_EP03_-_Twelve.mp4", type: "MP4" }
-        ]
-        },  
-      "ele2": {
-        title: "Twelve  S01 EP2",
-        embedCode: '<iframe src="https://streamtape.com/e/yl80Qvrvzyu3Jj/" width="420" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
-        host: "Mungeli",
-        downloadLinks: [
-          { quality: "1080p", size: "680MB", url: "https://streamtape.com/v/yl80Qvrvzyu3Jj/S01_-_EP02_-_Twelve.mp4", type: "MP4" }
-        ]
-        },  
-      "ele1": {
-        title: "Twelve  S01 EP1",
-        embedCode: '<iframe src="https://streamtape.com/e/RmW2mxxXPgSdM73/" width="420" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
-        host: "Mungeli",
-        downloadLinks: [
-          { quality: "1080p", size: "680MB", url: "https://streamtape.com/v/RmW2mxxXPgSdM73/S01_-_EP01_-_Twelve.mp4", type: "MP4" }
-        ]
-   
-        },  
-      "ila7": {
-        title: "I Land EP7 Final",
-        embedCode: '<iframe src="https://streamtape.com/e/MeaXj9MWb7Hm73z/" width="420" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
-        host: "Rocky kimomo",
-        downloadLinks: [
-          { quality: "1080p", size: "330MB", url: "https://streamtape.com/v/MeaXj9MWb7Hm73z/S01_-_EP07_-_Final_-_The_I-Land.mp4", type: "MP4" }
-        ]
-        },  
-      "ila6": {
-        title: "I Land EP6",
-        embedCode: '<iframe src="https://streamtape.com/e/0d4q1xgALgs60v/" width="420" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
-        host: "Rocky kimomo",
-        downloadLinks: [
-          { quality: "1080p", size: "330MB", url: "https://streamtape.com/v/0d4q1xgALgs60v/S01_-_EP06_-_The_I-Land.mp4", type: "MP4" }
-        ]
-        },  
-      "ila5": {
-        title: "I Land EP5",
-        embedCode: '<iframe src="https://streamtape.com/e/46Jy0gZ2MGUy8K/" width="420" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
-        host: "Rocky kimomo",
-        downloadLinks: [
-          { quality: "1080p", size: "330MB", url: "https://streamtape.com/v/46Jy0gZ2MGUy8K/S01_-_EP05_-_The_I-Land.mp4", type: "MP4" }
-        ]
-        },  
-      "ila4": {
-        title: "I Land EP4",
-        embedCode: '<iframe src="https://streamtape.com/e/9WaX3egBBoiawpk/" width="420" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
-        host: "Rocky kimomo",
-        downloadLinks: [
-          { quality: "1080p", size: "330MB", url: "https://streamtape.com/v/9WaX3egBBoiawpk/S01_-_EP04_-_The_I-Land.mp4", type: "MP4" }
-        ]
-        },  
-      "ila3": {
-        title: "I Land EP3",
-        embedCode: '<iframe src="https://streamtape.com/e/WyD3QPGyvWfbJdv/" width="420" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
-        host: "Rocky kimomo",
-        downloadLinks: [
-          { quality: "1080p", size: "330MB", url: "https://streamtape.com/v/WyD3QPGyvWfbJdv/S01_-_EP03_-_The_I-Land.mp4", type: "MP4" }
-        ]
-        },  
-      "ila2": {
-        title: "I Land EP2",
-        embedCode: '<iframe src="https://streamtape.com/e/ePBwrry69wfYW4O/" width="420" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
-        host: "Rocky kimomo",
-        downloadLinks: [
-          { quality: "1080p", size: "330MB", url: "https://streamtape.com/v/ePBwrry69wfYW4O/S01_-_EP02_-_The_I-Land.mp4", type: "MP4" }
-        ]
-         },  
-      "ila1": {
-        title: "I Land EP1",
-        embedCode: '<iframe src="https://streamtape.com/e/ab4jBZwm9RHxyje/" width="420" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
-        host: "Rocky kimomo",
-        downloadLinks: [
-          { quality: "1080p", size: "330MB", url: "https://streamtape.com/v/ab4jBZwm9RHxyje/S01_-_EP01_-_The_I-Land.mp4", type: "MP4" }
-        ]
-     
-        
-        },  
-      "aar8": {
-        title: "Aar Ya Paar EP8 Final",
-        embedCode: '<iframe src="https://streamtape.com/e/LvKXG3VbWpCRpPV/" width="420" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
-        host: "Sankara",
-        downloadLinks: [
-          { quality: "1080p", size: "330MB", url: "https://streamtape.com/v/LvKXG3VbWpCRpPV/S01_-_EP08_-_Final_-_Aar_Ya_Paar.mp4", type: "MP4" }
-        ]
-        },  
-      "aar7": {
-        title: "Aar Ya Paar EP7",
-        embedCode: '<iframe src="https://streamtape.com/e/l2LZVJBK0as7KJd/" width="420" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
-        host: "Sankara",
-        downloadLinks: [
-          { quality: "1080p", size: "330MB", url: "https://streamtape.com/v/l2LZVJBK0as7KJd/S01_-_EP07_-_Aar_Ya_Paar.mp4", type: "MP4" }
-        ]
-        },  
-      "aar6": {
-        title: "Aar Ya Paar EP6",
-        embedCode: '<iframe src="https://streamtape.com/e/Ap8B38MkDyfZAY/" width="420" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
-        host: "Sankara",
-        downloadLinks: [
-          { quality: "1080p", size: "330MB", url: "https://streamtape.com/v/Ap8B38MkDyfZAY/S01_-_EP06_-_Aar_Ya_Paar.mp4", type: "MP4" }
-        ]
-        },  
-      "aar5": {
-        title: "Aar Ya Paar EP5",
-        embedCode: '<iframe src="https://streamtape.com/e/0RMg2prJOWsb93x/" width="420" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
-        host: "Sankara",
-        downloadLinks: [
-          { quality: "1080p", size: "330MB", url: "https://streamtape.com/v/0RMg2prJOWsb93x/S01_-_EP05_-_Aar_Ya_Paar.mp4", type: "MP4" }
-        ]
-        },  
-      "aar4": {
-        title: "Aar Ya Paar EP4",
-        embedCode: '<iframe src="https://streamtape.com/e/3JmjKrvOQbUdOA1/" width="420" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
-        host: "Sankara",
-        downloadLinks: [
-          { quality: "1080p", size: "330MB", url: "https://streamtape.com/v/3JmjKrvOQbUdOA1/S01_-_EP04_-_Aar_Ya_Paar.mp4", type: "MP4" }
-        ]
-        },  
-      "aar3": {
-        title: "Aar Ya Paar EP3",
-        embedCode: '<iframe src="https://streamtape.com/e/d3O6Gk4gqkckLrZ/" width="420" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
-        host: "Sankara",
-        downloadLinks: [
-          { quality: "1080p", size: "330MB", url: "https://streamtape.com/v/d3O6Gk4gqkckLrZ/S01_-_EP03_-_Aar_Ya_Paar.mp4", type: "MP4" }
-        ]
-        },  
-      "aar2": {
-        title: "Aar Ya Paar EP2",
-        embedCode: '<iframe src="https://streamtape.com/e/066yBok29LsKBZ/" width="420" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
-        host: "Sankara",
-        downloadLinks: [
-          { quality: "1080p", size: "330MB", url: "https://streamtape.com/v/066yBok29LsKBZ/S01_-_EP02_-_Aar_Ya_Paar.mp4", type: "MP4" }
-        ]
-        },  
-      "aar1": {
-        title: "Aar Ya Paar EP1",
-        embedCode: '<iframe src="https://streamtape.com/e/GQQAq2jx2GCaVq/" width="420" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
-        host: "Sankara",
-        downloadLinks: [
-          { quality: "1080p", size: "330MB", url: "https://streamtape.com/v/GQQAq2jx2GCaVq/S01_-_EP01_-_Aar_Ya_Paar.mp4", type: "MP4" }
-        ]
-         },  
-      "misb": {
-        title: "Mission impossible Dead reckoning B",
-        embedCode: '<iframe src="https://streamtape.com/e/WyWWlrMGGgtrDe/" width="420" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
-        host: "Rocky kimomo",
-        downloadLinks: [
-          { quality: "1080p", size: "680MB", url: "https://streamtape.com/v/WyWWlrMGGgtrDe/MI00A8%7E1.MP4.mp4", type: "MP4" }
-        ]
-        },  
-      
-      "misa": {
-        title: "Mission impossible Dead reckoning A",
-        embedCode: '<iframe src="https://streamtape.com/e/6PerJ2YpeMFLMV/" width="420" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
-        host: "Rocky kimomo",
-        downloadLinks: [
-          { quality: "1080p", size: "1.1GB", url: "https://streamtape.com/v/6PerJ2YpeMFLMV/MISSIO%7E1.MP4.mp4", type: "MP4" }
-        ]
-        },  
-      "cov": {
-        title: "Coverant War",
-        embedCode: '<iframe src="https://streamtape.com/e/BqoAQaZOe0UyJJx/" width="420" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
-        host: "Dylan Kabaka",
-        downloadLinks: [
-          { quality: "1080p", size: "1.1GB", url: "https://streamtape.com/v/BqoAQaZOe0UyJJx/THE_COVENAT_WAR_2023.mp4", type: "MP4" }
-        ]
-        },  
-      "over": {
-        title: "Override",
-        embedCode: '<iframe src="https://streamtape.com/e/QAlm693QDAT0m0v/" width="420" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
-        host: "Sankara",
-        downloadLinks: [
-          { quality: "1080p", size: "420MB", url: "https://streamtape.com/v/QAlm693QDAT0m0v/OVERDRIVE.mp4", type: "MP4" }
-        ]
-        },  
-      "boy": {
-        title: "Boy Kills World",
-        embedCode: '<iframe src="https://streamtape.com/e/6qVW4oYPWzI9Xko/" width="420" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
-        host: "Sankara",
-        downloadLinks: [
-          { quality: "1080p", size: "420MB", url: "https://streamtape.com/v/6qVW4oYPWzI9Xko/THE_BOY_KILLS_THE_WORLD.mp4", type: "MP4" }
-        ]
-      },  
-      "ski": {
-        title: "Skinfold: Death sentence",
-        embedCode: '<iframe src="https://streamtape.com/e/A2RoJddeyRiBpJ/" width="420" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
-        host: "Sankara",
-        downloadLinks: [
-          { quality: "1080p", size: "420MB", url: "https://streamtape.com/v/A2RoJddeyRiBpJ/%21SKINFOLD_DEATH_SENTENCE.mp4", type: "MP4" }
-        ]
-      },
-        "blo": {
-        title: "Blood Brothers B",
-        embedCode: '<iframe src="https://streamtape.com/e/elbA18jKdyTJWl/" width="420" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
-        host: "Gaheza",
-        downloadLinks: [
-          { quality: "1080p", size: "1.06GB", url: "https://streamtape.com/v/elbA18jKdyTJWl/Blood_Brothers_B.mp4", type: "MP4" }
-        ]
-        },
-          
-
-        "bloa": {
-        title: "Blood Brothers A",
-        embedCode: '<iframe src="https://streamtape.com/e/6x9wrjZZ7KuVoK/" width="420" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
-        host: "Gaheza",
-        downloadLinks: [
-          { quality: "1080p", size: "1.06GB", url: "https://streamtape.com/v/6x9wrjZZ7KuVoK/Blood_Brothers_A.mp4", type: "MP4" }
-        ]
-        },
-        "dir": {
-        title: "Dirty Angel",
-        embedCode: '<iframe src="https://streamtape.com/e/093OdWOPP4S6wo/" width="420" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
-        host: "Savimbi",
-        downloadLinks: [
-          { quality: "1080p", size: "1.06GB", url: "https://streamtape.com/v/093OdWOPP4S6wo/DIRTY_ANGELS.mp4", type: "MP4" }
-        ]
-          },
-        "lost8": {
-        title: "Lost in Love Ep8",
-        embedCode: '<iframe src="https://streamtape.com/e/PvO9GrMWWBhg8m/" width="420" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
-        host: "Rocky kimomo",
-        downloadLinks: [
-          { quality: "1080p", size: "538MB", url: "https://streamtape.com/v/PvO9GrMWWBhg8m/Lost_In_Love_Ep8.mp4", type: "MP4" }
-        ]
-        },
-        "lost6": {
-        title: "Lost in Love Ep6",
-        embedCode: '<iframe src="https://streamtape.com/e/PvO9GrMWWBhg8m/" width="420" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
-        host: "Rocky kimomo",
-        downloadLinks: [
-          { quality: "1080p", size: "538MB", url: "https://streamtape.com/v/PvO9GrMWWBhg8m/Lost_In_Love_Ep6.mp4", type: "MP4" }
-        ]
-        },
-        "lost7": {
-        title: "Lost in Love Ep7",
-        embedCode: '<iframe src="https://streamtape.com/e/9WL1OBMLbMcYLm/" width="420" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
-        host: "Rocky kimomo",
-        downloadLinks: [
-          { quality: "1080p", size: "538MB", url: "https://streamtape.com/v/9WL1OBMLbMcYLm/Lost_In_Love_Ep7.mp4", type: "MP4" }
-        ]
-      },
-        "lost5": {
-        title: "Lost in Love Ep5",
-        embedCode: '<iframe src="https://streamtape.com/e/o61WQ802WQCjXB/" width="420" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
-        host: "Rocky kimomo",
-        downloadLinks: [
-          { quality: "1080p", size: "538MB", url: "https://streamtape.com/v/o61WQ802WQCjXB/Lost_In_Love_Ep5.mp4", type: "MP4" }
-        ]
-      },
-      "lost4": {
-        title: "Lost in Love Ep4",
-        embedCode: '<iframe src="https://streamtape.com/e/dP30X719vaTkwwx/" width="420" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
-        host: "Rocky kimomo",
-        downloadLinks: [
-          { quality: "1080p", size: "523MB", url: "https://streamtape.com/v/dP30X719vaTkwwx/Lost_In_Love_Ep4.mp4", type: "MP4" }
-        ]
-          },
-      "lost3": {
-        title: "Lost in Love Ep3",
-        embedCode: '<iframe src="https://streamtape.com/e/XJ8m9bv1BbhZAa/" width="420" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
-        host: "Rocky kimomo",
-        downloadLinks: [
-          { quality: "1080p", size: "518MB", url: "https://streamtape.com/v/XJ8m9bv1BbhZAa/Lost_In_Love_Ep3.mp4", type: "MP4" }
-        ]
-          },
-      "lost2": {
-        title: "Lost in Love Ep2",
-        embedCode: '<iframe src="https://streamtape.com/e/GQz4jgq7K8CY88/" width="420" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
-        host: "Rocky kimomo",
-        downloadLinks: [
-          { quality: "1080p", size: "534MB", url: "https://streamtape.com/v/GQz4jgq7K8CY88/Lost_In_Love_Ep2.mp4", type: "MP4" }
-        ]
-        },
-      "lost1": {
-        title: "Lost in Love Ep1",
-        embedCode: '<iframe src="https://streamtape.com/e/Dlo1PyjrZ4tkzxp/" width="420" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
-        host: "Sankara",
-        downloadLinks: [
-          { quality: "1080p", size: "538MB", url: "https://streamtape.com/v/Dlo1PyjrZ4tkzxp/Lost_In_Love_Ep1.mp4", type: "MP4" }
-        ]
-        },
-      "goh": {
-        title: "Ghost Rider",
-        embedCode: '<iframe src="https://streamtape.com/e/0d1qxpvz3xtb7Pr/" width="420" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
-        host: "Sankara",
-        downloadLinks: [
-          { quality: "1080p", size: "1.3GB", url: "https://streamtape.com/v/0d1qxpvz3xtb7Pr/Ghost_Rider_Sankara.mp4", type: "MP4" }
-        ]
         },
       "dep": {
         title: "Deep Water (2025)",
-        embedCode: '<iframe src="https://streamtape.com/e/8vKRRY1dV9ioAwv/" width="420" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
+        embedCode: '<iframe src="https://streamtape.com/e/8vKRRY1dV9ioAwv/" width="426" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
         host: "Sankara",
         downloadLinks: [
           { quality: "1080p", size: "1.2GB", url: "https://streamtape.com/v/8vKRRY1dV9ioAwv/Deep_Water.mp4", type: "MP4" }
@@ -441,7 +41,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
          },
       "sin": {
         title: "Sinners B",
-        embedCode: '<iframe src="https://streamtape.com/e/ApoJ9j7dWecXdXz/" width="420" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
+        embedCode: '<iframe src="https://streamtape.com/e/ApoJ9j7dWecXdXz/" width="426" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
         host: "Rocky kimomo",
         downloadLinks: [
           { quality: "1080p", size: "1.2GB", url: "https://streamtape.com/v/ApoJ9j7dWecXdXz/SINNERS_B.mp4",type: "MP4" }
@@ -449,24 +49,16 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         },
       "sina": {
         title: "Sinners A ",
-        embedCode: '<iframe src="https://streamtape.com/e/pz2PGjzal9tAzq/" width="420" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
+        embedCode: '<iframe src="https://streamtape.com/e/pz2PGjzal9tAzq/" width="426" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
         host: "Rocky kimomo",
         downloadLinks: [
           { quality: "1080p", size: "1.2GB", url: "https://streamtape.com/v/pz2PGjzal9tAzq/SINNERS_.mp4", type: "MP4" }
        
         ]
          },
-        "bac": {
-        title: "Back on Society",
-        embedCode: '<iframe src="https://streamtape.com/e/7Bp2kAPj4QiAeKX/" width="420" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
-        host: "Junior Giti",
-        downloadLinks: [
-          { quality: "1080p", size: "1.06GB", url: "https://streamtape.com/v/7Bp2kAPj4QiAeKX/BACK_ON_SOCIETY.mp4", type: "MP4" }
-      ]
-           },
       "exo": {
         title: "The exorcism of God ",
-        embedCode: '<iframe src="https://streamtape.com/e/p43Z8lPL2xTrg48/" width="420" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
+        embedCode: '<iframe src="https://streamtape.com/e/p43Z8lPL2xTrg48/" width="426" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
         host: "Sankara",
         downloadLinks: [
           { quality: "1080p", size: "1.2GB", url: "https://streamtape.com/v/p43Z8lPL2xTrg48/THE_EXORRCISM_OF_THE_GOD_BY_SANKRA.mp4", type: "MP4"}
@@ -474,7 +66,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         },
       "fou": {
         title: "Fountain of youth B",
-        embedCode: '<iframe src="https://streamtape.com/e/mYkXGrGrYJHbLRw/" width="420" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
+        embedCode: '<iframe src="https://streamtape.com/e/mYkXGrGrYJHbLRw/" width="426" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
         host: "Rocky kimomo",
         downloadLinks: [
           { quality: "1080p", size: "1.2GB", url: "https://streamtape.com/v/mYkXGrGrYJHbLRw/FOUNTAIN_OF_YOUTH_B.mp4", type: "MP4"}
@@ -482,7 +74,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
          },
       "sar": {
         title: "Sarzamen",
-        embedCode: '<iframe src="https://streamtape.com/e/9bYWMkpB3Xc1k9/" width="420" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
+        embedCode: '<iframe src="https://streamtape.com/e/9bYWMkpB3Xc1k9/" width="426" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
         host: "Sickov",
         downloadLinks: [
           { quality: "1080p", size: "1.2GB", url: "https://streamtape.com/v/9bYWMkpB3Xc1k9/Sarzameen.mp4", type: "MP4" }
@@ -491,7 +83,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         },
       "foua": {
         title: "Fountain of youth A",
-        embedCode: '<iframe src="https://streamtape.com/e/xeeoAxOV9lTQ2e/" width="420" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
+        embedCode: '<iframe src="https://streamtape.com/e/xeeoAxOV9lTQ2e/" width="426" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
         host: "Rocky kimomo",
         downloadLinks: [
           { quality: "1080p", size: "1.2GB", url: "https://streamtape.com/v/xeeoAxOV9lTQ2e/FOUNTAIN_OF_YOUTH_.mp4", type: "MP4" }
@@ -500,7 +92,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
          },
       "osi": {
         title: "Osiris (2025)",
-        embedCode: '<iframe src="https://streamtape.com/e/2LgA0xM3abiZYQR/" width="420" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
+        embedCode: '<iframe src="https://streamtape.com/e/2LgA0xM3abiZYQR/" width="426" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
         host: "Sickov",
         downloadLinks: [
           { quality: "1080p", size: "1.2GB", url: "https://streamtape.com/v/2LgA0xM3abiZYQR/OSIRIS._Sikov.mp4", type: "MP4" }
@@ -509,7 +101,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
          },
       "men": {
         title: "Men of honor B (2000)",
-        embedCode: '<iframe width="420" height="240" frameborder="0" src="https://mega.nz/embed/ka0xHCSR#IOJNsVw8qMz9rdSB0mIiarSfYE95P6u78PPAhA4hAto" allowfullscreen ></iframe>',
+        embedCode: '<iframe width="426" height="240" frameborder="0" src="https://mega.nz/embed/ka0xHCSR#IOJNsVw8qMz9rdSB0mIiarSfYE95P6u78PPAhA4hAto" allowfullscreen ></iframe>',
         host: "Rocky",
         downloadLinks: [
           { quality: "1080p", size: "1.2GB", url: "https://download.example.com/freakier-friday-1080p.mp4", type: "MP4" }
@@ -518,7 +110,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
          },
       "mena": {
         title: "Men of honor A (2000)",
-        embedCode: '<iframe width="420" height="240" frameborder="0" src="https://mega.nz/embed/C4B0wCrB#jar_rBf8_BNXRUsFEKDJ1vgt-PK62_MDDDK5zze9SAg" allowfullscreen ></iframe>',
+        embedCode: '<iframe width="426" height="240" frameborder="0" src="https://mega.nz/embed/C4B0wCrB#jar_rBf8_BNXRUsFEKDJ1vgt-PK62_MDDDK5zze9SAg" allowfullscreen ></iframe>',
         host: "Rocky kimomo",
         downloadLinks: [
           { quality: "1080p", size: "1.2GB", url: "https://download.example.com/freakier-friday-1080p.mp4", type: "MP4" }
@@ -526,7 +118,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         ]
         },"man": {
         title: "A working man B (2025)",
-        embedCode: '<iframe src="https://streamtape.com/e/3w9yJZGmmAHdgqv/" width="420" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
+        embedCode: '<iframe src="https://streamtape.com/e/3w9yJZGmmAHdgqv/" width="426" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
         host: "Gaheza",
         downloadLinks: [
           { quality: "1080p", size: "1.2GB", url: "https://streamtape.com/v/3w9yJZGmmAHdgqv/A_WORKING_MAN_B.mp4", type: "MP4" }
@@ -534,7 +126,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         ]
       },"mana": {
         title: "A working man A (2025)",
-        embedCode: '<iframe src="https://streamtape.com/e/3w9yJZGmmAHdgqv/" width="420" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
+        embedCode: '<iframe src="https://streamtape.com/e/3w9yJZGmmAHdgqv/" width="426" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
         host: "Gaheza",
         downloadLinks: [
           { quality: "1080p", size: "1.2GB", url: "https://streamtape.com/v/VBmDG0aQoVF992/A_WARKING_MAN_A.mp4", type: "MP4" }
@@ -544,7 +136,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
      
       "movie-1": {
         title: "Shadow Force B (2025)",
-        embedCode: '<iframe src="https://streamtape.com/e/jgd9o0wAz9hzwL0/" width="420" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
+        embedCode: '<iframe src="https://streamtape.com/e/jgd9o0wAz9hzwL0/" width="426" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
         host: "Gaheza",
         downloadLinks: [
           { quality: "1080p", size: "1.2GB", url: "https://streamtape.com/v/jgd9o0wAz9hzwL0/SHADOW_FORCE_B.mp4", type: "MP4" }
@@ -553,7 +145,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
       },
       "forcea": {
         title: "Shadow Force A (2025)",
-        embedCode: '<iframe src="https://streamtape.com/e/xPMllybbdoTlXP/" width="420" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
+        embedCode: '<iframe src="https://streamtape.com/e/xPMllybbdoTlXP/" width="426" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
         host: "Gaheza",
         downloadLinks: [
           { quality: "1080p", size: "1.2GB", url: "https://streamtape.com/v/xPMllybbdoTlXP/SHADOW_FORCE_A.mp4", type: "MP4" }
@@ -563,16 +155,16 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
      
       "movie-2": {
         title: "Knight and Day (2010)",
-        embedCode: '<iframe src="https://streamtape.com/e/MqRGVMed3dSB4B/" width="420" height="420" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
+        embedCode: '<iframe width="426" height="240" frameborder="0" src="https://mega.nz/embed/XpoBgIJQ#T7SgXb5MXaKRNP1jdGRet19TLCKFFJuNwY43ZIjwJTQ" allowfullscreen ></iframe>',
         host: "Savimbi",
         downloadLinks: [
-          { quality: "4K", size: "3.2GB", url: "https://streamtape.com/v/MqRGVMed3dSB4B/Knight_And_Day.mp4", type: "MP4" }
+          { quality: "4K", size: "3.2GB", url: "", type: "MP4" }
          
         ]
       },
       "movie-3": {
         title: "Naked Gun (2025)",
-        embedCode: '<iframe src="https://streamtape.com/e/Ba7L4dpbgQHVmv/" width="420" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
+        embedCode: '<iframe src="https://streamtape.com/e/Ba7L4dpbgQHVmv/" width="426" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
         host: "Gaheza",
         downloadLinks: [
           { quality: "1080p", size: "1.6GB", url: "https://streamtape.com/v/Ba7L4dpbgQHVmv/THE_NAKED_GUN_BY_GAHEZA.MP4.mp4", type: "MP4" }
@@ -581,16 +173,47 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
       },
       "movie-4": {
         title: "Home sweet Home B",
-        embedCode: '<iframe src="https://streamtape.com/e/XYDKrBZOJJHDpgJ/" width="420" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
+        embedCode: '<iframe src="https://streamtape.com/e/XYDKrBZOJJHDpgJ/" width="426" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
         host: "Savimbi",
         downloadLinks: [
           { quality: "1080p", size: "2.1GB", url: "https://streamtape.com/v/XYDKrBZOJJHDpgJ/HOME_SWEET_HOME_B.mp4", type: "MP4" }
         ]
-      
+      },
+      "movie-5": {
+        title: "Of king and prophet Ep4",
+        embedCode: '<iframe width="426" height="240" frameborder="0" src="https://mega.nz/file/JakTFDbR#K7uvEHH_i5F1dye8tyKaSZkhVMBx-x4H4i9Av5WE_sw" allowfullscreen ></iframe>',
+        host: "Rocky",
+        downloadLinks: [
+          { quality: "720p", size: "164.72 MB", url: "https://mega.nz/file/JakTFDbR#K7uvEHH_i5F1dye8tyKaSZkhVMBx-x4H4i9Av5WE_sw", type: "MP4" }
+        ]
+      },
+       "movie-6": {
+        title: "Of king and phophet Ep3",
+        embedCode: '<iframe width="426" height="240" frameborder="0" src="https://mega.nz/embed/JP8WXBSY#kbExvoxlS7h2N3J-mZIZtjkRUpHY2vk6qKfYlfct5Sg" allowfullscreen ></iframe>',
+        host: "Rocky",
+        downloadLinks: [
+          { quality: "720p", size: "450MB", url: "https://mega.nz/embed/JP8WXBSY#kbExvoxlS7h2N3J-mZIZtjkRUpHY2vk6qKfYlfct5Sg", type: "MP4" }
+        ]
+      },
+      "movie-14": {
+        title: "Of kings and prophets Ep2",
+        embedCode: '<iframe width="426" height="240" frameborder="0" src="https://mega.nz/embed/JakTFDbR#K7uvEHH_i5F1dye8tyKaSZkhVMBx-x4H4i9Av5WE_sw" allowfullscreen ></iframe>',         
+        host:"Mega.nz",
+        downloadLinks: [
+          { quality: "720p", size: "450MB", url: "https://download.example.com/i-kill-you-ep1-720p.mp4", type: "MP4" }
+        ]
+      },
+      "movie-13": {
+        title: "Of kings and prophets Ep1",
+        embedCode: '<iframe width="240" height="624" frameborder="0" src="https://mega.nz/embed/5fsXCCrR#bwUs9Jbt5v35KVy6sNG8Sm0rp7rk20blJ4UYsuDa_3g" allowfullscreen ></iframe>',
+        host: "Mega.nz",
+        downloadLinks: [
+          { quality: "720p", size: "450MB", url: "https://download.example.com/i-kill-you-ep1-720p.mp4", type: "MP4" }
+        ]
       },
        "sweeta": {
         title: "Home sweet Home A",
-        embedCode: '<iframe src="https://streamtape.com/e/BzWdVbXQbQiybJ2/" width="420" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',         
+        embedCode: '<iframe src="https://streamtape.com/e/BzWdVbXQbQiybJ2/" width="426" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',         
         host:"Savimbi",
         downloadLinks: [
           { quality: "720p", size: "450MB", url: "https://streamtape.com/v/BzWdVbXQbQiybJ2/HOME_SWEET_HOME_A.mp4", type: "MP4" }
@@ -605,7 +228,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
     };
   };
 
-  const videoInfo = videoId ? (dbVideo || getVideoInfo(videoId)) : null;
+  const videoInfo = videoId ? getVideoInfo(videoId) : null;
 
   // Extract just the src URL from the embed code
   const getSrcFromEmbedCode = (embedCode: string) => {
@@ -635,16 +258,10 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
             <>
               {/* Video Player Area - Reduced aspect ratio */}
               <div className="relative bg-black flex items-center justify-center">
-                {videoInfo.embedCode ? (
-                  <div 
-                    className="w-full max-w-full aspect-[16/4]"
-                    dangerouslySetInnerHTML={{ __html: videoInfo.embedCode }}
-                  />
-                ) : (
-                  <div className="w-full aspect-[16/4] flex items-center justify-center text-white">
-                    Loading video player...
-                  </div>
-                )}
+                <div 
+                  className="w-full max-w-full aspect-[16/4]"
+                  dangerouslySetInnerHTML={{ __html: videoInfo.embedCode }}
+                />
               </div>
 
               {/* Video Info and Download Section */}
@@ -677,7 +294,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
                   {videoInfo.downloadLinks.length > 0 ? (
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                       {videoInfo.downloadLinks.map((link, index) => (
-                        <div key={index} className="border border-gray-420 rounded-lg p-3">
+                        <div key={index} className="border border-gray-600 rounded-lg p-3">
                           <div className="flex justify-between items-center mb-2">
                             <span className="font-medium text-blue-300 text-sm">{link.quality}</span>
                             <span className="text-xs text-gray-400">{link.size}</span>
@@ -687,7 +304,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
                             <Button
                               size="sm"
                               onClick={() => handleDownload(link.url, `${videoInfo.title} - ${link.quality}.mp4`)}
-                              className="bg-green-420 hover:bg-green-700 text-xs w-full sm:w-auto"
+                              className="bg-green-600 hover:bg-green-700 text-xs w-full sm:w-auto"
                             >
                               <Download className="h-3 w-3 mr-1" />
                               Download

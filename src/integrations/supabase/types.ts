@@ -38,44 +38,6 @@ export type Database = {
         }
         Relationships: []
       }
-      download_links: {
-        Row: {
-          created_at: string | null
-          id: string
-          quality: string
-          size: string | null
-          type: string | null
-          url: string
-          video_id: string
-        }
-        Insert: {
-          created_at?: string | null
-          id?: string
-          quality: string
-          size?: string | null
-          type?: string | null
-          url: string
-          video_id: string
-        }
-        Update: {
-          created_at?: string | null
-          id?: string
-          quality?: string
-          size?: string | null
-          type?: string | null
-          url?: string
-          video_id?: string
-        }
-        Relationships: [
-          {
-            foreignKeyName: "download_links_video_id_fkey"
-            columns: ["video_id"]
-            isOneToOne: false
-            referencedRelation: "videos"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
       movies: {
         Row: {
           category: string
@@ -148,85 +110,18 @@ export type Database = {
         }
         Relationships: []
       }
-      user_roles: {
-        Row: {
-          created_at: string | null
-          id: string
-          role: Database["public"]["Enums"]["app_role"]
-          user_id: string
-        }
-        Insert: {
-          created_at?: string | null
-          id?: string
-          role: Database["public"]["Enums"]["app_role"]
-          user_id: string
-        }
-        Update: {
-          created_at?: string | null
-          id?: string
-          role?: Database["public"]["Enums"]["app_role"]
-          user_id?: string
-        }
-        Relationships: []
-      }
-      videos: {
-        Row: {
-          created_at: string | null
-          embed_code: string
-          episode: number | null
-          host: string | null
-          id: string
-          season: number | null
-          thumbnail_url: string | null
-          title: string
-          updated_at: string | null
-          video_key: string
-        }
-        Insert: {
-          created_at?: string | null
-          embed_code: string
-          episode?: number | null
-          host?: string | null
-          id?: string
-          season?: number | null
-          thumbnail_url?: string | null
-          title: string
-          updated_at?: string | null
-          video_key: string
-        }
-        Update: {
-          created_at?: string | null
-          embed_code?: string
-          episode?: number | null
-          host?: string | null
-          id?: string
-          season?: number | null
-          thumbnail_url?: string | null
-          title?: string
-          updated_at?: string | null
-          video_key?: string
-        }
-        Relationships: []
-      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      has_role: {
-        Args: {
-          _role: Database["public"]["Enums"]["app_role"]
-          _user_id: string
-        }
-        Returns: boolean
-      }
       is_admin: {
         Args: Record<PropertyKey, never>
         Returns: boolean
       }
     }
     Enums: {
-      app_role: "admin" | "moderator" | "user"
+      [_ in never]: never
     }
     CompositeTypes: {
       [_ in never]: never
@@ -353,8 +248,6 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {
-      app_role: ["admin", "moderator", "user"],
-    },
+    Enums: {},
   },
 } as const

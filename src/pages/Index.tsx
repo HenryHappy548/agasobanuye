@@ -113,7 +113,7 @@ const Index = () => {
                 <h2 className="text-xl sm:text-2xl font-bold text-foreground">
                   TV Shows
                 </h2>
-                <Link to="/tv-shows">
+                <Link to="/tvshows">
                   <Button variant="ghost" className="group">
                     View More
                     <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />

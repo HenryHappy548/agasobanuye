@@ -1,17 +1,9 @@
-import { Search, Menu, X, MessageCircle } from "lucide-react";
+import { Search, Menu, X } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import logoRwaflix from "@/assets/logo-rwaflix.png";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
 
 interface StreamingHeaderProps {
   onSearch: (query: string) => void;
@@ -21,7 +13,6 @@ interface StreamingHeaderProps {
 const StreamingHeader = ({ onSearch, searchQuery }: StreamingHeaderProps) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const [isSupportOpen, setIsSupportOpen] = useState(false);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -79,45 +70,6 @@ const StreamingHeader = ({ onSearch, searchQuery }: StreamingHeaderProps) => {
                 onChange={(e) => onSearch(e.target.value)}
               />
             </div>
-
-            {/* Support Button */}
-            <Dialog open={isSupportOpen} onOpenChange={setIsSupportOpen}>
-              <DialogTrigger asChild>
-                <Button variant="outline" size="sm" className="gap-2">
-                  <MessageCircle className="h-4 w-4" />
-                  <span className="hidden sm:inline">Support</span>
-                </Button>
-              </DialogTrigger>
-              <DialogContent className="sm:max-w-md">
-                <DialogHeader>
-                  <DialogTitle>Contact Rwaflix Support</DialogTitle>
-                  <DialogDescription>
-                    Get in touch with us for assistance
-                  </DialogDescription>
-                </DialogHeader>
-                <div className="space-y-4 py-4">
-                  <div className="space-y-2">
-                    <h4 className="font-semibold text-sm text-foreground">WhatsApp</h4>
-                    <a 
-                      href="https://wa.me/0791114163" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 p-3 bg-green-500/10 hover:bg-green-500/20 border border-green-500/20 rounded-lg transition-colors"
-                    >
-                      <MessageCircle className="h-5 w-5 text-green-500" />
-                      <span className="text-foreground font-mono">079 111 4163</span>
-                    </a>
-                  </div>
-                  <div className="space-y-2">
-                    <h4 className="font-semibold text-sm text-foreground">MoMo Pay</h4>
-                    <div className="p-3 bg-primary/10 border border-primary/20 rounded-lg">
-                      <p className="text-foreground font-mono">079 111 4163</p>
-                      <p className="text-xs text-muted-foreground mt-1">Send payment to this number</p>
-                    </div>
-                  </div>
-                </div>
-              </DialogContent>
-            </Dialog>
 
             {/* Mobile Search Button */}
             <Button 
