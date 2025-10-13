@@ -4,17 +4,6 @@
     <loc>https://rwaflix.vercel.app/</loc>
     <priority>1.0</priority>
   </url>
-  <url>
-    <loc>https://rwaflix.vercel.app/movies</loc>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://rwaflix.vercel.app/tv-shows</loc>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://rwaflix.vercel.app/popular</loc>
-    <priority>0.8</priority>
-  </url>
+  
   
 </urlset>
