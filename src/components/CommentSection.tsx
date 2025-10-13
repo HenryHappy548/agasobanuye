@@ -90,6 +90,7 @@ const CommentSection = () => {
       const { error } = await supabase.from("comments").insert({
         comment: validated.comment,
         username: validated.username,
+        user_id: null, // Allow anonymous comments
       });
 
       if (error) throw error;
