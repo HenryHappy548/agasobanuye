@@ -33,6 +33,7 @@ import aar from "@/assets/aar.jpg";
 import ele from "@/assets/ele.jpeg";
 import mah from "@/assets/mah.jpeg";
 import aft from "@/assets/after.jpeg";
+import war1 from "@/assets/war1.jpg";
 export interface Movie {
   id: string;
   title: string;
@@ -44,6 +45,33 @@ export interface Movie {
 }
 
 export const mockMovies: Movie[] = [
+  {
+    id: "warc",
+    title: "War 1 (C)",
+    poster: war1,
+    year: "2019",
+    genre: "Action Drama",
+    rating: "Gaheza",
+    category: "trending"
+  },
+  {
+    id: "warb",
+    title: "War 1 (B)",
+    poster: war1,
+    year: "2019",
+    genre: "Action Drama",
+    rating: "Gaheza",
+    category: "trending"
+  },
+  {
+    id: "wara",
+    title: "War 1 (A) ",
+    poster: war1,
+    year: "2019",
+    genre: "Action Drama",
+    rating: "Rocky kimomo",
+    category: "trending"
+  },
    {
     id: "aft",
     title: "AfterBurn ",
