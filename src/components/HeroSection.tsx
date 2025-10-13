@@ -23,10 +23,10 @@ const HeroSection = ({ onPlayVideo }: HeroSectionProps) => {
       <div className="relative z-10 container mx-auto px-4 sm:px-6">
         <div className="max-w-xs sm:max-w-md lg:max-w-lg xl:max-w-xl">
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3 sm:mb-4 leading-tight">
-            Naked Gun (2025) 
+            AfterBurn
           </h1>
           <p className="text-sm sm:text-base lg:text-lg text-muted-foreground mb-4 sm:mb-6 leading-relaxed line-clamp-3 sm:line-clamp-none">
-           Now leading the Police Squad, the well-meaning but hopelessly clueless lieutenant follows in his father's footsteps as he stumbles from one chaotic situation to the next. After the death of her brother, Beth (Pamela Anderson) teams up with Frank to take down the individual responsible.</p>
+          Set ten years after a solar flare wiped out technology across the globe, Afterburn follows ex-soldier Jake (Dave Bautista), who works as a treasure hunter recovering valuable objects from the old world for powerful clients.</p>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
             <Button 
               size="lg" 
@@ -81,7 +81,7 @@ const HeroSection = ({ onPlayVideo }: HeroSectionProps) => {
               </div>
               
               <p className="text-muted-foreground leading-relaxed">
-                Now leading the Police Squad, the well-meaning but hopelessly clueless lieutenant follows in his father's footsteps as he stumbles from one chaotic situation to the next. After the death of her brother, Beth (Pamela Anderson) teams up with Frank to take down the individual responsible.
+               Set ten years after a solar flare wiped out technology across the globe, Afterburn follows ex-soldier Jake (Dave Bautista), who works as a treasure hunter recovering valuable objects from the old world for powerful clients.
               </p>
               
               <div className="flex flex-col sm:flex-row gap-3 pt-4">
