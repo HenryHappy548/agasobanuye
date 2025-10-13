@@ -1,5 +1,5 @@
 import movie1 from "@/assets/force.jpeg";
-import forcea from "@/assets/force.jpeg"
+import forcea from "@/assets/force.jpeg";
 import movie2 from "@/assets/knight.jpeg";
 import movie3 from "@/assets/movie-3.jpg";
 import movie4 from "@/assets/Home sweet home.jpeg";
@@ -11,6 +11,7 @@ import home from "@/assets/Home sweet home.jpeg";
 import man from "@/assets/A working man.jpeg";
 import mana from "@/assets/A working man.jpeg";
 import men from "@/assets/men.jpeg";
+import ila from "@/assets/iland.jpg";
 import mena from "@/assets/men.jpeg";
 import naked from "@/assets/hero-featured.jpeg";
 import osi from "@/assets/Osiris.jpg";
@@ -18,8 +19,23 @@ import foua from "@/assets/fountain.jpeg";
 import sar from "@/assets/sarza.jpeg";
 import exo from "@/assets/exo.jpeg";
 import sin from "@/assets/sinners.jpeg";
-import dep from "@/assets/deep.jpg"
-
+import dep from "@/assets/deep.jpg";
+import goh from "@/assets/goh.jpeg";
+import lost from "@/assets/Lost.avif";
+import dir from "@/assets/dirty.jpeg";
+import bac from "@/assets/bac.jpeg";
+import blo from "@/assets/blood.jpeg";
+import ski from "@/assets/skin.jpeg";
+import boy from "@/assets/boy.jpeg";
+import over from "@/assets/over.jpeg";
+import cov from "@/assets/cov.jpeg";
+import aar from "@/assets/aar.jpg";
+import ele from "@/assets/ele.jpeg";
+import mah from "@/assets/mah.jpeg";
+import aft from "@/assets/after.jpeg";
+import war1 from "@/assets/war1.jpg";
+import war2 from "@/assets/war 2.jpg";
+import nun from "@/assets/nun.jpg";
 export interface Movie {
   id: string;
   title: string;
@@ -32,6 +48,420 @@ export interface Movie {
 
 export const mockMovies: Movie[] = [
   {
+    id: "nun",
+    title: "The Nun ",
+    poster: war2,
+    year: "2018",
+    genre: "Horror Thriller",
+    rating: "Sankara",
+    category: "movie"
+  },
+  {
+    id: "war1",
+    title: "War 2 A",
+    poster: war2,
+    year: "2025",
+    genre: "Action Drama",
+    rating: "Rocky kimomo",
+    category: "trending"
+  },
+  {
+    id: "warc",
+    title: "War 1 (C)",
+    poster: war1,
+    year: "2019",
+    genre: "Action Drama",
+    rating: "Rocky kimomo",
+    category: "movie"
+  },
+  {
+    id: "warb",
+    title: "War 1 (B)",
+    poster: war1,
+    year: "2019",
+    genre: "Action Drama",
+    rating: "Rocky kimomo",
+    category: "movie"
+  },
+  {
+    id: "wara",
+    title: "War 1 (A) ",
+    poster: war1,
+    year: "2019",
+    genre: "Action Drama",
+    rating: "Rocky kimomo",
+    category: "movie"
+  },
+   {
+    id: "aft",
+    title: "AfterBurn ",
+    poster: aft,
+    year: "2019",
+    genre: "Action Drama",
+    rating: "Gaheza",
+    category: "trending"
+  },
+   {
+    id: "mah",
+    title: "Mahrashi",
+    poster: mah,
+    year: "2019",
+    genre: "Action Drama",
+    rating: "Rocky",
+    category: "movie"
+  },
+  {
+    id: "ele8",
+    title: "Twelve EP 8 Final",
+    poster: ele,
+    year: "2021",
+    genre: "Action Thriller",
+    rating: "Mungeli",
+    category: "tv"
+  },
+  {
+    id: "ele7",
+    title: "Twelve EP 7",
+    poster: ele,
+    year: "2021",
+    genre: "Action Thriller",
+    rating: "Mungeli",
+    category: "tv"
+  },
+  {
+    id: "ele6",
+    title: "Twelve EP 6",
+    poster: ele,
+    year: "2021",
+    genre: "Action Thriller",
+    rating: "Mungeli",
+    category: "tv"
+  },
+  {
+    id: "ele5",
+    title: "Twelve EP 5",
+    poster: ele,
+    year: "2021",
+    genre: "Action Thriller",
+    rating: "Mungeli",
+    category: "tv"
+  },
+  {
+    id: "ele4",
+    title: "Twelve EP 4",
+    poster: ele,
+    year: "2021",
+    genre: "Action Thriller",
+    rating: "Mungeli",
+    category: "tv"
+  },
+  {
+    id: "ele3",
+    title: "Twelve EP 3",
+    poster: ele,
+    year: "2021",
+    genre: "Action Thriller",
+    rating: "Mungeli",
+    category: "tv"
+  },
+  {
+    id: "ele2",
+    title: "Twelve EP 2",
+    poster: ele,
+    year: "2021",
+    genre: "Action Thriller",
+    rating: "Mungeli",
+    category: "tv"
+  },
+   {
+    id: "ele1",
+    title: "Twelve EP 1",
+    poster: ele,
+    year: "2021",
+    genre: "Action Thriller",
+    rating: "Mungeli",
+    category: "tv"
+  },
+ 
+    {
+    id: "ila7",
+    title: "I land EP7 Final",
+    poster: ila,
+    year: "2019",
+    genre: "Action Thriller",
+    rating: "Rocky kimomo",
+    category: "tv"
+  },
+    {
+    id: "ila6",
+    title: "I land EP6",
+    poster: ila,
+    year: "2019",
+    genre: "Action Thriller",
+    rating: "Rocky kimomo",
+    category: "tv"
+  },
+    {
+    id: "ila5",
+    title: "I land EP5",
+    poster: ila,
+    year: "2019",
+    genre: "Action Thriller",
+    rating: "Rocky kimomo",
+    category: "tv"
+  },
+    {
+    id: "ila4",
+    title: "I land EP4",
+    poster: ila,
+    year: "2019",
+    genre: "Action Thriller",
+    rating: "Rocky kimomo",
+    category: "tv"
+  },
+    {
+    id: "ila3",
+    title: "I land EP3",
+    poster: ila,
+    year: "2019",
+    genre: "Action Thriller",
+    rating: "Rocky kimomo",
+    category: "tv"
+  },
+    {
+    id: "ila2",
+    title: "I land EP2",
+    poster: ila,
+    year: "2019",
+    genre: "Action Thriller",
+    rating: "Rocky kimomo",
+    category: "tv"
+  },
+  {
+    id: "ila1",
+    title: "I land EP1",
+    poster: ila,
+    year: "2019",
+    genre: "Action Thriller",
+    rating: "Rocky kimomo",
+    category: "tv"
+  },
+  
+    {
+    id: "aar8",
+    title: "Aar Ya Paar EP8",
+    poster: aar,
+    year: "2022",
+    genre: "Action Thriller",
+    rating: "Sankara",
+    category: "tv"
+  },
+    {
+    id: "aar7",
+    title: "Aar Ya Paar EP7",
+    poster: aar,
+    year: "2022",
+    genre: "Action Thriller",
+    rating: "Sankara",
+    category: "tv"
+  },
+    {
+    id: "aar6",
+    title: "Aar Ya Paar EP6",
+    poster: aar,
+    year: "2022",
+    genre: "Action Thriller",
+    rating: "Sankara",
+    category: "tv"
+  },
+  
+    {
+    id: "aar5",
+    title: "Aar Ya Paar EP5",
+    poster: aar,
+    year: "2022",
+    genre: "Action Thriller",
+    rating: "Sankara",
+    category: "tv"
+  },
+    {
+    id: "aar4",
+    title: "Aar Ya Paar EP4",
+    poster: aar,
+    year: "2022",
+    genre: "Action Thriller",
+    rating: "Sankara",
+    category: "tv"
+  },
+    {
+    id: "aar3",
+    title: "Aar Ya Paar EP3",
+    poster: aar,
+    year: "2022",
+    genre: "Action Thriller",
+    rating: "Sankara",
+    category: "tv"
+  },
+    {
+    id: "aar2",
+    title: "Aar Ya Paar EP2",
+    poster: aar,
+    year: "2022",
+    genre: "Action Thriller",
+    rating: "Sankara",
+    category: "tv"
+  },
+  {
+    id: "aar1",
+    title: "Aar Ya Paar EP1",
+    poster: aar,
+    year: "2022",
+    genre: "Action Thriller",
+    rating: "Sankara",
+    category: "tv"
+  },
+  {
+    id: "cov",
+    title: "Coverant War",
+    poster: cov,
+    year: "2023",
+    genre: "Action Thriller",
+    rating: "Dylan Kabaka",
+    category: "trending"
+  },
+  {
+    id: "over",
+    title: "Overdrive",
+    poster: over,
+    year: "2017",
+    genre: "Action Thriller",
+    rating: "Gaheza",
+    category: "movie"
+  },
+  {
+    id: "boy",
+    title: "Boy kills World",
+    poster: boy,
+    year: "2023",
+    genre: "Action Thriller",
+    rating: "Sankara",
+    category: "trending"
+  },
+   {
+    id: "ski",
+    title: "Skinfold: Death sentence",
+    poster: ski,
+    year: "2017",
+    genre: "Horror Thriller",
+    rating: "Sankara",
+    category: "trending"
+  },
+  
+  {
+    id: "blo",
+    title: "Blood Brother B",
+    poster: blo,
+    year: "2025",
+    genre: "Action",
+    rating: "Gaheza",
+    category: "trending"
+  },
+  
+   {
+    id: "bloa",
+    title: "Blood Brother A",
+    poster: blo,
+    year: "2025",
+    genre: "Action",
+    rating: "Gaheza",
+    category: "trending"
+  },
+ 
+    {
+    id: "dir",
+    title: "Dirty Angels",
+    poster: dir,
+    year: "2024",
+    genre: "Action Thriller",
+    rating: "Savimbi",
+    category: "trending"
+  },
+
+ 
+     {
+    id: "lost8",
+    title: "Lost In Love Ep8",
+    poster: lost,
+    year: "2023",
+    genre: "Romance Drama",
+    rating: "Rocky Kimomo",
+    category: "tv"
+  },
+  
+        {
+    id: "lost7",
+    title: "Lost In Love Ep7",
+    poster: lost,
+    year: "2023",
+    genre: "Romance Drama",
+    rating: "Rocky Kimomo",
+    category: "tv"
+  },
+        {
+    id: "lost6",
+    title: "Lost In Love Ep6",
+    poster: lost,
+    year: "2023",
+    genre: "Romance Drama",
+    rating: "Rocky Kimomo",
+    category: "tv"
+  },
+        {
+    id: "lost5",
+    title: "Lost In Love Ep5",
+    poster: lost,
+    year: "2023",
+    genre: "Romance Drama",
+    rating: "Rocky Kimomo",
+    category: "tv"
+  },
+        {
+    id: "lost4",
+    title: "Lost In Love Ep4",
+    poster: lost,
+    year: "2023",
+    genre: "Romance Drama",
+    rating: "Rocky Kimomo",
+    category: "tv"
+  },
+      {
+    id: "lost3",
+    title: "Lost In Love Ep3",
+    poster: lost,
+    year: "2023",
+    genre: "Romance Drama",
+    rating: "Rocky Kimomo",
+    category: "tv"
+  },
+      {
+    id: "lost2",
+    title: "Lost In Love Ep2",
+    poster: lost,
+    year: "2023",
+    genre: "Romance Drama",
+    rating: "Rocky Kimomo",
+    category: "tv"
+  },
+      {
+    id: "lost1",
+    title: "Lost In Love Ep1",
+    poster: lost,
+    year: "2023",
+    genre: "Romance Drama",
+    rating: "Rocky Kimomo",
+    category: "tv"
+  },
+  {
     id: "dep",
     title: "Deep water",
     poster: dep,
@@ -40,7 +470,15 @@ export const mockMovies: Movie[] = [
     rating: "Sankara",
     category: "movie"
   }, 
-  
+  {
+    id: "bac",
+    title: "Back on Society",
+    poster: bac,
+    year: "2021",
+    genre: "Action Thriller",
+    rating: "Junior Giti",
+    category: "movie"
+  },
     {
     id: "sin",
     title: "Sinners B",
@@ -188,47 +626,7 @@ export const mockMovies: Movie[] = [
     category: "trending"
   
   },
-    {
-    id: "movie-5",
-    title: "Of king and Prophet Ep4",
-    poster: movie5, 
-    year: "2016",
-    genre: "Action Thriller",
-    rating: "Rocky kimomo",
-    category: "tv"
-  
-  },
-  {
-    id: "movie-6",
-    title: "Of king and prophet Ep3",
-    poster: movie5, 
-    year: "2016",
-    genre: "Action Thriller",
-    rating: "Rocky kimomo",
-    category: "tv"
-  
-  },
-  
-  {
-    id: "movie-14",
-    title: "Of king and prophets Ep2",
-    poster: movie14, 
-    year: "2016",
-    genre: "Action Thriller",
-    rating: "Rocky kimomo",
-    category: "tv"
-  
-},
-  {
-    id: "movie-13",
-    title: "Of king and prophets Ep1",
-    poster: movie13, 
-    year: "2016",
-    genre: "Action Thriller",
-    rating: "Rocky kimomo",
-    category: "tv"
-  
-  },
+   
   {
     id: "sweeta",
     title: "Home sweet Home A",
