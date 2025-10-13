@@ -32,6 +32,7 @@ import cov from "@/assets/cov.jpeg";
 import aar from "@/assets/aar.jpg";
 import ele from "@/assets/ele.jpeg";
 import mah from "@/assets/mah.jpeg";
+import aft from "@/assets/after.jpeg";
 export interface Movie {
   id: string;
   title: string;
@@ -43,6 +44,15 @@ export interface Movie {
 }
 
 export const mockMovies: Movie[] = [
+   {
+    id: "aft",
+    title: "AfterBurn ",
+    poster: mah,
+    year: "2019",
+    genre: "Action Drama",
+    rating: "Gaheza",
+    category: "trending"
+  },
    {
     id: "mah",
     title: "Mahrashi",
