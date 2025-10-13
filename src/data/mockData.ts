@@ -35,6 +35,7 @@ import mah from "@/assets/mah.jpeg";
 import aft from "@/assets/after.jpeg";
 import war1 from "@/assets/war1.jpg";
 import war2 from "@/assets/war 2.jpg";
+import nun from "@/assets/nun.jpg";
 export interface Movie {
   id: string;
   title: string;
@@ -46,6 +47,15 @@ export interface Movie {
 }
 
 export const mockMovies: Movie[] = [
+  {
+    id: "nun",
+    title: "The Nun ",
+    poster: war2,
+    year: "2018",
+    genre: "Horror Thriller",
+    rating: "Sankara",
+    category: "movie"
+  },
   {
     id: "war1",
     title: "War 2 A",
