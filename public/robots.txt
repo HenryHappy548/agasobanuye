@@ -1,6 +1,14 @@
-
 User-agent: Googlebot
 Allow: /
 
+User-agent: Bingbot
+Allow: /
 
-Sitemap: https://rwaflix.vercel.app/sitemap.xml
+User-agent: Twitterbot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: *
+Allow: /

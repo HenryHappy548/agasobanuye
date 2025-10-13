@@ -81,56 +81,11 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
       }[];
     }> = {
       "featured-movie": {
-        title: "AfterBurn (2025)",
-        embedCode: '<IFRAME SRC="https://hglink.to/e/3hbgq5b238bo" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=420 HEIGHT=240 allowfullscreen></IFRAME>',
+        title: "Naked Gun (2025)",
+        embedCode: '<iframe src="https://streamtape.com/e/Ba7L4dpbgQHVmv/" width="420" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
         host: "Gaheza",
         downloadLinks: [
-          { quality: "1080p", size: "1.5GB", url: "https://www.mediafire.com/file/qtx7odcyypjzv1h/AFTERBURN.MP4/file", type: "MP4" }
-          
-        ]
-        },
-      "war 1": {
-        title: "War (2) A",
-        embedCode: '<IFRAME SRC="https://hglink.to/e/w4qt5nfiakg2" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=420 HEIGHT=240 allowfullscreen></IFRAME>',
-        host: "Rocky kimomo",
-        downloadLinks: [
-          { quality: "1080p", size: "1.5GB", url: "https://hglink.to/w4qt5nfiakg2", type: "MP4" }
-          
-        ]
-        },
-      "warc": {
-        title: "War (1) C",
-        embedCode: '<IFRAME SRC="https://hglink.to/e/rdtcesoqwpmk" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=420 HEIGHT=240 allowfullscreen></IFRAME>',
-        host: "Gaheza",
-        downloadLinks: [
-          { quality: "1080p", size: "1.5GB", url: "https://hglink.to/rdtcesoqwpmk", type: "MP4" }
-          
-        ]
-        },
-      "warb": {
-        title: "War (1) B ",
-        embedCode: '<IFRAME SRC="https://hglink.to/e/vuu3rrp4c1ir" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=420 HEIGHT=240 allowfullscreen></IFRAME>',
-        host: "Gaheza",
-        downloadLinks: [
-          { quality: "1080p", size: "1.5GB", url: "https://hglink.to/vuu3rrp4c1ir", type: "MP4" }
-          
-        ]
-        },
-      "wara": {
-        title: "War (1) A",
-        embedCode: '<IFRAME SRC="https://hglink.to/e/08w8igto8nqo" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=420 HEIGHT=240 allowfullscreen></IFRAME>',
-        host: "Gaheza",
-        downloadLinks: [
-          { quality: "1080p", size: "1.5GB", url: "https://hglink.to/08w8igto8nqo", type: "MP4" }
-          
-        ]
-      },
-      "aft": {
-        title: "AfterBurn (2025)",
-        embedCode: '<IFRAME SRC="https://hglink.to/e/3hbgq5b238bo" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=420 HEIGHT=240 allowfullscreen></IFRAME>',
-        host: "Gaheza",
-        downloadLinks: [
-          { quality: "1080p", size: "1.5GB", url: "https://www.mediafire.com/file/qtx7odcyypjzv1h/AFTERBURN.MP4/file", type: "MP4" }
+          { quality: "1080p", size: "1.5GB", url: "https://streamtape.com/v/Ba7L4dpbgQHVmv/THE_NAKED_GUN_BY_GAHEZA.MP4.mp4", type: "MP4" }
           
         ]
          },  
@@ -323,10 +278,10 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         },  
       "aar1": {
         title: "Aar Ya Paar EP1",
-        embedCode: '<<IFRAME SRC="https://hglink.to/e/8rlj17a4z8v6" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=420 HEIGHT=240 allowfullscreen></IFRAME>',
+        embedCode: '<iframe src="https://streamtape.com/e/GQQAq2jx2GCaVq/" width="420" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
         host: "Sankara",
         downloadLinks: [
-          { quality: "1080p", size: "330MB", url: "https://hglink.to/e/8rlj17a4z8v6", type: "MP4" }
+          { quality: "1080p", size: "330MB", url: "https://streamtape.com/v/GQQAq2jx2GCaVq/S01_-_EP01_-_Aar_Ya_Paar.mp4", type: "MP4" }
         ]
          },  
       "misb": {
