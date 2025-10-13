@@ -31,7 +31,6 @@ const CommentSection = () => {
   const [newComment, setNewComment] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [showAll, setShowAll] = useState(false);
   const { toast } = useToast();
 
   useEffect(() => {
@@ -164,39 +163,25 @@ const CommentSection = () => {
             <p className="text-muted-foreground">No comments yet. Be the first to comment!</p>
           </div>
         ) : (
-          <>
-            {(showAll ? comments : comments.slice(0, 5)).map((comment) => (
-              <div
-                key={comment.id}
-                className="p-4 bg-card rounded-lg border border-border space-y-2"
-              >
-                <div className="flex items-center gap-2">
-                  <span className="font-semibold text-foreground">
-                    {comment.username}
-                  </span>
-                  <span className="text-sm text-muted-foreground">
-                    {new Date(comment.created_at).toLocaleDateString()} at{" "}
-                    {new Date(comment.created_at).toLocaleTimeString()}
-                  </span>
-                </div>
-                <p className="mt-2 text-foreground whitespace-pre-wrap break-words">
-                  {comment.comment}
-                </p>
+          comments.map((comment) => (
+            <div
+              key={comment.id}
+              className="p-4 bg-card rounded-lg border border-border space-y-2"
+            >
+              <div className="flex items-center gap-2">
+                <span className="font-semibold text-foreground">
+                  {comment.username}
+                </span>
+                <span className="text-sm text-muted-foreground">
+                  {new Date(comment.created_at).toLocaleDateString()} at{" "}
+                  {new Date(comment.created_at).toLocaleTimeString()}
+                </span>
               </div>
-            ))}
-            
-            {comments.length > 5 && (
-              <div className="flex justify-center pt-4">
-                <Button
-                  variant="outline"
-                  onClick={() => setShowAll(!showAll)}
-                  className="w-full max-w-xs"
-                >
-                  {showAll ? "Show Less" : `View More (${comments.length - 5} more comments)`}
-                </Button>
-              </div>
-            )}
-          </>
+              <p className="mt-2 text-foreground whitespace-pre-wrap break-words">
+                {comment.comment}
+              </p>
+            </div>
+          ))
         )}
       </div>
     </div>
