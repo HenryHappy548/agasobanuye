@@ -89,6 +89,15 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
           
         ]
         },
+      "war1": {
+        title: "War (2) A",
+        embedCode: '<IFRAME SRC="https://hglink.to/e/w4qt5nfiakg2" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=420 HEIGHT=240 allowfullscreen></IFRAME>',
+        host: "Rocky kimomo",
+        downloadLinks: [
+          { quality: "1080p", size: "1.5GB", url: "https://hglink.to/w4qt5nfiakg2", type: "MP4" }
+          
+        ]
+        },
       "warc": {
         title: "War (1) C",
         embedCode: '<IFRAME SRC="https://hglink.to/e/rdtcesoqwpmk" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=420 HEIGHT=240 allowfullscreen></IFRAME>',
