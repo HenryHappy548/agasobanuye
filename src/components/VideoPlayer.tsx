@@ -323,10 +323,10 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         },  
       "aar1": {
         title: "Aar Ya Paar EP1",
-        embedCode: '<iframe src="https://streamtape.com/e/GQQAq2jx2GCaVq/" width="420" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
+        embedCode: '<<IFRAME SRC="https://hglink.to/e/8rlj17a4z8v6" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=420 HEIGHT=240 allowfullscreen></IFRAME>',
         host: "Sankara",
         downloadLinks: [
-          { quality: "1080p", size: "330MB", url: "https://streamtape.com/v/GQQAq2jx2GCaVq/S01_-_EP01_-_Aar_Ya_Paar.mp4", type: "MP4" }
+          { quality: "1080p", size: "330MB", url: "https://hglink.to/e/8rlj17a4z8v6", type: "MP4" }
         ]
          },  
       "misb": {
