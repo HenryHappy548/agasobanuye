@@ -34,7 +34,7 @@ import ele from "@/assets/ele.jpeg";
 import mah from "@/assets/mah.jpeg";
 import aft from "@/assets/after.jpeg";
 import war1 from "@/assets/war1.jpg";
-import war2 from "@assets/war 2.jpg";
+import war2 from "@/assets/war 2.jpg";
 export interface Movie {
   id: string;
   title: string;
