@@ -88,6 +88,15 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
           { quality: "1080p", size: "1.5GB", url: "https://www.mediafire.com/file/qtx7odcyypjzv1h/AFTERBURN.MP4/file", type: "MP4" }
           
         ]
+        {
+      "aft": {
+        title: "AfterBurn (2025)",
+        embedCode: '<IFRAME SRC="https://hglink.to/e/3hbgq5b238bo" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=420 HEIGHT=240 allowfullscreen></IFRAME>',
+        host: "Gaheza",
+        downloadLinks: [
+          { quality: "1080p", size: "1.5GB", url: "https://www.mediafire.com/file/qtx7odcyypjzv1h/AFTERBURN.MP4/file", type: "MP4" }
+          
+        ]
          },  
       "mah": {
         title: "Mahrashi",
