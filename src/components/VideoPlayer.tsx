@@ -88,6 +88,33 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
           { quality: "1080p", size: "1.5GB", url: "https://www.mediafire.com/file/qtx7odcyypjzv1h/AFTERBURN.MP4/file", type: "MP4" }
           
         ]
+        },
+      "warc": {
+        title: "War (1) C",
+        embedCode: '<IFRAME SRC="https://hglink.to/e/rdtcesoqwpmk" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=420 HEIGHT=240 allowfullscreen></IFRAME>',
+        host: "Gaheza",
+        downloadLinks: [
+          { quality: "1080p", size: "1.5GB", url: "https://hglink.to/rdtcesoqwpmk", type: "MP4" }
+          
+        ]
+        },
+      "warb": {
+        title: "War (1) B ",
+        embedCode: '<IFRAME SRC="https://hglink.to/e/vuu3rrp4c1ir" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=420 HEIGHT=240 allowfullscreen></IFRAME>',
+        host: "Gaheza",
+        downloadLinks: [
+          { quality: "1080p", size: "1.5GB", url: "https://hglink.to/vuu3rrp4c1ir", type: "MP4" }
+          
+        ]
+        },
+      "wara": {
+        title: "War (1) A",
+        embedCode: '<IFRAME SRC="https://hglink.to/e/08w8igto8nqo" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=420 HEIGHT=240 allowfullscreen></IFRAME>',
+        host: "Gaheza",
+        downloadLinks: [
+          { quality: "1080p", size: "1.5GB", url: "https://hglink.to/08w8igto8nqo", type: "MP4" }
+          
+        ]
       },
       "aft": {
         title: "AfterBurn (2025)",
