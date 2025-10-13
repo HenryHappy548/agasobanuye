@@ -47,7 +47,7 @@ export const mockMovies: Movie[] = [
    {
     id: "aft",
     title: "AfterBurn ",
-    poster: mah,
+    poster: aft,
     year: "2019",
     genre: "Action Drama",
     rating: "Gaheza",
