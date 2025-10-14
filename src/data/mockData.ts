@@ -50,11 +50,20 @@ export const mockMovies: Movie[] = [
   {
     id: "nun",
     title: "The Nun ",
-    poster: war2,
+    poster: nun,
     year: "2018",
     genre: "Horror Thriller",
     rating: "Sankara",
     category: "movie"
+  },
+  {
+    id: "war2",
+    title: "War 2 B",
+    poster: war2,
+    year: "2025",
+    genre: "Action Drama",
+    rating: "Rocky kimomo",
+    category: "trending"
   },
   {
     id: "war1",
