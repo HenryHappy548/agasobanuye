@@ -130,8 +130,17 @@ export const mockMovies: Movie[] = [
     category: "trending"
   },
    {
-    id: "mah",
-    title: "Mahrashi",
+    id: "mahb",
+    title: "Mahrashi B",
+    poster: mah,
+    year: "2019",
+    genre: "Action Drama",
+    rating: "Rocky",
+    category: "movie"
+  },
+   {
+    id: "maha",
+    title: "Mahrashi A",
     poster: mah,
     year: "2019",
     genre: "Action Drama",
