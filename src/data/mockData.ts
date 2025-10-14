@@ -37,6 +37,7 @@ import war1 from "@/assets/war1.jpg";
 import war2 from "@/assets/war 2.jpg";
 import nun from "@/assets/nun.jpg";
 import pick from "@/assets/the pickup.jpeg";
+import black from "/@assets/black.jpg";
 export interface Movie {
   id: string;
   title: string;
@@ -48,6 +49,79 @@ export interface Movie {
 }
 
 export const mockMovies: Movie[] = [
+  {
+    id: "black8",
+    title: "Beauty in Black S02 E8",
+    poster: black,
+    year: "2025",
+    genre: "Romance Drama",
+    rating: "Rocky kimomo",
+    category: "tv"
+  },
+  {
+    id: "black7",
+    title: "Beauty in Black S02 E7",
+    poster: black,
+    year: "2025",
+    genre: "Romance Drama",
+    rating: "Rocky kimomo",
+    category: "tv"
+  },
+  {
+    id: "black6",
+    title: "Beauty in Black S02 E6",
+    poster: black,
+    year: "2025",
+    genre: "Romance Drama",
+    rating: "Rocky kimomo",
+    category: "tv"
+  },
+  {
+    id: "black5",
+    title: "Beauty in Black S02 E5",
+    poster: black,
+    year: "2025",
+    genre: "Romance Drama",
+    rating: "Rocky kimomo",
+    category: "tv"
+  },
+  {
+    id: "black4",
+    title: "Beauty in Black S02 E4",
+    poster: black,
+    year: "2025",
+    genre: "Romance Drama",
+    rating: "Rocky kimomo",
+    category: "tv"
+  },
+  {
+    id: "black3",
+    title: "Beauty in Black S02 E3",
+    poster: black,
+    year: "2025",
+    genre: "Romance Drama",
+    rating: "Rocky kimomo",
+    category: "tv"
+  },
+  {
+    id: "black2",
+    title: "Beauty in Black S02 E2",
+    poster: black,
+    year: "2025",
+    genre: "Romance Drama",
+    rating: "Rocky kimomo",
+    category: "tv"
+  },
+  {
+    id: "black1",
+    title: "Beauty in Black S02 E1",
+    poster: black,
+    year: "2025",
+    genre: "Romance Drama",
+    rating: "Rocky kimomo",
+    category: "tv"
+  },
+    
   {
     id: "pickb",
     title: "The Pickup B",
