@@ -38,6 +38,7 @@ import war2 from "@/assets/war 2.jpg";
 import nun from "@/assets/nun.jpg";
 import pick from "@/assets/the pickup.jpeg";
 import black from "@/assets/black.jpg";
+import com from "@/assets/com2.jpg";
 export interface Movie {
   id: string;
   title: string;
@@ -49,6 +50,15 @@ export interface Movie {
 }
 
 export const mockMovies: Movie[] = [
+  {
+    id: "com",
+    title: "Coming to America 2",
+    poster: com,
+    year: "2025",
+    genre: "Drama Comedy",
+    rating: "Rocky kimomo",
+    category: "movie"
+  },
   {
     id: "black8",
     title: "Beauty in Black S02 E8",
