@@ -89,6 +89,79 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
           
         ]
         },
+       "black8": {
+        title: "Beauty In Black S02 E8",
+        embedCode: '<IFRAME SRC="https://hglink.to/e/d2kdi9yvu072" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=420 HEIGHT=240 allowfullscreen></IFRAME>',
+        host: "Rocky kimomo",
+        downloadLinks: [
+          { quality: "720p", size: "638MB", url: "https://hglink.to/d2kdi9yvu072", type: "MP4" }
+          
+        ]
+        },
+       "black7": {
+        title: "Beauty In Black S02 E7",
+        embedCode: '<IFRAME SRC="https://hglink.to/e/uj8bl2odhfqm" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=420 HEIGHT=240 allowfullscreen></IFRAME>',
+        host: "Rocky kimomo",
+        downloadLinks: [
+          { quality: "720p", size: "638MB", url: "https://hglink.to/uj8bl2odhfqm", type: "MP4" }
+          
+        ]
+        },
+       "black6": {
+        title: "Beauty In Black S02 E6",
+        embedCode: '<IFRAME SRC="https://hglink.to/e/7ve39a9qw2oq" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=420 HEIGHT=240 allowfullscreen></IFRAME>',
+        host: "Rocky kimomo",
+        downloadLinks: [
+          { quality: "720p", size: "638MB", url: "https://hglink.to/7ve39a9qw2oq", type: "MP4" }
+          
+        ]
+        },
+       "black5": {
+        title: "Beauty In Black S02 E5",
+        embedCode: '<IFRAME SRC="https://hglink.to/e/qltzw4br7j7c" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=420 HEIGHT=240 allowfullscreen></IFRAME>',
+        host: "Rocky kimomo",
+        downloadLinks: [
+          { quality: "720p", size: "638MB", url: "https://hglink.to/qltzw4br7j7c", type: "MP4" }
+          
+        ]
+        },
+       "black4": {
+        title: "Beauty In Black S02 E4",
+        embedCode: '<IFRAME SRC="https://hglink.to/e/zn99152usbhz" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=420 HEIGHT=240 allowfullscreen></IFRAME>',
+        host: "Rocky kimomo",
+        downloadLinks: [
+          { quality: "720p", size: "638MB", url: "https://hglink.to/zn99152usbhz", type: "MP4" }
+          
+        ]
+         
+        },
+       "black3": {
+        title: "Beauty In Black S02 E3",
+        embedCode: '<IFRAME SRC="https://hglink.to/e/9av7veqydtgb" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=420 HEIGHT=240 allowfullscreen></IFRAME>',
+        host: "Rocky kimomo",
+        downloadLinks: [
+          { quality: "720p", size: "638MB", url: "https://hglink.to/9av7veqydtgb", type: "MP4" }
+          
+        ]
+        },
+       "black2": {
+        title: "Beauty In Black S02 E2",
+        embedCode: '<IFRAME SRC="https://hglink.to/e/a7zpqyfkj9tz" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=420 HEIGHT=240 allowfullscreen></IFRAME>',
+        host: "Rocky kimomo",
+        downloadLinks: [
+          { quality: "720p", size: "638MB", url: "https://hglink.to/a7zpqyfkj9tz", type: "MP4" }
+          
+        ]
+        },
+       "black1": {
+        title: "Beauty In Black S02 E1",
+        embedCode: '<IFRAME SRC="https://hglink.to/e/0g41asjxvwd9" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=420 HEIGHT=240 allowfullscreen></IFRAME>',
+        host: "Rocky kimomo",
+        downloadLinks: [
+          { quality: "720p", size: "638MB", url: "https://hglink.to/0g41asjxvwd9", type: "MP4" }
+          
+        ]
+        },
        "pickb": {
         title: "The Pickup B",
         embedCode: '<IFRAME SRC="https://hglink.to/e/66q2f9mkkrwn" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=420 HEIGHT=240 allowfullscreen></IFRAME>',
