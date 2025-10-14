@@ -49,9 +49,18 @@ export interface Movie {
 
 export const mockMovies: Movie[] = [
   {
-    id: "pick",
-    title: "The Pickup ",
-    poster: nun,
+    id: "pickb",
+    title: "The Pickup B",
+    poster: pick,
+    year: "2025",
+    genre: "Action Thriller",
+    rating: "Gaheza",
+    category: "trending"
+  },
+  {
+    id: "picka",
+    title: "The Pickup A",
+    poster: pick,
     year: "2025",
     genre: "Action Thriller",
     rating: "Gaheza",
