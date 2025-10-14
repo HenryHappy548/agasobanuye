@@ -118,6 +118,16 @@ const CommentSection = () => {
     try {
       const finalUsername = isAdmin ? "😎Rwaflix" : username;
       
+      // Block non-admin users from using the emoji or "Rwaflix" in their username
+      if (!isAdmin && (finalUsername.includes("😎") || finalUsername.toLowerCase().includes("rwaflix"))) {
+        toast({
+          title: "Invalid Username",
+          description: "Only the admin can use this username",
+          variant: "destructive",
+        });
+        return;
+      }
+      
       const validated = commentSchema.parse({ 
         username: finalUsername,
         comment: newComment 
