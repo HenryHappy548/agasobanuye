@@ -36,6 +36,7 @@ import aft from "@/assets/after.jpeg";
 import war1 from "@/assets/war1.jpg";
 import war2 from "@/assets/war 2.jpg";
 import nun from "@/assets/nun.jpg";
+import pick from "@/assets/the pickup.jpeg";
 export interface Movie {
   id: string;
   title: string;
@@ -47,6 +48,15 @@ export interface Movie {
 }
 
 export const mockMovies: Movie[] = [
+  {
+    id: "pick",
+    title: "The Pickup ",
+    poster: nun,
+    year: "2025",
+    genre: "Action Thriller",
+    rating: "Gaheza",
+    category: "trending"
+  },
   {
     id: "nun",
     title: "The Nun ",
