@@ -47,7 +47,7 @@ const Auth = () => {
       <div className="w-full max-w-md space-y-6">
         <div className="text-center space-y-2">
           <h1 className="text-3xl font-bold text-foreground">Admin Login</h1>
-          <p className="text-muted-foreground">Sign in to post as 😎Rwaflix</p>
+          <p className="text-muted-foreground">Sign in with your admin credentials</p>
         </div>
 
         <form onSubmit={handleLogin} className="space-y-4 bg-card p-6 rounded-lg border border-border">
