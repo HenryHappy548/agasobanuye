@@ -179,9 +179,17 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
           { quality: "1080p", size: "1.5GB", url: "https://www.mediafire.com/file/qtx7odcyypjzv1h/AFTERBURN.MP4/file", type: "MP4" }
           
         ]
+        },  
+      "mahb": {
+        title: "Mahrashi B",
+        embedCode: '<IFRAME SRC="https://hglink.to/e/apfco53akwso" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=420 HEIGHT=240 allowfullscreen></IFRAME>',
+        host: "Rocky kimomo",
+        downloadLinks: [
+          { quality: "1080p", size: "1.58GB", url: "https://hglink.to/apfco53akwso", type: "MP4" }
+        ]
          },  
-      "mah": {
-        title: "Mahrashi",
+      "maha": {
+        title: "Mahrashi A",
         embedCode: '<iframe src="https://streamtape.com/e/Q2Dk2gQeXJsw0D/" width="420" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
         host: "Rocky kimomo",
         downloadLinks: [
