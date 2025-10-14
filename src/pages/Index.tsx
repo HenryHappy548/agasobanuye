@@ -29,9 +29,9 @@ const Index = () => {
     setSelectedVideoId(null);
   };
 
-  const trendingMovies = mockMovies.filter(movie => movie.category === 'trending').slice(0, 6);
-  const movies = mockMovies.filter(movie => movie.category === 'movie').slice(0, 6);
-  const tvShows = mockMovies.filter(movie => movie.category === 'tv').slice(0, 6);
+  const trendingMovies = mockMovies.filter(movie => movie.category === 'trending').slice(0, 5);
+  const movies = mockMovies.filter(movie => movie.category === 'movie').slice(0, 5);
+  const tvShows = mockMovies.filter(movie => movie.category === 'tv').slice(0, 5);
 
   return (
     <div className="min-h-screen bg-background text-foreground">
