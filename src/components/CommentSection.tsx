@@ -4,8 +4,10 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
-import { Loader2 } from "lucide-react";
+import { Loader2, LogOut } from "lucide-react";
 import { z } from "zod";
+import { User } from "@supabase/supabase-js";
+import { useNavigate } from "react-router-dom";
 
 const commentSchema = z.object({
   username: z.string()
@@ -32,10 +34,25 @@ const CommentSection = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showAll, setShowAll] = useState(false);
+  const [user, setUser] = useState<User | null>(null);
+  const [isAdmin, setIsAdmin] = useState(false);
   const { toast } = useToast();
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchComments();
+    checkAuth();
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(
+      (_event, session) => {
+        setUser(session?.user ?? null);
+        if (session?.user) {
+          checkAdminStatus(session.user.id);
+        } else {
+          setIsAdmin(false);
+        }
+      }
+    );
 
     const channel = supabase
       .channel("comments-changes")
@@ -53,9 +70,28 @@ const CommentSection = () => {
       .subscribe();
 
     return () => {
+      subscription.unsubscribe();
       supabase.removeChannel(channel);
     };
   }, []);
+
+  const checkAuth = async () => {
+    const { data: { user } } = await supabase.auth.getUser();
+    setUser(user);
+    if (user) {
+      await checkAdminStatus(user.id);
+    }
+  };
+
+  const checkAdminStatus = async (userId: string) => {
+    const { data } = await supabase
+      .from("profiles")
+      .select("role")
+      .eq("user_id", userId)
+      .single();
+    
+    setIsAdmin(data?.role === "admin");
+  };
 
   const fetchComments = async () => {
     setIsLoading(true);
@@ -80,8 +116,10 @@ const CommentSection = () => {
     e.preventDefault();
 
     try {
+      const finalUsername = isAdmin ? "😎Rwaflix" : username;
+      
       const validated = commentSchema.parse({ 
-        username: username,
+        username: finalUsername,
         comment: newComment 
       });
 
@@ -90,7 +128,7 @@ const CommentSection = () => {
       const { error } = await supabase.from("comments").insert({
         comment: validated.comment,
         username: validated.username,
-        user_id: null, // Allow anonymous comments
+        user_id: user?.id || null,
       });
 
       if (error) throw error;
@@ -120,19 +158,47 @@ const CommentSection = () => {
     }
   };
 
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
+    toast({
+      title: "Logged out",
+      description: "You have been logged out successfully",
+    });
+  };
+
   return (
     <div className="w-full max-w-4xl mx-auto space-y-6">
       <div className="space-y-4">
-        <h3 className="text-2xl font-bold text-foreground">Comments</h3>
+        <div className="flex items-center justify-between">
+          <h3 className="text-2xl font-bold text-foreground">Comments</h3>
+          {!isAdmin && !user && (
+            <Button variant="outline" onClick={() => navigate("/auth")}>
+              Admin Login
+            </Button>
+          )}
+          {isAdmin && (
+            <div className="flex items-center gap-3">
+              <span className="text-sm text-muted-foreground">
+                Posting as: <span className="font-semibold text-foreground">😎Rwaflix</span>
+              </span>
+              <Button variant="outline" size="sm" onClick={handleLogout}>
+                <LogOut className="h-4 w-4 mr-2" />
+                Logout
+              </Button>
+            </div>
+          )}
+        </div>
         
         <form onSubmit={handleSubmit} className="space-y-3">
-          <Input
-            placeholder="Your name"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            maxLength={50}
-            className="bg-card text-foreground"
-          />
+          {!isAdmin && (
+            <Input
+              placeholder="Your name"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              maxLength={50}
+              className="bg-card text-foreground"
+            />
+          )}
           <Textarea
             placeholder="Share your thoughts..."
             value={newComment}
@@ -146,7 +212,7 @@ const CommentSection = () => {
             </span>
             <Button 
               type="submit" 
-              disabled={isSubmitting || !newComment.trim() || !username.trim()}
+              disabled={isSubmitting || !newComment.trim() || (!isAdmin && !username.trim())}
             >
               {isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
               Post Comment
