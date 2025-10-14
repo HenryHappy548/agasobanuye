@@ -88,6 +88,15 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
           { quality: "1080p", size: "1.5GB", url: "https://hglink.to/3hbgq5b238b", type: "MP4" }
           
         ]
+         },
+       "com": {
+        title: "Coming to America 2",
+        embedCode: '<IFRAME SRC="https://hglink.to/e/1nyeirf97vms" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=420 HEIGHT=240 allowfullscreen></IFRAME>',
+        host: "Rocky kimomo",
+        downloadLinks: [
+          { quality: "720p", size: "638MB", url: "https://hglink.to/1nyeirf97vms", type: "MP4" }
+          
+        ]
         },
        "black8": {
         title: "Beauty In Black S02 E8",
