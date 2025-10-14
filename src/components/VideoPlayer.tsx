@@ -88,8 +88,35 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
           { quality: "1080p", size: "1.5GB", url: "https://hglink.to/3hbgq5b238b", type: "MP4" }
           
         ]
+        },
+       "pickb": {
+        title: "The Pickup B",
+        embedCode: '<IFRAME SRC="https://hglink.to/e/66q2f9mkkrwn" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=420 HEIGHT=240 allowfullscreen></IFRAME>',
+        host: "Rocky kimomo",
+        downloadLinks: [
+          { quality: "720p", size: "638MB", url: "https://hglink.to/66q2f9mkkrwn", type: "MP4" }
+          
+        ]
+        },
+       "picka": {
+        title: "The Pickup A",
+        embedCode: '<IFRAME SRC="https://hglink.to/e/ic6zykl0r85w" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=420 HEIGHT=240 allowfullscreen></IFRAME>',
+        host: "Rocky kimomo",
+        downloadLinks: [
+          { quality: "1080p", size: "1.5GB", url: "https://hglink.to/ic6zykl0r85w", type: "MP4" }
+          
+        ]
         
         },
+       "picka": {
+        title: "The Pickup A",
+        embedCode: '<IFRAME SRC="https://hglink.to/e/ic6zykl0r85w" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=420 HEIGHT=240 allowfullscreen></IFRAME>',
+        host: "Rocky kimomo",
+        downloadLinks: [
+          { quality: "1080p", size: "1.5GB", url: "https://hglink.to/ic6zykl0r85w", type: "MP4" }
+          
+        ]
+       },
       "nun": {
         title: "The nun",
         embedCode: '<IFRAME SRC="https://hglink.to/e/r4415efpejjk" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=420 HEIGHT=240 allowfullscreen></IFRAME>',
