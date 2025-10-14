@@ -85,11 +85,30 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         embedCode: '<IFRAME SRC="https://hglink.to/e/3hbgq5b238bo" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=420 HEIGHT=240 allowfullscreen></IFRAME>',
         host: "Gaheza",
         downloadLinks: [
-          { quality: "1080p", size: "1.5GB", url: "https://www.mediafire.com/file/qtx7odcyypjzv1h/AFTERBURN.MP4/file", type: "MP4" }
+          { quality: "1080p", size: "1.5GB", url: "https://hglink.to/3hbgq5b238b", type: "MP4" }
+          
+        ]
+        ]
+        },
+      "nun": {
+        title: "The nun",
+        embedCode: '<IFRAME SRC="https://hglink.to/e/r4415efpejjk" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=420 HEIGHT=240 allowfullscreen></IFRAME>',
+        host: "Rocky kimomo",
+        downloadLinks: [
+          { quality: "1080p", size: "1.5GB", url: "https://hglink.to/r4415efpejjk", type: "MP4" }
           
         ]
         },
-      "war 1": {
+      "war2": {
+        title: "War (2) B",
+        embedCode: '<IFRAME SRC="https://hglink.to/e/w4qt5nfiakg2" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=420 HEIGHT=240 allowfullscreen></IFRAME>',
+        host: "Rocky kimomo",
+        downloadLinks: [
+          { quality: "1080p", size: "1.5GB", url: "https://hglink.to/w4qt5nfiakg2", type: "MP4" }
+          
+        ]
+        },
+      "war1": {
         title: "War (2) A",
         embedCode: '<IFRAME SRC="https://hglink.to/e/w4qt5nfiakg2" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=420 HEIGHT=240 allowfullscreen></IFRAME>',
         host: "Rocky kimomo",
