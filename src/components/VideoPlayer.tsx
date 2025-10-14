@@ -384,66 +384,66 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         },  
       "aar8": {
         title: "Aar Ya Paar EP8 Final",
-        embedCode: '<iframe src="https://streamtape.com/e/LvKXG3VbWpCRpPV/" width="420" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
+        embedCode: '<IFRAME SRC="https://hglink.to/e/mm7nj5b5g7sx" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=420 HEIGHT=240 allowfullscreen></IFRAME>',
         host: "Sankara",
         downloadLinks: [
-          { quality: "1080p", size: "330MB", url: "https://streamtape.com/v/LvKXG3VbWpCRpPV/S01_-_EP08_-_Final_-_Aar_Ya_Paar.mp4", type: "MP4" }
+          { quality: "1080p", size: "330MB", url: "https://hglink.to/mm7nj5b5g7sx", type: "MP4" }
         ]
         },  
       "aar7": {
         title: "Aar Ya Paar EP7",
-        embedCode: '<iframe src="https://streamtape.com/e/l2LZVJBK0as7KJd/" width="420" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
+        embedCode: '<IFRAME SRC="https://hglink.to/e/ua4d0c8ntjdo" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=420 HEIGHT=240 allowfullscreen></IFRAME>',
         host: "Sankara",
         downloadLinks: [
-          { quality: "1080p", size: "330MB", url: "https://streamtape.com/v/l2LZVJBK0as7KJd/S01_-_EP07_-_Aar_Ya_Paar.mp4", type: "MP4" }
+          { quality: "1080p", size: "330MB", url: "https://hglink.to/ua4d0c8ntjdo", type: "MP4" }
         ]
         },  
       "aar6": {
         title: "Aar Ya Paar EP6",
-        embedCode: '<iframe src="https://streamtape.com/e/Ap8B38MkDyfZAY/" width="420" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
+        embedCode: '<IFRAME SRC="https://hglink.to/e/n03c98lsxumn" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=420 HEIGHT=240 allowfullscreen></IFRAME>',
         host: "Sankara",
         downloadLinks: [
-          { quality: "1080p", size: "330MB", url: "https://streamtape.com/v/Ap8B38MkDyfZAY/S01_-_EP06_-_Aar_Ya_Paar.mp4", type: "MP4" }
+          { quality: "1080p", size: "330MB", url: "https://hglink.to/n03c98lsxumn", type: "MP4" }
         ]
         },  
       "aar5": {
         title: "Aar Ya Paar EP5",
-        embedCode: '<iframe src="https://streamtape.com/e/0RMg2prJOWsb93x/" width="420" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
+        embedCode: '<IFRAME SRC="https://hglink.to/e/tdtfq9bavzy2" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=420 HEIGHT=240 allowfullscreen></IFRAME>',
         host: "Sankara",
         downloadLinks: [
-          { quality: "1080p", size: "330MB", url: "https://streamtape.com/v/0RMg2prJOWsb93x/S01_-_EP05_-_Aar_Ya_Paar.mp4", type: "MP4" }
+          { quality: "1080p", size: "330MB", url: "https://hglink.to/tdtfq9bavzy2", type: "MP4" }
         ]
         },  
       "aar4": {
         title: "Aar Ya Paar EP4",
-        embedCode: '<iframe src="https://streamtape.com/e/3JmjKrvOQbUdOA1/" width="420" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
+        embedCode: '<IFRAME SRC="https://hglink.to/e/re5mtsizwo1a" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=420 HEIGHT=240 allowfullscreen></IFRAME>',
         host: "Sankara",
         downloadLinks: [
-          { quality: "1080p", size: "330MB", url: "https://streamtape.com/v/3JmjKrvOQbUdOA1/S01_-_EP04_-_Aar_Ya_Paar.mp4", type: "MP4" }
+          { quality: "1080p", size: "330MB", url: "https://hglink.to/re5mtsizwo1a", type: "MP4" }
         ]
         },  
       "aar3": {
         title: "Aar Ya Paar EP3",
-        embedCode: '<iframe src="https://streamtape.com/e/d3O6Gk4gqkckLrZ/" width="420" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
+        embedCode: '<IFRAME SRC="https://hglink.to/e/2rboev1ftk26" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=420 HEIGHT=240 allowfullscreen></IFRAME>',
         host: "Sankara",
         downloadLinks: [
-          { quality: "1080p", size: "330MB", url: "https://streamtape.com/v/d3O6Gk4gqkckLrZ/S01_-_EP03_-_Aar_Ya_Paar.mp4", type: "MP4" }
+          { quality: "1080p", size: "330MB", url: "https://hglink.to/2rboev1ftk26", type: "MP4" }
         ]
         },  
       "aar2": {
         title: "Aar Ya Paar EP2",
-        embedCode: '<iframe src="https://streamtape.com/e/066yBok29LsKBZ/" width="420" height="240" allowfullscreen allowtransparency allow="autoplay" scrolling="no" frameborder="0"></iframe>',
+        embedCode: '<IFRAME SRC="https://hglink.to/e/gzgo0p8aukre" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=420 HEIGHT=240 allowfullscreen></IFRAME>',
         host: "Sankara",
         downloadLinks: [
-          { quality: "1080p", size: "330MB", url: "https://streamtape.com/v/066yBok29LsKBZ/S01_-_EP02_-_Aar_Ya_Paar.mp4", type: "MP4" }
+          { quality: "1080p", size: "330MB", url: "https://hglink.to/gzgo0p8aukre", type: "MP4" }
         ]
         },  
       "aar1": {
         title: "Aar Ya Paar EP1",
-        embedCode: '<<IFRAME SRC="https://hglink.to/e/8rlj17a4z8v6" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=420 HEIGHT=240 allowfullscreen></IFRAME>',
+        embedCode: '<IFRAME SRC="https://hglink.to/e/m95rix598v4b" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=420 HEIGHT=240 allowfullscreen></IFRAME>',
         host: "Sankara",
         downloadLinks: [
-          { quality: "1080p", size: "330MB", url: "https://hglink.to/e/8rlj17a4z8v6", type: "MP4" }
+          { quality: "1080p", size: "330MB", url: "https://hglink.to/m95rix598v4b", type: "MP4" }
         ]
          },  
       "misb": {
