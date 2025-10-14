@@ -88,7 +88,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
           { quality: "1080p", size: "1.5GB", url: "https://hglink.to/3hbgq5b238b", type: "MP4" }
           
         ]
-        ]
+        
         },
       "nun": {
         title: "The nun",
