@@ -37,7 +37,7 @@ import war1 from "@/assets/war1.jpg";
 import war2 from "@/assets/war 2.jpg";
 import nun from "@/assets/nun.jpg";
 import pick from "@/assets/the pickup.jpeg";
-import black from "/@assets/black.jpg";
+import black from "@/assets/black.jpg";
 export interface Movie {
   id: string;
   title: string;
