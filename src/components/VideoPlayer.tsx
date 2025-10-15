@@ -191,8 +191,8 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
        },
       "nun": {
         title: "The nun",
-        embedCode: '<IFRAME SRC="https://hglink.to/e/r4415efpejjk" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=420 HEIGHT=240 allowfullscreen></IFRAME>',
-        host: "Rocky kimomo",
+        embedCode: '<IFRAME SRC="https://hglink.to/e/r4415efpejjk" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=400 HEIGHT=220 allowfullscreen></IFRAME>',
+        host: "Sankara",
         downloadLinks: [
           { quality: "1080p", size: "1.5GB", url: "https://hglink.to/r4415efpejjk", type: "MP4" }
           
@@ -200,10 +200,10 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         },
       "war2": {
         title: "War (2) B",
-        embedCode: '<IFRAME SRC="https://hglink.to/e/w4qt5nfiakg2" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=420 HEIGHT=240 allowfullscreen></IFRAME>',
+        embedCode: '<IFRAME SRC="https://hglink.to/e/doqjjy4ekcj9" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=400 HEIGHT=220 allowfullscreen></IFRAME>',
         host: "Rocky kimomo",
         downloadLinks: [
-          { quality: "1080p", size: "1.5GB", url: "https://hglink.to/w4qt5nfiakg2", type: "MP4" }
+          { quality: "1080p", size: "1.5GB", url: "https://hglink.to/doqjjy4ekcj9", type: "MP4" }
           
         ]
         },
