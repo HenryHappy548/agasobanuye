@@ -88,6 +88,15 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
           { quality: "1080p", size: "1.5GB", url: "https://hglink.to/3hbgq5b238b", type: "MP4" }
           
         ]
+        },
+       "sec": {
+        title: "Section 375",
+        embedCode: '<IFRAME SRC="https://hglink.to/e/24e3y8n9qzr4" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=400 HEIGHT=240 allowfullscreen></IFRAME>',
+        host: "Rocky kimomo",
+        downloadLinks: [
+          { quality: "720p", size: "1.2GB", url: "https://www.mediafire.com/file/aymp4845wgupyoq/Serction_375.mp4.mp4/file", type: "MP4" }
+          
+        ]
          },
        "com": {
         title: "Coming to America 2",
