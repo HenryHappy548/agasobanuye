@@ -41,6 +41,7 @@ import black from "@/assets/black.jpg";
 import com from "@/assets/com2.jpg";
 import sec from "@/assets/375.jpeg";
 import bag from "@/assets/Bagghi 4.jpg";
+import bus from "@/assets/Bus.jpg";
 export interface Movie {
   id: string;
   title: string;
@@ -52,6 +53,15 @@ export interface Movie {
 }
 
 export const mockMovies: Movie[] = [
+  {
+    id: "bus",
+    title: "The Lost Bus",
+    poster: bus,
+    year: "2025",
+    genre: "Action Thriller",
+    rating: "Perfect",
+    category: "trending"
+  },
   {
     id: "bag",
     title: "Bagghi 4",
