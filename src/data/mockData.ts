@@ -40,7 +40,7 @@ import pick from "@/assets/the pickup.jpeg";
 import black from "@/assets/black.jpg";
 import com from "@/assets/com2.jpg";
 import sec from "@/assets/375.jpeg";
-import bag from "@/assets/Bagghi 4.jpg";
+import bag from "@/assets/Baaghi 4.jpg";
 import bus from "@/assets/Bus.jpg";
 export interface Movie {
   id: string;
