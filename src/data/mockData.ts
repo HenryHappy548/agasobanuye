@@ -39,6 +39,7 @@ import nun from "@/assets/nun.jpg";
 import pick from "@/assets/the pickup.jpeg";
 import black from "@/assets/black.jpg";
 import com from "@/assets/com2.jpg";
+import sec from "@/assets/375.jpeg";
 export interface Movie {
   id: string;
   title: string;
@@ -50,6 +51,15 @@ export interface Movie {
 }
 
 export const mockMovies: Movie[] = [
+   {
+    id: "sec",
+    title: "Section 375",
+    poster: sec,
+    year: "2019",
+    genre: "Thriller Crime",
+    rating: "Rocky kimomo",
+    category: "trending"
+  },
   {
     id: "com",
     title: "Coming to America 2",
