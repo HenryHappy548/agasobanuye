@@ -44,6 +44,7 @@ import bag from "@/assets/Baaghi 4.jpg";
 import bus from "@/assets/Bus.jpg";
 import ply from "@/assets/play.jpeg";
 import home from "@/assets/home.jpeg";
+import sha from "@/assets/Shaman.jpg";
 export interface Movie {
   id: string;
   title: string;
@@ -55,6 +56,15 @@ export interface Movie {
 }
 
 export const mockMovies: Movie[] = [
+  {
+    id: "sham",
+    title: "The Shaman",
+    poster: sha,
+    year: "2025",
+    genre: "Horror Mystery",
+    rating: "Mungeli",
+    category: "trending"
+  },
    {
     id: "home",
     title: "The Home",
