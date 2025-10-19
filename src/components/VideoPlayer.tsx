@@ -92,7 +92,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
        "plyb": {
         title: "Play Dirty B",
         embedCode: '<IFRAME SRC="https://hglink.to/e/9cqlfveghs4q" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=400 HEIGHT=240 allowfullscreen></IFRAME>',
-        host: "Rocky kimomo",
+        host: "Gaheza",
         downloadLinks: [
           { quality: "720p", size: "800MB", url: "https://hglink.to/9cqlfveghs4q", type: "MP4" }
           
@@ -110,7 +110,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
        "sec": {
         title: "Section 375",
         embedCode: '<IFRAME SRC="https://hglink.to/e/24e3y8n9qzr4" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=400 HEIGHT=240 allowfullscreen></IFRAME>',
-        host: "Rocky kimomo",
+        host: "Gaheza",
         downloadLinks: [
           { quality: "720p", size: "1.2GB", url: "https://www.mediafire.com/file/aymp4845wgupyoq/Serction_375.mp4.mp4/file", type: "MP4" }
           
