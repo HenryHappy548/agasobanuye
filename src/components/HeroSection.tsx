@@ -23,10 +23,10 @@ const HeroSection = ({ onPlayVideo }: HeroSectionProps) => {
       <div className="relative z-10 container mx-auto px-4 sm:px-6">
         <div className="max-w-xs sm:max-w-md lg:max-w-lg xl:max-w-xl">
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3 sm:mb-4 leading-tight">
-            AfterBurn
+            The Home
           </h1>
           <p className="text-sm sm:text-base lg:text-lg text-muted-foreground mb-4 sm:mb-6 leading-relaxed line-clamp-3 sm:line-clamp-none">
-          Set ten years after a solar flare wiped out technology across the globe, Afterburn follows ex-soldier Jake (Dave Bautista), who works as a treasure hunter recovering valuable objects from the old world for powerful clients.</p>
+          The Home is a 2025 horror-thriller where a rebellious young man named Max, sentenced to community service as a superintendent at a retirement home, uncovers a terrifying secret about the forbidden fourth floor and its connection to his own past. </p>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
             <Button 
               size="lg" 
@@ -75,13 +75,13 @@ const HeroSection = ({ onPlayVideo }: HeroSectionProps) => {
               
               <div className="flex flex-wrap gap-2 text-sm">
                 <span className="bg-primary/20 text-primary px-3 py-1 rounded-full">2025</span>
-                <span className="bg-accent/50 text-accent-foreground px-3 py-1 rounded-full">Action</span>
-                <span className="bg-accent/50 text-accent-foreground px-3 py-1 rounded-full">Comedy</span>
-                <span className="bg-accent/50 text-accent-foreground px-3 py-1 rounded-full">PG-13</span>
+                <span className="bg-accent/50 text-accent-foreground px-3 py-1 rounded-full">Horror</span>
+                <span className="bg-accent/50 text-accent-foreground px-3 py-1 rounded-full">Mystery</span>
+                <span className="bg-accent/50 text-accent-foreground px-3 py-1 rounded-full">PG-10</span>
               </div>
               
               <p className="text-muted-foreground leading-relaxed">
-               Set ten years after a solar flare wiped out technology across the globe, Afterburn follows ex-soldier Jake (Dave Bautista), who works as a treasure hunter recovering valuable objects from the old world for powerful clients.
+               The Home is a 2025 horror-thriller where a rebellious young man named Max, sentenced to community service as a superintendent at a retirement home, uncovers a terrifying secret about the forbidden fourth floor and its connection to his own past.
               </p>
               
               <div className="flex flex-col sm:flex-row gap-3 pt-4">
