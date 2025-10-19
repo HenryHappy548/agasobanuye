@@ -89,6 +89,15 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
           
         ]
         },
+       "sham": {
+        title: "The Shaman",
+        embedCode: '<IFRAME SRC="https://hglink.to/e/rzrcm3o6xote" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=400 HEIGHT=240 allowfullscreen></IFRAME>',
+        host: "Mungeli",
+        downloadLinks: [
+          { quality: "720p", size: "1GB", url: "https://hglink.to/rzrcm3o6xote", type: "MP4" }
+          
+        ]
+        },
        "home": {
         title: "The Home ",
         embedCode: '<IFRAME SRC="https://hglink.to/e/fxihunwx8f3a" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=400 HEIGHT=240 allowfullscreen></IFRAME>',
