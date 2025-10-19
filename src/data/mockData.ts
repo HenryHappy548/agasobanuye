@@ -42,7 +42,7 @@ import com from "@/assets/com2.jpg";
 import sec from "@/assets/375.jpeg";
 import bag from "@/assets/Baaghi 4.jpg";
 import bus from "@/assets/Bus.jpg";
-import ply from "@/assets/play.jpg";
+import ply from "@/assets/play.jpeg";
 export interface Movie {
   id: string;
   title: string;
