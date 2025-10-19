@@ -92,7 +92,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
        "bus": {
         title: "The lost Bus",
         embedCode: '<IFRAME SRC="https://hglink.to/e/j1nyj40n2hge" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=400 HEIGHT=240 allowfullscreen></IFRAME>',
-        host: "Ambassador",
+        host: "Perfect",
         downloadLinks: [
           { quality: "720p", size: "1GB", url: "https://hglink.to/j1nyj40n2hge", type: "MP4" }
           
