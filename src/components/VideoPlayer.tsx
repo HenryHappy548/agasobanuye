@@ -89,6 +89,24 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
           
         ]
         },
+       "plyb": {
+        title: "Play Dirty B",
+        embedCode: '<IFRAME SRC="https://hglink.to/e/9cqlfveghs4q" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=400 HEIGHT=240 allowfullscreen></IFRAME>',
+        host: "Rocky kimomo",
+        downloadLinks: [
+          { quality: "720p", size: "800MB", url: "https://hglink.to/9cqlfveghs4q", type: "MP4" }
+          
+        ]
+         },
+       "plya": {
+        title: "Play Dirty A",
+        embedCode: '<IFRAME SRC="https://hglink.to/e/pai74spt8w7n" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=400 HEIGHT=240 allowfullscreen></IFRAME>',
+        host: "Rocky kimomo",
+        downloadLinks: [
+          { quality: "720p", size: "1GB", url: "https://hglink.to/pai74spt8w7n", type: "MP4" }
+          
+        ]
+        },
        "sec": {
         title: "Section 375",
         embedCode: '<IFRAME SRC="https://hglink.to/e/24e3y8n9qzr4" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=400 HEIGHT=240 allowfullscreen></IFRAME>',
