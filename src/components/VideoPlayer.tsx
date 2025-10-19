@@ -81,11 +81,11 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
       }[];
     }> = {
       "featured-movie": {
-        title: "AfterBurn (2025)",
-        embedCode: '<IFRAME SRC="https://hglink.to/e/3hbgq5b238bo" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=420 HEIGHT=240 allowfullscreen></IFRAME>',
-        host: "Gaheza",
+        title: "The Home (2025)",
+        embedCode: '<IFRAME SRC="https://hglink.to/e/fxihunwx8f3a" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=400 HEIGHT=240 allowfullscreen></IFRAME>',
+        host: "Mungeli",
         downloadLinks: [
-          { quality: "1080p", size: "1.5GB", url: "https://hglink.to/3hbgq5b238b", type: "MP4" }
+          { quality: "1080p", size: "1.5GB", url: "https://hglink.to/fxihunwx8f3a", type: "MP4" }
           
         ]
         },
