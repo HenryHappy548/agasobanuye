@@ -89,6 +89,24 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
           
         ]
         },
+       "bus": {
+        title: "The lost Bus",
+        embedCode: '<IFRAME SRC="https://hglink.to/e/j1nyj40n2hge" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=400 HEIGHT=240 allowfullscreen></IFRAME>',
+        host: "Ambassador",
+        downloadLinks: [
+          { quality: "720p", size: "1GB", url: "https://hglink.to/j1nyj40n2hge", type: "MP4" }
+          
+        ]
+        },
+       "bag": {
+        title: "Bagghi 4",
+        embedCode: '<IFRAME SRC="https://hglink.to/e/jirc7aab8p5b" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=400 HEIGHT=240 allowfullscreen></IFRAME>',
+        host: "Ambassador",
+        downloadLinks: [
+          { quality: "720p", size: "1GB", url: "https://hglink.to/jirc7aab8p5b", type: "MP4" }
+          
+        ]
+        },
        "plyb": {
         title: "Play Dirty B",
         embedCode: '<IFRAME SRC="https://hglink.to/e/9cqlfveghs4q" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=400 HEIGHT=240 allowfullscreen></IFRAME>',
