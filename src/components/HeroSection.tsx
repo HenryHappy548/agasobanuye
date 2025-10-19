@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Play, Info, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import heroImage from "@/assets/hero-featured.jpg";
+import heroImage from "@/assets/hero-featured.jpeg";
 
 interface HeroSectionProps {
   onPlayVideo: (videoId: string) => void;
@@ -70,7 +70,7 @@ const HeroSection = ({ onPlayVideo }: HeroSectionProps) => {
             
             <div className="space-y-4">
               <h2 className="text-2xl sm:text-3xl font-bold text-foreground pr-8">
-                Naked Gun (2025)
+                The Home (2025)
               </h2>
               
               <div className="flex flex-wrap gap-2 text-sm">
