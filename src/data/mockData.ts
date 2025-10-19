@@ -43,6 +43,7 @@ import sec from "@/assets/375.jpeg";
 import bag from "@/assets/Baaghi 4.jpg";
 import bus from "@/assets/Bus.jpg";
 import ply from "@/assets/play.jpeg";
+import home from "@/assets/home.jpeg";
 export interface Movie {
   id: string;
   title: string;
@@ -54,6 +55,15 @@ export interface Movie {
 }
 
 export const mockMovies: Movie[] = [
+   {
+    id: "home",
+    title: "The Home",
+    poster: home,
+    year: "2025",
+    genre: "Horror Mystery",
+    rating: "Mungeli",
+    category: "movie"
+  },
   {
     id: "plyb",
     title: "Play Dirty B",
