@@ -45,6 +45,7 @@ import bus from "@/assets/Bus.jpg";
 import ply from "@/assets/play.jpeg";
 import home from "@/assets/home.jpeg";
 import sha from "@/assets/Shaman.jpg";
+import bay from "@/assets/bay.jpg";
 export interface Movie {
   id: string;
   title: string;
@@ -56,6 +57,15 @@ export interface Movie {
 }
 
 export const mockMovies: Movie[] = [
+  {
+    id: "bay",
+    title: "Bay Watch",
+    poster: bay,
+    year: "2017",
+    genre: "Horror Mystery",
+    rating: "Rocky kimomo",
+    category: "movies"
+  },
   {
     id: "sham",
     title: "The Shaman",
