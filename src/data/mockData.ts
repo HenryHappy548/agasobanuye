@@ -103,7 +103,7 @@ export const mockMovies: Movie[] = [
   },
   {
     id: "bagb",
-    title: "Bagghi 4 A",
+    title: "Bagghi 4 B",
     poster: bag,
     year: "2025",
     genre: "Action Thriller",
@@ -112,7 +112,7 @@ export const mockMovies: Movie[] = [
   },
   {
     id: "bag",
-    title: "Bagghi 4",
+    title: "Bagghi 4 A",
     poster: bag,
     year: "2025",
     genre: "Action Thriller",
