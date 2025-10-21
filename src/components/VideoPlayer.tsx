@@ -89,6 +89,69 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
           
         ]
         },
+       "lastmen": {
+        title: "Our Last Men in Phillipine",
+        embedCode: '<IFRAME SRC="https://hglink.to/e/3xm1e6zzup1n" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=400 HEIGHT=240 allowfullscreen></IFRAME>',
+        host: "Dylan",
+        downloadLinks: [
+          { quality: "720p", size: "990MB", url: "https://hglink.to/3xm1e6zzup1n", type: "MP4" }
+          
+        ]
+        },
+       "housed2": {
+        title: "House of David S02 E2",
+        embedCode: '<IFRAME SRC="https://hglink.to/e/bovhc5z3j6fj" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=400 HEIGHT=240 allowfullscreen></IFRAME>',
+        host: "Savimbi",
+        downloadLinks: [
+          { quality: "720p", size: "280MB", url: "https://hglink.to/bovhc5z3j6fj", type: "MP4" }
+          
+        ]
+        },
+       "housed1": {
+        title: "House of David S02 E1",
+        embedCode: '<IFRAME SRC="https://hglink.to/e/mh7kuwl0a1yd" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=420 HEIGHT=200 allowfullscreen></IFRAME>',
+        host: "Savimbi",
+        downloadLinks: [
+          { quality: "720p", size: "270MB", url: "https://hglink.to/mh7kuwl0a1yd", type: "MP4" }
+          
+        ]
+        },
+       "ninja": {
+        title: "Ninja shadow of tears",
+        embedCode: '<IFRAME SRC="https://hglink.to/e/newifvj3llk9" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=400 HEIGHT=240 allowfullscreen></IFRAME>',
+        host: "Sankara",
+        downloadLinks: [
+          { quality: "720p", size: "1GB", url: "https://hglink.to/newifvj3llk9", type: "MP4" }
+          
+        ]
+        },
+       "greenr": {
+        title: "Green Lantern",
+        embedCode: '<IFRAME SRC="https://hglink.to/e/4cn18at40vvp" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=400 HEIGHT=240 allowfullscreen></IFRAME>',
+        host: "B The great",
+        downloadLinks: [
+          { quality: "720p", size: "1GB", url: "https://hglink.to/1uhmjq8gvk1e", type: "MP4" }
+          
+        ]
+        },
+       "evidence": {
+        title: "Dangerous Evidence",
+        embedCode: '<IFRAME SRC="https://hglink.to/e/1uhmjq8gvk1e" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=400 HEIGHT=240 allowfullscreen></IFRAME>',
+        host: "B The great",
+        downloadLinks: [
+          { quality: "720p", size: "1GB", url: "https://hglink.to/1uhmjq8gvk1e", type: "MP4" }
+          
+        ]
+        },
+       "bay": {
+        title: "BayWatch",
+        embedCode: '<IFRAME SRC="https://hglink.to/e/loqo0qa8toh7" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=400 HEIGHT=240 allowfullscreen></IFRAME>',
+        host: "Rocky kimomo",
+        downloadLinks: [
+          { quality: "720p", size: "1GB", url: "https://hglink.to/loqo0qa8toh7", type: "MP4" }
+          
+        ]
+        },
        "sham": {
         title: "The Shaman",
         embedCode: '<IFRAME SRC="https://hglink.to/e/rzrcm3o6xote" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=400 HEIGHT=240 allowfullscreen></IFRAME>',
