@@ -52,6 +52,7 @@ import greens from "@/assets/Green.jpg";
 import ninja from "@/assets/ninja.jpg";
 import housed from "@/assets/David.jpg";
 import lastmen from "@/assets/phil.jpg";
+import bonne from "@/assets/bonne.jpg";
 
 export interface Movie {
   id: string;
@@ -64,6 +65,24 @@ export interface Movie {
 }
 
 export const mockMovies: Movie[] = [
+   {
+    id: "bonne2",
+    title: "Bon Appetit,Your Majesty E2",
+    poster: bonne,
+    year: "2025",
+    genre: "Romance Drama ",
+    rating: "Rocky kimomo",
+    category: "tv"
+  },
+   {
+    id: "bonne1",
+    title: "Bon Appetit,Your Majesty E1",
+    poster: bag,
+    year: "2025",
+    genre: "Romance Drama",
+    rating: "Rocky kimomo",
+    category: "tv"
+  },
   {
     id: "bagb",
     title: "Bagghi 4 B",
