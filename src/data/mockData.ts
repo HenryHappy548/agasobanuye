@@ -1,3 +1,4 @@
+
 import movie1 from "@/assets/force.jpeg";
 import forcea from "@/assets/force.jpeg";
 import movie2 from "@/assets/knight.jpeg";
@@ -46,6 +47,12 @@ import ply from "@/assets/play.jpeg";
 import home from "@/assets/home.jpeg";
 import sha from "@/assets/Shaman.jpg";
 import bay from "@/assets/bay.jpg";
+import evidence from "@/assets/Evidence.jpg";
+import greens from "@/assets/Green.jpg";
+import ninja from "@/assets/ninja.jpg";
+import housed from "@/assets/David.jpg";
+import lastmen from "@/assets/phil.jpg";
+
 export interface Movie {
   id: string;
   title: string;
@@ -64,6 +71,60 @@ export const mockMovies: Movie[] = [
     year: "2017",
     genre: "Horror Mystery",
     rating: "Rocky kimomo",
+    category: "trending"
+  },
+  {
+    id: "housed2",
+    title: "House of David S02 E2",
+    poster: housed,
+    year: "2025",
+    genre: "Action Documentary",
+    rating: "Savimbi",
+    category: "tv"
+  },
+  {
+    id: "housed1",
+    title: "House of David S02 E1",
+    poster: housed,
+    year: "2025",
+    genre: "Action Documentary",
+    rating: "Savimbi",
+    category: "tv"
+  },
+  {
+    id: "evidence",
+    title: "Dangerous Evidence",
+    poster: evidence,
+    year: "2024",
+    genre: "Acrion Thriller",
+    rating: "B The Great",
+    category: "Trending"
+  },
+  {
+    id: "ninja",
+    title: "Ninja shadow tears",
+    poster: ninja,
+    year: "2013",
+    genre: "Action Thriler",
+    rating: "Sankara",
+    category: "trending"
+  },
+  {
+    id: "greens",
+    title: "Green Lantern",
+    poster: greens,
+    year: "2011",
+    genre: "Action Sci fi",
+    rating: "B The Great",
+    category: "movies"
+  },
+  {
+    id: "lastmen",
+    title: "Our Last Men In Phillipene",
+    poster: lastmen,
+    year: "1998",
+    genre: "Action Mystery",
+    rating: "Dylan",
     category: "movies"
   },
   {
