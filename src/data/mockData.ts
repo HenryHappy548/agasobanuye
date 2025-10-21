@@ -65,6 +65,24 @@ export interface Movie {
 
 export const mockMovies: Movie[] = [
   {
+    id: "bagb",
+    title: "Bagghi 4 B",
+    poster: bag,
+    year: "2025",
+    genre: "Action Thriller",
+    rating: "Rocky kimomo",
+    category: "trending"
+  },
+  {
+    id: "bag",
+    title: "Bagghi 4 A",
+    poster: bag,
+    year: "2025",
+    genre: "Action Thriller",
+    rating: "Rocky kimomo",
+    category: "trending"
+  },
+  {
     id: "bay",
     title: "Bay Watch",
     poster: bay,
@@ -172,24 +190,7 @@ export const mockMovies: Movie[] = [
     rating: "Perfect",
     category: "trending"
   },
-  {
-    id: "bagb",
-    title: "Bagghi 4 B",
-    poster: bag,
-    year: "2025",
-    genre: "Action Thriller",
-    rating: "Rocky kimomo",
-    category: "trending"
-  },
-  {
-    id: "bag",
-    title: "Bagghi 4 A",
-    poster: bag,
-    year: "2025",
-    genre: "Action Thriller",
-    rating: "Rocky kimomo",
-    category: "trending"
-  },
+  
    {
     id: "sec",
     title: "Section 375",
