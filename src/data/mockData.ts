@@ -116,7 +116,7 @@ export const mockMovies: Movie[] = [
     year: "2011",
     genre: "Action Sci fi",
     rating: "B The Great",
-    category: "movies"
+    category: "movie"
   },
   {
     id: "lastmen",
@@ -125,7 +125,7 @@ export const mockMovies: Movie[] = [
     year: "1998",
     genre: "Action Mystery",
     rating: "Dylan",
-    category: "movies"
+    category: "movie"
   },
   {
     id: "sham",
