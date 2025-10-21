@@ -115,13 +115,22 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
           { quality: "720p", size: "1GB", url: "https://hglink.to/j1nyj40n2hge", type: "MP4" }
           
         ]
+          },
+       "bagb": {
+        title: "Bagghi 4 B",
+        embedCode: '<IFRAME SRC="https://hglink.to/e/pnm5j5c4lr56" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=400 HEIGHT=240 allowfullscreen></IFRAME>',
+        host: "Rocky kimomo",
+        downloadLinks: [
+          { quality: "720p", size: "1GB", url: "https://hglink.to/pnm5j5c4lr56", type: "MP4" }
+          
+        ]
         },
        "bag": {
         title: "Bagghi 4",
-        embedCode: '<IFRAME SRC="https://hglink.to/e/jirc7aab8p5b" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=400 HEIGHT=240 allowfullscreen></IFRAME>',
-        host: "Ambassador",
+        embedCode: '<IFRAME SRC="https://hglink.to/e/46o7mqeqhslc" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=400 HEIGHT=240 allowfullscreen></IFRAME>',
+        host: "Rocky kimomo",
         downloadLinks: [
-          { quality: "720p", size: "1GB", url: "https://hglink.to/jirc7aab8p5b", type: "MP4" }
+          { quality: "720p", size: "800MB", url: "https://hglink.to/46o7mqeqhslc", type: "MP4" }
           
         ]
         },
