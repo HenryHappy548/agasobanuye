@@ -102,12 +102,21 @@ export const mockMovies: Movie[] = [
     category: "trending"
   },
   {
+    id: "bagb",
+    title: "Bagghi 4 A",
+    poster: bag,
+    year: "2025",
+    genre: "Action Thriller",
+    rating: "Rocky kimomo",
+    category: "trending"
+  },
+  {
     id: "bag",
     title: "Bagghi 4",
     poster: bag,
     year: "2025",
     genre: "Action Thriller",
-    rating: "Ambassador",
+    rating: "Rocky kimomo",
     category: "trending"
   },
    {
