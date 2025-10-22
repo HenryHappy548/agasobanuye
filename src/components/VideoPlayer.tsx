@@ -89,6 +89,60 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
           
         ]
         },
+       "celda6": {
+        title: "Prison Cell 211 Ep6",
+        embedCode: '<IFRAME SRC="https://hglink.to/e/evw11048hvzv" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=400 HEIGHT=240 allowfullscreen></IFRAME>',
+        host: "Dylan",
+        downloadLinks: [
+          { quality: "720p", size: "990MB", url: "https://www.mediafire.com/file/51vsvytpq9u24o9/Prisoner_Cell_Ep6.mp4/file", type: "MP4" }
+          
+        ]
+        },
+       "celda5": {
+        title: "Prison Cell 211 Ep5",
+        embedCode: '<IFRAME SRC="https://hglink.to/e/lfahipe7m4rp" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=400 HEIGHT=240 allowfullscreen></IFRAME>',
+        host: "Dylan",
+        downloadLinks: [
+          { quality: "720p", size: "990MB", url: "https://www.mediafire.com/file/ip1myrzpprr5rjh/Prisoner_Cell_Ep5.mp4/file", type: "MP4" }
+          
+        ]
+        },
+       "celda4": {
+        title: "Prison Cell 211 Ep4",
+        embedCode: '<IFRAME SRC="https://hglink.to/e/o9y56iti6cap" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=400 HEIGHT=240 allowfullscreen></IFRAME>',
+        host: "Dylan",
+        downloadLinks: [
+          { quality: "720p", size: "990MB", url: "https://www.mediafire.com/file/xznlsi8rkf7jtt9/Prisoner_Cell_Ep4.mp4/file", type: "MP4" }
+          
+        ]
+        },
+       "celda3": {
+        title: "Rrison Cell 211 Ep3",
+        embedCode: '<IFRAME SRC="https://hglink.to/e/6jqibhxee19c" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=400 HEIGHT=240 allowfullscreen></IFRAME>',
+        host: "Dylan",
+        downloadLinks: [
+          { quality: "720p", size: "990MB", url: "https://www.mediafire.com/file/7comcpdphygsb84/Prisoner_Cell_Ep3.mp4/file", type: "MP4" }
+          
+        ]
+        },
+       "celda2": {
+        title: "Prison Cell 211 Ep2",
+        embedCode: '<IFRAME SRC="https://hglink.to/e/slkyd1q3gvk0" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=400 HEIGHT=240 allowfullscreen></IFRAME>',
+        host: "Dylan",
+        downloadLinks: [
+          { quality: "720p", size: "990MB", url: "https://www.mediafire.com/file/nk5bn9ljnzc8p1c/Prisoner_Cell_Ep2.mp4/file", type: "MP4" }
+          
+        ]
+        },
+       "celda1": {
+        title: "Prison Cell 211 Ep1",
+        embedCode: '<IFRAME SRC="https://hglink.to/e/xvnik59lbove" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=400 HEIGHT=240 allowfullscreen></IFRAME>',
+        host: "Dylan",
+        downloadLinks: [
+          { quality: "720p", size: "990MB", url: "https://www.mediafire.com/file/avwv3hj7y3ok6gm/Prisoner_Cell_ep1.mp4/file", type: "MP4" }
+          
+        ]
+        },
        "bonne2": {
         title: "Bon Appetit, Your majesty E1",
         embedCode: '<IFRAME SRC="https://hglink.to/e/m8ocz30ojho8" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=400 HEIGHT=240 allowfullscreen></IFRAME>',
