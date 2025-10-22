@@ -919,7 +919,7 @@ export const mockMovies: Movie[] = [
   {
     id: "sweeta",
     title: "Home sweet Home A",
-    poster: home, 
+    poster: movie4, 
     year: "2025",
     genre: "Action Thriller",
     rating: "Savimbi",
