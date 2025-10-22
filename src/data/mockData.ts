@@ -1,4 +1,3 @@
-
 import movie1 from "@/assets/force.jpeg";
 import forcea from "@/assets/force.jpeg";
 import movie2 from "@/assets/knight.jpeg";
@@ -135,7 +134,7 @@ export const mockMovies: Movie[] = [
     year: "2024",
     genre: "Acrion Thriller",
     rating: "B The Great",
-    category: "Trending"
+    category: "trending"
   },
   {
     id: "ninja",
