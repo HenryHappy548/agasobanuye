@@ -52,6 +52,7 @@ import ninja from "@/assets/ninja.jpg";
 import housed from "@/assets/David.jpg";
 import lastmen from "@/assets/phil.jpg";
 import bonne from "@/assets/bonne.jpg";
+import prison from "@/assets/Celda.jpg"
 
 export interface Movie {
   id: string;
@@ -65,12 +66,57 @@ export interface Movie {
 
 export const mockMovies: Movie[] = [
    {
-    id: "bonne2",
-    title: "Bon Appetit E2",
-    poster: bonne,
+    id: "celda6",
+    title: "Prison Cell 211 E6",
+    poster: prison,
     year: "2025",
-    genre: "Romance Drama ",
-    rating: "Rocky kimomo",
+    genre: "Action Drama ",
+    rating: "Dylan Kabaka",
+    category: "tv"
+  },
+   {
+    id: "celda5",
+    title: "Prison Cell 211 E5",
+    poster: prison,
+    year: "2025",
+    genre: "Action Drama ",
+    rating: "Dylan Kabaka",
+    category: "tv"
+  },
+   {
+    id: "celda4",
+    title: "Prison Cell 211 E4",
+    poster: prison,
+    year: "2025",
+    genre: "Action Drama ",
+    rating: "Dylan Kabaka",
+    category: "tv"
+  },
+   {
+    id: "celda3",
+    title: "Prison Cell 211 E3",
+    poster: prison,
+    year: "2025",
+    genre: "Action Drama ",
+    rating: "Dylan Kabaka",
+    category: "tv"
+  },
+   {
+    id: "celda2",
+    title: "Prison Cell 211 E2",
+    poster: prison,
+    year: "2025",
+    genre: "Action Drama ",
+    rating: "Dylan Kabaka",
+    category: "tv"
+  },
+   {
+    id: "celda1",
+    title: "Prison Cell 211 E1",
+    poster: prison,
+    year: "2025",
+    genre: "Action Drama ",
+    rating: "Dylan Kabaka",
     category: "tv"
   },
    {
