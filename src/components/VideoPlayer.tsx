@@ -144,11 +144,11 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         ]
         },
        "bonne2": {
-        title: "Bon Appetit, Your majesty E1",
+        title: "Bon Appetit, Your majesty E2",
         embedCode: '<IFRAME SRC="https://hglink.to/e/m8ocz30ojho8" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=400 HEIGHT=240 allowfullscreen></IFRAME>',
         host: "Rocky kimomo",
         downloadLinks: [
-          { quality: "720p", size: "990MB", url: "https://hglink.to/m8ocz30ojho8", type: "MP4" }
+          { quality: "720p", size: "560MB", url: "https://hglink.to/m8ocz30ojho8", type: "MP4" }
           
         ]
         },
@@ -157,7 +157,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         embedCode: '<IFRAME SRC="https://hglink.to/e/c42wz8gmu7eh" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=400 HEIGHT=240 allowfullscreen></IFRAME>',
         host: "Rocky kimomo",
         downloadLinks: [
-          { quality: "720p", size: "990MB", url: "https://hglink.to/c42wz8gmu7eh", type: "MP4" }
+          { quality: "720p", size: "690MB", url: "https://hglink.to/c42wz8gmu7eh", type: "MP4" }
           
         ]
         },
