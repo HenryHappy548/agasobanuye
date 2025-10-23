@@ -119,6 +119,15 @@ export const mockMovies: Movie[] = [
     rating: "Dylan Kabaka",
     category: "tv"
   },
+  {
+    id: "bonne2",
+    title: "Bon Appetit E2",
+    poster: bonne,
+    year: "2025",
+    genre: "Romance Drama",
+    rating: "Rocky kimomo",
+    category: "tv"
+  },
    {
     id: "bonne1",
     title: "Bon Appetit E1",
