@@ -201,7 +201,7 @@ export const mockMovies: Movie[] = [
     category: "trending"
   },
   {
-    id: "greens",
+    id: "greenr",
     title: "Green Lantern",
     poster: greens,
     year: "2011",
