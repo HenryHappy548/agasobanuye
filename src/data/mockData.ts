@@ -52,7 +52,8 @@ import ninja from "@/assets/ninja.jpg";
 import housed from "@/assets/David.jpg";
 import lastmen from "@/assets/phil.jpg";
 import bonne from "@/assets/bonne.jpg";
-import prison from "@/assets/Celda.jpg"
+import prison from "@/assets/Celda.jpg";
+import nun2 from "@/assets/nun2.jpg";
 
 export interface Movie {
   id: string;
@@ -65,6 +66,15 @@ export interface Movie {
 }
 
 export const mockMovies: Movie[] = [
+  {
+    id: "nun2",
+    title: "The Nun 2",
+    poster: nun2,
+    year: "2023",
+    genre: "Horror Mystery",
+    rating: "Sankara",
+    category: "Trending"
+  },
    {
     id: "celda6",
     title: "Prison Cell 211 E6",
