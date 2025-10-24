@@ -117,7 +117,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         ]
         },
        "celda3": {
-        title: "Rrison Cell 211 Ep3",
+        title: "Prison Cell 211 Ep3",
         embedCode: '<IFRAME SRC="https://hglink.to/e/6jqibhxee19c" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=400 HEIGHT=240 allowfullscreen></IFRAME>',
         host: "Dylan",
         downloadLinks: [
@@ -202,7 +202,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         embedCode: '<IFRAME SRC="https://hglink.to/e/4cn18at40vvp" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=400 HEIGHT=240 allowfullscreen></IFRAME>',
         host: "B The great",
         downloadLinks: [
-          { quality: "720p", size: "1GB", url: "https://hglink.to/1uhmjq8gvk1e", type: "MP4" }
+          { quality: "720p", size: "1GB", url: "https://hglink.to/4cn18at40vvp", type: "MP4" }
           
         ]
         },
