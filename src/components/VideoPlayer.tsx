@@ -98,6 +98,15 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
           
         ]
         },
+       "fran": {
+        title: "I, Frankenstein",
+        embedCode: '<IFRAME SRC="https://hglink.to/e/0uem42k8p8si" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=400 HEIGHT=240 allowfullscreen></IFRAME>',
+         host: "Sankara",
+        downloadLinks: [
+          { quality: "720p", size: "990MB", url: "https://www.mediafire.com/file/cii9clb32du80ta/frankenstein_Sankara.mp4/file", type: "MP4" }
+          
+        ]
+        },
        "weaa": {
         title: "The Weapons A",
         embedCode: '<IFRAME SRC="https://hglink.to/e/m2ch6ijzqnx3" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=400 HEIGHT=240 allowfullscreen></IFRAME>',
