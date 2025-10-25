@@ -53,7 +53,7 @@ import housed from "@/assets/David.jpg";
 import lastmen from "@/assets/phil.jpg";
 import bonne from "@/assets/bonne.jpg";
 import prison from "@/assets/Celda.jpg";
-import nun2 from "@/assets/nun2.jpg";
+import wea from "@/assets/Weapons.jpg";
 
 export interface Movie {
   id: string;
@@ -67,12 +67,21 @@ export interface Movie {
 
 export const mockMovies: Movie[] = [
   {
-    id: "nun2",
-    title: "The Nun 2",
-    poster: nun2,
-    year: "2023",
+    id: "weab",
+    title: "The Weapons B",
+    poster: wea,
+    year: "2025",
     genre: "Horror Mystery",
-    rating: "Sankara",
+    rating: "Gaheza",
+    category: "Trending"
+  },
+  {
+    id: "weaa",
+    title: "The Weapons A",
+    poster: wea,
+    year: "2025",
+    genre: "Horror Mystery",
+    rating: "Gaheza",
     category: "Trending"
   },
    {
