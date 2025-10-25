@@ -89,6 +89,24 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
           
         ]
         },
+       "weab": {
+        title: "The Weapons B",
+        embedCode: '<IFRAME SRC="https://hglink.to/e/1rnvkmalqfnl" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=400 HEIGHT=240 allowfullscreen></IFRAME>',
+         host: "Gaheza",
+        downloadLinks: [
+          { quality: "720p", size: "990MB", url: "https://www.mediafire.com/file/0nux9cv1clrexzq/WEAPONS_B.mp4/file", type: "MP4" }
+          
+        ]
+        },
+       "weaa": {
+        title: "The Weapons A",
+        embedCode: '<IFRAME SRC="https://hglink.to/e/m2ch6ijzqnx3" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=400 HEIGHT=240 allowfullscreen></IFRAME>',
+        host: "Gaheza",
+        downloadLinks: [
+          { quality: "720p", size: "990MB", url: "https://hglink.to/m2ch6ijzqnx3", type: "MP4" }
+          
+        ]
+        },
        "celda6": {
         title: "Prison Cell 211 Ep6",
         embedCode: '<IFRAME SRC="https://hglink.to/e/evw11048hvzv" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=400 HEIGHT=240 allowfullscreen></IFRAME>',
