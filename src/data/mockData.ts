@@ -54,6 +54,7 @@ import lastmen from "@/assets/phil.jpg";
 import bonne from "@/assets/bonne.jpg";
 import prison from "@/assets/Celda.jpg";
 import wea from "@/assets/Weapons.jpg";
+import fran from "@/assets/fran.jpg";
 
 export interface Movie {
   id: string;
@@ -66,6 +67,16 @@ export interface Movie {
 }
 
 export const mockMovies: Movie[] = [
+  
+  {
+    id: "fran",
+    title: "I, Frankenstein",
+    poster: fran,
+    year: "2014",
+    genre: "Mystery Action",
+    rating: "Sankara",
+    category: "trending"
+  },
   {
     id: "weab",
     title: "The Weapons B",
