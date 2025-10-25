@@ -73,7 +73,7 @@ export const mockMovies: Movie[] = [
     year: "2025",
     genre: "Horror Mystery",
     rating: "Gaheza",
-    category: "Trending"
+    category: "trending"
   },
   {
     id: "weaa",
@@ -82,7 +82,7 @@ export const mockMovies: Movie[] = [
     year: "2025",
     genre: "Horror Mystery",
     rating: "Gaheza",
-    category: "Trending"
+    category: "trending"
   },
    {
     id: "celda6",
