@@ -88,6 +88,15 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
           { quality: "1080p", size: "1.5GB", url: "https://hglink.to/fxihunwx8f3a", type: "MP4" }
           
         ]
+        },
+       "cure1": {
+        title: "The Cure",
+        embedCode: '<iframe width="400" height="240" src="https://short.icu/O_7X85hjM" frameborder="0" scrolling="0" allowfullscreen></iframe>',
+         host: "Sankara",
+        downloadLinks: [
+          { quality: "720p", size: "560MB", url: "https://www.mediafire.com/file/iilh923eoo5lw4u/The+Cure+Sankara.mp4/file", type: "MP4" }
+          
+        ]
           },
        "bonne3": {
         title: "Bon Appetit, Your majesty E3",
