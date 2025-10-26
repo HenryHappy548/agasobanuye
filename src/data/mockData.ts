@@ -68,6 +68,80 @@ export interface Movie {
 }
 
 export const mockMovies: Movie[] = [
+  
+    {
+    id: "aar8",
+    title: "Aar Ya Paar EP8",
+    poster: aar,
+    year: "2022",
+    genre: "Action Thriller",
+    rating: "Sankara",
+    category: "tv"
+  },
+    {
+    id: "aar7",
+    title: "Aar Ya Paar EP7",
+    poster: aar,
+    year: "2022",
+    genre: "Action Thriller",
+    rating: "Sankara",
+    category: "tv"
+  },
+    {
+    id: "aar6",
+    title: "Aar Ya Paar EP6",
+    poster: aar,
+    year: "2022",
+    genre: "Action Thriller",
+    rating: "Sankara",
+    category: "tv"
+  },
+  
+    {
+    id: "aar5",
+    title: "Aar Ya Paar EP5",
+    poster: aar,
+    year: "2022",
+    genre: "Action Thriller",
+    rating: "Sankara",
+    category: "tv"
+  },
+    {
+    id: "aar4",
+    title: "Aar Ya Paar EP4",
+    poster: aar,
+    year: "2022",
+    genre: "Action Thriller",
+    rating: "Sankara",
+    category: "tv"
+  },
+    {
+    id: "aar3",
+    title: "Aar Ya Paar EP3",
+    poster: aar,
+    year: "2022",
+    genre: "Action Thriller",
+    rating: "Sankara",
+    category: "tv"
+  },
+    {
+    id: "aar2",
+    title: "Aar Ya Paar EP2",
+    poster: aar,
+    year: "2022",
+    genre: "Action Thriller",
+    rating: "Sankara",
+    category: "tv"
+  },
+  {
+    id: "aar1",
+    title: "Aar Ya Paar EP1",
+    poster: aar,
+    year: "2022",
+    genre: "Action Thriller",
+    rating: "Sankara",
+    category: "tv"
+  },
     {
     id: "cure1",
     title: "The Cure I",
@@ -640,79 +714,6 @@ export const mockMovies: Movie[] = [
     category: "tv"
   },
   
-    {
-    id: "aar8",
-    title: "Aar Ya Paar EP8",
-    poster: aar,
-    year: "2022",
-    genre: "Action Thriller",
-    rating: "Sankara",
-    category: "tv"
-  },
-    {
-    id: "aar7",
-    title: "Aar Ya Paar EP7",
-    poster: aar,
-    year: "2022",
-    genre: "Action Thriller",
-    rating: "Sankara",
-    category: "tv"
-  },
-    {
-    id: "aar6",
-    title: "Aar Ya Paar EP6",
-    poster: aar,
-    year: "2022",
-    genre: "Action Thriller",
-    rating: "Sankara",
-    category: "tv"
-  },
-  
-    {
-    id: "aar5",
-    title: "Aar Ya Paar EP5",
-    poster: aar,
-    year: "2022",
-    genre: "Action Thriller",
-    rating: "Sankara",
-    category: "tv"
-  },
-    {
-    id: "aar4",
-    title: "Aar Ya Paar EP4",
-    poster: aar,
-    year: "2022",
-    genre: "Action Thriller",
-    rating: "Sankara",
-    category: "tv"
-  },
-    {
-    id: "aar3",
-    title: "Aar Ya Paar EP3",
-    poster: aar,
-    year: "2022",
-    genre: "Action Thriller",
-    rating: "Sankara",
-    category: "tv"
-  },
-    {
-    id: "aar2",
-    title: "Aar Ya Paar EP2",
-    poster: aar,
-    year: "2022",
-    genre: "Action Thriller",
-    rating: "Sankara",
-    category: "tv"
-  },
-  {
-    id: "aar1",
-    title: "Aar Ya Paar EP1",
-    poster: aar,
-    year: "2022",
-    genre: "Action Thriller",
-    rating: "Sankara",
-    category: "tv"
-  },
   {
     id: "cov",
     title: "Coverant War",
