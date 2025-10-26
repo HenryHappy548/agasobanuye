@@ -55,6 +55,7 @@ import bonne from "@/assets/bonne.jpg";
 import prison from "@/assets/Celda.jpg";
 import wea from "@/assets/Weapons.jpg";
 import fran from "@/assets/fran.jpg";
+import cure1 from "@/assets/cure1.jpeg";
 
 export interface Movie {
   id: string;
@@ -67,6 +68,15 @@ export interface Movie {
 }
 
 export const mockMovies: Movie[] = [
+    {
+    id: "cure1",
+    title: "The Cure I",
+    poster: cure1,
+    year: "2020",
+    genre: "Action Thriller",
+    rating: "Sankara",
+    category: "movie"
+  },
   {
     id: "bonne3",
     title: "Bon Appetit E3",
