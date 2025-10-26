@@ -88,6 +88,15 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
           { quality: "1080p", size: "1.5GB", url: "https://hglink.to/fxihunwx8f3a", type: "MP4" }
           
         ]
+          },
+       "bonne3": {
+        title: "Bon Appetit, Your majesty E3",
+        embedCode: '<iframe width="400" height="240" src="https://short.icu/AtcOrQ4sI" frameborder="0" scrolling="0" allowfullscreen></iframe>',
+          host: "Rocky kimomo",
+        downloadLinks: [
+          { quality: "720p", size: "560MB", url: "https://www.mediafire.com/file/1by58yurxltt0sw/BONNE_APPETIT_E03.mp4/file", type: "MP4" }
+          
+        ]
         },
        "weab": {
         title: "The Weapons B",
