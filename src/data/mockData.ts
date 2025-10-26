@@ -67,6 +67,15 @@ export interface Movie {
 }
 
 export const mockMovies: Movie[] = [
+  {
+    id: "bonne3",
+    title: "Bon Appetit E3",
+    poster: bonne,
+    year: "2025",
+    genre: "Romance Drama",
+    rating: "Rocky kimomo",
+    category: "tv"
+  },
   
   {
     id: "fran",
@@ -97,7 +106,7 @@ export const mockMovies: Movie[] = [
   },
    {
     id: "celda6",
-    title: "Prison Cell 211 E6",
+    title: "Prison Cell 211 E6 Final",
     poster: prison,
     year: "2025",
     genre: "Action Drama ",
