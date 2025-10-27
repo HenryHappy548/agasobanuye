@@ -56,7 +56,7 @@ import prison from "@/assets/Celda.jpg";
 import wea from "@/assets/Weapons.jpg";
 import fran from "@/assets/fran.jpg";
 import cure1 from "@/assets/cure1.jpeg";
-import fatale from "@/assets/fatale.jpeg";
+import fatale from "@/assets/fatale.jpg";
 
 export interface Movie {
   id: string;
