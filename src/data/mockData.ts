@@ -68,7 +68,15 @@ export interface Movie {
 }
 
 export const mockMovies: Movie[] = [
-  
+  {
+    id: "bonne4",
+    title: "Bon Appetit E4",
+    poster: bonne,
+    year: "2025",
+    genre: "Romance Drama",
+    rating: "Rocky kimomo",
+    category: "tv"
+  },
     {
     id: "aar8",
     title: "Aar Ya Paar EP8",
@@ -151,15 +159,7 @@ export const mockMovies: Movie[] = [
     rating: "Sankara",
     category: "movie"
   },
-  {
-    id: "bonne4",
-    title: "Bon Appetit E4",
-    poster: bonne,
-    year: "2025",
-    genre: "Romance Drama",
-    rating: "Rocky kimomo",
-    category: "tv"
-  },
+  
   {
     id: "bonne3",
     title: "Bon Appetit E3",
