@@ -82,16 +82,88 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
     }> = {
       "featured-movie": {
         title: "The Home (2025)",
-        embedCode: '<IFRAME SRC="https://hglink.to/e/fxihunwx8f3a" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=400 HEIGHT=240 allowfullscreen></IFRAME>',
+        embedCode: '<IFRAME SRC="https://hglink.to/e/fxihunwx8f3a" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=350 HEIGHT=240 allowfullscreen></IFRAME>',
         host: "Mungeli",
         downloadLinks: [
           { quality: "1080p", size: "1.5GB", url: "https://hglink.to/fxihunwx8f3a", type: "MP4" }
           
         ]
         },
+       "vincenzoe": {
+        title: "Vincenzo E5",
+        embedCode: '<iframe width="350" height="240" src="https://short.icu/HhODjCUna" frameborder="0" scrolling="0" allowfullscreen></iframe>',
+         host: "B The Great",
+        downloadLinks: [
+          { quality: "720p", size: "380MB", url: "https://short.icu/HhODjCUna", type: "MP4" }
+          
+        ]
+        },
+       "vincenzocd": {
+        title: "Vincenzo E3&4 (Combined)",
+        embedCode: '<iframe width="350" height="240" src="https://short.icu/8colzFqjn" frameborder="0" scrolling="0" allowfullscreen></iframe>',
+         host: "B The Great",
+        downloadLinks: [
+          { quality: "720p", size: "380MB", url: "https://short.icu/8colzFqjn", type: "MP4" }
+          
+        ]
+        },
+       "vincenzoab": {
+        title: "Vincenzo 1&2 (Combined)",
+        embedCode: '<iframe width="640" height="360" src="https://short.icu/H6U2xzLZc" frameborder="0" scrolling="0" allowfullscreen></iframe>',
+         host: "B The Great",
+        downloadLinks: [
+          { quality: "720p", size: "380MB", url: "https://short.icu/H6U2xzLZc", type: "MP4" }
+          
+        ]
+        },
+       "witche": {
+        title: "The With's Game E5",
+        embedCode: '<iframe width="350" height="240" src="https://short.icu/I49FxJKqv" frameborder="0" scrolling="0" allowfullscreen></iframe>',
+         host: "B The Great",
+        downloadLinks: [
+          { quality: "720p", size: "380MB", url: "https://www.mediafire.com/file/4xpcvmgm801qpwh/The_Witch%2527s_Game_05.avi/file", type: "MP4" }
+          
+        ]
+        },
+       "witchd": {
+        title: "The With's Game E4",
+        embedCode: '<iframe width="350" height="240" src="https://short.icu/BBfzdgvxH" frameborder="0" scrolling="0" allowfullscreen></iframe>',
+         host: "B The Great",
+        downloadLinks: [
+          { quality: "720p", size: "380MB", url: "https://www.mediafire.com/file/tl4itjm0gaw2vpy/The_Witch%2527s_Game_04.avi/file", type: "MP4" }
+          
+        ]
+        },
+       "witchc": {
+        title: "The With's Game E3",
+        embedCode: '<iframe width="380" height="240" src="https://short.icu/s9-MbOwAss" frameborder="0" scrolling="0" allowfullscreen></iframe>',
+         host: "B The Great",
+        downloadLinks: [
+          { quality: "720p", size: "380MB", url: "https://www.mediafire.com/file/jot4z79ivqnqumm/The_Witch%2527s_Game_03.avi/file", type: "MP4" }
+          
+        ]
+        },
+       "witchb": {
+        title: "The With's Game E2",
+        embedCode: '<iframe width="350" height="240" src="https://short.icu/ZUwMsN3hN" frameborder="0" scrolling="0" allowfullscreen></iframe>',
+         host: "B The Great",
+        downloadLinks: [
+          { quality: "720p", size: "380MB", url: "https://www.mediafire.com/file/lkhhxd7bmymvduj/The_Witch%2527s_Game_02.avi/file", type: "MP4" }
+          
+        ]
+         },
+       "witcha": {
+        title: "The With's Game E1",
+        embedCode: '<iframe width="350" height="240" src="https://short.icu/TQS_u04ky" frameborder="0" scrolling="0" allowfullscreen></iframe>',
+         host: "B The Great",
+        downloadLinks: [
+          { quality: "720p", size: "380MB", url: "https://www.mediafire.com/file/rz2gysf77h4q5ia/The_Witch%2527s_Game_01.avi/file", type: "MP4" }
+          
+        ]
+        },
        "fataleb": {
         title: "Fatale B",
-        embedCode: '<IFRAME SRC="https://hglink.to/e/m5yi4p64c59s" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=400 HEIGHT=240 allowfullscreen></IFRAME>',
+        embedCode: '<IFRAME SRC="https://hglink.to/e/m5yi4p64c59s" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=350 HEIGHT=240 allowfullscreen></IFRAME>',
          host: "Sankara",
         downloadLinks: [
           { quality: "720p", size: "880MB", url: "https://www.mediafire.com/file/annzn8ikola0m1e/Fatale_B.mp4/file", type: "MP4" }
@@ -100,7 +172,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         },
        "fatalea": {
         title: "Fatale A",
-        embedCode: '<IFRAME SRC="https://hglink.to/e/js0c7kzwfyrr" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=400 HEIGHT=240 allowfullscreen></IFRAME>',
+        embedCode: '<IFRAME SRC="https://hglink.to/e/js0c7kzwfyrr" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=350 HEIGHT=240 allowfullscreen></IFRAME>',
          host: "Sankara",
         downloadLinks: [
           { quality: "720p", size: "560MB", url: "https://www.mediafire.com/file/vl49qxi0oh4f9nu/Fatale+A.mp4/file", type: "MP4" }
@@ -109,7 +181,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         },
        "cure1": {
         title: "The Cure",
-        embedCode: '<iframe width="400" height="240" src="https://short.icu/O_7X85hjM" frameborder="0" scrolling="0" allowfullscreen></iframe>',
+        embedCode: '<iframe width="350" height="240" src="https://short.icu/O_7X85hjM" frameborder="0" scrolling="0" allowfullscreen></iframe>',
          host: "Sankara",
         downloadLinks: [
           { quality: "720p", size: "560MB", url: "https://www.mediafire.com/file/iilh923eoo5lw4u/The+Cure+Sankara.mp4/file", type: "MP4" }
@@ -118,7 +190,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
          },
        "bonne4": {
         title: "Bon Appetit, Your majesty E4",
-        embedCode: '<IFRAME SRC="https://hglink.to/e/pex6a9xj4o82" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=400 HEIGHT=240 allowfullscreen></IFRAME>',
+        embedCode: '<IFRAME SRC="https://hglink.to/e/pex6a9xj4o82" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=350 HEIGHT=240 allowfullscreen></IFRAME>',
           host: "Rocky kimomo",
         downloadLinks: [
           { quality: "720p", size: "560MB", url: "https://www.mediafire.com/file/pzmesgycx74nnpp/BONNE+APPETIT+E04.mp4/file", type: "MP4" }
@@ -127,7 +199,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
           },
        "bonne3": {
         title: "Bon Appetit, Your majesty E3",
-        embedCode: '<iframe width="400" height="240" src="https://short.icu/AtcOrQ4sI" frameborder="0" scrolling="0" allowfullscreen></iframe>',
+        embedCode: '<iframe width="350" height="240" src="https://short.icu/AtcOrQ4sI" frameborder="0" scrolling="0" allowfullscreen></iframe>',
           host: "Rocky kimomo",
         downloadLinks: [
           { quality: "720p", size: "560MB", url: "https://www.mediafire.com/file/1by58yurxltt0sw/BONNE_APPETIT_E03.mp4/file", type: "MP4" }
@@ -136,7 +208,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         },
        "weab": {
         title: "The Weapons B",
-        embedCode: '<IFRAME SRC="https://hglink.to/e/1rnvkmalqfnl" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=400 HEIGHT=240 allowfullscreen></IFRAME>',
+        embedCode: '<IFRAME SRC="https://hglink.to/e/1rnvkmalqfnl" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=350 HEIGHT=240 allowfullscreen></IFRAME>',
          host: "Gaheza",
         downloadLinks: [
           { quality: "720p", size: "990MB", url: "https://www.mediafire.com/file/0nux9cv1clrexzq/WEAPONS_B.mp4/file", type: "MP4" }
@@ -145,7 +217,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         },
        "fran": {
         title: "I, Frankenstein",
-        embedCode: '<IFRAME SRC="https://hglink.to/e/0uem42k8p8si" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=400 HEIGHT=240 allowfullscreen></IFRAME>',
+        embedCode: '<IFRAME SRC="https://hglink.to/e/0uem42k8p8si" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=350 HEIGHT=240 allowfullscreen></IFRAME>',
          host: "Sankara",
         downloadLinks: [
           { quality: "720p", size: "990MB", url: "https://www.mediafire.com/file/cii9clb32du80ta/frankenstein_Sankara.mp4/file", type: "MP4" }
@@ -154,7 +226,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         },
        "weaa": {
         title: "The Weapons A",
-        embedCode: '<IFRAME SRC="https://hglink.to/e/m2ch6ijzqnx3" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=400 HEIGHT=240 allowfullscreen></IFRAME>',
+        embedCode: '<IFRAME SRC="https://hglink.to/e/m2ch6ijzqnx3" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=350 HEIGHT=240 allowfullscreen></IFRAME>',
         host: "Gaheza",
         downloadLinks: [
           { quality: "720p", size: "990MB", url: "https://hglink.to/m2ch6ijzqnx3", type: "MP4" }
@@ -163,7 +235,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         },
        "celda6": {
         title: "Prison Cell 211 Ep6",
-        embedCode: '<IFRAME SRC="https://hglink.to/e/evw11048hvzv" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=400 HEIGHT=240 allowfullscreen></IFRAME>',
+        embedCode: '<IFRAME SRC="https://hglink.to/e/evw11048hvzv" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=350 HEIGHT=240 allowfullscreen></IFRAME>',
         host: "Dylan",
         downloadLinks: [
           { quality: "720p", size: "990MB", url: "https://www.mediafire.com/file/51vsvytpq9u24o9/Prisoner_Cell_Ep6.mp4/file", type: "MP4" }
@@ -172,7 +244,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         },
        "celda5": {
         title: "Prison Cell 211 Ep5",
-        embedCode: '<IFRAME SRC="https://hglink.to/e/lfahipe7m4rp" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=400 HEIGHT=240 allowfullscreen></IFRAME>',
+        embedCode: '<IFRAME SRC="https://hglink.to/e/lfahipe7m4rp" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=350 HEIGHT=240 allowfullscreen></IFRAME>',
         host: "Dylan",
         downloadLinks: [
           { quality: "720p", size: "990MB", url: "https://www.mediafire.com/file/ip1myrzpprr5rjh/Prisoner_Cell_Ep5.mp4/file", type: "MP4" }
@@ -181,7 +253,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         },
        "celda4": {
         title: "Prison Cell 211 Ep4",
-        embedCode: '<IFRAME SRC="https://hglink.to/e/o9y56iti6cap" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=400 HEIGHT=240 allowfullscreen></IFRAME>',
+        embedCode: '<IFRAME SRC="https://hglink.to/e/o9y56iti6cap" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=350 HEIGHT=240 allowfullscreen></IFRAME>',
         host: "Dylan",
         downloadLinks: [
           { quality: "720p", size: "990MB", url: "https://www.mediafire.com/file/xznlsi8rkf7jtt9/Prisoner_Cell_Ep4.mp4/file", type: "MP4" }
@@ -190,7 +262,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         },
        "celda3": {
         title: "Prison Cell 211 Ep3",
-        embedCode: '<IFRAME SRC="https://hglink.to/e/6jqibhxee19c" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=400 HEIGHT=240 allowfullscreen></IFRAME>',
+        embedCode: '<IFRAME SRC="https://hglink.to/e/6jqibhxee19c" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=350 HEIGHT=240 allowfullscreen></IFRAME>',
         host: "Dylan",
         downloadLinks: [
           { quality: "720p", size: "990MB", url: "https://www.mediafire.com/file/7comcpdphygsb84/Prisoner_Cell_Ep3.mp4/file", type: "MP4" }
@@ -199,7 +271,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         },
        "celda2": {
         title: "Prison Cell 211 Ep2",
-        embedCode: '<IFRAME SRC="https://hglink.to/e/slkyd1q3gvk0" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=400 HEIGHT=240 allowfullscreen></IFRAME>',
+        embedCode: '<IFRAME SRC="https://hglink.to/e/slkyd1q3gvk0" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=350 HEIGHT=240 allowfullscreen></IFRAME>',
         host: "Dylan",
         downloadLinks: [
           { quality: "720p", size: "990MB", url: "https://www.mediafire.com/file/nk5bn9ljnzc8p1c/Prisoner_Cell_Ep2.mp4/file", type: "MP4" }
@@ -208,7 +280,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         },
        "celda1": {
         title: "Prison Cell 211 Ep1",
-        embedCode: '<IFRAME SRC="https://hglink.to/e/xvnik59lbove" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=400 HEIGHT=240 allowfullscreen></IFRAME>',
+        embedCode: '<IFRAME SRC="https://hglink.to/e/xvnik59lbove" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=350 HEIGHT=240 allowfullscreen></IFRAME>',
         host: "Dylan",
         downloadLinks: [
           { quality: "720p", size: "990MB", url: "https://www.mediafire.com/file/avwv3hj7y3ok6gm/Prisoner_Cell_ep1.mp4/file", type: "MP4" }
@@ -217,7 +289,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         },
        "bonne2": {
         title: "Bon Appetit, Your majesty E2",
-        embedCode: '<IFRAME SRC="https://hglink.to/e/m8ocz30ojho8" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=400 HEIGHT=240 allowfullscreen></IFRAME>',
+        embedCode: '<IFRAME SRC="https://hglink.to/e/m8ocz30ojho8" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=350 HEIGHT=240 allowfullscreen></IFRAME>',
         host: "Rocky kimomo",
         downloadLinks: [
           { quality: "720p", size: "560MB", url: "https://hglink.to/m8ocz30ojho8", type: "MP4" }
@@ -226,7 +298,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         },
        "bonne1": {
         title: "Bon Appetit, Your majesty E1",
-        embedCode: '<IFRAME SRC="https://hglink.to/e/c42wz8gmu7eh" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=400 HEIGHT=240 allowfullscreen></IFRAME>',
+        embedCode: '<IFRAME SRC="https://hglink.to/e/c42wz8gmu7eh" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=350 HEIGHT=240 allowfullscreen></IFRAME>',
         host: "Rocky kimomo",
         downloadLinks: [
           { quality: "720p", size: "690MB", url: "https://hglink.to/c42wz8gmu7eh", type: "MP4" }
@@ -235,7 +307,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         },
        "lastmen": {
         title: "Our Last Men in Phillipine",
-        embedCode: '<IFRAME SRC="https://hglink.to/e/3xm1e6zzup1n" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=400 HEIGHT=240 allowfullscreen></IFRAME>',
+        embedCode: '<IFRAME SRC="https://hglink.to/e/3xm1e6zzup1n" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=350 HEIGHT=240 allowfullscreen></IFRAME>',
         host: "Dylan",
         downloadLinks: [
           { quality: "720p", size: "990MB", url: "https://hglink.to/3xm1e6zzup1n", type: "MP4" }
@@ -244,7 +316,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         },
        "housed2": {
         title: "House of David S02 E2",
-        embedCode: '<IFRAME SRC="https://hglink.to/e/bovhc5z3j6fj" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=400 HEIGHT=240 allowfullscreen></IFRAME>',
+        embedCode: '<IFRAME SRC="https://hglink.to/e/bovhc5z3j6fj" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=350 HEIGHT=240 allowfullscreen></IFRAME>',
         host: "Savimbi",
         downloadLinks: [
           { quality: "720p", size: "280MB", url: "https://hglink.to/bovhc5z3j6fj", type: "MP4" }
@@ -262,7 +334,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         },
        "ninja": {
         title: "Ninja shadow of tears",
-        embedCode: '<IFRAME SRC="https://hglink.to/e/newifvj3llk9" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=400 HEIGHT=240 allowfullscreen></IFRAME>',
+        embedCode: '<IFRAME SRC="https://hglink.to/e/newifvj3llk9" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=350 HEIGHT=240 allowfullscreen></IFRAME>',
         host: "Sankara",
         downloadLinks: [
           { quality: "720p", size: "1GB", url: "https://hglink.to/newifvj3llk9", type: "MP4" }
@@ -271,7 +343,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         },
        "greenr": {
         title: "Green Lantern",
-        embedCode: '<IFRAME SRC="https://hglink.to/e/4cn18at40vvp" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=400 HEIGHT=240 allowfullscreen></IFRAME>',
+        embedCode: '<IFRAME SRC="https://hglink.to/e/4cn18at40vvp" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=350 HEIGHT=240 allowfullscreen></IFRAME>',
         host: "B The great",
         downloadLinks: [
           { quality: "720p", size: "1GB", url: "https://hglink.to/4cn18at40vvp", type: "MP4" }
@@ -280,7 +352,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         },
        "evidence": {
         title: "Dangerous Evidence",
-        embedCode: '<IFRAME SRC="https://hglink.to/e/1uhmjq8gvk1e" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=400 HEIGHT=240 allowfullscreen></IFRAME>',
+        embedCode: '<IFRAME SRC="https://hglink.to/e/1uhmjq8gvk1e" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=350 HEIGHT=240 allowfullscreen></IFRAME>',
         host: "B The great",
         downloadLinks: [
           { quality: "720p", size: "1GB", url: "https://hglink.to/1uhmjq8gvk1e", type: "MP4" }
@@ -289,7 +361,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         },
        "bay": {
         title: "BayWatch",
-        embedCode: '<IFRAME SRC="https://hglink.to/e/loqo0qa8toh7" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=400 HEIGHT=240 allowfullscreen></IFRAME>',
+        embedCode: '<IFRAME SRC="https://hglink.to/e/loqo0qa8toh7" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=350 HEIGHT=240 allowfullscreen></IFRAME>',
         host: "Rocky kimomo",
         downloadLinks: [
           { quality: "720p", size: "1GB", url: "https://hglink.to/loqo0qa8toh7", type: "MP4" }
@@ -298,7 +370,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         },
        "sham": {
         title: "The Shaman",
-        embedCode: '<IFRAME SRC="https://hglink.to/e/rzrcm3o6xote" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=400 HEIGHT=240 allowfullscreen></IFRAME>',
+        embedCode: '<IFRAME SRC="https://hglink.to/e/rzrcm3o6xote" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=350 HEIGHT=240 allowfullscreen></IFRAME>',
         host: "Mungeli",
         downloadLinks: [
           { quality: "720p", size: "1GB", url: "https://hglink.to/rzrcm3o6xote", type: "MP4" }
@@ -307,7 +379,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         },
        "home": {
         title: "The Home ",
-        embedCode: '<IFRAME SRC="https://hglink.to/e/fxihunwx8f3a" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=400 HEIGHT=240 allowfullscreen></IFRAME>',
+        embedCode: '<IFRAME SRC="https://hglink.to/e/fxihunwx8f3a" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=350 HEIGHT=240 allowfullscreen></IFRAME>',
         host: "Mungeli",
         downloadLinks: [
           { quality: "720p", size: "1GB", url: "https://hglink.to/fxihunwx8f3a", type: "MP4" }
@@ -316,7 +388,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         },
        "bus": {
         title: "The lost Bus",
-        embedCode: '<IFRAME SRC="https://hglink.to/e/j1nyj40n2hge" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=400 HEIGHT=240 allowfullscreen></IFRAME>',
+        embedCode: '<IFRAME SRC="https://hglink.to/e/j1nyj40n2hge" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=350 HEIGHT=240 allowfullscreen></IFRAME>',
         host: "Perfect",
         downloadLinks: [
           { quality: "720p", size: "1GB", url: "https://hglink.to/j1nyj40n2hge", type: "MP4" }
@@ -325,7 +397,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
           },
        "bagb": {
         title: "Bagghi 4 B",
-        embedCode: '<IFRAME SRC="https://hglink.to/e/pnm5j5c4lr56" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=400 HEIGHT=240 allowfullscreen></IFRAME>',
+        embedCode: '<IFRAME SRC="https://hglink.to/e/pnm5j5c4lr56" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=350 HEIGHT=240 allowfullscreen></IFRAME>',
         host: "Rocky kimomo",
         downloadLinks: [
           { quality: "720p", size: "1GB", url: "https://hglink.to/pnm5j5c4lr56", type: "MP4" }
@@ -334,7 +406,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         },
        "bag": {
         title: "Bagghi 4",
-        embedCode: '<IFRAME SRC="https://hglink.to/e/46o7mqeqhslc" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=400 HEIGHT=240 allowfullscreen></IFRAME>',
+        embedCode: '<IFRAME SRC="https://hglink.to/e/46o7mqeqhslc" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=350 HEIGHT=240 allowfullscreen></IFRAME>',
         host: "Rocky kimomo",
         downloadLinks: [
           { quality: "720p", size: "800MB", url: "https://hglink.to/46o7mqeqhslc", type: "MP4" }
@@ -343,7 +415,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         },
        "plyb": {
         title: "Play Dirty B",
-        embedCode: '<IFRAME SRC="https://hglink.to/e/9cqlfveghs4q" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=400 HEIGHT=240 allowfullscreen></IFRAME>',
+        embedCode: '<IFRAME SRC="https://hglink.to/e/9cqlfveghs4q" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=350 HEIGHT=240 allowfullscreen></IFRAME>',
         host: "Gaheza",
         downloadLinks: [
           { quality: "720p", size: "800MB", url: "https://hglink.to/9cqlfveghs4q", type: "MP4" }
@@ -352,7 +424,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
          },
        "plya": {
         title: "Play Dirty A",
-        embedCode: '<IFRAME SRC="https://hglink.to/e/pai74spt8w7n" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=400 HEIGHT=240 allowfullscreen></IFRAME>',
+        embedCode: '<IFRAME SRC="https://hglink.to/e/pai74spt8w7n" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=350 HEIGHT=240 allowfullscreen></IFRAME>',
         host: "Rocky kimomo",
         downloadLinks: [
           { quality: "720p", size: "1GB", url: "https://hglink.to/pai74spt8w7n", type: "MP4" }
@@ -361,7 +433,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         },
        "sec": {
         title: "Section 375",
-        embedCode: '<IFRAME SRC="https://hglink.to/e/24e3y8n9qzr4" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=400 HEIGHT=240 allowfullscreen></IFRAME>',
+        embedCode: '<IFRAME SRC="https://hglink.to/e/24e3y8n9qzr4" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=350 HEIGHT=240 allowfullscreen></IFRAME>',
         host: "Gaheza",
         downloadLinks: [
           { quality: "720p", size: "1.2GB", url: "https://www.mediafire.com/file/aymp4845wgupyoq/Serction_375.mp4.mp4/file", type: "MP4" }
@@ -470,7 +542,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
        },
       "nun": {
         title: "The nun",
-        embedCode: '<IFRAME SRC="https://hglink.to/e/r4415efpejjk" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=400 HEIGHT=220 allowfullscreen></IFRAME>',
+        embedCode: '<IFRAME SRC="https://hglink.to/e/r4415efpejjk" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=350 HEIGHT=220 allowfullscreen></IFRAME>',
         host: "Sankara",
         downloadLinks: [
           { quality: "1080p", size: "1.5GB", url: "https://hglink.to/r4415efpejjk", type: "MP4" }
@@ -479,7 +551,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         },
       "war2": {
         title: "War (2) B",
-        embedCode: '<IFRAME SRC="https://hglink.to/e/doqjjy4ekcj9" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=400 HEIGHT=220 allowfullscreen></IFRAME>',
+        embedCode: '<IFRAME SRC="https://hglink.to/e/doqjjy4ekcj9" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=350 HEIGHT=220 allowfullscreen></IFRAME>',
         host: "Rocky kimomo",
         downloadLinks: [
           { quality: "1080p", size: "1.5GB", url: "https://hglink.to/doqjjy4ekcj9", type: "MP4" }
@@ -1130,7 +1202,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
                         <div key={index} className="border border-gray-420 rounded-lg p-3">
                           <div className="flex justify-between items-center mb-2">
                             <span className="font-medium text-blue-300 text-sm">{link.quality}</span>
-                            <span className="text-xs text-gray-400">{link.size}</span>
+                            <span className="text-xs text-gray-350">{link.size}</span>
                           </div>
                           <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2">
                             <span className="text-xs text-gray-300">{link.type}</span>
@@ -1147,7 +1219,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
                       ))}
                     </div>
                   ) : (
-                    <div className="text-center py-4 text-gray-400 text-sm">
+                    <div className="text-center py-4 text-gray-350 text-sm">
                       No download links available for this movie.
                     </div>
                   )}
