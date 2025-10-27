@@ -97,6 +97,15 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
           { quality: "720p", size: "560MB", url: "https://www.mediafire.com/file/iilh923eoo5lw4u/The+Cure+Sankara.mp4/file", type: "MP4" }
           
         ]
+         },
+       "bonne4": {
+        title: "Bon Appetit, Your majesty E4",
+        embedCode: '<IFRAME SRC="https://hglink.to/e/pex6a9xj4o82" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=400 HEIGHT=240 allowfullscreen></IFRAME>',
+          host: "Rocky kimomo",
+        downloadLinks: [
+          { quality: "720p", size: "560MB", url: "https://www.mediafire.com/file/pzmesgycx74nnpp/BONNE+APPETIT+E04.mp4/file", type: "MP4" }
+          
+        ]
           },
        "bonne3": {
         title: "Bon Appetit, Your majesty E3",
