@@ -57,6 +57,8 @@ import wea from "@/assets/Weapons.jpg";
 import fran from "@/assets/fran.jpg";
 import cure1 from "@/assets/cure1.jpeg";
 import fatale from "@/assets/fatale.jpg";
+import witch from "@/assets/GOW.jpg";
+import vinc from "@/assets/vincenzo.jpg";
 
 export interface Movie {
   id: string;
@@ -69,6 +71,78 @@ export interface Movie {
 }
 
 export const mockMovies: Movie[] = [
+  {
+    id: "vincenzoe",
+    title: "Vincenzo E5",
+    poster: vinc,
+    year: "2021",
+    genre: "Drama Action",
+    rating: "B The Great",
+    category: "tv"
+  },
+  {
+    id: "vincenzocd",
+    title: "Vincenzo E4&3 </br>(Combined)",
+    poster: vinc,
+    year: "2021",
+    genre: "Drama Action",
+    rating: "B The Great",
+    category: "tv"
+  },
+  {
+    id: "vincenzoab",
+    title: "Vincenzo E1&2 </br>(Combined)",
+    poster: vinc,
+    year: "2021",
+    genre: "Drama Action",
+    rating: "B The Great",
+    category: "tv"
+  },
+  {
+    id: "witche",
+    title: "Game Of Witches E5",
+    poster: witch,
+    year: "2022",
+    genre: "Drama",
+    rating: "B The Great",
+    category: "tv"
+  },
+  {
+    id: "witchd",
+    title: "Game Of Witches E4",
+    poster: witch,
+    year: "2022",
+    genre: "Drama",
+    rating: "B The Great",
+    category: "tv"
+  },
+  {
+    id: "witchc",
+    title: "Game Of Witches E3",
+    poster: witch,
+    year: "2022",
+    genre: "Drama",
+    rating: "B The Great",
+    category: "tv"
+  },
+  {
+    id: "witchb",
+    title: "Game Of Witches E2",
+    poster: witch,
+    year: "2022",
+    genre: "Drama",
+    rating: "B The Great",
+    category: "tv"
+  },
+  {
+    id: "witcha",
+    title: "Game Of Witches E1",
+    poster: witch,
+    year: "2022",
+    genre: "Drama",
+    rating: "B The Great",
+    category: "tv"
+  },
    {
     id: "fataleb",
     title: "Fatale B",
