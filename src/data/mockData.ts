@@ -56,6 +56,7 @@ import prison from "@/assets/Celda.jpg";
 import wea from "@/assets/Weapons.jpg";
 import fran from "@/assets/fran.jpg";
 import cure1 from "@/assets/cure1.jpeg";
+import fatale from "@/assets/fatale.jpeg";
 
 export interface Movie {
   id: string;
@@ -68,6 +69,24 @@ export interface Movie {
 }
 
 export const mockMovies: Movie[] = [
+   {
+    id: "fataleb",
+    title: "Fatale B",
+    poster: fatale,
+    year: "2020",
+    genre: "Thriller Crime",
+    rating: "Rocky kimomo",
+    category: "movie"
+  },
+   {
+    id: "fataleb",
+    title: "Fatale A",
+    poster: fatale,
+    year: "2020",
+    genre: "Thriller Crime",
+    rating: "Rocky kimomo",
+    category: "movie"
+  },
   {
     id: "bonne4",
     title: "Bon Appetit E4",
