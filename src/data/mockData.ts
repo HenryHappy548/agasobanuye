@@ -152,6 +152,15 @@ export const mockMovies: Movie[] = [
     category: "movie"
   },
   {
+    id: "bonne4",
+    title: "Bon Appetit E4",
+    poster: bonne,
+    year: "2025",
+    genre: "Romance Drama",
+    rating: "Rocky kimomo",
+    category: "tv"
+  },
+  {
     id: "bonne3",
     title: "Bon Appetit E3",
     poster: bonne,
