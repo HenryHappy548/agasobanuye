@@ -71,6 +71,15 @@ export interface Movie {
 }
 
 export const mockMovies: Movie[] = [
+    {
+    id: "bonne4",
+    title: "Bon Appetit E4",
+    poster: bonne,
+    year: "2025",
+    genre: "Romance Drama",
+    rating: "Rocky kimomo",
+    category: "tv"
+  },
   {
     id: "vincenzoe",
     title: "Vincenzo E5",
@@ -82,7 +91,7 @@ export const mockMovies: Movie[] = [
   },
   {
     id: "vincenzocd",
-    title: "Vincenzo E4&3 </br>(Combined)",
+    title: "Vincenzo E4&3 (Combined)",
     poster: vinc,
     year: "2021",
     genre: "Drama Action",
@@ -91,7 +100,7 @@ export const mockMovies: Movie[] = [
   },
   {
     id: "vincenzoab",
-    title: "Vincenzo E1&2 </br>(Combined)",
+    title: "Vincenzo E1&2 (Combined)",
     poster: vinc,
     year: "2021",
     genre: "Drama Action",
@@ -161,15 +170,7 @@ export const mockMovies: Movie[] = [
     rating: "Rocky kimomo",
     category: "movie"
   },
-  {
-    id: "bonne4",
-    title: "Bon Appetit E4",
-    poster: bonne,
-    year: "2025",
-    genre: "Romance Drama",
-    rating: "Rocky kimomo",
-    category: "tv"
-  },
+
     {
     id: "aar8",
     title: "Aar Ya Paar EP8",
