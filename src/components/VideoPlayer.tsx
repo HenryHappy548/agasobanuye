@@ -89,6 +89,24 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
           
         ]
         },
+       "fataleb": {
+        title: "Fatale B",
+        embedCode: '<IFRAME SRC="https://hglink.to/e/m5yi4p64c59s" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=400 HEIGHT=240 allowfullscreen></IFRAME>',
+         host: "Sankara",
+        downloadLinks: [
+          { quality: "720p", size: "880MB", url: "https://www.mediafire.com/file/annzn8ikola0m1e/Fatale_B.mp4/file", type: "MP4" }
+          
+        ]
+        },
+       "fatalea": {
+        title: "Fatale A",
+        embedCode: '<IFRAME SRC="https://hglink.to/e/js0c7kzwfyrr" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=400 HEIGHT=240 allowfullscreen></IFRAME>',
+         host: "Sankara",
+        downloadLinks: [
+          { quality: "720p", size: "560MB", url: "https://www.mediafire.com/file/vl49qxi0oh4f9nu/Fatale+A.mp4/file", type: "MP4" }
+          
+        ]
+        },
        "cure1": {
         title: "The Cure",
         embedCode: '<iframe width="400" height="240" src="https://short.icu/O_7X85hjM" frameborder="0" scrolling="0" allowfullscreen></iframe>',
