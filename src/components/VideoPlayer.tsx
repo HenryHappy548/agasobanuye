@@ -89,6 +89,15 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
           
         ]
         },
+       "meato": {
+        title: "MIdnight Meat Train",
+        embedCode: '<IFRAME SRC="https://hglink.to/e/vwv9wxjv0sds" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=350 HEIGHT=240 allowfullscreen></IFRAME>',
+         host: "Sankara",
+        downloadLinks: [
+          { quality: "720p", size: "790MB", url: "https://www.mediafire.com/file/u2t5a2chrb5y3oo/Watch_The_Midnight_Meat_Train_2020.mp4/file", type: "MP4" }
+          
+        ]
+        },
        "vincenzoe": {
         title: "Vincenzo E5",
         embedCode: '<iframe width="350" height="240" src="https://short.icu/HhODjCUna" frameborder="0" scrolling="0" allowfullscreen></iframe>',
