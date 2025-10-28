@@ -42,10 +42,10 @@
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
-
+   <!-- Logo -->
           <url>
     <loc>https://rwaflix.store/favicon.ico</loc>
-    <lastmod>2025-10-13</lastmod>
+    <lastmod>2025-10-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
