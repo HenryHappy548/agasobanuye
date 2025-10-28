@@ -59,6 +59,7 @@ import cure1 from "@/assets/cure1.jpeg";
 import fatale from "@/assets/fatale.jpg";
 import witch from "@/assets/GOW.jpg";
 import vinc from "@/assets/vincenzo.jpg";
+import meato from "@/assets/meato.jpeg";
 
 export interface Movie {
   id: string;
@@ -71,6 +72,15 @@ export interface Movie {
 }
 
 export const mockMovies: Movie[] = [
+  {
+    id: "meato",
+    title: "Midnight Meat Train",
+    poster: meato,
+    year: "2008",
+    genre: "Action Horror",
+    rating: "Sankara",
+    category: "movie"
+  },
     {
     id: "bonne4",
     title: "Bon Appetit E4",
