@@ -190,7 +190,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
          },
        "bonne4": {
         title: "Bon Appetit, Your majesty E4",
-        embedCode: '<IFRAME SRC="https://hglink.to/e/pex6a9xj4o82" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=350 HEIGHT=240 allowfullscreen></IFRAME>',
+        embedCode: '<iframe width="350" height="240" src="https://short.icu/tcRONJCan" frameborder="0" scrolling="0" allowfullscreen></iframe>',
           host: "Rocky kimomo",
         downloadLinks: [
           { quality: "720p", size: "560MB", url: "https://www.mediafire.com/file/pzmesgycx74nnpp/BONNE+APPETIT+E04.mp4/file", type: "MP4" }
