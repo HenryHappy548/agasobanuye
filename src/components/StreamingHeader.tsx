@@ -16,9 +16,10 @@ import {
 interface StreamingHeaderProps {
   onSearch: (query: string) => void;
   searchQuery: string;
+  onPlayVideo: (videoId: string) => void;
 }
 
-const StreamingHeader = ({ onSearch, searchQuery }: StreamingHeaderProps) => {
+const StreamingHeader = ({ onSearch, searchQuery, onPlayVideo }: StreamingHeaderProps) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isSupportOpen, setIsSupportOpen] = useState(false);

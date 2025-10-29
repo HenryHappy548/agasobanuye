@@ -47,6 +47,11 @@ const FAQ = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [openItems, setOpenItems] = useState<number[]>([]);
 
+  const handlePlayVideo = (videoId: string) => {
+    // FAQ page doesn't have video player functionality
+    console.log("Video play requested:", videoId);
+  };
+
   const toggleItem = (index: number) => {
     setOpenItems(prev => 
       prev.includes(index) 
@@ -62,7 +67,7 @@ const FAQ = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <StreamingHeader onSearch={setSearchQuery} searchQuery={searchQuery} />
+      <StreamingHeader onSearch={setSearchQuery} searchQuery={searchQuery} onPlayVideo={handlePlayVideo} />
       
       <main className="container mx-auto px-4 py-8">
         <div className="max-w-3xl mx-auto">

@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { supabase } from "@/integrations/supabase/client";
 import { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 
 interface VideoPlayerProps {
   isOpen: boolean;
@@ -27,12 +28,20 @@ interface VideoData {
 const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
   const [dbVideo, setDbVideo] = useState<VideoData | null>(null);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     if (videoId && isOpen) {
       fetchVideoFromDB(videoId);
+      // Update URL when video opens
+      const currentPath = location.pathname;
+      navigate(`${currentPath}?watch=${videoId}`, { replace: true });
+    } else if (!isOpen && location.search.includes('watch=')) {
+      // Remove query param when closing
+      navigate(location.pathname, { replace: true });
     }
-  }, [videoId, isOpen]);
+  }, [videoId, isOpen, navigate, location.pathname]);
 
   const fetchVideoFromDB = async (id: string) => {
     setLoading(true);

@@ -12,7 +12,7 @@ Disallow: /admin/
 Crawl-delay: 1
 
 # Sitemap location
-Sitemap: https://rwaflix.vercel.app/sitemap.xml
+Sitemap: https://rwaflix.store/sitemap.xml
 
 # Popular search engine bots
 User-agent: Googlebot

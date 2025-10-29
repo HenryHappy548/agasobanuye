@@ -40,41 +40,97 @@ const Index = () => {
   const movies = mockMovies.filter(movie => movie.category === 'movie').slice(0, 5);
   const tvShows = mockMovies.filter(movie => movie.category === 'tv').slice(0, 5);
   const featuredMovies = mockMovies.slice(0, 20);
+  const recentlyAdded = mockMovies.slice(0, 15);
 
   return (
     <div className="min-h-screen bg-background text-foreground">
       <StreamingHeader onSearch={setSearchQuery} searchQuery={searchQuery} onPlayVideo={handlePlayVideo} />
       
-      {!searchQuery && <HeroSection onPlayVideo={handlePlayVideo} />}
-      
       {!searchQuery && (
-        <section className="container mx-auto px-4 py-6">
-          <div className="flex items-center justify-between mb-6">
-            <h2 className="text-2xl sm:text-3xl font-bold text-foreground">
-              Featured Movies
-            </h2>
+        <div className="container mx-auto px-4 py-6">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            {/* Hero Section */}
+            <div className="lg:col-span-2">
+              <HeroSection onPlayVideo={handlePlayVideo} />
+            </div>
+            
+            {/* Recently Added Section */}
+            <div className="lg:col-span-1">
+              <div className="bg-card/50 backdrop-blur-sm rounded-lg border border-border p-4 h-full">
+                <h2 className="text-xl sm:text-2xl font-bold text-foreground mb-4">
+                  Recently Added
+                </h2>
+                <Carousel
+                  opts={{
+                    align: "start",
+                    loop: true,
+                    axis: "y",
+                  }}
+                  className="w-full"
+                >
+                  <CarouselContent className="-mt-2 h-[500px]">
+                    {recentlyAdded.slice(0, 3).map((movie) => (
+                      <CarouselItem key={movie.id} className="pt-2">
+                        <div className="relative group cursor-pointer overflow-hidden rounded-lg border border-border hover:border-primary transition-all duration-300">
+                          <img
+                            src={movie.poster}
+                            alt={movie.title}
+                            className="w-full h-48 object-cover"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <Button
+                              size="lg"
+                              onClick={() => handlePlayVideo(movie.id)}
+                              className="gap-2"
+                            >
+                              <ArrowRight className="h-5 w-5" />
+                              Watch Now
+                            </Button>
+                          </div>
+                          <div className="p-3 bg-card">
+                            <h3 className="font-semibold text-sm line-clamp-1 text-foreground">{movie.title}</h3>
+                            <p className="text-xs text-muted-foreground">{movie.year}</p>
+                          </div>
+                        </div>
+                      </CarouselItem>
+                    ))}
+                  </CarouselContent>
+                  <CarouselPrevious className="top-2 left-1/2 -translate-x-1/2 rotate-90" />
+                  <CarouselNext className="bottom-2 left-1/2 -translate-x-1/2 rotate-90" />
+                </Carousel>
+              </div>
+            </div>
           </div>
-          <Carousel
-            opts={{
-              align: "start",
-              loop: true,
-            }}
-            className="w-full"
-          >
-            <CarouselContent className="-ml-2 md:-ml-4">
-              {featuredMovies.map((movie) => (
-                <CarouselItem key={movie.id} className="pl-2 md:pl-4 basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5 xl:basis-1/6">
-                  <MovieCard
-                    movie={movie}
-                    onPlay={handlePlayVideo}
-                  />
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious className="left-2" />
-            <CarouselNext className="right-2" />
-          </Carousel>
-        </section>
+          
+          {/* Featured Movies Carousel */}
+          <section className="mt-8">
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="text-2xl sm:text-3xl font-bold text-foreground">
+                Featured Movies
+              </h2>
+            </div>
+            <Carousel
+              opts={{
+                align: "start",
+                loop: true,
+              }}
+              className="w-full"
+            >
+              <CarouselContent className="-ml-2 md:-ml-4">
+                {featuredMovies.map((movie) => (
+                  <CarouselItem key={movie.id} className="pl-2 md:pl-4 basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5 xl:basis-1/6">
+                    <MovieCard
+                      movie={movie}
+                      onPlay={handlePlayVideo}
+                    />
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious className="left-2" />
+              <CarouselNext className="right-2" />
+            </Carousel>
+          </section>
+        </div>
       )}
       
       <main className="container mx-auto px-4 py-6 sm:py-8 space-y-8 sm:space-y-12">
@@ -106,9 +162,9 @@ const Index = () => {
                   Trending Now
                 </h2>
                 <Link to="/popular">
-                  <Button variant="ghost" className="group">
+                  <Button size="lg" className="group bg-primary hover:bg-primary/90 text-primary-foreground font-semibold shadow-lg">
                     View More
-                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                   </Button>
                 </Link>
               </div>
@@ -129,9 +185,9 @@ const Index = () => {
                   Popular Movies
                 </h2>
                 <Link to="/movies">
-                  <Button variant="ghost" className="group">
+                  <Button size="lg" className="group bg-primary hover:bg-primary/90 text-primary-foreground font-semibold shadow-lg">
                     View More
-                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                   </Button>
                 </Link>
               </div>
@@ -152,9 +208,9 @@ const Index = () => {
                   TV Shows
                 </h2>
                 <Link to="/tv-shows">
-                  <Button variant="ghost" className="group">
+                  <Button size="lg" className="group bg-primary hover:bg-primary/90 text-primary-foreground font-semibold shadow-lg">
                     View More
-                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                   </Button>
                 </Link>
               </div>
