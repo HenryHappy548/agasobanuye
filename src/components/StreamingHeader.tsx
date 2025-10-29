@@ -1,10 +1,9 @@
-import { Search, Menu, X, MessageCircle, Play } from "lucide-react";
+import { Search, Menu, X, MessageCircle } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import logoRwaflix from "@/assets/logo-rwaflix.png";
-import { mockMovies } from "@/data/mockData";
 import {
   Dialog,
   DialogContent,
@@ -17,15 +16,12 @@ import {
 interface StreamingHeaderProps {
   onSearch: (query: string) => void;
   searchQuery: string;
-  onPlayVideo?: (videoId: string) => void;
 }
 
-const StreamingHeader = ({ onSearch, searchQuery, onPlayVideo }: StreamingHeaderProps) => {
+const StreamingHeader = ({ onSearch, searchQuery }: StreamingHeaderProps) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isSupportOpen, setIsSupportOpen] = useState(false);
-  
-  const recentMovies = mockMovies.slice(0, 3);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -187,61 +183,6 @@ const StreamingHeader = ({ onSearch, searchQuery, onPlayVideo }: StreamingHeader
             </nav>
           </div>
         )}
-         {/* Latest Movies Section */}
-        <div className="mt-6 pt-6 border-t border-border/50">
-          <div className="flex items-center justify-between mb-4">
-            <h3 className="text-sm font-semibold text-foreground/90 uppercase tracking-wide flex items-center gap-2">
-              <span className="h-1 w-1 rounded-full bg-primary animate-pulse"></span>
-              Latest Releases
-            </h3>
-          </div>
-          <div className="grid grid-cols-3 gap-3 sm:gap-4">
-            {recentMovies.map((movie) => (
-              <div 
-                key={movie.id} 
-                className="group relative overflow-hidden rounded-lg border border-border/50 bg-card transition-all duration-300 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10 hover:-translate-y-1"
-              >
-                <div className="relative aspect-[2/3]">
-                  <img 
-                    src={movie.poster} 
-                    alt={movie.title}
-                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  
-        
-      
-                  {/* Play Button Overlay */}
-                  {onPlayVideo && (
-                    <button
-                      onClick={() => onPlayVideo(movie.id)}
-                      className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                    >
-                      <div className="bg-primary/90 backdrop-blur-sm rounded-full p-3 sm:p-4 transform scale-90 group-hover:scale-100 transition-transform duration-300">
-                        <Play className="h-5 w-5 sm:h-6 sm:w-6 text-primary-foreground fill-current" />
-                      </div>
-                    </button>
-                  )} 
-                  
-                  {/* Badge */}
-                  <div className="absolute top-2 right-2 bg-primary/90 backdrop-blur-sm px-2 py-1 rounded text-xs font-bold text-primary-foreground">
-                    NEW
-                  </div>
-                </div>
-                
-                <div className="p-2 sm:p-3">
-                  <h4 className="font-semibold text-xs sm:text-sm text-foreground line-clamp-1 mb-1">
-                    {movie.title}
-                  </h4>
-                  <div className="flex items-center justify-between text-xs text-muted-foreground">
-                    <span>{movie.year}</span>
-                    <span className="text-primary font-medium">{movie.rating}</span>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
       </div>
     </header>
   );
