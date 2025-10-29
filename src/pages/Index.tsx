@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import StreamingHeader from "@/components/StreamingHeader";
@@ -8,6 +8,7 @@ import VideoPlayer from "@/components/VideoPlayer";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { mockMovies } from "@/data/mockData";
+import { isValidVideoId, sanitizeTextInput } from "@/lib/security";
 import {
   Carousel,
   CarouselContent,
@@ -26,25 +27,36 @@ const Index = () => {
     movie.genre.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  const handlePlayVideo = (videoId: string) => {
-    setSelectedVideoId(videoId);
-    setIsPlayerOpen(true);
-  };
+  const handlePlayVideo = useCallback((videoId: string) => {
+    // Validate video ID before playing
+    if (isValidVideoId(videoId)) {
+      setSelectedVideoId(videoId);
+      setIsPlayerOpen(true);
+    } else {
+      console.error("Invalid video ID");
+    }
+  }, []);
 
-  const handleClosePlayer = () => {
+  const handleClosePlayer = useCallback(() => {
     setIsPlayerOpen(false);
     setSelectedVideoId(null);
-  };
+  }, []);
 
-  const trendingMovies = mockMovies.filter(movie => movie.category === 'trending').slice(0, 5);
-  const movies = mockMovies.filter(movie => movie.category === 'movie').slice(0, 5);
-  const tvShows = mockMovies.filter(movie => movie.category === 'tv').slice(0, 5);
+  const handleSearch = useCallback((query: string) => {
+    // Sanitize search input
+    const sanitized = sanitizeTextInput(query, 100);
+    setSearchQuery(sanitized);
+  }, []);
+
+  const trendingMovies = mockMovies.filter(movie => movie.category === 'trending').slice(0, 10);
+  const movies = mockMovies.filter(movie => movie.category === 'movie').slice(0, 10);
+  const tvShows = mockMovies.filter(movie => movie.category === 'tv').slice(0, 10);
   const featuredMovies = mockMovies.slice(0, 20);
-  const recentlyAdded = mockMovies.slice(0, 15);
+  const recentlyAdded = mockMovies.slice(0, 3);
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <StreamingHeader onSearch={setSearchQuery} searchQuery={searchQuery} onPlayVideo={handlePlayVideo} />
+      <StreamingHeader onSearch={handleSearch} searchQuery={searchQuery} onPlayVideo={handlePlayVideo} />
       
       {!searchQuery && (
         <div className="container mx-auto px-4 py-6">
@@ -60,44 +72,16 @@ const Index = () => {
                 <h2 className="text-xl sm:text-2xl font-bold text-foreground mb-4">
                   Recently Added
                 </h2>
-                <Carousel
-                  opts={{
-                    align: "start",
-                    loop: true,
-                    axis: "y",
-                  }}
-                  className="w-full"
-                >
-                  <CarouselContent className="-mt-2 h-[500px]">
-                    {recentlyAdded.slice(0, 3).map((movie) => (
-                      <CarouselItem key={movie.id} className="pt-2">
-                        <div className="relative group cursor-pointer overflow-hidden rounded-lg border border-border hover:border-primary transition-all duration-300">
-                          <img
-                            src={movie.poster}
-                            alt={movie.title}
-                            className="w-full h-48 object-cover"
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                            <Button
-                              size="lg"
-                              onClick={() => handlePlayVideo(movie.id)}
-                              className="gap-2"
-                            >
-                              <ArrowRight className="h-5 w-5" />
-                              Watch Now
-                            </Button>
-                          </div>
-                          <div className="p-3 bg-card">
-                            <h3 className="font-semibold text-sm line-clamp-1 text-foreground">{movie.title}</h3>
-                            <p className="text-xs text-muted-foreground">{movie.year}</p>
-                          </div>
-                        </div>
-                      </CarouselItem>
-                    ))}
-                  </CarouselContent>
-                  <CarouselPrevious className="top-2 left-1/2 -translate-x-1/2 rotate-90" />
-                  <CarouselNext className="bottom-2 left-1/2 -translate-x-1/2 rotate-90" />
-                </Carousel>
+                <div className="space-y-3">
+                  {recentlyAdded.slice(0, 3).map((movie) => (
+                    <div key={movie.id}>
+                      <MovieCard
+                        movie={movie}
+                        onPlay={handlePlayVideo}
+                      />
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
@@ -168,15 +152,26 @@ const Index = () => {
                   </Button>
                 </Link>
               </div>
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 sm:gap-4">
-                {trendingMovies.map((movie) => (
-                  <MovieCard
-                    key={movie.id}
-                    movie={movie}
-                    onPlay={handlePlayVideo}
-                  />
-                ))}
-              </div>
+              <Carousel
+                opts={{
+                  align: "start",
+                  loop: true,
+                }}
+                className="w-full"
+              >
+                <CarouselContent className="-ml-2 md:-ml-4">
+                  {trendingMovies.map((movie) => (
+                    <CarouselItem key={movie.id} className="pl-2 md:pl-4 basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5 xl:basis-1/6">
+                      <MovieCard
+                        movie={movie}
+                        onPlay={handlePlayVideo}
+                      />
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+                <CarouselPrevious className="left-2" />
+                <CarouselNext className="right-2" />
+              </Carousel>
             </section>
 
             <section>
@@ -191,15 +186,26 @@ const Index = () => {
                   </Button>
                 </Link>
               </div>
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 sm:gap-4">
-                {movies.map((movie) => (
-                  <MovieCard
-                    key={movie.id}
-                    movie={movie}
-                    onPlay={handlePlayVideo}
-                  />
-                ))}
-              </div>
+              <Carousel
+                opts={{
+                  align: "start",
+                  loop: true,
+                }}
+                className="w-full"
+              >
+                <CarouselContent className="-ml-2 md:-ml-4">
+                  {movies.map((movie) => (
+                    <CarouselItem key={movie.id} className="pl-2 md:pl-4 basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5 xl:basis-1/6">
+                      <MovieCard
+                        movie={movie}
+                        onPlay={handlePlayVideo}
+                      />
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+                <CarouselPrevious className="left-2" />
+                <CarouselNext className="right-2" />
+              </Carousel>
             </section>
 
             <section>
@@ -214,15 +220,26 @@ const Index = () => {
                   </Button>
                 </Link>
               </div>
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 sm:gap-4">
-                {tvShows.map((movie) => (
-                  <MovieCard
-                    key={movie.id}
-                    movie={movie}
-                    onPlay={handlePlayVideo}
-                  />
-                ))}
-              </div>
+              <Carousel
+                opts={{
+                  align: "start",
+                  loop: true,
+                }}
+                className="w-full"
+              >
+                <CarouselContent className="-ml-2 md:-ml-4">
+                  {tvShows.map((movie) => (
+                    <CarouselItem key={movie.id} className="pl-2 md:pl-4 basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5 xl:basis-1/6">
+                      <MovieCard
+                        movie={movie}
+                        onPlay={handlePlayVideo}
+                      />
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+                <CarouselPrevious className="left-2" />
+                <CarouselNext className="right-2" />
+              </Carousel>
             </section>
           </>
         )}

@@ -2,8 +2,9 @@ import { Search, Menu, X, MessageCircle } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import logoRwaflix from "@/assets/logo-rwaflix.png";
+import DOMPurify from "dompurify";
 import {
   Dialog,
   DialogContent,
@@ -31,6 +32,15 @@ const StreamingHeader = ({ onSearch, searchQuery, onPlayVideo }: StreamingHeader
   const toggleSearch = () => {
     setIsSearchOpen(!isSearchOpen);
   };
+
+  // Sanitize and validate search input
+  const handleSearchChange = useCallback((value: string) => {
+    // Sanitize HTML to prevent XSS attacks
+    const sanitized = DOMPurify.sanitize(value, { ALLOWED_TAGS: [] });
+    // Limit length to prevent abuse
+    const truncated = sanitized.slice(0, 100);
+    onSearch(truncated);
+  }, [onSearch]);
 
   return (
     <header className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
@@ -77,7 +87,8 @@ const StreamingHeader = ({ onSearch, searchQuery, onPlayVideo }: StreamingHeader
                 placeholder="Search movies and shows..."
                 className="pl-10 w-48 lg:w-64 bg-input border-border focus:border-primary"
                 value={searchQuery}
-                onChange={(e) => onSearch(e.target.value)}
+                onChange={(e) => handleSearchChange(e.target.value)}
+                maxLength={100}
               />
             </div>
 
@@ -151,7 +162,8 @@ const StreamingHeader = ({ onSearch, searchQuery, onPlayVideo }: StreamingHeader
                 placeholder="Search movies and shows..."
                 className="pl-10 w-full bg-input border-border focus:border-primary"
                 value={searchQuery}
-                onChange={(e) => onSearch(e.target.value)}
+                onChange={(e) => handleSearchChange(e.target.value)}
+                maxLength={100}
               />
             </div>
           </div>
