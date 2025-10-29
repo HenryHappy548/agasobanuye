@@ -188,28 +188,7 @@ const StreamingHeader = ({ onSearch, searchQuery, onPlayVideo }: StreamingHeader
           </div>
         )}
         
-        {/* Latest Movies Section */}
-        <div className="mt-6 pt-6 border-t border-border/50">
-          <div className="flex items-center justify-between mb-4">
-            <h3 className="text-sm font-semibold text-foreground/90 uppercase tracking-wide flex items-center gap-2">
-              <span className="h-1 w-1 rounded-full bg-primary animate-pulse"></span>
-              Latest Releases
-            </h3>
-          </div>
-          <div className="grid grid-cols-3 gap-3 sm:gap-4">
-            {recentMovies.map((movie) => (
-              <div 
-                key={movie.id} 
-                className="group relative overflow-hidden rounded-lg border border-border/50 bg-card transition-all duration-300 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10 hover:-translate-y-1"
-              >
-                <div className="relative aspect-[2/3]">
-                  <img 
-                    src={movie.poster} 
-                    alt={movie.title}
-                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  
+      
                   {/* Play Button Overlay */}
                   {onPlayVideo && (
                     <button
@@ -220,7 +199,7 @@ const StreamingHeader = ({ onSearch, searchQuery, onPlayVideo }: StreamingHeader
                         <Play className="h-5 w-5 sm:h-6 sm:w-6 text-primary-foreground fill-current" />
                       </div>
                     </button>
-                  )}
+                  )} 
                   
                   {/* Badge */}
                   <div className="absolute top-2 right-2 bg-primary/90 backdrop-blur-sm px-2 py-1 rounded text-xs font-bold text-primary-foreground">
