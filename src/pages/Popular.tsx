@@ -29,7 +29,7 @@ const Popular = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <StreamingHeader onSearch={setSearchQuery} searchQuery={searchQuery} />
+      <StreamingHeader onSearch={setSearchQuery} searchQuery={searchQuery} onPlayVideo={handlePlayVideo} />
       
       <main className="container mx-auto px-4 py-6 sm:py-8">
         <div className="mb-6 sm:mb-8">
