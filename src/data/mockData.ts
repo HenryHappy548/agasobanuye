@@ -3,11 +3,12 @@ import forcea from "@/assets/force.jpeg";
 import movie2 from "@/assets/knight.jpeg";
 import movie3 from "@/assets/movie-3.jpg";
 import movie4 from "@/assets/Home sweet home.jpeg";
+// homeSweet is imported on line 10
 import movie5 from "@/assets/Of king.jpg";
 import movie6 from "@/assets/Of king.jpg";
 import movie13 from "@/assets/Of king.jpg"; 
 import movie14 from "@/assets/Of king.jpg";
-import home from "@/assets/Home sweet home.jpeg";
+import homeSweet from "@/assets/Home sweet home.jpeg";
 import man from "@/assets/A working man.jpeg";
 import mana from "@/assets/A working man.jpeg";
 import men from "@/assets/men.jpeg";

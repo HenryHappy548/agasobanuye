@@ -8,6 +8,13 @@ import VideoPlayer from "@/components/VideoPlayer";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { mockMovies } from "@/data/mockData";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 const Index = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -32,12 +39,43 @@ const Index = () => {
   const trendingMovies = mockMovies.filter(movie => movie.category === 'trending').slice(0, 5);
   const movies = mockMovies.filter(movie => movie.category === 'movie').slice(0, 5);
   const tvShows = mockMovies.filter(movie => movie.category === 'tv').slice(0, 5);
+  const featuredMovies = mockMovies.slice(0, 20);
 
   return (
     <div className="min-h-screen bg-background text-foreground">
       <StreamingHeader onSearch={setSearchQuery} searchQuery={searchQuery} />
       
       {!searchQuery && <HeroSection onPlayVideo={handlePlayVideo} />}
+      
+      {!searchQuery && (
+        <section className="container mx-auto px-4 py-6">
+          <div className="flex items-center justify-between mb-6">
+            <h2 className="text-2xl sm:text-3xl font-bold text-foreground">
+              Featured Movies
+            </h2>
+          </div>
+          <Carousel
+            opts={{
+              align: "start",
+              loop: true,
+            }}
+            className="w-full"
+          >
+            <CarouselContent className="-ml-2 md:-ml-4">
+              {featuredMovies.map((movie) => (
+                <CarouselItem key={movie.id} className="pl-2 md:pl-4 basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5 xl:basis-1/6">
+                  <MovieCard
+                    movie={movie}
+                    onPlay={handlePlayVideo}
+                  />
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="left-2" />
+            <CarouselNext className="right-2" />
+          </Carousel>
+        </section>
+      )}
       
       <main className="container mx-auto px-4 py-6 sm:py-8 space-y-8 sm:space-y-12">
         {searchQuery ? (
