@@ -43,7 +43,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <StreamingHeader onSearch={setSearchQuery} searchQuery={searchQuery} />
+      <StreamingHeader onSearch={setSearchQuery} searchQuery={searchQuery} onPlayVideo={handlePlayVideo} />
       
       {!searchQuery && <HeroSection onPlayVideo={handlePlayVideo} />}
       
