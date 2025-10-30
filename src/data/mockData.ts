@@ -78,7 +78,7 @@ export const mockMovies: Movie[] = [
   {
     id: "mine",
     title: "Minecraft",
-    poster: yard,
+    poster: mine,
     year: "2025",
     genre: "Action Adventure",
     rating: "Gaheza",
