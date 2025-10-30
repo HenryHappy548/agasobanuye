@@ -78,7 +78,7 @@ export interface Movie {
 export const mockMovies: Movie[] = [
   {
     id: "siren3",
-    title: "Siren E3 (Upcoming),
+    title: "Siren E3 (Upcoming)",
     poster: siren,
     year: "2018",
     genre: "Horror",
@@ -87,7 +87,7 @@ export const mockMovies: Movie[] = [
   },
   {
     id: "siren2",
-    title: "Siren E2 (Upcoming),
+    title: "Siren E2 (Upcoming)",
     poster: siren,
     year: "2018",
     genre: "Horror",
@@ -96,7 +96,7 @@ export const mockMovies: Movie[] = [
   },
    {
     id: "siren1",
-    title: "Siren E1 (Upcoming),
+    title: "Siren E1 (Upcoming)",
     poster: siren,
     year: "2018",
     genre: "Horror",
