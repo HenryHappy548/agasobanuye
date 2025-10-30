@@ -100,7 +100,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         },
        "mine": {
         title: "Minecraft",
-        embedCode: '',
+        embedCode: '<iframe width="350" height="250" src="https://short.icu/zw-8aAUIU" frameborder="0" scrolling="0" allowfullscreen></iframe>',
          host: "Gaheza",
         downloadLinks: [
           { quality: "720p", size: "900MB", url: "https://www.mediafire.com/file/bq35jg0s724ajhm/Minecraft.mp4/file?dkey=d181baz4kps&r=1847", type: "MP4" }
