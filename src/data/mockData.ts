@@ -62,6 +62,7 @@ import witch from "@/assets/GOW.jpg";
 import vinc from "@/assets/vincenzo.jpg";
 import meato from "@/assets/meato.jpeg";
 import yard from "@/assets/Woman-in-the-Yard.jpg";
+import mine from "@/assets/minecraft.jpeg";
 
 export interface Movie {
   id: string;
@@ -74,6 +75,15 @@ export interface Movie {
 }
 
 export const mockMovies: Movie[] = [
+  {
+    id: "mine",
+    title: "Minecraft",
+    poster: yard,
+    year: "2025",
+    genre: "Action Adventure",
+    rating: "Gaheza",
+    category: "trending"
+  },
   {
     id: "yard",
     title: "Woman In The Yard",
