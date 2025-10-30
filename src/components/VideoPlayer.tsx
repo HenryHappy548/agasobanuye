@@ -98,6 +98,33 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
           
         ]
         },
+       "siren3": {
+        title: "",
+        embedCode: '<IFRAME SRC="https://hglink.to/e/5uryb0geo4b1" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=300 HEIGHT=240 allowfullscreen></IFRAME>',
+         host: "Gaheza",
+        downloadLinks: [
+          { quality: "720p", size: "900MB", url: "https://www.mediafire.com/file/jtir52hga9i9a0e/Siren_S01e03.mp4/file", type: "MP4" }
+          
+        ]
+        },
+       "siren2": {
+        title: "",
+        embedCode: '<iframe width="300" height="240" src="https://short.icu/43z41w5Dbr" frameborder="0" scrolling="0" allowfullscreen></iframe>',
+         host: "Gaheza",
+        downloadLinks: [
+          { quality: "720p", size: "900MB", url: "https://www.mediafire.com/file/tjmd7o11c7kh3nw/Siren_S01e02.mp4/file", type: "MP4" }
+          
+        ]
+         },
+       "siren1": {
+        title: "Siren",
+        embedCode: '<IFRAME SRC="https://hglink.to/e/4opfmlwuz8cj" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=300 HEIGHT=240 allowfullscreen></IFRAME>',
+         host: "Gaheza",
+        downloadLinks: [
+          { quality: "720p", size: "900MB", url: "https://www.mediafire.com/file/l5y6c4ebhbiz4qa/Siren_S01e01.mp4/file", type: "MP4" }
+          
+        ]
+        },
        "mine": {
         title: "Minecraft",
         embedCode: '<iframe width="350" height="250" src="https://short.icu/zw-8aAUIU" frameborder="0" scrolling="0" allowfullscreen></iframe>',
@@ -109,7 +136,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         },
        "yard": {
         title: "The Woman In The Yard",
-        embedCode: '<iframe width="350" height="240" src="https://short.icu/H15RJm_Tm" frameborder="0" scrolling="0" allowfullscreen></iframe>',
+        embedCode: '<IFRAME SRC="https://hglink.to/e/b7nadema95uz" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=300 HEIGHT=240 allowfullscreen></IFRAME>',
          host: "Gaheza",
         downloadLinks: [
           { quality: "720p", size: "800MB", url: "https://www.mediafire.com/file/y6szm157tskgydb/The+Woman+In+The+Yard.mp4/file?dkey=hptwyw6ul21&r=812", type: "MP4" }
