@@ -98,6 +98,15 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
           
         ]
         },
+       "mine": {
+        title: "Minecraft",
+        embedCode: '',
+         host: "Gaheza",
+        downloadLinks: [
+          { quality: "720p", size: "900MB", url: "https://www.mediafire.com/file/bq35jg0s724ajhm/Minecraft.mp4/file?dkey=d181baz4kps&r=1847", type: "MP4" }
+          
+        ]
+        },
        "yard": {
         title: "The Woman In The Yard",
         embedCode: '<iframe width="350" height="240" src="https://short.icu/H15RJm_Tm" frameborder="0" scrolling="0" allowfullscreen></iframe>',
