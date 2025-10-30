@@ -63,6 +63,7 @@ import vinc from "@/assets/vincenzo.jpg";
 import meato from "@/assets/meato.jpeg";
 import yard from "@/assets/Woman-in-the-Yard.jpg";
 import mine from "@/assets/minecraft.jpeg";
+import siren from "@/assets/Siren.jpg";
 
 export interface Movie {
   id: string;
@@ -75,6 +76,33 @@ export interface Movie {
 }
 
 export const mockMovies: Movie[] = [
+  {
+    id: "siren3",
+    title: "Siren E3 (Upcoming),
+    poster: siren,
+    year: "2018",
+    genre: "Horror",
+    rating: "Gaheza",
+    category: "tv"
+  },
+  {
+    id: "siren2",
+    title: "Siren E2 (Upcoming),
+    poster: siren,
+    year: "2018",
+    genre: "Horror",
+    rating: "Gaheza",
+    category: "tv"
+  },
+   {
+    id: "siren1",
+    title: "Siren E1 (Upcoming),
+    poster: siren,
+    year: "2018",
+    genre: "Horror",
+    rating: "Gaheza",
+    category: "tv"
+  },
   {
     id: "mine",
     title: "Minecraft",
