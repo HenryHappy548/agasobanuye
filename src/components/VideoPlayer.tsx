@@ -98,6 +98,15 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
           
         ]
         },
+       "yard": {
+        title: "The Woman In The Yard",
+        embedCode: '<iframe width="350" height="240" src="https://short.icu/H15RJm_Tm" frameborder="0" scrolling="0" allowfullscreen></iframe>',
+         host: "Gaheza",
+        downloadLinks: [
+          { quality: "720p", size: "800MB", url: "https://www.mediafire.com/file/y6szm157tskgydb/The+Woman+In+The+Yard.mp4/file?dkey=hptwyw6ul21&r=812", type: "MP4" }
+          
+        ]
+        },
        "meato": {
         title: "MIdnight Meat Train",
         embedCode: '<IFRAME SRC="https://hglink.to/e/vwv9wxjv0sds" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=350 HEIGHT=240 allowfullscreen></IFRAME>',
