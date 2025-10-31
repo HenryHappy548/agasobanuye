@@ -98,6 +98,15 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
           
         ]
         },
+       "malef": {
+        title: "Maleficent",
+        embedCode: '<iframe width="400" height="240" src="https://short.icu/diyS3HBM3" frameborder="0" scrolling="0" allowfullscreen></iframe>',
+         host: "Sankara",
+        downloadLinks: [
+          { quality: "720p", size: "900MB", url: "https://www.mediafire.com/file/ygqwxgu0lwx0q2x/Malficent+Sankra.mp4/file", type: "MP4" }
+          
+        ]
+        },
        "siren3": {
         title: "Siren E3",
         embedCode: '<iframe width="400" height="240" src="https://short.icu/llKtNTDPO" frameborder="0" scrolling="0" allowfullscreen></iframe>',
