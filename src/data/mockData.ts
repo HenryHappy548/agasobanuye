@@ -64,6 +64,7 @@ import meato from "@/assets/meato.jpeg";
 import yard from "@/assets/Woman-in-the-Yard.jpg";
 import mine from "@/assets/minecraft.jpeg";
 import siren from "@/assets/Siren.jpg";
+import malef from "@/assets/malef.jpg";
 
 export interface Movie {
   id: string;
@@ -76,6 +77,17 @@ export interface Movie {
 }
 
 export const mockMovies: Movie[] = [
+  {
+    id: "malef",
+    title: "Maleficent",
+    poster: malef,
+    year: "2014",
+    genre: "Sci fi",
+    rating: "Sankara",
+    category: "trending"
+  },
+
+  
   {
     id: "siren3",
     title: "Siren E3",
