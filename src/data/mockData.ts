@@ -66,6 +66,7 @@ import mine from "@/assets/minecraft.jpeg";
 import siren from "@/assets/Siren.jpg";
 import malef from "@/assets/malef.jpg";
 import dangal from "@/assets/Dangal.jpeg";
+import bloodr from "@/assets/bloodr.jpeg";
 
 export interface Movie {
   id: string;
@@ -78,10 +79,46 @@ export interface Movie {
 }
 
 export const mockMovies: Movie[] = [
-   
+  {
+    id: "Bloodr4",
+    title: "Blood River E4 (Upcoming)",
+    poster: bloodr,
+    year: "2025",
+    genre: "Thriller",
+    rating: "B The Great",
+    category: "tv"
+  },
+  {
+    id: "Bloodr3",
+    title: "Blood River E3 (Upcoming)",
+    poster: bloodr,
+    year: "2025",
+    genre: "Thriller",
+    rating: "B The Great",
+    category: "tv"
+  },
+  {
+    id: "Bloodr2",
+    title: "Blood River E2 (Upcoming)",
+    poster: bloodr,
+    year: "2025",
+    genre: "Thriller",
+    rating: "B The Great",
+    category: "tv"
+  },
+  
+  {
+    id: "Bloodr1",
+    title: "Blood River E1 (Upcoming)",
+    poster: bloodr,
+    year: "2025",
+    genre: "Thriller",
+    rating: "B The Great",
+    category: "tv"
+  },
   {
     id: "dangal",
-    title: "Dangal",
+    title: "Dangal (Upcoming)",
     poster: malef,
     year: "2016",
     genre: "Action Sport",
