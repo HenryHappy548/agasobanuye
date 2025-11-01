@@ -89,26 +89,8 @@ export const mockMovies: Movie[] = [
     category: "movie"
   },
   {
-    id: "Bloodr4",
-    title: "Blood River E4 (Upcoming)",
-    poster: bloodr,
-    year: "2025",
-    genre: "Thriller",
-    rating: "B The Great",
-    category: "tv"
-  },
-  {
-    id: "Bloodr3",
-    title: "Blood River E3 (Upcoming)",
-    poster: bloodr,
-    year: "2025",
-    genre: "Thriller",
-    rating: "B The Great",
-    category: "tv"
-  },
-  {
     id: "Bloodr2",
-    title: "Blood River E2 (Upcoming)",
+    title: "Blood River E2 ",
     poster: bloodr,
     year: "2025",
     genre: "Thriller",
@@ -118,7 +100,7 @@ export const mockMovies: Movie[] = [
   
   {
     id: "Bloodr1",
-    title: "Blood River E1 (Upcoming)",
+    title: "Blood River E1 ",
     poster: bloodr,
     year: "2025",
     genre: "Thriller",
