@@ -96,6 +96,16 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         downloadLinks: [
           { quality: "1080p", size: "1.5GB", url: "https://hglink.to/fxihunwx8f3a", type: "MP4" }
           
+
+          ]
+        },
+       "dangal": {
+        title: "Dungal",
+        embedCode: '<iframe width="640" height="360" src="https://short.icu/V_NR2C-1d" frameborder="0" scrolling="0" allowfullscreen></iframe>',
+         host: "Rocky",
+        downloadLinks: [
+          { quality: "720p", size: "700MB", url: "https://mega.nz/file/BkwlQCZI#4A83SB1CisNCCszaRowqgwtAxNAJTig4MAbuLzC0xCU", type: "MP4" }
+          
         ]
         },
        "malef": {
