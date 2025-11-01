@@ -81,7 +81,7 @@ export interface Movie {
 export const mockMovies: Movie[] = [
    {
     id: "dangal",
-    title: "Dangal (Upcoming)",
+    title: "Dangal",
     poster: dangal,
     year: "2016",
     genre: "Action Sport",
