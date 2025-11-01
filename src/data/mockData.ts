@@ -65,6 +65,8 @@ import yard from "@/assets/Woman-in-the-Yard.jpg";
 import mine from "@/assets/minecraft.jpeg";
 import siren from "@/assets/Siren.jpg";
 import malef from "@/assets/malef.jpg";
+import trigger from "@/assets/Trigger_(South_Korean_TV_series).png";
+
 
 export interface Movie {
   id: string;
@@ -77,6 +79,52 @@ export interface Movie {
 }
 
 export const mockMovies: Movie[] = [
+  {
+    id: "trigger5",
+    title: "Trigger E5 (Upcoming)",
+    poster: trigger,
+    year: "2025",
+    genre: "Action Detective",
+    rating: "Sankara",
+    category: "tv"
+  },
+  {
+    id: "trigger4",
+    title: "Trigger E4 (Upcoming)",
+    poster: trigger,
+    year: "2025",
+    genre: "Action Detective",
+    rating: "Sankara",
+    category: "tv"
+  },
+  {
+    id: "trigger3",
+    title: "Trigger E3 (Upcoming)",
+    poster: trigger,
+    year: "2025",
+    genre: "Action Detective",
+    rating: "Sankara",
+    category: "tv"
+  },
+  {
+    id: "trigger2",
+    title: "Trigger E2 (Upcoming)",
+    poster: trigger,
+    year: "2025",
+    genre: "Action Detective",
+    rating: "Sankara",
+    category: "tv"
+  },
+  
+   {
+    id: "trigger1",
+    title: "Trigger E1 (Upcoming)",
+    poster: trigger,
+    year: "2025",
+    genre: "Action Detective",
+    rating: "Sankara",
+    category: "tv"
+  },
   {
     id: "malef",
     title: "Maleficent",
