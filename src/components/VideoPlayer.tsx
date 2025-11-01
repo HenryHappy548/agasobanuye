@@ -101,10 +101,28 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         },
        "dangal": {
         title: "Dungal",
-        embedCode: '<iframe width="640" height="360" src="https://short.icu/V_NR2C-1d" frameborder="0" scrolling="0" allowfullscreen></iframe>',
+        embedCode: '<iframe width="400" height="240" src="https://short.icu/V_NR2C-1d" frameborder="0" scrolling="0" allowfullscreen></iframe>',
          host: "Rocky",
         downloadLinks: [
           { quality: "720p", size: "700MB", url: "https://mega.nz/file/BkwlQCZI#4A83SB1CisNCCszaRowqgwtAxNAJTig4MAbuLzC0xCU", type: "MP4" }
+          
+        ]
+         },
+       "Bloodr2": {
+        title: "Blood River E2",
+        embedCode: '<iframe width="400" height="240" src="https://short.icu/5POMefLlw" frameborder="0" scrolling="0" allowfullscreen></iframe>',
+         host: "B The Great",
+        downloadLinks: [
+          { quality: "720p", size: "700MB", url: "https://www.mediafire.com/file/y5on3vi8wpu2lgx/Blood_River_S01e02.mp4/file?dkey=rdqppnr1o0x&r=1077", type: "MP4" }
+          
+        ]
+        },
+       "Bloodr1": {
+        title: "Blood River E1",
+        embedCode: '<iframe width="400" height="240" src="https://short.icu/f0dqW2Qca" frameborder="0" scrolling="0" allowfullscreen></iframe>',
+         host: "B The Great",
+        downloadLinks: [
+          { quality: "720p", size: "700MB", url: "https://www.mediafire.com/file/vteng74ao5yz5zm/Blood_River_S01e01.mp4/file", type: "MP4" }
           
         ]
         },
