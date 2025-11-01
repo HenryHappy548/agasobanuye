@@ -119,7 +119,7 @@ export const mockMovies: Movie[] = [
   {
     id: "dangal",
     title: "Dangal (Upcoming)",
-    poster: malef,
+    poster: dangal,
     year: "2016",
     genre: "Action Sport",
     rating: "Rocky kimomo",
