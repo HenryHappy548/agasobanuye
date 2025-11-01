@@ -79,6 +79,15 @@ export interface Movie {
 }
 
 export const mockMovies: Movie[] = [
+   {
+    id: "dangal",
+    title: "Dangal (Upcoming)",
+    poster: dangal,
+    year: "2016",
+    genre: "Action Sport",
+    rating: "Rocky kimomo",
+    category: "movie"
+  },
   {
     id: "Bloodr4",
     title: "Blood River E4 (Upcoming)",
@@ -116,15 +125,7 @@ export const mockMovies: Movie[] = [
     rating: "B The Great",
     category: "tv"
   },
-  {
-    id: "dangal",
-    title: "Dangal (Upcoming)",
-    poster: dangal,
-    year: "2016",
-    genre: "Action Sport",
-    rating: "Rocky kimomo",
-    category: "movie"
-  },
+ 
   {
     id: "malef",
     title: "Maleficent",
