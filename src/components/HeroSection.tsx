@@ -70,11 +70,11 @@ const HeroSection = ({ onPlayVideo }: HeroSectionProps) => {
             
             <div className="space-y-4">
               <h2 className="text-2xl sm:text-3xl font-bold text-foreground pr-8">
-                Talk to me (2025)
+                Talk to me 
               </h2>
               
               <div className="flex flex-wrap gap-2 text-sm">
-                <span className="bg-primary/20 text-primary px-3 py-1 rounded-full">2025</span>
+                <span className="bg-primary/20 text-primary px-3 py-1 rounded-full">2022</span>
                 <span className="bg-accent/50 text-accent-foreground px-3 py-1 rounded-full">Horror</span>
                 <span className="bg-accent/50 text-accent-foreground px-3 py-1 rounded-full">Mystery</span>
                 <span className="bg-accent/50 text-accent-foreground px-3 py-1 rounded-full">Sankara</span>
