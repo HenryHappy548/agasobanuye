@@ -38,36 +38,6 @@ export type Database = {
         }
         Relationships: []
       }
-      contact_messages: {
-        Row: {
-          created_at: string
-          email: string | null
-          id: string
-          message: string
-          name: string
-          status: string
-          user_id: string | null
-        }
-        Insert: {
-          created_at?: string
-          email?: string | null
-          id?: string
-          message: string
-          name: string
-          status?: string
-          user_id?: string | null
-        }
-        Update: {
-          created_at?: string
-          email?: string | null
-          id?: string
-          message?: string
-          name?: string
-          status?: string
-          user_id?: string | null
-        }
-        Relationships: []
-      }
       download_links: {
         Row: {
           created_at: string | null
@@ -250,7 +220,10 @@ export type Database = {
         }
         Returns: boolean
       }
-      is_admin: { Args: never; Returns: boolean }
+      is_admin: {
+        Args: Record<PropertyKey, never>
+        Returns: boolean
+      }
     }
     Enums: {
       app_role: "admin" | "moderator" | "user"
