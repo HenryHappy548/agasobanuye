@@ -90,11 +90,11 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
       }[];
     }> = {
       "featured-movie": {
-        title: "The Home (2025)",
-        embedCode: '<IFRAME SRC="https://hglink.to/e/fxihunwx8f3a" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=350 HEIGHT=240 allowfullscreen></IFRAME>',
-        host: "Mungeli",
+        title: "Talk To me (2022)",
+        embedCode: '<iframe width="640" height="360" src="https://short.icu/y0DfytF1t" frameborder="0" scrolling="0" allowfullscreen></iframe>',
+        host: "Sankara",
         downloadLinks: [
-          { quality: "1080p", size: "1.5GB", url: "https://hglink.to/fxihunwx8f3a", type: "MP4" }
+          { quality: "1080p", size: "1.5GB", url: "https://www.mediafire.com/file/cbtlb2718ej04qt/Talk_to_Me_Sankra.mp4/file?dkey=o6oaqpdsabi&r=1616", type: "MP4" }
           
 
           ]
