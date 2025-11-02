@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Play, Info, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import heroImage from "@/assets/hero-featured.jpeg";
+import heroImage from "@/assets/talk.jpg";
 
 interface HeroSectionProps {
   onPlayVideo: (videoId: string) => void;
@@ -23,10 +23,10 @@ const HeroSection = ({ onPlayVideo }: HeroSectionProps) => {
       <div className="relative z-10 container mx-auto px-4 sm:px-6">
         <div className="max-w-xs sm:max-w-md lg:max-w-lg xl:max-w-xl">
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3 sm:mb-4 leading-tight">
-            The Home
+            Talk To Me
           </h1>
           <p className="text-sm sm:text-base lg:text-lg text-muted-foreground mb-4 sm:mb-6 leading-relaxed line-clamp-3 sm:line-clamp-none">
-          The Home is a 2025 horror-thriller where a rebellious young man named Max, sentenced to community service as a superintendent at a retirement home, uncovers a terrifying secret about the forbidden fourth floor and its connection to his own past. </p>
+    Mia’s mother died under mysterious circumstances a few months ago, and the young woman still wonders about the cause of her death. </p>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
             <Button 
               size="lg" 
@@ -70,18 +70,18 @@ const HeroSection = ({ onPlayVideo }: HeroSectionProps) => {
             
             <div className="space-y-4">
               <h2 className="text-2xl sm:text-3xl font-bold text-foreground pr-8">
-                The Home (2025)
+                Talk to me (2025)
               </h2>
               
               <div className="flex flex-wrap gap-2 text-sm">
                 <span className="bg-primary/20 text-primary px-3 py-1 rounded-full">2025</span>
                 <span className="bg-accent/50 text-accent-foreground px-3 py-1 rounded-full">Horror</span>
                 <span className="bg-accent/50 text-accent-foreground px-3 py-1 rounded-full">Mystery</span>
-                <span className="bg-accent/50 text-accent-foreground px-3 py-1 rounded-full">PG-10</span>
+                <span className="bg-accent/50 text-accent-foreground px-3 py-1 rounded-full">Sankara</span>
               </div>
               
               <p className="text-muted-foreground leading-relaxed">
-               The Home is a 2025 horror-thriller where a rebellious young man named Max, sentenced to community service as a superintendent at a retirement home, uncovers a terrifying secret about the forbidden fourth floor and its connection to his own past.
+           Mia’s mother died under mysterious circumstances a few months ago, and the young woman still wonders about the cause of her death.
               </p>
               
               <div className="flex flex-col sm:flex-row gap-3 pt-4">
