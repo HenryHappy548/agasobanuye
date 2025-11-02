@@ -68,7 +68,7 @@ import malef from "@/assets/malef.jpg";
 import dangal from "@/assets/Dangal.jpeg";
 import bloodr from "@/assets/bloodr.jpeg";
 import talk from "@/assets/talk.jpg";
-import lethal from "@/assets/lethal.jpg";
+import lethal from "@/assets/lathal.jpg";
 
 export interface Movie {
   id: string;
