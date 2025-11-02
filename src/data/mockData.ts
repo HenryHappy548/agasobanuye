@@ -67,8 +67,6 @@ import siren from "@/assets/Siren.jpg";
 import malef from "@/assets/malef.jpg";
 import dangal from "@/assets/Dangal.jpeg";
 import bloodr from "@/assets/bloodr.jpeg";
-import talk from "@/assets/talk.jpg";
-import lathal from "@/assets/lathal.jpg";
 
 export interface Movie {
   id: string;
@@ -81,24 +79,6 @@ export interface Movie {
 }
 
 export const mockMovies: Movie[] = [
-  {
-    id: "talk",
-    title: "Talk To me",
-    poster: talk,
-    year: "2022",
-    genre: "Horror Thriller",
-    rating: "Sankara",
-    category: "trending"
-  },
-     {
-    id: "lathal",
-    title: "Letgal Seduction",
-    poster: lethal,
-    year: "2015",
-    genre: "Thriller Drama",
-    rating: "Sankara",
-    category: "trending"
-  },
    {
     id: "dangal",
     title: "Dangal",

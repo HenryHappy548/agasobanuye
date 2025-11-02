@@ -90,32 +90,14 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
       }[];
     }> = {
       "featured-movie": {
-        title: "Talk to Me (2025)",
-        embedCode: '<iframe width="400" height="240" src="https://short.icu/y0DfytF1t" frameborder="0" scrolling="0" allowfullscreen></iframe>' ,
-          host: "Sankara",
+        title: "The Home (2025)",
+        embedCode: '<IFRAME SRC="https://hglink.to/e/fxihunwx8f3a" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=350 HEIGHT=240 allowfullscreen></IFRAME>',
+        host: "Mungeli",
         downloadLinks: [
-          { quality: "1080p", size: "900MB", url: "https://www.mediafire.com/file/cbtlb2718ej04qt/Talk_to_Me_Sankra.mp4/file?dkey=o6oaqpdsabi&r=1616", type: "MP4" }
+          { quality: "1080p", size: "1.5GB", url: "https://hglink.to/fxihunwx8f3a", type: "MP4" }
           
 
           ]
-        },
-       "latal": {
-        title: "Lethal Seduction",
-        embedCode: '<iframe width="400" height="240" src="https://short.icu/jqu2O8-L_" frameborder="0" scrolling="0" allowfullscreen></iframe>',
-         host: "Sankara",
-        downloadLinks: [
-          { quality: "720p", size: "1GB", url: "https://www.mediafire.com/file/ejh0nxj906w9r0w/Lathal_Seduction_.mp4/file", type: "MP4" }
-          
-        ]
-        },
-       "talk": {
-        title: "Talk to me",
-        embedCode: '<iframe width="400" height="240" src="https://short.icu/y0DfytF1t" frameborder="0" scrolling="0" allowfullscreen></iframe>',
-         host: "Sankara",
-        downloadLinks: [
-          { quality: "720p", size: "900MB", url: "https://www.mediafire.com/file/cbtlb2718ej04qt/Talk_to_Me_Sankra.mp4/file?dkey=o6oaqpdsabi&r=1616", type: "MP4" }
-          
-        ]
         },
        "dangal": {
         title: "Dungal",
