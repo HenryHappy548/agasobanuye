@@ -77,7 +77,7 @@ const HeroSection = ({ onPlayVideo }: HeroSectionProps) => {
                 <span className="bg-primary/20 text-primary px-3 py-1 rounded-full">2022</span>
                 <span className="bg-accent/50 text-accent-foreground px-3 py-1 rounded-full">Horror</span>
                 <span className="bg-accent/50 text-accent-foreground px-3 py-1 rounded-full">Mystery</span>
-                <span className="bg-accent/50 text-accent-foreground px-3 py-1 rounded-full">Sankara/span>
+                <span className="bg-accent/50 text-accent-foreground px-3 py-1 rounded-full">Sankara</span>
               </div>
               
               <p className="text-muted-foreground leading-relaxed">
