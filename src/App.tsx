@@ -13,6 +13,7 @@ const TVShows = lazy(() => import("./pages/TVShows"));
 const Popular = lazy(() => import("./pages/Popular"));
 const FAQ = lazy(() => import("./pages/FAQ"));
 const Auth = lazy(() => import("./pages/Auth"));
+const AdminMessages = lazy(() => import("./pages/AdminMessages"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient({
@@ -49,6 +50,7 @@ const App = () => {
               <Route path="/popular" element={<Popular />} />
               <Route path="/faq" element={<FAQ />} />
               <Route path="/auth" element={<Auth />} />
+              <Route path="/admin/messages" element={<AdminMessages />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
