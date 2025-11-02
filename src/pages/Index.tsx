@@ -246,7 +246,7 @@ const Index = () => {
             <section>
               <div className="flex items-center justify-between mb-4 sm:mb-6">
                 <h2 className="text-xl sm:text-2xl font-bold text-foreground">
-                  TV Shows
+                  Series
                 </h2>
                 <Link to="/tv-shows">
                   <Button size="lg" className="group bg-primary hover:bg-primary/90 text-primary-foreground font-semibold shadow-lg">

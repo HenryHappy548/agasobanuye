@@ -68,7 +68,7 @@ const StreamingHeader = ({ onSearch, searchQuery, onPlayVideo }: StreamingHeader
             </Link>
             <Link to="/tv-shows">
               <Button variant="ghost" className="text-foreground hover:text-primary">
-                TV Shows
+                Series
               </Button>
             </Link>
             <Link to="/popular">
@@ -185,7 +185,7 @@ const StreamingHeader = ({ onSearch, searchQuery, onPlayVideo }: StreamingHeader
               </Link>
               <Link to="/tv-shows" onClick={() => setIsMobileMenuOpen(false)}>
                 <Button variant="ghost" className="w-full justify-start text-foreground hover:text-primary">
-                  TV Shows
+                  Series
                 </Button>
               </Link>
               <Link to="/popular" onClick={() => setIsMobileMenuOpen(false)}>

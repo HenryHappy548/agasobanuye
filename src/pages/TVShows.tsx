@@ -33,7 +33,7 @@ const TVShows = () => {
       
       <main className="container mx-auto px-4 py-6 sm:py-8">
         <div className="mb-6 sm:mb-8">
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary mb-2 sm:mb-4">TV Shows</h1>
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary mb-2 sm:mb-4">Series</h1>
           <p className="text-sm sm:text-base lg:text-lg text-muted-foreground">
             Binge-watch the best TV series and shows
           </p>
@@ -53,7 +53,7 @@ const TVShows = () => {
           {filteredShows.length === 0 && (
             <div className="text-center py-8 sm:py-12">
               <p className="text-muted-foreground">
-                {searchQuery ? `No TV shows found matching "${searchQuery}"` : "No TV shows available"}
+                {searchQuery ? `No series found matching "${searchQuery}"` : "No series available"}
               </p>
             </div>
           )}

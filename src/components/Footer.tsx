@@ -13,7 +13,7 @@ const Footer = () => {
           <div className="space-y-4 sm:col-span-2 lg:col-span-1">
             <h3 className="text-lg font-semibold text-primary">Rwaflix</h3>
             <p className="text-sm text-muted-foreground">
-              Stream your favorite movies and TV shows online with premium quality content.
+              Stream your favorite movies and series online with premium quality content.
             </p>
             <div className="space-y-2">
               <a 
@@ -79,7 +79,7 @@ const Footer = () => {
                   className="flex items-center space-x-2 text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
                   <Tv className="h-4 w-4" />
-                  <span>TV Shows</span>
+                  <span>Series</span>
                 </Link>
               </li>
               <li>
@@ -115,7 +115,7 @@ const Footer = () => {
             <h4 className="text-sm font-medium text-foreground">About</h4>
             <p className="text-sm text-muted-foreground">
               Rwaflix is your premier destination for streaming entertainment. 
-              Enjoy unlimited access to movies and TV shows.
+              Enjoy unlimited access to movies and series.
             </p>
           </div>
         </div>

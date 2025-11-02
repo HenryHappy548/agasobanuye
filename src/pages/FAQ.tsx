@@ -11,7 +11,7 @@ interface FAQItem {
 const faqData: FAQItem[] = [
   {
     question: "What is Rwaflix?",
-    answer: "Rwaflix is a premium streaming platform offering unlimited access to movies and TV shows. Watch your favorite content anytime, anywhere."
+    answer: "Rwaflix is a premium streaming platform offering unlimited access to movies and series. Watch your favorite content anytime, anywhere."
   },
   {
     question: "How do I create an account?",
@@ -27,7 +27,7 @@ const faqData: FAQItem[] = [
   },
   {
     question: "How often is new content added?",
-    answer: "We regularly update our library with new movies and TV shows. Check back frequently for the latest releases."
+    answer: "We regularly update our library with new movies and series. Check back frequently for the latest releases."
   },
   {
     question: "Can I download content for offline viewing?",
