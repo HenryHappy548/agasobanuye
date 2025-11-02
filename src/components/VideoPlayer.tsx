@@ -98,6 +98,16 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
           
 
           ]
+            },
+      "lethal": {
+        title: "Lethal Seduction",
+        embedCode: '<iframe width="400" height="240" src="https://short.icu/jqu2O8-L_" frameborder="0" scrolling="0" allowfullscreen></iframe>',
+        host: "Sankara",
+        downloadLinks: [
+          { quality: "1080p", size: "1.5GB", url: "https://www.mediafire.com/file/ejh0nxj906w9r0w/Lathal_Seduction_.mp4/file", type: "MP4" }
+          
+
+          ]
       },
       "talk": {
         title: "Talk To me (2022)",
