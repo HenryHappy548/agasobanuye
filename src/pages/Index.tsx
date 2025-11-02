@@ -6,6 +6,7 @@ import HeroSection from "@/components/HeroSection";
 import MovieCard from "@/components/MovieCard";
 import VideoPlayer from "@/components/VideoPlayer";
 import Footer from "@/components/Footer";
+import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { Button } from "@/components/ui/button";
 import { mockMovies } from "@/data/mockData";
 import { isValidVideoId, sanitizeTextInput } from "@/lib/security";
@@ -287,6 +288,7 @@ const Index = () => {
       />
       
       <Footer />
+      <WhatsAppButton />
     </div>
   );
 };
