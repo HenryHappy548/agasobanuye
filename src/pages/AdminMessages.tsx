@@ -13,7 +13,6 @@ import { useNavigate } from "react-router-dom";
 interface ContactMessage {
   id: string;
   name: string;
-  email: string | null;
   message: string;
   status: string;
   created_at: string;
@@ -148,9 +147,6 @@ export default function AdminMessages() {
                   <div className="flex items-start justify-between">
                     <div className="space-y-1">
                       <CardTitle className="text-lg">{message.name}</CardTitle>
-                      {message.email && (
-                        <p className="text-sm text-muted-foreground">{message.email}</p>
-                      )}
                       <p className="text-xs text-muted-foreground">
                         {format(new Date(message.created_at), "PPpp")}
                       </p>

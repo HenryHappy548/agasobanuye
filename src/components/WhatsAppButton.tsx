@@ -10,15 +10,13 @@ import { useToast } from "@/hooks/use-toast";
 import { z } from "zod";
 
 const contactSchema = z.object({
-  name: z.string().trim().min(1, "Name is required").max(100, "Name must be less than 100 characters"),
-  email: z.string().trim().email("Invalid email address").max(255, "Email must be less than 255 characters").optional().or(z.literal("")),
-  message: z.string().trim().min(1, "Message is required").max(1000, "Message must be less than 1000 characters")
+  name: z.string().trim().min(1, "Username required").max(100),
+  message: z.string().trim().min(1, "Message required").max(1000)
 });
 
 export const WhatsAppButton = () => {
   const [open, setOpen] = useState(false);
   const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
@@ -27,42 +25,37 @@ export const WhatsAppButton = () => {
     e.preventDefault();
     
     try {
-      // Validate input
-      const validatedData = contactSchema.parse({ name, email, message });
-      
+      const validatedData = contactSchema.parse({ name, message });
       setIsSubmitting(true);
 
       const { error } = await supabase
         .from("contact_messages")
         .insert({
           name: validatedData.name,
-          email: validatedData.email || null,
           message: validatedData.message,
         });
 
       if (error) throw error;
 
       toast({
-        title: "Message sent!",
-        description: "Your message has been sent to the admin successfully.",
+        title: "Sent!",
+        description: "Message sent successfully.",
       });
 
-      // Reset form
       setName("");
-      setEmail("");
       setMessage("");
       setOpen(false);
     } catch (error) {
       if (error instanceof z.ZodError) {
         toast({
-          title: "Validation error",
+          title: "Error",
           description: error.errors[0].message,
           variant: "destructive",
         });
       } else {
         toast({
           title: "Error",
-          description: "Failed to send message. Please try again.",
+          description: "Failed to send message.",
           variant: "destructive",
         });
       }
@@ -83,38 +76,27 @@ export const WhatsAppButton = () => {
       </DialogTrigger>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
-          <DialogTitle>Contact Support</DialogTitle>
+          <DialogTitle>Send Message</DialogTitle>
         </DialogHeader>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="name">Name *</Label>
+            <Label htmlFor="name">Username</Label>
             <Input
               id="name"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              placeholder="Your name"
+              placeholder="Your username"
               required
               maxLength={100}
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="email">Email (optional)</Label>
-            <Input
-              id="email"
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="your.email@example.com"
-              maxLength={255}
-            />
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="message">Message *</Label>
+            <Label htmlFor="message">Message</Label>
             <Textarea
               id="message"
               value={message}
               onChange={(e) => setMessage(e.target.value)}
-              placeholder="How can we help you?"
+              placeholder="Your message"
               required
               maxLength={1000}
               rows={4}
@@ -122,7 +104,7 @@ export const WhatsAppButton = () => {
           </div>
           <Button type="submit" className="w-full" disabled={isSubmitting}>
             <Send className="h-4 w-4 mr-2" />
-            {isSubmitting ? "Sending..." : "Send Message"}
+            {isSubmitting ? "Sending..." : "Send"}
           </Button>
         </form>
       </DialogContent>
