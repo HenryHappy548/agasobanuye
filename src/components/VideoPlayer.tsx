@@ -91,7 +91,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
     }> = {
       "featured-movie": {
         title: "Talk To me (2022)",
-        embedCode: '<iframe width="640" height="360" src="https://short.icu/y0DfytF1t" frameborder="0" scrolling="0" allowfullscreen></iframe>',
+        embedCode: '<iframe width="400" height="240" src="https://short.icu/y0DfytF1t" frameborder="0" scrolling="0" allowfullscreen></iframe>',
         host: "Sankara",
         downloadLinks: [
           { quality: "1080p", size: "1.5GB", url: "https://www.mediafire.com/file/cbtlb2718ej04qt/Talk_to_Me_Sankra.mp4/file?dkey=o6oaqpdsabi&r=1616", type: "MP4" }
@@ -111,7 +111,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
       },
       "talk": {
         title: "Talk To me (2022)",
-        embedCode: '<iframe width="640" height="360" src="https://short.icu/y0DfytF1t" frameborder="0" scrolling="0" allowfullscreen></iframe>',
+        embedCode: '<iframe width="400" height="240" src="https://short.icu/y0DfytF1t" frameborder="0" scrolling="0" allowfullscreen></iframe>',
         host: "Sankara",
         downloadLinks: [
           { quality: "1080p", size: "1.5GB", url: "https://www.mediafire.com/file/cbtlb2718ej04qt/Talk_to_Me_Sankra.mp4/file?dkey=o6oaqpdsabi&r=1616", type: "MP4" }
