@@ -6,6 +6,7 @@ import HeroSection from "@/components/HeroSection";
 import MovieCard from "@/components/MovieCard";
 import VideoPlayer from "@/components/VideoPlayer";
 import Footer from "@/components/Footer";
+import { SeriesPollButton } from "@/components/SeriesPollButton";
 import { Button } from "@/components/ui/button";
 import { mockMovies } from "@/data/mockData";
 import { isValidVideoId, sanitizeTextInput } from "@/lib/security";
@@ -285,6 +286,8 @@ const Index = () => {
         onClose={handleClosePlayer}
         videoId={selectedVideoId}
       />
+      
+      <SeriesPollButton />
       
       <Footer />
     </div>
