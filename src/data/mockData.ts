@@ -82,6 +82,24 @@ export interface Movie {
 
 export const mockMovies: Movie[] = [
   {
+    id: "bonne6",
+    title: "Bon Appetit E6 (Upcoming)",
+    poster: bonne,
+    year: "2025",
+    genre: "Romance Drama",
+    rating: "Rocky kimomo",
+    category: "tv"
+  },
+    {
+    id: "bonne5",
+    title: "Bon Appetit E5 (Upcoming)",
+    poster: bonne,
+    year: "2025",
+    genre: "Romance Drama",
+    rating: "Rocky kimomo",
+    category: "tv"
+  },
+  {
     id: "lethal",
     title: "Lethal Seduction",
     poster: lethal,
