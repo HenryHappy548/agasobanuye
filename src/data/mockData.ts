@@ -82,6 +82,33 @@ export interface Movie {
 }
 
 export const mockMovies: Movie[] = [
+    {
+    id: "hannah",
+    title: "Possession Of Hannah Grace (Upcoming)",
+    poster: hannah,
+    year: "2018",
+    genre: "Horror Thriller",
+    rating: "Sankara",
+    category: "trending"
+  },
+  {
+    id: "bonne6",
+    title: "Bon Appetit E6 (Upcoming)",
+    poster: bonne,
+    year: "2025",
+    genre: "Romance Drama",
+    rating: "Rocky kimomo",
+    category: "tv"
+  },
+    {
+    id: "bonne5",
+    title: "Bon Appetit E5 (Upcoming)",
+    poster: bonne,
+    year: "2025",
+    genre: "Romance Drama",
+    rating: "Rocky kimomo",
+    category: "tv"
+  },
   {
     id: "housed6",
     title: "House of David S02 E6 (Upcoming)",
@@ -118,33 +145,7 @@ export const mockMovies: Movie[] = [
     rating: "Savimbi",
     category: "tv"
   },
-  {
-    id: "hannah",
-    title: "Possession Of Hannah Grace (Upcoming)",
-    poster: hannah,
-    year: "2018",
-    genre: "Horror Thriller",
-    rating: "Sankara",
-    category: "trending"
-  },
-  {
-    id: "bonne6",
-    title: "Bon Appetit E6 (Upcoming)",
-    poster: bonne,
-    year: "2025",
-    genre: "Romance Drama",
-    rating: "Rocky kimomo",
-    category: "tv"
-  },
-    {
-    id: "bonne5",
-    title: "Bon Appetit E5 (Upcoming)",
-    poster: bonne,
-    year: "2025",
-    genre: "Romance Drama",
-    rating: "Rocky kimomo",
-    category: "tv"
-  },
+
   {
     id: "lethal",
     title: "Lethal Seduction",
