@@ -98,6 +98,16 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
           
 
           ]
+        },
+      "bonne5": {
+        title: "Bon Appetit E5",
+        embedCode: '<iframe width="640" height="360" src="https://short.icu/bvEMCivj1" frameborder="0" scrolling="0" allowfullscreen></iframe>',
+        host: "Sankara",
+        downloadLinks: [
+          { quality: "720p", size: "600MB", url: "https://www.mediafire.com/file/w1ut86rmwewaa5a/Bonne_Appetit_S01e05.mp4/file", type: "MP4" }
+          
+
+          ]
             },
       "lethal": {
         title: "Lethal Seduction",
