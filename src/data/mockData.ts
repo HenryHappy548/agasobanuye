@@ -69,6 +69,7 @@ import dangal from "@/assets/Dangal.jpeg";
 import bloodr from "@/assets/bloodr.jpeg";
 import talk from "@/assets/talk.jpg";
 import lethal from "@/assets/lathal.jpg";
+import hannah from "@/assets/hannah.jpeg";
 
 export interface Movie {
   id: string;
@@ -81,6 +82,51 @@ export interface Movie {
 }
 
 export const mockMovies: Movie[] = [
+  {
+    id: "housed6",
+    title: "House of David S02 E6 (Upcoming)",
+    poster: housed,
+    year: "2025",
+    genre: "Action Documentary",
+    rating: "Savimbi",
+    category: "tv"
+  },
+  {
+    id: "housed5",
+    title: "House of David S02 E5 (Upcoming)",
+    poster: housed,
+    year: "2025",
+    genre: "Action Documentary",
+    rating: "Savimbi",
+    category: "tv"
+  },
+  {
+    id: "housed4",
+    title: "House of David S02 E4 (Upcoming)",
+    poster: housed,
+    year: "2025",
+    genre: "Action Documentary",
+    rating: "Savimbi",
+    category: "tv"
+  },
+  {
+    id: "housed3",
+    title: "House of David S02 E3 (Upcoming)",
+    poster: housed,
+    year: "2025",
+    genre: "Action Documentary",
+    rating: "Savimbi",
+    category: "tv"
+  },
+  {
+    id: "hannah",
+    title: "Possession Of Hannah Grace (Upcoming)",
+    poster: hannah,
+    year: "2018",
+    genre: "Horror Thriller",
+    rating: "Sankara",
+    category: "trending"
+  },
   {
     id: "bonne6",
     title: "Bon Appetit E6 (Upcoming)",
