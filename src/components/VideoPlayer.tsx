@@ -98,11 +98,31 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
           
 
           ]
+         },
+      "hannah": {
+        title: "Possession Of Hannah Grace",
+        embedCode: '<iframe width="400" height="240" src="https://short.icu/RoLM2hwI0" frameborder="0" scrolling="0" allowfullscreen></iframe>',
+        host: "Sankara",
+        downloadLinks: [
+          { quality: "720p", size: "1GB", url: "https://www.mediafire.com/file/39qdn9hp1ei4ei3/The_Possession_Of_Hannah_Grace.mp4/file", type: "MP4" }
+          
+
+          ]
+         },
+      "bonne6": {
+        title: "Bon Appetit E6",
+        embedCode: '<iframe width="400" height="240" src="https://short.icu/HZ9FU3U7Q" frameborder="0" scrolling="0" allowfullscreen></iframe>',
+        host: "Sankara",
+        downloadLinks: [
+          { quality: "720p", size: "600MB", url: "https://www.mediafire.com/file/0jixmhdnd75dq7w/Bonne_Appetit_S01e06.mp4/file", type: "MP4" }
+          
+
+          ]
         },
       "bonne5": {
         title: "Bon Appetit E5",
-        embedCode: '<iframe width="640" height="360" src="https://short.icu/bvEMCivj1" frameborder="0" scrolling="0" allowfullscreen></iframe>',
-        host: "Sankara",
+        embedCode: '<iframe width="400" height="240" src="https://short.icu/bvEMCivj1" frameborder="0" scrolling="0" allowfullscreen></iframe>',
+        host: "Rocky",
         downloadLinks: [
           { quality: "720p", size: "600MB", url: "https://www.mediafire.com/file/w1ut86rmwewaa5a/Bonne_Appetit_S01e05.mp4/file", type: "MP4" }
           
@@ -239,7 +259,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         },
        "vincenzoab": {
         title: "Vincenzo 1&2 (Combined)",
-        embedCode: '<iframe width="640" height="360" src="https://short.icu/H6U2xzLZc" frameborder="0" scrolling="0" allowfullscreen></iframe>',
+        embedCode: '<iframe width="400" height="240" src="https://short.icu/H6U2xzLZc" frameborder="0" scrolling="0" allowfullscreen></iframe>',
          host: "B The Great",
         downloadLinks: [
           { quality: "720p", size: "380MB", url: "https://short.icu/H6U2xzLZc", type: "MP4" }
