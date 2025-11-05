@@ -93,7 +93,7 @@ export const mockMovies: Movie[] = [
   },
   {
     id: "bonne6",
-    title: "Bon Appetit E6 (Upcoming)",
+    title: "Bon Appetit E6 ",
     poster: bonne,
     year: "2025",
     genre: "Romance Drama",
@@ -102,7 +102,7 @@ export const mockMovies: Movie[] = [
   },
     {
     id: "bonne5",
-    title: "Bon Appetit E5 (Upcoming)",
+    title: "Bon Appetit E5",
     poster: bonne,
     year: "2025",
     genre: "Romance Drama",
