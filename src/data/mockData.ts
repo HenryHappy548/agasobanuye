@@ -92,6 +92,15 @@ export const mockMovies: Movie[] = [
     category: "trending"
   },
   {
+    id: "housed6",
+    title: "House of David S02 E6",
+    poster: housed,
+    year: "2025",
+    genre: "Action Documentary",
+    rating: "Savimbi",
+    category: "tv"
+  },
+  {
     id: "bonne6",
     title: "Bon Appetit E6",
     poster: bonne,
@@ -111,7 +120,7 @@ export const mockMovies: Movie[] = [
   },
   {
     id: "housed6",
-    title: "House of David S02 E6 (Upcoming)",
+    title: "House of David S02 E6",
     poster: housed,
     year: "2025",
     genre: "Action Documentary",
@@ -120,7 +129,7 @@ export const mockMovies: Movie[] = [
   },
   {
     id: "housed5",
-    title: "House of David S02 E5 (Upcoming)",
+    title: "House of David S02 E5",
     poster: housed,
     year: "2025",
     genre: "Action Documentary",
@@ -129,7 +138,7 @@ export const mockMovies: Movie[] = [
   },
   {
     id: "housed4",
-    title: "House of David S02 E4 (Upcoming)",
+    title: "House of David S02 E4",
     poster: housed,
     year: "2025",
     genre: "Action Documentary",
@@ -138,7 +147,7 @@ export const mockMovies: Movie[] = [
   },
   {
     id: "housed3",
-    title: "House of David S02 E3 (Upcoming)",
+    title: "House of David S02 E3",
     poster: housed,
     year: "2025",
     genre: "Action Documentary",
