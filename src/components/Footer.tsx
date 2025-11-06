@@ -1,4 +1,4 @@
-import { Phone, Mail, ExternalLink, Home, Film, Tv, TrendingUp, HelpCircle, MessageCircle, Instagram } from "lucide-react";
+import { Phone, Mail, ExternalLink, Home, Film, Tv, TrendingUp, HelpCircle, MessageCircle, Instagram, Music } from "lucide-react";
 import { Link } from "react-router-dom";
 import CommentSection from "./CommentSection";
 
@@ -65,6 +65,15 @@ const Footer = () => {
               >
                 <Instagram className="h-4 w-4" />
                 <span>Follow us on Instagram</span>
+              </a>
+              <a 
+                href="https://vm.tiktok.com/ZMHcCpLB7Yd32-NzJAM/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center space-x-2 text-sm text-muted-foreground hover:text-primary transition-colors"
+              >
+                <Music className="h-4 w-4" />
+                <span>Follow us on TikTok</span>
               </a>
             </div>
           </div>
