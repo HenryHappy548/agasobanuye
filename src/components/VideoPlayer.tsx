@@ -98,6 +98,46 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
           
 
           ]
+        },
+      "housed6": {
+        title: "House Of David S02 E6",
+        embedCode: '<iframe width="420" height="240" src="https://short.icu/_Pk1L6tMu" frameborder="0" scrolling="0" allowfullscreen></iframe>',
+        host: "Savimbi",
+        downloadLinks: [
+          { quality: "720p", size: "400MB", url: "https://www.mediafire.com/file/wfyekw2tl2kgpgi/House_of_David_S01e06.mp4/file", type: "MP4" }
+          
+
+          ]
+        },
+      "housed5": {
+        title: "House Of David S02 E5",
+        embedCode: '<iframe width="640" height="360" src="https://short.icu/plWMBhGFY" frameborder="0" scrolling="0" allowfullscreen></iframe>',
+        host: "Savimbi",
+        downloadLinks: [
+          { quality: "720p", size: "400MB", url: "https://www.mediafire.com/file/1j28e9hwkbxfotp/House_of_David_S01e05.mp4/file", type: "MP4" }
+          
+
+          ]
+        },
+      "housed4": {
+        title: "House Of David S02 E4",
+        embedCode: '<iframe width="400" height="240" src="https://short.icu/7n6I7wnh_" frameborder="0" scrolling="0" allowfullscreen></iframe>',
+        host: "Savimbi",
+        downloadLinks: [
+          { quality: "720p", size: "400MB", url: "https://www.mediafire.com/file/rpk8wx6c9kqxzae/House_of_David_S01e04.mp4/file", type: "MP4" }
+          
+
+          ]
+        },
+      "housed3": {
+        title: "House Of David E3",
+        embedCode: '<iframe width="400" height="240" src="https://short.icu/7OnW-KXJr" frameborder="0" scrolling="0" allowfullscreen></iframe>',
+        host: "Savimbi",
+        downloadLinks: [
+          { quality: "720p", size: "400MB", url: "https://www.mediafire.com/file/g1gcalu6psuchdl/House_of_David_S01e03.mp4/file", type: "MP4" }
+          
+
+          ]
          },
       "hannah": {
         title: "Possession Of Hannah Grace",
