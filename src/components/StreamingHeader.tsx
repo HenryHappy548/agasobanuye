@@ -127,6 +127,18 @@ const StreamingHeader = ({ onSearch, searchQuery, onPlayVideo }: StreamingHeader
                       <p className="text-xs text-muted-foreground mt-1">Send payment to this number</p>
                     </div>
                   </div>
+                  <div className="space-y-2">
+                    <h4 className="font-semibold text-sm text-foreground">Follow Us</h4>
+                    <a 
+                      href="https://whatsapp.com/channel/0029VbBuQXg0AgW6YX49VZ3I" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 p-3 bg-green-500/10 hover:bg-green-500/20 border border-green-500/20 rounded-lg transition-colors"
+                    >
+                      <MessageCircle className="h-5 w-5 text-green-500" />
+                      <span className="text-foreground text-sm">Follow the Rwaflix channel on WhatsApp</span>
+                    </a>
+                  </div>
                 </div>
               </DialogContent>
             </Dialog>
