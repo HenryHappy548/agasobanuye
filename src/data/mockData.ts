@@ -84,7 +84,7 @@ export interface Movie {
 export const mockMovies: Movie[] = [
     {
     id: "hannah",
-    title: "Possession Of Hannah Grace (Upcoming)",
+    title: "Possession Of Hannah Grace",
     poster: hannah,
     year: "2018",
     genre: "Horror Thriller",
@@ -93,7 +93,7 @@ export const mockMovies: Movie[] = [
   },
   {
     id: "bonne6",
-    title: "Bon Appetit E6 ",
+    title: "Bon Appetit E6",
     poster: bonne,
     year: "2025",
     genre: "Romance Drama",
