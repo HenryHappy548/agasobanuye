@@ -1,4 +1,4 @@
-import { Phone, Mail, ExternalLink, Home, Film, Tv, TrendingUp, HelpCircle, MessageCircle } from "lucide-react";
+import { Phone, Mail, ExternalLink, Home, Film, Tv, TrendingUp, HelpCircle, MessageCircle, Instagram } from "lucide-react";
 import { Link } from "react-router-dom";
 import CommentSection from "./CommentSection";
 
@@ -56,6 +56,15 @@ const Footer = () => {
               >
                 <MessageCircle className="h-4 w-4" />
                 <span>Follow the Rwaflix channel on WhatsApp</span>
+              </a>
+              <a 
+                href="https://www.instagram.com/rwaflix8/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center space-x-2 text-sm text-muted-foreground hover:text-primary transition-colors"
+              >
+                <Instagram className="h-4 w-4" />
+                <span>Follow us on Instagram</span>
               </a>
             </div>
           </div>
