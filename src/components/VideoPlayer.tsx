@@ -99,6 +99,16 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
 
           ]
         },
+      "shouse": {
+        title: "Safe House",
+        embedCode: '<iframe width="420" height="240" src="https://short.icu/KMZ9QwrF3" frameborder="0" scrolling="0" allowfullscreen></iframe>',
+        host: "Sankara",
+        downloadLinks: [
+          { quality: "720p", size: "780MB", url: "https://www.mediafire.com/file/7konn8vhpmpzm04/Safe_House.mp4/file", type: "MP4" }
+          
+
+          ]
+        },
       "housed6": {
         title: "House Of David S02 E6",
         embedCode: '<iframe width="420" height="240" src="https://short.icu/_Pk1L6tMu" frameborder="0" scrolling="0" allowfullscreen></iframe>',
