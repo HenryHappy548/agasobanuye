@@ -70,6 +70,7 @@ import bloodr from "@/assets/bloodr.jpeg";
 import talk from "@/assets/talk.jpg";
 import lethal from "@/assets/lathal.jpg";
 import hannah from "@/assets/hannah.jpeg";
+import shouse from "@/assets/shouse.jpeg";
 
 export interface Movie {
   id: string;
@@ -82,6 +83,15 @@ export interface Movie {
 }
 
 export const mockMovies: Movie[] = [
+   {
+    id: "shouse",
+    title: "Safe House",
+    poster: shouse,
+    year: "2025",
+    genre: "Action Thriller",
+    rating: "Sankara",
+    category: "trending"
+  },
     {
     id: "hannah",
     title: "Possession Of Hannah Grace",
