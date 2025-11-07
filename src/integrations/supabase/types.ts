@@ -111,6 +111,7 @@ export type Database = {
           category: string
           created_at: string
           description: string | null
+          dubbed: string | null
           featured: boolean | null
           genre: string
           id: string
@@ -125,6 +126,7 @@ export type Database = {
           category: string
           created_at?: string
           description?: string | null
+          dubbed?: string | null
           featured?: boolean | null
           genre: string
           id?: string
@@ -139,6 +141,7 @@ export type Database = {
           category?: string
           created_at?: string
           description?: string | null
+          dubbed?: string | null
           featured?: boolean | null
           genre?: string
           id?: string
