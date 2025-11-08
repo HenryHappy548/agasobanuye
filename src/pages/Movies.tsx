@@ -3,19 +3,30 @@ import StreamingHeader from "@/components/StreamingHeader";
 import MovieCard from "@/components/MovieCard";
 import VideoPlayer from "@/components/VideoPlayer";
 import Footer from "@/components/Footer";
-import { mockMovies } from "@/data/mockData";
+import { useMoviesByCategory } from "@/hooks/useMovies";
 
 const Movies = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedVideoId, setSelectedVideoId] = useState<string | null>(null);
   const [isPlayerOpen, setIsPlayerOpen] = useState(false);
-
-  const movies = mockMovies.filter(movie => movie.category === 'movie');
+  
+  const { data: movies = [], isLoading } = useMoviesByCategory('movie');
   
   const filteredMovies = movies.filter(movie =>
     movie.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
     movie.genre.toLowerCase().includes(searchQuery.toLowerCase())
   );
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-background text-foreground flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
+          <p className="text-muted-foreground">Loading movies...</p>
+        </div>
+      </div>
+    );
+  }
 
   const handlePlayVideo = (videoId: string) => {
     setSelectedVideoId(videoId);
