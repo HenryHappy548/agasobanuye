@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Play, Info, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useFeaturedMovies } from "@/hooks/useMovies";
 import heroImage from "@/assets/talk.jpg";
 
 interface HeroSectionProps {
@@ -10,20 +9,11 @@ interface HeroSectionProps {
 
 const HeroSection = ({ onPlayVideo }: HeroSectionProps) => {
   const [showInfo, setShowInfo] = useState(false);
-  const { data: featuredMovie } = useFeaturedMovies();
-  
-  // Use featured movie from database if available, otherwise use default
-  const movie = featuredMovie || {
-    id: "featured",
-    title: "Featured Content",
-    description: "Discover amazing movies and TV shows",
-    poster: heroImage,
-  };
   return (
     <section className="relative h-[50vh] sm:h-[60vh] lg:h-[70vh] flex items-center justify-start overflow-hidden">
       <img
-        src={movie.poster || heroImage}
-        alt={movie.title}
+        src={heroImage}
+        alt="Featured movie"
         loading="eager"
         decoding="async"
         className="absolute inset-0 w-full h-full object-cover"
@@ -33,16 +23,15 @@ const HeroSection = ({ onPlayVideo }: HeroSectionProps) => {
       <div className="relative z-10 container mx-auto px-4 sm:px-6">
         <div className="max-w-xs sm:max-w-md lg:max-w-lg xl:max-w-xl">
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3 sm:mb-4 leading-tight">
-            {movie.title}
+            Talk To Me
           </h1>
           <p className="text-sm sm:text-base lg:text-lg text-muted-foreground mb-4 sm:mb-6 leading-relaxed line-clamp-3 sm:line-clamp-none">
-            {movie.description || "Watch now and enjoy the best entertainment"}
-          </p>
+           After the death of her mother, 17-year-old Mia struggles with grief and alienation. When she and her friends discover a mysterious embalmed hand that allows people to communicate with spirits, they turn the séance ritual into a dangerous party game. </p>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
             <Button 
               size="lg" 
               className="bg-primary hover:bg-primary-glow text-primary-foreground shadow-glow transition-all duration-300 text-sm sm:text-base"
-              onClick={() => onPlayVideo(movie.id)}
+              onClick={() => onPlayVideo("featured-movie")}
             >
               <Play className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
               Play Now
@@ -81,18 +70,18 @@ const HeroSection = ({ onPlayVideo }: HeroSectionProps) => {
             
             <div className="space-y-4">
               <h2 className="text-2xl sm:text-3xl font-bold text-foreground pr-8">
-                {movie.title}
+                Talk To Me (2022)
               </h2>
               
               <div className="flex flex-wrap gap-2 text-sm">
-                {'year' in movie && movie.year && <span className="bg-primary/20 text-primary px-3 py-1 rounded-full">{movie.year}</span>}
-                {'genre' in movie && movie.genre && <span className="bg-accent/50 text-accent-foreground px-3 py-1 rounded-full">{movie.genre}</span>}
-                {'rating' in movie && movie.rating && <span className="bg-accent/50 text-accent-foreground px-3 py-1 rounded-full">{movie.rating}</span>}
+                <span className="bg-primary/20 text-primary px-3 py-1 rounded-full">2022</span>
+                <span className="bg-accent/50 text-accent-foreground px-3 py-1 rounded-full">Horror</span>
+                <span className="bg-accent/50 text-accent-foreground px-3 py-1 rounded-full">Mystery</span>
+                <span className="bg-accent/50 text-accent-foreground px-3 py-1 rounded-full">Sankara</span>
               </div>
               
               <p className="text-muted-foreground leading-relaxed">
-                {movie.description || "Watch now and enjoy the best entertainment"}
-              </p>
+               After the death of her mother, 17-year-old Mia struggles with grief and alienation. When she and her friends discover a mysterious embalmed hand that allows people to communicate with spirits, they turn the séance ritual into a dangerous party game.   </p>
               
               <div className="flex flex-col sm:flex-row gap-3 pt-4">
                 <Button 
@@ -100,7 +89,7 @@ const HeroSection = ({ onPlayVideo }: HeroSectionProps) => {
                   className="bg-primary hover:bg-primary-glow text-primary-foreground shadow-glow"
                   onClick={() => {
                     setShowInfo(false);
-                    onPlayVideo(movie.id);
+                    onPlayVideo("featured-movie");
                   }}
                 >
                   <Play className="mr-2 h-5 w-5" />

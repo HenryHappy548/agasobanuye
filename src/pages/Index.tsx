@@ -8,7 +8,7 @@ import VideoPlayer from "@/components/VideoPlayer";
 import Footer from "@/components/Footer";
 import { SeriesPollButton } from "@/components/SeriesPollButton";
 import { Button } from "@/components/ui/button";
-import { useMovies } from "@/hooks/useMovies";
+import { mockMovies } from "@/data/mockData";
 import { isValidVideoId, sanitizeTextInput } from "@/lib/security";
 import {
   Carousel,
@@ -22,10 +22,8 @@ const Index = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedVideoId, setSelectedVideoId] = useState<string | null>(null);
   const [isPlayerOpen, setIsPlayerOpen] = useState(false);
-  
-  const { data: movies = [], isLoading } = useMovies();
 
-  const filteredMovies = movies.filter(movie =>
+  const filteredMovies = mockMovies.filter(movie =>
     movie.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
     movie.genre.toLowerCase().includes(searchQuery.toLowerCase())
   );
@@ -51,22 +49,11 @@ const Index = () => {
     setSearchQuery(sanitized);
   }, []);
 
-  const trendingMovies = movies.filter(movie => movie.category === 'trending').slice(0, 10);
-  const moviesList = movies.filter(movie => movie.category === 'movie').slice(0, 10);
-  const tvShows = movies.filter(movie => movie.category === 'tv').slice(0, 10);
-  const featuredMovies = movies.slice(0, 20);
-  const recentlyAdded = movies.slice(0, 3);
-
-  if (isLoading) {
-    return (
-      <div className="min-h-screen bg-background text-foreground flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
-          <p className="text-muted-foreground">Loading movies...</p>
-        </div>
-      </div>
-    );
-  }
+  const trendingMovies = mockMovies.filter(movie => movie.category === 'trending').slice(0, 10);
+  const movies = mockMovies.filter(movie => movie.category === 'movie').slice(0, 10);
+  const tvShows = mockMovies.filter(movie => movie.category === 'tv').slice(0, 10);
+  const featuredMovies = mockMovies.slice(0, 20);
+  const recentlyAdded = mockMovies.slice(0, 3);
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -242,15 +229,15 @@ const Index = () => {
                 }}
                 className="w-full"
               >
-              <CarouselContent className="-ml-2 md:-ml-4">
-                {moviesList.map((movie) => (
-                  <CarouselItem key={movie.id} className="pl-2 md:pl-4 basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5 xl:basis-1/6">
-                    <MovieCard
-                      movie={movie}
-                      onPlay={handlePlayVideo}
-                    />
-                  </CarouselItem>
-                ))}
+                <CarouselContent className="-ml-2 md:-ml-4">
+                  {movies.map((movie) => (
+                    <CarouselItem key={movie.id} className="pl-2 md:pl-4 basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5 xl:basis-1/6">
+                      <MovieCard
+                        movie={movie}
+                        onPlay={handlePlayVideo}
+                      />
+                    </CarouselItem>
+                  ))}
                 </CarouselContent>
                 <CarouselPrevious className="left-2" />
                 <CarouselNext className="right-2" />
