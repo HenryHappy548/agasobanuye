@@ -71,6 +71,8 @@ import talk from "@/assets/talk.jpg";
 import lethal from "@/assets/lathal.jpg";
 import hannah from "@/assets/hannah.jpeg";
 import shouse from "@/assets/shouse.jpeg";
+import tempe from "@/assets/tempest.jpg";
+import brink from "@/assets/brink.jpg";
 
 export interface Movie {
   id: string;
@@ -83,6 +85,62 @@ export interface Movie {
 }
 
 export const mockMovies: Movie[] = [
+  
+  {
+    id: "brink",
+    title: "The Brink",
+    poster: brink,
+    year: "2017",
+    genre: "Action Crime",
+    rating: "Sankara",
+    category: "trending"
+  },
+  
+  {
+    id: "bonne8",
+    title: "Bon Appetit E8",
+    poster: bonne,
+    year: "2025",
+    genre: "Romance Drama",
+    rating: "Rocky kimomo",
+    category: "tv"
+  },
+  {
+    id: "bonne7",
+    title: "Bon Appetit E7",
+    poster: bonne,
+    year: "2025",
+    genre: "Romance Drama",
+    rating: "Rocky kimomo",
+    category: "tv"
+  },
+  {
+    id: "temp3",
+    title: "Tempest S01 E3",
+    poster: temp,
+    year: "2025",
+    genre: "Action Drama",
+    rating: "Junior",
+    category: "tv"
+  },
+  {
+    id: "temp2",
+    title: "Tempest S01 E2",
+    poster: temp,
+    year: "2025",
+    genre: "Action Drama",
+    rating: "Junior",
+    category: "tv"
+  },
+  {
+    id: "temp2",
+    title: "Tempest S01 E1",
+    poster: temp,
+    year: "2025",
+    genre: "Action Drama",
+    rating: "Junior",
+    category: "tv"
+  },
    {
     id: "shouse",
     title: "Safe House",
