@@ -72,7 +72,7 @@ import lethal from "@/assets/lathal.jpg";
 import hannah from "@/assets/hannah.jpeg";
 import shouse from "@/assets/shouse.jpeg";
 import tempe from "@/assets/tempest.jpg";
-import brink from "@/assets/brink.jpg";
+import brink0 from "@/assets/Brink0.jpg";
 
 export interface Movie {
   id: string;
@@ -87,7 +87,7 @@ export interface Movie {
 export const mockMovies: Movie[] = [
   
   {
-    id: "brink",
+    id: "brink0",
     title: "The Brink",
     poster: brink,
     year: "2017",
