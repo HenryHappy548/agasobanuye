@@ -4,9 +4,10 @@
 User-agent: *
 Allow: /
 
-# Disallow specific paths if needed
+# Disallow specific paths
 Disallow: /api/
 Disallow: /admin/
+Disallow: /auth
 
 # Crawl-delay for better server performance
 Crawl-delay: 1
