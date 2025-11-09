@@ -99,6 +99,16 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
 
           ]
         },
+      "brink0": {
+        title: "The Brink",
+        embedCode: '<iframe width="400" height="240" src="https://short.icu/SWTJx99kV" frameborder="0" scrolling="0" allowfullscreen></iframe>',
+          host: "Sankara",
+        downloadLinks: [
+          { quality: "720p", size: "780MB", url: "https://www.mediafire.com/file/81hlgbke0m3uz46/The_Brink.mp4/file", type: "MP4" }
+          
+
+          ]
+        },
       "bonne8": {
         title: "Bonne Appetit E8",
         embedCode: '<iframe width="420" height="240" src="https://short.icu/k0BHZjfxd" frameborder="0" scrolling="0" allowfullscreen></iframe>',
