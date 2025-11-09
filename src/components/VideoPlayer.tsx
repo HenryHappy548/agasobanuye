@@ -1402,74 +1402,74 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-[95vw] sm:max-w-4xl lg:max-w-5xl w-full p-0 bg-black border-border max-h-[95vh] overflow-hidden">
-        <div className="relative">
+      <DialogContent className="max-w-[98vw] sm:max-w-3xl lg:max-w-5xl xl:max-w-6xl w-full p-0 bg-black border-border max-h-[98vh] overflow-hidden flex flex-col">
+        <div className="relative flex-shrink-0">
           <Button
             variant="secondary"
             size="sm"
-            className="absolute top-2 right-2 sm:top-3 sm:right-3 z-10 bg-black/80 hover:bg-black text-white"
+            className="absolute top-2 right-2 sm:top-4 sm:right-4 z-20 bg-black/90 hover:bg-primary text-white shadow-lg"
             onClick={onClose}
           >
-            <X className="h-4 w-4 sm:h-5 sm:w-5" />
+            <X className="h-5 w-5" />
           </Button>
           
           {videoInfo && (
             <>
-              {/* Video Player Area - Reduced aspect ratio */}
-              <div className="relative bg-black flex items-center justify-center">
+              {/* Video Player Area - Responsive aspect ratio */}
+              <div className="relative bg-black flex items-center justify-center w-full">
                 {videoInfo.embedCode ? (
                   <div 
-                    className="w-full max-w-full aspect-[16/4]"
+                    className="w-full aspect-video max-h-[50vh] sm:max-h-[60vh] [&>iframe]:w-full [&>iframe]:h-full [&>iframe]:absolute [&>iframe]:inset-0 relative"
                     dangerouslySetInnerHTML={{ __html: videoInfo.embedCode }}
                   />
                 ) : (
-                  <div className="w-full aspect-[16/4] flex items-center justify-center text-white">
-                    Loading video player...
+                  <div className="w-full aspect-video max-h-[50vh] sm:max-h-[60vh] flex items-center justify-center text-white">
+                    <span className="text-sm sm:text-base">Loading video player...</span>
                   </div>
                 )}
               </div>
 
-              {/* Video Info and Download Section */}
-              <div className="p-3 sm:p-4 lg:p-6 bg-gray-900 text-white max-h-[100vh] overflow-y-auto">
-                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-4 gap-3">
-                  <div>
-                    <h2 className="text-lg sm:text-xl font-bold">{videoInfo.title}</h2>
-                    <span className="text-xs sm:text-sm text-gray-300">
+              {/* Video Info and Download Section - Scrollable */}
+              <div className="p-4 sm:p-5 lg:p-6 bg-gray-900 text-white overflow-y-auto flex-1 min-h-0">
+                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-4 gap-3">
+                  <div className="flex-1">
+                    <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-1">{videoInfo.title}</h2>
+                    <span className="text-sm sm:text-base text-muted-foreground">
                       Host: {videoInfo.host}
                     </span>
                   </div>
                   <Button
                     variant="outline"
-                    size="sm"
+                    size="default"
                     onClick={() => window.open(getSrcFromEmbedCode(videoInfo.embedCode), '_blank')}
-                    className="text-white border-white/30 w-full sm:w-auto"
+                    className="text-white border-white/30 hover:bg-white/10 w-full sm:w-auto flex-shrink-0"
                   >
-                    <ExternalLink className="h-3 w-3 mr-1" />
+                    <ExternalLink className="h-4 w-4 mr-2" />
                     Open Original
                   </Button>
                 </div>
                 
                 {/* Download Section */}
-                <div className="mt-4">
-                  <h3 className="text-base sm:text-lg font-semibold mb-3 flex items-center text-foreground">
-                    <Download className="h-4 w-4 mr-2" />
+                <div className="mt-6">
+                  <h3 className="text-lg sm:text-xl font-semibold mb-4 flex items-center text-foreground">
+                    <Download className="h-5 w-5 mr-2" />
                     Download Options
                   </h3>
                   
                   {videoInfo.downloadLinks.length > 0 ? (
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3 sm:gap-4">
                       {videoInfo.downloadLinks.map((link, index) => (
-                        <div key={index} className="border border-border rounded-lg p-4 bg-card hover:bg-accent transition-colors">
+                        <div key={index} className="border border-border rounded-lg p-4 bg-card hover:bg-accent transition-all duration-200 hover:shadow-lg">
                           <div className="flex justify-between items-center mb-3">
-                            <span className="font-semibold text-primary text-base">{link.quality}</span>
-                            <span className="text-sm text-muted-foreground">{link.size}</span>
+                            <span className="font-bold text-primary text-lg">{link.quality}</span>
+                            <span className="text-sm text-muted-foreground font-medium">{link.size}</span>
                           </div>
-                          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2">
+                          <div className="flex flex-col gap-3">
                             <span className="text-sm text-foreground/80">{link.type}</span>
                             <Button
-                              size="sm"
+                              size="default"
                               onClick={() => handleDownload(link.url, `${videoInfo.title} - ${link.quality}.mp4`)}
-                              className="bg-primary hover:bg-primary-glow text-primary-foreground font-semibold text-sm w-full sm:w-auto shadow-lg"
+                              className="bg-primary hover:bg-primary-glow text-primary-foreground font-semibold w-full shadow-lg hover:shadow-xl transition-all"
                             >
                               <Download className="h-4 w-4 mr-2" />
                               Download
@@ -1479,7 +1479,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
                       ))}
                     </div>
                   ) : (
-                    <div className="text-center py-4 text-muted-foreground text-sm">
+                    <div className="text-center py-6 sm:py-8 text-muted-foreground">
                       No download links available for this movie.
                     </div>
                   )}
