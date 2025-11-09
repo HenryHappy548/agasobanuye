@@ -88,7 +88,7 @@ export const mockMovies: Movie[] = [
   {
     id: "brink0",
     title: "The Brink",
-    poster: brink,
+    poster: brink0,
     year: "2017",
     genre: "Action Crime",
     rating: "Sankara",
@@ -116,7 +116,7 @@ export const mockMovies: Movie[] = [
   {
     id: "temp3",
     title: "Tempest S01 E3",
-    poster: temp,
+    poster: tempe,
     year: "2025",
     genre: "Action Drama",
     rating: "Junior",
@@ -125,7 +125,7 @@ export const mockMovies: Movie[] = [
   {
     id: "temp2",
     title: "Tempest S01 E2",
-    poster: temp,
+    poster: tempe,
     year: "2025",
     genre: "Action Drama",
     rating: "Junior",
@@ -134,7 +134,7 @@ export const mockMovies: Movie[] = [
   {
     id: "temp1",
     title: "Tempest S01 E1",
-    poster: temp,
+    poster: tempe,
     year: "2025",
     genre: "Action Drama",
     rating: "Junior",
