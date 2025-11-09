@@ -1451,7 +1451,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
                 
                 {/* Download Section */}
                 <div className="mt-4">
-                  <h3 className="text-base sm:text-lg font-semibold mb-3 flex items-center">
+                  <h3 className="text-base sm:text-lg font-semibold mb-3 flex items-center text-foreground">
                     <Download className="h-4 w-4 mr-2" />
                     Download Options
                   </h3>
@@ -1459,19 +1459,19 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
                   {videoInfo.downloadLinks.length > 0 ? (
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                       {videoInfo.downloadLinks.map((link, index) => (
-                        <div key={index} className="border border-gray-420 rounded-lg p-3">
-                          <div className="flex justify-between items-center mb-2">
-                            <span className="font-medium text-blue-300 text-sm">{link.quality}</span>
-                            <span className="text-xs text-gray-350">{link.size}</span>
+                        <div key={index} className="border border-border rounded-lg p-4 bg-card hover:bg-accent transition-colors">
+                          <div className="flex justify-between items-center mb-3">
+                            <span className="font-semibold text-primary text-base">{link.quality}</span>
+                            <span className="text-sm text-muted-foreground">{link.size}</span>
                           </div>
                           <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2">
-                            <span className="text-xs text-gray-300">{link.type}</span>
+                            <span className="text-sm text-foreground/80">{link.type}</span>
                             <Button
                               size="sm"
                               onClick={() => handleDownload(link.url, `${videoInfo.title} - ${link.quality}.mp4`)}
-                              className="bg-green-420 hover:bg-green-700 text-xs w-full sm:w-auto"
+                              className="bg-primary hover:bg-primary-glow text-primary-foreground font-semibold text-sm w-full sm:w-auto shadow-lg"
                             >
-                              <Download className="h-3 w-3 mr-1" />
+                              <Download className="h-4 w-4 mr-2" />
                               Download
                             </Button>
                           </div>
@@ -1479,7 +1479,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
                       ))}
                     </div>
                   ) : (
-                    <div className="text-center py-4 text-gray-350 text-sm">
+                    <div className="text-center py-4 text-muted-foreground text-sm">
                       No download links available for this movie.
                     </div>
                   )}
