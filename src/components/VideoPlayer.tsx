@@ -99,6 +99,56 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
 
           ]
         },
+      "bonne8": {
+        title: "Bonne Appetit E8",
+        embedCode: '<iframe width="420" height="240" src="https://short.icu/k0BHZjfxd" frameborder="0" scrolling="0" allowfullscreen></iframe>',
+          host: "Rocky",
+        downloadLinks: [
+          { quality: "720p", size: "780MB", url: "https://www.mediafire.com/file/umx2pb2jshhw2xd/Bon_App%25C3%25A9tit%252C_Your_Majesty_S01e08.mp4/file", type: "MP4" }
+          
+
+          ]
+        },
+      "bonne7": {
+        title: "Bonne Appetit E7",
+        embedCode: '<iframe width="420" height="240" src="https://short.icu/d4TPZLpqw" frameborder="0" scrolling="0" allowfullscreen></iframe>',
+          host: "Rocky",
+        downloadLinks: [
+          { quality: "720p", size: "780MB", url: "https://www.mediafire.com/file/w73d13xtaczj3tz/Bon_App%25C3%25A9tit%252C_Your_Majesty_S01e07.mp4/file", type: "MP4" }
+          
+
+          ]
+        },
+      "temp3": {
+        title: "Tempest E3",
+        embedCode: '<iframe width="420" height="240" src="https://short.icu/RZatsirCR" frameborder="0" scrolling="0" allowfullscreen></iframe>',
+          host: "Junior",
+        downloadLinks: [
+          { quality: "720p", size: "780MB", url: "https://www.mediafire.com/file/yztj5i43w45w81b/Tempest_S01e03.mp4/file", type: "MP4" }
+          
+
+          ]
+        },
+      "temp2": {
+        title: "Tempest E2",
+        embedCode: '<iframe width="420" height="200" src="https://short.icu/LsgpWZXnt" frameborder="0" scrolling="0" allowfullscreen></iframe>',
+          host: "Junior",
+        downloadLinks: [
+          { quality: "720p", size: "430MB", url: "https://www.mediafire.com/file/cjwb56sica0gv2j/Tempest+S01e02.mp4/file", type: "MP4" }
+          
+
+          ]
+        },
+      "temp1": {
+        title: "Tempest E1",
+        embedCode: '<iframe width="420" height="240" src="https://short.icu/2SnoC745H" frameborder="0" scrolling="0" allowfullscreen></iframe>',
+          host: "Junior",
+        downloadLinks: [
+          { quality: "720p", size: "780MB", url: "https://www.mediafire.com/file/l0fob4ypkmgrq4l/Tempest_S01e01.mp4/file", type: "MP4" }
+          
+
+          ]
+        },
       "shouse": {
         title: "Safe House",
         embedCode: '<iframe width="420" height="240" src="https://short.icu/KMZ9QwrF3" frameborder="0" scrolling="0" allowfullscreen></iframe>',
