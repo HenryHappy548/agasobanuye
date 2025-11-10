@@ -99,6 +99,26 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
 
           ]
         },
+      "child2": {
+        title: "Childten Of Sister E2",
+        embedCode: '<iframe width="640" height="360" src="https://short.icu/6KpKsy4rV" frameborder="0" scrolling="0" allowfullscreen></iframe>',
+        host: "Rocky",
+        downloadLinks: [
+          { quality: "720p", size: "430MB", url: "https://mega.nz/file/SYVVkCAQ#lhsAUqGCaGWPd2OyPTwE5HXmCaDLkdWie_FOROHSKXE", type: "MP4" }
+          
+
+          ]
+        },
+      "child1": {
+        title: "Childten Of Sister E1",
+        embedCode: '<iframe width="640" height="360" src="https://short.icu/fV4zKHKeg" frameborder="0" scrolling="0" allowfullscreen></iframe>',
+        host: "Rocky",
+        downloadLinks: [
+          { quality: "720p", size: "430MB", url: "https://mega.nz/file/6FlGDC4A#NguzCLvfvAu_Zb4jI2OaH0GNPvtNlCjmZ7eRJXn_6Tw", type: "MP4" }
+          
+
+          ]
+        },
       "brink0": {
         title: "The Brink",
         embedCode: '<iframe width="400" height="240" src="https://short.icu/SWTJx99kV" frameborder="0" scrolling="0" allowfullscreen></iframe>',
