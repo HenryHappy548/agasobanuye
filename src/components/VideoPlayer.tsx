@@ -101,27 +101,27 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
          },
       "freed": {
         title: "Fifty Shades Of Freed",
-        embedCode: '',
+        embedCode: '<iframe width="420" height="240" src="https://short.icu/DKppJiv5F" frameborder="0" scrolling="0" allowfullscreen></iframe>',
         host: "Sankara",
         downloadLinks: [
-          { quality: "720p", size: "840MB", url: "", type: "MP4" }
+          { quality: "720p", size: "840MB", url: "https://www.mediafire.com/file/cxpglp2ys7ekhmp/Fifty_Shades_Freed.mp4/file", type: "MP4" }
           
 
           ]
          },
       "askme": {
         title: "Ask Me What You Want",
-        embedCode: '<iframe width="640" height="360" src="https://short.icu/Y-LKlrcaw" frameborder="0" scrolling="0" allowfullscreen></iframe>',
+        embedCode: '<iframe width="420" height="240" src="https://short.icu/Y-LKlrcaw" frameborder="0" scrolling="0" allowfullscreen></iframe>',
         host: "Sankara",
         downloadLinks: [
-          { quality: "720p", size: "872MB", url: "", type: "MP4" }
+          { quality: "720p", size: "872MB", url: "https://www.mediafire.com/file/moaknt5ns7dpo8c/Ask_me_what_you_want.mp4/file", type: "MP4" }
           
 
           ]
         },
       "child2": {
         title: "Childten Of Sister E2",
-        embedCode: '<iframe width="640" height="360" src="https://short.icu/6KpKsy4rV" frameborder="0" scrolling="0" allowfullscreen></iframe>',
+        embedCode: '<iframe width="420" height="240" src="https://short.icu/6KpKsy4rV" frameborder="0" scrolling="0" allowfullscreen></iframe>',
         host: "Rocky",
         downloadLinks: [
           { quality: "720p", size: "430MB", url: "https://mega.nz/file/SYVVkCAQ#lhsAUqGCaGWPd2OyPTwE5HXmCaDLkdWie_FOROHSKXE", type: "MP4" }
