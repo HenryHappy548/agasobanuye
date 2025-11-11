@@ -98,6 +98,26 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
           
 
           ]
+         },
+      "freed": {
+        title: "Fifty Shades Of Freed",
+        embedCode: '',
+        host: "Sankara",
+        downloadLinks: [
+          { quality: "720p", size: "840MB", url: "", type: "MP4" }
+          
+
+          ]
+         },
+      "askme": {
+        title: "Ask Me What You Want",
+        embedCode: '<iframe width="640" height="360" src="https://short.icu/Y-LKlrcaw" frameborder="0" scrolling="0" allowfullscreen></iframe>',
+        host: "Sankara",
+        downloadLinks: [
+          { quality: "720p", size: "872MB", url: "", type: "MP4" }
+          
+
+          ]
         },
       "child2": {
         title: "Childten Of Sister E2",
