@@ -108,6 +108,16 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
           
 
           ]
+          },
+      "tempe4": {
+        title: "Tempest S01 E4",
+        embedCode: '<iframe width="640" height="360" src="https://short.icu/2O9UCSw-9" frameborder="0" scrolling="0" allowfullscreen></iframe>',
+        host: "Junior",
+        downloadLinks: [
+          { quality: "720p", size: "412MB", url: "https://www.mediafire.com/file/h5d4coox3z3csq0/Tempest+S01+E4.mp4/file", type: "MP4" }
+          
+
+          ]
          },
       "freed": {
         title: "Fifty Shades Of Freed",
