@@ -75,6 +75,7 @@ import tempe from "@/assets/tempest.jpg";
 import brink0 from "@/assets/Brink0.jpg";
 import askm from "@/assets/askm.jpeg";
 import freed from "@/assets/freed.jpeg";
+import out from "@/assets/out.png";
 export interface Movie {
   id: string;
   title: string;
@@ -86,6 +87,15 @@ export interface Movie {
 }
 
 export const mockMovies: Movie[] = [
+   {
+    id: "out",
+    title: "Outpost",
+    poster: out,
+    year: "2019",
+    genre: "Action",
+    rating: "Dylan Kabaka",
+    category: "trending"
+  },
    {
     id: "bonne9",
     title: "Bon Appetit S01 E9",
