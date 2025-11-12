@@ -87,6 +87,15 @@ export interface Movie {
 }
 
 export const mockMovies: Movie[] = [
+  {
+    id: "temp4",
+    title: "Tempest S01 E4",
+    poster: tempe,
+    year: "2025",
+    genre: "Action Drama",
+    rating: "Junior",
+    category: "tv"
+  },
    
   {
     id: "askme",
