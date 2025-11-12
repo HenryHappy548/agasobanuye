@@ -73,6 +73,8 @@ import hannah from "@/assets/hannah.jpeg";
 import shouse from "@/assets/shouse.jpeg";
 import tempe from "@/assets/tempest.jpg";
 import brink0 from "@/assets/Brink0.jpg";
+import askm from "@/assets/askm.jpeg";
+import freed from "@/assets/freed.jpeg";
 export interface Movie {
   id: string;
   title: string;
@@ -84,6 +86,42 @@ export interface Movie {
 }
 
 export const mockMovies: Movie[] = [
+   {
+    id: "bonne9",
+    title: "Bon Appetit S01 E9",
+    poster: bonne,
+    year: "2025",
+    genre: "Romance Drama",
+    rating: "Rocky kimomo",
+    category: "tv"
+  },
+   {
+    id: "temp4",
+    title: "Tempest S01 E4",
+    poster: tempe,
+    year: "2025",
+    genre: "Action Drama",
+    rating: "Junior",
+    category: "tv"
+  },
+   {
+    id: "askm",
+    title: "Ask Me What You What",
+    poster: askm,
+    year: "2024",
+    genre: "Romance Drama",
+    rating: "Sankara",
+    category: "trending"
+  },
+   {
+    id: "freed",
+    title: "Fifty Shades Of Freed",
+    poster: freed,
+    year: "2018",
+    genre: "Romance Drama",
+    rating: "Sankara",
+    category: "trending"
+  },
   
   {
     id: "brink0",
