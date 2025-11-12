@@ -73,9 +73,6 @@ import hannah from "@/assets/hannah.jpeg";
 import shouse from "@/assets/shouse.jpeg";
 import tempe from "@/assets/tempest.jpg";
 import brink0 from "@/assets/Brink0.jpg";
-import children from "@/assets/Children.jpg";
-import freed from "@/assets/fred.jpeg";
-import askme from "@/assets/askme.jpg";
 export interface Movie {
   id: string;
   title: string;
@@ -87,53 +84,6 @@ export interface Movie {
 }
 
 export const mockMovies: Movie[] = [
-  {
-    id: "temp4",
-    title: "Tempest S01 E4",
-    poster: tempe,
-    year: "2025",
-    genre: "Action Drama",
-    rating: "Junior",
-    category: "tv"
-  },
-   
-  {
-    id: "askme",
-    title: "Ask Me What You Want",
-    poster: askme,
-    year: "2024",
-    genre: "Romance Drama",
-    rating: "Sankara",
-    category: "trending"
-  },
-   {
-    id: "freed",
-    title: "Fifty Shades Of Freed",
-    poster: freed,
-    year: "2019",
-    genre: "Romance Drama",
-    rating: "Sankara",
-    category: "trending"
-  },
-  {
-    id: "child2",
-    title: "Children of Sister E2",
-    poster: children,
-    year: "2019",
-    genre: "Drama",
-    rating: "Rocky",
-    category: "tv"
-  },
-  
-  {
-    id: "child1",
-    title: "Children of Sister E1",
-    poster: children,
-    year: "2019",
-    genre: "Drama",
-    rating: "Rocky",
-    category: "tv"
-  },
   
   {
     id: "brink0",

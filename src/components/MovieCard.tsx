@@ -1,6 +1,5 @@
 import { Play } from "lucide-react";
 import { memo } from "react";
-import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
 interface Movie {
@@ -19,14 +18,11 @@ interface MovieCardProps {
 
 const MovieCard = memo(({ movie, onPlay }: MovieCardProps) => {
   return (
-    <Link 
-      to={`/movie/${movie.id}`}
-      className="group relative overflow-hidden rounded-lg bg-card border border-border hover:border-primary/50 transition-all duration-300 hover:scale-105 hover:shadow-glow block"
-    >
+    <div className="group relative overflow-hidden rounded-lg bg-card border border-border hover:border-primary/50 transition-all duration-300 hover:scale-105 hover:shadow-glow">
       <div className="aspect-[2/3] overflow-hidden">
         <img
           src={movie.poster}
-          alt={`${movie.title} poster`}
+          alt={movie.title}
           loading="lazy"
           decoding="async"
           className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
@@ -37,10 +33,7 @@ const MovieCard = memo(({ movie, onPlay }: MovieCardProps) => {
           <Button
             size="sm"
             className="bg-primary hover:bg-primary-glow text-primary-foreground shadow-glow"
-            onClick={(e) => {
-              e.preventDefault();
-              onPlay(movie.id);
-            }}
+            onClick={() => onPlay(movie.id)}
           >
             <Play className="h-4 w-4 mr-1" />
             Play
@@ -60,7 +53,7 @@ const MovieCard = memo(({ movie, onPlay }: MovieCardProps) => {
         </div>
         <p className="text-xs text-muted-foreground mt-1">{movie.genre}</p>
       </div>
-    </Link>
+    </div>
   );
 });
 

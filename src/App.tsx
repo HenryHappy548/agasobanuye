@@ -4,7 +4,6 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { HelmetProvider } from "react-helmet-async";
 import LoadingScreen from "@/components/LoadingScreen";
 
 // Lazy load pages for better performance
@@ -15,7 +14,6 @@ const Popular = lazy(() => import("./pages/Popular"));
 const FAQ = lazy(() => import("./pages/FAQ"));
 const Auth = lazy(() => import("./pages/Auth"));
 const Admin = lazy(() => import("./pages/Admin"));
-const MovieDetail = lazy(() => import("./pages/MovieDetail"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient({
@@ -39,30 +37,27 @@ const App = () => {
   }
 
   return (
-    <HelmetProvider>
-      <QueryClientProvider client={queryClient}>
-        <TooltipProvider>
-          <Toaster />
-          <Sonner />
-          <BrowserRouter>
-            <Suspense fallback={<LoadingScreen onLoadingComplete={() => {}} />}>
-              <Routes>
-                <Route path="/" element={<Index />} />
-                <Route path="/movies" element={<Movies />} />
-                <Route path="/tv-shows" element={<TVShows />} />
-                <Route path="/popular" element={<Popular />} />
-                <Route path="/movie/:id" element={<MovieDetail />} />
-                <Route path="/faq" element={<FAQ />} />
-                <Route path="/auth" element={<Auth />} />
-                <Route path="/admin" element={<Admin />} />
-                {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-                <Route path="*" element={<NotFound />} />
-              </Routes>
-            </Suspense>
-          </BrowserRouter>
-        </TooltipProvider>
-      </QueryClientProvider>
-    </HelmetProvider>
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <Suspense fallback={<LoadingScreen onLoadingComplete={() => {}} />}>
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/movies" element={<Movies />} />
+              <Route path="/tv-shows" element={<TVShows />} />
+              <Route path="/popular" element={<Popular />} />
+              <Route path="/faq" element={<FAQ />} />
+              <Route path="/auth" element={<Auth />} />
+              <Route path="/admin" element={<Admin />} />
+              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </Suspense>
+        </BrowserRouter>
+      </TooltipProvider>
+    </QueryClientProvider>
   );
 };
 
