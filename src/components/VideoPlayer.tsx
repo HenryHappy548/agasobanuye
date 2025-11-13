@@ -169,6 +169,26 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
 
           ]
         },
+      "temp6": {
+        title: "Tempest S01 E6",
+        embedCode: '<iframe width="640" height="360" src="https://short.icu/1WEEfLiwG" frameborder="0" scrolling="0" allowfullscreen></iframe>',
+          host: "Junior",
+        downloadLinks: [
+          { quality: "720p", size: "780MB", url: "https://www.mediafire.com/file/1tjesx4qdcksvt4/Tempest+S01e06.mp4/file", type: "MP4" }
+          
+
+          ]
+          },
+      "temp5": {
+        title: "Tempest S01 E5",
+        embedCode: '<iframe width="640" height="360" src="https://short.icu/eRU8OcTdO" frameborder="0" scrolling="0" allowfullscreen></iframe>',
+          host: "Junior",
+        downloadLinks: [
+          { quality: "720p", size: "780MB", url: "https://www.mediafire.com/file/nefdazg48vb6t4x/Tempest+S01e05.mp4/file", type: "MP4" }
+          
+
+          ]
+        },
       "brink0": {
         title: "The Brink",
         embedCode: '<iframe width="400" height="240" src="https://short.icu/SWTJx99kV" frameborder="0" scrolling="0" allowfullscreen></iframe>',
