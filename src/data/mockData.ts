@@ -89,6 +89,24 @@ import hrs from "@/assets/24h.jpg";
 
 export const mockMovies: Movie[] = [
    {
+    id: "temp6",
+    title: "Tempest S01 E6",
+    poster: tempe,
+    year: "2025",
+    genre: "Action Drama",
+    rating: "Junior",
+    category: "tv"
+  },
+   {
+    id: "temp5",
+    title: "Tempest S01 E5",
+    poster: tempe,
+    year: "2025",
+    genre: "Action Drama",
+    rating: "Junior",
+    category: "tv"
+  },
+   {
     id: "hrs2",
     title: "24 Hours To live B",
     poster: hrs,
