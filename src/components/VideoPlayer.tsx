@@ -99,6 +99,36 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
 
           ]
         },
+      "hrs2": {
+        title: "24 Hours To live B",
+        embedCode: '<iframe width="640" height="360" src="https://short.icu/5rBSSRKlk" frameborder="0" scrolling="0" allowfullscreen></iframe>',
+          host: "Savimbi",
+        downloadLinks: [
+          { quality: "720p", size: "780MB", url: "https://www.mediafire.com/file/mt3f13aow81hljd/24_HOURS_TO_LIVE_B.mp4/file", type: "MP4" }
+          
+
+          ]
+        },
+      "hrs1": {
+        title: "24 Hours To Live A",
+        embedCode: '<iframe width="640" height="360" src="https://short.icu/CVmvWMA_F" frameborder="0" scrolling="0" allowfullscreen></iframe>',
+          host: "Savimbi",
+        downloadLinks: [
+          { quality: "720p", size: "780MB", url: "https://www.mediafire.com/file/s7m80809ws85gj3/24_HOURS_TO_LIVE_A.mp4/file", type: "MP4" }
+          
+
+          ]
+         },
+      "out": {
+        title: "Outpost",
+        embedCode: '<iframe width="640" height="360" src="https://short.icu/hvkpXouNp" frameborder="0" scrolling="0" allowfullscreen></iframe>',
+          host: "Dylan Kabaka",
+        downloadLinks: [
+          { quality: "720p", size: "780MB", url: "https://www.mediafire.com/file/bcd954397afe5mo/OUTPOST.mp4/file", type: "MP4" }
+          
+
+          ]
+        },
       "bonne9": {
         title: "Bon Appetit S01 E9",
         embedCode: '<iframe width="640" height="360" src="https://short.icu/bI_a0NMww" frameborder="0" scrolling="0" allowfullscreen></iframe>',
