@@ -76,7 +76,8 @@ import brink0 from "@/assets/Brink0.jpg";
 import askm from "@/assets/askm.jpeg";
 import freed from "@/assets/freed.jpeg";
 import out from "@/assets/out.png";
-export interface Movie {
+import hrs from "@/assets/24h.jpg";
+  export interface Movie {
   id: string;
   title: string;
   poster: string;
@@ -87,6 +88,24 @@ export interface Movie {
 }
 
 export const mockMovies: Movie[] = [
+   {
+    id: "hrs2",
+    title: "24 Hours To live B",
+    poster: hrs,
+    year: "2019",
+    genre: "Action Sci-fi",
+    rating: "Savimbi",
+    category: "trending"
+  },
+    {
+    id: "hrs1",
+    title: "24 Hours To live A",
+    poster: hrs,
+    year: "2019",
+    genre: "Action Sci-fi",
+    rating: "Savimbi",
+    category: "trending"
+  },
    {
     id: "out",
     title: "Outpost",
