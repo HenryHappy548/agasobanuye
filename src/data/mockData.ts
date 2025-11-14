@@ -89,6 +89,15 @@ import hrs from "@/assets/24h.jpg";
 
 export const mockMovies: Movie[] = [
    {
+    id: "bonne10",
+    title: "Bon Appetit S01 E10",
+    poster: bonne,
+    year: "2025",
+    genre: "Romance Drama",
+    rating: "Rocky kimomo",
+    category: "tv"
+  },
+   {
     id: "temp6",
     title: "Tempest S01 E6",
     poster: tempe,
