@@ -98,6 +98,16 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
           
 
           ]
+         },
+      "bonne10": {
+        title: "Bon Appetit S01 E10",
+        embedCode: '<iframe width="640" height="360" src="https://short.icu/B6u84be8Z" frameborder="0" scrolling="0" allowfullscreen></iframe>',
+          host: "Rocky",
+        downloadLinks: [
+          { quality: "720p", size: "780MB", url: "https://www.mediafire.com/file/t61ke1u6o8st0yx/Bon+Appetit+S01e10.mp4/file", type: "MP4" }
+          
+
+          ]
         },
       "temp6": {
         title: "Tempest S01 E6",
