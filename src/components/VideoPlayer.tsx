@@ -98,6 +98,71 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
           
 
           ]
+          },
+      "bunker8": {
+        title: "Billionaire Bunker S01 E8",
+        embedCode: '<iframe width="640" height="360" src="https://short.icu/jtvooqcp7P" frameborder="0" scrolling="0" allowfullscreen></iframe>',
+          host: "Sikov",
+        downloadLinks: [
+          { quality: "720p", size: "780MB", url: "https://pixeldrain.com/u/A2V2Wf31", type: "MP4" }
+          ]
+          },
+      "bunker7": {
+        title: "Billionaire Bunker S01 E7",
+        embedCode: '<iframe width="640" height="360" src="https://short.icu/pq4xugaYq" frameborder="0" scrolling="0" allowfullscreen></iframe>',
+          host: "Sikov",
+        downloadLinks: [
+          { quality: "720p", size: "780MB", url: "https://pixeldrain.com/u/K9LW2di4", type: "MP4" }
+          ]
+        
+          },
+      "bunker6": {
+        title: "Billionaire Bunker S01 E6",
+        embedCode: '<iframe width="640" height="360" src="https://short.icu/8TKTGuNkX" frameborder="0" scrolling="0" allowfullscreen></iframe>',
+          host: "Sikov",
+        downloadLinks: [
+          { quality: "720p", size: "780MB", url: "https://pixeldrain.com/u/2EpbkuBf", type: "MP4" }
+          ]
+          },
+      "bunker5": {
+        title: "Billionaire Bunker S01 E5",
+        embedCode: '<iframe width="640" height="360" src="https://short.icu/ycdq0zHSE" frameborder="0" scrolling="0" allowfullscreen></iframe>',
+          host: "Sikov",
+        downloadLinks: [
+          { quality: "720p", size: "780MB", url: "https://pixeldrain.com/u/kxb2kscc", type: "MP4" }
+          ]
+          },
+      "bunker4": {
+        title: "Billionaire Bunker S01 E4",
+        embedCode: '<iframe width="640" height="360" src="https://short.icu/Vl2EUpV69" frameborder="0" scrolling="0" allowfullscreen></iframe>',
+          host: "Sikov",
+        downloadLinks: [
+          { quality: "720p", size: "780MB", url: "https://pixeldrain.com/u/7pzNDEVJ", type: "MP4" }
+          ]
+          },
+      "bunker3": {
+        title: "Billionaire Bunker S01 E3",
+        embedCode: '<iframe width="640" height="360" src="https://short.icu/_0KqMGC6G" frameborder="0" scrolling="0" allowfullscreen></iframe>',
+          host: "Sikov",
+        downloadLinks: [
+          { quality: "720p", size: "780MB", url: "https://pixeldrain.com/u/KQwaUwVW", type: "MP4" }
+          ]
+          },
+      "bunker2": {
+        title: "Billionaire Bunker S01 E2",
+        embedCode: '<iframe width="640" height="360" src="https://short.icu/punUUapis" frameborder="0" scrolling="0" allowfullscreen></iframe>',
+          host: "Sikov",
+        downloadLinks: [
+          { quality: "720p", size: "780MB", url: "https://pixeldrain.com/u/meiUqB21", type: "MP4" }
+          ]
+         },
+      "bunker1": {
+        title: "Billionaire Bunker S01 E1",
+        embedCode: '<iframe width="640" height="360" src="https://short.icu/9TKHGhNTF" frameborder="0" scrolling="0" allowfullscreen></iframe>',
+          host: "Sikov",
+        downloadLinks: [
+          { quality: "720p", size: "780MB", url: "https://pixeldrain.com/u/31fPksy3", type: "MP4" }
+          ]
          },
       "bonne10": {
         title: "Bon Appetit S01 E10",
