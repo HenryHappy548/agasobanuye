@@ -91,7 +91,7 @@ import bunker from "@/assets/bunker.jpeg";
 export const mockMovies: Movie[] = [
     {
     id: "bunker8",
-    title: "Bunker S01 E8",
+    title: "Billionaire Bunker S01 E8",
     poster: bunker,
     year: "2025",
     genre: "Sci-fi Mystery",
@@ -100,7 +100,7 @@ export const mockMovies: Movie[] = [
   },
     {
     id: "bunker7",
-    title: "Bunker S01 E7",
+    title: "Billionaire Bunker S01 E7",
     poster: bunker,
     year: "2025",
     genre: "Sci-fi Mystery",
@@ -109,7 +109,7 @@ export const mockMovies: Movie[] = [
   },
     {
     id: "bunker6",
-    title: "Bunker S01 E6",
+    title: "Billionaire Bunker S01 E6",
     poster: bunker,
     year: "2025",
     genre: "Sci-fi Mystery",
@@ -118,7 +118,7 @@ export const mockMovies: Movie[] = [
   },
     {
     id: "bunker5",
-    title: "Bunker S01 E5",
+    title: "Billionaire Bunker S01 E5",
     poster: bunker,
     year: "2025",
     genre: "Sci-fi Mystery",
@@ -127,7 +127,7 @@ export const mockMovies: Movie[] = [
   },
     {
     id: "bunker4",
-    title: "Bunker S01 E4",
+    title: "Billionaire Bunker S01 E4",
     poster: bunker,
     year: "2025",
     genre: "Sci-fi Mystery",
@@ -136,7 +136,7 @@ export const mockMovies: Movie[] = [
   },
     {
     id: "bunker3",
-    title: "Bunker S01 E3",
+    title: "Billionaire Bunker S01 E3",
     poster: bunker,
     year: "2025",
     genre: "Sci-fi Mystery",
@@ -145,7 +145,7 @@ export const mockMovies: Movie[] = [
   },
     {
     id: "bunker2",
-    title: "Bunker S01 E2",
+    title: "Billionaire Bunker S01 E2",
     poster: bunker,
     year: "2025",
     genre: "Sci-fi Mystery",
@@ -154,7 +154,7 @@ export const mockMovies: Movie[] = [
   },
    {
     id: "bunker1",
-    title: "Bunker S01 E1",
+    title: "Billionaire Bunker S01 E1",
     poster: bunker,
     year: "2025",
     genre: "Sci-fi Mystery",
