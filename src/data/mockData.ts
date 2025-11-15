@@ -90,11 +90,29 @@ import cont from "@/assets/cont.jpg";
 }
 
 export const mockMovies: Movie[] = [
+  {
+    id: "cont2b",
+    title: "Continental S01 E2 B",
+    poster: cont,
+    year: "2023",
+    genre: "Action Thriller",
+    rating: "Gaheza",
+    category: "tv"
+  },
+   {
+    id: "cont2a",
+    title: "Continental S01 E2 A",
+    poster: cont,
+    year: "2023",
+    genre: "Action Thriller",
+    rating: "Gaheza",
+    category: "tv"
+  },
    {
     id: "cont1",
-    title: "Continental 1",
+    title: "Continental S01 E1",
     poster: cont,
-    year: "202e",
+    year: "2023",
     genre: "Action Thriller",
     rating: "Gaheza",
     category: "tv"
