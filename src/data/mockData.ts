@@ -78,6 +78,7 @@ import freed from "@/assets/freed.jpeg";
 import out from "@/assets/out.png";
 import hrs from "@/assets/24h.jpg";
 import bunker from "@/assets/bunker.jpeg";
+import cont from "@/assets/cont.jpg";
   export interface Movie {
   id: string;
   title: string;
@@ -89,6 +90,15 @@ import bunker from "@/assets/bunker.jpeg";
 }
 
 export const mockMovies: Movie[] = [
+   {
+    id: "cont1",
+    title: "Continental 1",
+    poster: cont,
+    year: "202e",
+    genre: "Action Thriller",
+    rating: "Gaheza",
+    category: "tv"
+  },
     {
     id: "bunker8",
     title: "Billionaire Bunker S01 E8",
