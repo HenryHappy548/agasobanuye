@@ -77,6 +77,7 @@ import askm from "@/assets/askm.jpeg";
 import freed from "@/assets/freed.jpeg";
 import out from "@/assets/out.png";
 import hrs from "@/assets/24h.jpg";
+import bunker from "@/assets/bunker.jpeg";
   export interface Movie {
   id: string;
   title: string;
@@ -88,6 +89,78 @@ import hrs from "@/assets/24h.jpg";
 }
 
 export const mockMovies: Movie[] = [
+    {
+    id: "bunker8",
+    title: "Bunker S01 E8",
+    poster: bunker,
+    year: "2025",
+    genre: "Sci-fi Mystery",
+    rating: "Sikov",
+    category: "tv"
+  },
+    {
+    id: "bunker7",
+    title: "Bunker S01 E7",
+    poster: bunker,
+    year: "2025",
+    genre: "Sci-fi Mystery",
+    rating: "Sikov",
+    category: "tv"
+  },
+    {
+    id: "bunker6",
+    title: "Bunker S01 E6",
+    poster: bunker,
+    year: "2025",
+    genre: "Sci-fi Mystery",
+    rating: "Sikov",
+    category: "tv"
+  },
+    {
+    id: "bunker5",
+    title: "Bunker S01 E5",
+    poster: bunker,
+    year: "2025",
+    genre: "Sci-fi Mystery",
+    rating: "Sikov",
+    category: "tv"
+  },
+    {
+    id: "bunker4",
+    title: "Bunker S01 E4",
+    poster: bunker,
+    year: "2025",
+    genre: "Sci-fi Mystery",
+    rating: "Sikov",
+    category: "tv"
+  },
+    {
+    id: "bunker3",
+    title: "Bunker S01 E3",
+    poster: bunker,
+    year: "2025",
+    genre: "Sci-fi Mystery",
+    rating: "Sikov",
+    category: "tv"
+  },
+    {
+    id: "bunker2",
+    title: "Bunker S01 E2",
+    poster: bunker,
+    year: "2025",
+    genre: "Sci-fi Mystery",
+    rating: "Sikov",
+    category: "tv"
+  },
+   {
+    id: "bunker1",
+    title: "Bunker S01 E1",
+    poster: bunker,
+    year: "2025",
+    genre: "Sci-fi Mystery",
+    rating: "Sikov",
+    category: "tv"
+  },
    {
     id: "bonne10",
     title: "Bon Appetit S01 E10",
