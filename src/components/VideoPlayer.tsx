@@ -98,6 +98,22 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
           
 
           ]
+        },
+      "cont2b": {
+        title: "Continental S01 E2 B",
+        embedCode: '<iframe width="640" height="360" src="https://short.icu/Z46ZjrcYw" frameborder="0" scrolling="0" allowfullscreen></iframe>',
+          host: "Sankara",
+        downloadLinks: [
+          { quality: "720p", size: "340MB", url: "https://pixeldrain.com/u/Grn1UDv9", type: "MP4" }
+          ]
+         },
+      "cont2a": {
+        title: "Continental S01 E2 A",
+        embedCode: '<iframe width="640" height="360" src="https://short.icu/QmYT61nkk" frameborder="0" scrolling="0" allowfullscreen></iframe>',
+          host: "Sankara",
+        downloadLinks: [
+          { quality: "720p", size: "1.01GB", url: "https://pixeldrain.com/u/fECkXKdw", type: "MP4" }
+          ]
          },
       "cont1": {
         title: "Continental E1",
@@ -120,7 +136,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         embedCode: '<iframe width="640" height="360" src="https://short.icu/pq4xugaYq" frameborder="0" scrolling="0" allowfullscreen></iframe>',
           host: "Sikov",
         downloadLinks: [
-          { quality: "720p", size: "780MB", url: "https://pixeldrain.com/u/K9LW2di4", type: "MP4" }
+          { quality: "720p", size: "456MB", url: "https://pixeldrain.com/u/K9LW2di4", type: "MP4" }
           ]
         
           },
