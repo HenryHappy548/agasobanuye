@@ -98,6 +98,14 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
           
 
           ]
+         },
+      "cont1": {
+        title: "Continental E1",
+        embedCode: '<iframe width="640" height="360" src="https://short.icu/FlG-a1ZHn" frameborder="0" scrolling="0" allowfullscreen></iframe>',
+          host: "Sankara",
+        downloadLinks: [
+          { quality: "720p", size: "780MB", url: "https://pixeldrain.com/u/s8hbD2NS", type: "MP4" }
+          ]
           },
       "bunker8": {
         title: "Billionaire Bunker S01 E8",
