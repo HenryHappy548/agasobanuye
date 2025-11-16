@@ -79,6 +79,7 @@ import out from "@/assets/out.png";
 import hrs from "@/assets/24h.jpg";
 import bunker from "@/assets/bunker.jpeg";
 import cont from "@/assets/cont.jpg";
+import hidden from "@/assets/hidden.jpeg";
   export interface Movie {
   id: string;
   title: string;
@@ -90,6 +91,24 @@ import cont from "@/assets/cont.jpg";
 }
 
 export const mockMovies: Movie[] = [
+   {
+    id: "bonne11",
+    title: "Bon Appetit S01 E11",
+    poster: bonne,
+    year: "2025",
+    genre: "Romance Drama",
+    rating: "Rocky kimomo",
+    category: "tv"
+  },
+   {
+    id: "hidden",
+    title: "Hidden Face",
+    poster: hidden,
+    year: "2011",
+    genre: "Mystery Thriller",
+    rating: "Sankara",
+    category: "movie"
+  },
   {
     id: "cont2b",
     title: "Continental S01 E2 B",
