@@ -99,12 +99,29 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
 
           ]
         },
+      "temp7": {
+        title: "Tempest S01 E7",
+        embedCode: '<iframe width="640" height="360" src="https://short.icu/GG3-H_znT" frameborder="0" scrolling="0" allowfullscreen></iframe>',
+          host: "Junior",
+        downloadLinks: [
+          { quality: "720p", size: "634MB", url: "https://www.mediafire.com/file/mv5961b27kkxn6q/Tempest_S01e07.mp4/file", type: "MP4" }
+          ]
+         },
+      "temp8": {
+        title: "Tempest S01 E8",
+        embedCode: '<iframe width="640" height="360" src="https://short.icu/GzBWPu4-r" frameborder="0" scrolling="0" allowfullscreen></iframe>',
+          host: "Junior",
+        downloadLinks: [
+          { quality: "720p", size: "540MB", url: "https://www.mediafire.com/file/yw257yvtl8ynutv/Tempest_S01e08.mp4/file", type: "MP4" }
+          ]
+        
+        },
       "bonne11": {
         title: "Bonne Appetit S01 E11",
         embedCode: '<iframe width="640" height="360" src="https://short.icu/eQC8q5l5-" frameborder="0" scrolling="0" allowfullscreen></iframe>',
           host: "Sankara",
         downloadLinks: [
-          { quality: "720p", size: "340MB", url: "https://www.mediafire.com/file/ck2hrg4zeqg83u2/Bon+App%C3%A9tit+S01e11.mp4/file", type: "MP4" }
+          { quality: "720p", size: "460MB", url: "https://www.mediafire.com/file/ck2hrg4zeqg83u2/Bon+App%C3%A9tit+S01e11.mp4/file", type: "MP4" }
           ]
          },
       "hidden": {
