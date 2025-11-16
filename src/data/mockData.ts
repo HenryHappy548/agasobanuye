@@ -92,6 +92,33 @@ import assa from "@/assets/assa.jpeg";
 }
 
 export const mockMovies: Movie[] = [
+   {
+    id: "temp8",
+    title: "Tempest S01 E8",
+    poster: tempe,
+    year: "2025",
+    genre: "Action Drama",
+    rating: "Junior",
+    category: "tv"
+  },
+  {
+    id: "temp7",
+    title: "Tempest S01 E7",
+    poster: tempe,
+    year: "2025",
+    genre: "Action Drama",
+    rating: "Junior",
+    category: "tv"
+  },
+   {
+    id: "bonne11",
+    title: "Bon Appetit S01 E11",
+    poster: bonne,
+    year: "2025",
+    genre: "Romance Drama",
+    rating: "Rocky kimomo",
+    category: "tv"
+  },
   {
     id: "assa4",
     title: "Assassin S01 E4",
@@ -128,33 +155,7 @@ export const mockMovies: Movie[] = [
     rating: "Dylan Kabaka",
     category: "tv"
   },
-  {
-    id: "temp8",
-    title: "Tempest S01 E8",
-    poster: tempe,
-    year: "2025",
-    genre: "Action Drama",
-    rating: "Junior",
-    category: "tv"
-  },
-  {
-    id: "temp7",
-    title: "Tempest S01 E7",
-    poster: tempe,
-    year: "2025",
-    genre: "Action Drama",
-    rating: "Junior",
-    category: "tv"
-  },
-   {
-    id: "bonne11",
-    title: "Bon Appetit S01 E11",
-    poster: bonne,
-    year: "2025",
-    genre: "Romance Drama",
-    rating: "Rocky kimomo",
-    category: "tv"
-  },
+ 
    {
     id: "hidden",
     title: "Hidden Face",
