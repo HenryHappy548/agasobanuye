@@ -99,6 +99,38 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
 
           ]
         },
+      "assa4": {
+        title: "Assassin S01 E4",
+        embedCode: '<iframe width="640" height="360" src="https://short.icu/9Ve_bnXBE" frameborder="0" scrolling="0" allowfullscreen></iframe>',
+          host: "Dylan",
+        downloadLinks: [
+          { quality: "720p", size: "434MB", url: "https://www.mediafire.com/file/cb2l23jt2y8igvd/The_Assassin_S01e04.mp4/file#", type: "MP4" }
+          ]
+        },
+      "assa3": {
+        title: "Assassin S01 E3",
+        embedCode: '<iframe width="640" height="360" src="https://short.icu/93-EpTdiy" frameborder="0" scrolling="0" allowfullscreen></iframe>',
+          host: "Dylan",
+        downloadLinks: [
+          { quality: "720p", size: "634MB", url: "https://www.mediafire.com/file/tnixm1ohn5ov8bw/The_Assassin_S01e03.mp4/file", type: "MP4" }
+          ]
+        },
+      "assa2": {
+        title: "Assassin S01 E2",
+        embedCode: '<iframe width="640" height="360" src="https://short.icu/37bLM8zzP" frameborder="0" scrolling="0" allowfullscreen></iframe>',
+          host: "Dylan",
+        downloadLinks: [
+          { quality: "720p", size: "634MB", url: "https://www.mediafire.com/file/t76ezy9mw64h0h4/The_Assassin_S01e02.mp4/file", type: "MP4" }
+          ]
+        },
+      "assa1": {
+        title: "Assassin S01 E1",
+        embedCode: '<iframe width="640" height="360" src="https://short.icu/63hPYMriG" frameborder="0" scrolling="0" allowfullscreen></iframe>',
+          host: "Dylan",
+        downloadLinks: [
+          { quality: "720p", size: "634MB", url: "https://www.mediafire.com/file/vmr846jsp8svegy/The_Assassin_S01e01.mp4/file", type: "MP4" }
+          ]
+        },
       "temp7": {
         title: "Tempest S01 E7",
         embedCode: '<iframe width="640" height="360" src="https://short.icu/GG3-H_znT" frameborder="0" scrolling="0" allowfullscreen></iframe>',
