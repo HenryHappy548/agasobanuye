@@ -80,6 +80,7 @@ import hrs from "@/assets/24h.jpg";
 import bunker from "@/assets/bunker.jpeg";
 import cont from "@/assets/cont.jpg";
 import hidden from "@/assets/hidden.jpeg";
+import assa from "@/assets/assa.jpeg";
   export interface Movie {
   id: string;
   title: string;
@@ -91,6 +92,42 @@ import hidden from "@/assets/hidden.jpeg";
 }
 
 export const mockMovies: Movie[] = [
+  {
+    id: "assa4",
+    title: "Assassin S01 E4",
+    poster: assa,
+    year: "2025",
+    genre: "Crime Thriller",
+    rating: "Dylan Kabaka",
+    category: "tv"
+  },
+  {
+    id: "assa3",
+    title: "Assassin S01 E3",
+    poster: assa,
+    year: "2025",
+    genre: "Crime Thriller",
+    rating: "Dylan Kabaka",
+    category: "tv"
+  },
+  {
+    id: "assa2",
+    title: "Assassin S01 E2",
+    poster: assa,
+    year: "2025",
+    genre: "Crime Thriller",
+    rating: "Dylan Kabaka",
+    category: "tv"
+  },
+   {
+    id: "assa1",
+    title: "Assassin S01 E1",
+    poster: assa,
+    year: "2025",
+    genre: "Crime Thriller",
+    rating: "Dylan Kabaka",
+    category: "tv"
+  },
   {
     id: "temp8",
     title: "Tempest S01 E8",
