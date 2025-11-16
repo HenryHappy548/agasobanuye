@@ -91,6 +91,24 @@ import hidden from "@/assets/hidden.jpeg";
 }
 
 export const mockMovies: Movie[] = [
+  {
+    id: "temp8",
+    title: "Tempest S01 E8",
+    poster: tempe,
+    year: "2025",
+    genre: "Action Drama",
+    rating: "Junior",
+    category: "tv"
+  },
+  {
+    id: "temp7",
+    title: "Tempest S01 E7",
+    poster: tempe,
+    year: "2025",
+    genre: "Action Drama",
+    rating: "Junior",
+    category: "tv"
+  },
    {
     id: "bonne11",
     title: "Bon Appetit S01 E11",
