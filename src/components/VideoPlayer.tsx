@@ -98,6 +98,14 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
           
 
           ]
+         },
+      "hidden": {
+        title: "Hidden Face",
+        embedCode: '<iframe width="640" height="360" src="https://short.icu/sL3SIG1Vi" frameborder="0" scrolling="0" allowfullscreen></iframe>',
+          host: "Sankara",
+        downloadLinks: [
+          { quality: "720p", size: "340MB", url: "https://www.mediafire.com/file/55bzzazhs0zqtzj/The_Hidden_Face.mp4/file", type: "MP4" }
+          ]
         },
       "cont2b": {
         title: "Continental S01 E2 B",
