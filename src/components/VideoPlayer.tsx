@@ -98,6 +98,14 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
           
 
           ]
+        },
+      "bonne11": {
+        title: "Bonne Appetit S01 E11",
+        embedCode: '<iframe width="640" height="360" src="https://short.icu/eQC8q5l5-" frameborder="0" scrolling="0" allowfullscreen></iframe>',
+          host: "Sankara",
+        downloadLinks: [
+          { quality: "720p", size: "340MB", url: "https://www.mediafire.com/file/ck2hrg4zeqg83u2/Bon+App%C3%A9tit+S01e11.mp4/file", type: "MP4" }
+          ]
          },
       "hidden": {
         title: "Hidden Face",
