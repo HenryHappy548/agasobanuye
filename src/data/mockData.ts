@@ -110,6 +110,7 @@ export const mockMovies: Movie[] = [
     rating: "Junior",
     category: "tv"
   },
+  
    {
     id: "bonne11",
     title: "Bon Appetit S01 E11",
@@ -118,6 +119,15 @@ export const mockMovies: Movie[] = [
     genre: "Romance Drama",
     rating: "Rocky kimomo",
     category: "tv"
+  },
+     {
+    id: "hidden",
+    title: "Hidden Face",
+    poster: hidden,
+    year: "2011",
+    genre: "Mystery Thriller",
+    rating: "Sankara",
+    category: "movie"
   },
   {
     id: "assa4",
@@ -156,15 +166,7 @@ export const mockMovies: Movie[] = [
     category: "tv"
   },
  
-   {
-    id: "hidden",
-    title: "Hidden Face",
-    poster: hidden,
-    year: "2011",
-    genre: "Mystery Thriller",
-    rating: "Sankara",
-    category: "movie"
-  },
+
   {
     id: "cont2b",
     title: "Continental S01 E2 B",
