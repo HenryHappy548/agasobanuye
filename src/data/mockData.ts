@@ -81,17 +81,68 @@ import bunker from "@/assets/bunker.jpeg";
 import cont from "@/assets/cont.jpg";
 import hidden from "@/assets/hidden.jpeg";
 import assa from "@/assets/assa.jpeg";
+import long from "@/assets/long.jpg";
+
   export interface Movie {
   id: string;
   title: string;
   poster: string;
-  year: string;
+  year: string;import assa from "@/assets/assa.jpeg";
   genre: string;
   rating: string;
   category: 'movie' | 'tv' | 'trending';
 }
 
 export const mockMovies: Movie[] = [
+  
+  
+  {
+  id: "long5",
+    title: "Long Road Home S01 E5",
+    poster: long,
+    year: "2017",
+    genre: "Action Documentary",
+    rating: "Junior",
+    category: "tv"
+  },
+  
+  {
+  id: "long4",
+    title: "Long Road Home S01 E4",
+    poster: long,
+    year: "2017",
+    genre: "Action Documentary",
+    rating: "Junior",
+    category: "tv"
+  },
+  
+  {
+  id: "long3",
+    title: "Long Road Home S01 E3",
+    poster: long,
+    year: "2017",
+    genre: "Action Documentary",
+    rating: "Junior",
+    category: "tv"
+  },
+  {
+  id: "long2",
+    title: "Long Road Home S01 E2",
+    poster: long,
+    year: "2017",
+    genre: "Action Documentary",
+    rating: "Junior",
+    category: "tv"
+  },
+    {
+    id: "long1",
+    title: "Long Road Home S01 E1",
+    poster: long,
+    year: "2017",
+    genre: "Action Documentary",
+    rating: "Junior",
+    category: "tv"
+  },
   {
     id: "bonne12",
     title: "Bonne Appetit S01 E12 Final",
