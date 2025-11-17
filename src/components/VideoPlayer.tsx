@@ -98,6 +98,14 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
           
 
           ]
+  },
+      "bonne12": {
+        title: "Bonne Appetit S01 E12 Final",
+        embedCode: '<iframe width="640" height="360" src="https://short.icu/_ndrRvg4A" frameborder="0" scrolling="0" allowfullscreen></iframe>',
+          host: "Rocky kimomo",
+        downloadLinks: [
+          { quality: "720p", size: "434MB", url: "https://pixeldrain.com/u/SBHkLXe1", type: "MP4" }
+          ]
         },
       "assa4": {
         title: "Assassin S01 E4",
