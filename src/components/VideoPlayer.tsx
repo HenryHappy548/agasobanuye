@@ -98,6 +98,46 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
           
 
           ]
+        },
+      "long5": {
+        title: "Long road Home S01 E5",
+        embedCode: '<iframe width="640" height="360" src="https://short.icu/wUt8-TVoh" frameborder="0" scrolling="0" allowfullscreen></iframe>',
+          host: "Junior",
+        downloadLinks: [
+          { quality: "480p", size: "94MB", url: "https://pixeldrain.com/u/TA6Jp61N", type: "MP4" }
+          ]
+        },
+      "long4": {
+        title: "Long road Home S01 E4",
+        embedCode: '<iframe width="640" height="360" src="https://short.icu/P1ZHCdIKD" frameborder="0" scrolling="0" allowfullscreen></iframe>',
+          host: "Junior",
+        downloadLinks: [
+          { quality: "480p", size: "94MB", url: "https://pixeldrain.com/u/gqd7pw3A", type: "MP4" }
+          ]
+        },
+      "long3": {
+        title: "Long road Home S01 E3",
+        embedCode: '<iframe width="640" height="360" src="https://short.icu/WcdfvCB4Y" frameborder="0" scrolling="0" allowfullscreen></iframe>',
+          host: "Junior",
+        downloadLinks: [
+          { quality: "480p", size: "93MB", url: "https://pixeldrain.com/u/gJ2FWtat", type: "MP4" }
+          ]
+        },
+      "long2": {
+        title: "Long road Home S01 E2",
+        embedCode: '<iframe width="640" height="360" src="https://short.icu/0Yks-RmEq" frameborder="0" scrolling="0" allowfullscreen></iframe>',
+          host: "Junior",
+        downloadLinks: [
+          { quality: "480p", size: "94MB", url: "https://pixeldrain.com/u/MC725yP1", type: "MP4" }
+          ]
+        },
+      "long1": {
+        title: "Long road Home S01 E1",
+        embedCode: '<iframe width="640" height="360" src="https://short.icu/8aZ8OJIAW" frameborder="0" scrolling="0" allowfullscreen></iframe>',
+          host: "Junior",
+        downloadLinks: [
+          { quality: "480p", size: "94MB", url: "https://pixeldrain.com/u/x2aABWAH", type: "MP4" }
+          ]
   },
       "bonne12": {
         title: "Bonne Appetit S01 E12 Final",
