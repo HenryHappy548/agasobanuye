@@ -92,6 +92,15 @@ import assa from "@/assets/assa.jpeg";
 }
 
 export const mockMovies: Movie[] = [
+  {
+    id: "bonne12",
+    title: "Bonne Appetit S01 E12 Final",
+    poster: bonne,
+    year: "2025",
+    genre: "Romance Drama",
+    rating: "Rocky kimomo",
+    category: "tv"
+  },
    {
     id: "temp8",
     title: "Tempest S01 E8",
