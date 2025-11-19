@@ -82,18 +82,29 @@ import cont from "@/assets/cont.jpg";
 import hidden from "@/assets/hidden.jpeg";
 import assa from "@/assets/assa.jpeg";
 import long from "@/assets/long.jpg";
+import badi from "@/assets/badi.jpeg";
 
   export interface Movie {
   id: string;
   title: string;
   poster: string;
-  year: string;import assa from "@/assets/assa.jpeg";
+  year: string;
   genre: string;
   rating: string;
   category: 'movie' | 'tv' | 'trending';
 }
 
 export const mockMovies: Movie[] = [
+  
+  {
+  id: "badi1",
+    title: "Bad Influncer S01 E1",
+    poster: badi,
+    year: "2025",
+    genre: "Romance Drama",
+    rating: "Rocky kimomo",
+    category: "tv"
+  },
   
   
   {
