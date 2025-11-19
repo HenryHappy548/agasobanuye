@@ -95,6 +95,15 @@ import badi from "@/assets/badi.jpeg";
 }
 
 export const mockMovies: Movie[] = [
+   {
+  id: "badi2",
+    title: "Bad Influncer S01 E2",
+    poster: badi,
+    year: "2025",
+    genre: "Romance Drama",
+    rating: "Rocky kimomo",
+    category: "tv"
+  },
   
   {
   id: "badi1",
