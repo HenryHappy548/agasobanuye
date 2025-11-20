@@ -101,18 +101,20 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         },
       "badi2": {
         title: "Bad Influncer S01 E2",
-        embedCode: '<iframe width="640" height="360" src="https://short.icu/gTcUYYcjR" frameborder="0" scrolling="0" allowfullscreen></iframe>',
+        embedCode: '<iframe src="https://uploady.io/embed-z4fyinbne2ie.html" frameborder="0" width="100%" height="400" allowfullscreen></iframe>',
           host: "Rocky kimomo",
         downloadLinks: [
-          { quality: "720p", size: "597MB", url: "https://www.mediafire.com/file/al53nn92g0mwiqe/Bad+Influencer+S01e2.mp4/file", type: "MP4" }
+          { quality: "720p", size: "597MB", url: "https://uploady.io/z4fyinbne2ie/Bad-Influencer-S01e2.mp4", type: "MP4" }
           ]
          },
       "badi1": {
         title: "Bad Influncer S01 E1",
-        embedCode: '<iframe width="640" height="360" src="https://short.icu/wXMMuC-Fv" frameborder="0" scrolling="0" allowfullscreen></iframe>',
+        embedCode: '<iframe src="https://uploady.io/embed-7xyvhkg3l0ch.html" frameborder="0" width="100%" height="400" allowfullscreen></iframe>
+
+            ',
           host: "Rocky kimomo",
         downloadLinks: [
-          { quality: "720p", size: "597MB", url: "https://www.mediafire.com/file/knbxawmy2m18rwq/Bad_Influencer_S01e01.mp4/file", type: "MP4" }
+          { quality: "720p", size: "597MB", url: "https://uploady.io/7xyvhkg3l0ch/Bad-Influencer-S01e01.mp4", type: "MP4" }
           ]
         },
       "long5": {
