@@ -109,10 +109,8 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
          },
       "badi1": {
         title: "Bad Influncer S01 E1",
-        embedCode: '<iframe src="https://uploady.io/embed-7xyvhkg3l0ch.html" frameborder="0" width="100%" height="400" allowfullscreen></iframe>
-
-            ',
-          host: "Rocky kimomo",
+        embedCode: '<iframe src="https://uploady.io/embed-7xyvhkg3l0ch.html" frameborder="0" width="100%" height="400" allowfullscreen></iframe>',
+        host: "Rocky kimomo",
         downloadLinks: [
           { quality: "720p", size: "597MB", url: "https://uploady.io/7xyvhkg3l0ch/Bad-Influencer-S01e01.mp4", type: "MP4" }
           ]
@@ -415,26 +413,6 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
           host: "Sankara",
         downloadLinks: [
           { quality: "720p", size: "780MB", url: "https://www.mediafire.com/file/cxpglp2ys7ekhmp/Fifty_Shades_Freed.mp4/file", type: "MP4" }
-          
-
-          ]
-        },
-      "temp6": {
-        title: "Tempest S01 E6",
-        embedCode: '<iframe width="640" height="360" src="https://short.icu/1WEEfLiwG" frameborder="0" scrolling="0" allowfullscreen></iframe>',
-          host: "Junior",
-        downloadLinks: [
-          { quality: "720p", size: "780MB", url: "https://www.mediafire.com/file/1tjesx4qdcksvt4/Tempest+S01e06.mp4/file", type: "MP4" }
-          
-
-          ]
-          },
-      "temp5": {
-        title: "Tempest S01 E5",
-        embedCode: '<iframe width="640" height="360" src="https://short.icu/eRU8OcTdO" frameborder="0" scrolling="0" allowfullscreen></iframe>',
-          host: "Junior",
-        downloadLinks: [
-          { quality: "720p", size: "780MB", url: "https://www.mediafire.com/file/nefdazg48vb6t4x/Tempest+S01e05.mp4/file", type: "MP4" }
           
 
           ]
