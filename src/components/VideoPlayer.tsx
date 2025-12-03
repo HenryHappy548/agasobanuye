@@ -1720,92 +1720,89 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-[98vw] sm:max-w-3xl lg:max-w-5xl xl:max-w-6xl w-full p-0 bg-black border-border max-h-[98vh] overflow-hidden flex flex-col">
-        <div className="relative flex-shrink-0">
-          <Button
-            variant="secondary"
-            size="sm"
-            className="absolute top-2 right-2 sm:top-4 sm:right-4 z-20 bg-black/90 hover:bg-primary text-white shadow-lg"
-            onClick={onClose}
-          >
-            <X className="h-5 w-5" />
-          </Button>
-          
-          {videoInfo && (
-            <>
-              {/* Video Player Area - Responsive aspect ratio */}
+      <DialogContent className="max-w-[98vw] sm:max-w-4xl lg:max-w-6xl xl:max-w-7xl w-full p-0 bg-black border-border max-h-[98vh] overflow-hidden">
+        <Button
+          variant="secondary"
+          size="sm"
+          className="absolute top-2 right-2 sm:top-4 sm:right-4 z-20 bg-black/90 hover:bg-primary text-white shadow-lg"
+          onClick={onClose}
+        >
+          <X className="h-5 w-5" />
+        </Button>
+        
+        {videoInfo && (
+          <div className="flex flex-col lg:flex-row h-full max-h-[98vh]">
+            {/* Video Player Area - Left side */}
+            <div className="flex-1 flex flex-col min-w-0">
               <div className="relative bg-black flex items-center justify-center w-full">
                 {videoInfo.embedCode ? (
                   <div 
-                    className="w-full aspect-video max-h-[50vh] sm:max-h-[60vh] [&>iframe]:w-full [&>iframe]:h-full [&>iframe]:absolute [&>iframe]:inset-0 relative"
+                    className="w-full aspect-video max-h-[40vh] lg:max-h-[70vh] [&>iframe]:w-full [&>iframe]:h-full [&>iframe]:absolute [&>iframe]:inset-0 relative"
                     dangerouslySetInnerHTML={{ __html: videoInfo.embedCode }}
                   />
                 ) : (
-                  <div className="w-full aspect-video max-h-[50vh] sm:max-h-[60vh] flex items-center justify-center text-white">
+                  <div className="w-full aspect-video max-h-[40vh] lg:max-h-[70vh] flex items-center justify-center text-white">
                     <span className="text-sm sm:text-base">Loading video player...</span>
                   </div>
                 )}
               </div>
-
-              {/* Video Info and Download Section - Scrollable */}
-              <div className="p-4 sm:p-5 lg:p-6 bg-gray-900 text-white overflow-y-auto flex-1 min-h-0">
-                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-4 gap-3">
+              
+              {/* Video Title & Host */}
+              <div className="p-3 sm:p-4 bg-gray-900 text-white">
+                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2">
                   <div className="flex-1">
-                    <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-1">{videoInfo.title}</h2>
-                    <span className="text-sm sm:text-base text-muted-foreground">
-                      Host: {videoInfo.host}
-                    </span>
+                    <h2 className="text-lg sm:text-xl lg:text-2xl font-bold mb-1">{videoInfo.title}</h2>
+                    <span className="text-sm text-muted-foreground">Host: {videoInfo.host}</span>
                   </div>
                   <Button
                     variant="outline"
-                    size="default"
+                    size="sm"
                     onClick={() => window.open(getSrcFromEmbedCode(videoInfo.embedCode), '_blank')}
-                    className="text-white border-white/30 hover:bg-white/10 w-full sm:w-auto flex-shrink-0"
+                    className="text-white border-white/30 hover:bg-white/10 flex-shrink-0"
                   >
                     <ExternalLink className="h-4 w-4 mr-2" />
                     Open Original
                   </Button>
                 </div>
-                
-                {/* Download Section */}
-                <div className="mt-6">
-                  <h3 className="text-lg sm:text-xl font-semibold mb-4 flex items-center text-foreground">
-                    <Download className="h-5 w-5 mr-2" />
-                    Download Options
-                  </h3>
-                  
-                  {videoInfo.downloadLinks.length > 0 ? (
-                    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3 sm:gap-4">
-                      {videoInfo.downloadLinks.map((link, index) => (
-                        <div key={index} className="border border-border rounded-lg p-4 bg-card hover:bg-accent transition-all duration-200 hover:shadow-lg">
-                          <div className="flex justify-between items-center mb-3">
-                            <span className="font-bold text-primary text-lg">{link.quality}</span>
-                            <span className="text-sm text-muted-foreground font-medium">{link.size}</span>
-                          </div>
-                          <div className="flex flex-col gap-3">
-                            <span className="text-sm text-foreground/80">{link.type}</span>
-                            <Button
-                              size="default"
-                              onClick={() => handleDownload(link.url, `${videoInfo.title} - ${link.quality}.mp4`)}
-                              className="bg-primary hover:bg-primary-glow text-primary-foreground font-semibold w-full shadow-lg hover:shadow-xl transition-all"
-                            >
-                              <Download className="h-4 w-4 mr-2" />
-                              Download
-                            </Button>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  ) : (
-                    <div className="text-center py-6 sm:py-8 text-muted-foreground">
-                      No download links available for this movie.
-                    </div>
-                  )}
-                </div>
               </div>
-            </>
-          )}
-        </div>
+            </div>
+
+            {/* Download Section - Right side on desktop, below on mobile */}
+            <div className="lg:w-72 xl:w-80 bg-gray-900 border-t lg:border-t-0 lg:border-l border-border overflow-y-auto max-h-[40vh] lg:max-h-[98vh]">
+              <div className="p-4">
+                <h3 className="text-base sm:text-lg font-semibold mb-3 flex items-center text-white">
+                  <Download className="h-5 w-5 mr-2" />
+                  Downloads
+                </h3>
+                
+                {videoInfo.downloadLinks.length > 0 ? (
+                  <div className="flex flex-col gap-3">
+                    {videoInfo.downloadLinks.map((link, index) => (
+                      <div key={index} className="border border-border rounded-lg p-3 bg-card hover:bg-accent transition-all duration-200">
+                        <div className="flex justify-between items-center mb-2">
+                          <span className="font-bold text-primary">{link.quality}</span>
+                          <span className="text-xs text-muted-foreground">{link.size}</span>
+                        </div>
+                        <Button
+                          size="sm"
+                          onClick={() => handleDownload(link.url, `${videoInfo.title} - ${link.quality}.mp4`)}
+                          className="bg-primary hover:bg-primary-glow text-primary-foreground font-semibold w-full"
+                        >
+                          <Download className="h-4 w-4 mr-2" />
+                          Download {link.type}
+                        </Button>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="text-center py-4 text-muted-foreground text-sm">
+                    No downloads available.
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        )}
       </DialogContent>
     </Dialog>
   );
