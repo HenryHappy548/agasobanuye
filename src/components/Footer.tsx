@@ -136,16 +136,48 @@ const Footer = () => {
                   <span>FAQ</span>
                 </Link>
               </li>
+              <li>
+                <Link 
+                  to="/contact" 
+                  className="flex items-center space-x-2 text-sm text-muted-foreground hover:text-primary transition-colors"
+                >
+                  <Mail className="h-4 w-4" />
+                  <span>Contact Us</span>
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  to="/about" 
+                  className="flex items-center space-x-2 text-sm text-muted-foreground hover:text-primary transition-colors"
+                >
+                  <ExternalLink className="h-4 w-4" />
+                  <span>About Us</span>
+                </Link>
+              </li>
             </ul>
           </div>
 
-          {/* About */}
+          {/* Legal */}
           <div className="space-y-4">
-            <h4 className="text-sm font-medium text-foreground">About</h4>
-            <p className="text-sm text-muted-foreground">
-              Rwaflix is your premier destination for streaming entertainment. 
-              Enjoy unlimited access to movies and series.
-            </p>
+            <h4 className="text-sm font-medium text-foreground">Legal</h4>
+            <ul className="space-y-2">
+              <li>
+                <Link 
+                  to="/privacy-policy" 
+                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                >
+                  Privacy Policy
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  to="/terms-of-service" 
+                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                >
+                  Terms of Service
+                </Link>
+              </li>
+            </ul>
           </div>
         </div>
 
