@@ -90,7 +90,7 @@ import bharat from "@/assets/bharat.jpg";
 import robin from "@/assets/robin.jpeg";
 import nonation from "@/assets/nonation.jpeg";
 import noesc from "@/assets/noesc.jpeg";
-import oldw from "@/assets/oldw.jpg";
+import oldw from "@/assets/oldw.jpeg";
 import dou from "@/assets/dou.jpg";
 import foever from "@/assets/forever.jpeg";
 import pricew from "@/assets/pricew.jpeg";
