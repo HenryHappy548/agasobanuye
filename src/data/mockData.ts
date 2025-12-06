@@ -102,7 +102,7 @@ import chip from "@/assets/chips.jpg";
 import dont from "@/assets/dont.jpg";
 import shooter from "@/assets/shooter.jpeg"
 import fantastic from "@/assets/fantastic.jpeg"
-
+import hours from "@/assets/24.jpeg"
   export interface Movie {
   id: string;
   title: string;
@@ -114,6 +114,24 @@ import fantastic from "@/assets/fantastic.jpeg"
 }
 
 export const mockMovies: Movie[] = [
+  {
+    id: "24hourb",
+    title: "24 Hours B",
+    poster: hours,
+    year: "2016",
+    genre: "Action Thriller",
+    rating: "Rocky kimomo",
+    category: "movie"
+  },
+  {
+    id: "24houra",
+    title: "24 Hours A",
+    poster: hours,
+    year: "2016",
+    genre: "Action Thriller",
+    rating: "Rocky kimomo",
+    category: "movie"
+  },
    
     {
     id: "fantastic",
