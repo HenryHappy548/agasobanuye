@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Play, Info, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import heroImage from "@/assets/talk.jpg";
+import heroImage from "@/assets/dont.jpg";
 
 interface HeroSectionProps {
   onPlayVideo: (videoId: string) => void;
@@ -26,7 +26,7 @@ const HeroSection = ({ onPlayVideo }: HeroSectionProps) => {
             Talk To Me
           </h1>
           <p className="text-sm sm:text-base lg:text-lg text-muted-foreground mb-4 sm:mb-6 leading-relaxed line-clamp-3 sm:line-clamp-none">
-           After the death of her mother, 17-year-old Mia struggles with grief and alienation. When she and her friends discover a mysterious embalmed hand that allows people to communicate with spirits, they turn the séance ritual into a dangerous party game. </p>
+          a British horror-thriller about two teenage pranksters, Sam and Brady, whose drunken, viral prank calls backfire when a mysterious stranger turns their own game on them </p>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
             <Button 
               size="lg" 
@@ -74,14 +74,14 @@ const HeroSection = ({ onPlayVideo }: HeroSectionProps) => {
               </h2>
               
               <div className="flex flex-wrap gap-2 text-sm">
-                <span className="bg-primary/20 text-primary px-3 py-1 rounded-full">2022</span>
+                <span className="bg-primary/20 text-primary px-3 py-1 rounded-full">2025</span>
                 <span className="bg-accent/50 text-accent-foreground px-3 py-1 rounded-full">Horror</span>
                 <span className="bg-accent/50 text-accent-foreground px-3 py-1 rounded-full">Mystery</span>
                 <span className="bg-accent/50 text-accent-foreground px-3 py-1 rounded-full">Sankara</span>
               </div>
               
               <p className="text-muted-foreground leading-relaxed">
-               After the death of her mother, 17-year-old Mia struggles with grief and alienation. When she and her friends discover a mysterious embalmed hand that allows people to communicate with spirits, they turn the séance ritual into a dangerous party game.   </p>
+               a British horror-thriller about two teenage pranksters, Sam and Brady, whose drunken, viral prank calls backfire when a mysterious stranger turns their own game on them </p>
               
               <div className="flex flex-col sm:flex-row gap-3 pt-4">
                 <Button 
