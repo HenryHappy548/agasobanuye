@@ -4,6 +4,7 @@ import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { supabase } from "@/integrations/supabase/client";
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import VideoRecommendations from "@/components/VideoRecommendations";
 
 interface VideoPlayerProps {
   isOpen: boolean;
@@ -1767,8 +1768,9 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
               </div>
             </div>
 
-            {/* Download Section - Right side on desktop, below on mobile */}
+            {/* Download & Recommendations Section - Right side on desktop, below on mobile */}
             <div className="lg:w-72 xl:w-80 bg-gray-900 border-t lg:border-t-0 lg:border-l border-border overflow-y-auto max-h-[40vh] lg:max-h-[98vh]">
+              {/* Downloads */}
               <div className="p-4">
                 <h3 className="text-base sm:text-lg font-semibold mb-3 flex items-center text-white">
                   <Download className="h-5 w-5 mr-2" />
@@ -1800,6 +1802,15 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
                   </div>
                 )}
               </div>
+
+              {/* Recommendations */}
+              <VideoRecommendations 
+                currentVideoId={videoId} 
+                onPlayVideo={(id) => {
+                  fetchVideoFromDB(id);
+                  navigate(`${location.pathname}?watch=${id}`, { replace: true });
+                }} 
+              />
             </div>
           </div>
         )}
