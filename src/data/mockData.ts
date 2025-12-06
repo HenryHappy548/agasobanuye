@@ -85,7 +85,7 @@ import long from "@/assets/long.jpg";
 import badi from "@/assets/badi.jpeg";
 import raz from "@/assets/raz.jpeg";
 import ice from "@/assets/ice.jpeg";
-import wolfh from "@/assets/wolfh.jpeg";
+import wolfh from "@/assets/wolfh.jpg";
 import bharat from "@/assets/bharat.jpg";
 import robin from "@/assets/robin.jpeg";
 import nonation from "@/assets/nonation.jpeg";
