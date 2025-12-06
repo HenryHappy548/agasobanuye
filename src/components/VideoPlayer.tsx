@@ -1,6 +1,7 @@
 import { X, ExternalLink, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import { supabase } from "@/integrations/supabase/client";
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
@@ -1721,7 +1722,10 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-[98vw] sm:max-w-4xl lg:max-w-6xl xl:max-w-7xl w-full p-0 bg-black border-border max-h-[98vh] overflow-hidden">
+      <DialogContent className="max-w-[98vw] sm:max-w-4xl lg:max-w-6xl xl:max-w-7xl w-full p-0 bg-black border-border max-h-[98vh] overflow-hidden" aria-describedby={undefined}>
+        <VisuallyHidden>
+          <DialogTitle>Video Player</DialogTitle>
+        </VisuallyHidden>
         <Button
           variant="secondary"
           size="sm"
