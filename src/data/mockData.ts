@@ -114,6 +114,15 @@ import fantastic from "@/assets/fantastic.jpeg"
 }
 
 export const mockMovies: Movie[] = [
+   {
+    id: "fantastic",
+    title: "Fantastic Four B",
+    poster: fantastic,
+    year: "2025",
+    genre: "Sci fi Thriller",
+    rating: "Senior",
+    category: "trending"
+  },
     {
     id: "fantastic",
     title: "Fantastic Four",
