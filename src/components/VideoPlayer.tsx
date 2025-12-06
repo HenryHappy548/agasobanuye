@@ -92,13 +92,360 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
       }[];
     }> = {
       "featured-movie": {
-        title: "Talk To me (2022)",
-        embedCode: '<iframe width="400" height="240" src="https://short.icu/y0DfytF1t" frameborder="0" scrolling="0" allowfullscreen></iframe>',
+        title: "Don't Hang Up (2026)",
+        embedCode: '<iframe width="1280" height="720" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTlfednq8EK?title=0&controls=1&share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
         host: "Sankara",
         downloadLinks: [
-          { quality: "1080p", size: "1.5GB", url: "https://www.mediafire.com/file/cbtlb2718ej04qt/Talk_to_Me_Sankra.mp4/file?dkey=o6oaqpdsabi&r=1616", type: "MP4" }
+          { quality: "1080p", size: "350MB", url: "https://www.mediafire.com/file/tnwxbg4hey9gkjj/Dont_Hang_Up.mp4/file", type: "MP4" }
+          ]
+      //    },
+      // "long2": {
+      //   title: "",
+      //   embedCode: '',
+      //     host: "",
+      //   downloadLinks: [
+      //     { quality: "720p", size: "540MB", url: "", type: "MP4" }
+      //     ]
+            },
+      "fantastic": {
+        title: "Fantastic Four",
+        embedCode: '<iframe width="1280" height="720" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTlh29nYcJu?title=0&controls=1&share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
+          host: "Rocky kimomo",
+        downloadLinks: [
+          { quality: "720p", size: "1GB", url: "https://www.mediafire.com/file/2l2tr5xfdspc5el/The_Fantastic_Four__First_Steps.mp4/file", type: "MP4" }
+          ]
+        },
+      "shooter4": {
+        title: "Shooter S01 E4",
+        embedCode: '<iframe width="1280" height="720" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTlhIZnYcUe?title=0&controls=1&a=1&share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
+          host: "Rocky kimomo",
+        downloadLinks: [
+          { quality: "720p", size: "540MB", url: "https://isatafileze.fly.dev/simple-redirect-download?file=Serie%2FRocky%2FSHOOTER_S1EP4.mp4&filename=SHOOTER_S1EP4.mp4", type: "MP4" }
+          ]
+            },
+      "shooter3": {
+        title: "Shooter S01 E3",
+        embedCode: '<iframe width="1280" height="720" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTlhIZnYcUn?title=0&controls=1&a=1&share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
+          host: "Rocky kimomo",
+        downloadLinks: [
+          { quality: "720p", size: "540MB", url: "https://isatafileze.fly.dev/simple-redirect-download?file=Serie%2FRocky%2FSHOOTER_S1_EP3.mp4&filename=SHOOTER_S1_EP3.mp4", type: "MP4" }
+          ]
+            },
+      "badi7": {
+        title: "Bad Influencer S01 E7",
+        embedCode: '<iframe width="1280" height="720" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTlfbenqRqi?title=0&controls=1&share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
+          host: "Rocky kimomo",
+        downloadLinks: [
+          { quality: "720p", size: "540MB", url: "https://www.mediafire.com/file/divux1ei3f9vzfi/BAD_INFLUENCER_S01E7.mp4/file", type: "MP4" }
+          ]
+        },
+      "shooter2": {
+        title: "Shooter S01 E2",
+        embedCode: '<iframe width="1280" height="720" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTlffAnq87y?title=0&controls=1&a=1&share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
+          host: "Rocky kimomo",
+        downloadLinks: [
+          { quality: "720p", size: "448MB", url: "https://www.mediafire.com/file/5tj1ouvcly4g5uq/Shooter_S01e02.mp4/file", type: "MP4" }
+          ]
+           },
+      "shooter1": {
+        title: "Shooter S01 E1",
+        embedCode: '<iframe width="1280" height="720" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTlffAnq87x?title=0&controls=1&a=1&share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
+          host: "Rocky kimomo",
+        downloadLinks: [
+          { quality: "720p", size: "478MB", url: "https://www.mediafire.com/file/mcrhspk5hgroi79/Shooter_S01e01.mp4/file", type: "MP4" }
+          ]
+           },
+      "dont": {
+        title: "Don't Hangup",
+        embedCode: '<iframe width="1280" height="720" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTlfednq8EK?title=0&controls=1&share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
+          host: "Sankara",
+        downloadLinks: [
+          { quality: "720p", size: "540MB", url: "https://www.mediafire.com/file/tnwxbg4hey9gkjj/Dont_Hang_Up.mp4/file", type: "MP4" }
+          ]
+            },
+      "chip": {
+        title: "Chips",
+        embedCode: '<iframe width="1280" height="720" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTleb4nqNo0?title=0&controls=1&a=1&share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
+          host: "Rocky kimomo",
+        downloadLinks: [
+          { quality: "720p", size: "940MB", url: "https://www.mediafire.com/file/fmfdq4wi8ygmeda/CHIPS.mp4/file", type: "MP4" }
+          ]
+              },
+      "opeb": {
+        title: "Operation Fortune B",
+        embedCode: '<iframe width="1280" height="720" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTlnIAnqKFU?share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
+          host: "Gaheza",
+        downloadLinks: [
+          { quality: "720p", size: "540MB", url: "https://www.mediafire.com/file/h987kla166jkw7q/Operation_Fortune_B.mp4/file", type: "MP4" }
+          ]
+            },
+      "opea": {
+        title: "Operation Fortune A ",
+        embedCode: '<iframe width="1280" height="720" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTlVb4nqH1R?share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
+          host: "Gaheza",
+        downloadLinks: [
+          { quality: "720p", size: "540MB", url: "https://www.mediafire.com/file/m1mkmoj94ue964f/Operation_Fortune_A.mp4/file", type: "MP4" }
+          ]
           
+                 },
+      "housed8": {
+        title: "House of David S02 E8 Final",
+        embedCode: '<iframe width="420" height="220" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTlnIAnqKFt?share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
+          host: "Savimbi",
+        downloadLinks: [
+          { quality: "720p", size: "540MB", url: "https://www.mediafire.com/file/dki1kjcow4lo4hl/House_Of_David_S02e08_Finale.mp4/file", type: "MP4" }
+          ]
+           },
+      "housed7": {
+        title: "House of David S02 E7",
+        embedCode: '<iframe width="420" height="220" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTlVb4nqH1P?title=0&controls=1&a=1&share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
+          host: "Savimbi",
+        downloadLinks: [
+          { quality: "720p", size: "540MB", url: "https://www.mediafire.com/file/bbtgubuwlefsefh/House_Of_David_S02e07.mp4/file", type: "MP4" }
+          ]
+          },
+      "axlb": {
+        title: "A.X.L B",
+        embedCode: '<iframe width="420" height="220" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTXvi2nqCR5?title=0&controls=1&a=1&share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
+          host: "Sankara",
+        downloadLinks: [
+          { quality: "720p", size: "540MB", url: "https://pixeldrain.com/u/KAbc1jqE", type: "MP4" }
+          ]
+             },
+      "axla": {
+        title: "A.X.L A",
+        embedCode: '<iframe width="420" height="220" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTXvi2nqCRC?title=0&controls=1&a=1&share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
+          host: "Sankara",
+        downloadLinks: [
+          { quality: "720p", size: "540MB", url: "https://pixeldrain.com/u/hdKLwYHT", type: "MP4" }
+          ]
+           },
+      "shapb": {
+        title: "Sharper B",
+        embedCode: '<iframe width="420" height="220" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTXUDunqC6K?title=0&controls=1&a=1&share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
+          host: "Rocky kimomo",
+        downloadLinks: [
+          { quality: "720p", size: "460MB", url: "https://www.mediafire.com/file/gdbfhy42gmwjens/Sharper_B.mp4/file", type: "MP4" }
+          ]
+      },
+        "shapa": {
+        title: "Sharper A ",
+        embedCode: '<iframe width="420" height="220" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTXUDunqC6d?title=0&controls=1&a=1&share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
+          host: "Rocky kimomo",
+        downloadLinks: [
+          { quality: "720p", size: "588MB", url: "https://www.mediafire.com/file/s4dvhpytcnompvx/Sharper_A.mp4/file", type: "MP4" }
+          ]
+        },
+       "Bloodr4": {
+        title: "Blood River E4",
+        embedCode: '<iframe width="420" height="220" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTXUiynqppA?title=0&controls=1&a=1&share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
+         host: "B The Great",
+        downloadLinks: [
+          { quality: "720p", size: "700MB", url: "https://www.mediafire.com/file/1kakfbh1zdgsn4m/Blood_River_S01e04.mp4/file", type: "MP4" }
+          
+        ]
+         },
+       "Bloodr3": {
+        title: "Blood River E3",
+        embedCode: '<iframe width="420" height="220" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTXUiynqppz?title=0&controls=1&a=1&share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
+         host: "B The Great",
+        downloadLinks: [
+          { quality: "720p", size: "700MB", url: "https://www.mediafire.com/file/borcka1on82sdzc/Blood_River_S01e03.mp4/file", type: "MP4" }
+          
+        ]
+            },
+      "pricew": {
+        title: "Price We Pay",
+        embedCode: '<iframe width="420" height="220" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTXuDenqkCj?title=0&controls=1&share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
+          host: "Gaheza",
+        downloadLinks: [
+          { quality: "720p", size: "540MB", url: "https://www.mediafire.com/file/hoyxcovq4l07m90/The_Price_We_Pay.mp4/file", type: "MP4" }
+          ]
+             },
+      "badi6": {
+        title: "Bad Influencer S01 E6",
+        embedCode: '<iframe width="420" height="220" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTXuDnnqkCn?title=0&controls=1&share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
+          host: "Rocky kimomo",
+        downloadLinks: [
+          { quality: "720p", size: "566MB", url: "https://www.mediafire.com/file/l3d95732czucp5m/Bad_Influencer_S01e06.mp4/file", type: "MP4" }
+          ]
+           },
+      "nogood": {
+        title: "No Good Deed",
+        embedCode: '<iframe width="420" height="220" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTXubwnqksf?title=0&controls=1&share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
+          host: "Gaheza",
+        downloadLinks: [
+          { quality: "720p", size: "831MB", url: "https://www.mediafire.com/file/j6g0k6ovexo9z54/No_Good_Deed.mp4/file", type: "MP4" }
+          ]
+            },
+      "foever": {
+        title: "Forever My Girl",
+        embedCode: '<iframe width="420" height="220" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTXOFgnq4so?title=0&controls=1&share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
+          host: "Savimbi",
+        downloadLinks: [
+          { quality: "720p", size: "980MB", url: "https://www.mediafire.com/file/443h50w1lmc8fmc/Forever_My_Girl.mp4/file", type: "MP4" }
+          ]
+        
+         },
+      "dou": {
+        title: "Dou Shi Fighter",
+        embedCode: '<iframe width="420" height="220" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTX3b0nqrTl?title=0&controls=1&share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
+          host: "B The Great",
+        downloadLinks: [
+          { quality: "720p", size: "970MB", url: "https://www.mediafire.com/file/s4t8h3qsn2xekua/Dou_Shi_Fighter.mp4/file", type: "MP4" }
+          ]
+         },
+      "badi5": {
+        title: "Bad Influencer S01 E5",
+        embedCode: '<iframe width="420" height="220" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTXToPnqvTj?title=0&controls=1&share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
+          host: "Rocky kimomo",
+        downloadLinks: [
+          { quality: "720p", size: "540MB", url: "https://www.mediafire.com/file/tchoqp7s1gc39ry/Bad+Influencer+S01e05.mp4/file", type: "MP4" }
+          ]
+         },
+      "oldw": {
+        title: "The Old Way",
+        embedCode: '<iframe width="420" height="220" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTXTfmnquel?title=0&controls=1&a=1&share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
+          host: "Rocky kimomo",
+        downloadLinks: [
+          { quality: "720p", size: "540MB", url: "https://www.mediafire.com/file/flbnxphd3bjndwh/The_Old_Way.mp4/file", type: "MP4" }
+          ]
+         },
+      "noesc": {
+        title: "No Escape",
+        embedCode: '<iframe width="420" height="220" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTXTfLnqufY?title=0&controls=1&a=1&share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
+          host: "Rocky kimomo",
+        downloadLinks: [
+          { quality: "720p", size: "540MB", url: "https://www.mediafire.com/file/5h4n2e45xscqj7y/No_Escape.mp4/file", type: "MP4" }
+          ]
+        },
+      "nonationb": {
+        title: "Beast Of No Nation B",
+        embedCode: '<iframe width="420" height="220" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTX02Anq3Bo?share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
+          host: "Savimbi",
+        downloadLinks: [
+          { quality: "720p", size: "464MB", url: "https://www.mediafire.com/file/5mx6xbotc4iv900/Beasts_of_No_Nation_B.mp4/file", type: "MP4" }
+          ]
+        },
+      "nonationa": {
+        title: "Beast Of No Nation A",
+        embedCode: '<iframe width="420" height="220" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTX02Anq3BD?title=0&controls=1&share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
+          host: "Savimbi",
+        downloadLinks: [
+          { quality: "720p", size: "464MB", url: "https://www.mediafire.com/file/379p6d105po9hil/Beasts_of_No_Nation_A.mp4/file", type: "MP4" }
+          ]
+        },
+      "robin2b": {
+        title: "Robin Hood S01 E2 B",
+        embedCode: '<iframe width="420" height="220" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTXZjjnqZtI?title=0&controls=1&a=1&share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
+          host: "B THe Great",
+        downloadLinks: [
+          { quality: "720p", size: "540MB", url: "https://www.mediafire.com/file/3hw40y76asfavxb/ROBIN_HOOD_EP_2B.mp4/file", type: "MP4" }
+          ]
+           },
+      "robin2a": {
+        title: "Robin Hood S01 E2 A",
+        embedCode: '<iframe width="420" height="220" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTXZjjnqZtD?title=0&controls=1&a=1&share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
+          host: "B The Great",
+        downloadLinks: [
+          { quality: "720p", size: "540MB", url: "https://www.mediafire.com/file/hzpbgbjuftip49c/ROBIN_HOOD_EP_2A.mp4/file", type: "MP4" }
+          ]
+        },
+      "robin1b": {
+        title: "Robin Hood S01 E1B",
+        embedCode: '<iframe width="420" height="220" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTXZjjnqZto?title=0&controls=1&a=1&share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
+          host: "B The Great",
+        downloadLinks: [
+          { quality: "720p", size: "540MB", url: "https://www.mediafire.com/file/r37vpotpjblb3xa/ROBIN_HOOD_EP_1B.mp4/file", type: "MP4" }
+          ]
+         },
+      "robin1a": {
+        title: "Robin Hood S01 E1A",
+        embedCode: '<iframe width="420" height="220" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTXZjjnqZt2?title=0&controls=1&a=1&share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
+          host: "B The Great",
+        downloadLinks: [
+          { quality: "720p", size: "540MB", url: "https://www.mediafire.com/file/1mnp9c6tmqlxs2r/ROBIN_HOOD_EP_1A.mp4/file", type: "MP4" }
+          ]
+        },
+      "bharatb": {
+        title: "Bharat B",
+        embedCode: '<iframe width="420" height="220" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTX06Jnq3TJ?title=0&controls=1&a=1&share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
+          host: "Rocky kimomo",
+        downloadLinks: [
+          { quality: "720p", size: "824MB", url: "https://www.mediafire.com/file/sh6zgw5xkp9kpqd/Bharat_B.mp4/file#", type: "MP4" }
+          ]
+           },
+      "bharata": {
+        title: "Bharat A",
+        embedCode: '<iframe width="420" height="220" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTX06Jnq3TH?title=0&controls=1&a=1&share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
+          host: "Rocky kimomo",
+        downloadLinks: [
+          { quality: "720p", size: "890MB", url: "https://www.mediafire.com/file/i766sjofq36z05x/Bharat_A.mp4/file", type: "MP4" }
+          ]
+         },
+      "wolfh": {
+        title: "Wolf Hidding",
+        embedCode: '<iframe width="420" height="220" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTX3b0nqrT2?title=0&controls=1&a=1&share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
+          host: "B The Great",
+        downloadLinks: [
+          { quality: "720p", size: "725MB", url: "https://www.mediafire.com/file/x10jhdb07wcoxul/Wolf_Hiding.mp4/file", type: "MP4" }
+          ]
+         },
+      "ice": {
+        title: "The Ice Road",
+        embedCode: '<iframe width="420" height="220" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTX32znqrI2?title=0&controls=1&share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
+          host: "Gaheza",
+        downloadLinks: [
+          { quality: "720p", size: "1GBMB", url: "https://www.mediafire.com/file/clbiinhd9chuwvr/The_Ice_Road.mp4/file", type: "MP4" }
+          ]
+         },
+      "badi4": {
+        title: "Bad Influncer S01 E4",
+        embedCode: '<iframe width="420" height="220" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTX31pnqYGF?title=0&controls=1&a=1&share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
+          host: "Rocky kimomo",
+        downloadLinks: [
+          { quality: "720p", size: "597MB", url: "https://www.mediafire.com/file/9v6p62ohxb7xjs9/Bad+Influencer+S01e04.mp4/file", type: "MP4" }
+          ]
+        },
+      "razb": {
+        title: "Raaz Reboot B",
+        embedCode: '<iframe width="420" height="240" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTXrbznqqxT?title=0&controls=1&a=1&share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
+          host: "Rocky kimomo",
+        downloadLinks: [
+          { quality: "720p", size: "490MB", url: "https://www.mediafire.com/file/uwrc7ba9btp26u6/Raaz_Reboot_B.mp4/file", type: "MP4" }
+          ]
+          },
+      "raza": {
+        title: "Raaz Reboot A",
+        embedCode: '<iframe width="420" height="220" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTXrbznqqxZ?title=0&controls=1&a=1&share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
+          host: "Rocky kimomo",
+        downloadLinks: [
+          { quality: "720p", size: "490MB", url: "https://www.mediafire.com/file/f91kg6ca6a0ylmk/Raaz_Reboot_A.mp4/file", type: "MP4" }
+          ]
+        },
+      "temp9b": {
+        title: "Tempest S01 E9 B Final",
+        embedCode: '<iframe width="420" height="240" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTXrDanqq31?controls=1&share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
+          host: "Junior",
+        downloadLinks: [
+          { quality: "720p", size: "460MB", url: "https://www.mediafire.com/file/sfg20i2z93os1g9/Tempest_S01e09_Finale_B.mp4/file", type: "MP4" }
+          ]
+         },
+      "temp9a": {
+        title: "Tempest S01 E9 A Final",
+        embedCode: '<iframe width="420" height="240" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTXrDanqq3i?controls=1&share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
+          host: "Junior",
+        downloadLinks: [
+          { quality: "720p", size: "490MB", url: "https://www.mediafire.com/file/8ut04hylzaeb6gq/Tempest_S01e09_Finale_A.mp4/file", type: "MP4" }
+          ]
 
+        },
+      "badi3": {
+        title: "Bad Influncer S01 E3",
+        embedCode: '<iframe width="420" height="220" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTXrrYnqYeH?controls=1&share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
+          host: "Rocky kimomo",
+        downloadLinks: [
+          { quality: "720p", size: "597MB", url: "https://www.mediafire.com/file/am01ckgp4cf7fh0/Bad_Influencer_S01e03.mp4/file", type: "MP4" }
           ]
         },
       "badi2": {
