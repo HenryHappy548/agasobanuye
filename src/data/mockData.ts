@@ -83,6 +83,25 @@ import hidden from "@/assets/hidden.jpeg";
 import assa from "@/assets/assa.jpeg";
 import long from "@/assets/long.jpg";
 import badi from "@/assets/badi.jpeg";
+import raz from "@/assets/raz.jpeg";
+import ice from "@/assets/ice.jpeg";
+import wolfh from "@/assets/wolfh.jpeg";
+import bharat from "@/assets/bharat.jpg";
+import robin from "@/assets/robin.jpeg";
+import nonation from "@/assets/nonation.jpeg";
+import noesc from "@/assets/noesc.jpeg";
+import oldw from "@/assets/oldw.jpg";
+import dou from "@/assets/dou.jpg";
+import foever from "@/assets/forever.jpeg";
+import pricew from "@/assets/pricew.jpeg";
+import nogood from "@/assets/nogood.jpeg";
+import shap from "@/assets/shap.jpeg";
+import axl from "@/assets/A.X.L.jpeg";
+import ope from "@/assets/ope.jpeg";
+import chip from "@/assets/chips.jpg";
+import dont from "@/assets/dont.jpg";
+import shooter from "@/assets/shooter.jpeg"
+import fantastic from "@/assets/fantastic.jpeg"
 
   export interface Movie {
   id: string;
@@ -95,6 +114,405 @@ import badi from "@/assets/badi.jpeg";
 }
 
 export const mockMovies: Movie[] = [
+    {
+    id: "fantastic",
+    title: "Fantastic Four",
+    poster: fantastic,
+    year: "2025",
+    genre: "Sci fi Thriller",
+    rating: "Senior",
+    category: "trending"
+  },
+  {
+    id: "shooter4",
+    title: "Shooter S01 E4",
+    poster: shooter,
+    year: "2016",
+    genre: "Action Thriller",
+    rating: "Rocky kimomo",
+    category: "tv"
+  },
+  {
+    id: "shooter3",
+    title: "Shooter S01 E3",
+    poster: shooter,
+    year: "2016",
+    genre: "Action Thriller",
+    rating: "Rocky kimomo",
+    category: "tv"
+  },
+  {
+  id: "badi7",
+    title: "Bad Influncer S01 E7",
+    poster: badi,
+    year: "2025",
+    genre: "Romance Drama",
+    rating: "Rocky kimomo",
+    category: "tv"
+  },
+  {
+    id: "dont",
+    title: "Don't Hangup",
+    poster: dont,
+    year: "2016",
+    genre: "Horror Thriller",
+    rating: "Sankara",
+    category: "trending"
+  },
+  {
+    id: "chip",
+    title: "Chips",
+    poster: chip,
+    year: "2017",
+    genre: "Action Comedy",
+    rating: "Rocky kimomo",
+    category: "trending"
+  },
+    {
+    id: "shooter2",
+    title: "Shooter S01 E2",
+    poster: shooter,
+    year: "2016",
+    genre: "Action Thriller",
+    rating: "Rocky kimomo",
+    category: "tv"
+  },
+  {
+    id: "shooter1",
+    title: "Shooter S01 E1",
+    poster: shooter,
+    year: "2016",
+    genre: "Action Thriller",
+    rating: "Rocky kimomo",
+    category: "tv"
+  },
+  {
+    id: "opeb",
+    title: "Operation Fortune B",
+    poster: ope,
+    year: "2023",
+    genre: "Action Comedy",
+    rating: "Gaheza",
+    category: "movie"
+  },
+  {
+    id: "opea",
+    title: "Operation Fortune A",
+    poster: ope,
+    year: "2023",
+    genre: "Action Comedy",
+    rating: "Gaheza",
+    category: "movie"
+  },
+   {
+    id: "housed8",
+    title: "House of David S02 E8 Final",
+    poster: housed,
+    year: "2025",
+    genre: "Action Documentary",
+    rating: "Savimbi",
+    category: "tv"
+  },
+   {
+    id: "housed7",
+    title: "House of David S02 E7",
+    poster: housed,
+    year: "2025",
+    genre: "Action Documentary",
+    rating: "Savimbi",
+    category: "tv"
+  },
+  {
+    id: "axlb",
+    title: "A.X.L B",
+    poster: axl,
+    year: "2018",
+    genre: "Action Adventure",
+    rating: "Sankara",
+    category: "movie"
+  },
+   {
+    id: "axla",
+    title: "A.X.L A",
+    poster: axl,
+    year: "2018",
+    genre: "Action Adventure",
+    rating: "Sankara",
+    category: "movie"
+  },
+   {
+  id: "shapb",
+    title: "Sharper B",
+    poster: shap,
+    year: "2023",
+    genre: "Thriller Crime",
+    rating: "Rocky kimomo",
+    category: "movie"
+  },
+   {
+  id: "shapa",
+    title: "Sharper A",
+    poster: shap,
+    year: "2023",
+    genre: "Thriller Crime",
+    rating: "Rocky kimomo",
+    category: "movie"
+  },
+  {
+  id: "nogood",
+    title: "No Good Deed",
+    poster: nogood,
+    year: "2014",
+    genre: "Thriller Crime",
+    rating: "Gaheza Simba",
+    category: "movie"
+  },
+  {
+  id: "pricew",
+    title: "The Price We Pay",
+    poster: pricew,
+    year: "2022",
+    genre: "Horror Action",
+    rating: "Gaheza Simba",
+    category: "trending"
+  },
+  {
+  id: "badi6",
+    title: "Bad Influncer S01 E6",
+    poster: badi,
+    year: "2025",
+    genre: "Romance Drama",
+    rating: "Rocky kimomo",
+    category: "tv"
+  },
+  {
+    id: "Bloodr4",
+    title: "Blood River E4",
+    poster: bloodr,
+    year: "2025",
+    genre: "Thriller",
+    rating: "B The Great",
+    category: "tv"
+  },
+  {
+    id: "Bloodr3",
+    title: "Blood River E3",
+    poster: bloodr,
+    year: "2025",
+    genre: "Thriller",
+    rating: "B The Great",
+    category: "tv"
+  },
+   {
+  id: "foever",
+    title: "Forever My Girl",
+    poster: foever,
+    year: "2018",
+    genre: "Romance Musical",
+    rating: "Savimbi",
+    category: "trending"
+  },
+    {
+    id: "Bloodr2",
+    title: "Blood River E2 ",
+    poster: bloodr,
+    year: "2025",
+    genre: "Thriller",
+    rating: "B The Great",
+    category: "tv"
+  },
+  
+  {
+    id: "Bloodr1",
+    title: "Blood River E1 ",
+    poster: bloodr,
+    year: "2025",
+    genre: "Thriller",
+    rating: "B The Great",
+    category: "tv"
+  },
+  {
+  id: "dou",
+    title: "Dou shi Fighter",
+    poster: dou,
+    year: "2022",
+    genre: "Action Thriller",
+    rating: "B The Great",
+    category: "trending"
+  },
+  {
+  id: "badi5",
+    title: "Bad Influncer S01 E5",
+    poster: badi,
+    year: "2025",
+    genre: "Romance Drama",
+    rating: "Rocky kimomo",
+    category: "tv"
+  },
+  {
+    id: "noesc",
+    title: "No escape",
+    poster: noesc,
+    year: "2016",
+    genre: "Action Western",
+    rating: "Rocky",
+    category: "movie"
+  },
+  {
+    id: "oldw",
+    title: "Old Way",
+    poster: oldw,
+    year: "2015",
+    genre: "Action Drama",
+    rating: "Rocky",
+    category: "movie"
+  },
+    {
+    id: "nonationb",
+    title: "Beast Of No Nation B",
+    poster: nonation,
+    year: "2015",
+    genre: "War Drama",
+    rating: "Savimbi",
+    category: "movie"
+  },
+  {
+  id: "nonationa",
+    title: "Beast Of No Nation A",
+    poster: nonation,
+    year: "2015",
+    genre: "War Drama",
+    rating: "Savimbi",
+    category: "movie"
+  },
+  {
+  id: "robin2b",
+    title: "Robin Hood S01 E2 B",
+    poster: robin,
+    year: "2025",
+    genre: "Action Thriller",
+    rating: "B The Great",
+    category: "tv"
+  },
+  {
+  id: "robin2a",
+    title: "Robin Hood S01 E2 A",
+    poster: robin,
+    year: "2025",
+    genre: "Action Thriller",
+    rating: "B The Great",
+    category: "tv"
+  },
+  {
+  id: "robin1b",
+    title: "Robin Hood S01 E1B",
+    poster: robin,
+    year: "2019",
+    genre: "Action Thriller",
+    rating: "B The Great",
+    category: "tv"
+  },
+   {
+  id: "robin1a",
+    title: "Robin Hood S01 E1A",
+    poster: robin,
+    year: "2025",
+    genre: "Action Thriller",
+    rating: "B The Great",
+    category: "tv"
+  },
+  {
+  id: "bharatb",
+    title: "Bharat B",
+    poster: bharat,
+    year: "2019",
+    genre: "Action Romance",
+    rating: "Rocky kimomo",
+    category: "movie"
+  },
+  {
+  id: "bharata",
+    title: "Bharat A",
+    poster: bharat,
+    year: "2019",
+    genre: "Action Romance",
+    rating: "Rocky kimomo",
+    category: "movie"
+  },
+  {
+  id: "wolfh",
+    title: "Wolf Hidding",
+    poster: wolfh,
+    year: "2023",
+    genre: "Action Crime",
+    rating: "B The Great",
+    category: "trending"
+  },
+  {
+  id: "ice",
+    title: "Ice Road",
+    poster: ice,
+    year: "2021",
+    genre: "Action Thriller",
+    rating: "Gaheza Simba",
+    category: "trending"
+  },
+  
+   {
+  id: "badi4",
+    title: "Bad Influncer S01 E4",
+    poster: badi,
+    year: "2025",
+    genre: "Romance Drama",
+    rating: "Rocky kimomo",
+    category: "tv"
+  },
+  {
+    id: "razb",
+    title: "Raaz Reboot B",
+    poster: raz,
+    year: "2016",
+    genre: "Horror Romance",
+    rating: "Rocky kimomo",
+    category: "movie"
+  },
+  {
+    id: "raza",
+    title: "Raaz Reboot A",
+    poster: raz,
+    year: "2016",
+    genre: "Horror Romance",
+    rating: "Rocky kimomo",
+    category: "movie"
+  },
+  
+  {
+    id: "temp9b",
+    title: "Tempest S01 E9 B Final",
+    poster: tempe,
+    year: "2025",
+    genre: "Action Drama",
+    rating: "Junior",
+    category: "tv"
+  },
+   {
+    id: "temp9a",
+    title: "Tempest S01 E9 A Final",
+    poster: tempe,
+    year: "2025",
+    genre: "Action Drama",
+    rating: "Junior",
+    category: "tv"
+  },
+  {
+  id: "badi3",
+    title: "Bad Influncer S01 E3",
+    poster: badi,
+    year: "2025",
+    genre: "Romance Drama",
+    rating: "Rocky kimomo",
+    category: "tv"
+  },
    {
   id: "badi2",
     title: "Bad Influncer S01 E2",
