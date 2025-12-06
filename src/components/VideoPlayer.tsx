@@ -106,6 +106,22 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
       //   downloadLinks: [
       //     { quality: "720p", size: "540MB", url: "", type: "MP4" }
       //     ]
+        },
+      "24hourb": {
+        title: "24 Hours B",
+        embedCode: '<iframe width="1280" height="720" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTl1Y6nYe48?title=0&controls=1&a=1&share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
+          host: "Rocky kimomo",
+        downloadLinks: [
+          { quality: "720p", size: "540MB", url: "https://www.mediafire.com/file/fw89mofffvoytdt/24_Hours_B.mp4/file", type: "MP4" }
+          ]
+           },
+      "24houra": {
+        title: "24 Hours A",
+        embedCode: '<iframe width="1280" height="720" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTl1Y6nYe4N?title=0&controls=1&a=1&share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
+          host: "Rocky kimomo",
+        downloadLinks: [
+          { quality: "720p", size: "540MB", url: "https://www.mediafire.com/file/hgltk0zc96c95sp/24_Hours_A.mp4/file", type: "MP4" }
+          ]
             },
       "fantastic": {
         title: "Fantastic Four",
