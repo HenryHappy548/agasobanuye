@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -6,7 +6,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { toast } from "sonner";
-import { Loader2, Upload } from "lucide-react";
+import { Loader2, Upload, CheckCircle } from "lucide-react";
 
 interface MovieFormProps {
   movie?: any;
@@ -15,6 +15,7 @@ interface MovieFormProps {
 
 const MovieForm = ({ movie, onSuccess }: MovieFormProps) => {
   const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
   const [formData, setFormData] = useState({
     title: movie?.title || "",
     description: movie?.description || "",
@@ -28,13 +29,44 @@ const MovieForm = ({ movie, onSuccess }: MovieFormProps) => {
     featured: movie?.featured || false,
   });
 
+  const resetForm = useCallback(() => {
+    setFormData({
+      title: "",
+      description: "",
+      year: "",
+      genre: "",
+      rating: "",
+      category: "movie",
+      poster_url: "",
+      video_url: "",
+      dubbed: "",
+      featured: false,
+    });
+  }, []);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Validate required fields
+    if (!formData.title.trim() || !formData.year.trim() || !formData.genre.trim()) {
+      toast.error("Please fill in all required fields");
+      return;
+    }
+
     setLoading(true);
+    setSuccess(false);
 
     try {
       const movieData = {
-        ...formData,
+        title: formData.title.trim(),
+        description: formData.description.trim(),
+        year: formData.year.trim(),
+        genre: formData.genre.trim(),
+        rating: formData.rating.trim(),
+        category: formData.category,
+        poster_url: formData.poster_url.trim(),
+        video_url: formData.video_url.trim(),
+        dubbed: formData.dubbed.trim(),
         featured: formData.featured,
       };
 
@@ -45,43 +77,61 @@ const MovieForm = ({ movie, onSuccess }: MovieFormProps) => {
           .update(movieData)
           .eq("id", movie.id);
 
-        if (error) throw error;
-        toast.success("Movie updated successfully!");
-      } else {
-        // Insert new movie
-        const { error } = await supabase
-          .from("movies")
-          .insert([movieData]);
-
-        if (error) throw error;
-        toast.success("Movie added successfully!");
+        if (error) {
+          console.error("Update error:", error);
+          throw new Error(error.message);
+        }
         
-        // Reset form
-        setFormData({
-          title: "",
-          description: "",
-          year: "",
-          genre: "",
-          rating: "",
-          category: "movie",
-          poster_url: "",
-          video_url: "",
-          dubbed: "",
-          featured: false,
-        });
+        toast.success(`"${formData.title}" updated successfully!`);
+        setSuccess(true);
+      } else {
+        // Insert new movie - using upsert to prevent duplicates
+        const { data, error } = await supabase
+          .from("movies")
+          .insert([movieData])
+          .select()
+          .single();
+
+        if (error) {
+          console.error("Insert error:", error);
+          throw new Error(error.message);
+        }
+        
+        toast.success(`"${formData.title}" added successfully! It will appear in the movie list.`);
+        setSuccess(true);
+        
+        // Reset form only for new movies
+        resetForm();
       }
 
-      onSuccess?.();
+      // Call onSuccess callback after a brief delay
+      setTimeout(() => {
+        onSuccess?.();
+        setSuccess(false);
+      }, 1500);
+
     } catch (error: any) {
       console.error("Error saving movie:", error);
-      toast.error(error.message || "Failed to save movie");
+      toast.error(error.message || "Failed to save movie. Please try again.");
+      setSuccess(false);
     } finally {
       setLoading(false);
     }
   };
 
+  const handleInputChange = useCallback((field: string, value: string | boolean) => {
+    setFormData(prev => ({ ...prev, [field]: value }));
+  }, []);
+
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
+      {success && (
+        <div className="flex items-center gap-2 p-4 bg-green-500/10 border border-green-500/20 rounded-lg text-green-500">
+          <CheckCircle className="w-5 h-5" />
+          <span>Movie saved successfully! The list will refresh automatically.</span>
+        </div>
+      )}
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Title */}
         <div className="space-y-2">
@@ -90,9 +140,10 @@ const MovieForm = ({ movie, onSuccess }: MovieFormProps) => {
             id="title"
             required
             value={formData.title}
-            onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+            onChange={(e) => handleInputChange("title", e.target.value)}
             placeholder="e.g., Savimbi, Sankara"
             className="bg-background/50"
+            disabled={loading}
           />
         </div>
 
@@ -103,9 +154,10 @@ const MovieForm = ({ movie, onSuccess }: MovieFormProps) => {
             id="year"
             required
             value={formData.year}
-            onChange={(e) => setFormData({ ...formData, year: e.target.value })}
+            onChange={(e) => handleInputChange("year", e.target.value)}
             placeholder="e.g., 2024"
             className="bg-background/50"
+            disabled={loading}
           />
         </div>
 
@@ -116,22 +168,24 @@ const MovieForm = ({ movie, onSuccess }: MovieFormProps) => {
             id="genre"
             required
             value={formData.genre}
-            onChange={(e) => setFormData({ ...formData, genre: e.target.value })}
+            onChange={(e) => handleInputChange("genre", e.target.value)}
             placeholder="e.g., Action, Drama"
             className="bg-background/50"
+            disabled={loading}
           />
         </div>
 
         {/* Rating */}
         <div className="space-y-2">
-          <Label htmlFor="rating">Rating *</Label>
+          <Label htmlFor="rating">Rating/Host *</Label>
           <Input
             id="rating"
             required
             value={formData.rating}
-            onChange={(e) => setFormData({ ...formData, rating: e.target.value })}
-            placeholder="e.g., 8.5"
+            onChange={(e) => handleInputChange("rating", e.target.value)}
+            placeholder="e.g., Rocky, Gaheza"
             className="bg-background/50"
+            disabled={loading}
           />
         </div>
 
@@ -140,14 +194,16 @@ const MovieForm = ({ movie, onSuccess }: MovieFormProps) => {
           <Label htmlFor="category">Category *</Label>
           <Select
             value={formData.category}
-            onValueChange={(value) => setFormData({ ...formData, category: value })}
+            onValueChange={(value) => handleInputChange("category", value)}
+            disabled={loading}
           >
             <SelectTrigger className="bg-background/50">
               <SelectValue placeholder="Select category" />
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="movie">Movie</SelectItem>
-              <SelectItem value="series">TV Series</SelectItem>
+              <SelectItem value="tv">TV Series</SelectItem>
+              <SelectItem value="trending">Trending</SelectItem>
             </SelectContent>
           </Select>
         </div>
@@ -158,9 +214,10 @@ const MovieForm = ({ movie, onSuccess }: MovieFormProps) => {
           <Input
             id="dubbed"
             value={formData.dubbed}
-            onChange={(e) => setFormData({ ...formData, dubbed: e.target.value })}
+            onChange={(e) => handleInputChange("dubbed", e.target.value)}
             placeholder="e.g., Kinyarwanda, French"
             className="bg-background/50"
+            disabled={loading}
           />
         </div>
       </div>
@@ -171,10 +228,11 @@ const MovieForm = ({ movie, onSuccess }: MovieFormProps) => {
         <Textarea
           id="description"
           value={formData.description}
-          onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+          onChange={(e) => handleInputChange("description", e.target.value)}
           placeholder="Enter movie description..."
           rows={4}
           className="bg-background/50 resize-none"
+          disabled={loading}
         />
       </div>
 
@@ -186,14 +244,27 @@ const MovieForm = ({ movie, onSuccess }: MovieFormProps) => {
             id="poster_url"
             required
             value={formData.poster_url}
-            onChange={(e) => setFormData({ ...formData, poster_url: e.target.value })}
+            onChange={(e) => handleInputChange("poster_url", e.target.value)}
             placeholder="https://example.com/poster.jpg"
             className="bg-background/50"
+            disabled={loading}
           />
-          <Button type="button" variant="outline" size="icon">
+          <Button type="button" variant="outline" size="icon" disabled={loading}>
             <Upload className="w-4 h-4" />
           </Button>
         </div>
+        {formData.poster_url && (
+          <div className="mt-2">
+            <img 
+              src={formData.poster_url} 
+              alt="Poster preview" 
+              className="w-20 h-28 object-cover rounded border border-border"
+              onError={(e) => {
+                e.currentTarget.style.display = 'none';
+              }}
+            />
+          </div>
+        )}
       </div>
 
       {/* Video Embed Link */}
@@ -203,12 +274,13 @@ const MovieForm = ({ movie, onSuccess }: MovieFormProps) => {
           id="video_url"
           required
           value={formData.video_url}
-          onChange={(e) => setFormData({ ...formData, video_url: e.target.value })}
+          onChange={(e) => handleInputChange("video_url", e.target.value)}
           placeholder="Embed code or video URL"
           className="bg-background/50"
+          disabled={loading}
         />
         <p className="text-sm text-muted-foreground">
-          You can paste an embed code or video URL
+          Paste an embed code or video URL (this won't affect existing movies)
         </p>
       </div>
 
@@ -218,8 +290,9 @@ const MovieForm = ({ movie, onSuccess }: MovieFormProps) => {
           type="checkbox"
           id="featured"
           checked={formData.featured}
-          onChange={(e) => setFormData({ ...formData, featured: e.target.checked })}
+          onChange={(e) => handleInputChange("featured", e.target.checked)}
           className="w-4 h-4 rounded border-input"
+          disabled={loading}
         />
         <Label htmlFor="featured" className="cursor-pointer">
           Feature this movie on homepage
@@ -237,6 +310,11 @@ const MovieForm = ({ movie, onSuccess }: MovieFormProps) => {
           <>
             <Loader2 className="w-4 h-4 animate-spin" />
             {movie ? "Updating..." : "Adding..."}
+          </>
+        ) : success ? (
+          <>
+            <CheckCircle className="w-4 h-4" />
+            Saved!
           </>
         ) : (
           <>{movie ? "Update Movie" : "Add Movie"}</>

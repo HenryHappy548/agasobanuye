@@ -22,14 +22,20 @@ const MovieCard = memo(({ movie, onPlay }: MovieCardProps) => {
   const movieSlug = slugify(movie.title);
   
   return (
-    <Link to={`/watch/${movieSlug}`} className="block">
+    <Link 
+      to={`/watch/${movieSlug}`} 
+      className="block"
+      title={`Watch ${movie.title} free on Rwaflix - Agasobanuye`}
+    >
       <article className="group relative overflow-hidden rounded-lg bg-card border border-border hover:border-primary/50 transition-all duration-300 hover:scale-105 hover:shadow-glow">
         <div className="aspect-[2/3] overflow-hidden">
           <img
             src={movie.poster}
-            alt={`${movie.title} poster - Watch free on Rwaflix`}
+            alt={`${movie.title} (${movie.year}) - Rwaflix Agasobanuye`}
             loading="lazy"
             decoding="async"
+            width={200}
+            height={300}
             className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
