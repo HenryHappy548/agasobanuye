@@ -1,7 +1,5 @@
-import { Link } from "react-router-dom";
 import { mockMovies, Movie } from "@/data/mockData";
 import { Play } from "lucide-react";
-import { slugify } from "@/lib/slugify";
 
 interface VideoRecommendationsProps {
   currentVideoId: string | null;
@@ -66,9 +64,8 @@ const VideoRecommendations = ({ currentVideoId, onPlayVideo }: VideoRecommendati
 
   if (recommendations.length === 0) return null;
 
-  const handlePlayClick = (movie: Movie, e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
+  const handlePlayClick = (movie: Movie) => {
+    // Play the video directly in the current player
     onPlayVideo(movie.id);
   };
 
@@ -80,12 +77,12 @@ const VideoRecommendations = ({ currentVideoId, onPlayVideo }: VideoRecommendati
       
       <div className="flex flex-col gap-2">
         {recommendations.map((movie) => (
-          <Link
+          <button
             key={movie.id}
-            to={`/watch/${slugify(movie.title)}`}
-            onClick={(e) => handlePlayClick(movie, e)}
-            className="flex items-center gap-3 p-2 rounded-lg bg-card/50 hover:bg-accent transition-all duration-200 text-left group w-full"
-            title={`Watch ${movie.title} on Rwaflix`}
+            type="button"
+            onClick={() => handlePlayClick(movie)}
+            className="flex items-center gap-3 p-2 rounded-lg bg-card/50 hover:bg-accent transition-all duration-200 text-left group w-full cursor-pointer"
+            title={`Play ${movie.title}`}
           >
             <div className="relative w-16 h-12 sm:w-20 sm:h-14 flex-shrink-0 rounded overflow-hidden">
               <img
@@ -106,7 +103,8 @@ const VideoRecommendations = ({ currentVideoId, onPlayVideo }: VideoRecommendati
                 {movie.genre} • {movie.year}
               </p>
             </div>
-          </Link>
+            <Play className="w-5 h-5 text-primary opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0" />
+          </button>
         ))}
       </div>
     </div>

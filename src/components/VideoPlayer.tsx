@@ -1,10 +1,13 @@
-import { X, ExternalLink, Download } from "lucide-react";
+import { X, ExternalLink, Download, Share2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import { supabase } from "@/integrations/supabase/client";
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import { toast } from "sonner";
+import { slugify } from "@/lib/slugify";
+import { mockMovies } from "@/data/mockData";
 import VideoRecommendations from "@/components/VideoRecommendations";
 
 interface VideoPlayerProps {
@@ -2122,15 +2125,42 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
                     <h2 className="text-lg sm:text-xl lg:text-2xl font-bold mb-1">{videoInfo.title}</h2>
                     <span className="text-sm text-muted-foreground">Host: {videoInfo.host}</span>
                   </div>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={() => window.open(getSrcFromEmbedCode(videoInfo.embedCode), '_blank')}
-                    className="text-white border-white/30 hover:bg-white/10 flex-shrink-0"
-                  >
-                    <ExternalLink className="h-4 w-4 mr-2" />
-                    Open Original
-                  </Button>
+                  <div className="flex gap-2 flex-shrink-0">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={() => {
+                        const movie = mockMovies.find(m => m.id === videoId);
+                        const shareUrl = movie 
+                          ? `https://rwaflix.store/watch/${slugify(movie.title)}`
+                          : `https://rwaflix.store`;
+                        
+                        if (navigator.share) {
+                          navigator.share({
+                            title: videoInfo.title,
+                            text: `Watch ${videoInfo.title} on Rwaflix - Agasobanuye`,
+                            url: shareUrl,
+                          }).catch(() => {});
+                        } else {
+                          navigator.clipboard.writeText(shareUrl);
+                          toast.success("Link copied!");
+                        }
+                      }}
+                      className="text-white border-white/30 hover:bg-white/10"
+                    >
+                      <Share2 className="h-4 w-4 mr-2" />
+                      Share
+                    </Button>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={() => window.open(getSrcFromEmbedCode(videoInfo.embedCode), '_blank')}
+                      className="text-white border-white/30 hover:bg-white/10"
+                    >
+                      <ExternalLink className="h-4 w-4 mr-2" />
+                      Open
+                    </Button>
+                  </div>
                 </div>
               </div>
             </div>
