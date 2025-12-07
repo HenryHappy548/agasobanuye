@@ -117,7 +117,7 @@ import gunp from "@/assets/gunp.jpeg"
 export const mockMovies: Movie[] = [
   {
     id: "gunp4",
-    title: "Gun Powder S01 E4",
+    title: "Gun Powder S01 E4 Final",
     poster: gunp,
     year: "2017",
     genre: "Drama Thriller",
