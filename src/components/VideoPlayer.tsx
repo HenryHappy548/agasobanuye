@@ -109,6 +109,38 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
       //   downloadLinks: [
       //     { quality: "720p", size: "540MB", url: "", type: "MP4" }
       //     ]
+         },
+      "gunp4": {
+        title: "Gun Powder S01 E4",
+        embedCode: '<iframe width="1280" height="720" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTlij0nYf2d?title=0&controls=1&a=1&share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
+          host: "PK",
+        downloadLinks: [
+          { quality: "720p", size: "540MB", url: "", type: "MP4" }
+          ]
+         },
+      "gunp3": {
+        title: "Gun Powder S01 E3",
+        embedCode: '<iframe width="1280" height="720" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTlij0nYf2J?title=0&controls=1&a=1&share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
+          host: "PK",
+        downloadLinks: [
+          { quality: "720p", size: "540MB", url: "", type: "MP4" }
+          ]
+         },
+      "gunp2": {
+        title: "Gun Powder S01 E2",
+        embedCode: '<iframe width="1280" height="720" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTlij0nYf2H?title=0&controls=1&a=1&share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
+          host: "PK",
+        downloadLinks: [
+          { quality: "720p", size: "540MB", url: "", type: "MP4" }
+          ]
+           },
+      "gunp1": {
+        title: "Gun Powder S01 E1",
+        embedCode: '<iframe width="1280" height="720" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTlij0nYf2m?title=0&controls=1&share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
+          host: "PK",
+        downloadLinks: [
+          { quality: "720p", size: "540MB", url: "", type: "MP4" }
+          ]
         },
       "24hourb": {
         title: "24 Hours B",
