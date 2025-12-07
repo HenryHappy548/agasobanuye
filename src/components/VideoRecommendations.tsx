@@ -1,5 +1,7 @@
+import { Link } from "react-router-dom";
 import { mockMovies, Movie } from "@/data/mockData";
 import { Play } from "lucide-react";
+import { slugify } from "@/lib/slugify";
 
 interface VideoRecommendationsProps {
   currentVideoId: string | null;
@@ -64,6 +66,12 @@ const VideoRecommendations = ({ currentVideoId, onPlayVideo }: VideoRecommendati
 
   if (recommendations.length === 0) return null;
 
+  const handlePlayClick = (movie: Movie, e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    onPlayVideo(movie.id);
+  };
+
   return (
     <div className="p-4 border-t border-border">
       <h3 className="text-base font-semibold mb-3 text-white">
@@ -72,16 +80,19 @@ const VideoRecommendations = ({ currentVideoId, onPlayVideo }: VideoRecommendati
       
       <div className="flex flex-col gap-2">
         {recommendations.map((movie) => (
-          <button
+          <Link
             key={movie.id}
-            onClick={() => onPlayVideo(movie.id)}
+            to={`/watch/${slugify(movie.title)}`}
+            onClick={(e) => handlePlayClick(movie, e)}
             className="flex items-center gap-3 p-2 rounded-lg bg-card/50 hover:bg-accent transition-all duration-200 text-left group w-full"
+            title={`Watch ${movie.title} on Rwaflix`}
           >
             <div className="relative w-16 h-12 sm:w-20 sm:h-14 flex-shrink-0 rounded overflow-hidden">
               <img
                 src={movie.poster}
-                alt={movie.title}
+                alt={`${movie.title} - Watch on Rwaflix`}
                 className="w-full h-full object-cover"
+                loading="lazy"
               />
               <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                 <Play className="w-4 h-4 text-white fill-white" />
@@ -95,7 +106,7 @@ const VideoRecommendations = ({ currentVideoId, onPlayVideo }: VideoRecommendati
                 {movie.genre} • {movie.year}
               </p>
             </div>
-          </button>
+          </Link>
         ))}
       </div>
     </div>

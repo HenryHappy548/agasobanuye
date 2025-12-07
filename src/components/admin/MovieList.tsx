@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -6,20 +6,49 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from "@/components/ui/alert-dialog";
 import { toast } from "sonner";
-import { Edit, Trash2, Search, Loader2 } from "lucide-react";
+import { Edit, Trash2, Search, Loader2, RefreshCw, ExternalLink } from "lucide-react";
+import { slugify } from "@/lib/slugify";
 import MovieForm from "./MovieForm";
 
 const MovieList = () => {
   const [movies, setMovies] = useState<any[]>([]);
   const [filteredMovies, setFilteredMovies] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+  const [refreshing, setRefreshing] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [editingMovie, setEditingMovie] = useState<any>(null);
   const [deletingMovie, setDeletingMovie] = useState<any>(null);
 
+  const fetchMovies = useCallback(async (showToast = false) => {
+    try {
+      if (showToast) setRefreshing(true);
+      else setLoading(true);
+      
+      const { data, error } = await supabase
+        .from("movies")
+        .select("*")
+        .order("created_at", { ascending: false });
+
+      if (error) throw error;
+      
+      setMovies(data || []);
+      setFilteredMovies(data || []);
+      
+      if (showToast) {
+        toast.success(`Loaded ${data?.length || 0} movies`);
+      }
+    } catch (error: any) {
+      console.error("Error fetching movies:", error);
+      toast.error("Failed to load movies");
+    } finally {
+      setLoading(false);
+      setRefreshing(false);
+    }
+  }, []);
+
   useEffect(() => {
     fetchMovies();
-  }, []);
+  }, [fetchMovies]);
 
   useEffect(() => {
     if (searchQuery.trim() === "") {
@@ -34,24 +63,38 @@ const MovieList = () => {
     }
   }, [searchQuery, movies]);
 
-  const fetchMovies = async () => {
-    try {
-      setLoading(true);
-      const { data, error } = await supabase
-        .from("movies")
-        .select("*")
-        .order("created_at", { ascending: false });
+  // Real-time subscription for movie changes
+  useEffect(() => {
+    const channel = supabase
+      .channel('movies-changes')
+      .on(
+        'postgres_changes',
+        {
+          event: '*',
+          schema: 'public',
+          table: 'movies'
+        },
+        (payload) => {
+          console.log('Movie change detected:', payload.eventType);
+          
+          if (payload.eventType === 'INSERT') {
+            setMovies(prev => [payload.new as any, ...prev]);
+            toast.success(`New movie added: ${(payload.new as any).title}`);
+          } else if (payload.eventType === 'UPDATE') {
+            setMovies(prev => prev.map(m => 
+              m.id === (payload.new as any).id ? payload.new as any : m
+            ));
+          } else if (payload.eventType === 'DELETE') {
+            setMovies(prev => prev.filter(m => m.id !== (payload.old as any).id));
+          }
+        }
+      )
+      .subscribe();
 
-      if (error) throw error;
-      setMovies(data || []);
-      setFilteredMovies(data || []);
-    } catch (error: any) {
-      console.error("Error fetching movies:", error);
-      toast.error("Failed to load movies");
-    } finally {
-      setLoading(false);
-    }
-  };
+    return () => {
+      supabase.removeChannel(channel);
+    };
+  }, []);
 
   const handleDelete = async () => {
     if (!deletingMovie) return;
@@ -64,14 +107,18 @@ const MovieList = () => {
 
       if (error) throw error;
       
-      toast.success("Movie deleted successfully");
-      fetchMovies();
+      toast.success(`"${deletingMovie.title}" deleted successfully`);
+      // Note: Real-time subscription will update the list
     } catch (error: any) {
       console.error("Error deleting movie:", error);
       toast.error("Failed to delete movie");
     } finally {
       setDeletingMovie(null);
     }
+  };
+
+  const handleRefresh = () => {
+    fetchMovies(true);
   };
 
   if (loading) {
@@ -84,15 +131,31 @@ const MovieList = () => {
 
   return (
     <div className="space-y-4">
-      {/* Search */}
-      <div className="relative">
-        <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-        <Input
-          placeholder="Search movies by title, genre, or year..."
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          className="pl-9 bg-background/50"
-        />
+      {/* Search and Refresh */}
+      <div className="flex gap-2">
+        <div className="relative flex-1">
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+          <Input
+            placeholder="Search movies by title, genre, or year..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="pl-9 bg-background/50"
+          />
+        </div>
+        <Button 
+          variant="outline" 
+          size="icon"
+          onClick={handleRefresh}
+          disabled={refreshing}
+          title="Refresh list"
+        >
+          <RefreshCw className={`w-4 h-4 ${refreshing ? 'animate-spin' : ''}`} />
+        </Button>
+      </div>
+
+      {/* Stats */}
+      <div className="text-sm text-muted-foreground">
+        Showing {filteredMovies.length} of {movies.length} movies
       </div>
 
       {/* Movies Table */}
@@ -104,7 +167,7 @@ const MovieList = () => {
               <TableHead>Title</TableHead>
               <TableHead>Year</TableHead>
               <TableHead>Genre</TableHead>
-              <TableHead>Rating</TableHead>
+              <TableHead>Category</TableHead>
               <TableHead>Dubbed</TableHead>
               <TableHead className="text-right">Actions</TableHead>
             </TableRow>
@@ -113,7 +176,7 @@ const MovieList = () => {
             {filteredMovies.length === 0 ? (
               <TableRow>
                 <TableCell colSpan={7} className="text-center py-8 text-muted-foreground">
-                  No movies found
+                  {searchQuery ? 'No movies match your search' : 'No movies found. Add your first movie!'}
                 </TableCell>
               </TableRow>
             ) : (
@@ -124,12 +187,37 @@ const MovieList = () => {
                       src={movie.poster_url}
                       alt={movie.title}
                       className="w-12 h-16 object-cover rounded"
+                      loading="lazy"
+                      onError={(e) => {
+                        e.currentTarget.src = '/placeholder.svg';
+                      }}
                     />
                   </TableCell>
-                  <TableCell className="font-medium">{movie.title}</TableCell>
+                  <TableCell className="font-medium">
+                    <div className="flex items-center gap-2">
+                      {movie.title}
+                      <a 
+                        href={`/watch/${slugify(movie.title)}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-muted-foreground hover:text-primary"
+                        title="View on site"
+                      >
+                        <ExternalLink className="w-3 h-3" />
+                      </a>
+                    </div>
+                  </TableCell>
                   <TableCell>{movie.year}</TableCell>
                   <TableCell>{movie.genre}</TableCell>
-                  <TableCell>{movie.rating}</TableCell>
+                  <TableCell>
+                    <span className={`px-2 py-1 rounded-full text-xs ${
+                      movie.category === 'trending' ? 'bg-primary/20 text-primary' :
+                      movie.category === 'tv' ? 'bg-blue-500/20 text-blue-500' :
+                      'bg-muted text-muted-foreground'
+                    }`}>
+                      {movie.category}
+                    </span>
+                  </TableCell>
                   <TableCell>{movie.dubbed || "-"}</TableCell>
                   <TableCell className="text-right">
                     <div className="flex justify-end gap-2">
@@ -137,6 +225,7 @@ const MovieList = () => {
                         variant="ghost"
                         size="icon"
                         onClick={() => setEditingMovie(movie)}
+                        title="Edit movie"
                       >
                         <Edit className="w-4 h-4" />
                       </Button>
@@ -145,6 +234,7 @@ const MovieList = () => {
                         size="icon"
                         onClick={() => setDeletingMovie(movie)}
                         className="text-destructive hover:text-destructive"
+                        title="Delete movie"
                       >
                         <Trash2 className="w-4 h-4" />
                       </Button>
@@ -170,7 +260,7 @@ const MovieList = () => {
             movie={editingMovie}
             onSuccess={() => {
               setEditingMovie(null);
-              fetchMovies();
+              // Real-time will handle update
             }}
           />
         </DialogContent>

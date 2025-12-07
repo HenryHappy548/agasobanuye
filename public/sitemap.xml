@@ -6,7 +6,7 @@
   <!-- Homepage -->
   <url>
     <loc>https://rwaflix.store/</loc>
-    <lastmod>2025-12-05</lastmod>
+    <lastmod>2025-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -14,7 +14,7 @@
   <!-- Movies Page -->
   <url>
     <loc>https://rwaflix.store/movies</loc>
-    <lastmod>2025-12-05</lastmod>
+    <lastmod>2025-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
@@ -22,7 +22,7 @@
   <!-- TV Shows Page -->
   <url>
     <loc>https://rwaflix.store/tv-shows</loc>
-    <lastmod>2025-12-05</lastmod>
+    <lastmod>2025-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
@@ -30,7 +30,7 @@
   <!-- Popular Page -->
   <url>
     <loc>https://rwaflix.store/popular</loc>
-    <lastmod>2025-12-05</lastmod>
+    <lastmod>2025-12-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -38,7 +38,7 @@
   <!-- FAQ Page -->
   <url>
     <loc>https://rwaflix.store/faq</loc>
-    <lastmod>2025-12-05</lastmod>
+    <lastmod>2025-12-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -46,7 +46,7 @@
   <!-- About Page -->
   <url>
     <loc>https://rwaflix.store/about</loc>
-    <lastmod>2025-12-05</lastmod>
+    <lastmod>2025-12-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -54,7 +54,7 @@
   <!-- Contact Page -->
   <url>
     <loc>https://rwaflix.store/contact</loc>
-    <lastmod>2025-12-05</lastmod>
+    <lastmod>2025-12-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -62,7 +62,7 @@
   <!-- Privacy Policy -->
   <url>
     <loc>https://rwaflix.store/privacy-policy</loc>
-    <lastmod>2025-12-05</lastmod>
+    <lastmod>2025-12-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -70,9 +70,120 @@
   <!-- Terms of Service -->
   <url>
     <loc>https://rwaflix.store/terms-of-service</loc>
-    <lastmod>2025-12-05</lastmod>
+    <lastmod>2025-12-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+  </url>
+
+  <!-- Individual Movie Pages - Add your movies here -->
+  <url>
+    <loc>https://rwaflix.store/watch/24-hours-a</loc>
+    <lastmod>2025-12-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <video:video>
+      <video:thumbnail_loc>https://rwaflix.store/assets/24.jpeg</video:thumbnail_loc>
+      <video:title>24 Hours A - Rwaflix Agasobanuye</video:title>
+      <video:description>Watch 24 Hours A on Rwaflix. Action Thriller movie available in HD quality.</video:description>
+    </video:video>
+  </url>
+  
+  <url>
+    <loc>https://rwaflix.store/watch/24-hours-b</loc>
+    <lastmod>2025-12-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://rwaflix.store/watch/fantastic-four</loc>
+    <lastmod>2025-12-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://rwaflix.store/watch/dont-hangup</loc>
+    <lastmod>2025-12-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://rwaflix.store/watch/chips</loc>
+    <lastmod>2025-12-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://rwaflix.store/watch/operation-fortune-a</loc>
+    <lastmod>2025-12-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://rwaflix.store/watch/operation-fortune-b</loc>
+    <lastmod>2025-12-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://rwaflix.store/watch/sharper-a</loc>
+    <lastmod>2025-12-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://rwaflix.store/watch/sharper-b</loc>
+    <lastmod>2025-12-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://rwaflix.store/watch/no-good-deed</loc>
+    <lastmod>2025-12-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://rwaflix.store/watch/forever-my-girl</loc>
+    <lastmod>2025-12-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://rwaflix.store/watch/ice-road</loc>
+    <lastmod>2025-12-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://rwaflix.store/watch/wolf-hidding</loc>
+    <lastmod>2025-12-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://rwaflix.store/watch/dou-shi-fighter</loc>
+    <lastmod>2025-12-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://rwaflix.store/watch/the-price-we-pay</loc>
+    <lastmod>2025-12-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   
 </urlset>
