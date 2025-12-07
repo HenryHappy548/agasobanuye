@@ -103,6 +103,7 @@ import dont from "@/assets/dont.jpg";
 import shooter from "@/assets/shooter.jpeg"
 import fantastic from "@/assets/fantastic.jpeg"
 import hours from "@/assets/24.jpeg"
+import gunp from "@/assets/gunp.jpeg"
   export interface Movie {
   id: string;
   title: string;
@@ -114,6 +115,42 @@ import hours from "@/assets/24.jpeg"
 }
 
 export const mockMovies: Movie[] = [
+  {
+    id: "gunp4",
+    title: "Gun Powder S01 E4",
+    poster: gunp,
+    year: "2017",
+    genre: "Drama Thriller",
+    rating: "PK",
+    category: "tv"
+  },
+  {
+    id: "gunp3",
+    title: "Gun Powder S01 E3",
+    poster: gunp,
+    year: "2017",
+    genre: "Drama Thriller",
+    rating: "PK",
+    category: "tv"
+  },
+  {
+    id: "gunp2",
+    title: "Gun Powder S01 E2",
+    poster: gunp,
+    year: "2017",
+    genre: "Drama Thriller",
+    rating: "PK",
+    category: "tv"
+  },
+  {
+    id: "gunp1",
+    title: "Gun Powder S01 E1",
+    poster: gunp,
+    year: "2017",
+    genre: "Drama Thriller",
+    rating: "PK",
+    category: "tv"
+  },
   {
     id: "24hourb",
     title: "24 Hours B",
