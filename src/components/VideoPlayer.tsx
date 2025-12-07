@@ -111,11 +111,11 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
       //     ]
          },
       "gunp4": {
-        title: "Gun Powder S01 E4",
+        title: "Gun Powder S01 E4 Final",
         embedCode: '<iframe width="1280" height="720" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTlij0nYf2d?title=0&controls=1&a=1&share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
           host: "PK",
         downloadLinks: [
-          { quality: "720p", size: "540MB", url: "", type: "MP4" }
+          { quality: "720p", size: "540MB", url: "https://www.mediafire.com/file/1kajmgw2cpwa7hk/Gunpowder-s1-e4_FINAL.mp4/file", type: "MP4" }
           ]
          },
       "gunp3": {
@@ -123,7 +123,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         embedCode: '<iframe width="1280" height="720" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTlij0nYf2J?title=0&controls=1&a=1&share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
           host: "PK",
         downloadLinks: [
-          { quality: "720p", size: "540MB", url: "", type: "MP4" }
+          { quality: "720p", size: "540MB", url: "https://www.mediafire.com/file/msv6cubbpem4kvf/Gunpowder-s1-e3.mp4/file", type: "MP4" }
           ]
          },
       "gunp2": {
@@ -131,7 +131,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         embedCode: '<iframe width="1280" height="720" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTlij0nYf2H?title=0&controls=1&a=1&share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
           host: "PK",
         downloadLinks: [
-          { quality: "720p", size: "540MB", url: "", type: "MP4" }
+          { quality: "720p", size: "540MB", url: "https://www.mediafire.com/file/4lt1f1xu84m6m3m/Gunpowder-s1-e2.mp4/file", type: "MP4" }
           ]
            },
       "gunp1": {
@@ -139,7 +139,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         embedCode: '<iframe width="1280" height="720" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTlij0nYf2m?title=0&controls=1&share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
           host: "PK",
         downloadLinks: [
-          { quality: "720p", size: "540MB", url: "", type: "MP4" }
+          { quality: "720p", size: "540MB", url: "https://www.mediafire.com/file/1g324d3eclu7c2n/Gunpowder-s1-e1.mp4/file", type: "MP4" }
           ]
         },
       "24hourb": {
