@@ -104,6 +104,7 @@ import shooter from "@/assets/shooter.jpeg"
 import fantastic from "@/assets/fantastic.jpeg"
 import hours from "@/assets/24.jpeg"
 import gunp from "@/assets/gunp.jpeg"
+import ice2 from "@/assets/ice2.jpeg"
   export interface Movie {
   id: string;
   title: string;
@@ -115,6 +116,24 @@ import gunp from "@/assets/gunp.jpeg"
 }
 
 export const mockMovies: Movie[] = [
+  {
+    id: "ice2b",
+    title: "Ice Road 2 B",
+    poster: ice2,
+    year: "2025",
+    genre: "Action Thriller",
+    rating: "Gaheza",
+    category: "trending"
+  },
+  {
+    id: "ice2a",
+    title: "Ice Road 2 A",
+    poster: ice2,
+    year: "2025",
+    genre: "Action Thriller",
+    rating: "Gaheza",
+    category: "trending"
+  },
   {
     id: "gunp4",
     title: "Gun Powder S01 E4 Final",
