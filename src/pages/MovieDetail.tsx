@@ -76,20 +76,22 @@ const MovieDetail = memo(() => {
 
   const canonicalUrl = `https://rwaflix.store/watch/${slug}`;
   const pageTitle = `${movie.title} (${movie.year}) - Reba Agasobanuye | Rwaflix`;
-  const pageDescription = `Reba ${movie.title} (${movie.year}) ku buntu kuri Rwaflix. ${movie.genre} movie. Stream HD quality, download options. Agasobanuye, Movie Nyarwanda.`;
-  const seoKeywords = `${movie.title}, watch ${movie.title} online, ${movie.title} agasobanuye, ${movie.genre}, ${movie.year} movies, Rwaflix, Agasobanuye, Movie Nyarwanda, Oshakur, Cinebeta, free streaming Rwanda, ${movie.title} download, reba filime`;
+  const pageDescription = `Reba ${movie.title} (${movie.year}) ku buntu kuri Rwaflix. ${movie.genre} movie agasobanuye. Stream HD quality, download options. Movie Nyarwanda, Oshakur, Cinebeta alternative.`;
+  const seoKeywords = `${movie.title}, watch ${movie.title} online, ${movie.title} agasobanuye, ${movie.genre}, ${movie.year} movies, Rwaflix, rwafix, Agasobanuye, Movie Nyarwanda, Oshakur, Cinebeta, free streaming Rwanda, ${movie.title} download, reba filime, ${movie.title} full movie`;
 
-  // Generate VideoObject schema for better Google indexing
+  // Generate VideoObject schema for better Google video indexing
   const videoSchema = {
     "@context": "https://schema.org",
     "@type": "VideoObject",
     "name": movie.title,
-    "description": `Watch ${movie.title} (${movie.year}) - ${movie.genre} movie available on Rwaflix. Stream in HD quality with download options.`,
+    "description": `Watch ${movie.title} (${movie.year}) - ${movie.genre} movie available on Rwaflix. Stream in HD quality with download options. Agasobanuye.`,
     "thumbnailUrl": movie.poster,
-    "uploadDate": `${movie.year}-01-01T00:00:00+00:00`,
+    "uploadDate": `${movie.year}-01-01T00:00:00+02:00`,
     "contentUrl": canonicalUrl,
     "embedUrl": canonicalUrl,
     "duration": "PT2H",
+    "inLanguage": ["rw", "en"],
+    "isFamilyFriendly": true,
     "interactionStatistic": {
       "@type": "InteractionCounter",
       "interactionType": { "@type": "WatchAction" },
@@ -98,10 +100,17 @@ const MovieDetail = memo(() => {
     "publisher": {
       "@type": "Organization",
       "name": "Rwaflix",
+      "url": "https://rwaflix.store",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://rwaflix.store/logo-512.jpg"
+        "url": "https://rwaflix.store/logo-512.jpg",
+        "width": 512,
+        "height": 512
       }
+    },
+    "potentialAction": {
+      "@type": "WatchAction",
+      "target": canonicalUrl
     }
   };
 
@@ -109,6 +118,7 @@ const MovieDetail = memo(() => {
     "@context": "https://schema.org",
     "@type": "Movie",
     "name": movie.title,
+    "alternateName": `${movie.title} Agasobanuye`,
     "datePublished": movie.year,
     "genre": movie.genre,
     "image": movie.poster,
@@ -123,7 +133,15 @@ const MovieDetail = memo(() => {
       "@type": "AggregateRating",
       "ratingValue": "4.5",
       "bestRating": "5",
+      "worstRating": "1",
       "ratingCount": "150"
+    },
+    "offers": {
+      "@type": "Offer",
+      "availability": "https://schema.org/InStock",
+      "price": "0",
+      "priceCurrency": "RWF",
+      "url": canonicalUrl
     }
   };
 
@@ -134,22 +152,54 @@ const MovieDetail = memo(() => {
       {
         "@type": "ListItem",
         "position": 1,
-        "name": "Rwaflix",
+        "name": "Rwaflix - Agasobanuye",
         "item": "https://rwaflix.store"
       },
       {
         "@type": "ListItem",
         "position": 2,
-        "name": "Movies",
-        "item": "https://rwaflix.store/movies"
+        "name": movie.category === 'tv' ? 'TV Series' : 'Movies',
+        "item": movie.category === 'tv' ? "https://rwaflix.store/tv-shows" : "https://rwaflix.store/movies"
       },
       {
         "@type": "ListItem",
         "position": 3,
+        "name": `Category: ${movie.genre}`,
+        "item": `https://rwaflix.store/movies?genre=${encodeURIComponent(movie.genre)}`
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
         "name": movie.title,
         "item": canonicalUrl
       }
     ]
+  };
+
+  // WebPage schema for better indexing
+  const webPageSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": pageTitle,
+    "description": pageDescription,
+    "url": canonicalUrl,
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "Rwaflix",
+      "url": "https://rwaflix.store"
+    },
+    "about": {
+      "@type": "Movie",
+      "name": movie.title
+    },
+    "primaryImageOfPage": {
+      "@type": "ImageObject",
+      "url": movie.poster
+    },
+    "speakable": {
+      "@type": "SpeakableSpecification",
+      "cssSelector": ["h1", "article"]
+    }
   };
 
   return (
@@ -192,6 +242,9 @@ const MovieDetail = memo(() => {
         </script>
         <script type="application/ld+json">
           {JSON.stringify(breadcrumbSchema)}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify(webPageSchema)}
         </script>
       </Helmet>
 

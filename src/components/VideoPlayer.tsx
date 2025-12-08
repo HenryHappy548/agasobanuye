@@ -2232,13 +2232,10 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
                 )}
               </div>
 
-              {/* Recommendations */}
+              {/* Recommendations - Click navigates to movie page */}
               <VideoRecommendations 
                 currentVideoId={videoId} 
-                onPlayVideo={(id) => {
-                  fetchVideoFromDB(id);
-                  navigate(`${location.pathname}?watch=${id}`, { replace: true });
-                }} 
+                onClose={onClose}
               />
             </div>
           </div>
