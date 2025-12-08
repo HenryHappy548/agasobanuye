@@ -109,6 +109,22 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
       //   downloadLinks: [
       //     { quality: "720p", size: "540MB", url: "", type: "MP4" }
       //     ]
+        },
+      "ice2b": {
+        title: "Ice Road 2 B",
+        embedCode: '',
+          host: "Gaheza",
+        downloadLinks: [
+          { quality: "720p", size: "890MB", url: "https://www.mediafire.com/file/s4j1uz3rif0eiy2/Ice_Road_2_Vengeance_B.mp4/file", type: "MP4" }
+          ]
+            },
+      "ice2a": {
+        title: "Ice Road 2 A",
+        embedCode: '',
+          host: "",
+        downloadLinks: [
+          { quality: "720p", size: "840MB", url: "https://www.mediafire.com/file/qfwjdmph6wd9f9x/Ice_Road_2_Vengeance_A.mp4/file", type: "MP4" }
+          ]
          },
       "gunp4": {
         title: "Gun Powder S01 E4 Final",
