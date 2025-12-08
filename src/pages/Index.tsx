@@ -9,6 +9,7 @@ import Footer from "@/components/Footer";
 import { SeriesPollButton } from "@/components/SeriesPollButton";
 import { Button } from "@/components/ui/button";
 import { mockMovies } from "@/data/mockData";
+import TMDBBrowser from "@/components/TMDBBrowser";
 import { isValidVideoId, sanitizeTextInput } from "@/lib/security";
 import {
   Carousel,
@@ -276,6 +277,11 @@ const Index = () => {
                 <CarouselPrevious className="left-2" />
                 <CarouselNext className="right-2" />
               </Carousel>
+            </section>
+
+            {/* TMDB Browser Section */}
+            <section className="mt-8 p-6 bg-card/50 rounded-lg border border-border">
+              <TMDBBrowser />
             </section>
           </>
         )}
