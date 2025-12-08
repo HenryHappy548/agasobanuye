@@ -134,6 +134,15 @@ export const mockMovies: Movie[] = [
     rating: "Gaheza",
     category: "trending"
   },
+   {
+  id: "ice",
+    title: "Ice Road",
+    poster: ice,
+    year: "2021",
+    genre: "Action Thriller",
+    rating: "Gaheza Simba",
+    category: "trending"
+  },
   {
     id: "gunp4",
     title: "Gun Powder S01 E4 Final",
