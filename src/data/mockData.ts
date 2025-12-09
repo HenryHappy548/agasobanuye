@@ -119,7 +119,7 @@ import seanc from "@/assets/seamc.jpeg"
 export const mockMovies: Movie[] = [
    {
     id: "seanc1",
-    title: "Sean Combs",
+    title: "Sean Combs S01 E1",
     poster: seanc,
     year: "2025",
     genre: "Documentary Thriller",
