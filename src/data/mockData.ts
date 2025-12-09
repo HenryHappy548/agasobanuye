@@ -106,6 +106,7 @@ import hours from "@/assets/24.jpeg"
 import gunp from "@/assets/gunp.jpeg"
 import ice2 from "@/assets/ice2.jpeg"
 import seanc from "@/assets/seamc.jpeg"
+import avenger from "@/assets/avenger.jpeg"
   export interface Movie {
   id: string;
   title: string;
@@ -117,6 +118,15 @@ import seanc from "@/assets/seamc.jpeg"
 }
 
 export const mockMovies: Movie[] = [
+    {
+    id: "avenger",
+    title: "Avengers: Infinity War",
+    poster: avenger,
+    year: "2018",
+    genre: "Action Sci fi",
+    rating: "Sankara",
+    category: "movie"
+  },
    {
     id: "seanc1",
     title: "Sean Combs S01 E1",
