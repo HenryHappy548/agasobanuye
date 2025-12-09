@@ -110,6 +110,14 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
       //     { quality: "720p", size: "540MB", url: "", type: "MP4" }
       //     ]
            },
+      "avenger": {
+        title: "Avengers Infinity war",
+        embedCode: '<iframe width="1280" height="720" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTlQhqnY6rG?title=0&controls=1&a=1&share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
+          host: "Sankara",
+        downloadLinks: [
+          { quality: "720p", size: "540MB", url: "https://www.mediafire.com/file/zqu4y2big5v1gi4/Avengers+Infinity_War.mp4/file", type: "MP4" }
+          ]
+           },
       "seanc1": {
         title: "Sean Combs S01 E1",
         embedCode: '<iframe width="1280" height="720" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTljYjnYjSd?title=0&controls=1&a=1&share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
