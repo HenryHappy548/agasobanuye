@@ -109,10 +109,18 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
       //   downloadLinks: [
       //     { quality: "720p", size: "540MB", url: "", type: "MP4" }
       //     ]
+           },
+      "seanc1": {
+        title: "Sean Combs S01 E1",
+        embedCode: '<iframe width="1280" height="720" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTljYjnYjSd?title=0&controls=1&a=1&share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
+          host: "Rocky",
+        downloadLinks: [
+          { quality: "720p", size: "1GB", url: "https://isatafileze.fly.dev/simple-redirect-download?file=series%2F2025%2Frocky%2FSEAN_FCOMBS_EP1.mp4&filename=SEAN_FCOMBS_EP1.mp4", type: "MP4" }
+          ]
         },
       "ice2b": {
         title: "Ice Road 2 B",
-        embedCode: '',
+        embedCode: '<iframe width="1280" height="720" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTljFrnYjgz?title=0&controls=1&a=1&share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
           host: "Gaheza",
         downloadLinks: [
           { quality: "720p", size: "890MB", url: "https://www.mediafire.com/file/s4j1uz3rif0eiy2/Ice_Road_2_Vengeance_B.mp4/file", type: "MP4" }
@@ -120,8 +128,8 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
             },
       "ice2a": {
         title: "Ice Road 2 A",
-        embedCode: '',
-          host: "",
+        embedCode: '<iframe width="1280" height="720" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTlQeJnY61W?title=0&controls=1&share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
+          host: "Gaheza",
         downloadLinks: [
           { quality: "720p", size: "840MB", url: "https://www.mediafire.com/file/qfwjdmph6wd9f9x/Ice_Road_2_Vengeance_A.mp4/file", type: "MP4" }
           ]
