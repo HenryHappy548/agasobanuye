@@ -3,7 +3,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { useState, useCallback } from "react";
-import logoRwaflix from "@/assets/logo-rwaflix.png";
+import ChristmasLogo from "@/components/ChristmasLogo";
 import DOMPurify from "dompurify";
 import {
   Dialog,
@@ -46,12 +46,9 @@ const StreamingHeader = ({ onSearch, searchQuery, onPlayVideo }: StreamingHeader
     <header className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
       <div className="container mx-auto px-4 py-3 sm:py-4">
         <div className="flex items-center justify-between">
-          {/* Logo and Brand */}
+          {/* Logo and Brand with Christmas theme */}
           <div className="flex items-center space-x-2 sm:space-x-3">
-            <Link to="/" className="flex items-center space-x-2 sm:space-x-3">
-              <img src={logoRwaflix} alt="Rwaflix Logo" className="h-7 w-7 sm:h-8 sm:w-8" />
-              <h1 className="text-xl sm:text-2xl font-bold text-primary">Rwaflix</h1>
-            </Link>
+            <ChristmasLogo />
           </div>
 
           {/* Desktop Navigation */}

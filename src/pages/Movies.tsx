@@ -3,16 +3,18 @@ import StreamingHeader from "@/components/StreamingHeader";
 import MovieCard from "@/components/MovieCard";
 import VideoPlayer from "@/components/VideoPlayer";
 import Footer from "@/components/Footer";
-import { mockMovies } from "@/data/mockData";
+import { useMovies } from "@/hooks/useMovies";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const Movies = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedVideoId, setSelectedVideoId] = useState<string | null>(null);
   const [isPlayerOpen, setIsPlayerOpen] = useState(false);
+  const { movies, loading } = useMovies();
 
-  const movies = mockMovies.filter(movie => movie.category === 'movie');
+  const moviesOnly = movies.filter(movie => movie.category === 'movie');
   
-  const filteredMovies = movies.filter(movie =>
+  const filteredMovies = moviesOnly.filter(movie =>
     movie.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
     movie.genre.toLowerCase().includes(searchQuery.toLowerCase())
   );
@@ -40,17 +42,28 @@ const Movies = () => {
         </div>
 
         <section>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 sm:gap-4">
-            {filteredMovies.map((movie) => (
-              <MovieCard
-                key={movie.id}
-                movie={movie}
-                onPlay={handlePlayVideo}
-              />
-            ))}
-          </div>
+          {loading ? (
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 sm:gap-4">
+              {[...Array(12)].map((_, i) => (
+                <div key={i}>
+                  <Skeleton className="aspect-[2/3] rounded-lg" />
+                  <Skeleton className="h-4 mt-2 w-3/4" />
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 sm:gap-4">
+              {filteredMovies.map((movie) => (
+                <MovieCard
+                  key={movie.id}
+                  movie={movie}
+                  onPlay={handlePlayVideo}
+                />
+              ))}
+            </div>
+          )}
           
-          {filteredMovies.length === 0 && (
+          {!loading && filteredMovies.length === 0 && (
             <div className="text-center py-8 sm:py-12">
               <p className="text-muted-foreground">
                 {searchQuery ? `No movies found matching "${searchQuery}"` : "No movies available"}

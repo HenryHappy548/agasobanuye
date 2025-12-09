@@ -1,7 +1,7 @@
-import { mockMovies, Movie } from "@/data/mockData";
-import { Play, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
+import { Play, ExternalLink } from "lucide-react";
 import { slugify } from "@/lib/slugify";
+import { useMovies, getRelatedMovies, DBMovie } from "@/hooks/useMovies";
 
 interface VideoRecommendationsProps {
   currentVideoId: string | null;
@@ -10,65 +10,19 @@ interface VideoRecommendationsProps {
 }
 
 const VideoRecommendations = ({ currentVideoId, onPlayVideo, onClose }: VideoRecommendationsProps) => {
-  // Get related videos based on current video
-  const getRelatedVideos = (): Movie[] => {
-    if (!currentVideoId) return [];
+  const { movies } = useMovies();
+  
+  // Find current movie and get smart recommendations
+  const currentMovie = currentVideoId ? movies.find(m => m.id === currentVideoId) : null;
+  const recommendations = currentMovie 
+    ? getRelatedMovies(currentMovie as DBMovie, movies as DBMovie[], 6)
+    : movies.slice(0, 6);
 
-    const currentMovie = mockMovies.find(m => m.id === currentVideoId);
-    if (!currentMovie) return mockMovies.slice(0, 6);
+  if (recommendations.length === 0) {
+    return null;
+  }
 
-    // Extract series name pattern (e.g., "Tempest", "Bon Appetit", "Bunker")
-    const titleParts = currentMovie.title.match(/^(.+?)\s+S\d+\s*E?\d*/i);
-    const seriesName = titleParts ? titleParts[1].trim() : null;
-
-    // If it's a series, get next episodes and related episodes
-    if (seriesName) {
-      const seriesEpisodes = mockMovies.filter(m => {
-        const mParts = m.title.match(/^(.+?)\s+S\d+\s*E?\d*/i);
-        const mSeriesName = mParts ? mParts[1].trim() : null;
-        return mSeriesName && mSeriesName.toLowerCase() === seriesName.toLowerCase() && m.id !== currentVideoId;
-      });
-
-      // Sort episodes to show next ones first
-      const sortedEpisodes = seriesEpisodes.sort((a, b) => {
-        const aMatch = a.id.match(/\d+$/);
-        const bMatch = b.id.match(/\d+$/);
-        const aNum = aMatch ? parseInt(aMatch[0]) : 0;
-        const bNum = bMatch ? parseInt(bMatch[0]) : 0;
-        return aNum - bNum;
-      });
-
-      // Get up to 4 series episodes and fill with genre-related
-      const recommendations = sortedEpisodes.slice(0, 4);
-      
-      // Add genre-related movies if needed
-      if (recommendations.length < 6) {
-        const genreRelated = mockMovies.filter(m => 
-          m.genre === currentMovie.genre && 
-          m.id !== currentVideoId && 
-          !recommendations.some(r => r.id === m.id)
-        ).slice(0, 6 - recommendations.length);
-        recommendations.push(...genreRelated);
-      }
-
-      return recommendations.slice(0, 6);
-    }
-
-    // For standalone movies, get same genre recommendations
-    const genreRelated = mockMovies.filter(m => 
-      (m.genre === currentMovie.genre || m.category === currentMovie.category) && 
-      m.id !== currentVideoId
-    ).slice(0, 6);
-
-    return genreRelated.length > 0 ? genreRelated : mockMovies.filter(m => m.id !== currentVideoId).slice(0, 6);
-  };
-
-  const recommendations = getRelatedVideos();
-
-  if (recommendations.length === 0) return null;
-
-  const handleNavigate = () => {
-    // Close the video player modal when navigating
+  const handleClick = () => {
     if (onClose) {
       onClose();
     }
@@ -76,7 +30,8 @@ const VideoRecommendations = ({ currentVideoId, onPlayVideo, onClose }: VideoRec
 
   return (
     <div className="p-4 border-t border-border">
-      <h3 className="text-base font-semibold mb-3 text-white">
+      <h3 className="text-base font-semibold mb-3 text-white flex items-center gap-2">
+        <Play className="w-4 h-4 text-primary" />
         Up Next
       </h3>
       
@@ -85,7 +40,7 @@ const VideoRecommendations = ({ currentVideoId, onPlayVideo, onClose }: VideoRec
           <Link
             key={movie.id}
             to={`/watch/${slugify(movie.title)}`}
-            onClick={handleNavigate}
+            onClick={handleClick}
             className="flex items-center gap-3 p-2 rounded-lg bg-card/50 hover:bg-accent transition-all duration-200 text-left group w-full cursor-pointer"
             title={`Watch ${movie.title} - Rwaflix Agasobanuye`}
           >

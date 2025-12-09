@@ -3,18 +3,20 @@ import StreamingHeader from "@/components/StreamingHeader";
 import MovieCard from "@/components/MovieCard";
 import VideoPlayer from "@/components/VideoPlayer";
 import Footer from "@/components/Footer";
-import { mockMovies } from "@/data/mockData";
+import { useMovies } from "@/hooks/useMovies";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const Popular = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedVideoId, setSelectedVideoId] = useState<string | null>(null);
   const [isPlayerOpen, setIsPlayerOpen] = useState(false);
+  const { movies, loading } = useMovies();
 
-  const popularContent = mockMovies.filter(movie => movie.category === 'trending');
+  const trendingMovies = movies.filter(movie => movie.category === 'trending');
   
-  const filteredContent = popularContent.filter(content =>
-    content.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    content.genre.toLowerCase().includes(searchQuery.toLowerCase())
+  const filteredMovies = trendingMovies.filter(movie =>
+    movie.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    movie.genre.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   const handlePlayVideo = (videoId: string) => {
@@ -33,27 +35,38 @@ const Popular = () => {
       
       <main className="container mx-auto px-4 py-6 sm:py-8">
         <div className="mb-6 sm:mb-8">
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary mb-2 sm:mb-4">Popular Content</h1>
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary mb-2 sm:mb-4">Popular & Trending</h1>
           <p className="text-sm sm:text-base lg:text-lg text-muted-foreground">
-            The most watched movies and shows right now
+            Watch what everyone is watching right now
           </p>
         </div>
 
         <section>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 sm:gap-4">
-            {filteredContent.map((content) => (
-              <MovieCard
-                key={content.id}
-                movie={content}
-                onPlay={handlePlayVideo}
-              />
-            ))}
-          </div>
+          {loading ? (
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 sm:gap-4">
+              {[...Array(12)].map((_, i) => (
+                <div key={i}>
+                  <Skeleton className="aspect-[2/3] rounded-lg" />
+                  <Skeleton className="h-4 mt-2 w-3/4" />
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 sm:gap-4">
+              {filteredMovies.map((movie) => (
+                <MovieCard
+                  key={movie.id}
+                  movie={movie}
+                  onPlay={handlePlayVideo}
+                />
+              ))}
+            </div>
+          )}
           
-          {filteredContent.length === 0 && (
+          {!loading && filteredMovies.length === 0 && (
             <div className="text-center py-8 sm:py-12">
               <p className="text-muted-foreground">
-                {searchQuery ? `No popular content found matching "${searchQuery}"` : "No popular content available"}
+                {searchQuery ? `No movies found matching "${searchQuery}"` : "No trending content available"}
               </p>
             </div>
           )}
