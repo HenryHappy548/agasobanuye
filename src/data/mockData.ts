@@ -105,6 +105,7 @@ import fantastic from "@/assets/fantastic.jpeg"
 import hours from "@/assets/24.jpeg"
 import gunp from "@/assets/gunp.jpeg"
 import ice2 from "@/assets/ice2.jpeg"
+import seanc from "@/assets/seamc.jpeg"
   export interface Movie {
   id: string;
   title: string;
@@ -116,6 +117,15 @@ import ice2 from "@/assets/ice2.jpeg"
 }
 
 export const mockMovies: Movie[] = [
+   {
+    id: "seanc1",
+    title: "Sean Combs",
+    poster: seanc,
+    year: "2025",
+    genre: "Documentary Thriller",
+    rating: "Rocky",
+    category: "tv"
+  },
   {
     id: "ice2b",
     title: "Ice Road 2 B",
