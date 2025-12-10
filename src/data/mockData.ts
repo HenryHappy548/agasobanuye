@@ -109,6 +109,7 @@ import seanc from "@/assets/seamc.jpeg"
 import avenger from "@/assets/avenger.jpeg"
 import collateral from "@/assets/collateral.jpeg"
 import great from "@/assets/great.jpeg"
+import flady from "@/assets/flady.jpeg"
   export interface Movie {
   id: string;
   title: string;
@@ -120,6 +121,42 @@ import great from "@/assets/great.jpeg"
 }
 
 export const mockMovies: Movie[] = [
+  {
+    id: "flady4",
+    title: "First Lady S01 E4",
+    poster: flady,
+    year: "2022",
+    genre: "Romance",
+    rating: "Rocky kimomo",
+    category: "tv"
+  },
+  {
+    id: "flady3",
+    title: "First Lady S01 E3",
+    poster: flady,
+    year: "2022",
+    genre: "Romance",
+    rating: "Rocky kimomo",
+    category: "tv"
+  },
+  {
+    id: "flady2",
+    title: "First Lady S01 E2",
+    poster: flady,
+    year: "2022",
+    genre: "Romance",
+    rating: "Rocky kimomo",
+    category: "tv"
+  },
+  {
+    id: "flady1",
+    title: "First Lady S01 E1",
+    poster: flady,
+    year: "2022",
+    genre: "Romance",
+    rating: "Rocky kimomo",
+    category: "tv"
+  },
   {
     id: "seanc2",
     title: "Sean Combs S01 E2",
