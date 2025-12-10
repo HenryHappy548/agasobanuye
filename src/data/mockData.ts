@@ -120,6 +120,15 @@ import great from "@/assets/great.jpeg"
 }
 
 export const mockMovies: Movie[] = [
+  {
+    id: "seanc2",
+    title: "Sean Combs S01 E2",
+    poster: seanc,
+    year: "2025",
+    genre: "Documentary Thriller",
+    rating: "Rocky",
+    category: "tv"
+  },
    {
     id: "greatb",
     title: "The Great Battle B",
