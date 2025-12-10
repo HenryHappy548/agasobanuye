@@ -109,6 +109,14 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
       //   downloadLinks: [
       //     { quality: "720p", size: "540MB", url: "", type: "MP4" }
       //     ]
+           },
+      "seanc2": {
+        title: "Sean Combs S01 E2",
+        embedCode: '<iframe width="1280" height="720" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTl6fynY2r4?title=0&controls=1&share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
+          host: "Rocky kimomo",
+        downloadLinks: [
+          { quality: "720p", size: "540MB", url: "https://isatafileze.fly.dev/simple-redirect-download?file=series%2F2025%2Frocky%2FSEAN_COMBS_RECKONING_E02.mp4&filename=SEAN_COMBS_RECKONING_E02.mp4", type: "MP4" }
+          ]
          },
       "greatb": {
         title: "The Great Battle B",
