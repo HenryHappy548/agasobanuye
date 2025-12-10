@@ -108,6 +108,7 @@ import ice2 from "@/assets/ice2.jpeg"
 import seanc from "@/assets/seamc.jpeg"
 import avenger from "@/assets/avenger.jpeg"
 import collateral from "@/assets/collateral.jpeg"
+import great from "@/assets/great.jpeg"
   export interface Movie {
   id: string;
   title: string;
@@ -119,6 +120,24 @@ import collateral from "@/assets/collateral.jpeg"
 }
 
 export const mockMovies: Movie[] = [
+   {
+    id: "greatb",
+    title: "The Great Battle B",
+    poster: great,
+    year: "2018",
+    genre: "Action War",
+    rating: "Savimbi",
+    category: "trending"
+  },
+  {
+    id: "greata",
+    title: "The Great Battle A",
+    poster: great,
+    year: "2018",
+    genre: "Action War",
+    rating: "Savimbi",
+    category: "trending"
+  },
   {
     id: "collateralb",
     title: "Collateral B",
