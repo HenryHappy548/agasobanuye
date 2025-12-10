@@ -109,6 +109,39 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
       //   downloadLinks: [
       //     { quality: "720p", size: "540MB", url: "", type: "MP4" }
       //     ]
+        },
+      "flady4": {
+        title: "First Lady S01 E4",
+        embedCode: '<iframe width="1280" height="720" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTl6bLnYDSM?title=0&controls=1&a=1&share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
+          host: "Rocky kimomo",
+        downloadLinks: [
+          { quality: "720p", size: "540MB", url: "https://www.mediafire.com/file/lgbvywsju4v8y4s/First_Lady_S01e04.mp4/file", type: "MP4" }
+          ]
+        },
+      "flady3": {
+        title: "First Lady S01 E3",
+        embedCode: '<iframe width="1280" height="720" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTl6bLnYDSs?title=0&controls=1&a=1&share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
+          host: "Rocky kimomo",
+        downloadLinks: [
+          { quality: "720p", size: "540MB", url: "https://www.mediafire.com/file/j0xqg5vyy6r1nkj/First_Lady_S01e03.mp4/file", type: "MP4" }
+          ]
+        },
+      "flady2": {
+        title: "First Lady S01 E2",
+        embedCode: '<iframe width="1280" height="720" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTl6bLnYDS7?title=0&controls=1&a=1&share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
+          host: "Rocky kimomo",
+        downloadLinks: [
+          { quality: "720p", size: "540MB", url: "https://www.mediafire.com/file/m8ury2pbgx16a2d/First_Lady_S01e02.mp4/file", type: "MP4" }
+          ]
+        },
+      "flady1": {
+        title: "First Lady S01 E1",
+        embedCode: '<iframe width="1280" height="720" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTl6bLnYDSK?title=0&controls=1&a=1&share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
+          host: "Rocky kimomo",
+        downloadLinks: [
+          { quality: "720p", size: "540MB", url: "https://www.mediafire.com/file/ycxsaogk74ao3q2/First_Lady_S01e01.mp4/file", type: "MP4" }
+          ]
+           
            },
       "seanc2": {
         title: "Sean Combs S01 E2",
