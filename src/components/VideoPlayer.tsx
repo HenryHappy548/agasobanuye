@@ -109,6 +109,22 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
       //   downloadLinks: [
       //     { quality: "720p", size: "540MB", url: "", type: "MP4" }
       //     ]
+        },
+      "collateralb": {
+        title: "Collateral B",
+        embedCode: '<iframe width="1280" height="720" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTlQY7nYI33?title=0&controls=1&a=1&share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
+          host: "Rocky kimomo",
+        downloadLinks: [
+          { quality: "720p", size: "640MB", url: "https://www.mediafire.com/file/280jw0fu2qmvj70/Collateral_B.mp4/file", type: "MP4" }
+          ]
+            },
+      "collaterala": {
+        title: "Collateral A",
+        embedCode: '<iframe width="1280" height="720" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTlQY7nYI30?title=0&controls=1&share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
+          host: "Rocky kimomo",
+        downloadLinks: [
+          { quality: "720p", size: "980MB", url: "https://www.mediafire.com/file/2mewmggn6chq7lj/Collateral_A.mp4/file", type: "MP4" }
+          ]
            },
       "avenger": {
         title: "Avengers Infinity war",
