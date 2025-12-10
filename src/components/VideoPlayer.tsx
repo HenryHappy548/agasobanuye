@@ -109,6 +109,22 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
       //   downloadLinks: [
       //     { quality: "720p", size: "540MB", url: "", type: "MP4" }
       //     ]
+         },
+      "greatb": {
+        title: "The Great Battle B",
+        embedCode: '<iframe width="1280" height="720" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTlQDGnYlkk?title=0&controls=1&a=1&share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
+          host: "Rocky kimomo",
+        downloadLinks: [
+          { quality: "720p", size: "540MB", url: "https://www.mediafire.com/file/d7uw1lgdzr3q9x6/The_Great_Battle_B.mp4/file", type: "MP4" }
+          ]
+           },
+      "greata": {
+        title: "The Great Battle A",
+        embedCode: '<iframe width="1280" height="720" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTl6fcnY2DC?title=0&controls=1&share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
+          host: "Rocky kimomo",
+        downloadLinks: [
+          { quality: "720p", size: "540MB", url: "https://www.mediafire.com/file/96wuldvlkqofix8/The_Great_Battle_A.mp4/file", type: "MP4" }
+          ]
         },
       "collateralb": {
         title: "Collateral B",
