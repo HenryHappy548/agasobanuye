@@ -107,6 +107,7 @@ import gunp from "@/assets/gunp.jpeg"
 import ice2 from "@/assets/ice2.jpeg"
 import seanc from "@/assets/seamc.jpeg"
 import avenger from "@/assets/avenger.jpeg"
+import collateral from "@/assets/collateral.jpeg"
   export interface Movie {
   id: string;
   title: string;
@@ -118,6 +119,24 @@ import avenger from "@/assets/avenger.jpeg"
 }
 
 export const mockMovies: Movie[] = [
+  {
+    id: "collateralb",
+    title: "Collateral B",
+    poster: collateral,
+    year: "2004",
+    genre: "Action Thriller",
+    rating: "Rocky kimomo",
+    category: "movie"
+  },
+   {
+    id: "collaterala",
+    title: "Collateral A",
+    poster: collateral,
+    year: "2004",
+    genre: "Action Thriller",
+    rating: "Rocky kimomo",
+    category: "movie"
+  },
     {
     id: "avenger",
     title: "Avengers: Infinity War",
