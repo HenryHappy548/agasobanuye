@@ -130,7 +130,7 @@ export const mockMovies: Movie[] = [
     year: "2025",
     genre: "Action Adventure",
     rating: "Gaheza",
-    category: "trending"
+    category: 'trending'
       "
   },
   {
