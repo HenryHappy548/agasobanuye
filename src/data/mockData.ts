@@ -109,7 +109,7 @@ import seanc from "@/assets/seamc.jpeg"
 import avenger from "@/assets/avenger.jpeg"
 import collateral from "@/assets/collateral.jpeg"
 import great from "@/assets/great.jpeg"
-import ringsl from "@/assets/ringsl.jpeg"
+import flady from "@/assets/flady.jpeg"
   export interface Movie {
   id: string;
   title: string;
@@ -121,24 +121,6 @@ import ringsl from "@/assets/ringsl.jpeg"
 }
 
 export const mockMovies: Movie[] = [
-  {
-    id: "ringslb",
-    title: "The Lord of The Ring I B",
-    poster: ringsl,
-    year: "2001",
-    genre: "Fantasy Adventure",
-    rating: "Gaheza",
-    category: "movie"
-  },
-  {
-    id: "ringsla",
-    title: "The Lord of The Ring I A",
-    poster: ringsl,
-    year: "2001",
-    genre: "Fantasy Adventure",
-    rating: "Gaheza",
-    category: "movie"
-  },
   {
     id: "flady4",
     title: "First Lady S01 E4",
