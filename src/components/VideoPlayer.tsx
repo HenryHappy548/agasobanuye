@@ -110,6 +110,22 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
       //     { quality: "720p", size: "540MB", url: "", type: "MP4" }
       //     ]
         },
+      "ringslb": {
+        title: "The Lord Of The Rings I B",
+        embedCode: '<iframe width="1280" height="720" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTl6qYnYbo0?share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
+          host: "Gaheza",
+        downloadLinks: [
+          { quality: "720p", size: "540MB", url: "https://www.mediafire.com/file/9uayhp8ezt4ft0c/The_Lord_Of_The_Rings_B.mp4/file", type: "MP4" }
+          ]
+           },
+      "ringsla": {
+        title: "The Lord Of The Rings I A",
+        embedCode: '<iframe width="1280" height="720" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTlXfUnYFOS?share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
+          host: "Gaheza",
+        downloadLinks: [
+          { quality: "720p", size: "540MB", url: "https://www.mediafire.com/file/i1unctgfjrhd6tf/The_Lord_Of_The_Rings_A.mp4/file", type: "MP4" }
+          ]
+        },
       "flady4": {
         title: "First Lady S01 E4",
         embedCode: '<iframe width="1280" height="720" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTl6bLnYDSM?title=0&controls=1&a=1&share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
