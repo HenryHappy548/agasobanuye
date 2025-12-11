@@ -111,6 +111,7 @@ import collateral from "@/assets/collateral.jpeg"
 import great from "@/assets/great.jpeg"
 import flady from "@/assets/flady.jpeg"
 import ringsl from "@/assets/ringsl.jpeg"
+import jessicab from "@/assets/jessicab.jpeg"
   export interface Movie {
   id: string;
   title: string;
@@ -122,6 +123,16 @@ import ringsl from "@/assets/ringsl.jpeg"
 }
 
 export const mockMovies: Movie[] = [
+  {
+    id: "jessicab",
+    title: "Hunting Jessica Brock",
+    poster: jessicab,
+    year: "2025",
+    genre: "Action Adventure",
+    rating: "Gaheza",
+    category: "trending"
+      "
+  },
   {
     id: "ringslb",
     title: "The Lord Of The Rings I B",
