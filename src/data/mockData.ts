@@ -123,7 +123,7 @@ import ringsl from "@/assets/ringsl.jpeg"
 export const mockMovies: Movie[] = [
   {
     id: "ringslb",
-    title: "The Lord of The Ring I A",
+    title: "The Lord of The Ring I B",
     poster: ringsl,
     year: "2001",
     genre: "Fantasy Adventure",
