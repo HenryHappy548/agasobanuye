@@ -13,7 +13,7 @@ const Footer = () => {
           <div className="space-y-4 sm:col-span-2 lg:col-span-1">
             <h3 className="text-lg font-semibold text-primary">Rwaflix</h3>
             <p className="text-sm text-muted-foreground">
-              Stream your favorite movies and series online with premium quality content.
+             Reba Agasobanuye Kuri Rwaflix.
             </p>
             <div className="space-y-2">
               <a 
@@ -26,19 +26,13 @@ const Footer = () => {
                 <span>+250 791 114 163</span>
               </a>
               <a 
-                href="mailto:henryhappyreal@gmail.com"
+                href="mailto:rwaflixstore@gmail.com"
                 className="flex items-center space-x-2 text-sm text-muted-foreground hover:text-primary transition-colors"
               >
                 <Mail className="h-4 w-4" />
-                <span>henryhappyreal@gmail.com</span>
+                <span>rwaflixstore@gmail.com</span>
               </a>
-              <a 
-                href="mailto:kwizeracolin@gmail.com"
-                className="flex items-center space-x-2 text-sm text-muted-foreground hover:text-primary transition-colors"
-              >
-                <Mail className="h-4 w-4" />
-                <span>kwizeracolin@gmail.com</span>
-              </a>
+             
               <a 
                 href="https://meethenry.vercel.app" 
                 target="_blank" 
@@ -58,7 +52,7 @@ const Footer = () => {
                 <span>Follow the Rwaflix channel on WhatsApp</span>
               </a>
               <a 
-                href="https://www.instagram.com/rwaflix8/" 
+                href="https://www.instagram.com/rwaflix.store/" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="flex items-center space-x-2 text-sm text-muted-foreground hover:text-primary transition-colors"
