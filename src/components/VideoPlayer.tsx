@@ -109,6 +109,14 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
       //   downloadLinks: [
       //     { quality: "720p", size: "540MB", url: "", type: "MP4" }
       //     ]
+           },
+      "jessicab": {
+        title: "Hunting Jessica Brok",
+        embedCode: '<iframe width="1280" height="720" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTlXoUnYYAO?title=0&controls=1&share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
+          host: "Gaheza",
+        downloadLinks: [
+          { quality: "720p", size: "540MB", url: "https://isatafileze.fly.dev/simple-redirect-download?file=series%2F2025%2Fothers%2Fmovies%2FHUNTING_JESSICA_BROK.MP4&filename=HUNTING_JESSICA_BROK.MP4", type: "MP4" }
+          ]
         },
       "ringslb": {
         title: "The Lord Of The Rings I B",
