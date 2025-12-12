@@ -109,6 +109,30 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
       //   downloadLinks: [
       //     { quality: "720p", size: "540MB", url: "", type: "MP4" }
       //     ]
+        },
+      "shooter10": {
+        title: "Shooter S01 E10 Final",
+        embedCode: '<iframe width="1280" height="720" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTll2NnYZOS?title=0&controls=1&a=1&share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
+          host: "Rocky",
+        downloadLinks: [
+          { quality: "720p", size: "540MB", url: "https://isatafileze.fly.dev/simple-redirect-download?file=Serie%2FRocky%2FShooter.S01E10_Final.mp4&filename=Shooter.S01E10_Final.mp4", type: "MP4" }
+          ]
+        },
+      "shooter9": {
+        title: "Shooter S01 E9",
+        embedCode: '<iframe width="1280" height="720" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTll2NnYZOW?title=0&controls=1&a=1&share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
+          host: "Rocky",
+        downloadLinks: [
+          { quality: "720p", size: "540MB", url: "https://isatafileze.fly.dev/simple-redirect-download?file=Serie%2FRocky%2FShooter.S01E09.mp4&filename=Shooter.S01E09.mp4", type: "MP4" }
+          ]
+           },
+      "shooter8": {
+        title: "Shooter S01 E8",
+        embedCode: '<iframe width="1280" height="720" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTll2NnYZtc?title=0&controls=1&a=1&share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
+          host: "Rocky",
+        downloadLinks: [
+          { quality: "720p", size: "540MB", url: "https://isatafileze.fly.dev/simple-redirect-download?file=Serie%2FRocky%2FShooter.S01E08.mp4&filename=Shooter.S01E08.mp4", type: "MP4" }
+          ]
            },
       "theday": {
         title: "The Day Earth Stood Still",
