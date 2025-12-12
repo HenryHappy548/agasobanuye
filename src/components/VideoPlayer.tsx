@@ -110,6 +110,14 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
       //     { quality: "720p", size: "540MB", url: "", type: "MP4" }
       //     ]
            },
+      "reborn": {
+        title: "Reborn",
+        embedCode: '<iframe width="1280" height="720" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTllbZnYZLx?title=0&controls=1&share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
+          host: "Sankara",
+        downloadLinks: [
+          { quality: "720p", size: "540MB", url: "https://isatafileze.fly.dev/simple-redirect-download?file=Ne%2FSank%2FRe_Born_.mp4&filename=Re_Born_.mp4", type: "MP4" }
+          ]
+           },
       "kindg": {
         title: "Kindergarten Cop",
         embedCode: '<iframe width="1280" height="720" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTllDVnYZkn?title=0&controls=1&a=1&share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
