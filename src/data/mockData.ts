@@ -136,7 +136,7 @@ export const mockMovies: Movie[] = [
     category: "movie"
   },
   {
-    id: "funna",
+    id: "fanna",
     title: "Fanna",
     poster: fanna,
     year: "2006",
