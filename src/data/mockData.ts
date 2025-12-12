@@ -112,6 +112,7 @@ import great from "@/assets/great.jpeg"
 import flady from "@/assets/flady.jpeg"
 import ringsl from "@/assets/ringsl.jpeg"
 import jessicab from "@/assets/jessicab.jpeg"
+import thedaye from "@/assets/thedaye.jpeg"
   export interface Movie {
   id: string;
   title: string;
@@ -123,6 +124,15 @@ import jessicab from "@/assets/jessicab.jpeg"
 }
 
 export const mockMovies: Movie[] = [
+  {
+    id: "theday",
+    title: "The Day Earth Stood Still",
+    poster: thedaye,
+    year: "2008",
+    genre: "Sci-fi Thriller",
+    rating: "Savimbi",
+    category: "movie"
+  },
   {
     id: "shooter7",
     title: "Shooter S01 E7",
