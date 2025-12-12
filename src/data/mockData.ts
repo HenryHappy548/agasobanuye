@@ -115,6 +115,7 @@ import jessicab from "@/assets/jessicab.jpeg"
 import thedaye from "@/assets/thedaye.jpeg"
 import kindg from "@/assets/kindg.jpeg"
 import fanna from "@/assets/fanna.jpeg"
+import reborn from "@/assets/reborn.jpg"
   export interface Movie {
   id: string;
   title: string;
@@ -126,6 +127,15 @@ import fanna from "@/assets/fanna.jpeg"
 }
 
 export const mockMovies: Movie[] = [
+  {
+    id: "reborn",
+    title: "Reborn",
+    poster: reborn,
+    year: "2016",
+    genre: "Action Crime",
+    rating: "Sankara",
+    category: "trending"
+  },
   {
     id: "kindg",
     title: "Kindergarten Cop",
