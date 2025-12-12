@@ -113,6 +113,8 @@ import flady from "@/assets/flady.jpeg"
 import ringsl from "@/assets/ringsl.jpeg"
 import jessicab from "@/assets/jessicab.jpeg"
 import thedaye from "@/assets/thedaye.jpeg"
+import kindg from "@/assets/kindg.jpeg"
+import fanna from "@/assets/fanna.jpeg"
   export interface Movie {
   id: string;
   title: string;
@@ -124,6 +126,25 @@ import thedaye from "@/assets/thedaye.jpeg"
 }
 
 export const mockMovies: Movie[] = [
+  {
+    id: "kindg",
+    title: "Kindergarten Cop",
+    poster: kindg,
+    year: "1990",
+    genre: "Comedy Action",
+    rating: "Savimbi",
+    category: "movie"
+  },
+  {
+    id: "funna",
+    title: "Fanna",
+    poster: fanna,
+    year: "2006",
+    genre: "Romance Thriller",
+    rating: "Rocky kimomo",
+    category: "movie"
+  },
+  
   {
     id: "theday",
     title: "The Day Earth Stood Still",
