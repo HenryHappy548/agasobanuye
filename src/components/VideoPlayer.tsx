@@ -109,6 +109,30 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
       //   downloadLinks: [
       //     { quality: "720p", size: "540MB", url: "", type: "MP4" }
       //     ]
+        },
+      "shooter7": {
+        title: "Shooter S01 E7",
+        embedCode: '<iframe width="1280" height="720" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTlXFVnYr1u?share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
+          host: "Rocky",
+        downloadLinks: [
+          { quality: "720p", size: "540MB", url: "https://isatafileze.fly.dev/simple-redirect-download?file=Serie%2FRocky%2FShooter_S01E07.mp4&filename=Shooter_S01E07.mp4", type: "MP4" }
+          ]
+        },
+      "shooter6": {
+        title: "Shooter S01 E6",
+        embedCode: '<iframe width="1280" height="720" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTlXFVnYr1t?share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
+          host: "Rocky",
+        downloadLinks: [
+          { quality: "720p", size: "540MB", url: "https://isatafileze.fly.dev/simple-redirect-download?file=Serie%2FRocky%2FShooter.S01E06.mp4&filename=Shooter.S01E06.mp4", type: "MP4" }
+          ]
+           },
+      "shooter5": {
+        title: "Shooter S01 E5",
+        embedCode: '<iframe width="1280" height="720" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTlXFVnYr1O?share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
+          host: "Rocky",
+        downloadLinks: [
+          { quality: "720p", size: "540MB", url: "https://isatafileze.fly.dev/simple-redirect-download?file=Serie%2FRocky%2FSHOOTER_S1_EP5.mp4&filename=SHOOTER_S1_EP5.mp4", type: "MP4" }
+          ]
            },
       "jessicab": {
         title: "Hunting Jessica Brok",
