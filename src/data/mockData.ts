@@ -134,6 +134,33 @@ export const mockMovies: Movie[] = [
     category: "movie"
   },
   {
+    id: "shooter10",
+    title: "Shooter S01 E10 Final",
+    poster: shooter,
+    year: "2016",
+    genre: "Action Thriller",
+    rating: "Rocky kimomo",
+    category: "tv"
+  },
+  {
+    id: "shooter9",
+    title: "Shooter S01 E9",
+    poster: shooter,
+    year: "2016",
+    genre: "Action Thriller",
+    rating: "Rocky kimomo",
+    category: "tv"
+  },
+  {
+    id: "shooter8",
+    title: "Shooter S01 E8",
+    poster: shooter,
+    year: "2016",
+    genre: "Action Thriller",
+    rating: "Rocky kimomo",
+    category: "tv"
+  },
+  {
     id: "shooter7",
     title: "Shooter S01 E7",
     poster: shooter,
