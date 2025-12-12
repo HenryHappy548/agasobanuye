@@ -109,6 +109,14 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
       //   downloadLinks: [
       //     { quality: "720p", size: "540MB", url: "", type: "MP4" }
       //     ]
+           },
+      "theday": {
+        title: "The Day Earth Stood Still",
+        embedCode: '<iframe width="1280" height="720" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTll2inYZDX?title=0&controls=1&share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
+          host: "Savimbi",
+        downloadLinks: [
+          { quality: "720p", size: "540MB", url: "https://www.mediafire.com/file/afrcnjsnsanmiho/The_Day_the_Earth_Stood_Still.mp4/file", type: "MP4" }
+          ]
         },
       "shooter7": {
         title: "Shooter S01 E7",
