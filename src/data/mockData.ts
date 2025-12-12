@@ -124,6 +124,33 @@ import jessicab from "@/assets/jessicab.jpeg"
 
 export const mockMovies: Movie[] = [
   {
+    id: "shooter7",
+    title: "Shooter S01 E7",
+    poster: shooter,
+    year: "2016",
+    genre: "Action Thriller",
+    rating: "Rocky kimomo",
+    category: "tv"
+  },
+  {
+    id: "shooter6",
+    title: "Shooter S01 E6",
+    poster: shooter,
+    year: "2016",
+    genre: "Action Thriller",
+    rating: "Rocky kimomo",
+    category: "tv"
+  },
+  {
+    id: "shooter5",
+    title: "Shooter S01 E5",
+    poster: shooter,
+    year: "2016",
+    genre: "Action Thriller",
+    rating: "Rocky kimomo",
+    category: "tv"
+  },
+  {
     id: "jessicab",
     title: "Hunting Jessica Brock",
     poster: jessicab,
