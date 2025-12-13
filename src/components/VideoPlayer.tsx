@@ -109,6 +109,23 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
       //   downloadLinks: [
       //     { quality: "720p", size: "540MB", url: "", type: "MP4" }
       //     ]
+        
+           },
+      "carpe": {
+        title: "Carpenter's Son",
+        embedCode: '<iframe width="1280" height="720" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTlI1dnYOis?title=0&controls=1&a=1&share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
+          host: "Gaheza",
+        downloadLinks: [
+          { quality: "720p", size: "1.2GB", url: "https://www.mediafire.com/file/2u37isqj40gh423/The_Carpenters_Son.MP4/file", type: "MP4" }
+          ]
+           },
+      "predator": {
+        title: "Predator BadLands",
+        embedCode: '<iframe width="1280" height="720" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTlI1MnYOj6?title=0&controls=1&a=1&share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
+          host: "Gaheza",
+        downloadLinks: [
+          { quality: "720p", size: "1.9GB", url: "https://www.mediafire.com/file/mlsv4w1bv8miqnw/PREDATOR_BADLANDS.mp4/file", type: "MP4" }
+          ]
            },
       "reborn": {
         title: "Reborn",
