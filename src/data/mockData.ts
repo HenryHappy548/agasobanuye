@@ -116,6 +116,8 @@ import thedaye from "@/assets/thedaye.jpeg"
 import kindg from "@/assets/kindg.jpeg"
 import fanna from "@/assets/fanna.jpeg"
 import reborn from "@/assets/reborn.jpg"
+import predator from "@/assets/Predator.jpg"
+import carpe from "@/assets/carpe.jpg"
   export interface Movie {
   id: string;
   title: string;
@@ -127,6 +129,25 @@ import reborn from "@/assets/reborn.jpg"
 }
 
 export const mockMovies: Movie[] = [
+  {
+    id: "carpe",
+    title: "Carpenter's Son",
+    poster: carpe,
+    year: "2025",
+    genre: "Horror",
+    rating: "Gaheza",
+    category: "trending"
+  },
+  
+  {
+    id: "predator",
+    title: "Predator Badlands",
+    poster: predator,
+    year: "2025",
+    genre: "Action Sci-fi",
+    rating: "Gaheza",
+    category: "trending"
+  },
   {
     id: "reborn",
     title: "Reborn",
