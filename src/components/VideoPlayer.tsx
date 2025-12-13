@@ -109,6 +109,47 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
       //   downloadLinks: [
       //     { quality: "720p", size: "540MB", url: "", type: "MP4" }
       //     ]
+        //    },
+      },
+      "harper5": {
+        title: "Harpers's Island S01 E5",
+        embedCode: '<iframe width="1280" height="720" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTlIFBnYO7j?share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
+          host: "Rocky kimomo",
+        downloadLinks: [
+          { quality: "720p", size: "540MB", url: "https://isatafileze.fly.dev/simple-redirect-download?file=series%2F2025%2Frocky%2FHarper_s_Island_Ep05.mp4&filename=Harper_s_Island_Ep05.mp4", type: "MP4" }
+          ]
+        },
+      "harper4": {
+        title: "Harpers's Island S01 E4",
+        embedCode: '<iframe width="1280" height="720" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTlIFBnYO7i?share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
+          host: "Rocky kimomo",
+        downloadLinks: [
+          { quality: "720p", size: "540MB", url: "https://isatafileze.fly.dev/simple-redirect-download?file=series%2F2025%2Frocky%2FHarper_s_Island_Ep04.mp4&filename=Harper_s_Island_Ep04.mp4", type: "MP4" }
+          ]
+        },
+      "harper3": {
+        title: "Harpers's Island S01 E3",
+        embedCode: '<iframe width="1280" height="720" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTlIFBnYO71?share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
+          host: "Rocky kimomo",
+        downloadLinks: [
+          { quality: "720p", size: "540MB", url: "https://isatafileze.fly.dev/simple-redirect-download?file=series%2F2025%2Frocky%2FHarper_s_Island_Ep03.mp4&filename=Harper_s_Island_Ep03.mp4", type: "MP4" }
+          ]
+        },
+      "harper2": {
+        title: "Harpers's Island S01 E2",
+        embedCode: '<iframe width="1280" height="720" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTlIFBnYO7h?share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
+          host: "Rocky kimomo",
+        downloadLinks: [
+          { quality: "720p", size: "540MB", url: "https://isatafileze.fly.dev/simple-redirect-download?file=series%2F2025%2Frocky%2FHarper_s_Island_Ep02.mp4&filename=Harper_s_Island_Ep02.mp4", type: "MP4" }
+          ]
+        },
+      "harper1": {
+        title: "Harpers's Island S01 E1",
+        embedCode: '<iframe width="1280" height="720" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTlIFBnYO7f?share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
+          host: "Rocky kimomo",
+        downloadLinks: [
+          { quality: "720p", size: "540MB", url: "https://isatafileze.fly.dev/simple-redirect-download?file=series%2F2025%2Frocky%2FHarper_s_Island_Ep01.mp4&filename=Harper_s_Island_Ep01.mp4", type: "MP4" }
+          ]
         
            },
       "carpe": {
