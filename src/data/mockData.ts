@@ -118,6 +118,7 @@ import fanna from "@/assets/fanna.jpeg"
 import reborn from "@/assets/reborn.jpg"
 import predator from "@/assets/Predator.jpg"
 import carpe from "@/assets/carpe.jpg"
+import harber from "@/assets/harber.jpg"
   export interface Movie {
   id: string;
   title: string;
@@ -129,6 +130,51 @@ import carpe from "@/assets/carpe.jpg"
 }
 
 export const mockMovies: Movie[] = [
+  {
+    id: "harper5",
+    title: "Harper's Island S01 E5",
+    poster: harber,
+    year: "2009",
+    genre: "Mystery",
+    rating: "Rocky",
+    category: "tv"
+  },
+  {
+    id: "harper4",
+    title: "Harper's Island S01 E4",
+    poster: harber,
+    year: "2009",
+    genre: "Mystery",
+    rating: "Rocky",
+    category: "tv"
+  },
+  {
+    id: "harper3",
+    title: "Harper's Island S01 E3",
+    poster: harber,
+    year: "2009",
+    genre: "Mystery",
+    rating: "Rocky",
+    category: "tv"
+  },
+  {
+    id: "harper2",
+    title: "Harper's Island S01 E2",
+    poster: harber,
+    year: "2009",
+    genre: "Mystery",
+    rating: "Rocky",
+    category: "tv"
+  },
+    {
+    id: "harper1",
+    title: "Harper's Island S01 E1",
+    poster: harber,
+    year: "2009",
+    genre: "Mystery",
+    rating: "Rocky",
+    category: "tv"
+  },
   {
     id: "carpe",
     title: "Carpenter's Son",
