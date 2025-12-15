@@ -119,6 +119,8 @@ import reborn from "@/assets/reborn.jpg"
 import predator from "@/assets/Predator.jpg"
 import carpe from "@/assets/carpe.jpg"
 import harber from "@/assets/harber.jpg"
+import underc from "@/assets/underc.jpeg"
+
   export interface Movie {
   id: string;
   title: string;
@@ -130,6 +132,15 @@ import harber from "@/assets/harber.jpg"
 }
 
 export const mockMovies: Movie[] = [
+  {
+    id: "underc",
+    title: "Undercover Grandpa",
+    poster: underc,
+    year: "2017",
+    genre: "Family Mystery",
+    rating: "Rocky",
+    category: "trending"
+  },
    {
     id: "harper10",
     title: "Harper's Island S01 E10",
