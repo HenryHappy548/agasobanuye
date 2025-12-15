@@ -130,6 +130,51 @@ import harber from "@/assets/harber.jpg"
 }
 
 export const mockMovies: Movie[] = [
+   {
+    id: "harper10",
+    title: "Harper's Island S01 E10",
+    poster: harber,
+    year: "2009",
+    genre: "Mystery",
+    rating: "Rocky",
+    category: "tv"
+  },
+   {
+    id: "harper9",
+    title: "Harper's Island S01 E9",
+    poster: harber,
+    year: "2009",
+    genre: "Mystery",
+    rating: "Rocky",
+    category: "tv"
+  },
+   {
+    id: "harper8",
+    title: "Harper's Island S01 E8",
+    poster: harber,
+    year: "2009",
+    genre: "Mystery",
+    rating: "Rocky",
+    category: "tv"
+  },
+  {
+    id: "harper7",
+    title: "Harper's Island S01 E7",
+    poster: harber,
+    year: "2009",
+    genre: "Mystery",
+    rating: "Rocky",
+    category: "tv"
+  },
+   {
+    id: "harper6",
+    title: "Harper's Island S01 E6",
+    poster: harber,
+    year: "2009",
+    genre: "Mystery",
+    rating: "Rocky",
+    category: "tv"
+  },
   {
     id: "harper5",
     title: "Harper's Island S01 E5",
