@@ -113,7 +113,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
            },
       "underc": {
         title: "Undercover GrandPa",
-        embedCode: '<iframe width="1280" height="720" style="border:0;" scrolling="no" src="https://go.screenpal.com/player/cTlo6RnYUNh?title=0&controls=1&share=1&download=1&embed=1&cl=1&width=1280&height=720&overlays=1&ff=1" allowfullscreen="true"></iframe>',
+        embedCode: '<iframe width="560" height="315" src="//ok.ru/videoembed/11040376228400?nochat=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>"></iframe>',
           host: "Rocky",
         downloadLinks: [
           { quality: "720p", size: "840MB", url: "https://isatafileze.fly.dev/simple-redirect-download?file=Serie%2FRocky%2FUNDERCOVER_GRANDPA.mp4&filename=UNDERCOVER_GRANDPA.mp4", type: "MP4" }
