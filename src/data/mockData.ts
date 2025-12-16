@@ -121,6 +121,7 @@ import carpe from "@/assets/carpe.jpg"
 import harber from "@/assets/harber.jpg"
 import underc from "@/assets/underc.jpeg"
 import desperate from "@/assets/desperate.jpg"
+import shooters2 from "@/assets/shooters2.jpeg"
   export interface Movie {
   id: string;
   title: string;
@@ -139,6 +140,33 @@ export const mockMovies: Movie[] = [
     year: "2024",
     genre: "Drama",
     rating: "Sankara",
+    category: "tv"
+  },
+    {
+    id: "shooters3",
+    title: "Shooter S02 E3",
+    poster: shooters2,
+    year: "2017",
+    genre: "Action Thriller",
+    rating: "Rocky kimomo",
+    category: "tv"
+  },
+    {
+    id: "shooters2",
+    title: "Shooter S02 E1",
+    poster: shooters2,
+    year: "2017",
+    genre: "Action Thriller",
+    rating: "Rocky kimomo",
+    category: "tv"
+  },
+  {
+    id: "shooters1",
+    title: "Shooter S02 E1",
+    poster: shooters2,
+    year: "2017",
+    genre: "Action Thriller",
+    rating: "Rocky kimomo",
     category: "tv"
   },
   {
