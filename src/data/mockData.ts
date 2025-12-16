@@ -120,7 +120,7 @@ import predator from "@/assets/Predator.jpg"
 import carpe from "@/assets/carpe.jpg"
 import harber from "@/assets/harber.jpg"
 import underc from "@/assets/underc.jpeg"
-
+import desperate from "@/assets/desperate.jpg"
   export interface Movie {
   id: string;
   title: string;
@@ -132,6 +132,15 @@ import underc from "@/assets/underc.jpeg"
 }
 
 export const mockMovies: Movie[] = [
+  {
+    id: "desperate1",
+    title: "Desperate Lies S01 E1",
+    poster: desperate,
+    year: "2024",
+    genre: "Drama",
+    rating: "Sankara",
+    category: "tv"
+  },
   {
     id: "underc",
     title: "Undercover Grandpa",
