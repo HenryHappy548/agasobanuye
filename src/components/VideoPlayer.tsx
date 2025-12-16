@@ -109,6 +109,30 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
       //   downloadLinks: [
       //     { quality: "720p", size: "740MB", url: "", type: "MP4" }
       //     ]
+           },
+      "stranger3": {
+        title: "Stranger Things S01 E3",
+        embedCode: '<iframe width="560" height="315" src="//ok.ru/videoembed/11041403832880?nochat=1&autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>',
+          host: "Seniour",
+        downloadLinks: [
+          { quality: "720p", size: "740MB", url: "https://www.mediafire.com/file/xqxt6q0hie2ev5v/S01_-_EP03_-_Stranger_Things.mp4/file", type: "MP4" }
+          ]
+         },
+      "stranger2": {
+        title: "Stranger Things S01 E2",
+        embedCode: '<iframe width="560" height="315" src="//ok.ru/videoembed/11041403898416?nochat=1&autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>',
+          host: "Seniour",
+        downloadLinks: [
+          { quality: "720p", size: "740MB", url: "https://www.mediafire.com/file/kten4wxzcsg18mj/S01EP02_-_Stranger_Things.mp4/file", type: "MP4" }
+          ]
+         },
+      "stranger1": {
+        title: "Stranger Things S01 E1",
+        embedCode: '<iframe width="560" height="315" src="//ok.ru/videoembed/11041403767344?nochat=1&autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>',
+          host: "Seniour",
+        downloadLinks: [
+          { quality: "720p", size: "740MB", url: "https://www.mediafire.com/file/qoxzrydmn2yh6cu/S01_-_EP01_-_Stranger_Things.mp4/file", type: "MP4" }
+          ]
         },
       "shooters1": {
         title: "Shooter S01 E1",
