@@ -109,7 +109,14 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
       //   downloadLinks: [
       //     { quality: "720p", size: "740MB", url: "", type: "MP4" }
       //     ]
-        //    },
+           },
+      "desperate1": {
+        title: "Desperate Lies S01 E1",
+        embedCode: '<iframe width="560" height="315" src="//ok.ru/videoembed/11040583256624?nochat=1&autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>',
+          host: "Sankara",
+        downloadLinks: [
+          { quality: "720p", size: "740MB", url: "https://isatafileze.fly.dev/simple-redirect-download?file=Serie%2FAmerica%2FDesperate_Lies_ep1.mp4&filename=Desperate_Lies_ep1.mp4", type: "MP4" }
+          ]
            },
       "underc": {
         title: "Undercover GrandPa",
