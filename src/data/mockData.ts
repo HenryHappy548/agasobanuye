@@ -134,6 +134,51 @@ import strangers1 from "@/assets/strangers1.jpeg"
 }
 
 export const mockMovies: Movie[] = [
+    {
+    id: "stranger8",
+    title: "Stranger Things S01 E8 Final",
+    poster: strangers1,
+    year: "2016",
+    genre: "Horror Thriller",
+    rating: "Seniour",
+    category: "tv"
+  },
+    {
+    id: "stranger7",
+    title: "Stranger Things S01 E7",
+    poster: strangers1,
+    year: "2016",
+    genre: "Horror Thriller",
+    rating: "Seniour",
+    category: "tv"
+  },
+    {
+    id: "stranger6",
+    title: "Stranger Things S01 E6",
+    poster: strangers1,
+    year: "2016",
+    genre: "Horror Thriller",
+    rating: "Seniour",
+    category: "tv"
+  },
+    {
+    id: "stranger5",
+    title: "Stranger Things S01 E5",
+    poster: strangers1,
+    year: "2016",
+    genre: "Horror Thriller",
+    rating: "Seniour",
+    category: "tv"
+  },
+    {
+    id: "stranger4",
+    title: "Stranger Things S01 E4",
+    poster: strangers1,
+    year: "2016",
+    genre: "Horror Thriller",
+    rating: "Seniour",
+    category: "tv"
+  },
   {
     id: "stranger3",
     title: "Stranger Things S01 E3",
