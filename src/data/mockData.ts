@@ -122,6 +122,7 @@ import harber from "@/assets/harber.jpg"
 import underc from "@/assets/underc.jpeg"
 import desperate from "@/assets/desperate.jpg"
 import shooters2 from "@/assets/shooters2.jpeg"
+import strangers1 from "@/assets/strangers1.jpeg"
   export interface Movie {
   id: string;
   title: string;
@@ -133,6 +134,33 @@ import shooters2 from "@/assets/shooters2.jpeg"
 }
 
 export const mockMovies: Movie[] = [
+  {
+    id: "stranger3",
+    title: "Stranger Things S01 E3",
+    poster: strangers1,
+    year: "2016",
+    genre: "Horror Thriller",
+    rating: "Dylan Kabaka",
+    category: "tv"
+  },
+  {
+    id: "stranger2",
+    title: "Stranger Things S01 E2",
+    poster: strangers1,
+    year: "2016",
+    genre: "Horror Thriller",
+    rating: "Dylan Kabaka",
+    category: "tv"
+  },
+  {
+    id: "stranger1",
+    title: "Stranger Things S01 E1",
+    poster: strangers1,
+    year: "2016",
+    genre: "Horror Thriller",
+    rating: "Dylan Kabaka",
+    category: "tv"
+  },
   {
     id: "desperate1",
     title: "Desperate Lies S01 E1",
