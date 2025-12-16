@@ -109,6 +109,46 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
       //   downloadLinks: [
       //     { quality: "720p", size: "740MB", url: "", type: "MP4" }
       //     ]
+        },
+      "stranger8": {
+        title: "Stranger Things S01 E8 Final",
+        embedCode: '<iframe width="560" height="315" src="//ok.ru/videoembed/11042880883248?nochat=1&autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>',
+          host: "Seniour",
+        downloadLinks: [
+          { quality: "720p", size: "740MB", url: "https://www.mediafire.com/file/wdxacpvzn7i0lr5/Stranger+Things+S01e08+Finale.mp4/file", type: "MP4" }
+          ]
+        },
+      "stranger7": {
+        title: "Stranger Things S01 E7",
+        embedCode: '<iframe width="560" height="315" src="//ok.ru/videoembed/11042880948784?nochat=1&autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>',
+          host: "Seniour",
+        downloadLinks: [
+          { quality: "720p", size: "740MB", url: "https://www.mediafire.com/file/ligc3kwjnqn1pss/Stranger+Things+S01e07.mp4/file", type: "MP4" }
+          ]
+        },
+      "stranger6": {
+        title: "Stranger Things S01 E6",
+        embedCode: '<iframe width="560" height="315" src="//ok.ru/videoembed/11042880817712?nochat=1&autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>',
+          host: "Seniour",
+        downloadLinks: [
+          { quality: "720p", size: "740MB", url: "https://www.mediafire.com/file/f6dmzluxzeionkg/Stranger+Things+S01e06.mp4/file", type: "MP4" }
+          ]
+        },
+      "stranger5": {
+        title: "Stranger Things S01 E5",
+        embedCode: '<iframe width="560" height="315" src="//ok.ru/videoembed/11042881145392?nochat=1&autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>',
+          host: "Seniour",
+        downloadLinks: [
+          { quality: "720p", size: "740MB", url: "https://www.mediafire.com/file/qz595g9s1ozdc4m/Stranger+Things+S01e05.mp4/file", type: "MP4" }
+          ]
+        },
+      "stranger4": {
+        title: "Stranger Things S01 E4",
+        embedCode: '<iframe width="560" height="315" src="//ok.ru/videoembed/11042881079856?nochat=1&autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>',
+          host: "Seniour",
+        downloadLinks: [
+          { quality: "720p", size: "740MB", url: "https://www.mediafire.com/file/v4lfb7qa6f3l4v3/Stranger+Things+S01e04.mp4/file", type: "MP4" }
+          ]
            },
       "stranger3": {
         title: "Stranger Things S01 E3",
