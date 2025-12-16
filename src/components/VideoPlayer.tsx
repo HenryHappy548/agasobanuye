@@ -109,6 +109,30 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
       //   downloadLinks: [
       //     { quality: "720p", size: "740MB", url: "", type: "MP4" }
       //     ]
+        },
+      "shooters1": {
+        title: "Shooter S01 E1",
+        embedCode: '<iframe width="560" height="315" src="//ok.ru/videoembed/11040583387696?nochat=1&autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>',
+          host: "Rocky kimomo",
+        downloadLinks: [
+          { quality: "720p", size: "740MB", url: "https://isatafileze.fly.dev/simple-redirect-download?file=series%2F2025%2Frocky%2Fshoot%2FShooter_S02e1.mp4&filename=Shooter_S02e1.mp4", type: "MP4" }
+          ]
+        },
+      "shooters2": {
+        title: "Shooter S01 E2",
+        embedCode: '<iframe width="560" height="315" src="//ok.ru/videoembed/11040583322160?nochat=1&autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>',
+          host: "Rocky kimomo",
+        downloadLinks: [
+          { quality: "720p", size: "740MB", url: "https://isatafileze.fly.dev/simple-redirect-download?file=Serie%2FRocky%2FSHOOTER_S02E02.mp4&filename=SHOOTER_S02E02.mp4", type: "MP4" }
+          ]
+           },
+      "shooters3": {
+        title: "Shooter S01 E3",
+        embedCode: '<iframe width="560" height="315" src="//ok.ru/videoembed/11040583453232?nochat=1&autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>',
+          host: "Rocky kimomo",
+        downloadLinks: [
+          { quality: "720p", size: "740MB", url: "https://isatafileze.fly.dev/simple-redirect-download?file=Serie%2FRocky%2FSHOOTER_S02E03.mp4&filename=SHOOTER_S02E03.mp4", type: "MP4" }
+          ]
            },
       "desperate1": {
         title: "Desperate Lies S01 E1",
