@@ -140,7 +140,7 @@ export const mockMovies: Movie[] = [
     poster: strangers1,
     year: "2016",
     genre: "Horror Thriller",
-    rating: "Dylan Kabaka",
+    rating: "Seniour",
     category: "tv"
   },
   {
@@ -149,7 +149,7 @@ export const mockMovies: Movie[] = [
     poster: strangers1,
     year: "2016",
     genre: "Horror Thriller",
-    rating: "Dylan Kabaka",
+    rating: "Seniour",
     category: "tv"
   },
   {
@@ -158,7 +158,7 @@ export const mockMovies: Movie[] = [
     poster: strangers1,
     year: "2016",
     genre: "Horror Thriller",
-    rating: "Dylan Kabaka",
+    rating: "Seniour",
     category: "tv"
   },
   {
