@@ -109,6 +109,30 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
       //   downloadLinks: [
       //     { quality: "720p", size: "740MB", url: "", type: "MP4" }
       //     ]
+        },
+      "desperate4": {
+        title: "Desperate Lies S01 E4",
+        embedCode: '<iframe width="560" height="315" src="//ok.ru/videoembed/11054628211248?nochat=1&autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>',
+          host: "Sankara",
+        downloadLinks: [
+          { quality: "720p", size: "740MB", url: "https://www.mediafire.com/file/rkjbkbfh79cgzpv/Desperate_Lies_ep_4.mp4/file", type: "MP4" }
+          ]
+        },
+      "desperate3": {
+        title: "Desperate Lies S01 E3",
+        embedCode: '<iframe width="560" height="315" src="//ok.ru/videoembed/11054628407856?nochat=1&autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>',
+          host: "Sankara",
+        downloadLinks: [
+          { quality: "720p", size: "740MB", url: "https://www.mediafire.com/file/jyjxt4omf9o6m9i/Desperate_Lies_ep3.mp4/file", type: "MP4" }
+          ]
+        },
+      "desperate2": {
+        title: "Desperate Lies S01 E2",
+        embedCode: '<iframe width="560" height="315" src="//ok.ru/videoembed/11054628276784?nochat=1&autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>',
+          host: "Sankara",
+        downloadLinks: [
+          { quality: "720p", size: "740MB", url: "https://www.mediafire.com/file/qpqxor7k1v3b2g7/Desperate_Lies_ep2.mp4/file", type: "MP4" }
+          ]
            },
       "sisu": {
         title: "Sisu",
