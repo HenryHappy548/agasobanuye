@@ -123,6 +123,7 @@ import underc from "@/assets/underc.jpeg"
 import desperate from "@/assets/desperate.jpg"
 import shooters2 from "@/assets/shooters2.jpeg"
 import strangers1 from "@/assets/strangers1.jpeg"
+import sisu from "@/assets/sisu.png"
   export interface Movie {
   id: string;
   title: string;
@@ -134,6 +135,15 @@ import strangers1 from "@/assets/strangers1.jpeg"
 }
 
 export const mockMovies: Movie[] = [
+  {
+    id: "sisu",
+    title: "Sisu I",
+    poster: sisu,
+    year: "2022",
+    genre: "Action Thriller",
+    rating: "Rocky kimomo",
+    category: "movie"
+  },
     {
     id: "stranger8",
     title: "Stranger Things S01 E8 Final",
