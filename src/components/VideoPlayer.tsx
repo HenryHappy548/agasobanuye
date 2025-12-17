@@ -109,6 +109,14 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
       //   downloadLinks: [
       //     { quality: "720p", size: "740MB", url: "", type: "MP4" }
       //     ]
+           },
+      "sisu": {
+        title: "Sisu",
+        embedCode: '<iframe width="560" height="315" src="//ok.ru/videoembed/11054628145712?nochat=1&autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>',
+          host: "Rocky kimomo",
+        downloadLinks: [
+          { quality: "720p", size: "740MB", url: "https://www.mediafire.com/file/mj2k4swz3eyyd26/Sisu.mp4/file", type: "MP4" }
+          ]
         },
       "stranger8": {
         title: "Stranger Things S01 E8 Final",
