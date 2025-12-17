@@ -144,6 +144,46 @@ export const mockMovies: Movie[] = [
     rating: "Rocky kimomo",
     category: "movie"
   },
+  
+  {
+    id: "desperate4",
+    title: "Desperate Lies S01 E4",
+    poster: desperate,
+    year: "2024",
+    genre: "Drama",
+    rating: "Sankara",
+    category: "tv"
+  },
+  
+  {
+    id: "desperate3",
+    title: "Desperate Lies S01 E3",
+    poster: desperate,
+    year: "2024",
+    genre: "Drama",
+    rating: "Sankara",
+    category: "tv"
+  },
+  
+  {
+    id: "desperate2",
+    title: "Desperate Lies S01 E2",
+    poster: desperate,
+    year: "2024",
+    genre: "Drama",
+    rating: "Sankara",
+    category: "tv"
+  },
+  
+  {
+    id: "desperate1",
+    title: "Desperate Lies S01 E1",
+    poster: desperate,
+    year: "2024",
+    genre: "Drama",
+    rating: "Sankara",
+    category: "tv"
+  },
     {
     id: "stranger8",
     title: "Stranger Things S01 E8 Final",
@@ -214,15 +254,6 @@ export const mockMovies: Movie[] = [
     year: "2016",
     genre: "Horror Thriller",
     rating: "Seniour",
-    category: "tv"
-  },
-  {
-    id: "desperate1",
-    title: "Desperate Lies S01 E1",
-    poster: desperate,
-    year: "2024",
-    genre: "Drama",
-    rating: "Sankara",
     category: "tv"
   },
     {
