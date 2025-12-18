@@ -126,6 +126,7 @@ import strangers1 from "@/assets/strangers1.jpeg"
 import sisu from "@/assets/sisu.png"
 import evild from "@/assets/evild.jpeg"
 import sisu2 from "@/assets/sisu2.jpeg"
+import fall from "@/assets/fall.jpeg"
 
   export interface Movie {
   id: string;
@@ -138,6 +139,15 @@ import sisu2 from "@/assets/sisu2.jpeg"
 }
 
 export const mockMovies: Movie[] = [
+  {
+    id: "fall",
+    title: "Fall",
+    poster: fall,
+    year: "2022",
+    genre: "Action Thriller",
+    rating: "Rocky kimomo",
+    category: "movie"
+  },
   {
     id: "sisu2",
     title: "Sisu 2",
