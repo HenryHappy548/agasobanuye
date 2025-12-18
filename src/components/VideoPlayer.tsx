@@ -112,7 +112,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         },
        "fall": {
        title: "Fall",
-         embedCode: '<iframe width="560" height="315" src="//ok.ru/videoembed/11066509953584?nochat=1&autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>',
+         embedCode: '<iframewidth="560"height="315"src="https://rumble.com/embed/v70zgc0/b84AVSMOlF"frameborder="0"allowfullscreen></iframe>',
            host: "Rocky kimomo",
          downloadLinks: [
        { quality: "720p", size: "740MB", url: "https://www.mediafire.com/file/uj3l7plbctit2e1/Fall.mp4/file", type: "MP4" }
