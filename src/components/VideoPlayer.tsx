@@ -110,6 +110,14 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
       //     { quality: "720p", size: "740MB", url: "", type: "MP4" }
       //     ]
            },
+      "sisu2": {
+        title: "Sisu 2",
+        embedCode: '<iframe width="560" height="315" src="//ok.ru/videoembed/11064779672112?nochat=1&autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>',
+          host: "Rocky kimomo",
+        downloadLinks: [
+          { quality: "720p", size: "740MB", url: "https://www.mediafire.com/file/e19nknauxrgkmtt/Sisu_2.mp4/file", type: "MP4" }
+          ]
+           },
       "evild": {
         title: "Evil Dead",
         embedCode: '<iframe width="560" height="315" src="//ok.ru/videoembed/11059661965872?nochat=1&autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>',
