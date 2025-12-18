@@ -109,6 +109,14 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
       //   downloadLinks: [
       //     { quality: "720p", size: "740MB", url: "", type: "MP4" }
       //     ]
+           },
+      "evild": {
+        title: "Evil Dead",
+        embedCode: '<iframe width="560" height="315" src="//ok.ru/videoembed/11059661965872?nochat=1&autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>',
+          host: "Sankara",
+        downloadLinks: [
+          { quality: "720p", size: "740MB", url: "https://isatafileze.fly.dev/simple-redirect-download?file=SANKAR%2FEvil_Dead_by_Sankar.mp4&filename=Evil_Dead_by_Sankar.mp4", type: "MP4" }
+          ]
         },
       "desperate4": {
         title: "Desperate Lies S01 E4",
