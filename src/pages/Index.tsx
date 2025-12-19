@@ -248,20 +248,12 @@ const Index = () => {
                   className="w-full"
                 >
                   <CarouselContent className="-ml-2 md:-ml-4">
-                    {trendingMovies.map((movie, index) => (
+                    {trendingMovies.map((movie) => (
                       <CarouselItem key={movie.id} className="pl-2 md:pl-4 basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5 xl:basis-1/6">
-                        <div className="relative">
-                          {/* Top 10 Number - Netflix Style */}
-                          <div className="absolute -left-2 bottom-12 z-10 text-6xl sm:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-b from-primary to-primary/30 drop-shadow-lg" style={{ WebkitTextStroke: '2px hsl(var(--primary))' }}>
-                            {index + 1}
-                          </div>
-                          <div className="ml-4">
-                            <MovieCard
-                              movie={movie}
-                              onPlay={handlePlayVideo}
-                            />
-                          </div>
-                        </div>
+                        <MovieCard
+                          movie={movie}
+                          onPlay={handlePlayVideo}
+                        />
                       </CarouselItem>
                     ))}
                   </CarouselContent>
