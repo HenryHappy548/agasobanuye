@@ -25,6 +25,7 @@ const MovieForm = ({ movie, onSuccess }: MovieFormProps) => {
     category: movie?.category || "movie",
     poster_url: movie?.poster_url || "",
     video_url: movie?.video_url || "",
+    download_url: movie?.download_url || "",
     dubbed: movie?.dubbed || "",
     featured: movie?.featured || false,
   });
@@ -39,6 +40,7 @@ const MovieForm = ({ movie, onSuccess }: MovieFormProps) => {
       category: "movie",
       poster_url: "",
       video_url: "",
+      download_url: "",
       dubbed: "",
       featured: false,
     });
@@ -280,7 +282,23 @@ const MovieForm = ({ movie, onSuccess }: MovieFormProps) => {
           disabled={loading}
         />
         <p className="text-sm text-muted-foreground">
-          Paste an embed code or video URL (this won't affect existing movies)
+          Paste an embed code or video URL for streaming
+        </p>
+      </div>
+
+      {/* Download Embed Link */}
+      <div className="space-y-2">
+        <Label htmlFor="download_url">Download Embed Link</Label>
+        <Input
+          id="download_url"
+          value={formData.download_url}
+          onChange={(e) => handleInputChange("download_url", e.target.value)}
+          placeholder="Download embed code or URL"
+          className="bg-background/50"
+          disabled={loading}
+        />
+        <p className="text-sm text-muted-foreground">
+          Paste download embed code for users to download the movie
         </p>
       </div>
 

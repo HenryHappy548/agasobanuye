@@ -5,12 +5,13 @@ import { User } from "@supabase/supabase-js";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { LogOut, Film, Plus, Download, Video } from "lucide-react";
+import { LogOut, Film, Plus, Download, Video, MessageSquare } from "lucide-react";
 import { toast } from "sonner";
 import MovieForm from "@/components/admin/MovieForm";
 import MovieList from "@/components/admin/MovieList";
 import DownloadLinksManager from "@/components/admin/DownloadLinksManager";
 import VideoManager from "@/components/admin/VideoManager";
+import MessagesManager from "@/components/admin/MessagesManager";
 
 const Admin = () => {
   const [user, setUser] = useState<User | null>(null);
@@ -111,14 +112,14 @@ const Admin = () => {
 
         {/* Main Content */}
         <Tabs defaultValue="add" className="space-y-6">
-          <TabsList className="grid w-full grid-cols-4 max-w-2xl mx-auto">
+          <TabsList className="grid w-full grid-cols-5 max-w-3xl mx-auto">
             <TabsTrigger value="add" className="gap-2">
               <Plus className="w-4 h-4" />
               Add Movie
             </TabsTrigger>
             <TabsTrigger value="manage" className="gap-2">
               <Film className="w-4 h-4" />
-              Manage Movies
+              Movies
             </TabsTrigger>
             <TabsTrigger value="videos" className="gap-2">
               <Video className="w-4 h-4" />
@@ -127,6 +128,10 @@ const Admin = () => {
             <TabsTrigger value="downloads" className="gap-2">
               <Download className="w-4 h-4" />
               Downloads
+            </TabsTrigger>
+            <TabsTrigger value="messages" className="gap-2">
+              <MessageSquare className="w-4 h-4" />
+              Messages
             </TabsTrigger>
           </TabsList>
 
@@ -182,6 +187,20 @@ const Admin = () => {
               </CardHeader>
               <CardContent>
                 <DownloadLinksManager />
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          <TabsContent value="messages">
+            <Card className="border-primary/20 shadow-lg">
+              <CardHeader>
+                <CardTitle className="text-2xl">User Messages</CardTitle>
+                <CardDescription>
+                  View and respond to messages from users. Click on WhatsApp or Email to respond directly.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <MessagesManager />
               </CardContent>
             </Card>
           </TabsContent>

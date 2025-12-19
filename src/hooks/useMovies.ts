@@ -12,6 +12,7 @@ export interface DBMovie {
   category: 'movie' | 'tv' | 'trending';
   description?: string;
   video_url?: string;
+  download_url?: string;
   dubbed?: string;
   featured?: boolean;
 }
@@ -64,6 +65,7 @@ export const useMovies = () => {
           category: movie.category as 'movie' | 'tv' | 'trending',
           description: movie.description || "",
           video_url: movie.video_url || "",
+          download_url: (movie as any).download_url || "",
           dubbed: movie.dubbed || "",
           featured: movie.featured || false,
         }));

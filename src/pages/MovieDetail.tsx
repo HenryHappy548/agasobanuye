@@ -1,21 +1,27 @@
 import { useParams, Link } from "react-router-dom";
-import { useEffect, useState, memo } from "react";
+import { useEffect, useState, memo, useMemo } from "react";
 import { Helmet } from "react-helmet-async";
 import { ArrowLeft, Play, Calendar, Film, Star, Download, Share2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import VideoPlayer from "@/components/VideoPlayer";
 import Footer from "@/components/Footer";
-import { mockMovies } from "@/data/mockData";
 import { slugify } from "@/lib/slugify";
 import { toast } from "sonner";
+import { useMovies, DBMovie } from "@/hooks/useMovies";
+import DOMPurify from "dompurify";
 
 const MovieDetail = memo(() => {
   const { slug } = useParams<{ slug: string }>();
   const [isPlayerOpen, setIsPlayerOpen] = useState(false);
   const [selectedVideoId, setSelectedVideoId] = useState<string | null>(null);
+  const [showDownload, setShowDownload] = useState(false);
+  const { movies, loading } = useMovies();
 
-  // Find movie by slug
-  const movie = mockMovies.find(m => slugify(m.title) === slug);
+  // Find movie by slug from actual data
+  const movie = useMemo(() => 
+    movies.find(m => slugify(m.title) === slug),
+    [movies, slug]
+  );
 
   useEffect(() => {
     // Scroll to top when page loads
@@ -53,6 +59,14 @@ const MovieDetail = memo(() => {
       toast.success("Link copied to clipboard!");
     }
   };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <div className="animate-pulse text-primary text-xl">Loading...</div>
+      </div>
+    );
+  }
 
   if (!movie) {
     return (
@@ -322,12 +336,28 @@ const MovieDetail = memo(() => {
                 <Button 
                   size="lg" 
                   variant="outline"
-                  onClick={handlePlayVideo}
+                  onClick={() => setShowDownload(!showDownload)}
                 >
                   <Download className="mr-2 h-5 w-5" />
-                  Download
+                  {showDownload ? "Hide Download" : "Download"}
                 </Button>
               </div>
+
+              {/* Download Embed Section */}
+              {showDownload && (movie as DBMovie).download_url && (
+                <div className="mt-6 p-4 bg-card/50 rounded-lg border border-border">
+                  <h3 className="text-lg font-semibold mb-3">Download Options</h3>
+                  <div 
+                    className="w-full aspect-video rounded-lg overflow-hidden"
+                    dangerouslySetInnerHTML={{ 
+                      __html: DOMPurify.sanitize((movie as DBMovie).download_url || "", {
+                        ADD_TAGS: ['iframe'],
+                        ADD_ATTR: ['allow', 'allowfullscreen', 'frameborder', 'scrolling']
+                      })
+                    }}
+                  />
+                </div>
+              )}
             </div>
           </div>
         </div>
