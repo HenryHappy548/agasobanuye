@@ -127,6 +127,7 @@ import sisu from "@/assets/sisu.png"
 import evild from "@/assets/evild.jpeg"
 import sisu2 from "@/assets/sisu2.jpeg"
 import fall from "@/assets/fall.jpeg"
+import olym from "@/assets/olym.jeg"
 
   export interface Movie {
   id: string;
@@ -139,6 +140,15 @@ import fall from "@/assets/fall.jpeg"
 }
 
 export const mockMovies: Movie[] = [
+  {
+    id: "olym",
+    title: "Olympus Has Fallen",
+    poster: olym,
+    year: "2013",
+    genre: "Action Thriller",
+    rating: "Sankara",
+    category: "movie"
+  },
   {
     id: "fall",
     title: "Fall",
