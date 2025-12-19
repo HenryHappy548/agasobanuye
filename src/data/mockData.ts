@@ -166,7 +166,15 @@ export const mockMovies: Movie[] = [
     rating: "Sankara",
     category: "trending"
   },
-  
+  {
+    id: "stranger6",
+    title: "Stranger Things S01 E6",
+    poster: strangers1,
+    year: "2016",
+    genre: "Horror Thriller",
+    rating: "Dylan Kabaka",
+    category: "tv"
+  },
   {
     id: "sisu",
     title: "Sisu I",
@@ -216,40 +224,14 @@ export const mockMovies: Movie[] = [
     rating: "Sankara",
     category: "tv"
   },
-    {
-    id: "stranger8",
-    title: "Stranger Things S01 E8 Final",
-    poster: strangers1,
-    year: "2016",
-    genre: "Horror Thriller",
-    rating: "Seniour",
-    category: "tv"
-  },
-    {
-    id: "stranger7",
-    title: "Stranger Things S01 E7",
-    poster: strangers1,
-    year: "2016",
-    genre: "Horror Thriller",
-    rating: "Seniour",
-    category: "tv"
-  },
-    {
-    id: "stranger6",
-    title: "Stranger Things S01 E6",
-    poster: strangers1,
-    year: "2016",
-    genre: "Horror Thriller",
-    rating: "Seniour",
-    category: "tv"
-  },
+    
     {
     id: "stranger5",
     title: "Stranger Things S01 E5",
     poster: strangers1,
     year: "2016",
     genre: "Horror Thriller",
-    rating: "Seniour",
+    rating: "Dylan Kabaka",
     category: "tv"
   },
     {
@@ -258,7 +240,7 @@ export const mockMovies: Movie[] = [
     poster: strangers1,
     year: "2016",
     genre: "Horror Thriller",
-    rating: "Seniour",
+    rating: "Dylan Kabaka",
     category: "tv"
   },
   {
@@ -267,7 +249,7 @@ export const mockMovies: Movie[] = [
     poster: strangers1,
     year: "2016",
     genre: "Horror Thriller",
-    rating: "Seniour",
+    rating: "Dylan Kabaka",
     category: "tv"
   },
   {
@@ -276,7 +258,7 @@ export const mockMovies: Movie[] = [
     poster: strangers1,
     year: "2016",
     genre: "Horror Thriller",
-    rating: "Seniour",
+    rating: "Dylan Kabaka",
     category: "tv"
   },
   {
@@ -285,7 +267,7 @@ export const mockMovies: Movie[] = [
     poster: strangers1,
     year: "2016",
     genre: "Horror Thriller",
-    rating: "Seniour",
+    rating: "Dylan Kabaka",
     category: "tv"
   },
     {
