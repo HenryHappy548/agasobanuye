@@ -5,10 +5,12 @@ import { User } from "@supabase/supabase-js";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { LogOut, Film, Plus } from "lucide-react";
+import { LogOut, Film, Plus, Download, Video } from "lucide-react";
 import { toast } from "sonner";
 import MovieForm from "@/components/admin/MovieForm";
 import MovieList from "@/components/admin/MovieList";
+import DownloadLinksManager from "@/components/admin/DownloadLinksManager";
+import VideoManager from "@/components/admin/VideoManager";
 
 const Admin = () => {
   const [user, setUser] = useState<User | null>(null);
@@ -109,7 +111,7 @@ const Admin = () => {
 
         {/* Main Content */}
         <Tabs defaultValue="add" className="space-y-6">
-          <TabsList className="grid w-full grid-cols-2 max-w-md mx-auto">
+          <TabsList className="grid w-full grid-cols-4 max-w-2xl mx-auto">
             <TabsTrigger value="add" className="gap-2">
               <Plus className="w-4 h-4" />
               Add Movie
@@ -117,6 +119,14 @@ const Admin = () => {
             <TabsTrigger value="manage" className="gap-2">
               <Film className="w-4 h-4" />
               Manage Movies
+            </TabsTrigger>
+            <TabsTrigger value="videos" className="gap-2">
+              <Video className="w-4 h-4" />
+              Videos
+            </TabsTrigger>
+            <TabsTrigger value="downloads" className="gap-2">
+              <Download className="w-4 h-4" />
+              Downloads
             </TabsTrigger>
           </TabsList>
 
@@ -144,6 +154,34 @@ const Admin = () => {
               </CardHeader>
               <CardContent>
                 <MovieList />
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          <TabsContent value="videos">
+            <Card className="border-primary/20 shadow-lg">
+              <CardHeader>
+                <CardTitle className="text-2xl">Manage Videos</CardTitle>
+                <CardDescription>
+                  Add videos here first, then go to Downloads tab to add download links for each video.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <VideoManager />
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          <TabsContent value="downloads">
+            <Card className="border-primary/20 shadow-lg">
+              <CardHeader>
+                <CardTitle className="text-2xl">Manage Download Links</CardTitle>
+                <CardDescription>
+                  Add and manage download links for your videos. Select a video first, then add download links with different qualities.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <DownloadLinksManager />
               </CardContent>
             </Card>
           </TabsContent>
