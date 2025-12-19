@@ -165,69 +165,54 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         downloadLinks: [
           { quality: "720p", size: "740MB", url: "https://www.mediafire.com/file/mj2k4swz3eyyd26/Sisu.mp4/file", type: "MP4" }
           ]
-        },
-      "stranger8": {
-        title: "Stranger Things S01 E8 Final",
-        embedCode: '<iframe width="560" height="315" src="//ok.ru/videoembed/11042880883248?nochat=1&autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>',
-          host: "Seniour",
-        downloadLinks: [
-          { quality: "720p", size: "740MB", url: "https://www.mediafire.com/file/wdxacpvzn7i0lr5/Stranger+Things+S01e08+Finale.mp4/file", type: "MP4" }
-          ]
-        },
-      "stranger7": {
-        title: "Stranger Things S01 E7",
-        embedCode: '<iframe width="560" height="315" src="//ok.ru/videoembed/11042880948784?nochat=1&autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>',
-          host: "Seniour",
-        downloadLinks: [
-          { quality: "720p", size: "740MB", url: "https://www.mediafire.com/file/ligc3kwjnqn1pss/Stranger+Things+S01e07.mp4/file", type: "MP4" }
-          ]
+      
         },
       "stranger6": {
         title: "Stranger Things S01 E6",
-        embedCode: '<iframe width="560" height="315" src="//ok.ru/videoembed/11042880817712?nochat=1&autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>',
-          host: "Seniour",
+        embedCode: '<iframe width="560" height="315" src="//ok.ru/videoembed/11075625683504?nochat=1&autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>',
+          host: "Dylan Kabaka",
         downloadLinks: [
-          { quality: "720p", size: "740MB", url: "https://www.mediafire.com/file/f6dmzluxzeionkg/Stranger+Things+S01e06.mp4/file", type: "MP4" }
+          { quality: "720p", size: "740MB", url: "https://isatafileze.fly.dev/simple-redirect-download?file=SANKAR%2FStranger_Things_s1ep6.mp4&filename=Stranger_Things_s1ep6.mp4", type: "MP4" }
           ]
         },
       "stranger5": {
         title: "Stranger Things S01 E5",
-        embedCode: '<iframe width="560" height="315" src="//ok.ru/videoembed/11042881145392?nochat=1&autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>',
-          host: "Seniour",
+        embedCode: '<iframe width="560" height="315" src="//ok.ru/videoembed/11075625945648?nochat=1&autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>',
+          host: "Dylan Kabaka",
         downloadLinks: [
-          { quality: "720p", size: "740MB", url: "https://www.mediafire.com/file/qz595g9s1ozdc4m/Stranger+Things+S01e05.mp4/file", type: "MP4" }
+          { quality: "720p", size: "740MB", url: "https://isatafileze.fly.dev/simple-redirect-download?file=SANKAR%2FStranger_Things_s1ep5.mp4&filename=Stranger_Things_s1ep5.mp4", type: "MP4" }
           ]
         },
       "stranger4": {
         title: "Stranger Things S01 E4",
-        embedCode: '<iframe width="560" height="315" src="//ok.ru/videoembed/11042881079856?nochat=1&autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>',
-          host: "Seniour",
+        embedCode: '<iframe width="560" height="315" src="//ok.ru/videoembed/11075625814576?nochat=1&autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>',
+          host: "Dlan Kabaka",
         downloadLinks: [
-          { quality: "720p", size: "740MB", url: "https://www.mediafire.com/file/v4lfb7qa6f3l4v3/Stranger+Things+S01e04.mp4/file", type: "MP4" }
+          { quality: "720p", size: "740MB", url: "https://isatafileze.fly.dev/simple-redirect-download?file=SANKAR%2FStranger_Things_s1ep4.mp4&filename=Stranger_Things_s1ep4.mp4", type: "MP4" }
           ]
            },
       "stranger3": {
         title: "Stranger Things S01 E3",
-        embedCode: '<iframe width="560" height="315" src="//ok.ru/videoembed/11041403832880?nochat=1&autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>',
-          host: "Seniour",
+        embedCode: '<iframe width="560" height="315" src="//ok.ru/videoembed/11075626338864?nochat=1&autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>',
+          host: "Dylan Kabaka",
         downloadLinks: [
-          { quality: "720p", size: "740MB", url: "https://www.mediafire.com/file/xqxt6q0hie2ev5v/S01_-_EP03_-_Stranger_Things.mp4/file", type: "MP4" }
+          { quality: "720p", size: "740MB", url: "https://isatafileze.fly.dev/simple-redirect-download?file=Serie%2FAmerica%2Fsire%2FStranger_Things_s1ep3.mp4&filename=Stranger_Things_s1ep3.mp4", type: "MP4" }
           ]
          },
       "stranger2": {
         title: "Stranger Things S01 E2",
-        embedCode: '<iframe width="560" height="315" src="//ok.ru/videoembed/11041403898416?nochat=1&autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>',
-          host: "Seniour",
+        embedCode: '<iframe width="560" height="315" src="//ok.ru/videoembed/11075626011184?nochat=1&autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>',
+          host: "Dylan Kabaka",
         downloadLinks: [
-          { quality: "720p", size: "740MB", url: "https://www.mediafire.com/file/kten4wxzcsg18mj/S01EP02_-_Stranger_Things.mp4/file", type: "MP4" }
+          { quality: "720p", size: "740MB", url: "https://isatafileze.fly.dev/simple-redirect-download?file=Serie%2FAmerica%2Fsire%2FStranger_Things_s1ep2.mp4&filename=Stranger_Things_s1ep2.mp4", type: "MP4" }
           ]
          },
       "stranger1": {
         title: "Stranger Things S01 E1",
-        embedCode: '<iframe width="560" height="315" src="//ok.ru/videoembed/11041403767344?nochat=1&autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>',
-          host: "Seniour",
+        embedCode: '<iframe width="560" height="315" src="//ok.ru/videoembed/11075625617968?nochat=1&autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>',
+          host: "Dylan Kabaka",
         downloadLinks: [
-          { quality: "720p", size: "740MB", url: "https://www.mediafire.com/file/qoxzrydmn2yh6cu/S01_-_EP01_-_Stranger_Things.mp4/file", type: "MP4" }
+          { quality: "720p", size: "740MB", url: "https://isatafileze.fly.dev/simple-redirect-download?file=Serie%2FAmerica%2Fsire%2FStranger_Things_s1e1.mp4&filename=Stranger_Things_s1e1.mp4", type: "MP4" }
           ]
         },
       "shooters1": {
