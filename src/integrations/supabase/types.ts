@@ -45,6 +45,7 @@ export type Database = {
           id: string
           message: string
           name: string
+          phone: string | null
           status: string
           user_id: string | null
         }
@@ -54,6 +55,7 @@ export type Database = {
           id?: string
           message: string
           name: string
+          phone?: string | null
           status?: string
           user_id?: string | null
         }
@@ -63,6 +65,7 @@ export type Database = {
           id?: string
           message?: string
           name?: string
+          phone?: string | null
           status?: string
           user_id?: string | null
         }
@@ -111,6 +114,7 @@ export type Database = {
           category: string
           created_at: string
           description: string | null
+          download_url: string | null
           dubbed: string | null
           featured: boolean | null
           genre: string
@@ -126,6 +130,7 @@ export type Database = {
           category: string
           created_at?: string
           description?: string | null
+          download_url?: string | null
           dubbed?: string | null
           featured?: boolean | null
           genre: string
@@ -141,6 +146,7 @@ export type Database = {
           category?: string
           created_at?: string
           description?: string | null
+          download_url?: string | null
           dubbed?: string | null
           featured?: boolean | null
           genre?: string
