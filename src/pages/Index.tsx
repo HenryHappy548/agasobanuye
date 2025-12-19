@@ -53,6 +53,7 @@ const Index = () => {
   const moviesOnly = movies.filter(movie => movie.category === 'movie').slice(0, 10);
   const tvShows = movies.filter(movie => movie.category === 'tv').slice(0, 10);
   const featuredMovies = movies.slice(0, 20);
+  const recentlyAdded = movies.slice(0, 5);
 
   const LoadingSkeleton = () => (
     <div className="flex gap-4">
@@ -71,15 +72,102 @@ const Index = () => {
       
       {!searchQuery && (
         <div className="container mx-auto px-4 py-6">
-          {/* Hero Section */}
-          <HeroSection onPlayVideo={handlePlayVideo} />
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+            {/* Hero Section - Takes 3 columns */}
+            <div className="lg:col-span-3">
+              <HeroSection onPlayVideo={handlePlayVideo} />
+            </div>
+            
+            {/* Recently Added Section - Netflix Style Sidebar */}
+            <div className="lg:col-span-1">
+              <div className="bg-gradient-to-b from-card/80 to-card/40 backdrop-blur-sm rounded-xl border border-border/50 p-4 h-full">
+                <div className="flex items-center gap-2 mb-4">
+                  <div className="w-1 h-6 bg-primary rounded-full"></div>
+                  <h2 className="text-lg font-bold text-foreground">
+                    Nshya Zashyizweho
+                  </h2>
+                  <span className="ml-auto px-2 py-0.5 bg-primary/20 text-primary text-xs font-semibold rounded-full animate-pulse">
+                    NEW
+                  </span>
+                </div>
+                <div className="space-y-3">
+                  {loading ? (
+                    [...Array(5)].map((_, i) => (
+                      <div key={i} className="flex gap-3 p-2">
+                        <Skeleton className="w-16 h-24 rounded-md flex-shrink-0" />
+                        <div className="flex-1 space-y-2">
+                          <Skeleton className="h-4 w-full" />
+                          <Skeleton className="h-3 w-2/3" />
+                        </div>
+                      </div>
+                    ))
+                  ) : (
+                    recentlyAdded.map((movie, index) => (
+                      <div
+                        key={movie.id}
+                        onClick={() => handlePlayVideo(movie.id)}
+                        className="flex gap-3 p-2 rounded-lg bg-background/30 hover:bg-primary/10 border border-transparent hover:border-primary/30 transition-all duration-300 cursor-pointer group"
+                      >
+                        {/* Rank Number */}
+                        <div className="flex-shrink-0 w-6 flex items-center justify-center">
+                          <span className="text-2xl font-black text-primary/60 group-hover:text-primary transition-colors">
+                            {index + 1}
+                          </span>
+                        </div>
+                        
+                        {/* Poster */}
+                        <div className="relative flex-shrink-0 w-14 h-20 rounded-md overflow-hidden">
+                          <img
+                            src={movie.poster}
+                            alt={movie.title}
+                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                            loading="lazy"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div className="absolute bottom-1 left-1/2 -translate-x-1/2">
+                              <div className="w-6 h-6 rounded-full bg-primary/90 flex items-center justify-center">
+                                <svg className="w-3 h-3 text-primary-foreground ml-0.5" fill="currentColor" viewBox="0 0 24 24">
+                                  <path d="M8 5v14l11-7z"/>
+                                </svg>
+                              </div>
+                            </div>
+                          </div>
+                          {/* New Badge */}
+                          <div className="absolute top-0 right-0 bg-primary text-[8px] font-bold text-primary-foreground px-1 rounded-bl">
+                            NEW
+                          </div>
+                        </div>
+                        
+                        {/* Info */}
+                        <div className="flex-1 min-w-0 flex flex-col justify-center">
+                          <h3 className="font-semibold text-xs text-foreground line-clamp-2 group-hover:text-primary transition-colors">
+                            {movie.title}
+                          </h3>
+                          <div className="flex items-center gap-1 text-[10px] text-muted-foreground mt-1">
+                            <span>{movie.year}</span>
+                            <span>•</span>
+                            <span className="text-primary">{movie.genre}</span>
+                          </div>
+                        </div>
+                      </div>
+                    ))
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
           
           {/* Featured Movies Carousel */}
           <section className="mt-8">
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-2xl sm:text-3xl font-bold text-foreground">
-                Featured Movies
-              </h2>
+              <div className="flex items-center gap-3">
+                <h2 className="text-2xl sm:text-3xl font-bold text-foreground">
+                  Featured Movies
+                </h2>
+                <span className="hidden sm:inline-flex px-3 py-1 bg-gradient-to-r from-primary/20 to-primary/5 text-primary text-sm font-medium rounded-full border border-primary/20">
+                  ⭐ Top Picks
+                </span>
+              </div>
             </div>
             {loading ? (
               <LoadingSkeleton />
@@ -134,9 +222,14 @@ const Index = () => {
           <>
             <section>
               <div className="flex items-center justify-between mb-4 sm:mb-6">
-                <h2 className="text-xl sm:text-2xl font-bold text-foreground">
-                  Trending Now
-                </h2>
+                <div className="flex items-center gap-3">
+                  <h2 className="text-xl sm:text-2xl font-bold text-foreground">
+                    Top 10 Ubu
+                  </h2>
+                  <span className="px-3 py-1 bg-gradient-to-r from-red-600 to-red-500 text-white text-xs font-bold rounded-md shadow-lg">
+                    🔥 TRENDING
+                  </span>
+                </div>
                 <Link to="/popular">
                   <Button size="lg" className="group bg-primary hover:bg-primary/90 text-primary-foreground font-semibold shadow-lg">
                     View More
@@ -155,12 +248,20 @@ const Index = () => {
                   className="w-full"
                 >
                   <CarouselContent className="-ml-2 md:-ml-4">
-                    {trendingMovies.map((movie) => (
+                    {trendingMovies.map((movie, index) => (
                       <CarouselItem key={movie.id} className="pl-2 md:pl-4 basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5 xl:basis-1/6">
-                        <MovieCard
-                          movie={movie}
-                          onPlay={handlePlayVideo}
-                        />
+                        <div className="relative">
+                          {/* Top 10 Number - Netflix Style */}
+                          <div className="absolute -left-2 bottom-12 z-10 text-6xl sm:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-b from-primary to-primary/30 drop-shadow-lg" style={{ WebkitTextStroke: '2px hsl(var(--primary))' }}>
+                            {index + 1}
+                          </div>
+                          <div className="ml-4">
+                            <MovieCard
+                              movie={movie}
+                              onPlay={handlePlayVideo}
+                            />
+                          </div>
+                        </div>
                       </CarouselItem>
                     ))}
                   </CarouselContent>
