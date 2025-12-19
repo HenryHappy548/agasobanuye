@@ -127,7 +127,7 @@ import sisu from "@/assets/sisu.png"
 import evild from "@/assets/evild.jpeg"
 import sisu2 from "@/assets/sisu2.jpeg"
 import fall from "@/assets/fall.jpeg"
-import olym from "@/assets/olym.jeg"
+import olym from "@/assets/olym.jpg"
 
   export interface Movie {
   id: string;
