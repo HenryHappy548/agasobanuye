@@ -109,6 +109,14 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
        //   downloadLinks: [
        // { quality: "720p", size: "740MB", url: "", type: "MP4" }
        //  ]
+           },
+       "olym": {
+       title: "Olympus Has Fallen",
+         embedCode: '<iframe width="560" height="315" src="//ok.ru/videoembed/11078663998000?nochat=1&autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>',
+           host: "Sankara",
+         downloadLinks: [
+       { quality: "720p", size: "740MB", url: "https://www.mediafire.com/file/o6rfvvqvpuqzk1y/Olympus_Has_Fallen.mp4/file", type: "MP4" }
+        ]
         },
        "fall": {
        title: "Fall",
