@@ -2774,7 +2774,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
               
               {/* Video Quality Disclaimer */}
               <div className="px-3 py-2 bg-amber-900/30 border-t border-amber-700/50 text-amber-200 text-xs sm:text-sm text-center">
-                💡 If the video has playback issues, try increasing the video quality in the player settings.
+                💡 Niba videwo ifite ikibazo, gerageza kongeraho ubwiza bwa videwo mu igenamiterere.
               </div>
               
               {/* Video Title & Host */}
