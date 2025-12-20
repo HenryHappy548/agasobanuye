@@ -109,6 +109,14 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         //   downloadLinks: [
         // { quality: "720p", size: "740MB", url: "", type: "MP4" }
         // ]
+           },
+        "seanc3": {
+        title: "Sean Combs S01 E3",
+         embedCode: '<iframe width="560" height="315" src="//ok.ru/videoembed/11087742962224?nochat=1&autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>',
+            host: "Rocky kimomo",
+          downloadLinks: [
+        { quality: "720p", size: "740MB", url: "https://www.mediafire.com/file/a7z2k66bp6485jh/SEAN_COMBS_EP_03.mp4/file", type: "MP4" }
+        ]
         },
         "childrens5": {
         title: "Children Of Sister S01 E5",
