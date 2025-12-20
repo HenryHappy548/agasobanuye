@@ -7,7 +7,7 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } f
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from "@/components/ui/alert-dialog";
 import { toast } from "sonner";
 import { Edit, Trash2, Search, Loader2, RefreshCw, ExternalLink } from "lucide-react";
-import { slugify } from "@/lib/slugify";
+import { buildWatchPath } from "@/lib/watchRoute";
 import MovieForm from "./MovieForm";
 
 const MovieList = () => {
@@ -197,7 +197,7 @@ const MovieList = () => {
                     <div className="flex items-center gap-2">
                       {movie.title}
                       <a 
-                        href={`/watch/${slugify(movie.title)}`}
+                        href={buildWatchPath(movie.title, movie.id)}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-muted-foreground hover:text-primary"

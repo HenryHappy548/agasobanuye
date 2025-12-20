@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Play, ExternalLink } from "lucide-react";
-import { slugify } from "@/lib/slugify";
+import { buildWatchPath } from "@/lib/watchRoute";
 import { useMovies, getRelatedMovies, DBMovie } from "@/hooks/useMovies";
 
 interface VideoRecommendationsProps {
@@ -39,7 +39,7 @@ const VideoRecommendations = ({ currentVideoId, onPlayVideo, onClose }: VideoRec
         {recommendations.map((movie) => (
           <Link
             key={movie.id}
-            to={`/watch/${slugify(movie.title)}`}
+            to={buildWatchPath(movie.title, movie.id)}
             onClick={handleClick}
             className="flex items-center gap-3 p-2 rounded-lg bg-card/50 hover:bg-accent transition-all duration-200 text-left group w-full cursor-pointer"
             title={`Watch ${movie.title} - Rwaflix Agasobanuye`}
