@@ -2772,6 +2772,11 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
                 )}
               </div>
               
+              {/* Video Quality Disclaimer */}
+              <div className="px-3 py-2 bg-amber-900/30 border-t border-amber-700/50 text-amber-200 text-xs sm:text-sm text-center">
+                💡 If the video has playback issues, try increasing the video quality in the player settings.
+              </div>
+              
               {/* Video Title & Host */}
               <div className="p-3 sm:p-4 bg-gray-900 text-white">
                 <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2">
