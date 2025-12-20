@@ -101,14 +101,62 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         downloadLinks: [
           { quality: "1080p", size: "350MB", url: "https://www.mediafire.com/file/tnwxbg4hey9gkjj/Dont_Hang_Up.mp4/file", type: "MP4" }
           ]
-       //    },
-       // "long2": {
-       // title: "",
-       //   embedCode: '',
-       //     host: "",
-       //   downloadLinks: [
-       // { quality: "720p", size: "740MB", url: "", type: "MP4" }
-       //  ]
+        //    },
+        // "long2": {
+        // title: "",
+        //  embedCode: '',
+        //     host: "",
+        //   downloadLinks: [
+        // { quality: "720p", size: "740MB", url: "", type: "MP4" }
+        // ]
+        },
+        "childrens5": {
+        title: "Children Of Sister S01 E5",
+         embedCode: '<iframe width="560" height="315" src="//ok.ru/videoembed/11085604719152?nochat=1&autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>',
+            host: "Rocky kimomo",
+          downloadLinks: [
+        { quality: "720p", size: "740MB", url: "https://www.mediafire.com/file/gyhz8pgitppoe40/Children_Of_Sister_E05.mp4/file", type: "MP4" }
+        ]
+        },
+        "childrens4": {
+        title: "Children Of Sister S01 E4",
+         embedCode: '<iframe width="560" height="315" src="//ok.ru/videoembed/11085604653616?nochat=1&autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>',
+            host: "Rocky kimomo",
+          downloadLinks: [
+        { quality: "720p", size: "740MB", url: "https://www.mediafire.com/file/1z02xn76mj1xto0/Children_Of_Sister_E04.mp4/file", type: "MP4" }
+        ]
+        },
+        "childrens3b": {
+        title: "Children Of Sister S01 E3 B",
+         embedCode: '<iframe width="560" height="315" src="//ok.ru/videoembed/11085604457008?nochat=1&autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>',
+            host: "Rocky kimomo",
+          downloadLinks: [
+        { quality: "720p", size: "740MB", url: "https://www.mediafire.com/file/arixhwlkliad3wl/Children_Of_Sister_E03B.mp4/file", type: "MP4" }
+        ]
+        },
+        "childrens3a": {
+        title: "Children Of Sister S01 E3 A",
+         embedCode: '<iframe width="560" height="315" src="//ok.ru/videoembed/11085604391472?nochat=1&autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>',
+            host: "Rocky kimomo",
+          downloadLinks: [
+        { quality: "720p", size: "740MB", url: "https://www.mediafire.com/file/ieh14jfohpqjze5/Children_Of_Sister_E03A.mp4/file", type: "MP4" }
+        ]
+        },
+        "childrens2": {
+        title: "Children Of Sister S01 E2",
+         embedCode: '<iframe width="560" height="315" src="//ok.ru/videoembed/11085604325936?nochat=1&autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>',
+            host: "Rocky kimomo",
+          downloadLinks: [
+        { quality: "720p", size: "740MB", url: "https://www.mediafire.com/file/61j2ty785y3qpzj/Children_Of_Sister_E02.mp4/file", type: "MP4" }
+        ]
+        },
+        "childrens1": {
+        title: "Children Of Sister S01 E1",
+         embedCode: '<iframe width="560" height="315" src="//ok.ru/videoembed/11087458863664?nochat=1&autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>',
+            host: "Rocky kimomo",
+          downloadLinks: [
+        { quality: "720p", size: "740MB", url: "https://www.mediafire.com/file/g80ogxtx01415ar/Children_Of_Sister_E01.mp4/file", type: "MP4" }
+        ]
              },
        "morrow": {
        title: "Tomorrow War",
