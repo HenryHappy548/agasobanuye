@@ -4,9 +4,8 @@ import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import { supabase } from "@/integrations/supabase/client";
 import { useState, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { buildWatchPath } from "@/lib/watchRoute";
 import { toast } from "sonner";
-import { slugify } from "@/lib/slugify";
 import { mockMovies } from "@/data/mockData";
 import VideoRecommendations from "@/components/VideoRecommendations";
 
@@ -33,24 +32,18 @@ interface VideoData {
 const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
   const [dbVideo, setDbVideo] = useState<VideoData | null>(null);
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
-  const location = useLocation();
 
   useEffect(() => {
     if (videoId && isOpen) {
       fetchVideoFromDB(videoId);
-      // Update URL when video opens
-      const currentPath = location.pathname;
-      navigate(`${currentPath}?watch=${videoId}`, { replace: true });
-    } else if (!isOpen && location.search.includes('watch=')) {
-      // Remove query param when closing
-      navigate(location.pathname, { replace: true });
     }
-  }, [videoId, isOpen, navigate, location.pathname]);
+  }, [videoId, isOpen]);
 
   const fetchVideoFromDB = async (id: string) => {
     setLoading(true);
-    
+    setDbVideo(null);
+
+    // First try the videos table (legacy)
     const { data: video } = await supabase
       .from("videos")
       .select("*")
@@ -71,13 +64,37 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
           quality: link.quality,
           size: link.size || "",
           url: link.url,
-          type: link.type,
+          type: link.type || "MP4",
         })),
       });
-    } else {
-      setDbVideo(null);
+      setLoading(false);
+      return;
     }
-    
+
+    // Next try the movies table (CMS-added movies use UUID id)
+    const { data: movie } = await supabase
+      .from("movies")
+      .select("id,title,video_url,download_url,dubbed")
+      .eq("id", id)
+      .maybeSingle();
+
+    if (movie && movie.video_url) {
+      const downloadLinks: DownloadLink[] = movie.download_url
+        ? [{ quality: "720p", size: "", url: movie.download_url, type: "MP4" }]
+        : [];
+
+      setDbVideo({
+        title: movie.title,
+        embedCode: movie.video_url,
+        host: movie.dubbed || "Rwaflix",
+        downloadLinks,
+      });
+      setLoading(false);
+      return;
+    }
+
+    // Fallback: nothing found, let static map handle it
+    setDbVideo(null);
     setLoading(false);
   };
 
@@ -2767,9 +2784,9 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
                       variant="outline"
                       size="sm"
                       onClick={() => {
-                        const movie = mockMovies.find(m => m.id === videoId);
-                        const shareUrl = movie 
-                          ? `https://rwaflix.store/watch/${slugify(movie.title)}`
+                        // Build SEO-friendly share URL using video title + id
+                        const shareUrl = videoId
+                          ? `https://rwaflix.store${buildWatchPath(videoInfo.title, videoId)}`
                           : `https://rwaflix.store`;
                         
                         if (navigator.share) {
