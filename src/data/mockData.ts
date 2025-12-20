@@ -128,6 +128,7 @@ import evild from "@/assets/evild.jpeg"
 import sisu2 from "@/assets/sisu2.jpeg"
 import fall from "@/assets/fall.jpeg"
 import olym from "@/assets/olym.jpg"
+import morrow from "@/assets/morrow.jpeg"
 
   export interface Movie {
   id: string;
@@ -140,6 +141,15 @@ import olym from "@/assets/olym.jpg"
 }
 
 export const mockMovies: Movie[] = [
+    {
+    id: "morrow",
+    title: "Tomorrow War",
+    poster: morrow,
+    year: "2021",
+    genre: "Action Sci fi",
+    rating: "Rocky kimomo",
+    category: "trending"
+  },
   {
     id: "shooters8",
     title: "Shooter S02 E8 Final",
