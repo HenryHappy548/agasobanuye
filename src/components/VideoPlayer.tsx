@@ -109,6 +109,54 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
        //   downloadLinks: [
        // { quality: "720p", size: "740MB", url: "", type: "MP4" }
        //  ]
+             },
+       "morrow": {
+       title: "Tomorrow War",
+         embedCode: '<iframe width="560" height="315" src="//ok.ru/videoembed/11084355668528?nochat=1&autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>',
+           host: "Rocky kimomo",
+         downloadLinks: [
+       { quality: "720p", size: "740MB", url: "https://drive.usercontent.google.com/download?id=1aj1xFNYs-fHMSWaIPAurZoAodfMvfEiC&export=download&authuser=0", type: "MP4" }
+        ]
+        },
+       "shooters8": {
+       title: "Shooter S01 E8 Final",
+         embedCode: '<iframe width="560" height="315" src="//ok.ru/videoembed/11080555104816?nochat=1&autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>',
+           host: "Rocky kimomo",
+         downloadLinks: [
+       { quality: "720p", size: "740MB", url: "https://isatafileze.fly.dev/simple-redirect-download?file=Serie%2FRocky%2FSHOOTER_S02_E08_FINAL.mp4&filename=SHOOTER_S02_E08_FINAL.mp4", type: "MP4" }
+        ]
+        },
+       "shooters7": {
+       title: "Shooter S01 E7",
+         embedCode: '<iframe width="560" height="315" src="//ok.ru/videoembed/11080554973744?nochat=1&autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>',
+           host: "Rocky kimomo",
+         downloadLinks: [
+       { quality: "720p", size: "740MB", url: "https://isatafileze.fly.dev/simple-redirect-download?file=Serie%2FRocky%2FSHOOTER_S02E07.mp4&filename=SHOOTER_S02E07.mp4", type: "MP4" }
+        ]
+        },
+       "shooters6": {
+       title: "Shooter S01 E6",
+         embedCode: '<iframe width="560" height="315" src="//ok.ru/videoembed/11084013374000?nochat=1&autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>',
+           host: "Rocky kimomo",
+         downloadLinks: [
+       { quality: "720p", size: "740MB", url: "https://isatafileze.fly.dev/simple-redirect-download?file=Serie%2FRocky%2FSHOOTER_S02E06.mp4&filename=SHOOTER_S02E06.mp4", type: "MP4" }
+        ]
+        },
+       "shooters5": {
+       title: "Shooter S01 E5",
+         embedCode: '<iframe width="560" height="315" src="//ok.ru/videoembed/11080555039280?nochat=1&autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>',
+           host: "Rocky kimomo",
+         downloadLinks: [
+       { quality: "720p", size: "740MB", url: "https://isatafileze.fly.dev/simple-redirect-download?file=Serie%2FRocky%2FSHOOTER_S02E05.mp4&filename=SHOOTER_S02E05.mp4", type: "MP4" }
+        ]
+           },
+       "shooters4": {
+       title: "Shooter S01 E4",
+         embedCode: '<iframe width="560" height="315" src="//ok.ru/videoembed/11084355602992?nochat=1&autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>',
+           host: "Rocky kimomo",
+         downloadLinks: [
+       { quality: "720p", size: "740MB", url: "https://isatafileze.fly.dev/simple-redirect-download?file=Serie%2FRocky%2FSHOOTER_S02E04.mp4&filename=SHOOTER_S02E04.mp4", type: "MP4" }
+        ]
            },
        "olym": {
        title: "Olympus Has Fallen",
