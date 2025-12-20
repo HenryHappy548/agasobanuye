@@ -44,10 +44,10 @@ export const useMovies = () => {
 
   const fetchMovies = async () => {
     try {
-      const { data: dbMovies, error } = await supabase
-        .from("movies")
-        .select("*")
-        .order("created_at", { ascending: false });
+        const { data: dbMovies, error } = await supabase
+          .from("movies")
+          .select("id,title,poster_url,year,genre,rating,category,description,video_url,download_url,dubbed,featured")
+          .order("created_at", { ascending: false });
 
       if (error) {
         console.error("Error fetching movies:", error);

@@ -1,4 +1,4 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { useEffect, useState, memo, useMemo } from "react";
 import { Helmet } from "react-helmet-async";
 import { ArrowLeft, Play, Calendar, Film, Star, Download, Share2 } from "lucide-react";
@@ -11,22 +11,30 @@ import { useMovies, DBMovie } from "@/hooks/useMovies";
 import DOMPurify from "dompurify";
 
 const MovieDetail = memo(() => {
-  const { slug } = useParams<{ slug: string }>();
+  const { slug, id } = useParams<{ slug: string; id?: string }>();
+  const navigate = useNavigate();
   const [isPlayerOpen, setIsPlayerOpen] = useState(false);
   const [selectedVideoId, setSelectedVideoId] = useState<string | null>(null);
   const [showDownload, setShowDownload] = useState(false);
   const { movies, loading } = useMovies();
 
-  // Find movie by slug from actual data
-  const movie = useMemo(() => 
-    movies.find(m => slugify(m.title) === slug),
-    [movies, slug]
-  );
+  // Find movie by stable id when present, otherwise fallback to slug
+  const movie = useMemo(() => {
+    if (id) return movies.find((m) => m.id === id);
+    return movies.find((m) => slugify(m.title) === slug);
+  }, [movies, slug, id]);
+
+  // If user lands on old /watch/:slug route, redirect to stable /watch/:slug/:id
+  useEffect(() => {
+    if (!loading && movie && !id) {
+      navigate(`/watch/${slugify(movie.title)}/${movie.id}`, { replace: true });
+    }
+  }, [loading, movie, id, navigate]);
 
   useEffect(() => {
     // Scroll to top when page loads
     window.scrollTo(0, 0);
-  }, [slug]);
+  }, [slug, id]);
 
   const handlePlayVideo = () => {
     if (movie) {
@@ -40,22 +48,24 @@ const MovieDetail = memo(() => {
     setSelectedVideoId(null);
   };
 
+  const canonicalPath = movie ? `/watch/${slugify(movie.title)}/${movie.id}` : `/watch/${slug || ""}`;
+  const canonicalUrl = `https://rwaflix.store${canonicalPath}`;
+
   const handleShare = async () => {
-    const shareUrl = `https://rwaflix.store/watch/${slug}`;
     const shareText = `Watch ${movie?.title} on Rwaflix - Free Streaming`;
-    
+
     if (navigator.share) {
       try {
         await navigator.share({
           title: movie?.title,
           text: shareText,
-          url: shareUrl,
+          url: canonicalUrl,
         });
       } catch (err) {
         // User cancelled or error
       }
     } else {
-      navigator.clipboard.writeText(shareUrl);
+      navigator.clipboard.writeText(canonicalUrl);
       toast.success("Link copied to clipboard!");
     }
   };
@@ -88,7 +98,6 @@ const MovieDetail = memo(() => {
     );
   }
 
-  const canonicalUrl = `https://rwaflix.store/watch/${slug}`;
   const pageTitle = `${movie.title} (${movie.year}) - Reba Agasobanuye | Rwaflix`;
   const pageDescription = `Reba ${movie.title} (${movie.year}) ku buntu kuri Rwaflix. ${movie.genre} movie agasobanuye. Stream HD quality, download options. Movie Nyarwanda, Oshakur, Cinebeta alternative.`;
   const seoKeywords = `${movie.title}, watch ${movie.title} online, ${movie.title} agasobanuye, ${movie.genre}, ${movie.year} movies, Rwaflix, rwafix, Agasobanuye, Movie Nyarwanda, Oshakur, Cinebeta, free streaming Rwanda, ${movie.title} download, reba filime, ${movie.title} full movie`;

@@ -2,7 +2,7 @@ import { Play } from "lucide-react";
 import { memo } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { slugify } from "@/lib/slugify";
+import { buildWatchPath } from "@/lib/watchRoute";
 
 interface Movie {
   id: string;
@@ -19,11 +19,11 @@ interface MovieCardProps {
 }
 
 const MovieCard = memo(({ movie, onPlay }: MovieCardProps) => {
-  const movieSlug = slugify(movie.title);
-  
+  const watchPath = buildWatchPath(movie.title, movie.id);
+
   return (
     <Link 
-      to={`/watch/${movieSlug}`} 
+      to={watchPath}
       className="block"
       title={`Watch ${movie.title} free on Rwaflix - Agasobanuye`}
     >
