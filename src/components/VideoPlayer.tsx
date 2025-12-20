@@ -109,6 +109,48 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
         //   downloadLinks: [
         // { quality: "720p", size: "740MB", url: "", type: "MP4" }
         // ]
+        },
+        "flady9": {
+        title: "First Lady S01 E9",
+         embedCode: '<iframe width="560" height="315" src="//ok.ru/videoembed/11088332851760?nochat=1&autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>',
+            host: "Rocky kimomo",
+          downloadLinks: [
+        { quality: "720p", size: "740MB", url: "https://www.mediafire.com/file/19xhnddldrddwn1/THE+FIRST+LADY+EP9.mp4/file", type: "MP4" }
+        ]
+        },
+        "flady8": {
+        title: "First Lady S01 E8",
+         embedCode: '<iframe width="560" height="315" src="//ok.ru/videoembed/11088332786224?nochat=1&autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>',
+            host: "Rocky kimomo",
+          downloadLinks: [
+        { quality: "720p", size: "740MB", url: "https://www.mediafire.com/file/jrqm66j5910nj3k/THE+FIRST+LADY+EP8.mp4/file", type: "MP4" }
+        ]
+        },
+        "flady7": {
+        title: "First Lady S01 E7",
+         embedCode: '<iframe width="560" height="315" src="//ok.ru/videoembed/11088332655152?nochat=1&autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>',
+            host: "Rocky kimomo",
+          downloadLinks: [
+        { quality: "720p", size: "740MB", url: "https://www.mediafire.com/file/7aijzhdx617qfrr/THE+FIRST+LADY+EP7.mp4/file", type: "MP4" }
+        ]
+        },
+        "flady6": {
+        title: "First Lady S01 E6",
+         embedCode: '<iframe width="560" height="315" src="//ok.ru/videoembed/11088332917296?nochat=1&autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>',
+            host: "Rocky kimomo",
+          downloadLinks: [
+        { quality: "720p", size: "740MB", url: "https://www.mediafire.com/file/1quqfj3x2com0ow/THE+FIRST+LADY+EP6.mp4/file", type: "MP4" }
+        ]
+        },
+        "flady5": {
+        title: "First Lady S01 E5",
+         embedCode: '<iframe width="560" height="315" src="//ok.ru/videoembed/11088332982832?nochat=1&autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>',
+            host: "Rocky kimomo",
+          downloadLinks: [
+        { quality: "720p", size: "740MB", url: "https://www.mediafire.com/file/w6gpfwqetk2x5wl/First+Lady+E05+(2022).mp4/file", type: "MP4" }
+        ]
+       
+        
            },
         "seanc3": {
         title: "Sean Combs S01 E3",
