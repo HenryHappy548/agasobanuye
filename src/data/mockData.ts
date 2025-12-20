@@ -141,6 +141,51 @@ import olym from "@/assets/olym.jpg"
 
 export const mockMovies: Movie[] = [
   {
+    id: "shooters8",
+    title: "Shooter S02 E8 Final",
+    poster: shooters2,
+    year: "2017",
+    genre: "Action Thriller",
+    rating: "Rocky kimomo",
+    category: "tv"
+  },
+  {
+    id: "shooters7",
+    title: "Shooter S02 E7",
+    poster: shooters2,
+    year: "2017",
+    genre: "Action Thriller",
+    rating: "Rocky kimomo",
+    category: "tv"
+  },
+  {
+    id: "shooters6",
+    title: "Shooter S02 E6",
+    poster: shooters2,
+    year: "2017",
+    genre: "Action Thriller",
+    rating: "Rocky kimomo",
+    category: "tv"
+  },
+  {
+    id: "shooters5",
+    title: "Shooter S02 E5",
+    poster: shooters2,
+    year: "2017",
+    genre: "Action Thriller",
+    rating: "Rocky kimomo",
+    category: "tv"
+  },
+  {
+    id: "shooters4",
+    title: "Shooter S02 E4",
+    poster: shooters2,
+    year: "2017",
+    genre: "Action Thriller",
+    rating: "Rocky kimomo",
+    category: "tv"
+  },
+  {
     id: "olym",
     title: "Olympus Has Fallen",
     poster: olym,
