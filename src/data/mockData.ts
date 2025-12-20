@@ -143,6 +143,52 @@ import childrens from "@/assets/childers.jpg"
 
 export const mockMovies: Movie[] = [
   {
+    id: "flady9",
+    title: "First Lady S01 E9",
+    poster: flady,
+    year: "2022",
+    genre: "Romance",
+    rating: "Rocky kimomo",
+    category: "tv"
+  },
+  {
+    id: "flady8",
+    title: "First Lady S01 E8",
+    poster: flady,
+    year: "2022",
+    genre: "Romance",
+    rating: "Rocky kimomo",
+    category: "tv"
+  },
+  {
+    id: "flady7",
+    title: "First Lady S01 E7",
+    poster: flady,
+    year: "2022",
+    genre: "Romance",
+    rating: "Rocky kimomo",
+    category: "tv"
+  },
+  
+  {
+    id: "flady6",
+    title: "First Lady S01 E6",
+    poster: flady,
+    year: "2022",
+    genre: "Romance",
+    rating: "Rocky kimomo",
+    category: "tv"
+  },
+  {
+    id: "flady5",
+    title: "First Lady S01 E5",
+    poster: flady,
+    year: "2022",
+    genre: "Romance",
+    rating: "Rocky kimomo",
+    category: "tv"
+  },
+  {
     id: "seanc3",
     title: "Sean Combs S01 E3",
     poster: seanc,
