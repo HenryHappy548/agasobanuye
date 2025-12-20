@@ -143,6 +143,24 @@ import childrens from "@/assets/childers.jpg"
 
 export const mockMovies: Movie[] = [
   {
+    id: "seanc3",
+    title: "Sean Combs S01 E3",
+    poster: seanc,
+    year: "2025",
+    genre: "Documentary Thriller",
+    rating: "Rocky",
+    category: "tv"
+  },
+  {
+    id: "childrens5",
+    title: "Children Of Sisters S01 E5",
+    poster: childrens,
+    year: "2019",
+    genre: "Drama Romance",
+    rating: "Rocky kimomo",
+    category: "tv"
+  },
+  {
     id: "flady9",
     title: "First Lady S01 E9",
     poster: flady,
@@ -188,24 +206,7 @@ export const mockMovies: Movie[] = [
     rating: "Rocky kimomo",
     category: "tv"
   },
-  {
-    id: "seanc3",
-    title: "Sean Combs S01 E3",
-    poster: seanc,
-    year: "2025",
-    genre: "Documentary Thriller",
-    rating: "Rocky",
-    category: "tv"
-  },
-  {
-    id: "childrens5",
-    title: "Children Of Sisters S01 E5",
-    poster: childrens,
-    year: "2019",
-    genre: "Drama Romance",
-    rating: "Rocky kimomo",
-    category: "tv"
-  },
+  
   {
     id: "childrens4",
     title: "Children Of Sisters S01 E4",
