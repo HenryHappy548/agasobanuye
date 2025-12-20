@@ -129,6 +129,7 @@ import sisu2 from "@/assets/sisu2.jpeg"
 import fall from "@/assets/fall.jpeg"
 import olym from "@/assets/olym.jpg"
 import morrow from "@/assets/morrow.jpeg"
+import childrens from "@/assets/childrens.jpg"
 
   export interface Movie {
   id: string;
@@ -141,6 +142,60 @@ import morrow from "@/assets/morrow.jpeg"
 }
 
 export const mockMovies: Movie[] = [
+  {
+    id: "childrens5",
+    title: "Children Of Sisters S01 E5",
+    poster: childrens,
+    year: "2019",
+    genre: "Drama Romance",
+    rating: "Rocky kimomo",
+    category: "tv"
+  },
+  {
+    id: "childrens4",
+    title: "Children Of Sisters S01 E4",
+    poster: childrens,
+    year: "2019",
+    genre: "Drama Romance",
+    rating: "Rocky kimomo",
+    category: "tv"
+  },
+  {
+    id: "childrens3b",
+    title: "Children Of Sisters S01 E3 A",
+    poster: childrens,
+    year: "2019",
+    genre: "Drama Romance",
+    rating: "Rocky kimomo",
+    category: "tv"
+  },
+  {
+    id: "childrens3a",
+    title: "Children Of Sisters S01 E3 A",
+    poster: childrens,
+    year: "2019",
+    genre: "Drama Romance",
+    rating: "Rocky kimomo",
+    category: "tv"
+  },
+  {
+    id: "childrens2",
+    title: "Children Of Sisters S01 E2",
+    poster: childrens,
+    year: "2019",
+    genre: "Drama Romance",
+    rating: "Rocky kimomo",
+    category: "tv"
+  },
+  {
+    id: "childrens1",
+    title: "Children Of Sisters S01 E1",
+    poster: childrens,
+    year: "2019",
+    genre: "Drama Romance",
+    rating: "Rocky kimomo",
+    category: "tv"
+  },
     {
     id: "morrow",
     title: "Tomorrow War",
