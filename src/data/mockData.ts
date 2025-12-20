@@ -129,7 +129,7 @@ import sisu2 from "@/assets/sisu2.jpeg"
 import fall from "@/assets/fall.jpeg"
 import olym from "@/assets/olym.jpg"
 import morrow from "@/assets/morrow.jpeg"
-import childrens from "@/assets/childrens.jpg"
+import childrens from "@/assets/childers.jpg"
 
   export interface Movie {
   id: string;
