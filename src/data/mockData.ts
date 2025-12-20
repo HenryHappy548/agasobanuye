@@ -143,6 +143,15 @@ import childrens from "@/assets/childrens.jpg"
 
 export const mockMovies: Movie[] = [
   {
+    id: "seanc3",
+    title: "Sean Combs S01 E3",
+    poster: seanc,
+    year: "2025",
+    genre: "Documentary Thriller",
+    rating: "Rocky",
+    category: "tv"
+  },
+  {
     id: "childrens5",
     title: "Children Of Sisters S01 E5",
     poster: childrens,
