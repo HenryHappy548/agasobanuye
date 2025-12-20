@@ -68,6 +68,7 @@ const MovieForm = ({ movie, onSuccess }: MovieFormProps) => {
         category: formData.category,
         poster_url: formData.poster_url.trim(),
         video_url: formData.video_url.trim(),
+        download_url: formData.download_url.trim(),
         dubbed: formData.dubbed.trim(),
         featured: formData.featured,
       };
