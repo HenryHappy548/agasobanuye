@@ -3,6 +3,7 @@ import { memo } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { buildWatchPath } from "@/lib/watchRoute";
+import OptimizedImage from "@/components/OptimizedImage";
 
 interface Movie {
   id: string;
@@ -16,9 +17,10 @@ interface Movie {
 interface MovieCardProps {
   movie: Movie;
   onPlay: (movieId: string) => void;
+  priority?: boolean;
 }
 
-const MovieCard = memo(({ movie, onPlay }: MovieCardProps) => {
+const MovieCard = memo(({ movie, onPlay, priority = false }: MovieCardProps) => {
   const watchPath = buildWatchPath(movie.title, movie.id);
 
   return (
@@ -28,15 +30,14 @@ const MovieCard = memo(({ movie, onPlay }: MovieCardProps) => {
       title={`Watch ${movie.title} free on Rwaflix - Agasobanuye`}
     >
       <article className="group relative overflow-hidden rounded-lg bg-card border border-border hover:border-primary/50 transition-all duration-300 hover:scale-105 hover:shadow-glow">
-        <div className="aspect-[2/3] overflow-hidden">
-          <img
+        <div className="aspect-[2/3] overflow-hidden relative">
+          <OptimizedImage
             src={movie.poster}
             alt={`${movie.title} (${movie.year}) - Rwaflix Agasobanuye`}
-            loading="lazy"
-            decoding="async"
             width={200}
             height={300}
-            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+            priority={priority}
+            className="w-full h-full"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           

@@ -1,9 +1,10 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import StreamingHeader from "@/components/StreamingHeader";
 import HeroSection from "@/components/HeroSection";
 import MovieCard from "@/components/MovieCard";
+import MovieCardSkeleton from "@/components/MovieCardSkeleton";
 import VideoPlayer from "@/components/VideoPlayer";
 import Footer from "@/components/Footer";
 import { ContactAdminButton } from "@/components/ContactAdminButton";
@@ -49,19 +50,19 @@ const Index = () => {
     setSearchQuery(sanitized);
   }, []);
 
-  const trendingMovies = movies.filter(movie => movie.category === 'trending').slice(0, 10);
-  const moviesOnly = movies.filter(movie => movie.category === 'movie').slice(0, 10);
-  const tvShows = movies.filter(movie => movie.category === 'tv').slice(0, 10);
-  const featuredMovies = movies.slice(0, 20);
-  const recentlyAdded = movies.slice(0, 5);
+  // Memoize filtered movie lists to prevent recalculation on every render
+  const { trendingMovies, moviesOnly, tvShows, featuredMovies, recentlyAdded } = useMemo(() => ({
+    trendingMovies: movies.filter(movie => movie.category === 'trending').slice(0, 10),
+    moviesOnly: movies.filter(movie => movie.category === 'movie').slice(0, 10),
+    tvShows: movies.filter(movie => movie.category === 'tv').slice(0, 10),
+    featuredMovies: movies.slice(0, 20),
+    recentlyAdded: movies.slice(0, 5),
+  }), [movies]);
 
   const LoadingSkeleton = () => (
-    <div className="flex gap-4">
+    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-2 md:gap-4">
       {[...Array(6)].map((_, i) => (
-        <div key={i} className="flex-shrink-0 w-32 sm:w-40">
-          <Skeleton className="aspect-[2/3] rounded-lg" />
-          <Skeleton className="h-4 mt-2 w-3/4" />
-        </div>
+        <MovieCardSkeleton key={i} />
       ))}
     </div>
   );
