@@ -63,10 +63,10 @@ const OptimizedImage = memo(({
       className={cn("relative overflow-hidden bg-muted", className)}
       style={{ width, height }}
     >
-      {/* Blur placeholder */}
+      {/* Placeholder */}
       <div 
         className={cn(
-          "absolute inset-0 bg-gradient-to-br from-muted to-muted-foreground/10 animate-pulse transition-opacity duration-300",
+          "absolute inset-0 bg-muted transition-opacity duration-500",
           isLoaded ? "opacity-0" : "opacity-100"
         )}
       />
