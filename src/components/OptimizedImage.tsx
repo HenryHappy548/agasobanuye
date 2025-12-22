@@ -26,6 +26,11 @@ const OptimizedImage = memo(({
   useEffect(() => {
     if (priority || !imgRef.current) return;
 
+    // Larger rootMargin for slow connections to start loading earlier
+    const connection = (navigator as any).connection;
+    const isSlowConnection = connection?.effectiveType === '2g' || connection?.effectiveType === 'slow-2g';
+    const margin = isSlowConnection ? "300px" : "100px";
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -34,7 +39,7 @@ const OptimizedImage = memo(({
         }
       },
       { 
-        rootMargin: "100px",
+        rootMargin: margin,
         threshold: 0.01 
       }
     );

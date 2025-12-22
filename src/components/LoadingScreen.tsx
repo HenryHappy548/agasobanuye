@@ -7,12 +7,25 @@ interface LoadingScreenProps {
 
 const LoadingScreen = ({ onLoadingComplete }: LoadingScreenProps) => {
   const [isVisible, setIsVisible] = useState(true);
+  const [loadingText, setLoadingText] = useState("Gutangira...");
 
   useEffect(() => {
+    // Detect slow connection
+    const connection = (navigator as any).connection;
+    const isSlowConnection = connection?.effectiveType === '2g' || connection?.effectiveType === 'slow-2g';
+    
+    // Faster load time: 1.5s normal, 1s for slow connections (skip long wait)
+    const loadTime = isSlowConnection ? 1000 : 1500;
+
+    // Update loading text for slow connections
+    if (isSlowConnection) {
+      setLoadingText("Tegereza gato...");
+    }
+
     const timer = setTimeout(() => {
       setIsVisible(false);
-      setTimeout(onLoadingComplete, 500); // Wait for fade out animation
-    }, 2500); // Show for 2.5 seconds
+      setTimeout(onLoadingComplete, 300); // Shorter fade out
+    }, loadTime);
 
     return () => clearTimeout(timer);
   }, [onLoadingComplete]);
@@ -24,9 +37,10 @@ const LoadingScreen = ({ onLoadingComplete }: LoadingScreenProps) => {
           <img
             src={logoRwaflix}
             alt="Rwaflix Logo"
-            className="w-24 h-24 mx-auto mb-4 animate-spin"
+            className="w-20 h-20 mx-auto mb-3"
+            width={80}
+            height={80}
           />
-          <h1 className="text-2xl font-bold text-primary opacity-0">Rwaflix</h1>
         </div>
       </div>
     );
@@ -38,9 +52,16 @@ const LoadingScreen = ({ onLoadingComplete }: LoadingScreenProps) => {
         <img
           src={logoRwaflix}
           alt="Rwaflix Logo"
-          className="w-24 h-24 mx-auto mb-4 animate-spin"
+          className="w-20 h-20 mx-auto mb-3"
+          width={80}
+          height={80}
         />
-        <h1 className="text-2xl font-bold text-primary animate-pulse">Rwaflix</h1>
+        <h1 className="text-xl font-bold text-primary">{loadingText}</h1>
+        <div className="mt-3 flex justify-center gap-1">
+          <div className="w-2 h-2 bg-primary rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
+          <div className="w-2 h-2 bg-primary rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
+          <div className="w-2 h-2 bg-primary rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
+        </div>
       </div>
     </div>
   );
