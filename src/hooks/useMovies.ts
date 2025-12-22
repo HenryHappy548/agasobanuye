@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { mockMovies, Movie } from "@/data/mockData";
 
@@ -19,10 +19,8 @@ export interface DBMovie {
 
 // Merge Supabase movies with mock movies
 export const useMovies = () => {
-  // Initialize with mock data immediately for instant display
-  const [movies, setMovies] = useState<DBMovie[]>(mockMovies as DBMovie[]);
-  const [loading, setLoading] = useState(false);
-  const hasFetched = useRef(false);
+  const [movies, setMovies] = useState<DBMovie[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetchMovies();
@@ -34,7 +32,6 @@ export const useMovies = () => {
         'postgres_changes',
         { event: '*', schema: 'public', table: 'movies' },
         () => {
-          console.log('Real-time update detected, refetching movies...');
           fetchMovies();
         }
       )
@@ -46,21 +43,17 @@ export const useMovies = () => {
   }, []);
 
   const fetchMovies = async () => {
-    hasFetched.current = true;
     try {
-      console.log('Fetching movies from database...');
-      const { data: dbMovies, error } = await supabase
-        .from("movies")
-        .select("id,title,poster_url,year,genre,rating,category,description,video_url,download_url,dubbed,featured")
-        .order("created_at", { ascending: false });
+        const { data: dbMovies, error } = await supabase
+          .from("movies")
+          .select("id,title,poster_url,year,genre,rating,category,description,video_url,download_url,dubbed,featured")
+          .order("created_at", { ascending: false });
 
       if (error) {
         console.error("Error fetching movies:", error);
-        // Keep mock movies on error
+        // Fallback to mock data
         setMovies(mockMovies as DBMovie[]);
       } else {
-        console.log(`Fetched ${dbMovies?.length || 0} movies from CMS`);
-        
         // Convert DB movies to our format
         const formattedDbMovies: DBMovie[] = (dbMovies || []).map((movie) => ({
           id: movie.id,
@@ -72,7 +65,7 @@ export const useMovies = () => {
           category: movie.category as 'movie' | 'tv' | 'trending',
           description: movie.description || "",
           video_url: movie.video_url || "",
-          download_url: movie.download_url || "",
+          download_url: (movie as any).download_url || "",
           dubbed: movie.dubbed || "",
           featured: movie.featured || false,
         }));
@@ -83,9 +76,7 @@ export const useMovies = () => {
           m => !dbTitles.has(m.title.toLowerCase())
         ) as DBMovie[];
 
-        const mergedMovies = [...formattedDbMovies, ...uniqueMockMovies];
-        console.log(`Total movies: ${mergedMovies.length} (${formattedDbMovies.length} CMS + ${uniqueMockMovies.length} mock)`);
-        setMovies(mergedMovies);
+        setMovies([...formattedDbMovies, ...uniqueMockMovies]);
       }
     } catch (err) {
       console.error("Error:", err);

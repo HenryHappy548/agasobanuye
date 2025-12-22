@@ -17,7 +17,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-
+import { Skeleton } from "@/components/ui/skeleton";
 
 const Index = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -55,7 +55,16 @@ const Index = () => {
   const featuredMovies = movies.slice(0, 20);
   const recentlyAdded = movies.slice(0, 5);
 
-  // No loading skeleton needed - content shows immediately from cache
+  const LoadingSkeleton = () => (
+    <div className="flex gap-4">
+      {[...Array(6)].map((_, i) => (
+        <div key={i} className="flex-shrink-0 w-32 sm:w-40">
+          <Skeleton className="aspect-[2/3] rounded-lg" />
+          <Skeleton className="h-4 mt-2 w-3/4" />
+        </div>
+      ))}
+    </div>
+  );
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -82,7 +91,18 @@ const Index = () => {
                   </span>
                 </div>
                 <div className="space-y-3">
-                  {recentlyAdded.map((movie, index) => (
+                  {loading ? (
+                    [...Array(5)].map((_, i) => (
+                      <div key={i} className="flex gap-3 p-2">
+                        <Skeleton className="w-16 h-24 rounded-md flex-shrink-0" />
+                        <div className="flex-1 space-y-2">
+                          <Skeleton className="h-4 w-full" />
+                          <Skeleton className="h-3 w-2/3" />
+                        </div>
+                      </div>
+                    ))
+                  ) : (
+                    recentlyAdded.map((movie, index) => (
                       <div
                         key={movie.id}
                         onClick={() => handlePlayVideo(movie.id)}
@@ -130,7 +150,8 @@ const Index = () => {
                           </div>
                         </div>
                       </div>
-                    ))}
+                    ))
+                  )}
                 </div>
               </div>
             </div>
@@ -148,7 +169,9 @@ const Index = () => {
                 </span>
               </div>
             </div>
-            {movies.length > 0 && (
+            {loading ? (
+              <LoadingSkeleton />
+            ) : (
               <Carousel
                 opts={{
                   align: "start",
@@ -214,7 +237,9 @@ const Index = () => {
                   </Button>
                 </Link>
               </div>
-              {trendingMovies.length > 0 && (
+              {loading ? (
+                <LoadingSkeleton />
+              ) : (
                 <Carousel
                   opts={{
                     align: "start",
@@ -250,7 +275,9 @@ const Index = () => {
                   </Button>
                 </Link>
               </div>
-              {moviesOnly.length > 0 && (
+              {loading ? (
+                <LoadingSkeleton />
+              ) : (
                 <Carousel
                   opts={{
                     align: "start",
@@ -286,7 +313,9 @@ const Index = () => {
                   </Button>
                 </Link>
               </div>
-              {tvShows.length > 0 && (
+              {loading ? (
+                <LoadingSkeleton />
+              ) : (
                 <Carousel
                   opts={{
                     align: "start",
