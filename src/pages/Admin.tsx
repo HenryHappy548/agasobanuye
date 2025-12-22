@@ -13,6 +13,8 @@ import DownloadLinksManager from "@/components/admin/DownloadLinksManager";
 import VideoManager from "@/components/admin/VideoManager";
 import MessagesManager from "@/components/admin/MessagesManager";
 
+const ADMIN_CHECK_TIMEOUT_MS = 8000;
+
 const Admin = () => {
   const [user, setUser] = useState<User | null>(null);
   const [isAdmin, setIsAdmin] = useState(false);
@@ -20,32 +22,41 @@ const Admin = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    checkAuth();
+    const timeout = window.setTimeout(() => {
+      setLoading(false);
+      toast.error("Admin check timed out. Please sign in again.");
+      navigate("/auth");
+    }, ADMIN_CHECK_TIMEOUT_MS);
+
+    checkAuth().finally(() => window.clearTimeout(timeout));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const checkAuth = async () => {
     try {
-      const { data: { user } } = await supabase.auth.getUser();
-      
-      if (!user) {
+      // Use local session first (fast + avoids hanging network calls)
+      const { data: sessionData } = await supabase.auth.getSession();
+      const sessionUser = sessionData.session?.user ?? null;
+
+      if (!sessionUser) {
         navigate("/auth");
         return;
       }
 
-      setUser(user);
+      setUser(sessionUser);
 
       // Check if user has admin role
       const { data: roles, error } = await supabase
         .from("user_roles")
         .select("role")
-        .eq("user_id", user.id)
+        .eq("user_id", sessionUser.id)
         .eq("role", "admin")
         .maybeSingle();
 
       if (error) {
         console.error("Error checking admin role:", error);
         toast.error("Error verifying admin access");
-        navigate("/");
+        navigate("/auth");
         return;
       }
 
@@ -63,6 +74,7 @@ const Admin = () => {
       setLoading(false);
     }
   };
+
 
   const handleSignOut = async () => {
     await supabase.auth.signOut();

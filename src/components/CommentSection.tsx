@@ -4,10 +4,12 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
-import { Loader2, LogOut } from "lucide-react";
+import { LogOut } from "lucide-react";
 import { z } from "zod";
 import { User } from "@supabase/supabase-js";
 import { useNavigate } from "react-router-dom";
+
+const COMMENT_LOAD_TIMEOUT_MS = 8000;
 
 const commentSchema = z.object({
   username: z.string()
@@ -73,13 +75,15 @@ const CommentSection = () => {
       subscription.unsubscribe();
       supabase.removeChannel(channel);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const checkAuth = async () => {
-    const { data: { user } } = await supabase.auth.getUser();
-    setUser(user);
-    if (user) {
-      await checkAdminStatus(user.id);
+    const { data } = await supabase.auth.getSession();
+    const sessionUser = data.session?.user ?? null;
+    setUser(sessionUser);
+    if (sessionUser) {
+      await checkAdminStatus(sessionUser.id);
     }
   };
 
@@ -88,28 +92,48 @@ const CommentSection = () => {
       .from("profiles")
       .select("role")
       .eq("user_id", userId)
-      .single();
-    
+      .maybeSingle();
+
     setIsAdmin(data?.role === "admin");
   };
 
   const fetchComments = async () => {
     setIsLoading(true);
-    const { data, error } = await supabase
-      .from("comments")
-      .select("*")
-      .order("created_at", { ascending: false });
 
-    if (error) {
+    const timeout = window.setTimeout(() => {
+      setIsLoading(false);
+      toast({
+        title: "Error",
+        description: "Comments took too long to load. Tap refresh.",
+        variant: "destructive",
+      });
+    }, COMMENT_LOAD_TIMEOUT_MS);
+
+    try {
+      const { data, error } = await supabase
+        .from("comments")
+        .select("*")
+        .order("created_at", { ascending: false });
+
+      if (error) {
+        toast({
+          title: "Error",
+          description: "Failed to load comments",
+          variant: "destructive",
+        });
+      } else {
+        setComments(data || []);
+      }
+    } catch {
       toast({
         title: "Error",
         description: "Failed to load comments",
         variant: "destructive",
       });
-    } else {
-      setComments(data || []);
+    } finally {
+      window.clearTimeout(timeout);
+      setIsLoading(false);
     }
-    setIsLoading(false);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
