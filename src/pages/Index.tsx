@@ -17,7 +17,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { Skeleton } from "@/components/ui/skeleton";
+
 
 const Index = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -55,16 +55,6 @@ const Index = () => {
   const featuredMovies = movies.slice(0, 20);
   const recentlyAdded = movies.slice(0, 5);
 
-  const LoadingSkeleton = () => (
-    <div className="flex gap-4">
-      {[...Array(6)].map((_, i) => (
-        <div key={i} className="flex-shrink-0 w-32 sm:w-40">
-          <Skeleton className="aspect-[2/3] rounded-lg" />
-          <Skeleton className="h-4 mt-2 w-3/4" />
-        </div>
-      ))}
-    </div>
-  );
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -91,67 +81,55 @@ const Index = () => {
                   </span>
                 </div>
                 <div className="space-y-3">
-                  {loading ? (
-                    [...Array(5)].map((_, i) => (
-                      <div key={i} className="flex gap-3 p-2">
-                        <Skeleton className="w-16 h-24 rounded-md flex-shrink-0" />
-                        <div className="flex-1 space-y-2">
-                          <Skeleton className="h-4 w-full" />
-                          <Skeleton className="h-3 w-2/3" />
-                        </div>
+                  {!loading && recentlyAdded.map((movie, index) => (
+                    <div
+                      key={movie.id}
+                      onClick={() => handlePlayVideo(movie.id)}
+                      className="flex gap-3 p-2 rounded-lg bg-background/30 hover:bg-primary/10 border border-transparent hover:border-primary/30 transition-all duration-300 cursor-pointer group"
+                    >
+                      {/* Rank Number */}
+                      <div className="flex-shrink-0 w-6 flex items-center justify-center">
+                        <span className="text-2xl font-black text-primary/60 group-hover:text-primary transition-colors">
+                          {index + 1}
+                        </span>
                       </div>
-                    ))
-                  ) : (
-                    recentlyAdded.map((movie, index) => (
-                      <div
-                        key={movie.id}
-                        onClick={() => handlePlayVideo(movie.id)}
-                        className="flex gap-3 p-2 rounded-lg bg-background/30 hover:bg-primary/10 border border-transparent hover:border-primary/30 transition-all duration-300 cursor-pointer group"
-                      >
-                        {/* Rank Number */}
-                        <div className="flex-shrink-0 w-6 flex items-center justify-center">
-                          <span className="text-2xl font-black text-primary/60 group-hover:text-primary transition-colors">
-                            {index + 1}
-                          </span>
-                        </div>
-                        
-                        {/* Poster */}
-                        <div className="relative flex-shrink-0 w-14 h-20 rounded-md overflow-hidden">
-                          <img
-                            src={movie.poster}
-                            alt={movie.title}
-                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                            loading="lazy"
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            <div className="absolute bottom-1 left-1/2 -translate-x-1/2">
-                              <div className="w-6 h-6 rounded-full bg-primary/90 flex items-center justify-center">
-                                <svg className="w-3 h-3 text-primary-foreground ml-0.5" fill="currentColor" viewBox="0 0 24 24">
-                                  <path d="M8 5v14l11-7z"/>
-                                </svg>
-                              </div>
+                      
+                      {/* Poster */}
+                      <div className="relative flex-shrink-0 w-14 h-20 rounded-md overflow-hidden">
+                        <img
+                          src={movie.poster}
+                          alt={movie.title}
+                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                          loading="lazy"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                          <div className="absolute bottom-1 left-1/2 -translate-x-1/2">
+                            <div className="w-6 h-6 rounded-full bg-primary/90 flex items-center justify-center">
+                              <svg className="w-3 h-3 text-primary-foreground ml-0.5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M8 5v14l11-7z"/>
+                              </svg>
                             </div>
                           </div>
-                          {/* New Badge */}
-                          <div className="absolute top-0 right-0 bg-primary text-[8px] font-bold text-primary-foreground px-1 rounded-bl">
-                            NEW
-                          </div>
                         </div>
-                        
-                        {/* Info */}
-                        <div className="flex-1 min-w-0 flex flex-col justify-center">
-                          <h3 className="font-semibold text-xs text-foreground line-clamp-2 group-hover:text-primary transition-colors">
-                            {movie.title}
-                          </h3>
-                          <div className="flex items-center gap-1 text-[10px] text-muted-foreground mt-1">
-                            <span>{movie.year}</span>
-                            <span>•</span>
-                            <span className="text-primary">{movie.genre}</span>
-                          </div>
+                        {/* New Badge */}
+                        <div className="absolute top-0 right-0 bg-primary text-[8px] font-bold text-primary-foreground px-1 rounded-bl">
+                          NEW
                         </div>
                       </div>
-                    ))
-                  )}
+                      
+                      {/* Info */}
+                      <div className="flex-1 min-w-0 flex flex-col justify-center">
+                        <h3 className="font-semibold text-xs text-foreground line-clamp-2 group-hover:text-primary transition-colors">
+                          {movie.title}
+                        </h3>
+                        <div className="flex items-center gap-1 text-[10px] text-muted-foreground mt-1">
+                          <span>{movie.year}</span>
+                          <span>•</span>
+                          <span className="text-primary">{movie.genre}</span>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
@@ -169,9 +147,7 @@ const Index = () => {
                 </span>
               </div>
             </div>
-            {loading ? (
-              <LoadingSkeleton />
-            ) : (
+            {!loading && (
               <Carousel
                 opts={{
                   align: "start",
@@ -237,9 +213,7 @@ const Index = () => {
                   </Button>
                 </Link>
               </div>
-              {loading ? (
-                <LoadingSkeleton />
-              ) : (
+              {!loading && (
                 <Carousel
                   opts={{
                     align: "start",
@@ -275,9 +249,7 @@ const Index = () => {
                   </Button>
                 </Link>
               </div>
-              {loading ? (
-                <LoadingSkeleton />
-              ) : (
+              {!loading && (
                 <Carousel
                   opts={{
                     align: "start",
@@ -313,9 +285,7 @@ const Index = () => {
                   </Button>
                 </Link>
               </div>
-              {loading ? (
-                <LoadingSkeleton />
-              ) : (
+              {!loading && (
                 <Carousel
                   opts={{
                     align: "start",
