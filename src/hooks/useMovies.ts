@@ -17,50 +17,14 @@ export interface DBMovie {
   featured?: boolean;
 }
 
-// Cache for instant loading
-const CACHE_KEY = 'rwaflix_movies_cache';
-const CACHE_EXPIRY = 5 * 60 * 1000; // 5 minutes
-
-const getCachedMovies = (): DBMovie[] | null => {
-  try {
-    const cached = localStorage.getItem(CACHE_KEY);
-    if (cached) {
-      const { data, timestamp } = JSON.parse(cached);
-      if (Date.now() - timestamp < CACHE_EXPIRY) {
-        return data;
-      }
-    }
-  } catch (e) {
-    console.error('Cache read error:', e);
-  }
-  return null;
-};
-
-const setCachedMovies = (movies: DBMovie[]) => {
-  try {
-    localStorage.setItem(CACHE_KEY, JSON.stringify({
-      data: movies,
-      timestamp: Date.now()
-    }));
-  } catch (e) {
-    console.error('Cache write error:', e);
-  }
-};
-
 // Merge Supabase movies with mock movies
 export const useMovies = () => {
-  // Initialize with cache or mock data immediately - no loading state needed
-  const cachedMovies = getCachedMovies();
-  const [movies, setMovies] = useState<DBMovie[]>(cachedMovies || mockMovies as DBMovie[]);
-  const [loading, setLoading] = useState(false); // Start with false - show content immediately
+  // Initialize with mock data immediately for instant display
+  const [movies, setMovies] = useState<DBMovie[]>(mockMovies as DBMovie[]);
+  const [loading, setLoading] = useState(false);
   const hasFetched = useRef(false);
 
   useEffect(() => {
-    // Only show loading if no cached data
-    if (!cachedMovies && !hasFetched.current) {
-      setLoading(true);
-    }
-    
     fetchMovies();
     
     // Real-time subscription for new movies
@@ -70,6 +34,7 @@ export const useMovies = () => {
         'postgres_changes',
         { event: '*', schema: 'public', table: 'movies' },
         () => {
+          console.log('Real-time update detected, refetching movies...');
           fetchMovies();
         }
       )
@@ -83,6 +48,7 @@ export const useMovies = () => {
   const fetchMovies = async () => {
     hasFetched.current = true;
     try {
+      console.log('Fetching movies from database...');
       const { data: dbMovies, error } = await supabase
         .from("movies")
         .select("id,title,poster_url,year,genre,rating,category,description,video_url,download_url,dubbed,featured")
@@ -90,10 +56,11 @@ export const useMovies = () => {
 
       if (error) {
         console.error("Error fetching movies:", error);
-        if (!cachedMovies) {
-          setMovies(mockMovies as DBMovie[]);
-        }
+        // Keep mock movies on error
+        setMovies(mockMovies as DBMovie[]);
       } else {
+        console.log(`Fetched ${dbMovies?.length || 0} movies from CMS`);
+        
         // Convert DB movies to our format
         const formattedDbMovies: DBMovie[] = (dbMovies || []).map((movie) => ({
           id: movie.id,
@@ -105,7 +72,7 @@ export const useMovies = () => {
           category: movie.category as 'movie' | 'tv' | 'trending',
           description: movie.description || "",
           video_url: movie.video_url || "",
-          download_url: (movie as any).download_url || "",
+          download_url: movie.download_url || "",
           dubbed: movie.dubbed || "",
           featured: movie.featured || false,
         }));
@@ -117,14 +84,12 @@ export const useMovies = () => {
         ) as DBMovie[];
 
         const mergedMovies = [...formattedDbMovies, ...uniqueMockMovies];
+        console.log(`Total movies: ${mergedMovies.length} (${formattedDbMovies.length} CMS + ${uniqueMockMovies.length} mock)`);
         setMovies(mergedMovies);
-        setCachedMovies(mergedMovies);
       }
     } catch (err) {
       console.error("Error:", err);
-      if (!cachedMovies) {
-        setMovies(mockMovies as DBMovie[]);
-      }
+      setMovies(mockMovies as DBMovie[]);
     } finally {
       setLoading(false);
     }
