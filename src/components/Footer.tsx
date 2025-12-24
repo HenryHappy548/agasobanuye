@@ -1,19 +1,25 @@
-import { Phone, Mail, ExternalLink, Home, Film, Tv, TrendingUp, HelpCircle, MessageCircle, Instagram, Music } from "lucide-react";
+import { Phone, Mail, ExternalLink, Home, Film, Tv, TrendingUp, HelpCircle, MessageCircle, Instagram } from "lucide-react";
 import { Link } from "react-router-dom";
 import CommentSection from "./CommentSection";
 
-const Footer = () => {
+interface FooterProps {
+  showComments?: boolean;
+}
+
+const Footer = ({ showComments = true }: FooterProps) => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-background/95 border-t border-border mt-8 sm:mt-12 lg:mt-16">
+    <footer className="bg-gradient-to-b from-card/50 to-card border-t border-border/50 mt-8 sm:mt-12 lg:mt-16">
       <div className="container mx-auto px-4 py-8 sm:py-12">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
           {/* Company Info */}
           <div className="space-y-4 sm:col-span-2 lg:col-span-1">
-            <h3 className="text-lg font-semibold text-primary">Rwaflix</h3>
+            <h3 className="text-xl font-bold bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
+              Rwaflix
+            </h3>
             <p className="text-sm text-muted-foreground">
-             Reba Agasobanuye Kuri Rwaflix.
+              Reba Agasobanuye Kuri Rwaflix.
             </p>
             <div className="space-y-2">
               <a 
@@ -46,37 +52,37 @@ const Footer = () => {
                 href="https://whatsapp.com/channel/0029VbBuQXg0AgW6YX49VZ3I" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="flex items-center space-x-2 text-sm text-muted-foreground hover:text-primary transition-colors"
+                className="flex items-center space-x-2 text-sm text-muted-foreground hover:text-green-500 transition-colors"
               >
                 <MessageCircle className="h-4 w-4" />
-                <span>Follow the Rwaflix channel on WhatsApp</span>
+                <span>Follow on WhatsApp</span>
               </a>
               <a 
                 href="https://www.instagram.com/rwaflix.store/" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="flex items-center space-x-2 text-sm text-muted-foreground hover:text-primary transition-colors"
+                className="flex items-center space-x-2 text-sm text-muted-foreground hover:text-pink-500 transition-colors"
               >
                 <Instagram className="h-4 w-4" />
-                <span>Follow us on Instagram</span>
+                <span>Follow on Instagram</span>
               </a>
               <a 
                 href="https://vm.tiktok.com/ZMHcX8DnyfJgW-m8Gt6/" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="flex items-center space-x-2 text-sm text-muted-foreground hover:text-primary transition-colors"
+                className="flex items-center space-x-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
               >
                 <svg className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
                 </svg>
-                <span>Follow us on TikTok</span>
+                <span>Follow on TikTok</span>
               </a>
             </div>
           </div>
 
           {/* Quick Links */}
           <div className="space-y-4">
-            <h4 className="text-sm font-medium text-foreground">Quick Links</h4>
+            <h4 className="text-sm font-semibold text-foreground">Quick Links</h4>
             <ul className="space-y-2">
               <li>
                 <Link 
@@ -119,7 +125,7 @@ const Footer = () => {
 
           {/* Support */}
           <div className="space-y-4">
-            <h4 className="text-sm font-medium text-foreground">Support</h4>
+            <h4 className="text-sm font-semibold text-foreground">Support</h4>
             <ul className="space-y-2">
               <li>
                 <Link 
@@ -153,7 +159,7 @@ const Footer = () => {
 
           {/* Legal */}
           <div className="space-y-4">
-            <h4 className="text-sm font-medium text-foreground">Legal</h4>
+            <h4 className="text-sm font-semibold text-foreground">Legal</h4>
             <ul className="space-y-2">
               <li>
                 <Link 
@@ -175,13 +181,15 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Comments Section */}
-        <div className="mt-8 sm:mt-12 pt-8 sm:pt-12 border-t border-border">
-          <CommentSection />
-        </div>
+        {/* General Comments Section - Only on pages without movie-specific comments */}
+        {showComments && (
+          <div className="mt-8 sm:mt-12 pt-8 sm:pt-12 border-t border-border/50">
+            <CommentSection />
+          </div>
+        )}
 
         {/* Copyright */}
-        <div className="mt-6 sm:mt-8 pt-6 sm:pt-8 border-t border-border">
+        <div className="mt-6 sm:mt-8 pt-6 sm:pt-8 border-t border-border/50">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
             <p className="text-sm text-muted-foreground text-center sm:text-left">
               © {currentYear} Rwaflix. All rights reserved.

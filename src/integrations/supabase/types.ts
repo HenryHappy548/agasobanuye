@@ -19,6 +19,7 @@ export type Database = {
           comment: string
           created_at: string
           id: string
+          movie_id: string | null
           user_id: string | null
           username: string
         }
@@ -26,6 +27,7 @@ export type Database = {
           comment: string
           created_at?: string
           id?: string
+          movie_id?: string | null
           user_id?: string | null
           username: string
         }
@@ -33,10 +35,19 @@ export type Database = {
           comment?: string
           created_at?: string
           id?: string
+          movie_id?: string | null
           user_id?: string | null
           username?: string
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "comments_movie_id_fkey"
+            columns: ["movie_id"]
+            isOneToOne: false
+            referencedRelation: "movies"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       contact_messages: {
         Row: {
