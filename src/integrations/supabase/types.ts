@@ -20,6 +20,7 @@ export type Database = {
           created_at: string
           id: string
           movie_id: string | null
+          movie_key: string | null
           user_id: string | null
           username: string
         }
@@ -28,6 +29,7 @@ export type Database = {
           created_at?: string
           id?: string
           movie_id?: string | null
+          movie_key?: string | null
           user_id?: string | null
           username: string
         }
@@ -36,6 +38,7 @@ export type Database = {
           created_at?: string
           id?: string
           movie_id?: string | null
+          movie_key?: string | null
           user_id?: string | null
           username?: string
         }
