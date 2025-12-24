@@ -128,66 +128,76 @@ const EmbeddedPlayer = ({ movieId, movieTitle, fallbackVideoUrl, fallbackDownloa
     );
   }
 
-  // Sanitize and prepare embed code
-  const sanitizedEmbed = DOMPurify.sanitize(videoData.embedCode, {
-    ADD_TAGS: ['iframe'],
-    ADD_ATTR: ['allow', 'allowfullscreen', 'frameborder', 'scrolling', 'src', 'width', 'height', 'style']
-  });
+  // Check if embedCode is already an iframe or just a URL
+  const isIframe = videoData.embedCode.includes('<iframe');
+  
+  let sanitizedEmbed = '';
+  if (isIframe) {
+    sanitizedEmbed = DOMPurify.sanitize(videoData.embedCode, {
+      ADD_TAGS: ['iframe'],
+      ADD_ATTR: ['allow', 'allowfullscreen', 'frameborder', 'scrolling', 'src', 'width', 'height', 'style']
+    });
+  } else {
+    // If it's just a URL, create an iframe
+    const videoUrl = videoData.embedCode.trim();
+    sanitizedEmbed = `<iframe src="${videoUrl}" width="100%" height="100%" frameborder="0" allowfullscreen allow="autoplay; encrypted-media"></iframe>`;
+  }
 
   return (
-    <div className="w-full space-y-4">
+    <div className="w-full space-y-6">
       {/* Video Player */}
-      <div className="relative w-full aspect-video bg-black rounded-xl overflow-hidden shadow-2xl border border-border/30">
+      <div className="relative w-full aspect-video bg-black rounded-2xl overflow-hidden shadow-2xl border-2 border-primary/30">
         <div 
           className="w-full h-full [&>iframe]:w-full [&>iframe]:h-full [&>iframe]:border-0"
           dangerouslySetInnerHTML={{ __html: sanitizedEmbed }}
         />
       </div>
 
-      {/* Video Info Bar */}
-      <div className="flex flex-wrap items-center justify-between gap-4 p-4 bg-gradient-to-r from-card to-card/50 rounded-xl border border-border/50">
-        <div className="flex items-center gap-3">
-          <div className="px-3 py-1 bg-primary/20 rounded-full">
-            <span className="text-sm font-medium text-primary">{videoData.host}</span>
+      {/* Download Section - Always Visible */}
+      <div className="bg-gradient-to-r from-primary/20 via-card to-primary/20 p-6 rounded-2xl border-2 border-primary/40 shadow-lg">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="flex items-center gap-3">
+            <div className="w-12 h-12 bg-primary/30 rounded-full flex items-center justify-center">
+              <Download className="h-6 w-6 text-primary" />
+            </div>
+            <div>
+              <h3 className="font-bold text-lg text-foreground">Download Movie</h3>
+              <p className="text-sm text-muted-foreground">Save for offline viewing</p>
+            </div>
           </div>
-          <span className="text-sm text-muted-foreground">HD Quality</span>
+
+          {videoData.downloadLinks.length > 0 ? (
+            <div className="flex flex-wrap gap-3">
+              {videoData.downloadLinks.map((link, index) => (
+                <a
+                  key={index}
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-6 py-3 bg-primary hover:bg-primary/80 text-primary-foreground font-semibold rounded-xl transition-all hover:scale-105 shadow-lg"
+                >
+                  <Download className="h-5 w-5" />
+                  <span>{link.quality}</span>
+                  {link.size && <span className="text-xs opacity-80">({link.size})</span>}
+                </a>
+              ))}
+            </div>
+          ) : (
+            <div className="px-6 py-3 bg-muted/50 text-muted-foreground rounded-xl">
+              <span>Download coming soon</span>
+            </div>
+          )}
         </div>
+      </div>
 
-        {/* Download Button */}
-        {videoData.downloadLinks.length > 0 && (
-          <div className="relative">
-            <Button
-              onClick={() => setShowDownloads(!showDownloads)}
-              className="bg-primary hover:bg-primary/90"
-            >
-              <Download className="mr-2 h-4 w-4" />
-              Download
-            </Button>
-
-            {showDownloads && (
-              <div className="absolute right-0 top-full mt-2 z-20 min-w-[200px] bg-card border border-border rounded-lg shadow-xl overflow-hidden">
-                {videoData.downloadLinks.map((link, index) => (
-                  <a
-                    key={index}
-                    href={link.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-between gap-4 px-4 py-3 hover:bg-accent transition-colors"
-                  >
-                    <div className="flex items-center gap-2">
-                      <Download className="h-4 w-4 text-primary" />
-                      <span className="font-medium">{link.quality}</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                      {link.size && <span>{link.size}</span>}
-                      <span className="text-xs bg-accent px-2 py-0.5 rounded">{link.type}</span>
-                    </div>
-                  </a>
-                ))}
-              </div>
-            )}
+      {/* Video Info Bar */}
+      <div className="flex flex-wrap items-center justify-between gap-4 p-4 bg-card/80 rounded-xl border border-border/50">
+        <div className="flex items-center gap-3">
+          <div className="px-4 py-2 bg-primary/20 rounded-full">
+            <span className="text-sm font-semibold text-primary">{videoData.host}</span>
           </div>
-        )}
+          <span className="text-sm text-muted-foreground">• HD Quality Available</span>
+        </div>
       </div>
 
       {/* Quality Tip */}
