@@ -102,28 +102,37 @@ const CommentSection = ({ movieId, movieTitle }: CommentSectionProps) => {
   const fetchComments = async () => {
     setIsLoading(true);
     
-    let query = supabase
-      .from("comments")
-      .select("*")
-      .order("created_at", { ascending: false });
-    
-    // Filter by movie_id if provided
-    if (movieId) {
-      query = query.eq("movie_id", movieId);
-    } else {
-      query = query.is("movie_id", null);
-    }
+    try {
+      // Check if movieId looks like a UUID
+      const isUUID = movieId && /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(movieId);
+      
+      let query = supabase
+        .from("comments")
+        .select("*")
+        .order("created_at", { ascending: false });
+      
+      if (movieId) {
+        if (isUUID) {
+          // For UUID-based movies (from database)
+          query = query.eq("movie_id", movieId);
+        } else {
+          // For legacy/mock movies, use movie_key
+          query = query.eq("movie_key", movieId);
+        }
+      } else {
+        // Global comments (homepage)
+        query = query.is("movie_id", null).is("movie_key", null);
+      }
 
-    const { data, error } = await query;
+      const { data, error } = await query;
 
-    if (error) {
-      toast({
-        title: "Error",
-        description: "Failed to load comments",
-        variant: "destructive",
-      });
-    } else {
-      setComments(data || []);
+      if (error) {
+        console.error("Failed to load comments:", error);
+      } else {
+        setComments(data || []);
+      }
+    } catch (error) {
+      console.error("Error fetching comments:", error);
     }
     setIsLoading(false);
   };
@@ -151,11 +160,15 @@ const CommentSection = ({ movieId, movieTitle }: CommentSectionProps) => {
 
       setIsSubmitting(true);
 
+      // Check if movieId looks like a UUID
+      const isUUID = movieId && /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(movieId);
+
       const { error } = await supabase.from("comments").insert({
         comment: validated.comment,
         username: validated.username,
         user_id: user?.id || null,
-        movie_id: movieId || null,
+        movie_id: isUUID ? movieId : null,
+        movie_key: !isUUID && movieId ? movieId : null,
       });
 
       if (error) throw error;
