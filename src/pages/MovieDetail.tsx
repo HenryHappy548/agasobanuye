@@ -1,10 +1,11 @@
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { useEffect, useState, memo, useMemo } from "react";
 import { Helmet } from "react-helmet-async";
-import { ArrowLeft, Play, Calendar, Film, Star, Download, Share2 } from "lucide-react";
+import { ArrowLeft, Play, Calendar, Film, Star, Download, Share2, Copy, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import VideoPlayer from "@/components/VideoPlayer";
 import Footer from "@/components/Footer";
+import CommentSection from "@/components/CommentSection";
 import { slugify } from "@/lib/slugify";
 import { toast } from "sonner";
 import { useMovies, DBMovie } from "@/hooks/useMovies";
@@ -225,8 +226,18 @@ const MovieDetail = memo(() => {
     }
   };
 
+  const handleCopyLink = () => {
+    navigator.clipboard.writeText(canonicalUrl);
+    toast.success("Link copied!");
+  };
+
+  const handleWhatsAppShare = () => {
+    const text = encodeURIComponent(`🎬 ${movie.title} - Reba kuri Rwaflix!\n\n${canonicalUrl}`);
+    window.open(`https://wa.me/?text=${text}`, '_blank');
+  };
+
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-gradient-to-b from-background via-background to-background/95">
       <Helmet>
         <title>{pageTitle}</title>
         <meta name="description" content={pageDescription} />
@@ -271,134 +282,183 @@ const MovieDetail = memo(() => {
         </script>
       </Helmet>
 
-      {/* Navigation */}
-      <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur border-b border-border">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between gap-4">
-          <div className="flex items-center gap-4">
+      {/* Clean Navigation */}
+      <nav className="sticky top-0 z-50 bg-card/95 backdrop-blur-md border-b border-border/50 shadow-sm">
+        <div className="container mx-auto px-4 py-3 flex items-center justify-between gap-4">
+          <div className="flex items-center gap-3">
             <Link to="/movies">
-              <Button variant="ghost" size="sm">
+              <Button variant="ghost" size="sm" className="hover:bg-primary/10">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Back
               </Button>
             </Link>
-            <h1 className="text-lg font-semibold text-foreground truncate">{movie.title}</h1>
           </div>
-          <Button variant="outline" size="sm" onClick={handleShare}>
-            <Share2 className="h-4 w-4 mr-2" />
-            Share
+          <h1 className="text-base sm:text-lg font-bold text-foreground truncate flex-1 text-center">
+            {movie.title}
+          </h1>
+          <Button variant="outline" size="sm" onClick={handleShare} className="border-primary/30 hover:bg-primary/10">
+            <Share2 className="h-4 w-4 sm:mr-2" />
+            <span className="hidden sm:inline">Share</span>
           </Button>
         </div>
       </nav>
 
-      {/* Hero Section */}
+      {/* Hero Section - Brighter Design */}
       <section className="relative">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/50 to-background" />
+        <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-background/80 to-background" />
         <div 
-          className="h-[40vh] sm:h-[50vh] bg-cover bg-center"
+          className="h-[35vh] sm:h-[45vh] bg-cover bg-center"
           style={{ backgroundImage: `url(${movie.poster})` }}
         />
         
-        <div className="container mx-auto px-4 -mt-32 relative z-10">
+        <div className="container mx-auto px-4 -mt-28 sm:-mt-36 relative z-10">
           <div className="flex flex-col md:flex-row gap-6 md:gap-8">
-            {/* Poster */}
+            {/* Poster with Glow Effect */}
             <div className="flex-shrink-0 mx-auto md:mx-0">
-              <img 
-                src={movie.poster} 
-                alt={`${movie.title} poster - Rwaflix Agasobanuye`}
-                className="w-48 md:w-64 rounded-lg shadow-2xl border border-border"
-                loading="eager"
-                width={256}
-                height={384}
-              />
+              <div className="relative">
+                <div className="absolute -inset-1 bg-gradient-to-br from-primary/50 to-primary/20 rounded-xl blur-lg opacity-60"></div>
+                <img 
+                  src={movie.poster} 
+                  alt={`${movie.title} poster - Rwaflix Agasobanuye`}
+                  className="relative w-40 sm:w-48 md:w-56 rounded-xl shadow-2xl border-2 border-card"
+                  loading="eager"
+                  width={224}
+                  height={336}
+                />
+              </div>
             </div>
 
-            {/* Info */}
-            <div className="flex-1 text-center md:text-left pt-4">
-              <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-4">
-                {movie.title}
-              </h1>
-              
-              <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 mb-6 text-muted-foreground">
-                <span className="flex items-center gap-1">
-                  <Calendar className="h-4 w-4" />
-                  {movie.year}
-                </span>
-                <span className="flex items-center gap-1">
-                  <Film className="h-4 w-4" />
-                  {movie.genre}
-                </span>
-                <span className="flex items-center gap-1">
-                  <Star className="h-4 w-4 text-primary" />
-                  {movie.rating}
-                </span>
-              </div>
-
-              <div className="flex flex-wrap gap-3 justify-center md:justify-start">
-                <Button 
-                  size="lg" 
-                  onClick={handlePlayVideo}
-                  className="bg-primary hover:bg-primary-glow text-primary-foreground shadow-glow"
-                >
-                  <Play className="mr-2 h-5 w-5" />
-                  Watch Now
-                </Button>
-                <Button 
-                  size="lg" 
-                  variant="outline"
-                  onClick={() => setShowDownload(!showDownload)}
-                >
-                  <Download className="mr-2 h-5 w-5" />
-                  {showDownload ? "Hide Download" : "Download"}
-                </Button>
-              </div>
-
-              {/* Download Embed Section */}
-              {showDownload && (movie as DBMovie).download_url && (
-                <div className="mt-6 p-4 bg-card/50 rounded-lg border border-border">
-                  <h3 className="text-lg font-semibold mb-3">Download Options</h3>
-                  <div 
-                    className="w-full aspect-video rounded-lg overflow-hidden"
-                    dangerouslySetInnerHTML={{ 
-                      __html: DOMPurify.sanitize((movie as DBMovie).download_url || "", {
-                        ADD_TAGS: ['iframe'],
-                        ADD_ATTR: ['allow', 'allowfullscreen', 'frameborder', 'scrolling']
-                      })
-                    }}
-                  />
+            {/* Info Card */}
+            <div className="flex-1 text-center md:text-left">
+              <div className="bg-gradient-to-br from-card/90 to-card/60 backdrop-blur-sm rounded-2xl p-5 sm:p-6 border border-border/50 shadow-lg">
+                <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3">
+                  {movie.title}
+                </h1>
+                
+                {/* Rating Badge */}
+                <div className="flex items-center justify-center md:justify-start gap-2 mb-4">
+                  <div className="flex items-center gap-1 px-3 py-1 bg-yellow-500/20 rounded-full">
+                    <Star className="h-4 w-4 text-yellow-500 fill-yellow-500" />
+                    <span className="text-yellow-600 dark:text-yellow-400 font-bold">{movie.rating}</span>
+                  </div>
                 </div>
-              )}
+
+                {/* Meta Info */}
+                <div className="flex flex-wrap items-center justify-center md:justify-start gap-3 mb-5">
+                  <span className="flex items-center gap-1.5 px-3 py-1.5 bg-accent/80 rounded-full text-sm">
+                    <Calendar className="h-3.5 w-3.5 text-primary" />
+                    <span className="font-medium">{movie.year}</span>
+                  </span>
+                  <span className="flex items-center gap-1.5 px-3 py-1.5 bg-primary/15 text-primary rounded-full text-sm font-medium">
+                    <Film className="h-3.5 w-3.5" />
+                    {movie.genre}
+                  </span>
+                </div>
+
+                {/* Action Buttons */}
+                <div className="flex flex-wrap gap-3 justify-center md:justify-start">
+                  <Button 
+                    size="lg" 
+                    onClick={handlePlayVideo}
+                    className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg shadow-primary/25 font-bold"
+                  >
+                    <Play className="mr-2 h-5 w-5 fill-current" />
+                    Watch Now
+                  </Button>
+                  <Button 
+                    size="lg" 
+                    variant="outline"
+                    onClick={() => setShowDownload(!showDownload)}
+                    className="border-primary/40 hover:bg-primary/10"
+                  >
+                    <Download className="mr-2 h-5 w-5" />
+                    {showDownload ? "Hide" : "Download"}
+                  </Button>
+                </div>
+
+                {/* Download Embed Section */}
+                {showDownload && (movie as DBMovie).download_url && (
+                  <div className="mt-5 p-4 bg-accent/30 rounded-xl border border-border/50">
+                    <h3 className="text-base font-semibold mb-3 flex items-center gap-2">
+                      <Download className="h-4 w-4 text-primary" />
+                      Download Options
+                    </h3>
+                    <div 
+                      className="w-full aspect-video rounded-lg overflow-hidden bg-background/50"
+                      dangerouslySetInnerHTML={{ 
+                        __html: DOMPurify.sanitize((movie as DBMovie).download_url || "", {
+                          ADD_TAGS: ['iframe'],
+                          ADD_ATTR: ['allow', 'allowfullscreen', 'frameborder', 'scrolling']
+                        })
+                      }}
+                    />
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Content Section */}
-      <section className="container mx-auto px-4 py-12">
-        <article>
-          <h2 className="text-xl font-semibold text-foreground mb-4">About {movie.title}</h2>
-          <p className="text-muted-foreground leading-relaxed mb-6">
-            Reba {movie.title} ({movie.year}) ku buntu kuri Rwaflix. Iyi {movie.genre.toLowerCase()} movie 
-            iraboneka mu HD quality. Stream cyangwa ubone download options nyinshi.
-            Agasobanuye na {movie.rating}.
-          </p>
-          <p className="text-muted-foreground leading-relaxed">
-            Watch {movie.title} ({movie.year}) online for free on Rwaflix. This {movie.genre.toLowerCase()} 
-            is available in HD quality with multiple download options. Enjoy streaming on Rwanda's best movie platform.
-            Requested by {movie.rating}.
-          </p>
-        </article>
+      {/* Share Buttons Section */}
+      <section className="container mx-auto px-4 py-6">
+        <div className="flex flex-wrap gap-3 justify-center">
+          <Button 
+            variant="outline" 
+            size="sm"
+            onClick={handleWhatsAppShare}
+            className="bg-green-500/10 border-green-500/30 hover:bg-green-500/20 text-green-600 dark:text-green-400"
+          >
+            <MessageCircle className="mr-2 h-4 w-4" />
+            Share on WhatsApp
+          </Button>
+          <Button 
+            variant="outline" 
+            size="sm"
+            onClick={handleCopyLink}
+            className="hover:bg-accent"
+          >
+            <Copy className="mr-2 h-4 w-4" />
+            Copy Link
+          </Button>
+        </div>
+      </section>
 
-        {/* SEO Keywords Section */}
-        <div className="mt-8 pt-6 border-t border-border">
-          <h3 className="text-sm font-medium text-muted-foreground mb-2">Related Tags:</h3>
-          <div className="flex flex-wrap gap-2">
-            {[movie.genre, 'Agasobanuye', 'Rwaflix', 'Movie Nyarwanda', movie.year, 'Free Streaming', 'HD Quality'].map((tag) => (
-              <span key={tag} className="px-3 py-1 bg-accent/50 rounded-full text-xs text-muted-foreground">
-                {tag}
-              </span>
-            ))}
+      {/* Content Section */}
+      <section className="container mx-auto px-4 py-6">
+        <div className="bg-gradient-to-br from-card/80 to-card/40 rounded-2xl p-5 sm:p-6 border border-border/50">
+          <article>
+            <h2 className="text-lg font-bold text-foreground mb-3 flex items-center gap-2">
+              <Film className="h-5 w-5 text-primary" />
+              About {movie.title}
+            </h2>
+            <p className="text-muted-foreground leading-relaxed mb-4 text-sm sm:text-base">
+              Reba {movie.title} ({movie.year}) ku buntu kuri Rwaflix. Iyi {movie.genre.toLowerCase()} movie 
+              iraboneka mu HD quality. Stream cyangwa ubone download options nyinshi.
+            </p>
+            <p className="text-muted-foreground leading-relaxed text-sm sm:text-base">
+              Watch {movie.title} ({movie.year}) online for free on Rwaflix. This {movie.genre.toLowerCase()} 
+              is available in HD quality with multiple streaming options.
+            </p>
+          </article>
+
+          {/* Tags */}
+          <div className="mt-6 pt-4 border-t border-border/30">
+            <h3 className="text-xs font-medium text-muted-foreground mb-2 uppercase tracking-wide">Related Tags</h3>
+            <div className="flex flex-wrap gap-2">
+              {[movie.genre, 'Agasobanuye', 'Rwaflix', movie.year, 'HD Quality', 'Free'].map((tag) => (
+                <span key={tag} className="px-3 py-1 bg-primary/10 hover:bg-primary/20 rounded-full text-xs text-primary font-medium transition-colors cursor-default">
+                  {tag}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
+      </section>
+
+      {/* Comments Section - Movie Specific */}
+      <section className="container mx-auto px-4 py-8">
+        <CommentSection movieId={movie.id} movieTitle={movie.title} />
       </section>
 
       {/* Video Player */}
@@ -408,7 +468,7 @@ const MovieDetail = memo(() => {
         videoId={selectedVideoId || ""}
       />
 
-      <Footer />
+      <Footer showComments={false} />
     </div>
   );
 });

@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
-import { Loader2, LogOut } from "lucide-react";
+import { Loader2, LogOut, MessageSquare, Send } from "lucide-react";
 import { z } from "zod";
 import { User } from "@supabase/supabase-js";
 import { useNavigate } from "react-router-dom";
@@ -25,9 +25,15 @@ interface Comment {
   username: string;
   comment: string;
   created_at: string;
+  movie_id: string | null;
 }
 
-const CommentSection = () => {
+interface CommentSectionProps {
+  movieId?: string;
+  movieTitle?: string;
+}
+
+const CommentSection = ({ movieId, movieTitle }: CommentSectionProps) => {
   const [comments, setComments] = useState<Comment[]>([]);
   const [username, setUsername] = useState("");
   const [newComment, setNewComment] = useState("");
@@ -55,7 +61,7 @@ const CommentSection = () => {
     );
 
     const channel = supabase
-      .channel("comments-changes")
+      .channel(`comments-changes-${movieId || 'global'}`)
       .on(
         "postgres_changes",
         {
@@ -73,7 +79,7 @@ const CommentSection = () => {
       subscription.unsubscribe();
       supabase.removeChannel(channel);
     };
-  }, []);
+  }, [movieId]);
 
   const checkAuth = async () => {
     const { data: { user } } = await supabase.auth.getUser();
@@ -88,17 +94,27 @@ const CommentSection = () => {
       .from("profiles")
       .select("role")
       .eq("user_id", userId)
-      .single();
+      .maybeSingle();
     
     setIsAdmin(data?.role === "admin");
   };
 
   const fetchComments = async () => {
     setIsLoading(true);
-    const { data, error } = await supabase
+    
+    let query = supabase
       .from("comments")
       .select("*")
       .order("created_at", { ascending: false });
+    
+    // Filter by movie_id if provided
+    if (movieId) {
+      query = query.eq("movie_id", movieId);
+    } else {
+      query = query.is("movie_id", null);
+    }
+
+    const { data, error } = await query;
 
     if (error) {
       toast({
@@ -139,6 +155,7 @@ const CommentSection = () => {
         comment: validated.comment,
         username: validated.username,
         user_id: user?.id || null,
+        movie_id: movieId || null,
       });
 
       if (error) throw error;
@@ -180,33 +197,54 @@ const CommentSection = () => {
     <div className="w-full max-w-4xl mx-auto space-y-6">
       <div className="space-y-4">
         <div className="flex items-center justify-between">
-          <h3 className="text-2xl font-bold text-foreground">Comments</h3>
-          {!isAdmin && !user && (
-            <Button variant="outline" onClick={() => navigate("/auth")}>
-              Admin Login
-            </Button>
-          )}
-          {isAdmin && (
-            <div className="flex items-center gap-3">
-              <span className="text-sm text-muted-foreground">
-                Posting as: <span className="font-semibold text-foreground">😎Rwaflix</span>
-              </span>
+          <div className="flex items-center gap-3">
+            <div className="p-2 bg-primary/20 rounded-lg">
+              <MessageSquare className="h-5 w-5 text-primary" />
+            </div>
+            <div>
+              <h3 className="text-xl font-bold text-foreground">
+                {movieId ? `Comments` : "Community Comments"}
+              </h3>
+              {movieTitle && (
+                <p className="text-sm text-muted-foreground">
+                  Share your thoughts about {movieTitle}
+                </p>
+              )}
+            </div>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="px-3 py-1 bg-primary/10 text-primary text-sm font-medium rounded-full">
+              {comments.length} {comments.length === 1 ? 'comment' : 'comments'}
+            </span>
+            {!isAdmin && !user && (
+              <Button variant="outline" size="sm" onClick={() => navigate("/auth")}>
+                Admin
+              </Button>
+            )}
+            {isAdmin && (
               <Button variant="outline" size="sm" onClick={handleLogout}>
                 <LogOut className="h-4 w-4 mr-2" />
                 Logout
               </Button>
-            </div>
-          )}
+            )}
+          </div>
         </div>
         
-        <form onSubmit={handleSubmit} className="space-y-3">
+        {/* Comment Form */}
+        <form onSubmit={handleSubmit} className="space-y-3 p-4 bg-gradient-to-br from-card to-card/50 rounded-xl border border-border/50">
+          {isAdmin && (
+            <div className="flex items-center gap-2 px-3 py-2 bg-primary/10 rounded-lg mb-3">
+              <span className="text-sm text-muted-foreground">Posting as:</span>
+              <span className="font-semibold text-primary">😎Rwaflix</span>
+            </div>
+          )}
           {!isAdmin && (
             <Input
               placeholder="Your name"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               maxLength={50}
-              className="bg-card text-foreground"
+              className="bg-background/50 border-border/50 focus:border-primary"
             />
           )}
           <Textarea
@@ -214,49 +252,65 @@ const CommentSection = () => {
             value={newComment}
             onChange={(e) => setNewComment(e.target.value)}
             maxLength={500}
-            className="min-h-[100px] bg-card text-foreground"
+            className="min-h-[100px] bg-background/50 border-border/50 focus:border-primary resize-none"
           />
           <div className="flex items-center justify-between">
-            <span className="text-sm text-muted-foreground">
-              {newComment.length}/500 characters
+            <span className="text-xs text-muted-foreground">
+              {newComment.length}/500
             </span>
             <Button 
               type="submit" 
               disabled={isSubmitting || !newComment.trim() || (!isAdmin && !username.trim())}
+              className="bg-primary hover:bg-primary/90"
             >
-              {isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+              {isSubmitting ? (
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              ) : (
+                <Send className="mr-2 h-4 w-4" />
+              )}
               Post Comment
             </Button>
           </div>
         </form>
       </div>
 
-      <div className="space-y-4">
+      {/* Comments List */}
+      <div className="space-y-3">
         {isLoading ? (
           <div className="flex justify-center py-8">
             <Loader2 className="h-8 w-8 animate-spin text-primary" />
           </div>
         ) : comments.length === 0 ? (
-          <div className="text-center py-8">
-            <p className="text-muted-foreground">No comments yet. Be the first to comment!</p>
+          <div className="text-center py-12 bg-gradient-to-br from-card/50 to-transparent rounded-xl border border-border/30">
+            <MessageSquare className="h-12 w-12 mx-auto mb-3 text-muted-foreground/50" />
+            <p className="text-muted-foreground font-medium">No comments yet</p>
+            <p className="text-sm text-muted-foreground/70">Be the first to share your thoughts!</p>
           </div>
         ) : (
           <>
             {(showAll ? comments : comments.slice(0, 5)).map((comment) => (
               <div
                 key={comment.id}
-                className="p-4 bg-card rounded-lg border border-border space-y-2"
+                className="p-4 bg-gradient-to-br from-card to-card/30 rounded-xl border border-border/50 hover:border-primary/30 transition-all duration-300"
               >
-                <div className="flex items-center gap-2">
-                  <span className="font-semibold text-foreground">
-                    {comment.username}
-                  </span>
-                  <span className="text-sm text-muted-foreground">
-                    {new Date(comment.created_at).toLocaleDateString()} at{" "}
-                    {new Date(comment.created_at).toLocaleTimeString()}
-                  </span>
+                <div className="flex items-center gap-3 mb-2">
+                  <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold ${
+                    comment.username.includes("😎") 
+                      ? "bg-primary text-primary-foreground" 
+                      : "bg-accent text-accent-foreground"
+                  }`}>
+                    {comment.username.includes("😎") ? "😎" : comment.username.charAt(0).toUpperCase()}
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <span className="font-semibold text-foreground text-sm">
+                      {comment.username}
+                    </span>
+                    <span className="text-xs text-muted-foreground ml-2">
+                      {new Date(comment.created_at).toLocaleDateString()} • {new Date(comment.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                    </span>
+                  </div>
                 </div>
-                <p className="mt-2 text-foreground whitespace-pre-wrap break-words">
+                <p className="text-foreground/90 text-sm leading-relaxed pl-11 whitespace-pre-wrap break-words">
                   {comment.comment}
                 </p>
               </div>
@@ -267,9 +321,9 @@ const CommentSection = () => {
                 <Button
                   variant="outline"
                   onClick={() => setShowAll(!showAll)}
-                  className="w-full max-w-xs"
+                  className="w-full max-w-xs border-primary/30 hover:bg-primary/10"
                 >
-                  {showAll ? "Show Less" : `View More (${comments.length - 5} more comments)`}
+                  {showAll ? "Show Less" : `View More (${comments.length - 5} more)`}
                 </Button>
               </div>
             )}
