@@ -351,7 +351,7 @@ const Index = () => {
       
       <ContactAdminButton />
       
-      <Footer />
+      <Footer showComments={false} />
     </div>
   );
 };

@@ -1,7 +1,6 @@
 import { Play } from "lucide-react";
 import { memo } from "react";
 import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
 import { buildWatchPath } from "@/lib/watchRoute";
 import OptimizedImage from "@/components/OptimizedImage";
 
@@ -16,11 +15,11 @@ interface Movie {
 
 interface MovieCardProps {
   movie: Movie;
-  onPlay: (movieId: string) => void;
+  onPlay?: (movieId: string) => void; // Keep for backwards compatibility but not used
   priority?: boolean;
 }
 
-const MovieCard = memo(({ movie, onPlay, priority = false }: MovieCardProps) => {
+const MovieCard = memo(({ movie, priority = false }: MovieCardProps) => {
   const watchPath = buildWatchPath(movie.title, movie.id);
 
   return (
@@ -41,28 +40,21 @@ const MovieCard = memo(({ movie, onPlay, priority = false }: MovieCardProps) => 
           />
           <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           
+          {/* Play icon overlay on hover */}
           <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            <Button
-              size="sm"
-              className="bg-primary hover:bg-primary-glow text-primary-foreground shadow-glow"
-              onClick={(e) => {
-                e.preventDefault();
-                onPlay(movie.id);
-              }}
-            >
-              <Play className="h-4 w-4 mr-1" />
-              Play
-            </Button>
+            <div className="w-14 h-14 rounded-full bg-primary/90 flex items-center justify-center shadow-lg">
+              <Play className="h-6 w-6 text-primary-foreground fill-primary-foreground ml-1" />
+            </div>
           </div>
         </div>
         
-        <div className="p-4">
+        <div className="p-3 sm:p-4">
           <h3 className="font-semibold text-foreground text-sm mb-1 line-clamp-1">
             {movie.title}
           </h3>
           <div className="flex items-center justify-between text-xs text-muted-foreground">
             <span>{movie.year}</span>
-            <span className="bg-accent px-2 py-1 rounded text-accent-foreground">
+            <span className="bg-primary/20 text-primary px-2 py-0.5 rounded font-medium">
               {movie.rating}
             </span>
           </div>
