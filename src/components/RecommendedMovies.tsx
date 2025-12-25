@@ -151,9 +151,9 @@ const RecommendedMovies = ({ currentMovieId, currentMovieTitle }: RecommendedMov
               <Link
                 key={movie.id}
                 to={buildWatchPath(movie.title, movie.id)}
-                className="flex-shrink-0 w-24 group"
+                className="flex-shrink-0 w-16 group"
               >
-                <div className="relative aspect-[2/3] rounded-lg overflow-hidden bg-card border border-border/50 group-hover:border-primary/50 transition-all">
+                <div className="relative aspect-[2/3] rounded-md overflow-hidden bg-card border border-border/50 group-hover:border-primary/50 transition-all">
                   <img
                     src={movie.poster}
                     alt={movie.title}
@@ -161,10 +161,10 @@ const RecommendedMovies = ({ currentMovieId, currentMovieTitle }: RecommendedMov
                     loading="lazy"
                   />
                   <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                    <Play className="h-6 w-6 text-white fill-white" />
+                    <Play className="h-4 w-4 text-white fill-white" />
                   </div>
                 </div>
-                <p className="mt-1.5 text-xs text-foreground font-medium truncate">{movie.title}</p>
+                <p className="mt-1 text-[10px] text-foreground font-medium truncate">{movie.title}</p>
               </Link>
             ))}
           </div>
