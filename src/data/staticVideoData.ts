@@ -136,6 +136,20 @@ const seriesData: Record<string, StaticVideoData> = {
   "assa1": { title: "Assassin S01 E1", embedCode: '<iframe width="640" height="360" src="https://short.icu/63hPYMriG" frameborder="0" scrolling="0" allowfullscreen></iframe>', host: "Dylan", downloadLinks: [{ quality: "720p", size: "634MB", url: "https://www.mediafire.com/file/vmr846jsp8svegy/The_Assassin_S01e01.mp4/file", type: "MP4" }] },
   "assa2": { title: "Assassin S01 E2", embedCode: '<iframe width="640" height="360" src="https://short.icu/37bLM8zzP" frameborder="0" scrolling="0" allowfullscreen></iframe>', host: "Dylan", downloadLinks: [{ quality: "720p", size: "634MB", url: "https://www.mediafire.com/file/t76ezy9mw64h0h4/The_Assassin_S01e02.mp4/file", type: "MP4" }] },
   "assa3": { title: "Assassin S01 E3", embedCode: '<iframe width="640" height="360" src="https://short.icu/qT9oCcCZu" frameborder="0" scrolling="0" allowfullscreen></iframe>', host: "Dylan", downloadLinks: [{ quality: "720p", size: "634MB", url: "https://www.mediafire.com/file/tnixm1ohn5ov8bw/The_Assassin_S01e03.mp4/file", type: "MP4" }] },
+  // Siren
+  "siren1": { title: "Siren E1", embedCode: '<iframe width="400" height="240" src="https://short.icu/rkdgwAlr1" frameborder="0" scrolling="0" allowfullscreen></iframe>', host: "Gaheza", downloadLinks: [{ quality: "720p", size: "900MB", url: "https://www.mediafire.com/file/l5y6c4ebhbiz4qa/Siren_S01e01.mp4/file", type: "MP4" }] },
+  "siren2": { title: "Siren E2", embedCode: '<iframe width="300" height="240" src="https://short.icu/43z41w5Dbr" frameborder="0" scrolling="0" allowfullscreen></iframe>', host: "Gaheza", downloadLinks: [{ quality: "720p", size: "900MB", url: "https://www.mediafire.com/file/tjmd7o11c7kh3nw/Siren_S01e02.mp4/file", type: "MP4" }] },
+  "siren3": { title: "Siren E3", embedCode: '<iframe width="400" height="240" src="https://short.icu/llKtNTDPO" frameborder="0" scrolling="0" allowfullscreen></iframe>', host: "Gaheza", downloadLinks: [{ quality: "720p", size: "900MB", url: "https://www.mediafire.com/file/jtir52hga9i9a0e/Siren_S01e03.mp4/file", type: "MP4" }] },
+  // Minecraft
+  "mine": { title: "Minecraft", embedCode: '<iframe width="560" height="315" src="//ok.ru/videoembed/11050503979568?nochat=1&autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>', host: "Rocky kimomo", downloadLinks: [{ quality: "720p", size: "1.4GB", url: "https://isatafileze.fly.dev/simple-redirect-download?file=series%2F2025%2Frocky%2FMINECRAFT.mp4&filename=MINECRAFT.mp4", type: "MP4" }] },
+  // Maleficent
+  "malef": { title: "Maleficent", embedCode: '<iframe width="560" height="315" src="//ok.ru/videoembed/11050504045104?nochat=1&autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>', host: "Rocky kimomo", downloadLinks: [{ quality: "720p", size: "740MB", url: "https://www.mediafire.com/file/4mxb46j0e5s80kb/Maleficent.mp4/file", type: "MP4" }] },
+  // Dangal
+  "dangal": { title: "Dangal", embedCode: '<iframe width="560" height="315" src="//ok.ru/videoembed/11059661900336?nochat=1&autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>', host: "Rocky kimomo", downloadLinks: [{ quality: "720p", size: "1.2GB", url: "https://www.mediafire.com/file/6xbw9xdztnz6vz6/Dangal.mp4/file", type: "MP4" }] },
+  // Blood Red Sky
+  "bloodr": { title: "Blood Red Sky", embedCode: '<iframe width="560" height="315" src="//ok.ru/videoembed/11059662031408?nochat=1&autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>', host: "Sankara", downloadLinks: [{ quality: "720p", size: "840MB", url: "https://isatafileze.fly.dev/simple-redirect-download?file=SANKAR%2FBlood_Red_Sky.mp4&filename=Blood_Red_Sky.mp4", type: "MP4" }] },
+  // Talk To Me
+  "talk": { title: "Talk To Me", embedCode: '<iframe width="560" height="315" src="//ok.ru/videoembed/11059662096944?nochat=1&autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>', host: "Sankara", downloadLinks: [{ quality: "720p", size: "840MB", url: "https://isatafileze.fly.dev/simple-redirect-download?file=SANKAR%2FTalk_To_Me.mp4&filename=Talk_To_Me.mp4", type: "MP4" }] },
 };
 
 // Combine all data
