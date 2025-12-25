@@ -85,13 +85,14 @@ const RecommendedMovies = ({ currentMovieId, currentMovieTitle }: RecommendedMov
         .filter(m => currentMovie && m.genre === currentMovie.genre)
         .slice(0, 5) as DBMovie[];
     } else {
-      // Regular movie - get 5 recommendations by genre
-      recommendations = movies
-        .filter(m => m.id !== currentMovieId)
-        .filter(m => currentMovie && m.genre === currentMovie.genre)
-        .slice(0, 5) as DBMovie[];
+      // Regular movie - get 5 recommendations by genre first, then any other movies
+      if (currentMovie) {
+        recommendations = movies
+          .filter(m => m.id !== currentMovieId && m.genre === currentMovie.genre)
+          .slice(0, 5) as DBMovie[];
+      }
       
-      // If not enough same-genre, fill with trending/featured
+      // If not enough same-genre, fill with any other movies
       if (recommendations.length < 5) {
         const more = movies
           .filter(m => m.id !== currentMovieId && !recommendations.find(r => r.id === m.id))
