@@ -3,6 +3,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { Loader2, Download, AlertCircle } from "lucide-react";
 import DOMPurify from "dompurify";
 import { getStaticVideoData } from "@/data/staticVideoData";
+import RecommendedMovies from "./RecommendedMovies";
 
 interface DownloadLink {
   quality: string;
@@ -212,6 +213,9 @@ const EmbeddedPlayer = ({ movieId, movieTitle, fallbackVideoUrl, fallbackDownloa
         </span>
         <span className="text-muted-foreground">• HD Quality</span>
       </div>
+
+      {/* Recommended Movies */}
+      <RecommendedMovies currentMovieId={movieId} currentMovieTitle={movieTitle} />
     </div>
   );
 };
