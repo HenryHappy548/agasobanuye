@@ -1,40 +1,62 @@
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, Percent } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
+import { useMemo } from "react";
 
-const AFFILIATE_LINK = "https://www.amazon.com?&linkCode=ll2&tag=rwaflixstore2-20&linkId=d299fad311d7855e639440853467495f&language=en_US&ref_=as_li_ss_tl";
+const AFFILIATE_LINK = "https://amzn.to/3MT8BFY";
 
 interface Product {
   name: string;
   nameRw: string;
   image: string;
   category: string;
+  discount?: number;
 }
 
 interface AmazonProductStripProps {
   category: "movies" | "trending" | "series" | "featured";
 }
 
-const productsByCategory: Record<string, Product[]> = {
-  movies: [
-    { name: "4K Smart TV", nameRw: "Televiziyo 4K", image: "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=120&h=120&fit=crop", category: "Display" },
-    { name: "Soundbar", nameRw: "Soundbar", image: "https://images.unsplash.com/photo-1545454675-3531b543be5d?w=120&h=120&fit=crop", category: "Audio" },
-    { name: "Projector", nameRw: "Projecteur", image: "https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=120&h=120&fit=crop", category: "Display" },
-  ],
-  trending: [
-    { name: "Wireless Headphones", nameRw: "Amatwi y'umuriro", image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=120&h=120&fit=crop", category: "Audio" },
-    { name: "Streaming Stick", nameRw: "Agakoresho ka Streaming", image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=120&h=120&fit=crop", category: "Streaming" },
-    { name: "LED Backlight", nameRw: "Urumuri rwa LED", image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=120&h=120&fit=crop", category: "Ambiance" },
-  ],
-  series: [
-    { name: "Comfy Blanket", nameRw: "Ibirago byiza", image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=120&h=120&fit=crop", category: "Comfort" },
-    { name: "Snack Bowl Set", nameRw: "Ibikombe by'ibiryo", image: "https://images.unsplash.com/photo-1499028344343-cd173ffc68a9?w=120&h=120&fit=crop", category: "Snacks" },
-    { name: "Wireless Earbuds", nameRw: "Amatwi mato", image: "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=120&h=120&fit=crop", category: "Audio" },
-  ],
-  featured: [
-    { name: "Gaming Chair", nameRw: "Intebe yo gukina", image: "https://images.unsplash.com/photo-1598550476439-6847785fcea6?w=120&h=120&fit=crop", category: "Furniture" },
-    { name: "Monitor Stand", nameRw: "Icyicaro cya Monitor", image: "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=120&h=120&fit=crop", category: "Setup" },
-    { name: "USB Hub", nameRw: "USB Hub", image: "https://images.unsplash.com/photo-1625723044792-44de16ccb4e9?w=120&h=120&fit=crop", category: "Tech" },
-  ],
+// Large pool of products to randomly pick from
+const allProducts: Product[] = [
+  // Audio
+  { name: "Wireless Headset", nameRw: "Headset", image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=120&h=120&fit=crop", category: "Audio", discount: 30 },
+  { name: "Bluetooth Earbuds", nameRw: "Earbuds", image: "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=120&h=120&fit=crop", category: "Audio", discount: 25 },
+  { name: "Soundbar Speaker", nameRw: "Soundbar", image: "https://images.unsplash.com/photo-1545454675-3531b543be5d?w=120&h=120&fit=crop", category: "Audio", discount: 40 },
+  { name: "Studio Microphone", nameRw: "Microphone", image: "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=120&h=120&fit=crop", category: "Audio", discount: 20 },
+  
+  // Display & Tech
+  { name: "4K Smart TV", nameRw: "TV 4K", image: "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=120&h=120&fit=crop", category: "Display", discount: 35 },
+  { name: "HD Projector", nameRw: "Projector", image: "https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=120&h=120&fit=crop", category: "Display", discount: 45 },
+  { name: "Webcam HD", nameRw: "Webcam", image: "https://images.unsplash.com/photo-1587826080692-f439cd0b70da?w=120&h=120&fit=crop", category: "Tech", discount: 15 },
+  { name: "LED Light Strip", nameRw: "LED Lights", image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=120&h=120&fit=crop", category: "Ambiance", discount: 50 },
+  
+  // Gaming & Setup
+  { name: "Gaming Controller", nameRw: "Controller", image: "https://images.unsplash.com/photo-1592840496694-26d035b52b48?w=120&h=120&fit=crop", category: "Gaming", discount: 20 },
+  { name: "Gaming Chair", nameRw: "Gaming Chair", image: "https://images.unsplash.com/photo-1598550476439-6847785fcea6?w=120&h=120&fit=crop", category: "Furniture", discount: 30 },
+  { name: "Monitor Stand", nameRw: "Monitor Stand", image: "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=120&h=120&fit=crop", category: "Setup", discount: 25 },
+  { name: "USB Hub", nameRw: "USB Hub", image: "https://images.unsplash.com/photo-1625723044792-44de16ccb4e9?w=120&h=120&fit=crop", category: "Tech", discount: 35 },
+  
+  // Comfort & Entertainment
+  { name: "Cozy Blanket", nameRw: "Blanket", image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=120&h=120&fit=crop", category: "Comfort", discount: 40 },
+  { name: "Popcorn Maker", nameRw: "Popcorn Maker", image: "https://images.unsplash.com/photo-1499028344343-cd173ffc68a9?w=120&h=120&fit=crop", category: "Kitchen", discount: 25 },
+  { name: "Streaming Device", nameRw: "Fire Stick", image: "https://images.unsplash.com/photo-1593784991095-a205069470b6?w=120&h=120&fit=crop", category: "Streaming", discount: 30 },
+  { name: "Phone Stand", nameRw: "Phone Stand", image: "https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=120&h=120&fit=crop", category: "Accessories", discount: 15 },
+];
+
+// Function to get random products based on category
+const getRandomProducts = (category: string, count: number = 4): Product[] => {
+  // Create a seed based on current hour so products change periodically
+  const hourSeed = new Date().getHours();
+  const categoryIndex = ["movies", "trending", "series", "featured"].indexOf(category);
+  
+  // Shuffle based on seed
+  const shuffled = [...allProducts].sort((a, b) => {
+    const seedA = (a.name.charCodeAt(0) + hourSeed + categoryIndex) % 10;
+    const seedB = (b.name.charCodeAt(0) + hourSeed + categoryIndex) % 10;
+    return seedA - seedB;
+  });
+  
+  return shuffled.slice(0, count);
 };
 
 const trackClick = async (productName: string, category: string) => {
@@ -51,7 +73,8 @@ const trackClick = async (productName: string, category: string) => {
 };
 
 const AmazonProductStrip = ({ category }: AmazonProductStripProps) => {
-  const products = productsByCategory[category] || productsByCategory.movies;
+  // Memoize products so they don't change on every render
+  const products = useMemo(() => getRandomProducts(category, 4), [category]);
 
   const handleProductClick = (product: Product) => {
     trackClick(product.name, category);
@@ -79,6 +102,12 @@ const AmazonProductStrip = ({ category }: AmazonProductStripProps) => {
             <span className="text-xs text-foreground/80 group-hover:text-primary transition-colors whitespace-nowrap">
               {product.nameRw}
             </span>
+            {product.discount && (
+              <span className="flex items-center gap-0.5 text-[10px] font-bold text-green-500 bg-green-500/10 px-1.5 py-0.5 rounded">
+                <Percent className="w-2.5 h-2.5" />
+                {product.discount}
+              </span>
+            )}
             <ExternalLink className="w-3 h-3 text-muted-foreground group-hover:text-primary transition-colors" />
           </button>
         ))}
