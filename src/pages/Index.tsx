@@ -11,7 +11,7 @@ import { ContactAdminButton } from "@/components/ContactAdminButton";
 import { Button } from "@/components/ui/button";
 import { useMovies } from "@/hooks/useMovies";
 import { isValidVideoId, sanitizeTextInput } from "@/lib/security";
-import AmazonBanner from "@/components/AmazonBanner";
+import AmazonProductStrip from "@/components/AmazonProductStrip";
 import {
   Carousel,
   CarouselContent,
@@ -195,6 +195,7 @@ const Index = () => {
                 <CarouselNext className="right-2" />
               </Carousel>
             )}
+            <AmazonProductStrip category="featured" />
           </section>
         </div>
       )}
@@ -263,6 +264,7 @@ const Index = () => {
                   <CarouselNext className="right-2" />
                 </Carousel>
               )}
+              <AmazonProductStrip category="trending" />
             </section>
 
             <section>
@@ -301,11 +303,7 @@ const Index = () => {
                   <CarouselNext className="right-2" />
                 </Carousel>
               )}
-            </section>
-
-            {/* Amazon Affiliate Banner */}
-            <section className="py-2">
-              <AmazonBanner />
+              <AmazonProductStrip category="movies" />
             </section>
 
             <section>
@@ -344,6 +342,7 @@ const Index = () => {
                   <CarouselNext className="right-2" />
                 </Carousel>
               )}
+              <AmazonProductStrip category="series" />
             </section>
           </>
         )}
