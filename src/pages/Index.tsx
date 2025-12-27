@@ -11,6 +11,7 @@ import { ContactAdminButton } from "@/components/ContactAdminButton";
 import { Button } from "@/components/ui/button";
 import { useMovies } from "@/hooks/useMovies";
 import { isValidVideoId, sanitizeTextInput } from "@/lib/security";
+import AmazonBanner from "@/components/AmazonBanner";
 import {
   Carousel,
   CarouselContent,
@@ -300,6 +301,11 @@ const Index = () => {
                   <CarouselNext className="right-2" />
                 </Carousel>
               )}
+            </section>
+
+            {/* Amazon Affiliate Banner */}
+            <section className="py-2">
+              <AmazonBanner />
             </section>
 
             <section>
