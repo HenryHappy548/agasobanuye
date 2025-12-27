@@ -14,6 +14,33 @@ export type Database = {
   }
   public: {
     Tables: {
+      affiliate_clicks: {
+        Row: {
+          category: string | null
+          clicked_at: string
+          id: string
+          product_name: string
+          referrer: string | null
+          user_agent: string | null
+        }
+        Insert: {
+          category?: string | null
+          clicked_at?: string
+          id?: string
+          product_name: string
+          referrer?: string | null
+          user_agent?: string | null
+        }
+        Update: {
+          category?: string | null
+          clicked_at?: string
+          id?: string
+          product_name?: string
+          referrer?: string | null
+          user_agent?: string | null
+        }
+        Relationships: []
+      }
       comments: {
         Row: {
           comment: string

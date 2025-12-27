@@ -5,13 +5,14 @@ import { User } from "@supabase/supabase-js";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { LogOut, Film, Plus, Download, Video, MessageSquare } from "lucide-react";
+import { LogOut, Film, Plus, Download, Video, MessageSquare, MousePointerClick } from "lucide-react";
 import { toast } from "sonner";
 import MovieForm from "@/components/admin/MovieForm";
 import MovieList from "@/components/admin/MovieList";
 import DownloadLinksManager from "@/components/admin/DownloadLinksManager";
 import VideoManager from "@/components/admin/VideoManager";
 import MessagesManager from "@/components/admin/MessagesManager";
+import AffiliateClicksManager from "@/components/admin/AffiliateClicksManager";
 
 const Admin = () => {
   const [user, setUser] = useState<User | null>(null);
@@ -112,26 +113,30 @@ const Admin = () => {
 
         {/* Main Content */}
         <Tabs defaultValue="add" className="space-y-6">
-          <TabsList className="grid w-full grid-cols-5 max-w-3xl mx-auto">
+          <TabsList className="grid w-full grid-cols-6 max-w-4xl mx-auto">
             <TabsTrigger value="add" className="gap-2">
               <Plus className="w-4 h-4" />
-              Add Movie
+              <span className="hidden sm:inline">Add Movie</span>
             </TabsTrigger>
             <TabsTrigger value="manage" className="gap-2">
               <Film className="w-4 h-4" />
-              Movies
+              <span className="hidden sm:inline">Movies</span>
             </TabsTrigger>
             <TabsTrigger value="videos" className="gap-2">
               <Video className="w-4 h-4" />
-              Videos
+              <span className="hidden sm:inline">Videos</span>
             </TabsTrigger>
             <TabsTrigger value="downloads" className="gap-2">
               <Download className="w-4 h-4" />
-              Downloads
+              <span className="hidden sm:inline">Downloads</span>
             </TabsTrigger>
             <TabsTrigger value="messages" className="gap-2">
               <MessageSquare className="w-4 h-4" />
-              Messages
+              <span className="hidden sm:inline">Messages</span>
+            </TabsTrigger>
+            <TabsTrigger value="clicks" className="gap-2">
+              <MousePointerClick className="w-4 h-4" />
+              <span className="hidden sm:inline">Clicks</span>
             </TabsTrigger>
           </TabsList>
 
@@ -201,6 +206,20 @@ const Admin = () => {
               </CardHeader>
               <CardContent>
                 <MessagesManager />
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          <TabsContent value="clicks">
+            <Card className="border-primary/20 shadow-lg">
+              <CardHeader>
+                <CardTitle className="text-2xl">Affiliate Clicks</CardTitle>
+                <CardDescription>
+                  Track clicks on Amazon affiliate products
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <AffiliateClicksManager />
               </CardContent>
             </Card>
           </TabsContent>
