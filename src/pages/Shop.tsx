@@ -1,9 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { ExternalLink, Percent, ShoppingBag, Truck, Shield, Tag, Loader2 } from 'lucide-react';
+import { ExternalLink, Percent, ShoppingBag, Truck, Shield, Tag, Loader2, Search, X } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import StreamingHeader from '@/components/StreamingHeader';
 import Footer from '@/components/Footer';
+import { Input } from '@/components/ui/input';
 
 interface Product {
   id: string;
@@ -28,6 +29,7 @@ const Shop = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
     fetchProducts();
@@ -51,9 +53,26 @@ const Shop = () => {
   };
 
   const categories = ['all', ...new Set(products.map(p => p.category).filter(Boolean))];
-  const filteredProducts = selectedCategory === 'all' 
-    ? products 
-    : products.filter(p => p.category === selectedCategory);
+  
+  const filteredProducts = useMemo(() => {
+    let result = products;
+    
+    // Filter by category
+    if (selectedCategory !== 'all') {
+      result = result.filter(p => p.category === selectedCategory);
+    }
+    
+    // Filter by search query
+    if (searchQuery.trim()) {
+      const query = searchQuery.toLowerCase().trim();
+      result = result.filter(p => 
+        p.name.toLowerCase().includes(query) ||
+        (p.category && p.category.toLowerCase().includes(query))
+      );
+    }
+    
+    return result;
+  }, [products, selectedCategory, searchQuery]);
 
   const trackClick = async (productName: string, category: string) => {
     try {
@@ -130,8 +149,28 @@ const Shop = () => {
           </div>
         </div>
 
-        {/* Category Filter */}
+        {/* Search Bar */}
         <div className="max-w-7xl mx-auto px-3 sm:px-4 pt-6">
+          <div className="relative max-w-md mx-auto mb-4">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+            <Input
+              type="text"
+              placeholder="Search products..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="pl-10 pr-10 bg-card border-border focus:border-primary"
+            />
+            {searchQuery && (
+              <button
+                onClick={() => setSearchQuery('')}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            )}
+          </div>
+          
+          {/* Category Filter */}
           <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
             {categories.map((cat) => (
               <button
