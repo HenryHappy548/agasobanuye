@@ -20,6 +20,7 @@ const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
 const TermsOfService = lazy(() => import("./pages/TermsOfService"));
 const About = lazy(() => import("./pages/About"));
 const Contact = lazy(() => import("./pages/Contact"));
+const Shop = lazy(() => import("./pages/Shop"));
 
 const NotFound = lazy(() => import("./pages/NotFound"));
 
@@ -64,6 +65,7 @@ const App = () => {
                 <Route path="/privacy-policy" element={<PrivacyPolicy />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/contact" element={<Contact />} />
+                <Route path="/shop" element={<Shop />} />
                 
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />

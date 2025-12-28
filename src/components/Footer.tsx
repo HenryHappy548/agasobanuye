@@ -1,4 +1,4 @@
-import { Phone, Mail, ExternalLink, Home, Film, Tv, TrendingUp, HelpCircle, MessageCircle, Instagram } from "lucide-react";
+import { Phone, Mail, ExternalLink, Home, Film, Tv, TrendingUp, HelpCircle, MessageCircle, Instagram, ShoppingBag } from "lucide-react";
 import { Link } from "react-router-dom";
 import CommentSection from "./CommentSection";
 
@@ -118,6 +118,15 @@ const Footer = ({ showComments = true }: FooterProps) => {
                 >
                   <TrendingUp className="h-4 w-4" />
                   <span>Popular</span>
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  to="/shop" 
+                  className="flex items-center space-x-2 text-sm text-muted-foreground hover:text-primary transition-colors"
+                >
+                  <ShoppingBag className="h-4 w-4" />
+                  <span>Shop</span>
                 </Link>
               </li>
             </ul>
