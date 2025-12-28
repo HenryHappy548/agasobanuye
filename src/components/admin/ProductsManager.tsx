@@ -8,7 +8,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Switch } from "@/components/ui/switch";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useToast } from "@/hooks/use-toast";
-import { Plus, Trash2, Edit2, Save, X, Search, Download, Loader2 } from "lucide-react";
+import { Plus, Trash2, Edit2, Save, X, Search, Download, Loader2, Zap } from "lucide-react";
 
 interface Product {
   id: string;
@@ -25,11 +25,15 @@ interface Product {
 interface ApiProduct {
   product_id: string;
   product_title: string;
-  sale_price: string;
-  original_price: string;
+  sale_price_usd: number;
+  original_price_usd: number;
+  sale_price_rwf: number;
+  original_price_rwf: number;
   product_main_image_url: string;
-  promotion_link?: string;
-  app_sale_price?: string;
+  promotion_link: string;
+  commission_rate: string;
+  discount: string;
+  category_name: string;
 }
 
 const CATEGORIES = [
@@ -39,6 +43,15 @@ const CATEGORIES = [
   { value: "gaming", label: "Gaming" },
   { value: "office", label: "Office" },
 ];
+
+// Format RWF currency
+const formatRWF = (amount: number) => {
+  return new Intl.NumberFormat('rw-RW', {
+    style: 'currency',
+    currency: 'RWF',
+    minimumFractionDigits: 0,
+  }).format(amount);
+};
 
 export const ProductsManager = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -52,6 +65,7 @@ export const ProductsManager = () => {
   const [apiProducts, setApiProducts] = useState<ApiProduct[]>([]);
   const [searching, setSearching] = useState(false);
   const [importing, setImporting] = useState<string | null>(null);
+  const [bulkImporting, setBulkImporting] = useState(false);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -185,13 +199,11 @@ export const ProductsManager = () => {
     try {
       const response = await fetch(`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/aliexpress-api`, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           action: 'search',
           keyword: searchKeyword,
-          pageSize: 20,
+          pageSize: 50,
         }),
       });
 
@@ -202,18 +214,16 @@ export const ProductsManager = () => {
         return;
       }
 
-      // Parse the API response
-      const productList = data?.aliexpress_affiliate_product_query_response?.resp_result?.result?.products?.product || [];
-      setApiProducts(productList);
+      setApiProducts(data.products || []);
       
-      if (productList.length === 0) {
+      if (!data.products?.length) {
         toast({ title: "No products found. Try different keywords.", variant: "destructive" });
       } else {
-        toast({ title: `Found ${productList.length} products` });
+        toast({ title: `Found ${data.products.length} products (Rate: 1 USD = ${data.usd_to_rwf_rate} RWF)` });
       }
     } catch (error) {
       console.error('Search error:', error);
-      toast({ title: "Error searching products. Check API credentials.", variant: "destructive" });
+      toast({ title: "Error searching products", variant: "destructive" });
     } finally {
       setSearching(false);
     }
@@ -223,23 +233,15 @@ export const ProductsManager = () => {
     setImporting(apiProduct.product_id);
     
     try {
-      // Parse price (remove currency symbol if present)
-      const salePrice = parseFloat(apiProduct.app_sale_price || apiProduct.sale_price?.replace(/[^0-9.]/g, '') || '0');
-      const originalPrice = parseFloat(apiProduct.original_price?.replace(/[^0-9.]/g, '') || '0');
-      
-      // Upgrade image to higher resolution
       const imageUrl = apiProduct.product_main_image_url?.replace(/_\d+x\d+\./, '_800x800.') || apiProduct.product_main_image_url;
-      
-      // Generate affiliate link via API or use product URL
-      const affiliateLink = apiProduct.promotion_link || `https://www.aliexpress.com/item/${apiProduct.product_id}.html`;
 
       const productData = {
         name: apiProduct.product_title,
-        price: salePrice,
-        original_price: originalPrice > salePrice ? originalPrice : null,
-        affiliate_link: affiliateLink,
+        price: apiProduct.sale_price_rwf,
+        original_price: apiProduct.original_price_rwf > apiProduct.sale_price_rwf ? apiProduct.original_price_rwf : null,
+        affiliate_link: apiProduct.promotion_link,
         image_url: imageUrl,
-        category: "electronics",
+        category: mapCategory(apiProduct.category_name),
         display_order: products.length * 1000,
         is_active: true,
       };
@@ -249,9 +251,8 @@ export const ProductsManager = () => {
       if (error) {
         toast({ title: "Error importing product", variant: "destructive" });
       } else {
-        toast({ title: "Product imported successfully!" });
+        toast({ title: `Imported! You earn ${apiProduct.commission_rate} commission` });
         fetchProducts();
-        // Remove from API list
         setApiProducts(prev => prev.filter(p => p.product_id !== apiProduct.product_id));
       }
     } catch (error) {
@@ -260,6 +261,56 @@ export const ProductsManager = () => {
     } finally {
       setImporting(null);
     }
+  };
+
+  const bulkImportProducts = async () => {
+    setBulkImporting(true);
+    try {
+      const keywords = [
+        "wireless mouse",
+        "laptop stand",
+        "phone accessories",
+        "gaming headset",
+        "keyboard",
+        "webcam",
+        "USB hub",
+        "tablet stand",
+        "earbuds",
+        "power bank"
+      ];
+
+      const response = await fetch(`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/aliexpress-api`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          action: 'bulk_import',
+          keywords,
+        }),
+      });
+
+      const data = await response.json();
+      
+      if (data.error) {
+        toast({ title: data.error, variant: "destructive" });
+      } else {
+        toast({ title: `Successfully imported ${data.imported_count} products!` });
+        fetchProducts();
+      }
+    } catch (error) {
+      console.error('Bulk import error:', error);
+      toast({ title: "Error bulk importing products", variant: "destructive" });
+    } finally {
+      setBulkImporting(false);
+    }
+  };
+
+  const mapCategory = (categoryName: string): string => {
+    const name = (categoryName || '').toLowerCase();
+    if (name.includes('computer') || name.includes('office')) return 'office';
+    if (name.includes('electronic') || name.includes('phone')) return 'electronics';
+    if (name.includes('game') || name.includes('gaming')) return 'gaming';
+    if (name.includes('accessor')) return 'accessories';
+    return 'general';
   };
 
   if (loading) {
@@ -271,16 +322,26 @@ export const ProductsManager = () => {
       <Tabs defaultValue="products" className="w-full">
         <TabsList className="grid w-full grid-cols-2">
           <TabsTrigger value="products">My Products ({products.length})</TabsTrigger>
-          <TabsTrigger value="api">Search AliExpress API</TabsTrigger>
+          <TabsTrigger value="api">AliExpress API</TabsTrigger>
         </TabsList>
 
         <TabsContent value="products" className="space-y-4">
-          <div className="flex justify-between items-center">
-            <h3 className="text-lg font-semibold">Products</h3>
-            <Button onClick={() => setShowForm(!showForm)} variant={showForm ? "outline" : "default"}>
-              {showForm ? <X className="w-4 h-4 mr-2" /> : <Plus className="w-4 h-4 mr-2" />}
-              {showForm ? "Cancel" : "Add Manually"}
-            </Button>
+          <div className="flex justify-between items-center flex-wrap gap-2">
+            <h3 className="text-lg font-semibold">Products (Prices in RWF)</h3>
+            <div className="flex gap-2">
+              <Button onClick={bulkImportProducts} disabled={bulkImporting} variant="outline">
+                {bulkImporting ? (
+                  <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                ) : (
+                  <Zap className="w-4 h-4 mr-2" />
+                )}
+                Auto-Import 100+ Products
+              </Button>
+              <Button onClick={() => setShowForm(!showForm)} variant={showForm ? "outline" : "default"}>
+                {showForm ? <X className="w-4 h-4 mr-2" /> : <Plus className="w-4 h-4 mr-2" />}
+                {showForm ? "Cancel" : "Add Manually"}
+              </Button>
+            </div>
           </div>
 
           {showForm && (
@@ -312,26 +373,24 @@ export const ProductsManager = () => {
                   </Select>
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="price">Price ($) *</Label>
+                  <Label htmlFor="price">Price (RWF) *</Label>
                   <Input
                     id="price"
                     type="number"
-                    step="0.01"
                     value={formData.price}
                     onChange={(e) => setFormData({ ...formData, price: e.target.value })}
                     required
-                    placeholder="29.99"
+                    placeholder="13500"
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="original_price">Original Price ($)</Label>
+                  <Label htmlFor="original_price">Original Price (RWF)</Label>
                   <Input
                     id="original_price"
                     type="number"
-                    step="0.01"
                     value={formData.original_price}
                     onChange={(e) => setFormData({ ...formData, original_price: e.target.value })}
-                    placeholder="49.99"
+                    placeholder="27000"
                   />
                 </div>
                 <div className="space-y-2 md:col-span-2">
@@ -385,10 +444,9 @@ export const ProductsManager = () => {
                 <TableRow>
                   <TableHead>Image</TableHead>
                   <TableHead>Name</TableHead>
-                  <TableHead>Price</TableHead>
+                  <TableHead>Price (RWF)</TableHead>
                   <TableHead>Category</TableHead>
                   <TableHead>Active</TableHead>
-                  <TableHead>Order</TableHead>
                   <TableHead>Actions</TableHead>
                 </TableRow>
               </TableHeader>
@@ -406,10 +464,10 @@ export const ProductsManager = () => {
                     <TableCell className="font-medium max-w-[200px] truncate">{product.name}</TableCell>
                     <TableCell>
                       <div>
-                        <span className="font-bold">${product.price}</span>
+                        <span className="font-bold text-primary">{formatRWF(product.price)}</span>
                         {product.original_price && (
                           <span className="text-muted-foreground line-through ml-2 text-sm">
-                            ${product.original_price}
+                            {formatRWF(product.original_price)}
                           </span>
                         )}
                       </div>
@@ -421,7 +479,6 @@ export const ProductsManager = () => {
                         onCheckedChange={() => toggleActive(product.id, product.is_active)}
                       />
                     </TableCell>
-                    <TableCell>{product.display_order}</TableCell>
                     <TableCell>
                       <div className="flex gap-2">
                         <Button size="sm" variant="outline" onClick={() => handleEdit(product)}>
@@ -438,7 +495,7 @@ export const ProductsManager = () => {
             </Table>
             {products.length === 0 && (
               <div className="text-center py-8 text-muted-foreground">
-                No products yet. Add products manually or search via API!
+                No products yet. Click "Auto-Import 100+ Products" to get started!
               </div>
             )}
           </div>
@@ -446,10 +503,18 @@ export const ProductsManager = () => {
 
         <TabsContent value="api" className="space-y-4">
           <div className="bg-muted/50 p-4 rounded-lg space-y-4">
-            <h3 className="text-lg font-semibold">Search AliExpress Products</h3>
-            <p className="text-sm text-muted-foreground">
-              Search for products on AliExpress and import them directly with affiliate links.
-            </p>
+            <div className="flex items-center justify-between">
+              <div>
+                <h3 className="text-lg font-semibold">Search AliExpress Products</h3>
+                <p className="text-sm text-muted-foreground">
+                  Search products and import them with affiliate links. You earn <span className="text-primary font-bold">7-8% commission</span> on each sale!
+                </p>
+              </div>
+              <div className="text-right text-sm">
+                <div className="text-muted-foreground">Exchange Rate:</div>
+                <div className="font-bold">1 USD = 1,350 RWF</div>
+              </div>
+            </div>
             <div className="flex gap-2">
               <Input
                 placeholder="Search keywords (e.g., wireless mouse, laptop stand)"
@@ -480,16 +545,27 @@ export const ProductsManager = () => {
                     loading="lazy"
                   />
                   <h4 className="font-medium text-sm line-clamp-2">{product.product_title}</h4>
-                  <div className="flex items-center gap-2">
-                    <span className="text-lg font-bold text-primary">
-                      ${parseFloat(product.app_sale_price || product.sale_price?.replace(/[^0-9.]/g, '') || '0').toFixed(2)}
-                    </span>
-                    {product.original_price && (
-                      <span className="text-sm text-muted-foreground line-through">
-                        ${parseFloat(product.original_price.replace(/[^0-9.]/g, '')).toFixed(2)}
-                      </span>
-                    )}
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <div className="text-lg font-bold text-primary">
+                        {formatRWF(product.sale_price_rwf)}
+                      </div>
+                      {product.original_price_rwf > product.sale_price_rwf && (
+                        <div className="text-sm text-muted-foreground line-through">
+                          {formatRWF(product.original_price_rwf)}
+                        </div>
+                      )}
+                    </div>
+                    <div className="text-right">
+                      <div className="text-xs text-muted-foreground">Commission</div>
+                      <div className="text-sm font-bold text-green-500">{product.commission_rate}</div>
+                    </div>
                   </div>
+                  {product.discount && (
+                    <div className="inline-block bg-destructive/20 text-destructive text-xs px-2 py-1 rounded">
+                      {product.discount} OFF
+                    </div>
+                  )}
                   <Button 
                     className="w-full" 
                     size="sm"
