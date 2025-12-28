@@ -5,6 +5,8 @@ import VideoPlayer from "@/components/VideoPlayer";
 import Footer from "@/components/Footer";
 import { useMovies } from "@/hooks/useMovies";
 import { Skeleton } from "@/components/ui/skeleton";
+import { ProductSlider } from "@/components/ProductSlider";
+import { MiniProductStrip } from "@/components/MiniProductStrip";
 
 const Movies = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -41,7 +43,10 @@ const Movies = () => {
           </p>
         </div>
 
-        <section>
+        {/* Mini Product Strip */}
+        <MiniProductStrip limit={3} />
+
+        <section className="mt-4">
           {loading ? (
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 sm:gap-4">
               {[...Array(12)].map((_, i) => (
@@ -71,6 +76,9 @@ const Movies = () => {
             </div>
           )}
         </section>
+
+        {/* Product Slider */}
+        <ProductSlider limit={15} title="🔥 Hot Deals" />
       </main>
 
       <VideoPlayer

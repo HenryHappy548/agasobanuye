@@ -9,6 +9,8 @@ import Footer from "@/components/Footer";
 import { slugify } from "@/lib/slugify";
 import { toast } from "sonner";
 import { useMovies, DBMovie } from "@/hooks/useMovies";
+import { ProductSlider } from "@/components/ProductSlider";
+import { MiniProductStrip } from "@/components/MiniProductStrip";
 
 const MovieDetail = memo(() => {
   const { slug, id } = useParams<{ slug: string; id?: string }>();
@@ -225,6 +227,9 @@ const MovieDetail = memo(() => {
           </div>
         </section>
 
+        {/* Mini Products Above Player */}
+        <MiniProductStrip limit={3} />
+
         {/* Video Player Section - MAIN FEATURE */}
         <section className="space-y-4">
           <h2 className="text-lg font-bold text-foreground flex items-center gap-2">
@@ -238,6 +243,9 @@ const MovieDetail = memo(() => {
             fallbackDownloadUrl={(movie as DBMovie).download_url}
           />
         </section>
+
+        {/* Product Slider Below Player */}
+        <ProductSlider limit={15} title="🔥 Hot Deals" />
 
         {/* About Section */}
         <section className="bg-gradient-to-br from-card/80 to-card/40 rounded-xl p-5 border border-border/50">
