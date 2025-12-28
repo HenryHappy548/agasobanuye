@@ -2,6 +2,15 @@ import { ExternalLink } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useProducts } from "@/hooks/useProducts";
 
+// Format RWF currency
+const formatRWF = (amount: number) => {
+  return new Intl.NumberFormat('rw-RW', {
+    style: 'currency',
+    currency: 'RWF',
+    minimumFractionDigits: 0,
+  }).format(amount);
+};
+
 interface MiniProductStripProps {
   limit?: number;
 }
@@ -47,10 +56,10 @@ export const MiniProductStrip = ({ limit = 3 }: MiniProductStripProps) => {
           <div className="flex-1 min-w-0">
             <p className="text-xs font-medium text-foreground truncate">{product.name}</p>
             <div className="flex items-center gap-1">
-              <span className="text-xs font-bold text-primary">${product.price}</span>
+              <span className="text-xs font-bold text-primary">{formatRWF(product.price)}</span>
               {product.original_price && (
                 <span className="text-[10px] text-muted-foreground line-through">
-                  ${product.original_price}
+                  {formatRWF(product.original_price)}
                 </span>
               )}
             </div>
