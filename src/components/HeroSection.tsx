@@ -1,19 +1,78 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Play, Info, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import heroImage from "@/assets/dont.jpg";
+import { supabase } from "@/integrations/supabase/client";
+import { useNavigate } from "react-router-dom";
+import { slugify } from "@/lib/slugify";
+import heroImageFallback from "@/assets/dont.jpg";
 
 interface HeroSectionProps {
   onPlayVideo: (videoId: string) => void;
 }
 
+interface FeaturedMovie {
+  id: string;
+  title: string;
+  description: string;
+  year: string;
+  genre: string;
+  rating: string;
+  poster_url: string;
+  video_url: string;
+}
+
 const HeroSection = ({ onPlayVideo }: HeroSectionProps) => {
   const [showInfo, setShowInfo] = useState(false);
+  const [featuredMovie, setFeaturedMovie] = useState<FeaturedMovie | null>(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    fetchFeaturedMovie();
+  }, []);
+
+  const fetchFeaturedMovie = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('movies')
+        .select('*')
+        .eq('featured', true)
+        .order('updated_at', { ascending: false })
+        .limit(1)
+        .single();
+
+      if (error && error.code !== 'PGRST116') {
+        console.error('Error fetching featured movie:', error);
+      }
+      
+      if (data) {
+        setFeaturedMovie(data);
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
+
+  const handlePlayClick = () => {
+    if (featuredMovie) {
+      const slug = slugify(featuredMovie.title);
+      navigate(`/watch/${slug}/${featuredMovie.id}`);
+    } else {
+      onPlayVideo("featured-movie");
+    }
+  };
+
+  // Fallback content if no featured movie
+  const title = featuredMovie?.title || "Talk To Me";
+  const description = featuredMovie?.description || "a British horror-thriller about two teenage pranksters, Sam and Brady, whose drunken, viral prank calls backfire when a mysterious stranger turns their own game on them";
+  const year = featuredMovie?.year || "2022";
+  const genre = featuredMovie?.genre || "Horror, Mystery";
+  const posterUrl = featuredMovie?.poster_url || heroImageFallback;
+
   return (
     <section className="relative h-[50vh] sm:h-[60vh] lg:h-[70vh] flex items-center justify-start overflow-hidden">
       <img
-        src={heroImage}
-        alt="Featured movie"
+        src={posterUrl}
+        alt={`${title} featured movie`}
         loading="eager"
         decoding="async"
         className="absolute inset-0 w-full h-full object-cover"
@@ -23,15 +82,16 @@ const HeroSection = ({ onPlayVideo }: HeroSectionProps) => {
       <div className="relative z-10 container mx-auto px-4 sm:px-6">
         <div className="max-w-xs sm:max-w-md lg:max-w-lg xl:max-w-xl">
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3 sm:mb-4 leading-tight">
-            Talk To Me
+            {title}
           </h1>
           <p className="text-sm sm:text-base lg:text-lg text-muted-foreground mb-4 sm:mb-6 leading-relaxed line-clamp-3 sm:line-clamp-none">
-          a British horror-thriller about two teenage pranksters, Sam and Brady, whose drunken, viral prank calls backfire when a mysterious stranger turns their own game on them </p>
+            {description}
+          </p>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
             <Button 
               size="lg" 
               className="bg-primary hover:bg-primary-glow text-primary-foreground shadow-glow transition-all duration-300 text-sm sm:text-base"
-              onClick={() => onPlayVideo("featured-movie")}
+              onClick={handlePlayClick}
             >
               <Play className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
               Play Now
@@ -70,18 +130,21 @@ const HeroSection = ({ onPlayVideo }: HeroSectionProps) => {
             
             <div className="space-y-4">
               <h2 className="text-2xl sm:text-3xl font-bold text-foreground pr-8">
-                Talk To Me (2022)
+                {title} ({year})
               </h2>
               
               <div className="flex flex-wrap gap-2 text-sm">
-                <span className="bg-primary/20 text-primary px-3 py-1 rounded-full">2025</span>
-                <span className="bg-accent/50 text-accent-foreground px-3 py-1 rounded-full">Horror</span>
-                <span className="bg-accent/50 text-accent-foreground px-3 py-1 rounded-full">Mystery</span>
-                <span className="bg-accent/50 text-accent-foreground px-3 py-1 rounded-full">Sankara</span>
+                <span className="bg-primary/20 text-primary px-3 py-1 rounded-full">{year}</span>
+                {genre.split(',').map((g, i) => (
+                  <span key={i} className="bg-accent/50 text-accent-foreground px-3 py-1 rounded-full">
+                    {g.trim()}
+                  </span>
+                ))}
               </div>
               
               <p className="text-muted-foreground leading-relaxed">
-               a British horror-thriller about two teenage pranksters, Sam and Brady, whose drunken, viral prank calls backfire when a mysterious stranger turns their own game on them </p>
+                {description}
+              </p>
               
               <div className="flex flex-col sm:flex-row gap-3 pt-4">
                 <Button 
@@ -89,7 +152,7 @@ const HeroSection = ({ onPlayVideo }: HeroSectionProps) => {
                   className="bg-primary hover:bg-primary-glow text-primary-foreground shadow-glow"
                   onClick={() => {
                     setShowInfo(false);
-                    onPlayVideo("featured-movie");
+                    handlePlayClick();
                   }}
                 >
                   <Play className="mr-2 h-5 w-5" />
