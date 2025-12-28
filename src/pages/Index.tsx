@@ -200,8 +200,6 @@ const Index = () => {
             
           </section>
 
-          {/* Products Section */}
-          <ProductSlider limit={15} title="🛒 Recommended Products" />
         </div>
       )}
       
@@ -274,6 +272,8 @@ const Index = () => {
               
             </section>
 
+            <ProductSlider limit={20} title="🛍️ Trending Deals" />
+
             <section>
               <div className="flex items-center justify-between mb-4 sm:mb-6">
                 <h2 className="text-xl sm:text-2xl font-bold text-foreground">
@@ -313,6 +313,8 @@ const Index = () => {
               
             </section>
 
+            <ProductSlider limit={20} title="🎬 Movie Deals" />
+
             <section>
               <div className="flex items-center justify-between mb-4 sm:mb-6">
                 <h2 className="text-xl sm:text-2xl font-bold text-foreground">
@@ -350,8 +352,10 @@ const Index = () => {
                 </Carousel>
               )}
               
-            </section>
-          </>
+             </section>
+
+             <ProductSlider limit={20} title="📺 Series Deals" />
+           </>
         )}
       </main>
 

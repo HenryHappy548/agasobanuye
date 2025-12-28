@@ -1,40 +1,23 @@
-import { useState, useEffect } from "react";
-import { supabase } from "@/integrations/supabase/client";
 import { ExternalLink } from "lucide-react";
-
-interface Product {
-  id: string;
-  name: string;
-  price: number;
-  original_price: number | null;
-  affiliate_link: string;
-  image_url: string;
-  category: string;
-}
+import { supabase } from "@/integrations/supabase/client";
+import { useProducts } from "@/hooks/useProducts";
 
 interface MiniProductStripProps {
   limit?: number;
 }
 
+const toMediumAliImage = (url: string) => {
+  if (!url) return url;
+  return url
+    .replace("_80x80", "_140x140")
+    .replace("_300x300", "_140x140")
+    .replace("_800x800", "_140x140");
+};
+
 export const MiniProductStrip = ({ limit = 3 }: MiniProductStripProps) => {
-  const [products, setProducts] = useState<Product[]>([]);
+  const { products } = useProducts({ limit, activeOnly: true });
 
-  useEffect(() => {
-    const fetchProducts = async () => {
-      const { data } = await supabase
-        .from("products")
-        .select("*")
-        .eq("is_active", true)
-        .order("display_order", { ascending: true })
-        .limit(limit);
-
-      setProducts(data || []);
-    };
-
-    fetchProducts();
-  }, [limit]);
-
-  const handleClick = async (product: Product) => {
+  const handleClick = async (product: (typeof products)[number]) => {
     await supabase.from("affiliate_clicks").insert({
       product_name: product.name,
       category: product.category,
@@ -48,7 +31,7 @@ export const MiniProductStrip = ({ limit = 3 }: MiniProductStripProps) => {
   if (products.length === 0) return null;
 
   return (
-    <div className="flex gap-2 justify-center flex-wrap py-2">
+    <aside className="flex gap-2 justify-center flex-wrap py-2" aria-label="Featured product deals">
       {products.map((product) => (
         <div
           key={product.id}
@@ -56,8 +39,8 @@ export const MiniProductStrip = ({ limit = 3 }: MiniProductStripProps) => {
           className="flex items-center gap-2 bg-card/50 backdrop-blur-sm border border-border rounded-lg p-2 cursor-pointer hover:border-primary/50 transition-all duration-300 hover:shadow-md min-w-[140px] max-w-[180px]"
         >
           <img
-            src={product.image_url.replace('_80x80', '_140x140').replace('_300x300', '_140x140')}
-            alt={product.name}
+            src={toMediumAliImage(product.image_url)}
+            alt={`${product.name} thumbnail`}
             className="w-10 h-10 object-cover rounded"
             loading="lazy"
           />
@@ -75,6 +58,6 @@ export const MiniProductStrip = ({ limit = 3 }: MiniProductStripProps) => {
           <ExternalLink className="w-3 h-3 text-muted-foreground flex-shrink-0" />
         </div>
       ))}
-    </div>
+    </aside>
   );
 };
