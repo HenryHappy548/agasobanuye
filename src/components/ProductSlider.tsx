@@ -1,17 +1,8 @@
-import { useState, useEffect } from "react";
-import { supabase } from "@/integrations/supabase/client";
+import { useId, useMemo, useRef } from "react";
 import { ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
-
-interface Product {
-  id: string;
-  name: string;
-  price: number;
-  original_price: number | null;
-  affiliate_link: string;
-  image_url: string;
-  category: string;
-}
+import { supabase } from "@/integrations/supabase/client";
+import { useProducts } from "@/hooks/useProducts";
 
 interface ProductSliderProps {
   category?: string;
@@ -19,34 +10,25 @@ interface ProductSliderProps {
   title?: string;
 }
 
-export const ProductSlider = ({ category, limit = 20, title = "Recommended Products" }: ProductSliderProps) => {
-  const [products, setProducts] = useState<Product[]>([]);
-  const [scrollPosition, setScrollPosition] = useState(0);
-  const [loading, setLoading] = useState(true);
+const toHighResAliImage = (url: string) => {
+  if (!url) return url;
+  return url
+    .replace("_80x80", "_800x800")
+    .replace("_140x140", "_800x800")
+    .replace("_300x300", "_800x800");
+};
 
-  useEffect(() => {
-    const fetchProducts = async () => {
-      let query = supabase
-        .from("products")
-        .select("*")
-        .eq("is_active", true)
-        .order("display_order", { ascending: true })
-        .limit(limit);
+export const ProductSlider = ({
+  category,
+  limit = 20,
+  title = "Recommended Products",
+}: ProductSliderProps) => {
+  const sliderId = useId();
+  const containerRef = useRef<HTMLDivElement | null>(null);
 
-      if (category && category !== "general") {
-        query = query.eq("category", category);
-      }
+  const { products, loading } = useProducts({ category, limit, activeOnly: true });
 
-      const { data } = await query;
-      setProducts(data || []);
-      setLoading(false);
-    };
-
-    fetchProducts();
-  }, [category, limit]);
-
-  const handleClick = async (product: Product) => {
-    // Log click
+  const handleClick = async (product: (typeof products)[number]) => {
     await supabase.from("affiliate_clicks").insert({
       product_name: product.name,
       category: product.category,
@@ -57,25 +39,24 @@ export const ProductSlider = ({ category, limit = 20, title = "Recommended Produ
     window.open(product.affiliate_link, "_blank", "noopener,noreferrer");
   };
 
+  const canScroll = useMemo(() => products.length > 0, [products.length]);
+
   const scroll = (direction: "left" | "right") => {
-    const container = document.getElementById(`product-slider-${category || "all"}`);
-    if (!container) return;
-
-    const scrollAmount = 300;
-    const newPosition = direction === "left" 
-      ? Math.max(0, scrollPosition - scrollAmount)
-      : scrollPosition + scrollAmount;
-
-    container.scrollTo({ left: newPosition, behavior: "smooth" });
-    setScrollPosition(newPosition);
+    const el = containerRef.current;
+    if (!el) return;
+    const amount = 320;
+    el.scrollBy({ left: direction === "left" ? -amount : amount, behavior: "smooth" });
   };
 
   if (loading) {
     return (
-      <div className="py-4">
+      <div className="py-4" aria-label="Loading products">
         <div className="flex gap-4 overflow-hidden">
           {[...Array(5)].map((_, i) => (
-            <div key={i} className="flex-shrink-0 w-40 h-48 bg-muted animate-pulse rounded-lg" />
+            <div
+              key={i}
+              className="flex-shrink-0 w-40 h-48 bg-muted animate-pulse rounded-lg"
+            />
           ))}
         </div>
       </div>
@@ -85,37 +66,41 @@ export const ProductSlider = ({ category, limit = 20, title = "Recommended Produ
   if (products.length === 0) return null;
 
   return (
-    <div className="py-4">
-      <div className="flex items-center justify-between mb-3">
+    <section className="py-4" aria-label={title}>
+      <header className="flex items-center justify-between mb-3">
         <h3 className="text-lg font-semibold text-foreground">{title}</h3>
-        <div className="flex gap-1">
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={() => scroll("left")}
-            className="h-8 w-8"
-          >
-            <ChevronLeft className="h-4 w-4" />
-          </Button>
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={() => scroll("right")}
-            className="h-8 w-8"
-          >
-            <ChevronRight className="h-4 w-4" />
-          </Button>
-        </div>
-      </div>
+        {canScroll && (
+          <div className="flex gap-1">
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => scroll("left")}
+              className="h-8 w-8"
+              aria-label="Scroll products left"
+            >
+              <ChevronLeft className="h-4 w-4" />
+            </Button>
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => scroll("right")}
+              className="h-8 w-8"
+              aria-label="Scroll products right"
+            >
+              <ChevronRight className="h-4 w-4" />
+            </Button>
+          </div>
+        )}
+      </header>
 
       <div
-        id={`product-slider-${category || "all"}`}
+        id={`product-slider-${sliderId}`}
+        ref={containerRef}
         className="flex gap-3 overflow-x-auto scrollbar-hide pb-2"
         style={{ scrollBehavior: "smooth" }}
-        onScroll={(e) => setScrollPosition((e.target as HTMLDivElement).scrollLeft)}
       >
         {products.map((product) => (
-          <div
+          <article
             key={product.id}
             onClick={() => handleClick(product)}
             className="flex-shrink-0 w-36 sm:w-40 cursor-pointer group"
@@ -123,13 +108,16 @@ export const ProductSlider = ({ category, limit = 20, title = "Recommended Produ
             <div className="relative bg-card rounded-lg overflow-hidden border border-border hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10">
               {product.original_price && product.original_price > product.price && (
                 <div className="absolute top-1 left-1 bg-destructive text-destructive-foreground text-xs px-1.5 py-0.5 rounded font-bold z-10">
-                  -{Math.round(((product.original_price - product.price) / product.original_price) * 100)}%
+                  -
+                  {Math.round(
+                    ((product.original_price - product.price) / product.original_price) * 100
+                  )}%
                 </div>
               )}
               <div className="aspect-square overflow-hidden bg-muted">
                 <img
-                  src={product.image_url.replace('_80x80', '_300x300').replace('_140x140', '_300x300')}
-                  alt={product.name}
+                  src={toHighResAliImage(product.image_url)}
+                  alt={`${product.name} product image`}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   loading="lazy"
                 />
@@ -152,9 +140,9 @@ export const ProductSlider = ({ category, limit = 20, title = "Recommended Produ
                 </div>
               </div>
             </div>
-          </div>
+          </article>
         ))}
       </div>
-    </div>
+    </section>
   );
 };
