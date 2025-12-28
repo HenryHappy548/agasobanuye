@@ -1,1 +1,4 @@
 project_id = "xvnznzcftxsrmzxwxdqq"
+
+[functions.aliexpress-api]
+verify_jwt = false
