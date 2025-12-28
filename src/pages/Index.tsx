@@ -11,6 +11,8 @@ import { ContactAdminButton } from "@/components/ContactAdminButton";
 import { Button } from "@/components/ui/button";
 import { useMovies } from "@/hooks/useMovies";
 import { isValidVideoId, sanitizeTextInput } from "@/lib/security";
+import { ProductSlider } from "@/components/ProductSlider";
+import { MiniProductStrip } from "@/components/MiniProductStrip";
 
 import {
   Carousel,
@@ -197,10 +199,15 @@ const Index = () => {
             )}
             
           </section>
+
+          {/* Products Section */}
+          <ProductSlider limit={15} title="🛒 Recommended Products" />
         </div>
       )}
       
       <main className="container mx-auto px-4 py-6 sm:py-8 space-y-8 sm:space-y-12">
+        {/* Mini Product Strip */}
+        <MiniProductStrip limit={3} />
         {searchQuery ? (
           <section>
             <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">
