@@ -75,6 +75,22 @@
     <priority>0.6</priority>
   </url>
 
+  <!-- Shop Page -->
+  <url>
+    <loc>https://rwaflix.store/shop</loc>
+    <lastmod>2025-12-29</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Store Redirect -->
+  <url>
+    <loc>https://rwaflix.store/store</loc>
+    <lastmod>2025-12-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
   <!-- Individual Movie Pages - Add your movies here -->
   <url>
     <loc>https://rwaflix.store/watch/24-hours-a</loc>
