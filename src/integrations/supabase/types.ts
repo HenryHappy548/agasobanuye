@@ -367,6 +367,14 @@ export type Database = {
         Returns: boolean
       }
       is_admin: { Args: never; Returns: boolean }
+      poll_get_results: {
+        Args: never
+        Returns: {
+          series_name: string
+          vote_count: number
+        }[]
+      }
+      poll_has_voted: { Args: { _session_id: string }; Returns: boolean }
     }
     Enums: {
       app_role: "admin" | "moderator" | "user"
