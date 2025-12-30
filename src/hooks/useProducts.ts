@@ -1,4 +1,5 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 
 export interface Product {
@@ -19,41 +20,47 @@ interface UseProductsOptions {
   activeOnly?: boolean;
 }
 
+const fetchProductsFromDB = async ({
+  limit,
+  category,
+  activeOnly,
+}: UseProductsOptions): Promise<Product[]> => {
+  let query = supabase
+    .from("products")
+    .select("*")
+    .order("display_order", { ascending: true })
+    .limit(limit || 20);
+
+  if (activeOnly) query = query.eq("is_active", true);
+  if (category && category !== "general") query = query.eq("category", category);
+
+  const { data } = await query;
+  return (data as Product[]) || [];
+};
+
 export const useProducts = ({
   limit = 20,
   category,
   activeOnly = true,
 }: UseProductsOptions = {}) => {
-  const [products, setProducts] = useState<Product[]>([]);
-  const [loading, setLoading] = useState(true);
+  const queryClient = useQueryClient();
+  const queryKey = ['products', limit, category, activeOnly];
 
-  const fetchProducts = useCallback(async () => {
-    setLoading(true);
-
-    let query = supabase
-      .from("products")
-      .select("*")
-      .order("display_order", { ascending: true })
-      .limit(limit);
-
-    if (activeOnly) query = query.eq("is_active", true);
-    if (category && category !== "general") query = query.eq("category", category);
-
-    const { data } = await query;
-    setProducts((data as Product[]) || []);
-    setLoading(false);
-  }, [activeOnly, category, limit]);
+  const { data: products = [], isLoading: loading, refetch } = useQuery({
+    queryKey,
+    queryFn: () => fetchProductsFromDB({ limit, category, activeOnly }),
+    staleTime: 2 * 60 * 1000, // 2 minutes
+    gcTime: 10 * 60 * 1000, // 10 minutes cache
+  });
 
   useEffect(() => {
-    fetchProducts();
-
     const channel = supabase
       .channel(`products-${category || "all"}-${limit}-${activeOnly ? "active" : "all"}`)
       .on(
         "postgres_changes",
         { event: "*", schema: "public", table: "products" },
         () => {
-          fetchProducts();
+          queryClient.invalidateQueries({ queryKey: ['products'] });
         }
       )
       .subscribe();
@@ -61,7 +68,7 @@ export const useProducts = ({
     return () => {
       supabase.removeChannel(channel);
     };
-  }, [activeOnly, category, fetchProducts, limit]);
+  }, [activeOnly, category, limit, queryClient]);
 
-  return { products, loading, refetch: fetchProducts };
+  return { products, loading, refetch };
 };

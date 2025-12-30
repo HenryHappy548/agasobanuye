@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { useEffect } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { mockMovies, Movie } from "@/data/mockData";
 
@@ -17,22 +18,59 @@ export interface DBMovie {
   featured?: boolean;
 }
 
-// Merge Supabase movies with mock movies
-export const useMovies = () => {
-  const [movies, setMovies] = useState<DBMovie[]>([]);
-  const [loading, setLoading] = useState(true);
+const fetchMoviesFromDB = async (): Promise<DBMovie[]> => {
+  const { data: dbMovies, error } = await supabase
+    .from("movies")
+    .select("id,title,poster_url,year,genre,rating,category,description,video_url,download_url,dubbed,featured")
+    .order("created_at", { ascending: false });
 
+  if (error) {
+    console.error("Error fetching movies:", error);
+    return mockMovies as DBMovie[];
+  }
+
+  const formattedDbMovies: DBMovie[] = (dbMovies || []).map((movie) => ({
+    id: movie.id,
+    title: movie.title,
+    poster: movie.poster_url || "",
+    year: movie.year,
+    genre: movie.genre,
+    rating: movie.rating || "N/A",
+    category: movie.category as 'movie' | 'tv' | 'trending',
+    description: movie.description || "",
+    video_url: movie.video_url || "",
+    download_url: (movie as any).download_url || "",
+    dubbed: movie.dubbed || "",
+    featured: movie.featured || false,
+  }));
+
+  const dbTitles = new Set(formattedDbMovies.map(m => m.title.toLowerCase()));
+  const uniqueMockMovies = mockMovies.filter(
+    m => !dbTitles.has(m.title.toLowerCase())
+  ) as DBMovie[];
+
+  return [...formattedDbMovies, ...uniqueMockMovies];
+};
+
+export const useMovies = () => {
+  const queryClient = useQueryClient();
+
+  const { data: movies = [], isLoading: loading, refetch } = useQuery({
+    queryKey: ['movies'],
+    queryFn: fetchMoviesFromDB,
+    staleTime: 2 * 60 * 1000, // 2 minutes - data stays fresh
+    gcTime: 10 * 60 * 1000, // 10 minutes cache
+  });
+
+  // Real-time subscription for updates
   useEffect(() => {
-    fetchMovies();
-    
-    // Real-time subscription for new movies
     const channel = supabase
       .channel('movies-channel')
       .on(
         'postgres_changes',
         { event: '*', schema: 'public', table: 'movies' },
         () => {
-          fetchMovies();
+          queryClient.invalidateQueries({ queryKey: ['movies'] });
         }
       )
       .subscribe();
@@ -40,53 +78,9 @@ export const useMovies = () => {
     return () => {
       supabase.removeChannel(channel);
     };
-  }, []);
+  }, [queryClient]);
 
-  const fetchMovies = async () => {
-    try {
-        const { data: dbMovies, error } = await supabase
-          .from("movies")
-          .select("id,title,poster_url,year,genre,rating,category,description,video_url,download_url,dubbed,featured")
-          .order("created_at", { ascending: false });
-
-      if (error) {
-        console.error("Error fetching movies:", error);
-        // Fallback to mock data
-        setMovies(mockMovies as DBMovie[]);
-      } else {
-        // Convert DB movies to our format
-        const formattedDbMovies: DBMovie[] = (dbMovies || []).map((movie) => ({
-          id: movie.id,
-          title: movie.title,
-          poster: movie.poster_url || "",
-          year: movie.year,
-          genre: movie.genre,
-          rating: movie.rating || "N/A",
-          category: movie.category as 'movie' | 'tv' | 'trending',
-          description: movie.description || "",
-          video_url: movie.video_url || "",
-          download_url: (movie as any).download_url || "",
-          dubbed: movie.dubbed || "",
-          featured: movie.featured || false,
-        }));
-
-        // Merge: DB movies first, then mock movies (avoiding duplicates by title)
-        const dbTitles = new Set(formattedDbMovies.map(m => m.title.toLowerCase()));
-        const uniqueMockMovies = mockMovies.filter(
-          m => !dbTitles.has(m.title.toLowerCase())
-        ) as DBMovie[];
-
-        setMovies([...formattedDbMovies, ...uniqueMockMovies]);
-      }
-    } catch (err) {
-      console.error("Error:", err);
-      setMovies(mockMovies as DBMovie[]);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  return { movies, loading, refetch: fetchMovies };
+  return { movies, loading, refetch };
 };
 
 // Get related movies (next episode or same genre)
