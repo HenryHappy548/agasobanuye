@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { MessageCircle, Send, Loader2, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -12,11 +12,6 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 
@@ -24,6 +19,7 @@ export const ContactAdminButton = () => {
   const [open, setOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [showTooltip, setShowTooltip] = useState(false);
   const { toast } = useToast();
   
   const [formData, setFormData] = useState({
@@ -32,6 +28,30 @@ export const ContactAdminButton = () => {
     email: "",
     message: ""
   });
+
+  // Auto-show tooltip periodically (every 45 seconds, visible for 4 seconds)
+  useEffect(() => {
+    // Show first time after 10 seconds
+    const initialTimer = setTimeout(() => {
+      if (!open) {
+        setShowTooltip(true);
+        setTimeout(() => setShowTooltip(false), 4000);
+      }
+    }, 10000);
+
+    // Then show every 45 seconds
+    const interval = setInterval(() => {
+      if (!open) {
+        setShowTooltip(true);
+        setTimeout(() => setShowTooltip(false), 4000);
+      }
+    }, 45000);
+
+    return () => {
+      clearTimeout(initialTimer);
+      clearInterval(interval);
+    };
+  }, [open]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -92,21 +112,27 @@ export const ContactAdminButton = () => {
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <Tooltip>
-        <TooltipTrigger asChild>
-          <DialogTrigger asChild>
-            <Button
-              size="icon"
-              className="fixed bottom-24 right-6 h-14 w-14 rounded-full shadow-lg bg-gradient-to-br from-green-600 to-green-800 hover:from-green-700 hover:to-green-900 z-50 animate-pulse hover:animate-none"
-            >
-              <MessageCircle className="h-6 w-6 text-white" />
-            </Button>
-          </DialogTrigger>
-        </TooltipTrigger>
-        <TooltipContent side="left" className="bg-green-700 text-white border-green-600 font-medium px-3 py-2">
-          <p>Tugezeho ikibazo cyawe</p>
-        </TooltipContent>
-      </Tooltip>
+      <div className="fixed bottom-24 right-6 z-50">
+        {/* Auto-appearing tooltip */}
+        <div 
+          className={`absolute right-16 top-1/2 -translate-y-1/2 bg-green-700 text-white px-3 py-2 rounded-lg shadow-lg whitespace-nowrap transition-all duration-300 ${
+            showTooltip ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-2 pointer-events-none'
+          }`}
+        >
+          <p className="text-sm font-medium">Tugezeho ikibazo cyawe</p>
+          <div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 rotate-45 w-2 h-2 bg-green-700" />
+        </div>
+        
+        <DialogTrigger asChild>
+          <Button
+            size="icon"
+            className="h-14 w-14 rounded-full shadow-lg bg-gradient-to-br from-green-600 to-green-800 hover:from-green-700 hover:to-green-900"
+            onClick={() => setShowTooltip(false)}
+          >
+            <MessageCircle className="h-6 w-6 text-white" />
+          </Button>
+        </DialogTrigger>
+      </div>
       <DialogContent className="sm:max-w-[500px]">
         <DialogHeader>
           <DialogTitle className="text-xl">Twandikire Admin</DialogTitle>
