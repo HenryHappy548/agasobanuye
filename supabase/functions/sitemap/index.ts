@@ -27,7 +27,7 @@ Deno.serve(async (req) => {
     // Fetch all movies
     const { data: movies, error: moviesError } = await supabase
       .from('movies')
-      .select('id, title, updated_at')
+      .select('id, title, updated_at, poster_url')
       .order('updated_at', { ascending: false })
 
     if (moviesError) {
@@ -84,15 +84,19 @@ Deno.serve(async (req) => {
       for (const movie of movies) {
         const slug = slugify(movie.title)
         const lastmod = movie.updated_at ? new Date(movie.updated_at).toISOString().split('T')[0] : today
+        const playerUrl = `${baseUrl}/watch/${slug}/${movie.id}`
+        const thumbnailUrl = movie.poster_url || `${baseUrl}/logo-512.jpg`
         
         xml += `  <url>
-    <loc>${baseUrl}/watch/${slug}/${movie.id}</loc>
+    <loc>${playerUrl}</loc>
     <lastmod>${lastmod}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <video:video>
+      <video:thumbnail_loc>${escapeXml(thumbnailUrl)}</video:thumbnail_loc>
       <video:title>${escapeXml(movie.title)} - Rwaflix Agasobanuye</video:title>
       <video:description>Watch ${escapeXml(movie.title)} on Rwaflix. Available in HD quality with Kinyarwanda dubbing.</video:description>
+      <video:player_loc>${playerUrl}</video:player_loc>
     </video:video>
   </url>
 `
