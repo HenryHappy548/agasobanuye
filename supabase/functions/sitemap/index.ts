@@ -62,10 +62,12 @@ Deno.serve(async (req) => {
       { loc: '/terms-of-service', priority: '0.6', changefreq: 'monthly' },
     ]
 
-    // Build XML
+    // Build XML with proper schema declarations for validators
     let xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 `
 
     // Add static pages
