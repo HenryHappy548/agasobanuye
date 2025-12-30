@@ -62,10 +62,10 @@ const HeroSection = ({ onPlayVideo }: HeroSectionProps) => {
   };
 
   // Fallback content if no featured movie
-  const title = featuredMovie?.title || "Talk To Me";
-  const description = featuredMovie?.description || "a British horror-thriller about two teenage pranksters, Sam and Brady, whose drunken, viral prank calls backfire when a mysterious stranger turns their own game on them";
-  const year = featuredMovie?.year || "2022";
-  const genre = featuredMovie?.genre || "Horror, Mystery";
+  const title = featuredMovie?.title || "Welcome to Rwaflix";
+  const description = featuredMovie?.description || "Discover the best movies and TV shows. Stream your favorites now!";
+  const year = featuredMovie?.year || "";
+  const genre = featuredMovie?.genre || "Entertainment";
   const posterUrl = featuredMovie?.poster_url || heroImageFallback;
 
   return (
