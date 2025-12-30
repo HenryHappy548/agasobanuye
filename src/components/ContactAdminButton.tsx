@@ -12,6 +12,11 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 
@@ -87,14 +92,21 @@ export const ContactAdminButton = () => {
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger asChild>
-        <Button
-          size="icon"
-          className="fixed bottom-24 right-6 h-14 w-14 rounded-full shadow-lg bg-gradient-to-br from-green-600 to-green-800 hover:from-green-700 hover:to-green-900 z-50"
-        >
-          <MessageCircle className="h-6 w-6 text-white" />
-        </Button>
-      </DialogTrigger>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <DialogTrigger asChild>
+            <Button
+              size="icon"
+              className="fixed bottom-24 right-6 h-14 w-14 rounded-full shadow-lg bg-gradient-to-br from-green-600 to-green-800 hover:from-green-700 hover:to-green-900 z-50 animate-pulse hover:animate-none"
+            >
+              <MessageCircle className="h-6 w-6 text-white" />
+            </Button>
+          </DialogTrigger>
+        </TooltipTrigger>
+        <TooltipContent side="left" className="bg-green-700 text-white border-green-600 font-medium px-3 py-2">
+          <p>Tugezeho ikibazo cyawe</p>
+        </TooltipContent>
+      </Tooltip>
       <DialogContent className="sm:max-w-[500px]">
         <DialogHeader>
           <DialogTitle className="text-xl">Twandikire Admin</DialogTitle>
