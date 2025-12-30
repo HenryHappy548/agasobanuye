@@ -9,8 +9,9 @@ const corsHeaders = {
 const APP_KEY = Deno.env.get('ALIEXPRESS_APP_KEY');
 const APP_SECRET = Deno.env.get('ALIEXPRESS_APP_SECRET');
 
-// USD to RWF conversion rate
-const USD_TO_RWF = 1350;
+// Fixed USD to RWF conversion rate - stable rate to prevent price fluctuations
+// This is a fixed rate to ensure price consistency between website and AliExpress
+const USD_TO_RWF = 1400;
 
 // Generate SHA256 signature for AliExpress API
 async function generateSignature(params: Record<string, string>, apiPath?: string): Promise<string> {
@@ -134,16 +135,22 @@ async function bulkImportProducts(keywords: string[]) {
   );
   
   // Map to database format with RWF prices
-  const dbProducts = uniqueProducts.map((p, index) => ({
-    name: p.product_title,
-    price: p.sale_price_rwf,
-    original_price: p.original_price_rwf > p.sale_price_rwf ? p.original_price_rwf : null,
-    affiliate_link: p.promotion_link,
-    image_url: p.product_main_image_url?.replace(/_\d+x\d+\./, '_800x800.') || p.product_main_image_url,
-    category: mapCategory(p.category_name),
-    display_order: index * 1000,
-    is_active: true,
-  }));
+  // Round to nearest 100 RWF for cleaner display and to reduce minor fluctuations
+  const dbProducts = uniqueProducts.map((p, index) => {
+    const salePrice = Math.round(p.sale_price_rwf / 100) * 100;
+    const originalPrice = Math.round(p.original_price_rwf / 100) * 100;
+    
+    return {
+      name: p.product_title,
+      price: salePrice,
+      original_price: originalPrice > salePrice ? originalPrice : null,
+      affiliate_link: p.promotion_link,
+      image_url: p.product_main_image_url?.replace(/_\d+x\d+\./, '_800x800.') || p.product_main_image_url,
+      category: mapCategory(p.category_name),
+      display_order: index * 1000,
+      is_active: true,
+    };
+  });
   
   // Insert products
   const { data, error } = await supabase
