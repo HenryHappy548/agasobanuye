@@ -1,10 +1,10 @@
 # Rwaflix - Robots.txt
-# Allow all search engines to crawl the site
+# Allow all search engines and browsers to crawl the site
 
 User-agent: *
 Allow: /
 
-# Disallow specific paths if needed
+# Disallow specific paths
 Disallow: /api/
 Disallow: /admin/
 
@@ -14,11 +14,14 @@ Crawl-delay: 1
 # Sitemap location
 Sitemap: https://rwaflix.store/sitemap.xml
 
-# Popular search engine bots
+# Major Search Engines
 User-agent: Googlebot
 Allow: /
 
 User-agent: Bingbot
+Allow: /
+
+User-agent: msnbot
 Allow: /
 
 User-agent: Slurp
@@ -28,4 +31,64 @@ User-agent: DuckDuckBot
 Allow: /
 
 User-agent: Baiduspider
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+User-agent: Sogou
+Allow: /
+
+User-agent: Exabot
+Allow: /
+
+User-agent: facebot
+Allow: /
+
+User-agent: ia_archiver
+Allow: /
+
+# Opera and other browsers
+User-agent: Opera
+Allow: /
+
+User-agent: OPR
+Allow: /
+
+# Social Media Crawlers
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: Pinterest
+Allow: /
+
+User-agent: WhatsApp
+Allow: /
+
+User-agent: TelegramBot
+Allow: /
+
+# AI and Assistant Crawlers
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: AhrefsBot
+Allow: /
+
+User-agent: SemrushBot
 Allow: /
