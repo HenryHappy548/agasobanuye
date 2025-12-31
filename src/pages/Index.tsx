@@ -72,6 +72,9 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
+      {/* SEO H1 - visually hidden but accessible for crawlers */}
+      <h1 className="sr-only">Rwaflix - Watch Free Movies and TV Shows Online in Rwanda</h1>
+      
       <StreamingHeader onSearch={handleSearch} searchQuery={searchQuery} onPlayVideo={handlePlayVideo} />
       
       {!searchQuery && (
