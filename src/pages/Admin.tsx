@@ -96,9 +96,9 @@ const Admin = () => {
                   <Film className="w-8 h-8 text-primary" />
                 </div>
                 <div>
-                  <CardTitle className="text-3xl font-bold bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
+                  <h1 className="text-3xl font-bold bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
                     Admin Dashboard
-                  </CardTitle>
+                  </h1>
                   <CardDescription className="text-base mt-1">
                     Welcome back, {user?.email}
                   </CardDescription>
