@@ -109,7 +109,7 @@ async function searchProducts(keyword: string, pageNo: number = 1, pageSize: num
 }
 
 // Bulk import products to database
-async function bulkImportProducts(keywords: string[]) {
+async function bulkImportProducts(keywords: string[], productsPerKeyword: number = 15) {
   const supabaseUrl = Deno.env.get('SUPABASE_URL')!;
   const supabaseKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
   const supabase = createClient(supabaseUrl, supabaseKey);
@@ -118,64 +118,92 @@ async function bulkImportProducts(keywords: string[]) {
   
   for (const keyword of keywords) {
     try {
-      const result = await searchProducts(keyword, 1, 20);
+      // Fetch more products per keyword
+      const result = await searchProducts(keyword, 1, Math.min(productsPerKeyword, 50));
       if (result.products) {
         allProducts.push(...result.products);
       }
       // Small delay to avoid rate limiting
-      await new Promise(resolve => setTimeout(resolve, 500));
+      await new Promise(resolve => setTimeout(resolve, 300));
     } catch (error) {
       console.error(`Error searching "${keyword}":`, error);
     }
   }
   
-  // Remove duplicates based on product_id
-  const uniqueProducts = allProducts.filter((product, index, self) =>
-    index === self.findIndex((p) => p.product_id === product.product_id)
-  );
+  // Remove duplicates based on product_id AND product_title (to catch same products with different IDs)
+  const seenTitles = new Set<string>();
+  const seenIds = new Set<string>();
+  const uniqueProducts = allProducts.filter((product) => {
+    const titleKey = product.product_title?.toLowerCase().substring(0, 50);
+    const idKey = product.product_id?.toString();
+    if (seenTitles.has(titleKey) || seenIds.has(idKey)) {
+      return false;
+    }
+    seenTitles.add(titleKey);
+    seenIds.add(idKey);
+    return true;
+  });
   
   // Map to database format with RWF prices
-  // Round to nearest 100 RWF for cleaner display and to reduce minor fluctuations
+  // Round to nearest 100 RWF for cleaner display
   const dbProducts = uniqueProducts.map((p, index) => {
     const salePrice = Math.round(p.sale_price_rwf / 100) * 100;
     const originalPrice = Math.round(p.original_price_rwf / 100) * 100;
     
     return {
       name: p.product_title,
-      price: salePrice,
+      price: salePrice > 0 ? salePrice : 1400,
       original_price: originalPrice > salePrice ? originalPrice : null,
       affiliate_link: p.promotion_link,
       image_url: p.product_main_image_url?.replace(/_\d+x\d+\./, '_800x800.') || p.product_main_image_url,
-      category: mapCategory(p.category_name),
-      display_order: index * 1000,
+      category: mapCategory(p.category_name || p.product_title),
+      display_order: index,
       is_active: true,
     };
   });
   
-  // Insert products
-  const { data, error } = await supabase
-    .from('products')
-    .upsert(dbProducts, { onConflict: 'affiliate_link' })
-    .select();
+  // Insert products in batches of 50
+  let totalImported = 0;
+  const batchSize = 50;
   
-  if (error) {
-    console.error('Database error:', error);
-    throw new Error('Failed to import products to database');
+  for (let i = 0; i < dbProducts.length; i += batchSize) {
+    const batch = dbProducts.slice(i, i + batchSize);
+    const { data, error } = await supabase
+      .from('products')
+      .upsert(batch, { onConflict: 'affiliate_link' })
+      .select();
+    
+    if (error) {
+      console.error('Batch insert error:', error);
+    } else {
+      totalImported += data?.length || 0;
+    }
   }
   
   return {
     success: true,
-    imported_count: data?.length || 0,
-    products: data,
+    imported_count: totalImported,
+    total_unique: uniqueProducts.length,
   };
 }
 
-function mapCategory(categoryName: string): string {
-  const name = (categoryName || '').toLowerCase();
-  if (name.includes('computer') || name.includes('office')) return 'office';
-  if (name.includes('electronic') || name.includes('phone')) return 'electronics';
-  if (name.includes('game') || name.includes('gaming')) return 'gaming';
-  if (name.includes('accessor')) return 'accessories';
+function mapCategory(input: string): string {
+  const name = (input || '').toLowerCase();
+  if (name.includes('phone') || name.includes('smartphone') || name.includes('mobile')) return 'phones';
+  if (name.includes('watch') || name.includes('smartwatch')) return 'watches';
+  if (name.includes('shoe') || name.includes('sneaker') || name.includes('boot')) return 'shoes';
+  if (name.includes('motorcycle') || name.includes('motorbike') || name.includes('helmet')) return 'motorcycle';
+  if (name.includes('headphone') || name.includes('earphone') || name.includes('earbud') || name.includes('headset')) return 'audio';
+  if (name.includes('solar') || name.includes('panel') || name.includes('inverter')) return 'solar';
+  if (name.includes('bag') || name.includes('backpack') || name.includes('luggage')) return 'bags';
+  if (name.includes('cloth') || name.includes('shirt') || name.includes('dress') || name.includes('jacket')) return 'fashion';
+  if (name.includes('computer') || name.includes('laptop') || name.includes('tablet')) return 'computers';
+  if (name.includes('camera') || name.includes('cctv') || name.includes('security')) return 'security';
+  if (name.includes('beauty') || name.includes('makeup') || name.includes('hair')) return 'beauty';
+  if (name.includes('tool') || name.includes('drill') || name.includes('hammer')) return 'tools';
+  if (name.includes('kitchen') || name.includes('blender') || name.includes('cook')) return 'kitchen';
+  if (name.includes('light') || name.includes('lamp') || name.includes('led')) return 'lighting';
+  if (name.includes('game') || name.includes('gaming') || name.includes('console')) return 'gaming';
   return 'general';
 }
 
