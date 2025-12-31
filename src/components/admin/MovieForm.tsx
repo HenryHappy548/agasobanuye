@@ -103,6 +103,17 @@ const MovieForm = ({ movie, onSuccess }: MovieFormProps) => {
         toast.success(`"${formData.title}" added successfully! It will appear in the movie list.`);
         setSuccess(true);
         
+        // Notify Bing via IndexNow (fire and forget)
+        supabase.functions.invoke("indexnow", {
+          body: { movieId: data.id, movieTitle: formData.title }
+        }).then(({ error: indexError }) => {
+          if (indexError) {
+            console.warn("IndexNow notification failed:", indexError);
+          } else {
+            console.log("IndexNow notification sent for:", formData.title);
+          }
+        });
+        
         // Reset form only for new movies
         resetForm();
       }
