@@ -59,6 +59,14 @@ const MovieForm = ({ movie, onSuccess }: MovieFormProps) => {
     setSuccess(false);
 
     try {
+      // If marking as featured, unfeature all other movies first
+      if (formData.featured) {
+        await supabase
+          .from("movies")
+          .update({ featured: false })
+          .neq("id", movie?.id || "");
+      }
+
       const movieData = {
         title: formData.title.trim(),
         description: formData.description.trim(),
@@ -315,18 +323,23 @@ const MovieForm = ({ movie, onSuccess }: MovieFormProps) => {
       </div>
 
       {/* Featured */}
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-3 p-3 bg-primary/5 border border-primary/20 rounded-lg">
         <input
           type="checkbox"
           id="featured"
           checked={formData.featured}
           onChange={(e) => handleInputChange("featured", e.target.checked)}
-          className="w-4 h-4 rounded border-input"
+          className="w-5 h-5 rounded border-primary accent-primary"
           disabled={loading}
         />
-        <Label htmlFor="featured" className="cursor-pointer">
-          Feature this movie on homepage
-        </Label>
+        <div>
+          <Label htmlFor="featured" className="cursor-pointer font-medium">
+            📌 Pin to Homepage Hero
+          </Label>
+          <p className="text-xs text-muted-foreground mt-0.5">
+            This will unpin any other featured movie automatically
+          </p>
+        </div>
       </div>
 
       {/* Submit Button */}
