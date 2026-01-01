@@ -18,6 +18,11 @@ export interface DBMovie {
   featured?: boolean;
 }
 
+// Create a lookup map for mockMovies posters
+const mockPosterLookup = new Map(
+  mockMovies.map(m => [m.title.toLowerCase(), m.poster])
+);
+
 const fetchMoviesFromDB = async (): Promise<DBMovie[]> => {
   const { data: dbMovies, error } = await supabase
     .from("movies")
@@ -29,20 +34,26 @@ const fetchMoviesFromDB = async (): Promise<DBMovie[]> => {
     return mockMovies as DBMovie[];
   }
 
-  const formattedDbMovies: DBMovie[] = (dbMovies || []).map((movie) => ({
-    id: movie.id,
-    title: movie.title,
-    poster: movie.poster_url || "",
-    year: movie.year,
-    genre: movie.genre,
-    rating: movie.rating || "N/A",
-    category: movie.category as 'movie' | 'tv' | 'trending',
-    description: movie.description || "",
-    video_url: movie.video_url || "",
-    download_url: (movie as any).download_url || "",
-    dubbed: movie.dubbed || "",
-    featured: movie.featured || false,
-  }));
+  const formattedDbMovies: DBMovie[] = (dbMovies || []).map((movie) => {
+    // Use DB poster_url, or fallback to mockData poster if available
+    const mockPoster = mockPosterLookup.get(movie.title.toLowerCase());
+    const posterUrl = movie.poster_url || mockPoster || "";
+    
+    return {
+      id: movie.id,
+      title: movie.title,
+      poster: posterUrl,
+      year: movie.year,
+      genre: movie.genre,
+      rating: movie.rating || "N/A",
+      category: movie.category as 'movie' | 'tv' | 'trending',
+      description: movie.description || "",
+      video_url: movie.video_url || "",
+      download_url: (movie as any).download_url || "",
+      dubbed: movie.dubbed || "",
+      featured: movie.featured || false,
+    };
+  });
 
   const dbTitles = new Set(formattedDbMovies.map(m => m.title.toLowerCase()));
   const uniqueMockMovies = mockMovies.filter(
