@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, memo } from "react";
 import { cn } from "@/lib/utils";
+import fallbackPoster from "@/assets/dont.jpg";
 
 interface OptimizedImageProps {
   src: string;
@@ -8,6 +9,7 @@ interface OptimizedImageProps {
   width?: number;
   height?: number;
   priority?: boolean;
+  fallback?: string;
 }
 
 const OptimizedImage = memo(({ 
@@ -16,17 +18,25 @@ const OptimizedImage = memo(({
   className, 
   width, 
   height,
-  priority = false 
+  priority = false,
+  fallback = fallbackPoster
 }: OptimizedImageProps) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isInView, setIsInView] = useState(priority);
   const [hasError, setHasError] = useState(false);
+  const [currentSrc, setCurrentSrc] = useState(src);
   const imgRef = useRef<HTMLDivElement>(null);
+
+  // Reset state when src changes
+  useEffect(() => {
+    setCurrentSrc(src);
+    setHasError(false);
+    setIsLoaded(false);
+  }, [src]);
 
   useEffect(() => {
     if (priority || !imgRef.current) return;
 
-    // Larger rootMargin for slow connections to start loading earlier
     const connection = (navigator as any).connection;
     const isSlowConnection = connection?.effectiveType === '2g' || connection?.effectiveType === 'slow-2g';
     const margin = isSlowConnection ? "300px" : "100px";
@@ -53,8 +63,14 @@ const OptimizedImage = memo(({
   };
 
   const handleError = () => {
-    setHasError(true);
-    setIsLoaded(true);
+    // Use fallback image on error
+    if (currentSrc !== fallback) {
+      setCurrentSrc(fallback);
+      setHasError(false);
+    } else {
+      setHasError(true);
+      setIsLoaded(true);
+    }
   };
 
   return (
@@ -73,7 +89,7 @@ const OptimizedImage = memo(({
       
       {isInView && !hasError && (
         <img
-          src={src}
+          src={currentSrc}
           alt={alt}
           width={width}
           height={height}
