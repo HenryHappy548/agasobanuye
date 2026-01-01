@@ -18,9 +18,26 @@ const MovieDetail = memo(() => {
   const { movies, loading } = useMovies();
 
   // Find movie by stable id when present, otherwise fallback to slug
+  // Also check for legacy mock movie IDs (non-UUID string IDs)
   const movie = useMemo(() => {
-    if (id) return movies.find((m) => m.id === id);
-    return movies.find((m) => slugify(m.title) === slug);
+    // First try exact id match (works for both UUID and legacy IDs)
+    if (id) {
+      const exactMatch = movies.find((m) => m.id === id);
+      if (exactMatch) return exactMatch;
+    }
+    
+    // Fallback to slug match
+    const slugMatch = movies.find((m) => slugify(m.title) === slug);
+    if (slugMatch) return slugMatch;
+    
+    // Also try partial title match for edge cases
+    if (slug) {
+      return movies.find((m) => 
+        slugify(m.title).includes(slug) || slug.includes(slugify(m.title))
+      );
+    }
+    
+    return undefined;
   }, [movies, slug, id]);
 
   // If user lands on old /watch/:slug route, redirect to stable /watch/:slug/:id

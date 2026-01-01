@@ -18,6 +18,9 @@ export interface DBMovie {
   featured?: boolean;
 }
 
+// Create a map of mock movies by ID for quick lookup
+const mockMoviesMap = new Map(mockMovies.map(m => [m.id, m]));
+
 const fetchMoviesFromDB = async (): Promise<DBMovie[]> => {
   const { data: dbMovies, error } = await supabase
     .from("movies")
@@ -29,26 +32,36 @@ const fetchMoviesFromDB = async (): Promise<DBMovie[]> => {
     return mockMovies as DBMovie[];
   }
 
-  const formattedDbMovies: DBMovie[] = (dbMovies || []).map((movie) => ({
-    id: movie.id,
-    title: movie.title,
-    poster: movie.poster_url || "",
-    year: movie.year,
-    genre: movie.genre,
-    rating: movie.rating || "N/A",
-    category: movie.category as 'movie' | 'tv' | 'trending',
-    description: movie.description || "",
-    video_url: movie.video_url || "",
-    download_url: (movie as any).download_url || "",
-    dubbed: movie.dubbed || "",
-    featured: movie.featured || false,
-  }));
+  // Format database movies, using mock data posters as fallback
+  const formattedDbMovies: DBMovie[] = (dbMovies || []).map((movie) => {
+    // Try to find matching mock movie by title for poster fallback
+    const matchingMock = mockMovies.find(
+      m => m.title.toLowerCase() === movie.title.toLowerCase()
+    );
+    
+    return {
+      id: movie.id,
+      title: movie.title,
+      poster: movie.poster_url || matchingMock?.poster || "",
+      year: movie.year,
+      genre: movie.genre,
+      rating: movie.rating || "N/A",
+      category: movie.category as 'movie' | 'tv' | 'trending',
+      description: movie.description || "",
+      video_url: movie.video_url || "",
+      download_url: (movie as any).download_url || "",
+      dubbed: movie.dubbed || "",
+      featured: movie.featured || false,
+    };
+  });
 
+  // Get mock movies that have posters and video data but aren't in DB
   const dbTitles = new Set(formattedDbMovies.map(m => m.title.toLowerCase()));
   const uniqueMockMovies = mockMovies.filter(
     m => !dbTitles.has(m.title.toLowerCase())
   ) as DBMovie[];
 
+  // Return DB movies first (newest), then mock movies not in DB
   return [...formattedDbMovies, ...uniqueMockMovies];
 };
 
