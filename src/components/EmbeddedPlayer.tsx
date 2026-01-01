@@ -2,7 +2,8 @@ import { useState, useEffect, useMemo } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Loader2, Download, AlertCircle } from "lucide-react";
 import DOMPurify from "dompurify";
-import { getStaticVideoData } from "@/data/staticVideoData";
+import { getStaticVideoData, hasStaticVideoData } from "@/data/staticVideoData";
+import { mockMovies } from "@/data/mockData";
 import RecommendedMovies from "./RecommendedMovies";
 
 interface DownloadLink {
@@ -32,9 +33,15 @@ const EmbeddedPlayer = ({ movieId, movieTitle, fallbackVideoUrl, fallbackDownloa
 
   // Check static data first (instant, no network)
   const staticData = useMemo(() => getStaticVideoData(movieId), [movieId]);
+  
+  // Also check if this is a mock movie (has local poster)
+  const mockMovie = useMemo(() => 
+    mockMovies.find(m => m.id === movieId), 
+    [movieId]
+  );
 
   useEffect(() => {
-    // If we have static data, use it immediately
+    // If we have static video data, use it immediately
     if (staticData) {
       setVideoData(staticData);
       setLoading(false);
