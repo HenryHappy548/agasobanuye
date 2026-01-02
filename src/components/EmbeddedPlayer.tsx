@@ -1,6 +1,6 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, memo } from "react";
 import { supabase } from "@/integrations/supabase/client";
-import { Loader2, Download, AlertCircle } from "lucide-react";
+import { Loader2, Download, AlertCircle, Settings } from "lucide-react";
 import DOMPurify from "dompurify";
 import { getStaticVideoData } from "@/data/staticVideoData";
 import RecommendedMovies from "./RecommendedMovies";
@@ -26,7 +26,7 @@ interface EmbeddedPlayerProps {
   fallbackDownloadUrl?: string;
 }
 
-const EmbeddedPlayer = ({ movieId, movieTitle, fallbackVideoUrl, fallbackDownloadUrl }: EmbeddedPlayerProps) => {
+const EmbeddedPlayer = memo(({ movieId, movieTitle, fallbackVideoUrl, fallbackDownloadUrl }: EmbeddedPlayerProps) => {
   const [videoData, setVideoData] = useState<VideoData | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -34,14 +34,11 @@ const EmbeddedPlayer = ({ movieId, movieTitle, fallbackVideoUrl, fallbackDownloa
   const staticData = useMemo(() => getStaticVideoData(movieId), [movieId]);
 
   useEffect(() => {
-    // If we have static data, use it immediately
     if (staticData) {
       setVideoData(staticData);
       setLoading(false);
       return;
     }
-
-    // Otherwise fetch from database
     fetchVideoData();
   }, [movieId, staticData]);
 
@@ -49,7 +46,6 @@ const EmbeddedPlayer = ({ movieId, movieTitle, fallbackVideoUrl, fallbackDownloa
     setLoading(true);
 
     try {
-      // First try the videos table (legacy - video_key matching)
       const { data: video } = await supabase
         .from("videos")
         .select("id, title, embed_code, host")
@@ -77,7 +73,6 @@ const EmbeddedPlayer = ({ movieId, movieTitle, fallbackVideoUrl, fallbackDownloa
         return;
       }
 
-      // Next try the movies table (CMS movies use UUID)
       const { data: movie } = await supabase
         .from("movies")
         .select("title, video_url, download_url, dubbed")
@@ -99,7 +94,6 @@ const EmbeddedPlayer = ({ movieId, movieTitle, fallbackVideoUrl, fallbackDownloa
         return;
       }
 
-      // Fallback to props
       if (fallbackVideoUrl) {
         const downloadLinks: DownloadLink[] = fallbackDownloadUrl
           ? [{ quality: "HD", size: "", url: fallbackDownloadUrl, type: "MP4" }]
@@ -124,10 +118,7 @@ const EmbeddedPlayer = ({ movieId, movieTitle, fallbackVideoUrl, fallbackDownloa
   if (loading) {
     return (
       <div className="w-full aspect-video max-h-[50vh] bg-card/80 rounded-lg flex items-center justify-center border border-border/50">
-        <div className="flex flex-col items-center gap-2">
-          <Loader2 className="h-8 w-8 animate-spin text-primary" />
-          <span className="text-sm text-muted-foreground">Loading...</span>
-        </div>
+        <Loader2 className="h-6 w-6 animate-spin text-primary" />
       </div>
     );
   }
@@ -136,15 +127,13 @@ const EmbeddedPlayer = ({ movieId, movieTitle, fallbackVideoUrl, fallbackDownloa
     return (
       <div className="w-full aspect-video max-h-[50vh] bg-card/80 rounded-lg flex items-center justify-center border border-border/50">
         <div className="flex flex-col items-center gap-2 text-center p-4">
-          <AlertCircle className="h-10 w-10 text-muted-foreground/50" />
-          <p className="text-muted-foreground font-medium">Video not available</p>
-          <p className="text-xs text-muted-foreground/70">This video will be uploaded soon</p>
+          <AlertCircle className="h-8 w-8 text-muted-foreground/50" />
+          <p className="text-muted-foreground text-sm">Video coming soon</p>
         </div>
       </div>
     );
   }
 
-  // Check if embedCode is already an iframe or just a URL
   const isIframe = videoData.embedCode.includes('<iframe');
   
   let sanitizedEmbed = '';
@@ -154,70 +143,66 @@ const EmbeddedPlayer = ({ movieId, movieTitle, fallbackVideoUrl, fallbackDownloa
       ADD_ATTR: ['allow', 'allowfullscreen', 'frameborder', 'scrolling', 'src', 'width', 'height', 'style']
     });
   } else {
-    // If it's just a URL, create an iframe
     const videoUrl = videoData.embedCode.trim();
     sanitizedEmbed = `<iframe src="${videoUrl}" width="100%" height="100%" frameborder="0" allowfullscreen allow="autoplay; encrypted-media"></iframe>`;
   }
 
   return (
-    <div className="w-full space-y-4">
-      {/* Video Player - Compact */}
-      <div className="relative w-full aspect-video max-h-[55vh] bg-black rounded-xl overflow-hidden shadow-xl border border-primary/20">
+    <div className="w-full space-y-3">
+      {/* Video Player */}
+      <div className="relative w-full aspect-video max-h-[55vh] bg-black rounded-xl overflow-hidden shadow-lg border border-primary/20">
         <div 
           className="w-full h-full [&>iframe]:w-full [&>iframe]:h-full [&>iframe]:border-0"
           dangerouslySetInnerHTML={{ __html: sanitizedEmbed }}
         />
       </div>
 
-      {/* Download Section - Prominent */}
-      <div className="bg-gradient-to-r from-green-500/20 via-green-600/10 to-green-500/20 p-4 rounded-xl border-2 border-green-500/40 shadow-lg">
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-green-500/30 rounded-full flex items-center justify-center">
-              <Download className="h-5 w-5 text-green-500" />
-            </div>
-            <div>
-              <h3 className="font-bold text-foreground">Download</h3>
-              <p className="text-xs text-muted-foreground">Save for offline</p>
-            </div>
-          </div>
+      {/* Quality Tip - Compact below video */}
+      <div className="flex items-center gap-2 px-3 py-2 bg-muted/30 rounded-lg text-xs text-muted-foreground">
+        <Settings className="h-3 w-3 flex-shrink-0" />
+        <span>Ibibazo? Hindura quality mu settings (⚙️) ya video player.</span>
+      </div>
 
-          {videoData.downloadLinks.length > 0 ? (
-            <div className="flex flex-wrap gap-2">
-              {videoData.downloadLinks.map((link, index) => (
-                <a
-                  key={index}
-                  href={link.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-5 py-2.5 bg-green-600 hover:bg-green-500 text-white font-semibold rounded-lg transition-all hover:scale-105 shadow-md"
-                >
-                  <Download className="h-4 w-4" />
-                  <span>{link.quality}</span>
-                  {link.size && <span className="text-xs opacity-80">({link.size})</span>}
-                </a>
-              ))}
-            </div>
-          ) : (
-            <div className="px-4 py-2 bg-muted/50 text-muted-foreground rounded-lg text-sm">
-              Coming soon
-            </div>
-          )}
+      {/* Download Section */}
+      <div className="flex flex-col sm:flex-row items-center justify-between gap-3 p-3 bg-green-500/10 rounded-xl border border-green-500/30">
+        <div className="flex items-center gap-2">
+          <Download className="h-5 w-5 text-green-500" />
+          <span className="font-semibold text-foreground text-sm">Download</span>
         </div>
+
+        {videoData.downloadLinks.length > 0 ? (
+          <div className="flex flex-wrap gap-2">
+            {videoData.downloadLinks.map((link, index) => (
+              <a
+                key={index}
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1.5 px-4 py-2 bg-green-600 hover:bg-green-500 text-white font-medium rounded-lg transition-all text-sm"
+              >
+                <Download className="h-3.5 w-3.5" />
+                <span>{link.quality}</span>
+                {link.size && <span className="text-xs opacity-80">({link.size})</span>}
+              </a>
+            ))}
+          </div>
+        ) : (
+          <span className="text-muted-foreground text-sm">Coming soon</span>
+        )}
       </div>
 
-      {/* Host Badge */}
-      <div className="flex items-center gap-2 text-sm">
-        <span className="px-3 py-1 bg-primary/20 rounded-full text-primary font-medium">
-          {videoData.host}
-        </span>
-        <span className="text-muted-foreground">• HD Quality</span>
+      {/* Host Badge - Minimal */}
+      <div className="flex items-center gap-2 text-xs text-muted-foreground">
+        <span className="px-2 py-0.5 bg-primary/10 rounded text-primary font-medium">{videoData.host}</span>
+        <span>• HD</span>
       </div>
 
-      {/* Recommended Movies */}
+      {/* Recommended - Cleaner */}
       <RecommendedMovies currentMovieId={movieId} currentMovieTitle={movieTitle} />
     </div>
   );
-};
+});
+
+EmbeddedPlayer.displayName = 'EmbeddedPlayer';
 
 export default EmbeddedPlayer;
