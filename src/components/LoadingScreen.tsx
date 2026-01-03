@@ -56,7 +56,7 @@ const LoadingScreen = ({ onLoadingComplete }: LoadingScreenProps) => {
           width={80}
           height={80}
         />
-        <h1 className="text-xl font-bold text-primary">{loadingText}</h1>
+        <p className="text-xl font-bold text-primary" aria-live="polite">{loadingText}</p>
         <div className="mt-3 flex justify-center gap-1">
           <div className="w-2 h-2 bg-primary rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
           <div className="w-2 h-2 bg-primary rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>

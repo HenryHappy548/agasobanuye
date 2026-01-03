@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 import StreamingHeader from "@/components/StreamingHeader";
 import MovieCard from "@/components/MovieCard";
 import VideoPlayer from "@/components/VideoPlayer";
@@ -33,13 +34,23 @@ const Movies = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <Helmet>
+        <title>Filime Agasobanuye - Movies | Rwaflix Rwanda</title>
+        <meta name="description" content="Reba filime agasobanuye ku Rwaflix. Watch dubbed movies in Kinyarwanda. Best movie streaming Rwanda, Oshakur, Cinebeta alternative." />
+        <meta name="keywords" content="filime agasobanuye, movies rwanda, rwaflix movies, oshakur movies, cinebeta filime, kinyarwanda movies, dubbed movies" />
+        <link rel="canonical" href="https://rwaflix.store/movies" />
+        <meta property="og:title" content="Filime Agasobanuye - Movies | Rwaflix" />
+        <meta property="og:description" content="Reba filime agasobanuye ku Rwaflix. Watch dubbed movies in Kinyarwanda." />
+        <meta property="og:url" content="https://rwaflix.store/movies" />
+      </Helmet>
+      
       <StreamingHeader onSearch={setSearchQuery} searchQuery={searchQuery} onPlayVideo={handlePlayVideo} />
       
       <main className="container mx-auto px-4 py-6 sm:py-8">
         <div className="mb-6 sm:mb-8">
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary mb-2 sm:mb-4">Movies</h1>
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary mb-2 sm:mb-4">Filime - Movies</h1>
           <p className="text-sm sm:text-base lg:text-lg text-muted-foreground">
-            Discover our collection of blockbuster movies
+            Reba filime agasobanuye - Watch our collection of dubbed movies
           </p>
         </div>
 

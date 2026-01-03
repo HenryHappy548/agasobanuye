@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 import StreamingHeader from "@/components/StreamingHeader";
 import MovieCard from "@/components/MovieCard";
 import VideoPlayer from "@/components/VideoPlayer";
@@ -31,13 +32,23 @@ const Popular = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <Helmet>
+        <title>Trending Agasobanuye - Popular Movies | Rwaflix Rwanda</title>
+        <meta name="description" content="Reba filime zikunda cyane agasobanuye. Watch trending movies dubbed in Kinyarwanda on Rwaflix. Top movies Rwanda." />
+        <meta name="keywords" content="trending movies rwanda, popular agasobanuye, rwaflix trending, hot movies kinyarwanda, oshakur trending, cinebeta popular" />
+        <link rel="canonical" href="https://rwaflix.store/popular" />
+        <meta property="og:title" content="Trending Agasobanuye - Popular | Rwaflix" />
+        <meta property="og:description" content="Reba filime zikunda cyane agasobanuye. Watch trending movies on Rwaflix." />
+        <meta property="og:url" content="https://rwaflix.store/popular" />
+      </Helmet>
+      
       <StreamingHeader onSearch={setSearchQuery} searchQuery={searchQuery} onPlayVideo={handlePlayVideo} />
       
       <main className="container mx-auto px-4 py-6 sm:py-8">
         <div className="mb-6 sm:mb-8">
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary mb-2 sm:mb-4">Popular & Trending</h1>
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary mb-2 sm:mb-4">Trending - Popular</h1>
           <p className="text-sm sm:text-base lg:text-lg text-muted-foreground">
-            Watch what everyone is watching right now
+            Reba ibikunda cyane - Watch what everyone is watching
           </p>
         </div>
 
