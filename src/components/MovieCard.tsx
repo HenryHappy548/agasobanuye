@@ -25,10 +25,10 @@ const MovieCard = memo(({ movie, priority = false }: MovieCardProps) => {
   return (
     <Link 
       to={watchPath}
-      className="block"
+      className="block gpu-accelerate"
       title={`Watch ${movie.title} free on Rwaflix - Agasobanuye`}
     >
-      <article className="group relative overflow-hidden rounded-lg bg-card border border-border hover:border-primary/50 transition-all duration-300 hover:scale-105 hover:shadow-glow">
+      <article className="group relative overflow-hidden rounded-lg bg-card border border-border hover:border-primary/50 hover-lift">
         <div className="aspect-[2/3] overflow-hidden relative">
           <OptimizedImage
             src={movie.poster}
@@ -38,12 +38,12 @@ const MovieCard = memo(({ movie, priority = false }: MovieCardProps) => {
             priority={priority}
             className="w-full h-full"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
           
           {/* Play icon overlay on hover */}
-          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            <div className="w-14 h-14 rounded-full bg-primary/90 flex items-center justify-center shadow-lg">
-              <Play className="h-6 w-6 text-primary-foreground fill-primary-foreground ml-1" />
+          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+            <div className="w-12 h-12 rounded-full bg-primary/90 flex items-center justify-center shadow-lg transform scale-90 group-hover:scale-100 transition-transform duration-200">
+              <Play className="h-5 w-5 text-primary-foreground fill-primary-foreground ml-0.5" />
             </div>
           </div>
         </div>
