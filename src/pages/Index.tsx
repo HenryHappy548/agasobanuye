@@ -72,8 +72,8 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      {/* SEO H1 - visually hidden but accessible for crawlers */}
-      <h1 className="sr-only">Reba Agasobanuye | Rwaflix</h1>
+      {/* SEO H1 - visually hidden but accessible for crawlers - includes competitor keywords */}
+      <h1 className="sr-only">Reba Agasobanuye | Rwaflix - Movie Nyarwanda, Oshakur, Cinebeta, Gaheza Films</h1>
       
       <StreamingHeader onSearch={handleSearch} searchQuery={searchQuery} onPlayVideo={handlePlayVideo} />
       

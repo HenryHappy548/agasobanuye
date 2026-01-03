@@ -76,13 +76,13 @@ const OptimizedImage = memo(({
   return (
     <div 
       ref={imgRef} 
-      className={cn("relative overflow-hidden bg-muted", className)}
+      className={cn("relative overflow-hidden bg-muted gpu-accelerate", className)}
       style={{ width, height }}
     >
-      {/* Placeholder */}
+      {/* Shimmer placeholder */}
       <div 
         className={cn(
-          "absolute inset-0 bg-muted transition-opacity duration-500",
+          "absolute inset-0 img-placeholder transition-opacity duration-300",
           isLoaded ? "opacity-0" : "opacity-100"
         )}
       />
