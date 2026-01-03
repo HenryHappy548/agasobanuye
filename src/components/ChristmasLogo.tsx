@@ -50,9 +50,9 @@ const ChristmasLogo = () => {
       </div>
       
       {/* Brand name with Christmas colors */}
-      <h1 className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-red-500 via-primary to-green-500 bg-clip-text text-transparent">
+      <span className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-red-500 via-primary to-green-500 bg-clip-text text-transparent">
         Rwaflix
-      </h1>
+      </span>
       
       {/* Christmas decoration - small ornament */}
       <div className="hidden sm:block absolute -right-4 top-0">

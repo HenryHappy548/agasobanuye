@@ -1,5 +1,6 @@
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 import StreamingHeader from "@/components/StreamingHeader";
 import Footer from "@/components/Footer";
 
@@ -67,13 +68,20 @@ const FAQ = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <Helmet>
+        <title>FAQ - Ibibazo Bikunze Kubazwa | Rwaflix</title>
+        <meta name="description" content="Ibibazo bikunze kubazwa kuri Rwaflix. Find answers about streaming, video quality, and how to watch movies agasobanuye." />
+        <meta name="keywords" content="rwaflix FAQ, ibibazo, streaming help, agasobanuye help, watch movies help rwanda" />
+        <link rel="canonical" href="https://rwaflix.store/faq" />
+      </Helmet>
+      
       <StreamingHeader onSearch={setSearchQuery} searchQuery={searchQuery} onPlayVideo={handlePlayVideo} />
       
       <main className="container mx-auto px-4 py-8">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-12">
             <h1 className="text-4xl font-bold text-primary mb-4">
-              Frequently Asked Questions
+              Ibibazo Bikunze Kubazwa - FAQ
             </h1>
             <p className="text-lg text-muted-foreground">
               Find answers to common questions about Rwaflix

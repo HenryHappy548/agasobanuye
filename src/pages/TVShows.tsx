@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 import StreamingHeader from "@/components/StreamingHeader";
 import MovieCard from "@/components/MovieCard";
 import VideoPlayer from "@/components/VideoPlayer";
@@ -33,13 +34,23 @@ const TVShows = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <Helmet>
+        <title>Series Agasobanuye - TV Shows | Rwaflix Rwanda</title>
+        <meta name="description" content="Reba series agasobanuye ku Rwaflix. Watch TV shows dubbed in Kinyarwanda. Best series streaming Rwanda, Oshakur, Cinebeta alternative." />
+        <meta name="keywords" content="series agasobanuye, tv shows rwanda, rwaflix series, oshakur series, cinebeta series, kinyarwanda series, dubbed series" />
+        <link rel="canonical" href="https://rwaflix.store/tv-shows" />
+        <meta property="og:title" content="Series Agasobanuye - TV Shows | Rwaflix" />
+        <meta property="og:description" content="Reba series agasobanuye ku Rwaflix. Watch TV shows dubbed in Kinyarwanda." />
+        <meta property="og:url" content="https://rwaflix.store/tv-shows" />
+      </Helmet>
+      
       <StreamingHeader onSearch={setSearchQuery} searchQuery={searchQuery} onPlayVideo={handlePlayVideo} />
       
       <main className="container mx-auto px-4 py-6 sm:py-8">
         <div className="mb-6 sm:mb-8">
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary mb-2 sm:mb-4">TV Shows & Series</h1>
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary mb-2 sm:mb-4">Series - TV Shows</h1>
           <p className="text-sm sm:text-base lg:text-lg text-muted-foreground">
-            Explore our collection of TV shows and series
+            Reba series agasobanuye - Explore our TV shows collection
           </p>
         </div>
 

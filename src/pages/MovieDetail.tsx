@@ -155,9 +155,9 @@ const MovieDetail = memo(() => {
               Back
             </Button>
           </Link>
-          <h1 className="text-base sm:text-lg font-bold text-foreground truncate flex-1 text-center">
+          <span className="text-base sm:text-lg font-bold text-foreground truncate flex-1 text-center">
             {movie.title}
-          </h1>
+          </span>
           <Button variant="outline" size="sm" onClick={handleShare} className="border-primary/30 hover:bg-primary/10">
             <Share2 className="h-4 w-4 sm:mr-2" />
             <span className="hidden sm:inline">Share</span>

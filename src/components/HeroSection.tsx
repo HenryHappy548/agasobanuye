@@ -106,9 +106,9 @@ const HeroSection = ({ onPlayVideo }: HeroSectionProps) => {
                 <Sparkles className="w-3.5 h-3.5" />
                 <span>Yatoranijwe</span>
               </div>
-              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3 sm:mb-4 leading-tight">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3 sm:mb-4 leading-tight">
                 {title}
-              </h1>
+              </h2>
               <p className="text-sm sm:text-base lg:text-lg text-muted-foreground mb-4 sm:mb-6 leading-relaxed line-clamp-3 sm:line-clamp-none">
                 {description || `${genre} • ${year}`}
               </p>
@@ -123,10 +123,10 @@ const HeroSection = ({ onPlayVideo }: HeroSectionProps) => {
                 </span>
                 <span>Live Streaming</span>
               </div>
-              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3 sm:mb-4 leading-tight">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3 sm:mb-4 leading-tight">
                 Murakaza Neza kuri{" "}
                 <span className="text-primary">Rwaflix</span>
-              </h1>
+              </h2>
               <p className="text-sm sm:text-base lg:text-lg text-muted-foreground mb-4 sm:mb-6 leading-relaxed">
                 Reba filime nyinshi z'agasobanuye. Streaming igezweho mu Rwanda!
               </p>

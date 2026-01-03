@@ -63,15 +63,16 @@ const Contact = () => {
   return (
     <div className="min-h-screen bg-background">
       <Helmet>
-        <title>Contact Us - Rwaflix</title>
-        <meta name="description" content="Contact Rwaflix for support, feedback, or inquiries. Reach us via email, WhatsApp, or our contact form." />
+        <title>Twandikire - Contact Us | Rwaflix Rwanda</title>
+        <meta name="description" content="Twandikire kuri Rwaflix. Contact us for support, feedback, or movie requests. WhatsApp, email support available." />
+        <meta name="keywords" content="rwaflix contact, twandikire, movie request rwanda, rwaflix support, agasobanuye help" />
         <link rel="canonical" href="https://rwaflix.store/contact" />
       </Helmet>
       
       <StreamingHeader searchQuery="" onSearch={() => {}} onPlayVideo={() => {}} />
       
       <main className="container mx-auto px-4 py-8 max-w-4xl">
-        <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-8">Contact Us</h1>
+        <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-8">Twandikire - Contact Us</h1>
         
         <div className="grid md:grid-cols-2 gap-8">
           {/* Contact Form */}
