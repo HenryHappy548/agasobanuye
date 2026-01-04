@@ -230,6 +230,13 @@ const MovieDetail = memo(() => {
         {/* Mini Products Above Player */}
         <MiniProductStrip limit={3} />
 
+        {/* Disclaimer to encourage engagement */}
+        <div className="bg-gradient-to-r from-primary/20 via-primary/10 to-primary/20 rounded-xl p-3 border border-primary/30 text-center">
+          <p className="text-foreground text-sm font-medium">
+            👇 Manuka hasi utubwire Uko wabonye <span className="text-primary font-bold">{movie.title}</span>
+          </p>
+        </div>
+
         {/* Video Player Section - MAIN FEATURE */}
         <section className="space-y-4">
           <h2 className="text-lg font-bold text-foreground flex items-center gap-2">
@@ -271,13 +278,6 @@ const MovieDetail = memo(() => {
             </div>
           </div>
         </section>
-
-        {/* Disclaimer to encourage engagement */}
-        <div className="bg-gradient-to-r from-primary/20 via-primary/10 to-primary/20 rounded-xl p-4 border border-primary/30 text-center">
-          <p className="text-foreground font-medium">
-            👇 Manuka hasi utubwire Uko wabonye <span className="text-primary font-bold">{movie.title}</span>
-          </p>
-        </div>
 
         {/* Comments Section - Movie Specific */}
         <section>
