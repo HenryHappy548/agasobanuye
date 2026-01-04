@@ -272,6 +272,13 @@ const MovieDetail = memo(() => {
           </div>
         </section>
 
+        {/* Disclaimer to encourage engagement */}
+        <div className="bg-gradient-to-r from-primary/20 via-primary/10 to-primary/20 rounded-xl p-4 border border-primary/30 text-center">
+          <p className="text-foreground font-medium">
+            👇 Manuka hasi utubwire Uko wabonye <span className="text-primary font-bold">{movie.title}</span>
+          </p>
+        </div>
+
         {/* Comments Section - Movie Specific */}
         <section>
           <CommentSection movieId={movie.id} movieTitle={movie.title} />
