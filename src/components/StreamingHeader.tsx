@@ -3,7 +3,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { useState, useCallback } from "react";
-import ChristmasLogo from "@/components/ChristmasLogo";
+import SimpleLogo from "@/components/SimpleLogo";
 import DOMPurify from "dompurify";
 import {
   Dialog,
@@ -46,10 +46,8 @@ const StreamingHeader = ({ onSearch, searchQuery, onPlayVideo }: StreamingHeader
     <header className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
       <div className="container mx-auto px-4 py-3 sm:py-4">
         <div className="flex items-center justify-between">
-          {/* Logo and Brand with Christmas theme */}
-          <div className="flex items-center space-x-2 sm:space-x-3">
-            <ChristmasLogo />
-          </div>
+          {/* Logo and Brand */}
+          <SimpleLogo />
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-6">
