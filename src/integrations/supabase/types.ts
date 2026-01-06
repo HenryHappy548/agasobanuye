@@ -150,6 +150,38 @@ export type Database = {
           },
         ]
       }
+      movie_views: {
+        Row: {
+          id: string
+          movie_id: string
+          referrer: string | null
+          user_agent: string | null
+          viewed_at: string
+        }
+        Insert: {
+          id?: string
+          movie_id: string
+          referrer?: string | null
+          user_agent?: string | null
+          viewed_at?: string
+        }
+        Update: {
+          id?: string
+          movie_id?: string
+          referrer?: string | null
+          user_agent?: string | null
+          viewed_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "movie_views_movie_id_fkey"
+            columns: ["movie_id"]
+            isOneToOne: false
+            referencedRelation: "movies"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       movies: {
         Row: {
           category: string
@@ -359,6 +391,13 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      get_movie_view_counts: {
+        Args: never
+        Returns: {
+          movie_id: string
+          view_count: number
+        }[]
+      }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]

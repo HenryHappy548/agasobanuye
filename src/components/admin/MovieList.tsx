@@ -6,13 +6,14 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from "@/components/ui/alert-dialog";
 import { toast } from "sonner";
-import { Edit, Trash2, Search, Loader2, RefreshCw, ExternalLink } from "lucide-react";
+import { Edit, Trash2, Search, Loader2, RefreshCw, ExternalLink, Eye } from "lucide-react";
 import { buildWatchPath } from "@/lib/watchRoute";
 import MovieForm from "./MovieForm";
 
 const MovieList = () => {
   const [movies, setMovies] = useState<any[]>([]);
   const [filteredMovies, setFilteredMovies] = useState<any[]>([]);
+  const [viewCounts, setViewCounts] = useState<Record<string, number>>({});
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
@@ -24,18 +25,31 @@ const MovieList = () => {
       if (showToast) setRefreshing(true);
       else setLoading(true);
       
-      const { data, error } = await supabase
-        .from("movies")
-        .select("*")
-        .order("created_at", { ascending: false });
+      // Fetch movies and view counts in parallel
+      const [moviesResult, viewsResult] = await Promise.all([
+        supabase
+          .from("movies")
+          .select("*")
+          .order("created_at", { ascending: false }),
+        supabase.rpc('get_movie_view_counts')
+      ]);
 
-      if (error) throw error;
+      if (moviesResult.error) throw moviesResult.error;
       
-      setMovies(data || []);
-      setFilteredMovies(data || []);
+      setMovies(moviesResult.data || []);
+      setFilteredMovies(moviesResult.data || []);
+      
+      // Build view counts map
+      if (viewsResult.data) {
+        const counts: Record<string, number> = {};
+        viewsResult.data.forEach((item: { movie_id: string; view_count: number }) => {
+          counts[item.movie_id] = item.view_count;
+        });
+        setViewCounts(counts);
+      }
       
       if (showToast) {
-        toast.success(`Loaded ${data?.length || 0} movies`);
+        toast.success(`Loaded ${moviesResult.data?.length || 0} movies`);
       }
     } catch (error: any) {
       console.error("Error fetching movies:", error);
@@ -165,6 +179,7 @@ const MovieList = () => {
             <TableRow>
               <TableHead>Poster</TableHead>
               <TableHead>Title</TableHead>
+              <TableHead>Views</TableHead>
               <TableHead>Year</TableHead>
               <TableHead>Genre</TableHead>
               <TableHead>Category</TableHead>
@@ -175,7 +190,7 @@ const MovieList = () => {
           <TableBody>
             {filteredMovies.length === 0 ? (
               <TableRow>
-                <TableCell colSpan={7} className="text-center py-8 text-muted-foreground">
+                <TableCell colSpan={8} className="text-center py-8 text-muted-foreground">
                   {searchQuery ? 'No movies match your search' : 'No movies found. Add your first movie!'}
                 </TableCell>
               </TableRow>
@@ -205,6 +220,12 @@ const MovieList = () => {
                       >
                         <ExternalLink className="w-3 h-3" />
                       </a>
+                    </div>
+                  </TableCell>
+                  <TableCell>
+                    <div className="flex items-center gap-1 text-muted-foreground">
+                      <Eye className="w-3 h-3" />
+                      <span className="font-medium">{viewCounts[movie.id] || 0}</span>
                     </div>
                   </TableCell>
                   <TableCell>{movie.year}</TableCell>

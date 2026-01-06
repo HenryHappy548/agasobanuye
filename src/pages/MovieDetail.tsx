@@ -1,5 +1,5 @@
 import { useParams, Link, useNavigate } from "react-router-dom";
-import { useEffect, memo, useMemo } from "react";
+import { useEffect, memo, useMemo, useRef } from "react";
 import { Helmet } from "react-helmet-async";
 import { ArrowLeft, Calendar, Film, Star, Share2, Copy, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -11,6 +11,7 @@ import { toast } from "sonner";
 import { useMovies, DBMovie } from "@/hooks/useMovies";
 import { ProductSlider } from "@/components/ProductSlider";
 import { MiniProductStrip } from "@/components/MiniProductStrip";
+import { supabase } from "@/integrations/supabase/client";
 
 const MovieDetail = memo(() => {
   const { slug, id } = useParams<{ slug: string; id?: string }>();
@@ -29,6 +30,26 @@ const MovieDetail = memo(() => {
       navigate(`/watch/${slugify(movie.title)}/${movie.id}`, { replace: true });
     }
   }, [loading, movie, id, navigate]);
+
+  // Track view - only once per page load
+  const viewTracked = useRef(false);
+  
+  useEffect(() => {
+    if (movie && !viewTracked.current) {
+      viewTracked.current = true;
+      // Record view asynchronously
+      supabase
+        .from('movie_views')
+        .insert({ 
+          movie_id: movie.id,
+          user_agent: navigator.userAgent,
+          referrer: document.referrer || null
+        })
+        .then(({ error }) => {
+          if (error) console.error('Failed to track view:', error);
+        });
+    }
+  }, [movie]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
