@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, memo } from "react";
+import { useState, useEffect, useRef, memo, useCallback } from "react";
 import { cn } from "@/lib/utils";
 import fallbackPoster from "@/assets/dont.jpg";
 
@@ -10,7 +10,60 @@ interface OptimizedImageProps {
   height?: number;
   priority?: boolean;
   fallback?: string;
+  lowQualityPlaceholder?: boolean;
 }
+
+// Network detection utility
+const getNetworkInfo = () => {
+  const connection = (navigator as any).connection || 
+                     (navigator as any).mozConnection || 
+                     (navigator as any).webkitConnection;
+  
+  if (!connection) return { isSlowConnection: false, saveData: false };
+  
+  const isSlowConnection = 
+    connection.effectiveType === "2g" || 
+    connection.effectiveType === "slow-2g" ||
+    connection.saveData === true ||
+    connection.downlink < 1;
+    
+  return { 
+    isSlowConnection, 
+    saveData: connection.saveData || false 
+  };
+};
+
+// Generate lower quality image URL for slow connections
+const getOptimizedImageUrl = (src: string, isSlowConnection: boolean): string => {
+  if (!isSlowConnection || !src) return src;
+  
+  // For external URLs, try to use image optimization parameters
+  try {
+    const url = new URL(src);
+    
+    // AliExpress images - reduce size
+    if (url.hostname.includes('aliexpress-media.com') || url.hostname.includes('ae-pic')) {
+      return src.replace(/_\d+x\d+/g, '_200x200');
+    }
+    
+    // Google images - add size parameter
+    if (url.hostname.includes('gstatic.com') || url.hostname.includes('googleusercontent.com')) {
+      if (!url.searchParams.has('w')) {
+        url.searchParams.set('w', '200');
+      }
+      return url.toString();
+    }
+    
+    // TMDB/movie poster images - use smaller size
+    if (url.hostname.includes('image.tmdb.org')) {
+      return src.replace('/original/', '/w200/').replace('/w500/', '/w200/');
+    }
+    
+    return src;
+  } catch {
+    return src;
+  }
+};
 
 const OptimizedImage = memo(({ 
   src, 
@@ -19,33 +72,40 @@ const OptimizedImage = memo(({
   width, 
   height,
   priority = false,
-  fallback = fallbackPoster
+  fallback = fallbackPoster,
+  lowQualityPlaceholder = true
 }: OptimizedImageProps) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isInView, setIsInView] = useState(priority);
   const [hasError, setHasError] = useState(false);
-  const [currentSrc, setCurrentSrc] = useState(src);
+  const [currentSrc, setCurrentSrc] = useState("");
+  const [networkInfo] = useState(() => getNetworkInfo());
   const imgRef = useRef<HTMLDivElement>(null);
+  const observerRef = useRef<IntersectionObserver | null>(null);
 
-  // Reset state when src changes
+  // Initialize optimized source
   useEffect(() => {
-    setCurrentSrc(src);
+    const optimizedSrc = getOptimizedImageUrl(src, networkInfo.isSlowConnection);
+    setCurrentSrc(optimizedSrc);
     setHasError(false);
     setIsLoaded(false);
-  }, [src]);
+  }, [src, networkInfo.isSlowConnection]);
 
+  // Intersection Observer with larger margin for slow connections
   useEffect(() => {
-    if (priority || !imgRef.current) return;
+    if (priority || !imgRef.current) {
+      if (priority) setIsInView(true);
+      return;
+    }
 
-    const connection = (navigator as any).connection;
-    const isSlowConnection = connection?.effectiveType === '2g' || connection?.effectiveType === 'slow-2g';
-    const margin = isSlowConnection ? "300px" : "100px";
+    // Larger rootMargin for slow connections to preload earlier
+    const margin = networkInfo.isSlowConnection ? "500px" : "150px";
 
-    const observer = new IntersectionObserver(
+    observerRef.current = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsInView(true);
-          observer.disconnect();
+          observerRef.current?.disconnect();
         }
       },
       { 
@@ -54,16 +114,16 @@ const OptimizedImage = memo(({
       }
     );
 
-    observer.observe(imgRef.current);
-    return () => observer.disconnect();
-  }, [priority]);
+    observerRef.current.observe(imgRef.current);
+    
+    return () => observerRef.current?.disconnect();
+  }, [priority, networkInfo.isSlowConnection]);
 
-  const handleLoad = () => {
+  const handleLoad = useCallback(() => {
     setIsLoaded(true);
-  };
+  }, []);
 
-  const handleError = () => {
-    // Use fallback image on error
+  const handleError = useCallback(() => {
     if (currentSrc !== fallback) {
       setCurrentSrc(fallback);
       setHasError(false);
@@ -71,7 +131,10 @@ const OptimizedImage = memo(({
       setHasError(true);
       setIsLoaded(true);
     }
-  };
+  }, [currentSrc, fallback]);
+
+  // Determine if we should show a tiny placeholder for extremely slow connections
+  const showMinimalPlaceholder = networkInfo.isSlowConnection && !isLoaded;
 
   return (
     <div 
@@ -79,15 +142,16 @@ const OptimizedImage = memo(({
       className={cn("relative overflow-hidden bg-muted gpu-accelerate", className)}
       style={{ width, height }}
     >
-      {/* Shimmer placeholder */}
+      {/* Shimmer placeholder - simpler animation for slow connections */}
       <div 
         className={cn(
-          "absolute inset-0 img-placeholder transition-opacity duration-300",
+          "absolute inset-0 transition-opacity",
+          networkInfo.isSlowConnection ? "duration-150 bg-muted" : "duration-300 img-placeholder",
           isLoaded ? "opacity-0" : "opacity-100"
         )}
       />
       
-      {isInView && !hasError && (
+      {isInView && !hasError && currentSrc && (
         <img
           src={currentSrc}
           alt={alt}
@@ -95,10 +159,12 @@ const OptimizedImage = memo(({
           height={height}
           loading={priority ? "eager" : "lazy"}
           decoding="async"
+          fetchPriority={priority ? "high" : "auto"}
           onLoad={handleLoad}
           onError={handleError}
           className={cn(
-            "w-full h-full object-cover transition-opacity duration-300",
+            "w-full h-full object-cover transition-opacity",
+            networkInfo.isSlowConnection ? "duration-150" : "duration-300",
             isLoaded ? "opacity-100" : "opacity-0"
           )}
         />

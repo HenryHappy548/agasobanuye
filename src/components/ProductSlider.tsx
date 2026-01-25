@@ -19,12 +19,22 @@ interface ProductSliderProps {
   title?: string;
 }
 
-const toHighResAliImage = (url: string) => {
+// Optimize image based on network
+const getOptimizedAliImage = (url: string) => {
   if (!url) return url;
+  
+  const connection = (navigator as any).connection;
+  const isSlowConnection = connection?.effectiveType === '2g' || 
+                           connection?.effectiveType === 'slow-2g' ||
+                           connection?.saveData === true;
+  
+  // Use smaller images for slow connections
+  const targetSize = isSlowConnection ? "300x300" : "800x800";
+  
   return url
-    .replace("_80x80", "_800x800")
-    .replace("_140x140", "_800x800")
-    .replace("_300x300", "_800x800");
+    .replace(/_\d+x\d+/g, `_${targetSize}`)
+    .replace("_80x80", `_${targetSize}`)
+    .replace("_140x140", `_${targetSize}`);
 };
 
 export const ProductSlider = ({
@@ -125,10 +135,11 @@ export const ProductSlider = ({
               )}
               <div className="aspect-square overflow-hidden bg-muted">
                 <img
-                  src={toHighResAliImage(product.image_url)}
+                  src={getOptimizedAliImage(product.image_url)}
                   alt={`${product.name} product image`}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   loading="lazy"
+                  decoding="async"
                 />
               </div>
               <div className="p-2">
