@@ -18,6 +18,7 @@ interface UseProductsOptions {
   limit?: number;
   category?: string;
   activeOnly?: boolean;
+  enableRealtime?: boolean; // Only enable for admin pages
 }
 
 const fetchProductsFromDB = async ({
@@ -42,6 +43,7 @@ export const useProducts = ({
   limit = 20,
   category,
   activeOnly = true,
+  enableRealtime = false, // Default to false for public pages
 }: UseProductsOptions = {}) => {
   const queryClient = useQueryClient();
   const queryKey = ['products', limit, category, activeOnly];
@@ -55,7 +57,10 @@ export const useProducts = ({
     retry: 1,
   });
 
+  // Real-time subscription ONLY for admin pages
   useEffect(() => {
+    if (!enableRealtime) return; // Skip for public pages
+    
     let debounceTimer: NodeJS.Timeout;
     
     const channel = supabase
@@ -77,7 +82,7 @@ export const useProducts = ({
       clearTimeout(debounceTimer);
       supabase.removeChannel(channel);
     };
-  }, [activeOnly, category, limit, queryClient]);
+  }, [activeOnly, category, limit, queryClient, enableRealtime]);
 
   return { products, loading, refetch };
 };
