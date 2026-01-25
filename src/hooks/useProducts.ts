@@ -49,23 +49,32 @@ export const useProducts = ({
   const { data: products = [], isLoading: loading, refetch } = useQuery({
     queryKey,
     queryFn: () => fetchProductsFromDB({ limit, category, activeOnly }),
-    staleTime: 2 * 60 * 1000, // 2 minutes
-    gcTime: 10 * 60 * 1000, // 10 minutes cache
+    staleTime: 5 * 60 * 1000, // 5 minutes - longer cache for slow connections
+    gcTime: 15 * 60 * 1000, // 15 minutes cache
+    refetchOnWindowFocus: false,
+    retry: 1,
   });
 
   useEffect(() => {
+    let debounceTimer: NodeJS.Timeout;
+    
     const channel = supabase
       .channel(`products-${category || "all"}-${limit}-${activeOnly ? "active" : "all"}`)
       .on(
         "postgres_changes",
         { event: "*", schema: "public", table: "products" },
         () => {
-          queryClient.invalidateQueries({ queryKey: ['products'] });
+          // Debounce to prevent rapid refetches
+          clearTimeout(debounceTimer);
+          debounceTimer = setTimeout(() => {
+            queryClient.invalidateQueries({ queryKey: ['products'] });
+          }, 3000);
         }
       )
       .subscribe();
 
     return () => {
+      clearTimeout(debounceTimer);
       supabase.removeChannel(channel);
     };
   }, [activeOnly, category, limit, queryClient]);

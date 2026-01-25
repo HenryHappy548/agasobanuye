@@ -15,12 +15,19 @@ interface MiniProductStripProps {
   limit?: number;
 }
 
-const toMediumAliImage = (url: string) => {
+// Optimize for network speed
+const getOptimizedImage = (url: string) => {
   if (!url) return url;
-  return url
-    .replace("_80x80", "_140x140")
-    .replace("_300x300", "_140x140")
-    .replace("_800x800", "_140x140");
+  
+  const connection = (navigator as any).connection;
+  const isSlowConnection = connection?.effectiveType === '2g' || 
+                           connection?.effectiveType === 'slow-2g' ||
+                           connection?.saveData === true;
+  
+  // Use smaller images for slow connections
+  const targetSize = isSlowConnection ? "80x80" : "140x140";
+  
+  return url.replace(/_\d+x\d+/g, `_${targetSize}`);
 };
 
 export const MiniProductStrip = ({ limit = 3 }: MiniProductStripProps) => {
@@ -48,10 +55,11 @@ export const MiniProductStrip = ({ limit = 3 }: MiniProductStripProps) => {
           className="flex items-center gap-2 bg-card/50 backdrop-blur-sm border border-border rounded-lg p-2 cursor-pointer hover:border-primary/50 transition-all duration-300 hover:shadow-md min-w-[140px] max-w-[180px]"
         >
           <img
-            src={toMediumAliImage(product.image_url)}
+            src={getOptimizedImage(product.image_url)}
             alt={`${product.name} thumbnail`}
             className="w-10 h-10 object-cover rounded"
             loading="lazy"
+            decoding="async"
           />
           <div className="flex-1 min-w-0">
             <p className="text-xs font-medium text-foreground truncate">{product.name}</p>

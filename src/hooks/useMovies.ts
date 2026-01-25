@@ -66,32 +66,43 @@ const fetchMoviesFromDB = async (): Promise<DBMovie[]> => {
 export const useMovies = () => {
   const queryClient = useQueryClient();
 
-  const { data: movies = [], isLoading: loading, refetch } = useQuery({
+  const { data: movies = [], isLoading: loading, refetch, isFetching } = useQuery({
     queryKey: ['movies'],
     queryFn: fetchMoviesFromDB,
-    staleTime: 2 * 60 * 1000, // 2 minutes - data stays fresh
-    gcTime: 10 * 60 * 1000, // 10 minutes cache
+    staleTime: 5 * 60 * 1000, // 5 minutes - data stays fresh longer
+    gcTime: 15 * 60 * 1000, // 15 minutes cache
+    refetchOnWindowFocus: false, // Don't refetch on focus for slow connections
+    refetchOnReconnect: false, // Manual refetch on reconnect
+    retry: 1, // Only 1 retry for slow connections
+    retryDelay: 1000, // 1 second delay between retries
   });
 
-  // Real-time subscription for updates
+  // Real-time subscription for updates (debounced)
   useEffect(() => {
+    let debounceTimer: NodeJS.Timeout;
+    
     const channel = supabase
       .channel('movies-channel')
       .on(
         'postgres_changes',
         { event: '*', schema: 'public', table: 'movies' },
         () => {
-          queryClient.invalidateQueries({ queryKey: ['movies'] });
+          // Debounce updates to prevent multiple rapid refetches
+          clearTimeout(debounceTimer);
+          debounceTimer = setTimeout(() => {
+            queryClient.invalidateQueries({ queryKey: ['movies'] });
+          }, 2000); // 2 second debounce
         }
       )
       .subscribe();
 
     return () => {
+      clearTimeout(debounceTimer);
       supabase.removeChannel(channel);
     };
   }, [queryClient]);
 
-  return { movies, loading, refetch };
+  return { movies, loading, refetch, isFetching };
 };
 
 // Get related movies (next episode or same genre)

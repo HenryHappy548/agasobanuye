@@ -170,15 +170,38 @@
     }
   }
   
-  /* Optimized image loading placeholder */
+  /* Optimized image loading placeholder - simpler for slow connections */
   .img-placeholder {
     background: linear-gradient(90deg, hsl(var(--muted)) 0%, hsl(var(--card)) 50%, hsl(var(--muted)) 100%);
     background-size: 200% 100%;
     animation: shimmer 1.5s infinite linear;
   }
   
+  /* Reduced shimmer for slow connections / reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .img-placeholder {
+      animation: none;
+      background: hsl(var(--muted));
+    }
+  }
+  
   @keyframes shimmer {
     0% { background-position: 200% 0; }
     100% { background-position: -200% 0; }
+  }
+  
+  /* Hide scrollbar for carousels */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Content visibility for off-screen optimization */
+  .content-auto {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 300px;
   }
 }
