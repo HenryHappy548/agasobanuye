@@ -71,11 +71,6 @@ const StreamingHeader = ({ onSearch, searchQuery, onPlayVideo }: StreamingHeader
                 Popular
               </Button>
             </Link>
-            <Link to="/shop">
-              <Button variant="ghost" className="text-foreground hover:text-primary">
-                Shop
-              </Button>
-            </Link>
           </nav>
           
           {/* Right Side Actions */}
@@ -203,11 +198,6 @@ const StreamingHeader = ({ onSearch, searchQuery, onPlayVideo }: StreamingHeader
               <Link to="/popular" onClick={() => setIsMobileMenuOpen(false)}>
                 <Button variant="ghost" className="w-full justify-start text-foreground hover:text-primary">
                   Popular
-                </Button>
-              </Link>
-              <Link to="/shop" onClick={() => setIsMobileMenuOpen(false)}>
-                <Button variant="ghost" className="w-full justify-start text-foreground hover:text-primary">
-                  Shop
                 </Button>
               </Link>
             </nav>
