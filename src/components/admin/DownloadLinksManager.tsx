@@ -17,8 +17,8 @@ interface DownloadLinkForm {
 }
 
 const DownloadLinksManager = () => {
-  const { videos, loading: videosLoading, refetch: refetchVideos, isFetching: videosFetching } = useVideos();
-  const { downloadLinks: allDownloadLinks, loading: linksLoading, refetch: refetchLinks, isFetching: linksFetching } = useDownloadLinks();
+  const { videos, loading: videosLoading, refetch: refetchVideos, isFetching: videosFetching } = useVideos({ enableRealtime: true });
+  const { downloadLinks: allDownloadLinks, loading: linksLoading, refetch: refetchLinks, isFetching: linksFetching } = useDownloadLinks({ enableRealtime: true });
   
   const [selectedVideoId, setSelectedVideoId] = useState<string>("");
   const [saving, setSaving] = useState(false);

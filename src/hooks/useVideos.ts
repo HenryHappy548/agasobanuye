@@ -52,8 +52,13 @@ const fetchDownloadLinksFromDB = async (): Promise<DownloadLink[]> => {
   return data || [];
 };
 
+interface UseVideosOptions {
+  enableRealtime?: boolean; // Only enable for admin pages
+}
+
 // Main hook for videos with React Query caching
-export const useVideos = () => {
+export const useVideos = (options: UseVideosOptions = {}) => {
+  const { enableRealtime = false } = options;
   const queryClient = useQueryClient();
 
   const { data: videos = [], isLoading: loading, refetch, isFetching } = useQuery({
@@ -67,8 +72,10 @@ export const useVideos = () => {
     retryDelay: 1000,
   });
 
-  // Real-time subscription with debounce
+  // Real-time subscription ONLY for admin pages (saves processing on public pages)
   useEffect(() => {
+    if (!enableRealtime) return; // Skip for public pages
+    
     let debounceTimer: NodeJS.Timeout;
     
     const channel = supabase
@@ -89,13 +96,14 @@ export const useVideos = () => {
       clearTimeout(debounceTimer);
       supabase.removeChannel(channel);
     };
-  }, [queryClient]);
+  }, [queryClient, enableRealtime]);
 
   return { videos, loading, refetch, isFetching };
 };
 
 // Hook for download links with caching
-export const useDownloadLinks = () => {
+export const useDownloadLinks = (options: UseVideosOptions = {}) => {
+  const { enableRealtime = false } = options;
   const queryClient = useQueryClient();
 
   const { data: downloadLinks = [], isLoading: loading, refetch, isFetching } = useQuery({
@@ -109,8 +117,10 @@ export const useDownloadLinks = () => {
     retryDelay: 1000,
   });
 
-  // Real-time subscription with debounce
+  // Real-time subscription ONLY for admin pages
   useEffect(() => {
+    if (!enableRealtime) return; // Skip for public pages
+    
     let debounceTimer: NodeJS.Timeout;
     
     const channel = supabase
@@ -131,7 +141,7 @@ export const useDownloadLinks = () => {
       clearTimeout(debounceTimer);
       supabase.removeChannel(channel);
     };
-  }, [queryClient]);
+  }, [queryClient, enableRealtime]);
 
   return { downloadLinks, loading, refetch, isFetching };
 };

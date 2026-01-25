@@ -10,7 +10,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useVideos } from "@/hooks/useVideos";
 
 const VideoManager = () => {
-  const { videos, loading, refetch, isFetching } = useVideos();
+  const { videos, loading, refetch, isFetching } = useVideos({ enableRealtime: true });
   const [saving, setSaving] = useState(false);
 
   const [newVideo, setNewVideo] = useState({

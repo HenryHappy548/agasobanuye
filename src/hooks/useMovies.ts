@@ -1,5 +1,5 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { mockMovies, Movie } from "@/data/mockData";
 
@@ -63,7 +63,12 @@ const fetchMoviesFromDB = async (): Promise<DBMovie[]> => {
   return [...formattedDbMovies, ...uniqueMockMovies];
 };
 
-export const useMovies = () => {
+interface UseMoviesOptions {
+  enableRealtime?: boolean; // Only enable for admin pages
+}
+
+export const useMovies = (options: UseMoviesOptions = {}) => {
+  const { enableRealtime = false } = options;
   const queryClient = useQueryClient();
 
   const { data: movies = [], isLoading: loading, refetch, isFetching } = useQuery({
@@ -77,8 +82,10 @@ export const useMovies = () => {
     retryDelay: 1000, // 1 second delay between retries
   });
 
-  // Real-time subscription for updates (debounced)
+  // Real-time subscription ONLY for admin pages (saves processing on public pages)
   useEffect(() => {
+    if (!enableRealtime) return; // Skip for public pages
+    
     let debounceTimer: NodeJS.Timeout;
     
     const channel = supabase
@@ -100,7 +107,7 @@ export const useMovies = () => {
       clearTimeout(debounceTimer);
       supabase.removeChannel(channel);
     };
-  }, [queryClient]);
+  }, [queryClient, enableRealtime]);
 
   return { movies, loading, refetch, isFetching };
 };
