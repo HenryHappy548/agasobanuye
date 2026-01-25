@@ -1,29 +1,17 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
-import { Loader2, Plus, Trash2, Video, Edit, X, Check } from "lucide-react";
+import { Loader2, Plus, Trash2, Video, RefreshCw } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-
-interface VideoData {
-  id: string;
-  video_key: string;
-  title: string;
-  embed_code: string;
-  host: string | null;
-  thumbnail_url: string | null;
-  season: number | null;
-  episode: number | null;
-}
+import { useVideos } from "@/hooks/useVideos";
 
 const VideoManager = () => {
-  const [videos, setVideos] = useState<VideoData[]>([]);
-  const [loading, setLoading] = useState(true);
+  const { videos, loading, refetch, isFetching } = useVideos();
   const [saving, setSaving] = useState(false);
-  const [editingId, setEditingId] = useState<string | null>(null);
 
   const [newVideo, setNewVideo] = useState({
     video_key: "",
@@ -32,27 +20,6 @@ const VideoManager = () => {
     host: "",
     thumbnail_url: "",
   });
-
-  useEffect(() => {
-    fetchVideos();
-  }, []);
-
-  const fetchVideos = async () => {
-    try {
-      const { data, error } = await supabase
-        .from("videos")
-        .select("*")
-        .order("created_at", { ascending: false });
-
-      if (error) throw error;
-      setVideos(data || []);
-    } catch (error: any) {
-      console.error("Error fetching videos:", error);
-      toast.error("Failed to load videos");
-    } finally {
-      setLoading(false);
-    }
-  };
 
   const handleAddVideo = async () => {
     if (!newVideo.video_key.trim() || !newVideo.title.trim() || !newVideo.embed_code.trim()) {
@@ -74,7 +41,7 @@ const VideoManager = () => {
 
       toast.success("Video added successfully!");
       setNewVideo({ video_key: "", title: "", embed_code: "", host: "", thumbnail_url: "" });
-      fetchVideos();
+      refetch();
     } catch (error: any) {
       console.error("Error adding video:", error);
       toast.error(error.message || "Failed to add video");
@@ -94,7 +61,7 @@ const VideoManager = () => {
       if (error) throw error;
 
       toast.success("Video deleted!");
-      setVideos(prev => prev.filter(v => v.id !== id));
+      refetch();
     } catch (error: any) {
       console.error("Error deleting video:", error);
       toast.error("Failed to delete video");
@@ -191,10 +158,22 @@ const VideoManager = () => {
       {/* Existing Videos */}
       <Card className="border-border">
         <CardHeader className="pb-3">
-          <CardTitle className="text-lg flex items-center gap-2">
-            <Video className="w-5 h-5" />
-            Existing Videos ({videos.length})
-          </CardTitle>
+          <div className="flex items-center justify-between">
+            <CardTitle className="text-lg flex items-center gap-2">
+              <Video className="w-5 h-5" />
+              Existing Videos ({videos.length})
+            </CardTitle>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => refetch()}
+              disabled={isFetching}
+              className="gap-1 text-xs"
+            >
+              <RefreshCw className={`w-3 h-3 ${isFetching ? 'animate-spin' : ''}`} />
+              Refresh
+            </Button>
+          </div>
         </CardHeader>
         <CardContent>
           {videos.length === 0 ? (

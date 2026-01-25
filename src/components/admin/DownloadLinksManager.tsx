@@ -1,87 +1,44 @@
-import { useState, useEffect } from "react";
+import { useState, useMemo } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { toast } from "sonner";
-import { Loader2, Plus, Trash2, Download, Link } from "lucide-react";
+import { Loader2, Plus, Trash2, Download, Link, RefreshCw } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { useVideos, useDownloadLinks, getVideoDownloadLinks } from "@/hooks/useVideos";
 
-interface DownloadLink {
-  id?: string;
+interface DownloadLinkForm {
   quality: string;
   size: string;
   url: string;
   type: string;
 }
 
-interface Video {
-  id: string;
-  video_key: string;
-  title: string;
-}
-
 const DownloadLinksManager = () => {
-  const [videos, setVideos] = useState<Video[]>([]);
+  const { videos, loading: videosLoading, refetch: refetchVideos, isFetching: videosFetching } = useVideos();
+  const { downloadLinks: allDownloadLinks, loading: linksLoading, refetch: refetchLinks, isFetching: linksFetching } = useDownloadLinks();
+  
   const [selectedVideoId, setSelectedVideoId] = useState<string>("");
-  const [downloadLinks, setDownloadLinks] = useState<DownloadLink[]>([]);
-  const [loading, setLoading] = useState(false);
   const [saving, setSaving] = useState(false);
 
+  // Get download links for selected video from cached data (instant!)
+  const downloadLinks = useMemo(() => {
+    if (!selectedVideoId) return [];
+    return getVideoDownloadLinks(selectedVideoId, allDownloadLinks);
+  }, [selectedVideoId, allDownloadLinks]);
+
   // New link form state
-  const [newLink, setNewLink] = useState<DownloadLink>({
+  const [newLink, setNewLink] = useState<DownloadLinkForm>({
     quality: "720p",
     size: "",
     url: "",
     type: "MP4"
   });
 
-  useEffect(() => {
-    fetchVideos();
-  }, []);
-
-  useEffect(() => {
-    if (selectedVideoId) {
-      fetchDownloadLinks(selectedVideoId);
-    } else {
-      setDownloadLinks([]);
-    }
-  }, [selectedVideoId]);
-
-  const fetchVideos = async () => {
-    setLoading(true);
-    try {
-      const { data, error } = await supabase
-        .from("videos")
-        .select("id, video_key, title")
-        .order("title");
-
-      if (error) throw error;
-      setVideos(data || []);
-    } catch (error: any) {
-      console.error("Error fetching videos:", error);
-      toast.error("Failed to load videos");
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const fetchDownloadLinks = async (videoId: string) => {
-    try {
-      const { data, error } = await supabase
-        .from("download_links")
-        .select("*")
-        .eq("video_id", videoId)
-        .order("quality");
-
-      if (error) throw error;
-      setDownloadLinks(data || []);
-    } catch (error: any) {
-      console.error("Error fetching download links:", error);
-      toast.error("Failed to load download links");
-    }
-  };
+  const loading = videosLoading || linksLoading;
+  const isFetching = videosFetching || linksFetching;
 
   const handleAddLink = async () => {
     if (!selectedVideoId) {
@@ -110,7 +67,7 @@ const DownloadLinksManager = () => {
 
       toast.success("Download link added successfully!");
       setNewLink({ quality: "720p", size: "", url: "", type: "MP4" });
-      fetchDownloadLinks(selectedVideoId);
+      refetchLinks();
     } catch (error: any) {
       console.error("Error adding download link:", error);
       toast.error(error.message || "Failed to add download link");
@@ -131,18 +88,38 @@ const DownloadLinksManager = () => {
       if (error) throw error;
 
       toast.success("Download link deleted!");
-      setDownloadLinks(prev => prev.filter(link => link.id !== linkId));
+      refetchLinks();
     } catch (error: any) {
       console.error("Error deleting download link:", error);
       toast.error("Failed to delete download link");
     }
   };
 
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center py-8">
+        <Loader2 className="w-6 h-6 animate-spin text-primary" />
+      </div>
+    );
+  }
+
   return (
     <div className="space-y-6">
-      {/* Video Selection */}
+      {/* Video Selection with Refresh */}
       <div className="space-y-2">
-        <Label>Select Video/Movie</Label>
+        <div className="flex items-center justify-between">
+          <Label>Select Video/Movie</Label>
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => { refetchVideos(); refetchLinks(); }}
+            disabled={isFetching}
+            className="gap-1 text-xs"
+          >
+            <RefreshCw className={`w-3 h-3 ${isFetching ? 'animate-spin' : ''}`} />
+            Refresh
+          </Button>
+        </div>
         <Select value={selectedVideoId} onValueChange={setSelectedVideoId}>
           <SelectTrigger className="bg-background/50">
             <SelectValue placeholder="Choose a video to manage download links..." />
@@ -155,7 +132,7 @@ const DownloadLinksManager = () => {
             ))}
           </SelectContent>
         </Select>
-        {videos.length === 0 && !loading && (
+        {videos.length === 0 && (
           <p className="text-sm text-muted-foreground">
             No videos found. Add videos first before managing download links.
           </p>
@@ -282,7 +259,7 @@ const DownloadLinksManager = () => {
                       <Button
                         variant="ghost"
                         size="icon"
-                        onClick={() => handleDeleteLink(link.id!)}
+                        onClick={() => handleDeleteLink(link.id)}
                         className="text-destructive hover:text-destructive hover:bg-destructive/10"
                       >
                         <Trash2 className="w-4 h-4" />
