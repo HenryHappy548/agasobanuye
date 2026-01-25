@@ -9,8 +9,7 @@ import Footer from "@/components/Footer";
 import { slugify } from "@/lib/slugify";
 import { toast } from "sonner";
 import { useMovies, DBMovie } from "@/hooks/useMovies";
-import { ProductSlider } from "@/components/ProductSlider";
-import { MiniProductStrip } from "@/components/MiniProductStrip";
+import HilltopAdsBanner from "@/components/HilltopAdsBanner";
 import { supabase } from "@/integrations/supabase/client";
 
 const MovieDetail = memo(() => {
@@ -248,8 +247,8 @@ const MovieDetail = memo(() => {
           </div>
         </section>
 
-        {/* Mini Products Above Player */}
-        <MiniProductStrip limit={3} />
+        {/* Affiliate Banner */}
+        <HilltopAdsBanner />
 
         {/* Disclaimer to encourage engagement */}
         <div className="bg-gradient-to-r from-primary/20 via-primary/10 to-primary/20 rounded-xl p-3 border border-primary/30 text-center">
@@ -272,8 +271,8 @@ const MovieDetail = memo(() => {
           />
         </section>
 
-        {/* Product Slider Below Player */}
-        <ProductSlider limit={15} title="🔥 Hot Deals" />
+        {/* Affiliate Banner */}
+        <HilltopAdsBanner />
 
         {/* About Section */}
         <section className="bg-gradient-to-br from-card/80 to-card/40 rounded-xl p-5 border border-border/50">

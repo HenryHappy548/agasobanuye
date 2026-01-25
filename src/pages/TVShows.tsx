@@ -6,8 +6,7 @@ import VideoPlayer from "@/components/VideoPlayer";
 import Footer from "@/components/Footer";
 import { useMovies } from "@/hooks/useMovies";
 import { Skeleton } from "@/components/ui/skeleton";
-import { ProductSlider } from "@/components/ProductSlider";
-import { MiniProductStrip } from "@/components/MiniProductStrip";
+import HilltopAdsBanner from "@/components/HilltopAdsBanner";
 
 const TVShows = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -54,8 +53,8 @@ const TVShows = () => {
           </p>
         </div>
 
-        {/* Mini Product Strip */}
-        <MiniProductStrip limit={3} />
+        {/* Affiliate Banner */}
+        <HilltopAdsBanner />
 
         <section className="mt-4">
           {loading ? (
@@ -88,8 +87,8 @@ const TVShows = () => {
           )}
         </section>
 
-        {/* Product Slider */}
-        <ProductSlider limit={15} title="🔥 Hot Deals" />
+        {/* Affiliate Banner */}
+        <HilltopAdsBanner />
       </main>
 
       <VideoPlayer
