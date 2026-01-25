@@ -4,6 +4,7 @@ import { Loader2, Download, AlertCircle, Settings } from "lucide-react";
 import DOMPurify from "dompurify";
 import { getStaticVideoData } from "@/data/staticVideoData";
 import RecommendedMovies from "./RecommendedMovies";
+import { useQueryClient } from "@tanstack/react-query";
 
 interface DownloadLink {
   quality: string;
@@ -29,16 +30,53 @@ interface EmbeddedPlayerProps {
 const EmbeddedPlayer = memo(({ movieId, movieTitle, fallbackVideoUrl, fallbackDownloadUrl }: EmbeddedPlayerProps) => {
   const [videoData, setVideoData] = useState<VideoData | null>(null);
   const [loading, setLoading] = useState(true);
+  const queryClient = useQueryClient();
 
   // Check static data first (instant, no network)
   const staticData = useMemo(() => getStaticVideoData(movieId), [movieId]);
 
+  // Try to get cached data first
+  const getCachedVideoData = () => {
+    const cachedVideos = queryClient.getQueryData<any[]>(['videos']);
+    const cachedLinks = queryClient.getQueryData<any[]>(['download-links']);
+    
+    if (cachedVideos && cachedLinks) {
+      const video = cachedVideos.find(v => v.video_key === movieId || v.id === movieId);
+      if (video) {
+        const links = cachedLinks.filter(l => l.video_id === video.id);
+        return {
+          title: video.title,
+          embedCode: video.embed_code,
+          host: video.host || "Rwaflix",
+          downloadLinks: links.map((link: any) => ({
+            quality: link.quality,
+            size: link.size || "",
+            url: link.url,
+            type: link.type || "MP4",
+          })),
+        };
+      }
+    }
+    return null;
+  };
+
   useEffect(() => {
+    // 1. Static data (instant)
     if (staticData) {
       setVideoData(staticData);
       setLoading(false);
       return;
     }
+
+    // 2. Try cached data first (instant)
+    const cachedData = getCachedVideoData();
+    if (cachedData) {
+      setVideoData(cachedData);
+      setLoading(false);
+      return;
+    }
+
+    // 3. Fetch from DB only if no cache
     fetchVideoData();
   }, [movieId, staticData]);
 
@@ -46,22 +84,31 @@ const EmbeddedPlayer = memo(({ movieId, movieTitle, fallbackVideoUrl, fallbackDo
     setLoading(true);
 
     try {
-      const { data: video } = await supabase
-        .from("videos")
-        .select("id, title, embed_code, host")
-        .eq("video_key", movieId)
-        .maybeSingle();
+      // Parallel fetch for faster loading
+      const [videoResult, movieResult] = await Promise.all([
+        supabase
+          .from("videos")
+          .select("id, title, embed_code, host")
+          .eq("video_key", movieId)
+          .maybeSingle(),
+        supabase
+          .from("movies")
+          .select("title, video_url, download_url, dubbed")
+          .eq("id", movieId)
+          .maybeSingle()
+      ]);
 
-      if (video) {
+      // Check videos table first
+      if (videoResult.data) {
         const { data: links } = await supabase
           .from("download_links")
           .select("quality, size, url, type")
-          .eq("video_id", video.id);
+          .eq("video_id", videoResult.data.id);
 
         setVideoData({
-          title: video.title,
-          embedCode: video.embed_code,
-          host: video.host || "Rwaflix",
+          title: videoResult.data.title,
+          embedCode: videoResult.data.embed_code,
+          host: videoResult.data.host || "Rwaflix",
           downloadLinks: (links || []).map(link => ({
             quality: link.quality,
             size: link.size || "",
@@ -73,27 +120,23 @@ const EmbeddedPlayer = memo(({ movieId, movieTitle, fallbackVideoUrl, fallbackDo
         return;
       }
 
-      const { data: movie } = await supabase
-        .from("movies")
-        .select("title, video_url, download_url, dubbed")
-        .eq("id", movieId)
-        .maybeSingle();
-
-      if (movie && movie.video_url) {
-        const downloadLinks: DownloadLink[] = movie.download_url
-          ? [{ quality: "HD", size: "", url: movie.download_url, type: "MP4" }]
+      // Check movies table
+      if (movieResult.data && movieResult.data.video_url) {
+        const downloadLinks: DownloadLink[] = movieResult.data.download_url
+          ? [{ quality: "HD", size: "", url: movieResult.data.download_url, type: "MP4" }]
           : [];
 
         setVideoData({
-          title: movie.title,
-          embedCode: movie.video_url,
-          host: movie.dubbed || "Rwaflix",
+          title: movieResult.data.title,
+          embedCode: movieResult.data.video_url,
+          host: movieResult.data.dubbed || "Rwaflix",
           downloadLinks,
         });
         setLoading(false);
         return;
       }
 
+      // Use fallbacks
       if (fallbackVideoUrl) {
         const downloadLinks: DownloadLink[] = fallbackDownloadUrl
           ? [{ quality: "HD", size: "", url: fallbackDownloadUrl, type: "MP4" }]
