@@ -51,10 +51,12 @@ export const useProducts = ({
   const { data: products = [], isLoading: loading, refetch } = useQuery({
     queryKey,
     queryFn: () => fetchProductsFromDB({ limit, category, activeOnly }),
-    staleTime: 5 * 60 * 1000, // 5 minutes - longer cache for slow connections
-    gcTime: 15 * 60 * 1000, // 15 minutes cache
+    staleTime: 2 * 60 * 1000, // 2 minutes - fresher data
+    gcTime: 10 * 60 * 1000, // 10 minutes cache
     refetchOnWindowFocus: false,
-    retry: 1,
+    refetchOnReconnect: true,
+    refetchOnMount: 'always',
+    retry: 2,
   });
 
   // Real-time subscription ONLY for admin pages

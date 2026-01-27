@@ -64,12 +64,13 @@ export const useVideos = (options: UseVideosOptions = {}) => {
   const { data: videos = [], isLoading: loading, refetch, isFetching } = useQuery({
     queryKey: ['videos'],
     queryFn: fetchVideosFromDB,
-    staleTime: 5 * 60 * 1000, // 5 minutes
-    gcTime: 15 * 60 * 1000, // 15 minutes cache
+    staleTime: 2 * 60 * 1000, // 2 minutes - fresher data
+    gcTime: 10 * 60 * 1000, // 10 minutes cache
     refetchOnWindowFocus: false,
-    refetchOnReconnect: false,
-    retry: 1,
-    retryDelay: 1000,
+    refetchOnReconnect: true, // Refetch when connection restored
+    refetchOnMount: 'always', // Always fetch fresh data on mount
+    retry: 2,
+    retryDelay: 1500,
   });
 
   // Real-time subscription ONLY for admin pages (saves processing on public pages)
@@ -109,12 +110,13 @@ export const useDownloadLinks = (options: UseVideosOptions = {}) => {
   const { data: downloadLinks = [], isLoading: loading, refetch, isFetching } = useQuery({
     queryKey: ['download-links'],
     queryFn: fetchDownloadLinksFromDB,
-    staleTime: 5 * 60 * 1000,
-    gcTime: 15 * 60 * 1000,
+    staleTime: 2 * 60 * 1000, // 2 minutes - fresher data
+    gcTime: 10 * 60 * 1000, // 10 minutes cache
     refetchOnWindowFocus: false,
-    refetchOnReconnect: false,
-    retry: 1,
-    retryDelay: 1000,
+    refetchOnReconnect: true,
+    refetchOnMount: 'always',
+    retry: 2,
+    retryDelay: 1500,
   });
 
   // Real-time subscription ONLY for admin pages

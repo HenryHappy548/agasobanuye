@@ -74,12 +74,13 @@ export const useMovies = (options: UseMoviesOptions = {}) => {
   const { data: movies = [], isLoading: loading, refetch, isFetching } = useQuery({
     queryKey: ['movies'],
     queryFn: fetchMoviesFromDB,
-    staleTime: 5 * 60 * 1000, // 5 minutes - data stays fresh longer
-    gcTime: 15 * 60 * 1000, // 15 minutes cache
+    staleTime: 2 * 60 * 1000, // 2 minutes - fresher data
+    gcTime: 10 * 60 * 1000, // 10 minutes cache
     refetchOnWindowFocus: false, // Don't refetch on focus for slow connections
-    refetchOnReconnect: false, // Manual refetch on reconnect
-    retry: 1, // Only 1 retry for slow connections
-    retryDelay: 1000, // 1 second delay between retries
+    refetchOnReconnect: true, // Refetch when connection restored
+    refetchOnMount: 'always', // Always fetch fresh data on mount
+    retry: 2, // 2 retries for reliability
+    retryDelay: 1500, // 1.5 second delay between retries
   });
 
   // Real-time subscription ONLY for admin pages (saves processing on public pages)
