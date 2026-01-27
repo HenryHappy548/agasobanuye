@@ -9,7 +9,8 @@ import Footer from "@/components/Footer";
 import { slugify } from "@/lib/slugify";
 import { toast } from "sonner";
 import { useMovies, DBMovie } from "@/hooks/useMovies";
-import HilltopAdsBanner from "@/components/HilltopAdsBanner";
+import { MonetagInpush, MonetagVignette } from "@/components/MonetagAds";
+import SupportButton from "@/components/SupportButton";
 import { supabase } from "@/integrations/supabase/client";
 
 const MovieDetail = memo(() => {
@@ -247,8 +248,9 @@ const MovieDetail = memo(() => {
           </div>
         </section>
 
-        {/* Affiliate Banner */}
-        <HilltopAdsBanner />
+        {/* Monetag Ads */}
+        <MonetagInpush />
+        <MonetagVignette />
 
         {/* Disclaimer to encourage engagement */}
         <div className="bg-gradient-to-r from-primary/20 via-primary/10 to-primary/20 rounded-xl p-3 border border-primary/30 text-center">
@@ -271,8 +273,11 @@ const MovieDetail = memo(() => {
           />
         </section>
 
-        {/* Affiliate Banner */}
-        <HilltopAdsBanner />
+        {/* Support Button - Under Video */}
+        <div className="flex flex-wrap gap-2 justify-center sm:justify-start">
+          <SupportButton variant="default" />
+          <SupportButton variant="compact" className="sm:hidden" />
+        </div>
 
         {/* About Section */}
         <section className="bg-gradient-to-br from-card/80 to-card/40 rounded-xl p-5 border border-border/50">

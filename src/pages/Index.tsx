@@ -11,7 +11,8 @@ import { ContactAdminButton } from "@/components/ContactAdminButton";
 import { Button } from "@/components/ui/button";
 import { useMovies } from "@/hooks/useMovies";
 import { isValidVideoId, sanitizeTextInput } from "@/lib/security";
-import HilltopAdsBanner from "@/components/HilltopAdsBanner";
+import { MonetagInpush, MonetagVignette } from "@/components/MonetagAds";
+import SupportButton from "@/components/SupportButton";
 
 import {
   Carousel,
@@ -206,8 +207,9 @@ const Index = () => {
       )}
       
       <main className="container mx-auto px-4 py-6 sm:py-8 space-y-8 sm:space-y-12">
-        {/* Affiliate Banner */}
-        <HilltopAdsBanner />
+        {/* Monetag Ads */}
+        <MonetagInpush />
+        <MonetagVignette />
         {searchQuery ? (
           <section>
             <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">
@@ -274,7 +276,10 @@ const Index = () => {
               
             </section>
 
-            <HilltopAdsBanner />
+            {/* Support Button */}
+            <div className="flex justify-center">
+              <SupportButton />
+            </div>
 
             <section>
               <div className="flex items-center justify-between mb-4 sm:mb-6">
