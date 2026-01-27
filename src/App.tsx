@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import LoadingScreen from "@/components/LoadingScreen";
+import { MonetagAdsBootstrap } from "@/components/MonetagAds";
 
 // Lazy load pages for better performance
 const Index = lazy(() => import("./pages/Index"));
@@ -46,13 +47,19 @@ const App = () => {
   };
 
   if (isLoading) {
-    return <LoadingScreen onLoadingComplete={handleLoadingComplete} />;
+    return (
+      <>
+        <MonetagAdsBootstrap />
+        <LoadingScreen onLoadingComplete={handleLoadingComplete} />
+      </>
+    );
   }
 
   return (
     <HelmetProvider>
       <QueryClientProvider client={queryClient}>
         <TooltipProvider>
+          <MonetagAdsBootstrap />
           <Toaster />
           <Sonner />
           <BrowserRouter>

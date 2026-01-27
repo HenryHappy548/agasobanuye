@@ -8,6 +8,7 @@ import { buildWatchPath } from "@/lib/watchRoute";
 import { toast } from "sonner";
 import { mockMovies } from "@/data/mockData";
 import VideoRecommendations from "@/components/VideoRecommendations";
+import { getCachedMovieById } from "@/lib/moviesCache";
 
 interface VideoPlayerProps {
   isOpen: boolean;
@@ -43,55 +44,88 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
     setLoading(true);
     setDbVideo(null);
 
-    // First try the videos table (legacy)
-    const { data: video } = await supabase
-      .from("videos")
-      .select("*")
-      .eq("video_key", id)
-      .maybeSingle();
+    type CachedMovie = {
+      id: string;
+      title: string;
+      video_url?: string;
+      download_url?: string;
+      dubbed?: string;
+    };
 
-    if (video) {
-      const { data: links } = await supabase
-        .from("download_links")
-        .select("*")
-        .eq("video_id", video.id);
+    const loadFromPersistentCache = () => {
+      const cachedMovie = getCachedMovieById<CachedMovie>(id);
+      if (!cachedMovie?.video_url) return false;
 
-      setDbVideo({
-        title: video.title,
-        embedCode: video.embed_code,
-        host: video.host || "",
-        downloadLinks: (links || []).map(link => ({
-          quality: link.quality,
-          size: link.size || "",
-          url: link.url,
-          type: link.type || "MP4",
-        })),
-      });
-      setLoading(false);
-      return;
-    }
-
-    // Next try the movies table (CMS-added movies use UUID id)
-    const { data: movie } = await supabase
-      .from("movies")
-      .select("id,title,video_url,download_url,dubbed")
-      .eq("id", id)
-      .maybeSingle();
-
-    if (movie && movie.video_url) {
-      const downloadLinks: DownloadLink[] = movie.download_url
-        ? [{ quality: "720p", size: "", url: movie.download_url, type: "MP4" }]
+      const downloadLinks: DownloadLink[] = cachedMovie.download_url
+        ? [{ quality: "720p", size: "", url: cachedMovie.download_url, type: "MP4" }]
         : [];
 
       setDbVideo({
-        title: movie.title,
-        embedCode: movie.video_url,
-        host: movie.dubbed || "Rwaflix",
+        title: cachedMovie.title,
+        embedCode: cachedMovie.video_url,
+        host: cachedMovie.dubbed || "Rwaflix",
         downloadLinks,
       });
       setLoading(false);
-      return;
+      return true;
+    };
+
+    try {
+      // First try the videos table (legacy)
+      const { data: video } = await supabase
+        .from("videos")
+        .select("*")
+        .eq("video_key", id)
+        .maybeSingle();
+
+      if (video) {
+        const { data: links } = await supabase
+          .from("download_links")
+          .select("*")
+          .eq("video_id", video.id);
+
+        setDbVideo({
+          title: video.title,
+          embedCode: video.embed_code,
+          host: video.host || "",
+          downloadLinks: (links || []).map((link) => ({
+            quality: link.quality,
+            size: link.size || "",
+            url: link.url,
+            type: link.type || "MP4",
+          })),
+        });
+        setLoading(false);
+        return;
+      }
+
+      // Next try the movies table (CMS-added movies use UUID id)
+      const { data: movie } = await supabase
+        .from("movies")
+        .select("id,title,video_url,download_url,dubbed")
+        .eq("id", id)
+        .maybeSingle();
+
+      if (movie && movie.video_url) {
+        const downloadLinks: DownloadLink[] = movie.download_url
+          ? [{ quality: "720p", size: "", url: movie.download_url, type: "MP4" }]
+          : [];
+
+        setDbVideo({
+          title: movie.title,
+          embedCode: movie.video_url,
+          host: movie.dubbed || "Rwaflix",
+          downloadLinks,
+        });
+        setLoading(false);
+        return;
+      }
+    } catch (error) {
+      console.error("Error fetching video from DB:", error);
     }
+
+    // Weak network/offline fallback: persistent cached movies
+    if (loadFromPersistentCache()) return;
 
     // Fallback: nothing found, let static map handle it
     setDbVideo(null);

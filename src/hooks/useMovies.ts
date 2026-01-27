@@ -2,6 +2,7 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useEffect, useMemo } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { mockMovies, Movie } from "@/data/mockData";
+import { readMoviesCache, writeMoviesCache } from "@/lib/moviesCache";
 
 export interface DBMovie {
   id: string;
@@ -31,6 +32,9 @@ const fetchMoviesFromDB = async (): Promise<DBMovie[]> => {
 
   if (error) {
     console.error("Error fetching movies:", error);
+    // If the network is weak/offline, keep showing the last successful DB fetch.
+    const cached = readMoviesCache();
+    if (cached?.movies?.length) return cached.movies;
     return mockMovies as DBMovie[];
   }
 
@@ -60,7 +64,9 @@ const fetchMoviesFromDB = async (): Promise<DBMovie[]> => {
     m => !dbTitles.has(m.title.toLowerCase())
   ) as DBMovie[];
 
-  return [...formattedDbMovies, ...uniqueMockMovies];
+  const merged = [...formattedDbMovies, ...uniqueMockMovies];
+  writeMoviesCache(merged);
+  return merged;
 };
 
 interface UseMoviesOptions {
@@ -71,16 +77,23 @@ export const useMovies = (options: UseMoviesOptions = {}) => {
   const { enableRealtime = false } = options;
   const queryClient = useQueryClient();
 
+  const cached = useMemo(() => readMoviesCache(), []);
+
   const { data: movies = [], isLoading: loading, refetch, isFetching } = useQuery({
     queryKey: ['movies'],
     queryFn: fetchMoviesFromDB,
-    staleTime: 2 * 60 * 1000, // 2 minutes - fresher data
+    // Always try to fetch admin-added movies from the DB (even if we have cache).
+    // Cache is still used as a fallback for weak/offline devices.
+    staleTime: 0,
     gcTime: 10 * 60 * 1000, // 10 minutes cache
     refetchOnWindowFocus: false, // Don't refetch on focus for slow connections
     refetchOnReconnect: true, // Refetch when connection restored
     refetchOnMount: 'always', // Always fetch fresh data on mount
-    retry: 2, // 2 retries for reliability
-    retryDelay: 1500, // 1.5 second delay between retries
+    refetchInterval: 60 * 1000, // Keep syncing new admin uploads
+    retry: 5,
+    retryDelay: (attempt) => Math.min(1500 * 2 ** attempt, 15000),
+    initialData: cached?.movies?.length ? cached.movies : undefined,
+    initialDataUpdatedAt: cached?.savedAt,
   });
 
   // Real-time subscription ONLY for admin pages (saves processing on public pages)
