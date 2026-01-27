@@ -4,6 +4,7 @@ import { Loader2, Download, AlertCircle, Settings } from "lucide-react";
 import DOMPurify from "dompurify";
 import { getStaticVideoData } from "@/data/staticVideoData";
 import RecommendedMovies from "./RecommendedMovies";
+import SupportButton from "./SupportButton";
 import { useQueryClient } from "@tanstack/react-query";
 
 interface DownloadLink {
@@ -234,10 +235,13 @@ const EmbeddedPlayer = memo(({ movieId, movieTitle, fallbackVideoUrl, fallbackDo
         )}
       </div>
 
-      {/* Host Badge - Minimal */}
-      <div className="flex items-center gap-2 text-xs text-muted-foreground">
-        <span className="px-2 py-0.5 bg-primary/10 rounded text-primary font-medium">{videoData.host}</span>
-        <span>• HD</span>
+      {/* Host Badge + Support - Minimal */}
+      <div className="flex items-center justify-between gap-2 text-xs text-muted-foreground">
+        <div className="flex items-center gap-2">
+          <span className="px-2 py-0.5 bg-primary/10 rounded text-primary font-medium">{videoData.host}</span>
+          <span>• HD</span>
+        </div>
+        <SupportButton variant="compact" />
       </div>
 
       {/* Recommended - Cleaner */}

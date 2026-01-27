@@ -6,7 +6,8 @@ import VideoPlayer from "@/components/VideoPlayer";
 import Footer from "@/components/Footer";
 import { useMovies } from "@/hooks/useMovies";
 import { Skeleton } from "@/components/ui/skeleton";
-import HilltopAdsBanner from "@/components/HilltopAdsBanner";
+import { MonetagInpush, MonetagVignette } from "@/components/MonetagAds";
+import SupportButton from "@/components/SupportButton";
 
 const Movies = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -53,8 +54,14 @@ const Movies = () => {
           </p>
         </div>
 
-        {/* Affiliate Banner */}
-        <HilltopAdsBanner />
+        {/* Monetag Ads */}
+        <MonetagInpush />
+        <MonetagVignette />
+        
+        {/* Support Button */}
+        <div className="flex justify-center my-4">
+          <SupportButton />
+        </div>
 
         <section className="mt-4">
           {loading ? (
@@ -87,8 +94,10 @@ const Movies = () => {
           )}
         </section>
 
-        {/* Affiliate Banner */}
-        <HilltopAdsBanner />
+        {/* Support Button */}
+        <div className="flex justify-center my-6">
+          <SupportButton variant="inline" />
+        </div>
       </main>
 
       <VideoPlayer
