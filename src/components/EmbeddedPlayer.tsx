@@ -6,6 +6,7 @@ import { getStaticVideoData } from "@/data/staticVideoData";
 import RecommendedMovies from "./RecommendedMovies";
 import SupportButton from "./SupportButton";
 import { useQueryClient } from "@tanstack/react-query";
+import { getCachedMovieById } from "@/lib/moviesCache";
 
 interface DownloadLink {
   quality: string;
@@ -73,6 +74,30 @@ const EmbeddedPlayer = memo(({ movieId, movieTitle, fallbackVideoUrl, fallbackDo
     const cachedData = getCachedVideoData();
     if (cachedData) {
       setVideoData(cachedData);
+      setLoading(false);
+      return;
+    }
+
+    // 2.5 Local persistent cache (helps weak/offline devices show admin-uploaded movies)
+    type CachedMovie = {
+      id: string;
+      title?: string;
+      video_url?: string;
+      download_url?: string;
+      dubbed?: string;
+    };
+    const cachedMovie = getCachedMovieById<CachedMovie>(movieId);
+    if (cachedMovie?.video_url) {
+      const downloadLinks: DownloadLink[] = cachedMovie.download_url
+        ? [{ quality: "HD", size: "", url: cachedMovie.download_url, type: "MP4" }]
+        : [];
+
+      setVideoData({
+        title: cachedMovie.title || movieTitle,
+        embedCode: cachedMovie.video_url,
+        host: cachedMovie.dubbed || "Rwaflix",
+        downloadLinks,
+      });
       setLoading(false);
       return;
     }
