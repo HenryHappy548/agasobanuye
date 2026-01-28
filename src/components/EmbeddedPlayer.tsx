@@ -8,6 +8,16 @@ import SupportButton from "./SupportButton";
 import { useQueryClient } from "@tanstack/react-query";
 import { getCachedMovieById } from "@/lib/moviesCache";
 
+// Ensure URL has proper protocol prefix
+const normalizeUrl = (url: string): string => {
+  if (!url) return url;
+  const trimmed = url.trim();
+  if (trimmed.startsWith("http://") || trimmed.startsWith("https://")) {
+    return trimmed;
+  }
+  return `https://${trimmed}`;
+};
+
 interface DownloadLink {
   quality: string;
   size: string | null;
@@ -244,7 +254,7 @@ const EmbeddedPlayer = memo(({ movieId, movieTitle, fallbackVideoUrl, fallbackDo
             {videoData.downloadLinks.map((link, index) => (
               <a
                 key={index}
-                href={link.url}
+                href={normalizeUrl(link.url)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-1.5 px-4 py-2 bg-green-600 hover:bg-green-500 text-white font-medium rounded-lg transition-all text-sm"
