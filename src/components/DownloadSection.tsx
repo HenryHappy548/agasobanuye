@@ -14,6 +14,18 @@ interface DownloadSectionProps {
   className?: string;
 }
 
+// Ensure URL has proper protocol prefix
+const normalizeUrl = (url: string): string => {
+  if (!url) return url;
+  const trimmed = url.trim();
+  // Already has protocol
+  if (trimmed.startsWith("http://") || trimmed.startsWith("https://")) {
+    return trimmed;
+  }
+  // Add https:// prefix
+  return `https://${trimmed}`;
+};
+
 const DownloadSection = ({ downloadLinks, title, className = "" }: DownloadSectionProps) => {
   if (!downloadLinks || downloadLinks.length === 0) {
     return null;
@@ -35,7 +47,7 @@ const DownloadSection = ({ downloadLinks, title, className = "" }: DownloadSecti
         {downloadLinks.map((link, index) => (
           <a
             key={index}
-            href={link.url}
+            href={normalizeUrl(link.url)}
             target="_blank"
             rel="noopener noreferrer"
             className="block"
