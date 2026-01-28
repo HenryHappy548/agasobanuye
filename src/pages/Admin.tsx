@@ -5,7 +5,7 @@ import { User } from "@supabase/supabase-js";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { LogOut, Film, Plus, Download, Video, MessageSquare, ShoppingBag } from "lucide-react";
+import { LogOut, Film, Plus, Download, Video, MessageSquare, ShoppingBag, MessagesSquare } from "lucide-react";
 import { toast } from "sonner";
 import MovieForm from "@/components/admin/MovieForm";
 import MovieList from "@/components/admin/MovieList";
@@ -13,6 +13,7 @@ import DownloadLinksManager from "@/components/admin/DownloadLinksManager";
 import VideoManager from "@/components/admin/VideoManager";
 import MessagesManager from "@/components/admin/MessagesManager";
 import { ProductsManager } from "@/components/admin/ProductsManager";
+import CommentsManager from "@/components/admin/CommentsManager";
 
 
 const Admin = () => {
@@ -114,7 +115,7 @@ const Admin = () => {
 
         {/* Main Content */}
         <Tabs defaultValue="add" className="space-y-6">
-          <TabsList className="grid w-full grid-cols-6 max-w-5xl mx-auto">
+          <TabsList className="grid w-full grid-cols-7 max-w-6xl mx-auto">
             <TabsTrigger value="add" className="gap-2">
               <Plus className="w-4 h-4" />
               <span className="hidden sm:inline">Add Movie</span>
@@ -134,6 +135,10 @@ const Admin = () => {
             <TabsTrigger value="products" className="gap-2">
               <ShoppingBag className="w-4 h-4" />
               <span className="hidden sm:inline">Products</span>
+            </TabsTrigger>
+            <TabsTrigger value="comments" className="gap-2">
+              <MessagesSquare className="w-4 h-4" />
+              <span className="hidden sm:inline">Comments</span>
             </TabsTrigger>
             <TabsTrigger value="messages" className="gap-2">
               <MessageSquare className="w-4 h-4" />
@@ -207,6 +212,20 @@ const Admin = () => {
               </CardHeader>
               <CardContent>
                 <ProductsManager />
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          <TabsContent value="comments">
+            <Card className="border-primary/20 shadow-lg">
+              <CardHeader>
+                <CardTitle className="text-2xl">Manage Comments</CardTitle>
+                <CardDescription>
+                  View and delete user comments from all videos. Search by username or comment content.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <CommentsManager />
               </CardContent>
             </Card>
           </TabsContent>
