@@ -3,7 +3,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
-import { Trash2, Search, MessageSquare, Loader2 } from "lucide-react";
+import { Trash2, Search, MessageSquare, Loader2, ExternalLink } from "lucide-react";
 import {
   Table,
   TableBody,
@@ -23,6 +23,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
+import { slugify } from "@/lib/slugify";
 
 interface Comment {
   id: string;
@@ -33,8 +34,14 @@ interface Comment {
   movie_key: string | null;
 }
 
+interface Movie {
+  id: string;
+  title: string;
+}
+
 const CommentsManager = () => {
   const [comments, setComments] = useState<Comment[]>([]);
+  const [movies, setMovies] = useState<Record<string, Movie>>({});
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
   const [deleting, setDeleting] = useState<string | null>(null);
@@ -59,19 +66,55 @@ const CommentsManager = () => {
 
   const fetchComments = async () => {
     try {
-      const { data, error } = await supabase
-        .from("comments")
-        .select("*")
-        .order("created_at", { ascending: false });
+      // Fetch comments and movies in parallel
+      const [commentsResult, moviesResult] = await Promise.all([
+        supabase
+          .from("comments")
+          .select("*")
+          .order("created_at", { ascending: false }),
+        supabase
+          .from("movies")
+          .select("id, title")
+      ]);
 
-      if (error) throw error;
-      setComments(data || []);
+      if (commentsResult.error) throw commentsResult.error;
+      setComments(commentsResult.data || []);
+
+      // Create a lookup map for movies
+      if (moviesResult.data) {
+        const movieMap: Record<string, Movie> = {};
+        moviesResult.data.forEach((movie) => {
+          movieMap[movie.id] = movie;
+        });
+        setMovies(movieMap);
+      }
     } catch (error) {
       console.error("Error fetching comments:", error);
       toast.error("Failed to load comments");
     } finally {
       setLoading(false);
     }
+  };
+
+  const getMovieLink = (comment: Comment): string | null => {
+    if (comment.movie_id && movies[comment.movie_id]) {
+      const movie = movies[comment.movie_id];
+      return `/watch/${slugify(movie.title)}/${movie.id}`;
+    }
+    if (comment.movie_key) {
+      return `/watch/${comment.movie_key}`;
+    }
+    return null;
+  };
+
+  const getMovieTitle = (comment: Comment): string | null => {
+    if (comment.movie_id && movies[comment.movie_id]) {
+      return movies[comment.movie_id].title;
+    }
+    if (comment.movie_key) {
+      return comment.movie_key;
+    }
+    return null;
   };
 
   const handleDelete = async (id: string) => {
@@ -136,9 +179,10 @@ const CommentsManager = () => {
           <Table>
             <TableHeader>
               <TableRow className="bg-muted/50">
-                <TableHead className="w-[150px]">User</TableHead>
+                <TableHead className="w-[140px]">User</TableHead>
                 <TableHead>Comment</TableHead>
-                <TableHead className="w-[150px]">Date</TableHead>
+                <TableHead className="w-[140px]">Movie</TableHead>
+                <TableHead className="w-[100px]">Date</TableHead>
                 <TableHead className="w-[80px] text-right">Action</TableHead>
               </TableRow>
             </TableHeader>
@@ -167,6 +211,22 @@ const CommentsManager = () => {
                     <p className="text-sm text-foreground/90 line-clamp-2">
                       {comment.comment}
                     </p>
+                  </TableCell>
+                  <TableCell>
+                    {getMovieLink(comment) ? (
+                      <a
+                        href={getMovieLink(comment)!}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 text-xs text-primary hover:underline font-medium max-w-[120px]"
+                        title={getMovieTitle(comment) || "View movie"}
+                      >
+                        <ExternalLink className="h-3 w-3 flex-shrink-0" />
+                        <span className="truncate">{getMovieTitle(comment)}</span>
+                      </a>
+                    ) : (
+                      <span className="text-xs text-muted-foreground">Homepage</span>
+                    )}
                   </TableCell>
                   <TableCell>
                     <span className="text-xs text-muted-foreground">
