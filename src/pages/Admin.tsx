@@ -5,7 +5,7 @@ import { User } from "@supabase/supabase-js";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { LogOut, Film, Plus, Download, Video, MessageSquare, ShoppingBag, MessagesSquare } from "lucide-react";
+import { LogOut, Film, Plus, Download, Video, MessageSquare, ShoppingBag, MessagesSquare, Crown } from "lucide-react";
 import { toast } from "sonner";
 import MovieForm from "@/components/admin/MovieForm";
 import MovieList from "@/components/admin/MovieList";
@@ -14,6 +14,7 @@ import VideoManager from "@/components/admin/VideoManager";
 import MessagesManager from "@/components/admin/MessagesManager";
 import { ProductsManager } from "@/components/admin/ProductsManager";
 import CommentsManager from "@/components/admin/CommentsManager";
+import PremiumManager from "@/components/admin/PremiumManager";
 
 
 const Admin = () => {
@@ -115,7 +116,7 @@ const Admin = () => {
 
         {/* Main Content */}
         <Tabs defaultValue="add" className="space-y-6">
-          <TabsList className="grid w-full grid-cols-7 max-w-6xl mx-auto">
+          <TabsList className="grid w-full grid-cols-8 max-w-6xl mx-auto">
             <TabsTrigger value="add" className="gap-2">
               <Plus className="w-4 h-4" />
               <span className="hidden sm:inline">Add Movie</span>
@@ -131,6 +132,10 @@ const Admin = () => {
             <TabsTrigger value="downloads" className="gap-2">
               <Download className="w-4 h-4" />
               <span className="hidden sm:inline">Downloads</span>
+            </TabsTrigger>
+            <TabsTrigger value="premium" className="gap-2">
+              <Crown className="w-4 h-4 text-amber-500" />
+              <span className="hidden sm:inline">Pro</span>
             </TabsTrigger>
             <TabsTrigger value="products" className="gap-2">
               <ShoppingBag className="w-4 h-4" />
@@ -198,6 +203,23 @@ const Admin = () => {
               </CardHeader>
               <CardContent>
                 <DownloadLinksManager />
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          <TabsContent value="premium">
+            <Card className="border-amber-500/20 shadow-lg">
+              <CardHeader>
+                <CardTitle className="text-2xl flex items-center gap-2">
+                  <Crown className="h-6 w-6 text-amber-500" />
+                  Pro Movies Manager
+                </CardTitle>
+                <CardDescription>
+                  Generate access codes for clients and manage premium undubbed movies
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <PremiumManager />
               </CardContent>
             </Card>
           </TabsContent>
