@@ -257,6 +257,111 @@ export type Database = {
         }
         Relationships: []
       }
+      premium_code_movies: {
+        Row: {
+          code_id: string
+          created_at: string
+          id: string
+          movie_id: string
+        }
+        Insert: {
+          code_id: string
+          created_at?: string
+          id?: string
+          movie_id: string
+        }
+        Update: {
+          code_id?: string
+          created_at?: string
+          id?: string
+          movie_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "premium_code_movies_code_id_fkey"
+            columns: ["code_id"]
+            isOneToOne: false
+            referencedRelation: "premium_codes"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "premium_code_movies_movie_id_fkey"
+            columns: ["movie_id"]
+            isOneToOne: false
+            referencedRelation: "premium_movies"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      premium_codes: {
+        Row: {
+          client_name: string
+          client_phone: string | null
+          code: string
+          created_at: string
+          id: string
+          is_active: boolean
+          updated_at: string
+        }
+        Insert: {
+          client_name: string
+          client_phone?: string | null
+          code: string
+          created_at?: string
+          id?: string
+          is_active?: boolean
+          updated_at?: string
+        }
+        Update: {
+          client_name?: string
+          client_phone?: string | null
+          code?: string
+          created_at?: string
+          id?: string
+          is_active?: boolean
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      premium_movies: {
+        Row: {
+          created_at: string
+          description: string | null
+          download_url: string | null
+          genre: string | null
+          id: string
+          poster_url: string | null
+          title: string
+          updated_at: string
+          video_url: string | null
+          year: string | null
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          download_url?: string | null
+          genre?: string | null
+          id?: string
+          poster_url?: string | null
+          title: string
+          updated_at?: string
+          video_url?: string | null
+          year?: string | null
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          download_url?: string | null
+          genre?: string | null
+          id?: string
+          poster_url?: string | null
+          title?: string
+          updated_at?: string
+          video_url?: string | null
+          year?: string | null
+        }
+        Relationships: []
+      }
       products: {
         Row: {
           affiliate_link: string
@@ -391,6 +496,10 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      generate_premium_code: {
+        Args: { client_name_input: string; client_phone_input?: string }
+        Returns: string
+      }
       get_movie_view_counts: {
         Args: never
         Returns: {
@@ -414,6 +523,19 @@ export type Database = {
         }[]
       }
       poll_has_voted: { Args: { _session_id: string }; Returns: boolean }
+      validate_premium_code: {
+        Args: { access_code: string }
+        Returns: {
+          description: string
+          download_url: string
+          genre: string
+          movie_id: string
+          poster_url: string
+          title: string
+          video_url: string
+          year: string
+        }[]
+      }
     }
     Enums: {
       app_role: "admin" | "moderator" | "user"

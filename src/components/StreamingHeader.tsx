@@ -1,4 +1,4 @@
-import { Search, Menu, X, MessageCircle } from "lucide-react";
+import { Search, Menu, X, MessageCircle, Crown } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -69,6 +69,12 @@ const StreamingHeader = ({ onSearch, searchQuery, onPlayVideo }: StreamingHeader
             <Link to="/popular">
               <Button variant="ghost" className="text-foreground hover:text-primary">
                 Popular
+              </Button>
+            </Link>
+            <Link to="/pro-movies">
+              <Button variant="ghost" className="text-amber-500 hover:text-amber-400 gap-1">
+                <Crown className="h-4 w-4" />
+                Pro
               </Button>
             </Link>
           </nav>
@@ -198,6 +204,12 @@ const StreamingHeader = ({ onSearch, searchQuery, onPlayVideo }: StreamingHeader
               <Link to="/popular" onClick={() => setIsMobileMenuOpen(false)}>
                 <Button variant="ghost" className="w-full justify-start text-foreground hover:text-primary">
                   Popular
+                </Button>
+              </Link>
+              <Link to="/pro-movies" onClick={() => setIsMobileMenuOpen(false)}>
+                <Button variant="ghost" className="w-full justify-start text-amber-500 hover:text-amber-400 gap-2">
+                  <Crown className="h-4 w-4" />
+                  Pro Movies
                 </Button>
               </Link>
             </nav>
