@@ -40,7 +40,7 @@ const Footer = ({ showComments = true }: FooterProps) => {
               </a>
              
               <a 
-                href="https://meethenry.vercel.app" 
+                href="https://meethappy.vercel.app" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="flex items-center space-x-2 text-sm text-muted-foreground hover:text-primary transition-colors"
