@@ -130,16 +130,10 @@ const Contact = () => {
                   className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors"
                 >
                   <Mail className="h-5 w-5" />
-                  <span>henryhappyreal@gmail.com</span>
+                  <span>rwaflixstore@gmail.com</span>
                 </a>
                 
-                <a 
-                  href="mailto:kwizeracolin@gmail.com"
-                  className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors"
-                >
-                  <Mail className="h-5 w-5" />
-                  <span>kwizeracolin@gmail.com</span>
-                </a>
+                
                 
                 <a 
                   href="https://wa.me/250791114163"
