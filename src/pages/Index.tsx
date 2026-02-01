@@ -29,10 +29,48 @@ const Index = () => {
   const [isPlayerOpen, setIsPlayerOpen] = useState(false);
   const { movies, loading } = useMovies();
 
-  const filteredMovies = movies.filter(movie =>
-    movie.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    movie.genre.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  // Improved search - match title, genre, year, and dubber (rating)
+  const filteredMovies = useMemo(() => {
+    if (!searchQuery.trim()) return movies;
+    
+    const query = searchQuery.toLowerCase().trim();
+    const words = query.split(/\s+/).filter(w => w.length > 0);
+    
+    return movies
+      .map(movie => {
+        let score = 0;
+        const title = movie.title.toLowerCase();
+        const genre = movie.genre.toLowerCase();
+        const year = movie.year;
+        const dubber = (movie.rating || "").toLowerCase();
+        
+        // Exact title match (highest)
+        if (title === query) score += 100;
+        // Title starts with query
+        else if (title.startsWith(query)) score += 50;
+        // Title contains query
+        else if (title.includes(query)) score += 30;
+        
+        // Each word match in title
+        words.forEach(word => {
+          if (title.includes(word)) score += 10;
+        });
+        
+        // Genre match
+        if (genre.includes(query) || words.some(w => genre.includes(w))) score += 15;
+        
+        // Year match
+        if (year.includes(query)) score += 10;
+        
+        // Dubber match (Rocky, Sankara, etc.)
+        if (dubber.includes(query) || words.some(w => dubber.includes(w))) score += 20;
+        
+        return { movie, score };
+      })
+      .filter(item => item.score > 0)
+      .sort((a, b) => b.score - a.score)
+      .map(item => item.movie);
+  }, [movies, searchQuery]);
 
   const handlePlayVideo = useCallback((videoId: string) => {
     if (isValidVideoId(videoId)) {
@@ -62,8 +100,9 @@ const Index = () => {
     recentlyAdded: movies.slice(0, 5),
   }), [movies]);
 
+  // Mobile: 3 columns, Tablet: 4, Desktop: 5-6
   const LoadingSkeleton = () => (
-    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-2 md:gap-4">
+    <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-2 sm:gap-3 md:gap-4">
       {[...Array(6)].map((_, i) => (
         <MovieCardSkeleton key={i} />
       ))}
@@ -186,9 +225,9 @@ const Index = () => {
                 }}
                 className="w-full"
               >
-                <CarouselContent className="-ml-2 md:-ml-4">
+                <CarouselContent className="-ml-1.5 sm:-ml-2 md:-ml-3">
                   {featuredMovies.map((movie) => (
-                    <CarouselItem key={movie.id} className="pl-2 md:pl-4 basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5 xl:basis-1/6">
+                    <CarouselItem key={movie.id} className="pl-1.5 sm:pl-2 md:pl-3 basis-1/3 sm:basis-1/4 md:basis-1/5 lg:basis-1/6">
                       <MovieCard
                         movie={movie}
                         onPlay={handlePlayVideo}
@@ -215,7 +254,7 @@ const Index = () => {
             <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">
               Search Results for "{searchQuery}"
             </h2>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 sm:gap-4">
+            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-2 sm:gap-3">
               {filteredMovies.map((movie) => (
                 <MovieCard
                   key={movie.id}
@@ -224,7 +263,7 @@ const Index = () => {
                 />
               ))}
             </div>
-            {filteredMovies.length === 0 && (
+            {filteredMovies.length === 0 && searchQuery && (
               <p className="text-muted-foreground text-center py-8 sm:py-12">
                 No results found. Try searching for something else.
               </p>
@@ -259,9 +298,9 @@ const Index = () => {
                   }}
                   className="w-full"
                 >
-                  <CarouselContent className="-ml-2 md:-ml-4">
+                <CarouselContent className="-ml-1.5 sm:-ml-2 md:-ml-3">
                     {trendingMovies.map((movie) => (
-                      <CarouselItem key={movie.id} className="pl-2 md:pl-4 basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5 xl:basis-1/6">
+                      <CarouselItem key={movie.id} className="pl-1.5 sm:pl-2 md:pl-3 basis-1/3 sm:basis-1/4 md:basis-1/5 lg:basis-1/6">
                         <MovieCard
                           movie={movie}
                           onPlay={handlePlayVideo}
@@ -303,9 +342,9 @@ const Index = () => {
                   }}
                   className="w-full"
                 >
-                  <CarouselContent className="-ml-2 md:-ml-4">
+                <CarouselContent className="-ml-1.5 sm:-ml-2 md:-ml-3">
                     {moviesOnly.map((movie) => (
-                      <CarouselItem key={movie.id} className="pl-2 md:pl-4 basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5 xl:basis-1/6">
+                      <CarouselItem key={movie.id} className="pl-1.5 sm:pl-2 md:pl-3 basis-1/3 sm:basis-1/4 md:basis-1/5 lg:basis-1/6">
                         <MovieCard
                           movie={movie}
                           onPlay={handlePlayVideo}
@@ -344,9 +383,9 @@ const Index = () => {
                   }}
                   className="w-full"
                 >
-                  <CarouselContent className="-ml-2 md:-ml-4">
+                <CarouselContent className="-ml-1.5 sm:-ml-2 md:-ml-3">
                     {tvShows.map((movie) => (
-                      <CarouselItem key={movie.id} className="pl-2 md:pl-4 basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5 xl:basis-1/6">
+                      <CarouselItem key={movie.id} className="pl-1.5 sm:pl-2 md:pl-3 basis-1/3 sm:basis-1/4 md:basis-1/5 lg:basis-1/6">
                         <MovieCard
                           movie={movie}
                           onPlay={handlePlayVideo}

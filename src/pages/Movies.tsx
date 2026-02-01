@@ -65,7 +65,7 @@ const Movies = () => {
 
         <section className="mt-4">
           {loading ? (
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 sm:gap-4">
+            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-2 sm:gap-3">
               {[...Array(12)].map((_, i) => (
                 <div key={i}>
                   <Skeleton className="aspect-[2/3] rounded-lg" />
@@ -74,7 +74,7 @@ const Movies = () => {
               ))}
             </div>
           ) : (
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 sm:gap-4">
+            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-2 sm:gap-3">
               {filteredMovies.map((movie) => (
                 <MovieCard
                   key={movie.id}

@@ -29,6 +29,7 @@ const MovieCard = memo(({ movie, priority = false }: MovieCardProps) => {
       title={`Watch ${movie.title} free on Rwaflix - Agasobanuye`}
     >
       <article className="group relative overflow-hidden rounded-lg bg-card border border-border hover:border-primary/50 hover-lift">
+        {/* Poster with proper aspect ratio */}
         <div className="aspect-[2/3] overflow-hidden relative">
           <OptimizedImage
             src={movie.poster}
@@ -42,23 +43,32 @@ const MovieCard = memo(({ movie, priority = false }: MovieCardProps) => {
           
           {/* Play icon overlay on hover */}
           <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-            <div className="w-12 h-12 rounded-full bg-primary/90 flex items-center justify-center shadow-lg transform scale-90 group-hover:scale-100 transition-transform duration-200">
-              <Play className="h-5 w-5 text-primary-foreground fill-primary-foreground ml-0.5" />
+            <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-primary/90 flex items-center justify-center shadow-lg transform scale-90 group-hover:scale-100 transition-transform duration-200">
+              <Play className="h-4 w-4 sm:h-5 sm:w-5 text-primary-foreground fill-primary-foreground ml-0.5" />
             </div>
           </div>
+          
+          {/* Dubber Badge - Top Right */}
+          {movie.rating && (
+            <div className="absolute top-1 right-1 sm:top-1.5 sm:right-1.5 px-1 sm:px-1.5 py-0.5 bg-primary/90 text-[8px] sm:text-[9px] font-bold text-primary-foreground rounded">
+              {movie.rating.split(' ')[0]}
+            </div>
+          )}
         </div>
         
-        <div className="p-3 sm:p-4">
-          <h3 className="font-semibold text-foreground text-sm mb-1 line-clamp-1">
+        {/* Movie Info - Responsive padding */}
+        <div className="p-2 sm:p-3">
+          {/* Title with line clamp for long names */}
+          <h3 className="font-semibold text-foreground text-[11px] sm:text-sm leading-tight line-clamp-2 min-h-[1.75rem] sm:min-h-[2.25rem]">
             {movie.title}
           </h3>
-          <div className="flex items-center justify-between text-xs text-muted-foreground">
+          <div className="flex items-center justify-between text-[9px] sm:text-xs text-muted-foreground mt-1 sm:mt-1.5">
             <span>{movie.year}</span>
-            <span className="bg-primary/20 text-primary px-2 py-0.5 rounded font-medium">
-              {movie.rating}
+            <span className="bg-primary/20 text-primary px-1.5 sm:px-2 py-0.5 rounded font-medium truncate max-w-[55%]">
+              {movie.rating || movie.genre}
             </span>
           </div>
-          <p className="text-xs text-muted-foreground mt-1">{movie.genre}</p>
+          <p className="text-[9px] sm:text-xs text-muted-foreground mt-0.5 sm:mt-1 truncate">{movie.genre}</p>
         </div>
       </article>
     </Link>
