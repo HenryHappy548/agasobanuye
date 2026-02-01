@@ -3,7 +3,6 @@ import { supabase } from "@/integrations/supabase/client";
 import { Loader2, Download, AlertCircle, Settings } from "lucide-react";
 import DOMPurify from "dompurify";
 import { getStaticVideoData } from "@/data/staticVideoData";
-import RecommendedMovies from "./RecommendedMovies";
 import SupportButton from "./SupportButton";
 import RewardedAdButton from "./RewardedAdButton";
 import { useQueryClient } from "@tanstack/react-query";
@@ -283,8 +282,6 @@ const EmbeddedPlayer = memo(({ movieId, movieTitle, fallbackVideoUrl, fallbackDo
         <SupportButton variant="compact" />
       </div>
 
-      {/* Recommended - Cleaner */}
-      <RecommendedMovies currentMovieId={movieId} currentMovieTitle={movieTitle} />
     </div>
   );
 });

@@ -186,20 +186,20 @@ const RecommendedMovies = memo(({ currentMovieId, currentMovieTitle }: Recommend
           {/* Minimal Header */}
           <div className="flex items-center gap-1.5 mb-2">
             <div className="w-1 h-3.5 bg-primary rounded-full"></div>
-            <h3 className="text-xs font-semibold text-foreground">Izindi Movie Nziza</h3>
+            <h3 className="text-sm font-bold text-foreground">Izindi Movie Nziza</h3>
           </div>
           
-          {/* Netflix-style 4-column grid - ultra compact */}
-          <div className="grid grid-cols-4 gap-1">
+          {/* Netflix-style row: smaller cards + horizontal scroll (prevents huge posters on desktop) */}
+          <div className="-mx-4 px-4 flex gap-2 overflow-x-auto pb-1">
             {recommendations.map((movie) => (
               <Link
                 key={movie.id}
                 to={buildWatchPath(movie.title, movie.id)}
-                className="block group"
+                className="block group shrink-0 w-[92px] sm:w-[110px] md:w-[128px]"
                 title={`Watch ${movie.title} - Rwaflix`}
               >
                 {/* Ultra compact card */}
-                <div className="relative aspect-[2/3] rounded overflow-hidden bg-muted">
+                <div className="relative aspect-[2/3] rounded-md overflow-hidden bg-muted border border-border/50">
                   <img
                     src={movie.poster}
                     alt={movie.title}
@@ -207,8 +207,8 @@ const RecommendedMovies = memo(({ currentMovieId, currentMovieTitle }: Recommend
                     loading="lazy"
                   />
                   {/* Subtle hover overlay with play */}
-                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-150 flex items-center justify-center">
-                    <Play className="h-4 w-4 text-white fill-white" />
+                  <div className="absolute inset-0 bg-background/70 backdrop-blur-[1px] opacity-0 group-hover:opacity-100 transition-opacity duration-150 flex items-center justify-center">
+                    <Play className="h-4 w-4 text-primary fill-primary" />
                   </div>
                 </div>
                 {/* Clear visible title below */}
