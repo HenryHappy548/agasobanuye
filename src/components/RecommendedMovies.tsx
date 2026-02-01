@@ -180,16 +180,18 @@ const RecommendedMovies = memo(({ currentMovieId, currentMovieTitle }: Recommend
         </div>
       )}
 
-      {/* Recommended Movies - Normal size like homepage */}
+      {/* Recommended Movies - Compact matching homepage */}
       {recommendations.length > 0 && (
-        <div className="pt-2">
-          <div className="flex items-center gap-2 mb-2">
-            <div className="w-1 h-4 bg-primary rounded-full"></div>
-            <h3 className="text-xs font-bold text-foreground">Izindi Movie Nziza</h3>
+        <div className="pt-3">
+          {/* Enhanced Header */}
+          <div className="flex items-center gap-2 mb-3 px-1">
+            <div className="w-1.5 h-5 bg-gradient-to-b from-primary to-primary/60 rounded-full"></div>
+            <h3 className="text-sm font-bold text-foreground tracking-tight">Izindi Movie Nziza</h3>
+            <span className="text-[10px] text-primary font-medium">✨</span>
           </div>
           
-          {/* 4 columns - compact like homepage */}
-          <div className="grid grid-cols-4 gap-2">
+          {/* Compact 4-column grid */}
+          <div className="grid grid-cols-4 gap-1.5">
             {recommendations.map((movie) => (
               <Link
                 key={movie.id}
@@ -197,18 +199,31 @@ const RecommendedMovies = memo(({ currentMovieId, currentMovieTitle }: Recommend
                 className="block group"
                 title={`Watch ${movie.title} - Rwaflix`}
               >
-                <div className="relative aspect-[2/3] rounded-md overflow-hidden bg-card border border-border/30 hover:border-primary/50 transition-all">
+                {/* Smaller, enhanced card */}
+                <div className="relative aspect-[2/3] rounded-lg overflow-hidden bg-card border border-border/40 hover:border-primary/60 transition-all shadow-sm hover:shadow-md">
                   <img
                     src={movie.poster}
                     alt={movie.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200"
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                     loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-1">
-                    <Play className="h-3 w-3 text-white fill-white" />
+                  {/* Enhanced gradient overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-90 transition-opacity duration-200" />
+                  
+                  {/* Play icon on hover */}
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                    <div className="w-7 h-7 rounded-full bg-primary/90 flex items-center justify-center">
+                      <Play className="h-3 w-3 text-white fill-white ml-0.5" />
+                    </div>
+                  </div>
+                  
+                  {/* Title overlay at bottom for visibility */}
+                  <div className="absolute bottom-0 left-0 right-0 p-1.5">
+                    <p className="text-[10px] text-white font-semibold line-clamp-2 leading-tight drop-shadow-lg">
+                      {movie.title}
+                    </p>
                   </div>
                 </div>
-                <p className="mt-1.5 text-[11px] sm:text-xs text-foreground font-medium line-clamp-2 leading-tight">{movie.title}</p>
               </Link>
             ))}
           </div>
