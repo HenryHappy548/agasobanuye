@@ -3,7 +3,6 @@ import { Play, ChevronLeft, ChevronRight } from "lucide-react";
 import { buildWatchPath } from "@/lib/watchRoute";
 import { useMovies, DBMovie } from "@/hooks/useMovies";
 import { useMemo, memo } from "react";
-import OptimizedImage from "@/components/OptimizedImage";
 
 interface RecommendedMoviesProps {
   currentMovieId: string;
@@ -181,16 +180,16 @@ const RecommendedMovies = memo(({ currentMovieId, currentMovieTitle }: Recommend
         </div>
       )}
 
-      {/* Recommended Movies - Full Cards like Homepage */}
+      {/* Recommended Movies - Normal size like homepage */}
       {recommendations.length > 0 && (
         <div className="pt-2">
-          <div className="flex items-center gap-2 mb-3">
+          <div className="flex items-center gap-2 mb-2">
             <div className="w-1 h-4 bg-primary rounded-full"></div>
-            <h3 className="text-sm font-bold text-foreground">Izindi Movie Nziza</h3>
+            <h3 className="text-xs font-bold text-foreground">Izindi Movie Nziza</h3>
           </div>
           
-          {/* 2x2 Grid for 4 movies - bigger cards */}
-          <div className="grid grid-cols-2 gap-3">
+          {/* 4 columns - compact like homepage */}
+          <div className="grid grid-cols-4 gap-2">
             {recommendations.map((movie) => (
               <Link
                 key={movie.id}
@@ -198,46 +197,18 @@ const RecommendedMovies = memo(({ currentMovieId, currentMovieTitle }: Recommend
                 className="block group"
                 title={`Watch ${movie.title} - Rwaflix`}
               >
-                <article className="relative overflow-hidden rounded-lg bg-card border border-border/50 hover:border-primary/50 transition-all duration-200 hover:shadow-lg">
-                  {/* Movie Poster */}
-                  <div className="aspect-[2/3] overflow-hidden relative">
-                    <OptimizedImage
-                      src={movie.poster}
-                      alt={`${movie.title} - Rwaflix`}
-                      width={200}
-                      height={300}
-                      className="w-full h-full group-hover:scale-105 transition-transform duration-300"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
-                    
-                    {/* Play Button Overlay */}
-                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                      <div className="w-10 h-10 rounded-full bg-primary/90 flex items-center justify-center shadow-lg transform scale-90 group-hover:scale-100 transition-transform">
-                        <Play className="h-4 w-4 text-primary-foreground fill-primary-foreground ml-0.5" />
-                      </div>
-                    </div>
-                    
-                    {/* Dubber Badge */}
-                    {movie.rating && (
-                      <div className="absolute top-1.5 right-1.5 px-1.5 py-0.5 bg-primary/90 text-[9px] font-bold text-primary-foreground rounded">
-                        {movie.rating.split(' ')[0]}
-                      </div>
-                    )}
+                <div className="relative aspect-[2/3] rounded-md overflow-hidden bg-card border border-border/30 hover:border-primary/50 transition-all">
+                  <img
+                    src={movie.poster}
+                    alt={movie.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-1">
+                    <Play className="h-3 w-3 text-white fill-white" />
                   </div>
-                  
-                  {/* Movie Info */}
-                  <div className="p-2.5">
-                    <h4 className="font-semibold text-foreground text-xs leading-tight line-clamp-2 min-h-[2rem]">
-                      {movie.title}
-                    </h4>
-                    <div className="flex items-center justify-between text-[10px] text-muted-foreground mt-1.5">
-                      <span>{movie.year}</span>
-                      <span className="bg-primary/15 text-primary px-1.5 py-0.5 rounded font-medium truncate max-w-[60%]">
-                        {movie.genre}
-                      </span>
-                    </div>
-                  </div>
-                </article>
+                </div>
+                <p className="mt-1 text-[9px] text-muted-foreground font-medium truncate leading-tight">{movie.title}</p>
               </Link>
             ))}
           </div>
