@@ -29,32 +29,30 @@ const appendMonetagScriptOnce = (zone: string, src: string) => {
 
 // Monetag Inpush Ads - loads once per page session
 export const MonetagInpush = () => {
-  useEffect(() => {
-    if (hasShownAdsThisSession()) return;
-    appendMonetagScriptOnce("10527843", "https://nap5k.com/tag.min.js");
-  }, []);
-
+  // Deprecated: keep for backwards compatibility.
+  // Use <MonetagAdsBootstrap /> to control timing and reduce annoyance.
   return null;
 };
 
 // Monetag Vignette Ads - loads once per page session
 export const MonetagVignette = () => {
-  useEffect(() => {
-    if (hasShownAdsThisSession()) return;
-    appendMonetagScriptOnce("10527712", "https://gizokraijaw.net/vignette.min.js");
-  }, []);
-
+  // Deprecated: keep for backwards compatibility.
+  // Use <MonetagAdsBootstrap /> to control timing and reduce annoyance.
   return null;
 };
 
 /**
  * Loads Monetag scripts once per page session (refresh/new page = new ads).
- * Inpush loads immediately, Vignette delayed slightly for less annoyance.
+ * Requested timing:
+ * - Wait ~10s after page loads, then show Vignette
+ * - Wait another ~10s, then load Inpush
  */
 export const MonetagAdsBootstrap = ({
-  vignetteDelayMs = 4000,
+  vignetteDelayMs = 10_000,
+  inpushDelayMs = 20_000,
 }: {
   vignetteDelayMs?: number;
+  inpushDelayMs?: number;
 }) => {
   const [shouldLoad, setShouldLoad] = useState(false);
 
@@ -72,16 +70,19 @@ export const MonetagAdsBootstrap = ({
   useEffect(() => {
     if (!shouldLoad) return;
 
-    // Load Inpush immediately
-    appendMonetagScriptOnce("10527843", "https://nap5k.com/tag.min.js");
-
-    // Load Vignette after delay
-    const t = window.setTimeout(() => {
+    const vignetteTimer = window.setTimeout(() => {
       appendMonetagScriptOnce("10527712", "https://gizokraijaw.net/vignette.min.js");
     }, vignetteDelayMs);
 
-    return () => window.clearTimeout(t);
-  }, [shouldLoad, vignetteDelayMs]);
+    const inpushTimer = window.setTimeout(() => {
+      appendMonetagScriptOnce("10527843", "https://nap5k.com/tag.min.js");
+    }, inpushDelayMs);
+
+    return () => {
+      window.clearTimeout(vignetteTimer);
+      window.clearTimeout(inpushTimer);
+    };
+  }, [shouldLoad, vignetteDelayMs, inpushDelayMs]);
 
   return null;
 };

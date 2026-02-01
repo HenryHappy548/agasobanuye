@@ -6,7 +6,6 @@ import VideoPlayer from "@/components/VideoPlayer";
 import Footer from "@/components/Footer";
 import { useMovies } from "@/hooks/useMovies";
 import { Skeleton } from "@/components/ui/skeleton";
-import { MonetagInpush, MonetagVignette } from "@/components/MonetagAds";
 import SupportButton from "@/components/SupportButton";
 
 const Movies = () => {
@@ -54,10 +53,6 @@ const Movies = () => {
           </p>
         </div>
 
-        {/* Monetag Ads */}
-        <MonetagInpush />
-        <MonetagVignette />
-        
         {/* Support Button */}
         <div className="flex justify-center my-4">
           <SupportButton />
