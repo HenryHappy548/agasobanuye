@@ -208,7 +208,7 @@ const RecommendedMovies = memo(({ currentMovieId, currentMovieTitle }: Recommend
                     <Play className="h-3 w-3 text-white fill-white" />
                   </div>
                 </div>
-                <p className="mt-1 text-[9px] text-muted-foreground font-medium truncate leading-tight">{movie.title}</p>
+                <p className="mt-1.5 text-[11px] sm:text-xs text-foreground font-medium line-clamp-2 leading-tight">{movie.title}</p>
               </Link>
             ))}
           </div>
