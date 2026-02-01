@@ -37,8 +37,10 @@ const StreamingHeader = ({ onSearch, searchQuery, onPlayVideo }: StreamingHeader
   const handleSearchChange = useCallback((value: string) => {
     // Sanitize HTML to prevent XSS attacks
     const sanitized = DOMPurify.sanitize(value, { ALLOWED_TAGS: [] });
+    // Remove leading spaces and collapse multiple spaces into one
+    const noExtraSpaces = sanitized.replace(/^\s+/, '').replace(/\s{2,}/g, ' ');
     // Limit length to prevent abuse
-    const truncated = sanitized.slice(0, 100);
+    const truncated = noExtraSpaces.slice(0, 100);
     onSearch(truncated);
   }, [onSearch]);
 
