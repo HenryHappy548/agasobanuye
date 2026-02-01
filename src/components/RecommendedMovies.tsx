@@ -3,6 +3,7 @@ import { Play, ChevronLeft, ChevronRight } from "lucide-react";
 import { buildWatchPath } from "@/lib/watchRoute";
 import { useMovies, DBMovie } from "@/hooks/useMovies";
 import { useMemo, memo } from "react";
+import OptimizedImage from "@/components/OptimizedImage";
 
 interface RecommendedMoviesProps {
   currentMovieId: string;
@@ -28,6 +29,51 @@ const parseSeriesInfo = (title: string) => {
   return null;
 };
 
+// Extract dubber from rating field (e.g., "Rocky kimomo", "Sankara")
+const extractDubber = (rating: string): string => {
+  if (!rating) return "";
+  return rating.toLowerCase().trim();
+};
+
+// Smart recommendation scoring
+const scoreMovie = (
+  candidate: DBMovie, 
+  currentMovie: DBMovie,
+  sameSeriesIds: Set<string>
+): number => {
+  if (candidate.id === currentMovie.id || sameSeriesIds.has(candidate.id)) return -1;
+  
+  let score = 0;
+  
+  // Same dubber (highest priority for Rwaflix users)
+  const currentDubber = extractDubber(currentMovie.rating);
+  const candidateDubber = extractDubber(candidate.rating);
+  if (currentDubber && candidateDubber && currentDubber === candidateDubber) {
+    score += 30;
+  }
+  
+  // Same genre
+  if (candidate.genre.toLowerCase() === currentMovie.genre.toLowerCase()) {
+    score += 20;
+  }
+  
+  // Same year (+/- 2 years)
+  const currentYear = parseInt(currentMovie.year) || 2020;
+  const candidateYear = parseInt(candidate.year) || 2020;
+  const yearDiff = Math.abs(currentYear - candidateYear);
+  if (yearDiff === 0) score += 15;
+  else if (yearDiff <= 2) score += 10;
+  else if (yearDiff <= 5) score += 5;
+  
+  // Trending boost
+  if (candidate.category === 'trending') score += 5;
+  
+  // Has poster (penalize movies without images)
+  if (candidate.poster && candidate.poster.length > 10) score += 3;
+  
+  return score;
+};
+
 const RecommendedMovies = memo(({ currentMovieId, currentMovieTitle }: RecommendedMoviesProps) => {
   const { movies } = useMovies();
   
@@ -37,6 +83,7 @@ const RecommendedMovies = memo(({ currentMovieId, currentMovieTitle }: Recommend
     
     let seriesEpisodes: { prev?: DBMovie; next?: DBMovie } = {};
     let recommendations: DBMovie[] = [];
+    const sameSeriesIds = new Set<string>();
     
     if (seriesInfo && 'season' in seriesInfo) {
       // TV Series - find prev/next episodes
@@ -44,6 +91,8 @@ const RecommendedMovies = memo(({ currentMovieId, currentMovieTitle }: Recommend
         const info = parseSeriesInfo(m.title);
         return info && 'season' in info && info.name.toLowerCase() === seriesInfo.name.toLowerCase();
       });
+      
+      sameSeriesMovies.forEach(m => sameSeriesIds.add(m.id));
       
       // Sort by season then episode (numeric sorting)
       sameSeriesMovies.sort((a, b) => {
@@ -59,18 +108,14 @@ const RecommendedMovies = memo(({ currentMovieId, currentMovieTitle }: Recommend
       const currentIndex = sameSeriesMovies.findIndex(m => m.id === currentMovieId);
       if (currentIndex > 0) seriesEpisodes.prev = sameSeriesMovies[currentIndex - 1] as DBMovie;
       if (currentIndex < sameSeriesMovies.length - 1) seriesEpisodes.next = sameSeriesMovies[currentIndex + 1] as DBMovie;
-      
-      // Get 3 recommendations from same genre (less is more)
-      recommendations = movies
-        .filter(m => m.id !== currentMovieId && !sameSeriesMovies.find(s => s.id === m.id))
-        .filter(m => currentMovie && m.genre === currentMovie.genre)
-        .slice(0, 3) as DBMovie[];
     } else if (seriesInfo && 'part' in seriesInfo) {
       // Part A/B pattern
       const sameParts = movies.filter(m => {
         const info = parseSeriesInfo(m.title);
         return info && 'part' in info && info.name.toLowerCase() === seriesInfo.name.toLowerCase();
       });
+      
+      sameParts.forEach(m => sameSeriesIds.add(m.id));
       
       sameParts.sort((a, b) => {
         const aInfo = parseSeriesInfo(a.title);
@@ -84,25 +129,17 @@ const RecommendedMovies = memo(({ currentMovieId, currentMovieTitle }: Recommend
       const currentIndex = sameParts.findIndex(m => m.id === currentMovieId);
       if (currentIndex > 0) seriesEpisodes.prev = sameParts[currentIndex - 1] as DBMovie;
       if (currentIndex < sameParts.length - 1) seriesEpisodes.next = sameParts[currentIndex + 1] as DBMovie;
+    }
+    
+    // Score and sort all movies for recommendations
+    if (currentMovie) {
+      const scored = movies
+        .map(m => ({ movie: m as DBMovie, score: scoreMovie(m as DBMovie, currentMovie as DBMovie, sameSeriesIds) }))
+        .filter(item => item.score >= 0)
+        .sort((a, b) => b.score - a.score)
+        .slice(0, 4);
       
-      recommendations = movies
-        .filter(m => m.id !== currentMovieId && !sameParts.find(s => s.id === m.id))
-        .filter(m => currentMovie && m.genre === currentMovie.genre)
-        .slice(0, 3) as DBMovie[];
-    } else {
-      // Regular movie - get 4 recommendations
-      if (currentMovie) {
-        recommendations = movies
-          .filter(m => m.id !== currentMovieId && m.genre === currentMovie.genre)
-          .slice(0, 4) as DBMovie[];
-      }
-      
-      if (recommendations.length < 4) {
-        const more = movies
-          .filter(m => m.id !== currentMovieId && !recommendations.find(r => r.id === m.id))
-          .slice(0, 4 - recommendations.length) as DBMovie[];
-        recommendations = [...recommendations, ...more];
-      }
+      recommendations = scored.map(item => item.movie);
     }
     
     return { seriesEpisodes, recommendations };
@@ -113,60 +150,94 @@ const RecommendedMovies = memo(({ currentMovieId, currentMovieTitle }: Recommend
   if (!hasEpisodes && recommendations.length === 0) return null;
 
   return (
-    <div className="space-y-3 pt-2">
+    <div className="space-y-4 pt-3">
       {/* Episode Navigation for Series - Compact */}
       {hasEpisodes && (
         <div className="flex gap-2">
           {seriesEpisodes.prev && (
             <Link
               to={buildWatchPath(seriesEpisodes.prev.title, seriesEpisodes.prev.id)}
-              className="flex-1 flex items-center gap-2 px-3 py-2 bg-muted/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/30 transition-all"
+              className="flex-1 flex items-center gap-2 px-3 py-2.5 bg-muted/50 hover:bg-primary/10 rounded-lg border border-border/50 hover:border-primary/30 transition-all"
             >
-              <ChevronLeft className="h-4 w-4 text-muted-foreground" />
+              <ChevronLeft className="h-4 w-4 text-muted-foreground flex-shrink-0" />
               <div className="min-w-0 flex-1">
                 <p className="text-[10px] text-muted-foreground uppercase">Prev</p>
-                <p className="text-xs font-medium text-foreground truncate">{seriesEpisodes.prev.title}</p>
+                <p className="text-xs font-medium text-foreground line-clamp-2">{seriesEpisodes.prev.title}</p>
               </div>
             </Link>
           )}
           {seriesEpisodes.next && (
             <Link
               to={buildWatchPath(seriesEpisodes.next.title, seriesEpisodes.next.id)}
-              className="flex-1 flex items-center gap-2 px-3 py-2 bg-primary/10 hover:bg-primary/20 rounded-lg border border-primary/30 transition-all text-right"
+              className="flex-1 flex items-center gap-2 px-3 py-2.5 bg-primary/10 hover:bg-primary/20 rounded-lg border border-primary/30 transition-all text-right"
             >
               <div className="min-w-0 flex-1">
                 <p className="text-[10px] text-primary uppercase font-medium">Up Next</p>
-                <p className="text-xs font-medium text-foreground truncate">{seriesEpisodes.next.title}</p>
+                <p className="text-xs font-medium text-foreground line-clamp-2">{seriesEpisodes.next.title}</p>
               </div>
-              <ChevronRight className="h-4 w-4 text-primary" />
+              <ChevronRight className="h-4 w-4 text-primary flex-shrink-0" />
             </Link>
           )}
         </div>
       )}
 
-      {/* Recommended - Clean horizontal scroll */}
+      {/* Recommended Movies - Full Cards like Homepage */}
       {recommendations.length > 0 && (
-        <div className="pt-1">
-          <p className="text-xs text-muted-foreground mb-2">More like this</p>
-          <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-hide">
+        <div className="pt-2">
+          <div className="flex items-center gap-2 mb-3">
+            <div className="w-1 h-4 bg-primary rounded-full"></div>
+            <h3 className="text-sm font-bold text-foreground">Izindi Movie Nziza</h3>
+          </div>
+          
+          {/* 2x2 Grid for 4 movies - bigger cards */}
+          <div className="grid grid-cols-2 gap-3">
             {recommendations.map((movie) => (
               <Link
                 key={movie.id}
                 to={buildWatchPath(movie.title, movie.id)}
-                className="flex-shrink-0 w-16"
+                className="block group"
+                title={`Watch ${movie.title} - Rwaflix`}
               >
-                <div className="relative aspect-[2/3] rounded-md overflow-hidden bg-card border border-border/30 hover:border-primary/50 transition-all">
-                  <img
-                    src={movie.poster}
-                    alt={movie.title}
-                    className="w-full h-full object-cover"
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity flex items-end justify-center pb-1">
-                    <Play className="h-3 w-3 text-white fill-white" />
+                <article className="relative overflow-hidden rounded-lg bg-card border border-border/50 hover:border-primary/50 transition-all duration-200 hover:shadow-lg">
+                  {/* Movie Poster */}
+                  <div className="aspect-[2/3] overflow-hidden relative">
+                    <OptimizedImage
+                      src={movie.poster}
+                      alt={`${movie.title} - Rwaflix`}
+                      width={200}
+                      height={300}
+                      className="w-full h-full group-hover:scale-105 transition-transform duration-300"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+                    
+                    {/* Play Button Overlay */}
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                      <div className="w-10 h-10 rounded-full bg-primary/90 flex items-center justify-center shadow-lg transform scale-90 group-hover:scale-100 transition-transform">
+                        <Play className="h-4 w-4 text-primary-foreground fill-primary-foreground ml-0.5" />
+                      </div>
+                    </div>
+                    
+                    {/* Dubber Badge */}
+                    {movie.rating && (
+                      <div className="absolute top-1.5 right-1.5 px-1.5 py-0.5 bg-primary/90 text-[9px] font-bold text-primary-foreground rounded">
+                        {movie.rating.split(' ')[0]}
+                      </div>
+                    )}
                   </div>
-                </div>
-                <p className="mt-1 text-[9px] text-muted-foreground font-medium truncate leading-tight">{movie.title}</p>
+                  
+                  {/* Movie Info */}
+                  <div className="p-2.5">
+                    <h4 className="font-semibold text-foreground text-xs leading-tight line-clamp-2 min-h-[2rem]">
+                      {movie.title}
+                    </h4>
+                    <div className="flex items-center justify-between text-[10px] text-muted-foreground mt-1.5">
+                      <span>{movie.year}</span>
+                      <span className="bg-primary/15 text-primary px-1.5 py-0.5 rounded font-medium truncate max-w-[60%]">
+                        {movie.genre}
+                      </span>
+                    </div>
+                  </div>
+                </article>
               </Link>
             ))}
           </div>
