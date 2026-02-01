@@ -5,6 +5,7 @@ import DOMPurify from "dompurify";
 import { getStaticVideoData } from "@/data/staticVideoData";
 import RecommendedMovies from "./RecommendedMovies";
 import SupportButton from "./SupportButton";
+import RewardedAdButton from "./RewardedAdButton";
 import { useQueryClient } from "@tanstack/react-query";
 import { getCachedMovieById } from "@/lib/moviesCache";
 
@@ -236,10 +237,13 @@ const EmbeddedPlayer = memo(({ movieId, movieTitle, fallbackVideoUrl, fallbackDo
         />
       </div>
 
-      {/* Quality Tip - Compact below video */}
-      <div className="flex items-center gap-2 px-3 py-2 bg-muted/30 rounded-lg text-xs text-muted-foreground">
-        <Settings className="h-3 w-3 flex-shrink-0" />
-        <span>Ibibazo? Hindura quality mu settings (⚙️) ya video player.</span>
+      {/* Quality Tip + HD Unlock */}
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 px-3 py-2 bg-muted/30 rounded-lg">
+        <div className="flex items-center gap-2 text-xs text-muted-foreground">
+          <Settings className="h-3 w-3 flex-shrink-0" />
+          <span>Ibibazo? Hindura quality mu settings (⚙️) ya video player.</span>
+        </div>
+        <RewardedAdButton variant="inline" />
       </div>
 
       {/* Download Section */}
