@@ -29,48 +29,76 @@ const Index = () => {
   const [isPlayerOpen, setIsPlayerOpen] = useState(false);
   const { movies, loading } = useMovies();
 
-  // Improved search - match title, genre, year, and dubber (rating)
+  // Filter states
+  const [genreFilter, setGenreFilter] = useState<string>("");
+  const [dubberFilter, setDubberFilter] = useState<string>("");
+
+  // Extract unique genres and dubbers for filters
+  const { genres, dubbers } = useMemo(() => {
+    const genreSet = new Set<string>();
+    const dubberSet = new Set<string>();
+    
+    movies.forEach(movie => {
+      if (movie.genre) genreSet.add(movie.genre);
+      if (movie.rating) {
+        // Extract dubber name (e.g., "Rocky", "Sankara")
+        const dubber = movie.rating.trim();
+        if (dubber) dubberSet.add(dubber);
+      }
+    });
+    
+    return {
+      genres: Array.from(genreSet).sort(),
+      dubbers: Array.from(dubberSet).sort()
+    };
+  }, [movies]);
+
+  // Improved search - ONLY match if query appears in title, OR exact genre/dubber match
   const filteredMovies = useMemo(() => {
-    if (!searchQuery.trim()) return movies;
+    let result = movies;
     
-    const query = searchQuery.toLowerCase().trim();
-    const words = query.split(/\s+/).filter(w => w.length > 0);
+    // Apply genre filter
+    if (genreFilter) {
+      result = result.filter(movie => movie.genre === genreFilter);
+    }
     
-    return movies
-      .map(movie => {
-        let score = 0;
-        const title = movie.title.toLowerCase();
-        const genre = movie.genre.toLowerCase();
-        const year = movie.year;
-        const dubber = (movie.rating || "").toLowerCase();
-        
-        // Exact title match (highest)
-        if (title === query) score += 100;
-        // Title starts with query
-        else if (title.startsWith(query)) score += 50;
-        // Title contains query
-        else if (title.includes(query)) score += 30;
-        
-        // Each word match in title
-        words.forEach(word => {
-          if (title.includes(word)) score += 10;
-        });
-        
-        // Genre match
-        if (genre.includes(query) || words.some(w => genre.includes(w))) score += 15;
-        
-        // Year match
-        if (year.includes(query)) score += 10;
-        
-        // Dubber match (Rocky, Sankara, etc.)
-        if (dubber.includes(query) || words.some(w => dubber.includes(w))) score += 20;
-        
-        return { movie, score };
-      })
-      .filter(item => item.score > 0)
-      .sort((a, b) => b.score - a.score)
-      .map(item => item.movie);
-  }, [movies, searchQuery]);
+    // Apply dubber filter
+    if (dubberFilter) {
+      result = result.filter(movie => movie.rating === dubberFilter);
+    }
+    
+    // Apply search query - STRICT title matching only
+    if (searchQuery.trim()) {
+      const query = searchQuery.toLowerCase().trim();
+      
+      result = result
+        .map(movie => {
+          let score = 0;
+          const title = movie.title.toLowerCase();
+          
+          // ONLY score based on title match - not genre/year/dubber
+          if (title === query) score = 100;
+          else if (title.startsWith(query)) score = 50;
+          else if (title.includes(query)) score = 30;
+          else {
+            // Check if ALL search words appear in title
+            const words = query.split(/\s+/).filter(w => w.length > 1);
+            const allWordsMatch = words.every(word => title.includes(word));
+            if (allWordsMatch && words.length > 0) score = 20;
+          }
+          
+          return { movie, score };
+        })
+        .filter(item => item.score > 0)
+        .sort((a, b) => b.score - a.score)
+        .map(item => item.movie);
+    }
+    
+    return result;
+  }, [movies, searchQuery, genreFilter, dubberFilter]);
+
+  // Check if any filter is active
+  const isFiltering = searchQuery || genreFilter || dubberFilter;
 
   const handlePlayVideo = useCallback((videoId: string) => {
     if (isValidVideoId(videoId)) {
@@ -116,7 +144,7 @@ const Index = () => {
       
       <StreamingHeader onSearch={handleSearch} searchQuery={searchQuery} onPlayVideo={handlePlayVideo} />
       
-      {!searchQuery && (
+      {!isFiltering && (
         <div className="container mx-auto px-4 py-6">
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
             {/* Hero Section - Takes 3 columns */}
@@ -249,11 +277,56 @@ const Index = () => {
         {/* Monetag Ads */}
         <MonetagInpush />
         <MonetagVignette />
-        {searchQuery ? (
+        {isFiltering ? (
           <section>
-            <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">
-              Search Results for "{searchQuery}"
-            </h2>
+            <div className="flex flex-col gap-4 mb-6">
+              <h2 className="text-xl sm:text-2xl font-bold">
+                {searchQuery ? `Ibyavuye muri "${searchQuery}"` : "Filime Zatoranijwe"}
+              </h2>
+              
+              {/* Filter Controls */}
+              <div className="flex flex-wrap gap-2">
+                {/* Genre Filter */}
+                <select
+                  value={genreFilter}
+                  onChange={(e) => setGenreFilter(e.target.value)}
+                  className="px-3 py-2 bg-card border border-border rounded-lg text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                >
+                  <option value="">Genre zose</option>
+                  {genres.map(genre => (
+                    <option key={genre} value={genre}>{genre}</option>
+                  ))}
+                </select>
+                
+                {/* Dubber/Translator Filter */}
+                <select
+                  value={dubberFilter}
+                  onChange={(e) => setDubberFilter(e.target.value)}
+                  className="px-3 py-2 bg-card border border-border rounded-lg text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                >
+                  <option value="">Abasobanuzi bose</option>
+                  {dubbers.map(dubber => (
+                    <option key={dubber} value={dubber}>{dubber}</option>
+                  ))}
+                </select>
+                
+                {/* Clear Filters */}
+                {(genreFilter || dubberFilter) && (
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => {
+                      setGenreFilter("");
+                      setDubberFilter("");
+                    }}
+                    className="text-sm"
+                  >
+                    Siba Filters
+                  </Button>
+                )}
+              </div>
+            </div>
+            
             <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-2 sm:gap-3">
               {filteredMovies.map((movie) => (
                 <MovieCard
@@ -263,9 +336,9 @@ const Index = () => {
                 />
               ))}
             </div>
-            {filteredMovies.length === 0 && searchQuery && (
+            {filteredMovies.length === 0 && (
               <p className="text-muted-foreground text-center py-8 sm:py-12">
-                No results found. Try searching for something else.
+                Nta filime zibonetse. Gerageza ubundi.
               </p>
             )}
           </section>
