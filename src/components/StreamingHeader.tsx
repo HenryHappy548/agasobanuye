@@ -85,7 +85,7 @@ const StreamingHeader = ({ onSearch, searchQuery, onPlayVideo }: StreamingHeader
             <div className="hidden md:block relative">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
               <Input
-                placeholder="Search movies and shows..."
+                placeholder="Shakisha..."
                 className="pl-10 w-48 lg:w-64 bg-input border-border focus:border-primary"
                 value={searchQuery}
                 onChange={(e) => handleSearchChange(e.target.value)}
@@ -172,7 +172,7 @@ const StreamingHeader = ({ onSearch, searchQuery, onPlayVideo }: StreamingHeader
             <div className="relative">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
               <Input
-                placeholder="Search movies and shows..."
+                placeholder="Shakisha..."
                 className="pl-10 w-full bg-input border-border focus:border-primary"
                 value={searchQuery}
                 onChange={(e) => handleSearchChange(e.target.value)}
