@@ -24,6 +24,8 @@ const Contact = lazy(() => import("./pages/Contact"));
 const Shop = lazy(() => import("./pages/Shop"));
 const ProMovies = lazy(() => import("./pages/ProMovies"));
 
+const GenreMovies = lazy(() => import("./pages/GenreMovies"));
+const DubberMovies = lazy(() => import("./pages/DubberMovies"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const RouteAdsBootstrap = () => {
@@ -80,6 +82,8 @@ const App = () => {
                   <Route path="/shop" element={<Shop />} />
                   <Route path="/store" element={<Navigate to="/shop" replace />} />
                   <Route path="/pro-movies" element={<ProMovies />} />
+                  <Route path="/genre/:genre" element={<GenreMovies />} />
+                  <Route path="/dubber/:name" element={<DubberMovies />} />
 
                   {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                   <Route path="*" element={<NotFound />} />

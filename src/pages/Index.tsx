@@ -1,6 +1,6 @@
 import { useState, useCallback, useMemo } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Film } from "lucide-react";
 import StreamingHeader from "@/components/StreamingHeader";
 import HeroSection from "@/components/HeroSection";
 import MovieCard from "@/components/MovieCard";
@@ -473,7 +473,38 @@ const Index = () => {
               
              </section>
 
-             
+             {/* Genre Rows below Series */}
+             {["Action", "Horror", "Drama"].map((genre) => {
+               const genreMovies = movies.filter(m => m.genre.toLowerCase() === genre.toLowerCase()).slice(0, 10);
+               if (genreMovies.length === 0) return null;
+               return (
+                 <section key={genre} className="mt-6">
+                   <div className="flex items-center justify-between mb-4">
+                     <div className="flex items-center gap-2">
+                       <Film className="h-5 w-5 text-primary" />
+                       <h2 className="text-xl sm:text-2xl font-bold text-foreground">{genre}</h2>
+                     </div>
+                     <Link to={`/genre/${encodeURIComponent(genre)}`}>
+                       <Button variant="ghost" size="sm" className="gap-1 text-primary hover:text-primary/80">
+                         View All <ArrowRight className="h-4 w-4" />
+                       </Button>
+                     </Link>
+                   </div>
+                   <Carousel opts={{ align: "start", loop: true }} className="w-full">
+                     <CarouselContent className="-ml-1.5 sm:-ml-2 md:-ml-3">
+                       {genreMovies.map((movie) => (
+                         <CarouselItem key={movie.id} className="pl-1.5 sm:pl-2 md:pl-3 basis-1/3 sm:basis-1/4 md:basis-1/5 lg:basis-1/6">
+                           <MovieCard movie={movie} onPlay={handlePlayVideo} />
+                         </CarouselItem>
+                       ))}
+                     </CarouselContent>
+                     <CarouselPrevious className="left-2" />
+                     <CarouselNext className="right-2" />
+                   </Carousel>
+                 </section>
+               );
+             })}
+
            </>
         )}
       </main>
