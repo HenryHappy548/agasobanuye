@@ -5,7 +5,7 @@ import { User } from "@supabase/supabase-js";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { LogOut, Film, Plus, Download, Video, MessageSquare, ShoppingBag, MessagesSquare, Crown } from "lucide-react";
+import { LogOut, Film, Plus, Download, Video, MessageSquare, ShoppingBag, MessagesSquare, Crown, BarChart3 } from "lucide-react";
 import { toast } from "sonner";
 import MovieForm from "@/components/admin/MovieForm";
 import MovieList from "@/components/admin/MovieList";
@@ -15,6 +15,7 @@ import MessagesManager from "@/components/admin/MessagesManager";
 import { ProductsManager } from "@/components/admin/ProductsManager";
 import CommentsManager from "@/components/admin/CommentsManager";
 import PremiumManager from "@/components/admin/PremiumManager";
+import AnalyticsDashboard from "@/components/admin/AnalyticsDashboard";
 
 
 const Admin = () => {
@@ -115,8 +116,12 @@ const Admin = () => {
         </Card>
 
         {/* Main Content */}
-        <Tabs defaultValue="add" className="space-y-6">
-          <TabsList className="grid w-full grid-cols-8 max-w-6xl mx-auto">
+        <Tabs defaultValue="analytics" className="space-y-6">
+          <TabsList className="grid w-full grid-cols-9 max-w-6xl mx-auto">
+            <TabsTrigger value="analytics" className="gap-2">
+              <BarChart3 className="w-4 h-4" />
+              <span className="hidden sm:inline">Analytics</span>
+            </TabsTrigger>
             <TabsTrigger value="add" className="gap-2">
               <Plus className="w-4 h-4" />
               <span className="hidden sm:inline">Add Movie</span>
@@ -150,6 +155,23 @@ const Admin = () => {
               <span className="hidden sm:inline">Messages</span>
             </TabsTrigger>
           </TabsList>
+
+          <TabsContent value="analytics">
+            <Card className="border-primary/20 shadow-lg">
+              <CardHeader>
+                <CardTitle className="text-2xl flex items-center gap-2">
+                  <BarChart3 className="h-6 w-6 text-primary" />
+                  Analytics Dashboard
+                </CardTitle>
+                <CardDescription>
+                  Real-time daily stats — views, top movies, genre trends
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <AnalyticsDashboard />
+              </CardContent>
+            </Card>
+          </TabsContent>
 
           <TabsContent value="add">
             <Card className="border-primary/20 shadow-lg">
