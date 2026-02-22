@@ -474,7 +474,7 @@ const Index = () => {
              </section>
 
              {/* Genre Rows below Series */}
-             {["Action", "Horror", "Drama"].map((genre) => {
+             {["Action", "Horror", "Drama", "Animation"].map((genre) => {
                const genreMovies = movies.filter(m => m.genre.toLowerCase() === genre.toLowerCase()).slice(0, 10);
                if (genreMovies.length === 0) return null;
                return (

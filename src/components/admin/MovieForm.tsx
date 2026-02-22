@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useMemo } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -7,7 +7,13 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { toast } from "sonner";
 import { Loader2, Upload, CheckCircle } from "lucide-react";
+import { useMovies } from "@/hooks/useMovies";
 
+const WORLDWIDE_GENRES = [
+  "Action", "Adventure", "Animation", "Comedy", "Crime", "Documentary",
+  "Drama", "Family", "Fantasy", "History", "Horror", "Music", "Mystery",
+  "Romance", "Sci-Fi", "Thriller", "War", "Western", "Biography", "Sport"
+];
 interface MovieFormProps {
   movie?: any;
   onSuccess?: () => void;
@@ -16,6 +22,17 @@ interface MovieFormProps {
 const MovieForm = ({ movie, onSuccess }: MovieFormProps) => {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
+  const { movies } = useMovies();
+  const [customGenre, setCustomGenre] = useState("");
+  
+  // Merge worldwide genres with existing genres from DB
+  const allGenres = useMemo(() => {
+    const dbGenres = new Set<string>();
+    movies.forEach(m => { if (m.genre) dbGenres.add(m.genre); });
+    const merged = new Set([...WORLDWIDE_GENRES, ...dbGenres]);
+    return Array.from(merged).sort();
+  }, [movies]);
+
   const [formData, setFormData] = useState({
     title: movie?.title || "",
     description: movie?.description || "",
@@ -186,15 +203,37 @@ const MovieForm = ({ movie, onSuccess }: MovieFormProps) => {
         {/* Genre */}
         <div className="space-y-2">
           <Label htmlFor="genre">Genre *</Label>
-          <Input
-            id="genre"
-            required
-            value={formData.genre}
-            onChange={(e) => handleInputChange("genre", e.target.value)}
-            placeholder="e.g., Action, Drama"
-            className="bg-background/50"
+          <Select
+            value={allGenres.includes(formData.genre) ? formData.genre : "__custom__"}
+            onValueChange={(value) => {
+              if (value === "__custom__") {
+                handleInputChange("genre", customGenre);
+              } else {
+                handleInputChange("genre", value);
+                setCustomGenre("");
+              }
+            }}
             disabled={loading}
-          />
+          >
+            <SelectTrigger className="bg-background/50">
+              <SelectValue placeholder="Select genre" />
+            </SelectTrigger>
+            <SelectContent className="max-h-60 overflow-y-auto bg-popover z-[60]">
+              {allGenres.map((genre) => (
+                <SelectItem key={genre} value={genre}>{genre}</SelectItem>
+              ))}
+              <SelectItem value="__custom__">✏️ Custom genre...</SelectItem>
+            </SelectContent>
+          </Select>
+          {(formData.genre === "" || (!allGenres.includes(formData.genre) && formData.genre !== "")) && (
+            <Input
+              value={formData.genre}
+              onChange={(e) => handleInputChange("genre", e.target.value)}
+              placeholder="Type custom genre..."
+              className="bg-background/50 mt-1"
+              disabled={loading}
+            />
+          )}
         </div>
 
         {/* Rating */}

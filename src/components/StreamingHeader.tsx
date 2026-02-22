@@ -29,7 +29,7 @@ interface StreamingHeaderProps {
   onPlayVideo: (videoId: string) => void;
 }
 
-const MAIN_GENRES = ["Action", "Horror", "Drama", "Sci-Fi", "Thriller", "Comedy", "Romance", "Adventure"];
+const MAIN_GENRES = ["Action", "Horror", "Drama", "Sci-Fi", "Thriller", "Comedy", "Romance", "Adventure", "Animation"];
 
 const StreamingHeader = ({ onSearch, searchQuery, onPlayVideo }: StreamingHeaderProps) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -88,7 +88,7 @@ const StreamingHeader = ({ onSearch, searchQuery, onPlayVideo }: StreamingHeader
                   <ChevronDown className="h-3 w-3" />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="bg-popover border-border z-[60] w-48 max-h-72 overflow-y-auto">
+              <DropdownMenuContent className="bg-popover border-border z-[60] w-48 max-h-72 overflow-y-auto animate-in fade-in-0 zoom-in-95 slide-in-from-top-2 duration-200">
                 <DropdownMenuLabel className="text-xs text-muted-foreground">Genre Zigaragara</DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 {MAIN_GENRES.filter((g) => genres.some((eg) => eg.toLowerCase() === g.toLowerCase())).map((genre) => (
@@ -119,7 +119,7 @@ const StreamingHeader = ({ onSearch, searchQuery, onPlayVideo }: StreamingHeader
                   <ChevronDown className="h-3 w-3" />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="bg-popover border-border z-[60] w-52 max-h-72 overflow-y-auto">
+              <DropdownMenuContent className="bg-popover border-border z-[60] w-52 max-h-72 overflow-y-auto animate-in fade-in-0 zoom-in-95 slide-in-from-top-2 duration-200">
                 <DropdownMenuLabel className="text-xs text-muted-foreground">Hitamo Umusobanuzi</DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 {dubbers.map((dubber) => (
@@ -219,7 +219,7 @@ const StreamingHeader = ({ onSearch, searchQuery, onPlayVideo }: StreamingHeader
 
         {/* Mobile Navigation Menu */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden mt-4 pb-4 border-t border-border pt-4">
+          <div className="lg:hidden mt-4 pb-4 border-t border-border pt-4 animate-in slide-in-from-top-2 fade-in-0 duration-300">
             <nav className="flex flex-col space-y-1">
               <Link to="/" onClick={() => setIsMobileMenuOpen(false)}>
                 <Button variant="ghost" className="w-full justify-start text-foreground hover:text-primary">Home</Button>
