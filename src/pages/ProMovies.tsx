@@ -187,37 +187,54 @@ const ProMovies = () => {
               <Button variant="outline" onClick={handleLogout} size="sm">Sohoka</Button>
             </div>
 
-            {/* Download Modal */}
+            {/* Streaming + Download Modal */}
             {selectedMovie && (
-              <div className="fixed inset-0 z-50 bg-black/70 flex items-center justify-center p-4" onClick={() => setSelectedMovie(null)}>
-                <Card className="w-full max-w-md relative" onClick={(e) => e.stopPropagation()}>
-                  <button onClick={() => setSelectedMovie(null)} className="absolute top-3 right-3 text-muted-foreground hover:text-foreground">
+              <div className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-2 sm:p-4" onClick={() => setSelectedMovie(null)}>
+                <div className="w-full max-w-3xl relative space-y-3" onClick={(e) => e.stopPropagation()}>
+                  <button onClick={() => setSelectedMovie(null)} className="absolute -top-2 right-0 z-10 p-1.5 bg-card rounded-full text-muted-foreground hover:text-foreground">
                     <X className="h-5 w-5" />
                   </button>
-                  <CardHeader className="pb-3">
-                    <CardTitle className="text-lg pr-6">{selectedMovie.title}</CardTitle>
-                    {selectedMovie.year && <CardDescription>{selectedMovie.year}{selectedMovie.genre ? ` • ${selectedMovie.genre}` : ''}</CardDescription>}
-                  </CardHeader>
-                  <CardContent className="space-y-3">
+
+                  {/* Title */}
+                  <div className="pr-8">
+                    <h3 className="text-lg font-bold text-foreground">{selectedMovie.title}</h3>
+                    {selectedMovie.year && <p className="text-sm text-muted-foreground">{selectedMovie.year}{selectedMovie.genre ? ` • ${selectedMovie.genre}` : ''}</p>}
+                  </div>
+
+                  {/* Video Player */}
+                  {selectedMovie.video_url && (
+                    <div className="w-full aspect-video bg-black rounded-xl overflow-hidden border border-primary/20">
+                      <iframe
+                        src={normalizeUrl(selectedMovie.video_url)}
+                        className="w-full h-full border-0"
+                        allowFullScreen
+                        allow="autoplay; encrypted-media"
+                      />
+                    </div>
+                  )}
+
+                  {/* Download Buttons */}
+                  <div className="flex flex-col sm:flex-row gap-2">
                     {selectedMovie.video_url && (
                       <a href={normalizeUrl(selectedMovie.video_url)} target="_blank" rel="noopener noreferrer"
-                        className="flex items-center gap-3 w-full px-4 py-3 bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg transition-colors font-medium">
+                        className="flex items-center justify-center gap-2 flex-1 px-4 py-3 bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg transition-colors font-medium text-sm sm:text-base">
                         <Download className="h-5 w-5" />
                         Kurura Video
                       </a>
                     )}
                     {selectedMovie.download_url && (
                       <a href={normalizeUrl(selectedMovie.download_url)} target="_blank" rel="noopener noreferrer"
-                        className="flex items-center gap-3 w-full px-4 py-3 bg-amber-600 hover:bg-amber-500 text-white rounded-lg transition-colors font-medium">
+                        className="flex items-center justify-center gap-2 flex-1 px-4 py-3 bg-amber-600 hover:bg-amber-500 text-white rounded-lg transition-colors font-medium text-sm sm:text-base">
                         <Subtitles className="h-5 w-5" />
                         Kurura Subtitles
                       </a>
                     )}
-                    {!selectedMovie.video_url && !selectedMovie.download_url && (
-                      <p className="text-center text-muted-foreground py-4">Nta download links zihari kuri iyi filime.</p>
-                    )}
-                  </CardContent>
-                </Card>
+                  </div>
+
+                  {!selectedMovie.video_url && !selectedMovie.download_url && (
+                    <p className="text-center text-muted-foreground py-4">Nta video/download zihari kuri iyi filime.</p>
+                  )}
+                </div>
               </div>
             )}
 
