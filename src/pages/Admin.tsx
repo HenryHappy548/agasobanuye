@@ -5,7 +5,7 @@ import { User } from "@supabase/supabase-js";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { LogOut, Film, Plus, Download, Video, MessageSquare, ShoppingBag, MessagesSquare, Crown, BarChart3 } from "lucide-react";
+import { LogOut, Film, Plus, Download, Video, MessageSquare, ShoppingBag, MessagesSquare, Crown, BarChart3, ShieldAlert } from "lucide-react";
 import { toast } from "sonner";
 import MovieForm from "@/components/admin/MovieForm";
 import MovieList from "@/components/admin/MovieList";
@@ -75,6 +75,16 @@ const Admin = () => {
     toast.success("Signed out successfully");
   };
 
+  const handleSignOutAllDevices = async () => {
+    try {
+      await supabase.auth.signOut({ scope: 'global' });
+      toast.success("Signed out from all devices");
+      navigate("/auth");
+    } catch (error) {
+      toast.error("Failed to sign out all devices");
+    }
+  };
+
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background via-background/95 to-primary/5">
@@ -107,10 +117,16 @@ const Admin = () => {
                   </CardDescription>
                 </div>
               </div>
-              <Button onClick={handleSignOut} variant="outline" className="gap-2">
-                <LogOut className="w-4 h-4" />
-                Sign Out
-              </Button>
+              <div className="flex gap-2">
+                <Button onClick={handleSignOutAllDevices} variant="destructive" size="sm" className="gap-2">
+                  <ShieldAlert className="w-4 h-4" />
+                  Sign Out All Devices
+                </Button>
+                <Button onClick={handleSignOut} variant="outline" size="sm" className="gap-2">
+                  <LogOut className="w-4 h-4" />
+                  Sign Out
+                </Button>
+              </div>
             </div>
           </CardHeader>
         </Card>
