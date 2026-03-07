@@ -45,6 +45,7 @@ const MovieForm = ({ movie, onSuccess }: MovieFormProps) => {
     download_url: movie?.download_url || "",
     dubbed: movie?.dubbed || "",
     featured: movie?.featured || false,
+    show_in_recent: movie?.show_in_recent !== undefined ? movie.show_in_recent : true,
   });
 
   const resetForm = useCallback(() => {
@@ -60,6 +61,7 @@ const MovieForm = ({ movie, onSuccess }: MovieFormProps) => {
       download_url: "",
       dubbed: "",
       featured: false,
+      show_in_recent: true,
     });
   }, []);
 
@@ -96,6 +98,7 @@ const MovieForm = ({ movie, onSuccess }: MovieFormProps) => {
         download_url: formData.download_url.trim(),
         dubbed: formData.dubbed.trim(),
         featured: formData.featured,
+        show_in_recent: formData.show_in_recent,
       };
 
       if (movie?.id) {
@@ -361,23 +364,44 @@ const MovieForm = ({ movie, onSuccess }: MovieFormProps) => {
         </p>
       </div>
 
-      {/* Featured */}
-      <div className="flex items-center gap-3 p-3 bg-primary/5 border border-primary/20 rounded-lg">
-        <input
-          type="checkbox"
-          id="featured"
-          checked={formData.featured}
-          onChange={(e) => handleInputChange("featured", e.target.checked)}
-          className="w-5 h-5 rounded border-primary accent-primary"
-          disabled={loading}
-        />
-        <div>
-          <Label htmlFor="featured" className="cursor-pointer font-medium">
-            📌 Pin to Homepage Hero
-          </Label>
-          <p className="text-xs text-muted-foreground mt-0.5">
-            This will unpin any other featured movie automatically
-          </p>
+      {/* Toggles */}
+      <div className="space-y-3">
+        <div className="flex items-center gap-3 p-3 bg-primary/5 border border-primary/20 rounded-lg">
+          <input
+            type="checkbox"
+            id="featured"
+            checked={formData.featured}
+            onChange={(e) => handleInputChange("featured", e.target.checked)}
+            className="w-5 h-5 rounded border-primary accent-primary"
+            disabled={loading}
+          />
+          <div>
+            <Label htmlFor="featured" className="cursor-pointer font-medium">
+              📌 Pin to Homepage Hero
+            </Label>
+            <p className="text-xs text-muted-foreground mt-0.5">
+              This will unpin any other featured movie automatically
+            </p>
+          </div>
+        </div>
+
+        <div className="flex items-center gap-3 p-3 bg-primary/5 border border-primary/20 rounded-lg">
+          <input
+            type="checkbox"
+            id="show_in_recent"
+            checked={formData.show_in_recent}
+            onChange={(e) => handleInputChange("show_in_recent", e.target.checked)}
+            className="w-5 h-5 rounded border-primary accent-primary"
+            disabled={loading}
+          />
+          <div>
+            <Label htmlFor="show_in_recent" className="cursor-pointer font-medium">
+              🆕 Show in "Nshya Zashyizweho"
+            </Label>
+            <p className="text-xs text-muted-foreground mt-0.5">
+              Display this movie in the recently added sidebar on homepage
+            </p>
+          </div>
         </div>
       </div>
 

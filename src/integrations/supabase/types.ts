@@ -194,6 +194,7 @@ export type Database = {
           id: string
           poster_url: string | null
           rating: string
+          show_in_recent: boolean
           title: string
           updated_at: string
           video_url: string | null
@@ -210,6 +211,7 @@ export type Database = {
           id?: string
           poster_url?: string | null
           rating: string
+          show_in_recent?: boolean
           title: string
           updated_at?: string
           video_url?: string | null
@@ -226,6 +228,7 @@ export type Database = {
           id?: string
           poster_url?: string | null
           rating?: string
+          show_in_recent?: boolean
           title?: string
           updated_at?: string
           video_url?: string | null

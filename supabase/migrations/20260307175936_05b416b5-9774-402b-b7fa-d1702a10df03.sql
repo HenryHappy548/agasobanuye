@@ -1,0 +1,1 @@
+ALTER TABLE public.movies ADD COLUMN show_in_recent boolean NOT NULL DEFAULT true;

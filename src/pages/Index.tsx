@@ -147,7 +147,7 @@ const Index = () => {
     moviesOnly: movies.filter(movie => movie.category === 'movie').slice(0, 10),
     tvShows: movies.filter(movie => movie.category === 'tv').slice(0, 10),
     featuredMovies: deduplicateSeries(movies).slice(0, 20),
-    recentlyAdded: deduplicateSeries(movies).slice(0, 5),
+    recentlyAdded: deduplicateSeries(movies.filter(m => m.show_in_recent !== false)).slice(0, 5),
   }), [movies]);
 
   // Mobile: 3 columns, Tablet: 4, Desktop: 5-6
@@ -245,7 +245,7 @@ const Index = () => {
                             <span className="text-primary">{movie.genre}</span>
                           </div>
                           {movie.rating && (
-                            <p className="text-[9px] text-muted-foreground/60 mt-0.5 italic truncate">
+                            <p className="text-[9px] text-muted-foreground font-bold mt-0.5 truncate">
                               🎙 {movie.rating}
                             </p>
                           )}
