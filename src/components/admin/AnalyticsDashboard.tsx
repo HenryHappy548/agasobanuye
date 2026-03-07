@@ -1,7 +1,7 @@
 import { useState, useEffect, useMemo } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Loader2, Eye, Film, TrendingUp, Users, BarChart3, RefreshCw } from "lucide-react";
+import { Loader2, Eye, Film, TrendingUp, Users, BarChart3, RefreshCw, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
@@ -19,6 +19,8 @@ const AnalyticsDashboard = () => {
   const [viewCounts, setViewCounts] = useState<ViewData[]>([]);
   const [movies, setMovies] = useState<any[]>([]);
   const [recentViews, setRecentViews] = useState<any[]>([]);
+  const [totalVisitors, setTotalVisitors] = useState<number>(0);
+  const [dailyVisitors, setDailyVisitors] = useState<{visit_date: string; visit_count: number}[]>([]);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
   const [timeRange, setTimeRange] = useState("7");
@@ -26,15 +28,19 @@ const AnalyticsDashboard = () => {
   const fetchData = async () => {
     try {
       // Fetch view counts, movies, and recent views in parallel
-      const [viewsRes, moviesRes, recentRes] = await Promise.all([
+      const [viewsRes, moviesRes, recentRes, totalVisitsRes, dailyVisitsRes] = await Promise.all([
         supabase.rpc("get_movie_view_counts"),
         supabase.from("movies").select("id, title, genre, category, created_at").order("created_at", { ascending: false }),
         supabase.from("movie_views").select("movie_id, viewed_at, referrer, user_agent").order("viewed_at", { ascending: false }).limit(500),
+        supabase.rpc("get_total_visit_count"),
+        supabase.rpc("get_daily_visit_counts", { days_back: 30 }),
       ]);
 
       if (viewsRes.data) setViewCounts(viewsRes.data);
       if (moviesRes.data) setMovies(moviesRes.data);
       if (recentRes.data) setRecentViews(recentRes.data);
+      if (totalVisitsRes.data !== null) setTotalVisitors(totalVisitsRes.data as number);
+      if (dailyVisitsRes.data) setDailyVisitors(dailyVisitsRes.data as any[]);
     } catch (err) {
       console.error("Analytics fetch error:", err);
     } finally {
