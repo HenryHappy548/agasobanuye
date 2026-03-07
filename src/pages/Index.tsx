@@ -1,5 +1,5 @@
 import { useState, useCallback, useMemo } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ArrowRight, Film } from "lucide-react";
 import StreamingHeader from "@/components/StreamingHeader";
 import HeroSection from "@/components/HeroSection";
@@ -13,6 +13,8 @@ import { useMovies } from "@/hooks/useMovies";
 import { isValidVideoId, sanitizeTextInput } from "@/lib/security";
 import { MonetagInpush, MonetagVignette } from "@/components/MonetagAds";
 import SupportButton from "@/components/SupportButton";
+import { usePageVisitTracker } from "@/hooks/usePageVisitTracker";
+import { buildWatchPath } from "@/lib/watchRoute";
 
 import {
   Carousel,
@@ -28,6 +30,8 @@ const Index = () => {
   const [selectedVideoId, setSelectedVideoId] = useState<string | null>(null);
   const [isPlayerOpen, setIsPlayerOpen] = useState(false);
   const { movies, loading } = useMovies();
+  const navigate = useNavigate();
+  usePageVisitTracker();
 
   // Filter states
   const [genreFilter, setGenreFilter] = useState<string>("");
