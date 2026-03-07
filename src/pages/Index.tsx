@@ -1,5 +1,5 @@
 import { useState, useCallback, useMemo } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ArrowRight, Film } from "lucide-react";
 import StreamingHeader from "@/components/StreamingHeader";
 import HeroSection from "@/components/HeroSection";
@@ -13,6 +13,8 @@ import { useMovies } from "@/hooks/useMovies";
 import { isValidVideoId, sanitizeTextInput } from "@/lib/security";
 import { MonetagInpush, MonetagVignette } from "@/components/MonetagAds";
 import SupportButton from "@/components/SupportButton";
+import { usePageVisitTracker } from "@/hooks/usePageVisitTracker";
+import { buildWatchPath } from "@/lib/watchRoute";
 
 import {
   Carousel,
@@ -28,6 +30,8 @@ const Index = () => {
   const [selectedVideoId, setSelectedVideoId] = useState<string | null>(null);
   const [isPlayerOpen, setIsPlayerOpen] = useState(false);
   const { movies, loading } = useMovies();
+  const navigate = useNavigate();
+  usePageVisitTracker();
 
   // Filter states
   const [genreFilter, setGenreFilter] = useState<string>("");
@@ -120,12 +124,30 @@ const Index = () => {
   }, []);
 
   // Memoize filtered movie lists to prevent recalculation on every render
+  // Helper: extract series base name
+  const getSeriesBaseName = (title: string): string => {
+    // Match patterns like "Title S01 E01", "Title S1 E2", "Title Part 2", "Title EP 3"
+    const seriesMatch = title.match(/^(.+?)\s*(S\d+\s*E\d+|Season\s*\d+|Part\s*\d+|EP?\s*\d+|Episode\s*\d+)/i);
+    return seriesMatch ? seriesMatch[1].trim() : title;
+  };
+
+  // Deduplicate series: keep only the first (latest) episode per series
+  const deduplicateSeries = (movieList: typeof movies) => {
+    const seen = new Set<string>();
+    return movieList.filter(movie => {
+      const base = getSeriesBaseName(movie.title).toLowerCase();
+      if (seen.has(base)) return false;
+      seen.add(base);
+      return true;
+    });
+  };
+
   const { trendingMovies, moviesOnly, tvShows, featuredMovies, recentlyAdded } = useMemo(() => ({
     trendingMovies: movies.filter(movie => movie.category === 'trending').slice(0, 10),
     moviesOnly: movies.filter(movie => movie.category === 'movie').slice(0, 10),
     tvShows: movies.filter(movie => movie.category === 'tv').slice(0, 10),
-    featuredMovies: movies.slice(0, 20),
-    recentlyAdded: movies.slice(0, 5),
+    featuredMovies: deduplicateSeries(movies).slice(0, 20),
+    recentlyAdded: deduplicateSeries(movies).slice(0, 5),
   }), [movies]);
 
   // Mobile: 3 columns, Tablet: 4, Desktop: 5-6
@@ -177,10 +199,10 @@ const Index = () => {
                     ))
                   ) : (
                     recentlyAdded.map((movie, index) => (
-                      <div
+                      <Link
                         key={movie.id}
-                        onClick={() => handlePlayVideo(movie.id)}
-                        className="flex gap-3 p-2 rounded-lg bg-background/30 hover:bg-primary/10 border border-transparent hover:border-primary/30 transition-all duration-300 cursor-pointer group"
+                        to={buildWatchPath(movie.title, movie.id)}
+                        className="flex gap-3 p-2 rounded-lg bg-background/30 hover:bg-primary/10 border border-transparent hover:border-primary/30 transition-all duration-300 group"
                       >
                         {/* Rank Number */}
                         <div className="flex-shrink-0 w-6 flex items-center justify-center">
@@ -214,7 +236,7 @@ const Index = () => {
                         
                         {/* Info */}
                         <div className="flex-1 min-w-0 flex flex-col justify-center">
-                          <h3 className="font-semibold text-xs text-foreground line-clamp-2 group-hover:text-primary transition-colors">
+                          <h3 className="font-bold text-xs text-foreground line-clamp-2 group-hover:text-primary transition-colors">
                             {movie.title}
                           </h3>
                           <div className="flex items-center gap-1 text-[10px] text-muted-foreground mt-1">
@@ -222,8 +244,13 @@ const Index = () => {
                             <span>•</span>
                             <span className="text-primary">{movie.genre}</span>
                           </div>
+                          {movie.rating && (
+                            <p className="text-[9px] text-muted-foreground/60 mt-0.5 italic truncate">
+                              🎙 {movie.rating}
+                            </p>
+                          )}
                         </div>
-                      </div>
+                      </Link>
                     ))
                   )}
                 </div>

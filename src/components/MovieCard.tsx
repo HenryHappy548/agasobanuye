@@ -48,27 +48,31 @@ const MovieCard = memo(({ movie, priority = false }: MovieCardProps) => {
             </div>
           </div>
           
-          {/* Dubber Badge - Top Right */}
+          {/* Dubbed indicator badge */}
           {movie.rating && (
-            <div className="absolute top-1 right-1 sm:top-1.5 sm:right-1.5 px-1 sm:px-1.5 py-0.5 bg-primary/90 text-[8px] sm:text-[9px] font-bold text-primary-foreground rounded">
-              {movie.rating.split(' ')[0]}
+            <div className="absolute top-1 right-1 sm:top-1.5 sm:right-1.5 px-1 sm:px-1.5 py-0.5 bg-background/80 backdrop-blur-sm text-[7px] sm:text-[8px] font-medium text-muted-foreground rounded border border-border/50">
+              🎙 Dubbed
             </div>
           )}
         </div>
         
         {/* Movie Info - Responsive padding */}
         <div className="p-2 sm:p-3">
-          {/* Title with line clamp for long names */}
-          <h3 className="font-semibold text-foreground text-[11px] sm:text-sm leading-tight line-clamp-2 min-h-[1.75rem] sm:min-h-[2.25rem]">
+          {/* Title - prominent */}
+          <h3 className="font-bold text-foreground text-[11px] sm:text-sm leading-tight line-clamp-2 min-h-[1.75rem] sm:min-h-[2.25rem]">
             {movie.title}
           </h3>
-          <div className="flex items-center justify-between text-[9px] sm:text-xs text-muted-foreground mt-1 sm:mt-1.5">
+          <div className="flex items-center gap-1.5 text-[9px] sm:text-xs text-muted-foreground mt-1 sm:mt-1.5">
             <span>{movie.year}</span>
-            <span className="bg-primary/20 text-primary px-1.5 sm:px-2 py-0.5 rounded font-medium truncate max-w-[55%]">
-              {movie.rating || movie.genre}
-            </span>
+            <span className="text-border">•</span>
+            <span className="truncate">{movie.genre}</span>
           </div>
-          <p className="text-[9px] sm:text-xs text-muted-foreground mt-0.5 sm:mt-1 truncate">{movie.genre}</p>
+          {/* Dubber - secondary subtle label */}
+          {movie.rating && (
+            <p className="text-[8px] sm:text-[10px] text-muted-foreground/70 mt-0.5 sm:mt-1 truncate italic">
+              🎙 {movie.rating}
+            </p>
+          )}
         </div>
       </article>
     </Link>

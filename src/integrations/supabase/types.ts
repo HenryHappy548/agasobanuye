@@ -233,6 +233,30 @@ export type Database = {
         }
         Relationships: []
       }
+      page_visits: {
+        Row: {
+          id: string
+          page_path: string
+          referrer: string | null
+          user_agent: string | null
+          visited_at: string
+        }
+        Insert: {
+          id?: string
+          page_path?: string
+          referrer?: string | null
+          user_agent?: string | null
+          visited_at?: string
+        }
+        Update: {
+          id?: string
+          page_path?: string
+          referrer?: string | null
+          user_agent?: string | null
+          visited_at?: string
+        }
+        Relationships: []
+      }
       poll_votes: {
         Row: {
           id: string
@@ -500,6 +524,13 @@ export type Database = {
         Args: { client_name_input: string; client_phone_input?: string }
         Returns: string
       }
+      get_daily_visit_counts: {
+        Args: { days_back?: number }
+        Returns: {
+          visit_count: number
+          visit_date: string
+        }[]
+      }
       get_movie_view_counts: {
         Args: never
         Returns: {
@@ -507,6 +538,7 @@ export type Database = {
           view_count: number
         }[]
       }
+      get_total_visit_count: { Args: never; Returns: number }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]

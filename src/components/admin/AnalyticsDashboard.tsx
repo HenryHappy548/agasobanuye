@@ -1,7 +1,7 @@
 import { useState, useEffect, useMemo } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Loader2, Eye, Film, TrendingUp, Users, BarChart3, RefreshCw } from "lucide-react";
+import { Loader2, Eye, Film, TrendingUp, Users, BarChart3, RefreshCw, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
@@ -19,6 +19,8 @@ const AnalyticsDashboard = () => {
   const [viewCounts, setViewCounts] = useState<ViewData[]>([]);
   const [movies, setMovies] = useState<any[]>([]);
   const [recentViews, setRecentViews] = useState<any[]>([]);
+  const [totalVisitors, setTotalVisitors] = useState<number>(0);
+  const [dailyVisitors, setDailyVisitors] = useState<{visit_date: string; visit_count: number}[]>([]);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
   const [timeRange, setTimeRange] = useState("7");
@@ -26,15 +28,19 @@ const AnalyticsDashboard = () => {
   const fetchData = async () => {
     try {
       // Fetch view counts, movies, and recent views in parallel
-      const [viewsRes, moviesRes, recentRes] = await Promise.all([
+      const [viewsRes, moviesRes, recentRes, totalVisitsRes, dailyVisitsRes] = await Promise.all([
         supabase.rpc("get_movie_view_counts"),
         supabase.from("movies").select("id, title, genre, category, created_at").order("created_at", { ascending: false }),
         supabase.from("movie_views").select("movie_id, viewed_at, referrer, user_agent").order("viewed_at", { ascending: false }).limit(500),
+        supabase.rpc("get_total_visit_count"),
+        supabase.rpc("get_daily_visit_counts", { days_back: 30 }),
       ]);
 
       if (viewsRes.data) setViewCounts(viewsRes.data);
       if (moviesRes.data) setMovies(moviesRes.data);
       if (recentRes.data) setRecentViews(recentRes.data);
+      if (totalVisitsRes.data !== null) setTotalVisitors(totalVisitsRes.data as number);
+      if (dailyVisitsRes.data) setDailyVisitors(dailyVisitsRes.data as any[]);
     } catch (err) {
       console.error("Analytics fetch error:", err);
     } finally {
@@ -141,15 +147,15 @@ const AnalyticsDashboard = () => {
       </div>
 
       {/* Summary Cards */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
         <Card className="border-primary/20">
           <CardContent className="p-4 flex items-center gap-3">
             <div className="p-2 bg-primary/10 rounded-lg">
-              <Eye className="w-5 h-5 text-primary" />
+              <Globe className="w-5 h-5 text-primary" />
             </div>
             <div>
-              <p className="text-2xl font-bold text-foreground">{analytics.totalViews.toLocaleString()}</p>
-              <p className="text-xs text-muted-foreground">Total Views</p>
+              <p className="text-2xl font-bold text-foreground">{totalVisitors.toLocaleString()}</p>
+              <p className="text-xs text-muted-foreground">Total Visitors</p>
             </div>
           </CardContent>
         </Card>
@@ -159,8 +165,21 @@ const AnalyticsDashboard = () => {
               <TrendingUp className="w-5 h-5 text-primary" />
             </div>
             <div>
-              <p className="text-2xl font-bold text-foreground">{analytics.todayViews}</p>
-              <p className="text-xs text-muted-foreground">Today's Views</p>
+              <p className="text-2xl font-bold text-foreground">
+                {dailyVisitors.find(d => d.visit_date === new Date().toISOString().split('T')[0])?.visit_count || 0}
+              </p>
+              <p className="text-xs text-muted-foreground">Today's Visitors</p>
+            </div>
+          </CardContent>
+        </Card>
+        <Card className="border-primary/20">
+          <CardContent className="p-4 flex items-center gap-3">
+            <div className="p-2 bg-primary/10 rounded-lg">
+              <Eye className="w-5 h-5 text-primary" />
+            </div>
+            <div>
+              <p className="text-2xl font-bold text-foreground">{analytics.totalViews.toLocaleString()}</p>
+              <p className="text-xs text-muted-foreground">Movie Views</p>
             </div>
           </CardContent>
         </Card>
@@ -182,15 +201,46 @@ const AnalyticsDashboard = () => {
             </div>
             <div>
               <p className="text-2xl font-bold text-foreground">
-                {analytics.dailyViews.length > 0
-                  ? Math.round(analytics.dailyViews.reduce((s, d) => s + d.count, 0) / analytics.dailyViews.length)
+                {dailyVisitors.length > 0
+                  ? Math.round(dailyVisitors.reduce((s, d) => s + d.visit_count, 0) / dailyVisitors.length)
                   : 0}
               </p>
-              <p className="text-xs text-muted-foreground">Avg Daily Views</p>
+              <p className="text-xs text-muted-foreground">Avg Daily Visitors</p>
             </div>
           </CardContent>
         </Card>
       </div>
+
+      {/* Daily Visitors Chart */}
+      <Card className="border-border">
+        <CardHeader className="pb-2">
+          <CardTitle className="text-lg flex items-center gap-2">
+            <Globe className="w-5 h-5 text-primary" />
+            Daily Website Visitors
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="flex items-end gap-1 h-32">
+            {dailyVisitors.slice(-parseInt(timeRange)).map((day) => {
+              const maxVisit = Math.max(...dailyVisitors.slice(-parseInt(timeRange)).map(d => d.visit_count), 1);
+              return (
+                <div key={day.visit_date} className="flex-1 flex flex-col items-center gap-1 group">
+                  <span className="text-[9px] text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity">
+                    {day.visit_count}
+                  </span>
+                  <div
+                    className="w-full bg-accent/80 rounded-t transition-all duration-300 hover:bg-accent min-h-[2px]"
+                    style={{ height: `${(day.visit_count / maxVisit) * 100}%` }}
+                  />
+                  <span className="text-[8px] text-muted-foreground -rotate-45 origin-top-left whitespace-nowrap">
+                    {day.visit_date.slice(5)}
+                  </span>
+                </div>
+              );
+            })}
+          </div>
+        </CardContent>
+      </Card>
 
       {/* Daily Views Chart */}
       <Card className="border-border">
