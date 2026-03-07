@@ -50,7 +50,7 @@ const MovieCard = memo(({ movie, priority = false }: MovieCardProps) => {
           
           {/* Dubbed indicator badge */}
           {movie.rating && (
-            <div className="absolute top-1 right-1 sm:top-1.5 sm:right-1.5 px-1 sm:px-1.5 py-0.5 bg-background/80 backdrop-blur-sm text-[7px] sm:text-[8px] font-medium text-muted-foreground rounded border border-border/50">
+            <div className="absolute top-1 right-1 sm:top-1.5 sm:right-1.5 px-1 sm:px-1.5 py-0.5 bg-background/80 backdrop-blur-sm text-[7px] sm:text-[8px] font-bold text-muted-foreground rounded border border-border/50">
               🎙 Dubbed
             </div>
           )}
@@ -69,7 +69,7 @@ const MovieCard = memo(({ movie, priority = false }: MovieCardProps) => {
           </div>
           {/* Dubber - secondary subtle label */}
           {movie.rating && (
-            <p className="text-[8px] sm:text-[10px] text-muted-foreground/70 mt-0.5 sm:mt-1 truncate italic">
+            <p className="text-[9px] sm:text-[11px] text-muted-foreground font-bold mt-0.5 sm:mt-1 truncate">
               🎙 {movie.rating}
             </p>
           )}
