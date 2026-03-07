@@ -199,10 +199,10 @@ const Index = () => {
                     ))
                   ) : (
                     recentlyAdded.map((movie, index) => (
-                      <div
+                      <Link
                         key={movie.id}
-                        onClick={() => handlePlayVideo(movie.id)}
-                        className="flex gap-3 p-2 rounded-lg bg-background/30 hover:bg-primary/10 border border-transparent hover:border-primary/30 transition-all duration-300 cursor-pointer group"
+                        to={buildWatchPath(movie.title, movie.id)}
+                        className="flex gap-3 p-2 rounded-lg bg-background/30 hover:bg-primary/10 border border-transparent hover:border-primary/30 transition-all duration-300 group"
                       >
                         {/* Rank Number */}
                         <div className="flex-shrink-0 w-6 flex items-center justify-center">
@@ -236,7 +236,7 @@ const Index = () => {
                         
                         {/* Info */}
                         <div className="flex-1 min-w-0 flex flex-col justify-center">
-                          <h3 className="font-semibold text-xs text-foreground line-clamp-2 group-hover:text-primary transition-colors">
+                          <h3 className="font-bold text-xs text-foreground line-clamp-2 group-hover:text-primary transition-colors">
                             {movie.title}
                           </h3>
                           <div className="flex items-center gap-1 text-[10px] text-muted-foreground mt-1">
@@ -244,8 +244,13 @@ const Index = () => {
                             <span>•</span>
                             <span className="text-primary">{movie.genre}</span>
                           </div>
+                          {movie.rating && (
+                            <p className="text-[9px] text-muted-foreground/60 mt-0.5 italic truncate">
+                              🎙 {movie.rating}
+                            </p>
+                          )}
                         </div>
-                      </div>
+                      </Link>
                     ))
                   )}
                 </div>
