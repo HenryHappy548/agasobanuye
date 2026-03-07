@@ -48,10 +48,10 @@ const MovieCard = memo(({ movie, priority = false }: MovieCardProps) => {
             </div>
           </div>
           
-          {/* Dubber Badge - Top Right */}
+          {/* Dubbed indicator badge */}
           {movie.rating && (
-            <div className="absolute top-1 right-1 sm:top-1.5 sm:right-1.5 px-1 sm:px-1.5 py-0.5 bg-primary/90 text-[8px] sm:text-[9px] font-bold text-primary-foreground rounded">
-              {movie.rating.split(' ')[0]}
+            <div className="absolute top-1 right-1 sm:top-1.5 sm:right-1.5 px-1 sm:px-1.5 py-0.5 bg-background/80 backdrop-blur-sm text-[7px] sm:text-[8px] font-medium text-muted-foreground rounded border border-border/50">
+              🎙 Dubbed
             </div>
           )}
         </div>
