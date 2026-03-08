@@ -360,7 +360,7 @@ const VideoEditor = () => {
         ]);
         const mp4Data = await ffmpeg.readFile("output.mp4");
         const mp4Bytes = mp4Data instanceof Uint8Array ? mp4Data : new TextEncoder().encode(mp4Data as string);
-        const mp4Blob = new Blob([new Uint8Array(mp4Bytes.buffer)], { type: "video/mp4" });
+        const mp4Blob = new Blob([mp4Bytes.buffer.slice(0)], { type: "video/mp4" });
 
         downloadBlob(mp4Blob, fileName.replace(/\.\w+$/, "") + "-blurred.mp4");
         toast.success("MP4 exported successfully!");
