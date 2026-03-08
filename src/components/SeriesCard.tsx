@@ -67,7 +67,7 @@ const SeriesCard = memo(({ group, priority = false }: SeriesCardProps) => {
           )}
         </div>
       </article>
-    </Link>
+    </a>
   );
 });
 
