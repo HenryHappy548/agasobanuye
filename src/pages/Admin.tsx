@@ -182,10 +182,6 @@ const Admin = () => {
               <Phone className="w-4 h-4" />
               <span className="hidden sm:inline">WhatsApp</span>
             </TabsTrigger>
-            <TabsTrigger value="editor" className="gap-2">
-              <Wand2 className="w-4 h-4" />
-              <span className="hidden sm:inline">Editor</span>
-            </TabsTrigger>
           </TabsList>
 
           <TabsContent value="analytics">
