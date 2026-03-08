@@ -366,22 +366,6 @@ const Admin = () => {
               </Card>
             </div>
           </TabsContent>
-          <TabsContent value="editor">
-            <Card className="border-primary/20 shadow-lg">
-              <CardHeader>
-                <CardTitle className="text-2xl flex items-center gap-2">
-                  <Wand2 className="h-6 w-6 text-primary" />
-                  Video Editor
-                </CardTitle>
-                <CardDescription>
-                  Upload a video, add blur to a specific region or the entire video, control intensity, and export as MP4. Progress is saved automatically.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <VideoEditor />
-              </CardContent>
-            </Card>
-          </TabsContent>
 
         </Tabs>
       </div>
