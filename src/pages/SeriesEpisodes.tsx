@@ -33,9 +33,21 @@ const SeriesEpisodes = () => {
   }, [movies, decodedName]);
 
   const seriesPoster = episodes[0]?.poster || "";
+  const dubberName = episodes[0]?.rating || "";
+  const dubberSuffix = dubberName ? ` by ${dubberName}` : "";
+  const seoTitle = `Agasobanuye ${decodedName}${dubberSuffix} | Rwaflix Store`;
+  const seoDesc = `Reba ${decodedName} episodes zose agasobanuye${dubberSuffix} ku buntu kuri Rwaflix Store. ${episodes[0]?.genre || ''} series HD quality.`;
 
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <Helmet>
+        <title>{seoTitle}</title>
+        <meta name="description" content={seoDesc} />
+        <link rel="canonical" href={`https://rwaflix.store/series/${encodeURIComponent(decodedName)}`} />
+        <meta property="og:title" content={seoTitle} />
+        <meta property="og:description" content={seoDesc} />
+        <meta property="og:image" content={seriesPoster} />
+      </Helmet>
       <StreamingHeader onSearch={() => {}} searchQuery="" onPlayVideo={() => {}} />
 
       <main className="container mx-auto px-4 py-8">

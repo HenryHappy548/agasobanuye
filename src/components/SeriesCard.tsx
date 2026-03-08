@@ -49,6 +49,9 @@ const SeriesCard = memo(({ group, priority = false }: SeriesCardProps) => {
         <div className="p-2 sm:p-3">
           <h3 className="font-bold text-foreground text-[11px] sm:text-sm leading-tight line-clamp-2 min-h-[1.75rem] sm:min-h-[2.25rem]">
             {group.baseName}
+            <span className="ml-1 text-[9px] sm:text-[11px] text-primary font-bold">
+              ({group.episodeCount} EP)
+            </span>
           </h3>
           <div className="flex items-center gap-1.5 text-[9px] sm:text-xs text-muted-foreground mt-1 sm:mt-1.5">
             <span>{group.latestEpisode.year}</span>
