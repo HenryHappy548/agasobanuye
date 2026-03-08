@@ -57,6 +57,7 @@ const fetchMoviesFromDB = async (): Promise<DBMovie[]> => {
       download_url: (movie as any).download_url || "",
       dubbed: movie.dubbed || "",
       featured: movie.featured || false,
+      show_in_recent: movie.show_in_recent !== false,
     };
   });
 
