@@ -17,6 +17,7 @@ export interface DBMovie {
   download_url?: string;
   dubbed?: string;
   featured?: boolean;
+  show_in_recent?: boolean;
 }
 
 // Create a lookup map for mockMovies posters
@@ -27,7 +28,7 @@ const mockPosterLookup = new Map(
 const fetchMoviesFromDB = async (): Promise<DBMovie[]> => {
   const { data: dbMovies, error } = await supabase
     .from("movies")
-    .select("id,title,poster_url,year,genre,rating,category,description,video_url,download_url,dubbed,featured")
+    .select("id,title,poster_url,year,genre,rating,category,description,video_url,download_url,dubbed,featured,show_in_recent")
     .order("created_at", { ascending: false });
 
   if (error) {
@@ -56,6 +57,7 @@ const fetchMoviesFromDB = async (): Promise<DBMovie[]> => {
       download_url: (movie as any).download_url || "",
       dubbed: movie.dubbed || "",
       featured: movie.featured || false,
+      show_in_recent: movie.show_in_recent !== false,
     };
   });
 
