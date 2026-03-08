@@ -5,12 +5,11 @@ import { User } from "@supabase/supabase-js";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { LogOut, Film, Plus, Download, Video, MessageSquare, ShoppingBag, MessagesSquare, Crown, BarChart3, ShieldAlert, Clapperboard, Phone, Send } from "lucide-react";
+import { LogOut, Film, Plus, MessageSquare, ShoppingBag, MessagesSquare, Crown, BarChart3, ShieldAlert, Clapperboard, Phone, Wand2, Send } from "lucide-react";
 import { toast } from "sonner";
 import MovieForm from "@/components/admin/MovieForm";
 import MovieList from "@/components/admin/MovieList";
-import DownloadLinksManager from "@/components/admin/DownloadLinksManager";
-import VideoManager from "@/components/admin/VideoManager";
+import VideoEditor from "@/components/admin/VideoEditor";
 import MessagesManager from "@/components/admin/MessagesManager";
 import { ProductsManager } from "@/components/admin/ProductsManager";
 import CommentsManager from "@/components/admin/CommentsManager";
@@ -150,13 +149,13 @@ const Admin = () => {
               <Film className="w-4 h-4" />
               <span className="hidden sm:inline">Movies</span>
             </TabsTrigger>
-            <TabsTrigger value="videos" className="gap-2">
-              <Video className="w-4 h-4" />
-              <span className="hidden sm:inline">Videos</span>
+            <TabsTrigger value="whatsapp" className="gap-2">
+              <Phone className="w-4 h-4" />
+              <span className="hidden sm:inline">WhatsApp</span>
             </TabsTrigger>
-            <TabsTrigger value="downloads" className="gap-2">
-              <Download className="w-4 h-4" />
-              <span className="hidden sm:inline">Downloads</span>
+            <TabsTrigger value="editor" className="gap-2">
+              <Wand2 className="w-4 h-4" />
+              <span className="hidden sm:inline">Editor</span>
             </TabsTrigger>
             <TabsTrigger value="premium" className="gap-2">
               <Crown className="w-4 h-4 text-amber-500" />
@@ -177,10 +176,6 @@ const Admin = () => {
             <TabsTrigger value="shorts" className="gap-2">
               <Clapperboard className="w-4 h-4" />
               <span className="hidden sm:inline">Shorts</span>
-            </TabsTrigger>
-            <TabsTrigger value="whatsapp" className="gap-2">
-              <Phone className="w-4 h-4" />
-              <span className="hidden sm:inline">WhatsApp</span>
             </TabsTrigger>
           </TabsList>
 
@@ -229,30 +224,19 @@ const Admin = () => {
             </Card>
           </TabsContent>
 
-          <TabsContent value="videos">
+          <TabsContent value="editor">
             <Card className="border-primary/20 shadow-lg">
               <CardHeader>
-                <CardTitle className="text-2xl">Manage Videos</CardTitle>
+                <CardTitle className="text-2xl flex items-center gap-2">
+                  <Wand2 className="h-6 w-6 text-primary" />
+                  Video Editor
+                </CardTitle>
                 <CardDescription>
-                  Add videos here first, then go to Downloads tab to add download links for each video.
+                  Upload a video, add blur to a specific region or the entire video, control intensity, and export as MP4.
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <VideoManager />
-              </CardContent>
-            </Card>
-          </TabsContent>
-
-          <TabsContent value="downloads">
-            <Card className="border-primary/20 shadow-lg">
-              <CardHeader>
-                <CardTitle className="text-2xl">Manage Download Links</CardTitle>
-                <CardDescription>
-                  Add and manage download links for your videos. Select a video first, then add download links with different qualities.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <DownloadLinksManager />
+                <VideoEditor />
               </CardContent>
             </Card>
           </TabsContent>
