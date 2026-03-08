@@ -92,8 +92,8 @@ const App = () => {
                   <Route path="*" element={<NotFound />} />
                 </Routes>
               </Suspense>
-              <WhatsAppSignup />
             )}
+            <WhatsAppSignup />
           </BrowserRouter>
         </TooltipProvider>
       </QueryClientProvider>
