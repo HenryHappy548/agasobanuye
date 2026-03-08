@@ -171,6 +171,10 @@ const Admin = () => {
               <MessageSquare className="w-4 h-4" />
               <span className="hidden sm:inline">Messages</span>
             </TabsTrigger>
+            <TabsTrigger value="shorts" className="gap-2">
+              <Clapperboard className="w-4 h-4" />
+              <span className="hidden sm:inline">Shorts</span>
+            </TabsTrigger>
           </TabsList>
 
           <TabsContent value="analytics">
