@@ -197,45 +197,7 @@ const Footer = ({ showComments = true }: FooterProps) => {
           </div>
         )}
 
-        {/* WhatsApp Updates Signup - Subtle */}
-        <div className="mt-6 pt-6 border-t border-border/50">
-          {submitted ? (
-            <div className="flex items-center justify-center gap-2 text-sm text-primary">
-              <CheckCircle2 className="h-4 w-4" />
-              <span>Murakoze! Uzakira amakuru mashya kuri WhatsApp.</span>
-            </div>
-          ) : (
-            <form onSubmit={handleWhatsAppSignup} className="max-w-md mx-auto">
-              <p className="text-sm text-muted-foreground text-center mb-3">
-                Shyiraho nimero yawe ukire amakuru ya movie nshya kuri WhatsApp
-              </p>
-              <div className="flex gap-2">
-                <input
-                  type="text"
-                  placeholder="Izina (optional)"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  className="flex-1 min-w-0 px-3 py-2 text-sm bg-background border border-border rounded-lg focus:outline-none focus:ring-1 focus:ring-primary"
-                />
-                <input
-                  type="tel"
-                  placeholder="07xxxxxxxx"
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                  required
-                  className="flex-1 min-w-0 px-3 py-2 text-sm bg-background border border-border rounded-lg focus:outline-none focus:ring-1 focus:ring-primary"
-                />
-                <button
-                  type="submit"
-                  disabled={submitting || !phone.trim()}
-                  className="px-4 py-2 text-sm font-medium bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors disabled:opacity-50 whitespace-nowrap"
-                >
-                  {submitting ? "..." : "Ohereza"}
-                </button>
-              </div>
-            </form>
-          )}
-        </div>
+
 
         {/* Copyright */}
         <div className="mt-6 sm:mt-8 pt-6 sm:pt-8 border-t border-border/50">
