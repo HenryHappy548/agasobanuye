@@ -5,7 +5,7 @@ import { User } from "@supabase/supabase-js";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { LogOut, Film, Plus, Download, Video, MessageSquare, ShoppingBag, MessagesSquare, Crown, BarChart3, ShieldAlert } from "lucide-react";
+import { LogOut, Film, Plus, Download, Video, MessageSquare, ShoppingBag, MessagesSquare, Crown, BarChart3, ShieldAlert, Clapperboard } from "lucide-react";
 import { toast } from "sonner";
 import MovieForm from "@/components/admin/MovieForm";
 import MovieList from "@/components/admin/MovieList";
@@ -16,6 +16,7 @@ import { ProductsManager } from "@/components/admin/ProductsManager";
 import CommentsManager from "@/components/admin/CommentsManager";
 import PremiumManager from "@/components/admin/PremiumManager";
 import AnalyticsDashboard from "@/components/admin/AnalyticsDashboard";
+import ShortCreator from "@/components/admin/ShortCreator";
 
 
 const Admin = () => {
@@ -133,7 +134,7 @@ const Admin = () => {
 
         {/* Main Content */}
         <Tabs defaultValue="analytics" className="space-y-6">
-          <TabsList className="grid w-full grid-cols-9 max-w-6xl mx-auto">
+          <TabsList className="grid w-full grid-cols-10 max-w-6xl mx-auto">
             <TabsTrigger value="analytics" className="gap-2">
               <BarChart3 className="w-4 h-4" />
               <span className="hidden sm:inline">Analytics</span>
@@ -169,6 +170,10 @@ const Admin = () => {
             <TabsTrigger value="messages" className="gap-2">
               <MessageSquare className="w-4 h-4" />
               <span className="hidden sm:inline">Messages</span>
+            </TabsTrigger>
+            <TabsTrigger value="shorts" className="gap-2">
+              <Clapperboard className="w-4 h-4" />
+              <span className="hidden sm:inline">Shorts</span>
             </TabsTrigger>
           </TabsList>
 
@@ -300,6 +305,23 @@ const Admin = () => {
               </CardHeader>
               <CardContent>
                 <MessagesManager />
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          <TabsContent value="shorts">
+            <Card className="border-primary/20 shadow-lg">
+              <CardHeader>
+                <CardTitle className="text-2xl flex items-center gap-2">
+                  <Clapperboard className="h-6 w-6 text-primary" />
+                  Short Creator
+                </CardTitle>
+                <CardDescription>
+                  Upload a movie clip, scrub to mark start/end, add your branding overlay, and export a ready-to-post short.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ShortCreator />
               </CardContent>
             </Card>
           </TabsContent>
