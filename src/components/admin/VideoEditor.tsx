@@ -277,95 +277,116 @@ const VideoEditor = () => {
     toast.success("Settings reset");
   };
 
-  // Export using ffmpeg directly with blur filter (handles up to 3hr videos)
+  // Export using Canvas + MediaRecorder (works in all browsers, no special headers needed)
   const handleExport = async () => {
-    if (!videoSrc) return;
+    const vid = videoRef.current;
+    if (!vid || !videoSrc) return;
 
     setExporting(true);
     setExportProgress(0);
-    toast.info("Preparing export… please wait while your video is processed.");
+    toast.info("Exporting your blurred video…");
 
     try {
-      const ffmpeg = new FFmpeg();
-      ffmpeg.on("progress", ({ progress }) => {
-        setExportProgress(Math.round(Math.min(progress * 100, 100)));
+      vid.pause();
+      setPlaying(false);
+      cancelAnimationFrame(animRef.current);
+
+      const w = vid.videoWidth;
+      const h = vid.videoHeight;
+
+      // Create offscreen canvas for clean export (no dashed borders)
+      const exportCanvas = document.createElement("canvas");
+      exportCanvas.width = w;
+      exportCanvas.height = h;
+      const ctx = exportCanvas.getContext("2d");
+      if (!ctx) throw new Error("Cannot create canvas context");
+
+      const stream = exportCanvas.captureStream(30);
+
+      const mimeType = MediaRecorder.isTypeSupported("video/webm;codecs=vp9")
+        ? "video/webm;codecs=vp9"
+        : "video/webm";
+
+      const recorder = new MediaRecorder(stream, {
+        mimeType,
+        videoBitsPerSecond: 8_000_000,
       });
 
-      await ffmpeg.load({
-        coreURL: "https://unpkg.com/@ffmpeg/core@0.12.6/dist/umd/ffmpeg-core.js",
+      const chunks: Blob[] = [];
+      recorder.ondataavailable = (e) => {
+        if (e.data.size > 0) chunks.push(e.data);
+      };
+
+      const exportDone = new Promise<Blob>((resolve, reject) => {
+        recorder.onstop = () => resolve(new Blob(chunks, { type: mimeType }));
+        recorder.onerror = () => reject(new Error("Recording failed"));
       });
 
-      // Use stored file reference
-      if (!videoFile) {
-        toast.error("Please re-upload the video file before exporting.");
-        setExporting(false);
-        return;
-      }
+      recorder.start(1000);
 
-      const inputData = await fetchFile(videoFile);
-      const ext = videoFile.name.split(".").pop() || "mp4";
-      await ffmpeg.writeFile(`input.${ext}`, inputData);
+      // Seek to start
+      vid.currentTime = 0;
+      await new Promise<void>((r) => { vid.onseeked = () => r(); });
 
-      // Build the blur filter
-      const vid = videoRef.current;
-      const w = vid?.videoWidth || 1920;
-      const h = vid?.videoHeight || 1080;
-      let filterComplex: string;
+      // Play at higher speed for faster export
+      vid.playbackRate = 3;
+      vid.muted = true;
+      await vid.play();
 
-      if (fullBlur) {
-        // Full video blur
-        filterComplex = `boxblur=${blurIntensity}:${blurIntensity}`;
-      } else {
-        // Region blur: split into blurred overlay and original, then combine
-        const rx = Math.round((region.x / 100) * w);
-        const ry = Math.round((region.y / 100) * h);
-        const rw = Math.round((region.width / 100) * w);
-        const rh = Math.round((region.height / 100) * h);
-        filterComplex = [
-          `[0:v]split[original][toblur]`,
-          `[toblur]boxblur=${blurIntensity}:${blurIntensity}[blurred]`,
-          `[original][blurred]overlay=${rx}:${ry}:shortest=1`,
-        ].join(";");
+      // Draw clean blurred frames (no dashed borders)
+      const drawCleanFrame = () => {
+        if (vid.ended || vid.paused) {
+          if (recorder.state === "recording") recorder.stop();
+          return;
+        }
 
-        // Actually we need crop+blur+overlay approach
-        filterComplex = [
-          `[0:v]split[original][forblur]`,
-          `[forblur]crop=${rw}:${rh}:${rx}:${ry},boxblur=${blurIntensity}:${blurIntensity}[blurpart]`,
-          `[original][blurpart]overlay=${rx}:${ry}`,
-        ].join(";");
-      }
+        setExportProgress(Math.round((vid.currentTime / vid.duration) * 100));
 
-      // Build ffmpeg command - fast preset for speed
-      const args = [
-        "-i", `input.${ext}`,
-      ];
+        ctx.filter = "none";
+        ctx.drawImage(vid, 0, 0, w, h);
 
-      if (fullBlur) {
-        args.push("-vf", filterComplex);
-      } else {
-        args.push("-filter_complex", filterComplex);
-      }
+        if (fullBlur) {
+          ctx.filter = `blur(${blurIntensity}px)`;
+          ctx.drawImage(vid, 0, 0, w, h);
+          ctx.filter = "none";
+        } else {
+          const rx = (region.x / 100) * w;
+          const ry = (region.y / 100) * h;
+          const rw = (region.width / 100) * w;
+          const rh = (region.height / 100) * h;
+          ctx.save();
+          ctx.beginPath();
+          ctx.rect(rx, ry, rw, rh);
+          ctx.clip();
+          ctx.filter = `blur(${blurIntensity}px)`;
+          ctx.drawImage(vid, 0, 0, w, h);
+          ctx.filter = "none";
+          ctx.restore();
+        }
 
-      args.push(
-        "-c:v", "libx264",
-        "-preset", "fast",
-        "-crf", "23",
-        "-c:a", "copy",
-        "-movflags", "+faststart",
-        "output.mp4"
-      );
+        requestAnimationFrame(drawCleanFrame);
+      };
 
-      await ffmpeg.exec(args);
+      drawCleanFrame();
 
-      const mp4Data = await ffmpeg.readFile("output.mp4");
-      const mp4Bytes = mp4Data instanceof Uint8Array ? mp4Data : new TextEncoder().encode(mp4Data as string);
-      const mp4Blob = new Blob([mp4Bytes.buffer as ArrayBuffer], { type: "video/mp4" });
+      await new Promise<void>((r) => {
+        vid.onended = () => setTimeout(() => {
+          if (recorder.state === "recording") recorder.stop();
+          r();
+        }, 500);
+      });
 
-      downloadBlob(mp4Blob, fileName.replace(/\.\w+$/, "") + "-blurred.mp4");
-      toast.success("MP4 exported successfully!");
+      const blob = await exportDone;
+      downloadBlob(blob, fileName.replace(/\.\w+$/, "") + "-blurred.webm");
+      toast.success("Video exported successfully!");
+
+      vid.currentTime = currentTime;
+      vid.playbackRate = 1;
+      vid.muted = false;
+      drawPreview();
     } catch (err) {
       console.error("Export failed:", err);
-      toast.error("Export failed. Check console for details.");
+      toast.error("Export failed: " + (err instanceof Error ? err.message : "Unknown error"));
     } finally {
       setExporting(false);
       setExportProgress(0);
