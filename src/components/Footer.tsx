@@ -8,32 +8,6 @@ interface FooterProps {
 
 const Footer = ({ showComments = true }: FooterProps) => {
   const currentYear = new Date().getFullYear();
-  const [phone, setPhone] = useState("");
-  const [name, setName] = useState("");
-  const [submitting, setSubmitting] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleWhatsAppSignup = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!phone.trim() || submitting) return;
-    
-    const cleanPhone = phone.trim().replace(/\s+/g, '');
-    if (cleanPhone.length < 10) return;
-
-    setSubmitting(true);
-    try {
-      await supabase.from("whatsapp_subscribers" as any).insert({
-        phone: cleanPhone,
-        name: name.trim() || null,
-      } as any);
-      setSubmitted(true);
-      setPhone("");
-      setName("");
-    } catch {
-      // silently fail
-    }
-    setSubmitting(false);
-  };
 
   return (
     <footer className="bg-gradient-to-b from-card/50 to-card border-t border-border/50 mt-8 sm:mt-12 lg:mt-16">
