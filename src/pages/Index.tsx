@@ -125,14 +125,6 @@ const Index = () => {
     setSearchQuery(sanitized);
   }, []);
 
-  // Memoize filtered movie lists to prevent recalculation on every render
-  // Helper: extract series base name
-  const getSeriesBaseName = (title: string): string => {
-    // Match patterns like "Title S01 E01", "Title S1 E2", "Title Part 2", "Title EP 3"
-    const seriesMatch = title.match(/^(.+?)\s*(S\d+\s*E\d+|Season\s*\d+|Part\s*\d+|EP?\s*\d+|Episode\s*\d+)/i);
-    return seriesMatch ? seriesMatch[1].trim() : title;
-  };
-
   // Deduplicate series: keep only the first (latest) episode per series
   const deduplicateSeries = (movieList: typeof movies) => {
     const seen = new Set<string>();
@@ -144,11 +136,11 @@ const Index = () => {
     });
   };
 
-  const { trendingMovies, moviesOnly, tvShows, featuredMovies, recentlyAdded } = useMemo(() => ({
+  const { trendingMovies, moviesOnly, tvShows, featuredItems, recentlyAdded } = useMemo(() => ({
     trendingMovies: movies.filter(movie => movie.category === 'trending').slice(0, 10),
     moviesOnly: movies.filter(movie => movie.category === 'movie').slice(0, 10),
     tvShows: movies.filter(movie => movie.category === 'tv').slice(0, 10),
-    featuredMovies: deduplicateSeries(movies).slice(0, 20),
+    featuredItems: groupSeriesMovies(movies).slice(0, 20),
     recentlyAdded: deduplicateSeries(movies.filter(m => m.show_in_recent !== false)).slice(0, 5),
   }), [movies]);
 
