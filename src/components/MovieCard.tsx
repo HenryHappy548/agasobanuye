@@ -67,9 +67,9 @@ const MovieCard = memo(({ movie, priority = false }: MovieCardProps) => {
             <span className="text-border">•</span>
             <span className="truncate">{movie.genre}</span>
           </div>
-          {/* Dubber - secondary subtle label */}
+          {/* Dubber name - visible */}
           {movie.rating && (
-            <p className="text-[9px] sm:text-[11px] text-muted-foreground font-bold mt-0.5 sm:mt-1 truncate">
+            <p className="text-[10px] sm:text-xs text-primary font-bold mt-0.5 sm:mt-1 truncate">
               🎙 {movie.rating}
             </p>
           )}
