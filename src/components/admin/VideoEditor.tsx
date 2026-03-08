@@ -31,6 +31,7 @@ const VideoEditor = () => {
   const previewCanvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [videoSrc, setVideoSrc] = useState<string | null>(null);
+  const [videoFile, setVideoFile] = useState<File | null>(null);
   const [fileName, setFileName] = useState("");
   const [playing, setPlaying] = useState(false);
   const [duration, setDuration] = useState(0);
