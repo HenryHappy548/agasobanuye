@@ -333,7 +333,7 @@ const ShortCreator = () => {
           ]);
           
           const mp4Data = await ffmpeg.readFile("output.mp4");
-          const mp4Bytes = mp4Data instanceof Uint8Array ? mp4Data : new TextEncoder().encode(mp4Data as string);
+          const mp4Bytes = mp4Data instanceof Uint8Array ? new Uint8Array(mp4Data.buffer, mp4Data.byteOffset, mp4Data.byteLength) : new TextEncoder().encode(mp4Data as string);
           const mp4Blob = new Blob([mp4Bytes], { type: "video/mp4" });
           
           const url = URL.createObjectURL(mp4Blob);
