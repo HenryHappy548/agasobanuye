@@ -1,5 +1,6 @@
 import { useParams, Link } from "react-router-dom";
 import { useMemo } from "react";
+import { Helmet } from "react-helmet-async";
 import { ArrowLeft, Play, ExternalLink } from "lucide-react";
 import StreamingHeader from "@/components/StreamingHeader";
 import Footer from "@/components/Footer";
