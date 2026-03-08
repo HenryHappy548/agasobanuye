@@ -9,8 +9,7 @@ import { LogOut, Film, Plus, MessageSquare, ShoppingBag, MessagesSquare, Crown, 
 import { toast } from "sonner";
 import MovieForm from "@/components/admin/MovieForm";
 import MovieList from "@/components/admin/MovieList";
-import DownloadLinksManager from "@/components/admin/DownloadLinksManager";
-import VideoManager from "@/components/admin/VideoManager";
+import VideoEditor from "@/components/admin/VideoEditor";
 import MessagesManager from "@/components/admin/MessagesManager";
 import { ProductsManager } from "@/components/admin/ProductsManager";
 import CommentsManager from "@/components/admin/CommentsManager";
