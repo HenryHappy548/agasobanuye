@@ -277,117 +277,131 @@ const VideoEditor = () => {
     toast.success("Settings reset");
   };
 
-  // Export using Canvas + MediaRecorder (works in all browsers, no special headers needed)
+  // Export using Canvas + MediaRecorder
   const handleExport = async () => {
     const vid = videoRef.current;
-    if (!vid || !videoSrc) return;
+    if (!vid || !videoSrc) {
+      toast.error("Please upload a video first.");
+      return;
+    }
 
     setExporting(true);
     setExportProgress(0);
-    toast.info("Exporting your blurred video…");
 
     try {
+      // Stop any current playback
       vid.pause();
       setPlaying(false);
       cancelAnimationFrame(animRef.current);
 
       const w = vid.videoWidth;
       const h = vid.videoHeight;
+      if (!w || !h) throw new Error("Video not loaded properly. Try re-uploading.");
 
-      // Create offscreen canvas for clean export (no dashed borders)
+      // Offscreen canvas for export
       const exportCanvas = document.createElement("canvas");
       exportCanvas.width = w;
       exportCanvas.height = h;
-      const ctx = exportCanvas.getContext("2d");
-      if (!ctx) throw new Error("Cannot create canvas context");
+      const ctx = exportCanvas.getContext("2d")!;
 
       const stream = exportCanvas.captureStream(30);
-
       const mimeType = MediaRecorder.isTypeSupported("video/webm;codecs=vp9")
         ? "video/webm;codecs=vp9"
         : "video/webm";
 
-      const recorder = new MediaRecorder(stream, {
-        mimeType,
-        videoBitsPerSecond: 8_000_000,
-      });
-
+      const recorder = new MediaRecorder(stream, { mimeType, videoBitsPerSecond: 8_000_000 });
       const chunks: Blob[] = [];
-      recorder.ondataavailable = (e) => {
-        if (e.data.size > 0) chunks.push(e.data);
-      };
+      recorder.ondataavailable = (e) => { if (e.data.size > 0) chunks.push(e.data); };
 
-      const exportDone = new Promise<Blob>((resolve, reject) => {
+      // Wrap the full export in one promise
+      const blob = await new Promise<Blob>((resolve, reject) => {
         recorder.onstop = () => resolve(new Blob(chunks, { type: mimeType }));
-        recorder.onerror = () => reject(new Error("Recording failed"));
-      });
+        recorder.onerror = () => reject(new Error("MediaRecorder error"));
 
-      recorder.start(1000);
+        let exportAnimId = 0;
+        const drawExportFrame = () => {
+          if (vid.ended) {
+            cancelAnimationFrame(exportAnimId);
+            setTimeout(() => {
+              if (recorder.state === "recording") recorder.stop();
+            }, 300);
+            return;
+          }
 
-      // Seek to start
-      vid.currentTime = 0;
-      await new Promise<void>((r) => { vid.onseeked = () => r(); });
+          if (vid.readyState >= 2) {
+            setExportProgress(Math.round((vid.currentTime / (vid.duration || 1)) * 100));
 
-      // Play at higher speed for faster export
-      vid.playbackRate = 3;
-      vid.muted = true;
-      await vid.play();
+            // Draw clean frame
+            ctx.filter = "none";
+            ctx.drawImage(vid, 0, 0, w, h);
 
-      // Draw clean blurred frames (no dashed borders)
-      const drawCleanFrame = () => {
-        if (vid.ended || vid.paused) {
-          if (recorder.state === "recording") recorder.stop();
-          return;
-        }
+            if (fullBlur) {
+              ctx.filter = `blur(${blurIntensity}px)`;
+              ctx.drawImage(vid, 0, 0, w, h);
+              ctx.filter = "none";
+            } else {
+              const rx = (region.x / 100) * w;
+              const ry = (region.y / 100) * h;
+              const rw = (region.width / 100) * w;
+              const rh = (region.height / 100) * h;
+              ctx.save();
+              ctx.beginPath();
+              ctx.rect(rx, ry, rw, rh);
+              ctx.clip();
+              ctx.filter = `blur(${blurIntensity}px)`;
+              ctx.drawImage(vid, 0, 0, w, h);
+              ctx.filter = "none";
+              ctx.restore();
+            }
+          }
+          exportAnimId = requestAnimationFrame(drawExportFrame);
+        };
 
-        setExportProgress(Math.round((vid.currentTime / vid.duration) * 100));
+        // Start everything
+        recorder.start(500);
 
-        ctx.filter = "none";
-        ctx.drawImage(vid, 0, 0, w, h);
+        // Seek to beginning, then play
+        const startPlayback = () => {
+          vid.muted = true;
+          vid.playbackRate = 2;
+          vid.play().then(() => {
+            drawExportFrame();
+          }).catch((playErr) => {
+            recorder.stop();
+            reject(new Error("Cannot play video for export: " + playErr.message));
+          });
+        };
 
-        if (fullBlur) {
-          ctx.filter = `blur(${blurIntensity}px)`;
-          ctx.drawImage(vid, 0, 0, w, h);
-          ctx.filter = "none";
+        if (vid.currentTime > 0.1) {
+          vid.currentTime = 0;
+          vid.addEventListener("seeked", startPlayback, { once: true });
         } else {
-          const rx = (region.x / 100) * w;
-          const ry = (region.y / 100) * h;
-          const rw = (region.width / 100) * w;
-          const rh = (region.height / 100) * h;
-          ctx.save();
-          ctx.beginPath();
-          ctx.rect(rx, ry, rw, rh);
-          ctx.clip();
-          ctx.filter = `blur(${blurIntensity}px)`;
-          ctx.drawImage(vid, 0, 0, w, h);
-          ctx.filter = "none";
-          ctx.restore();
+          startPlayback();
         }
 
-        requestAnimationFrame(drawCleanFrame);
-      };
-
-      drawCleanFrame();
-
-      await new Promise<void>((r) => {
-        vid.onended = () => setTimeout(() => {
-          if (recorder.state === "recording") recorder.stop();
-          r();
-        }, 500);
+        // Safety timeout for very long videos (4 hours max)
+        setTimeout(() => {
+          if (recorder.state === "recording") {
+            cancelAnimationFrame(exportAnimId);
+            recorder.stop();
+          }
+        }, 4 * 60 * 60 * 1000);
       });
 
-      const blob = await exportDone;
       downloadBlob(blob, fileName.replace(/\.\w+$/, "") + "-blurred.webm");
-      toast.success("Video exported successfully!");
+      toast.success("Video exported successfully! 🎬");
 
-      vid.currentTime = currentTime;
+      // Restore state
       vid.playbackRate = 1;
       vid.muted = false;
+      vid.currentTime = currentTime;
       drawPreview();
     } catch (err) {
       console.error("Export failed:", err);
-      toast.error("Export failed: " + (err instanceof Error ? err.message : "Unknown error"));
+      toast.error(err instanceof Error ? err.message : "Export failed unexpectedly");
     } finally {
+      const vid2 = videoRef.current;
+      if (vid2) { vid2.playbackRate = 1; vid2.muted = false; }
       setExporting(false);
       setExportProgress(0);
     }
