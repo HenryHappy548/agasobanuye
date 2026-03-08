@@ -134,7 +134,7 @@ const Admin = () => {
 
         {/* Main Content */}
         <Tabs defaultValue="analytics" className="space-y-6">
-          <TabsList className="grid w-full grid-cols-9 max-w-6xl mx-auto">
+          <TabsList className="grid w-full grid-cols-10 max-w-6xl mx-auto">
             <TabsTrigger value="analytics" className="gap-2">
               <BarChart3 className="w-4 h-4" />
               <span className="hidden sm:inline">Analytics</span>
