@@ -350,8 +350,8 @@ const VideoEditor = () => {
 
       args.push(
         "-c:v", "libx264",
-        "-preset", "ultrafast",
-        "-crf", "28",
+        "-preset", "fast",
+        "-crf", "23",
         "-c:a", "copy",
         "-movflags", "+faststart",
         "output.mp4"
