@@ -120,32 +120,61 @@ const MovieDetail = memo(() => {
   const pageDescription = `Reba ${movie.title} (${movie.year}) agasobanuye${dubberName} ku buntu kuri Rwaflix Store. ${movie.genre} movie HD quality. Stream & download free.`;
   const seoKeywords = `${movie.title}, ${movie.title} agasobanuye, ${movie.rating || ''}, watch ${movie.title} online, ${movie.genre}, ${movie.year}, Rwaflix, Agasobanuye, Oshakur, Cinebeta, free streaming Rwanda`;
 
-  // Schema.org structured data
+  // Schema.org structured data - enhanced for Google
   const videoSchema = {
     "@context": "https://schema.org",
     "@type": "VideoObject",
-    "name": movie.title,
-    "description": `Watch ${movie.title} (${movie.year}) - ${movie.genre} movie on Rwaflix.`,
+    "name": `Agasobanuye ${movie.title}${dubberName}`,
+    "description": pageDescription,
     "thumbnailUrl": movie.poster,
     "uploadDate": `${movie.year}-01-01T00:00:00+02:00`,
     "contentUrl": canonicalUrl,
     "embedUrl": canonicalUrl,
     "duration": "PT2H",
+    "inLanguage": "rw",
+    "genre": movie.genre,
     "publisher": {
       "@type": "Organization",
-      "name": "Rwaflix",
-      "url": "https://rwaflix.store"
-    }
+      "name": "Rwaflix Store",
+      "url": "https://rwaflix.store",
+      "logo": "https://rwaflix.store/logo-512.jpg"
+    },
+    ...(movie.rating ? {
+      "actor": {
+        "@type": "Person",
+        "name": movie.rating,
+        "jobTitle": "Umusobanuzi (Dubber)"
+      }
+    } : {})
   };
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Rwaflix", "item": "https://rwaflix.store" },
+      { "@type": "ListItem", "position": 1, "name": "Rwaflix Store", "item": "https://rwaflix.store" },
       { "@type": "ListItem", "position": 2, "name": movie.category === 'tv' ? 'Series' : 'Movies', "item": movie.category === 'tv' ? "https://rwaflix.store/tv-shows" : "https://rwaflix.store/movies" },
-      { "@type": "ListItem", "position": 3, "name": movie.title, "item": canonicalUrl }
+      { "@type": "ListItem", "position": 3, "name": `Agasobanuye ${movie.title}`, "item": canonicalUrl }
     ]
+  };
+
+  const movieSchema = {
+    "@context": "https://schema.org",
+    "@type": "Movie",
+    "name": movie.title,
+    "alternateName": `Agasobanuye ${movie.title}`,
+    "datePublished": movie.year,
+    "genre": movie.genre,
+    "image": movie.poster,
+    "url": canonicalUrl,
+    "inLanguage": "rw",
+    ...(movie.rating ? {
+      "actor": { "@type": "Person", "name": movie.rating }
+    } : {}),
+    "productionCompany": {
+      "@type": "Organization",
+      "name": "Rwaflix Store"
+    }
   };
 
   return (

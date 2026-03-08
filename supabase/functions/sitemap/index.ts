@@ -14,6 +14,15 @@ function slugify(text: string): string {
     .trim()
 }
 
+function getSeriesBaseName(title: string): string {
+  const match = title.match(/^(.+?)\s*(S\d+\s*E\d+|Season\s*\d+|Part\s*\d+|EP?\s*\d+|Episode\s*\d+)/i)
+  return match ? match[1].trim() : title
+}
+
+function isSeriesEpisode(title: string): boolean {
+  return /\s*(S\d+\s*E\d+|Season\s*\d+|Part\s*\d+|EP?\s*\d+|Episode\s*\d+)/i.test(title)
+}
+
 Deno.serve(async (req) => {
   if (req.method === 'OPTIONS') {
     return new Response(null, { headers: corsHeaders })
@@ -24,17 +33,15 @@ Deno.serve(async (req) => {
     const supabaseKey = Deno.env.get('SUPABASE_ANON_KEY')!
     const supabase = createClient(supabaseUrl, supabaseKey)
 
-    // Fetch all movies
     const { data: movies, error: moviesError } = await supabase
       .from('movies')
-      .select('id, title, updated_at, poster_url')
+      .select('id, title, updated_at, poster_url, rating, genre, year')
       .order('updated_at', { ascending: false })
 
     if (moviesError) {
       console.error('Error fetching movies:', moviesError)
     }
 
-    // Fetch all active products
     const { data: products, error: productsError } = await supabase
       .from('products')
       .select('id, name, updated_at')
@@ -48,7 +55,6 @@ Deno.serve(async (req) => {
     const today = new Date().toISOString().split('T')[0]
     const baseUrl = 'https://rwaflix.store'
 
-    // Static pages
     const staticPages = [
       { loc: '/', priority: '1.0', changefreq: 'daily' },
       { loc: '/movies', priority: '0.9', changefreq: 'daily' },
@@ -62,7 +68,6 @@ Deno.serve(async (req) => {
       { loc: '/terms-of-service', priority: '0.6', changefreq: 'monthly' },
     ]
 
-    // Build XML with proper schema declarations for validators
     let xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -70,7 +75,6 @@ Deno.serve(async (req) => {
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 `
 
-    // Add static pages
     for (const page of staticPages) {
       xml += `  <url>
     <loc>${baseUrl}${page.loc}</loc>
@@ -81,17 +85,30 @@ Deno.serve(async (req) => {
 `
     }
 
-    // Add movies dynamically
+    // Track series to generate series listing pages
+    const seriesMap = new Map<string, { baseName: string; lastmod: string; poster: string; rating: string; genre: string; count: number }>()
+
     if (movies && movies.length > 0) {
       for (const movie of movies) {
         const slug = slugify(movie.title)
         const lastmod = movie.updated_at ? new Date(movie.updated_at).toISOString().split('T')[0] : today
         const pageUrl = `${baseUrl}/watch/${slug}/${movie.id}`
         const thumbnailUrl = movie.poster_url || `${baseUrl}/logo-512.jpg`
-        
-        // Google requires video:player_loc to be different from loc and point to an embeddable player
-        // Using a hash fragment to make it distinct while still pointing to a valid player page
+        const dubberName = movie.rating ? ` by ${movie.rating}` : ''
         const embedPlayerUrl = `${pageUrl}#player`
+
+        // Track series
+        if (isSeriesEpisode(movie.title)) {
+          const base = getSeriesBaseName(movie.title)
+          const baseKey = base.toLowerCase()
+          if (!seriesMap.has(baseKey)) {
+            seriesMap.set(baseKey, { baseName: base, lastmod, poster: thumbnailUrl, rating: movie.rating || '', genre: movie.genre || '', count: 1 })
+          } else {
+            const existing = seriesMap.get(baseKey)!
+            existing.count++
+            if (lastmod > existing.lastmod) existing.lastmod = lastmod
+          }
+        }
         
         xml += `  <url>
     <loc>${pageUrl}</loc>
@@ -100,12 +117,26 @@ Deno.serve(async (req) => {
     <priority>0.8</priority>
     <video:video>
       <video:thumbnail_loc>${escapeXml(thumbnailUrl)}</video:thumbnail_loc>
-      <video:title>${escapeXml(movie.title)} - Rwaflix Agasobanuye</video:title>
-      <video:description>Watch ${escapeXml(movie.title)} on Rwaflix. Available in HD quality with Kinyarwanda dubbing.</video:description>
+      <video:title>Agasobanuye ${escapeXml(movie.title)}${escapeXml(dubberName)} - Rwaflix Store</video:title>
+      <video:description>Reba ${escapeXml(movie.title)} (${movie.year || ''}) agasobanuye${escapeXml(dubberName)} ku buntu kuri Rwaflix Store. ${escapeXml(movie.genre || '')} movie HD quality.</video:description>
       <video:player_loc allow_embed="yes">${embedPlayerUrl}</video:player_loc>
     </video:video>
   </url>
 `
+      }
+
+      // Add series listing pages
+      for (const [, series] of seriesMap) {
+        if (series.count > 1) {
+          const seriesUrl = `${baseUrl}/series/${encodeURIComponent(series.baseName)}`
+          xml += `  <url>
+    <loc>${seriesUrl}</loc>
+    <lastmod>${series.lastmod}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+`
+        }
       }
     }
 
