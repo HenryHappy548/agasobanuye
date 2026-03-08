@@ -285,7 +285,7 @@ const VideoEditor = () => {
 
     setExporting(true);
     setExportProgress(0);
-    toast.info("Preparing export with FFmpeg… this works for videos up to 3 hours.");
+    toast.info("Preparing export… please wait while your video is processed.");
 
     try {
       const ffmpeg = new FFmpeg();
