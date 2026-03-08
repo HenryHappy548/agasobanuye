@@ -18,7 +18,7 @@ import PremiumManager from "@/components/admin/PremiumManager";
 import AnalyticsDashboard from "@/components/admin/AnalyticsDashboard";
 import ShortCreator from "@/components/admin/ShortCreator";
 import WhatsAppSubscribersManager from "@/components/admin/WhatsAppSubscribersManager";
-import VideoEditor from "@/components/admin/VideoEditor";
+
 import WhatsAppNotificationGenerator from "@/components/admin/WhatsAppNotificationGenerator";
 
 
