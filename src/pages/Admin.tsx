@@ -5,7 +5,7 @@ import { User } from "@supabase/supabase-js";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { LogOut, Film, Plus, Download, Video, MessageSquare, ShoppingBag, MessagesSquare, Crown, BarChart3, ShieldAlert, Clapperboard, Phone, Wand2 } from "lucide-react";
+import { LogOut, Film, Plus, Download, Video, MessageSquare, ShoppingBag, MessagesSquare, Crown, BarChart3, ShieldAlert, Clapperboard, Phone, Wand2, Send } from "lucide-react";
 import { toast } from "sonner";
 import MovieForm from "@/components/admin/MovieForm";
 import MovieList from "@/components/admin/MovieList";
@@ -19,6 +19,7 @@ import AnalyticsDashboard from "@/components/admin/AnalyticsDashboard";
 import ShortCreator from "@/components/admin/ShortCreator";
 import WhatsAppSubscribersManager from "@/components/admin/WhatsAppSubscribersManager";
 import VideoEditor from "@/components/admin/VideoEditor";
+import WhatsAppNotificationGenerator from "@/components/admin/WhatsAppNotificationGenerator";
 
 
 const Admin = () => {
@@ -136,7 +137,7 @@ const Admin = () => {
 
         {/* Main Content */}
         <Tabs defaultValue="analytics" className="space-y-6">
-          <TabsList className="grid w-full grid-cols-12 max-w-7xl mx-auto">
+          <TabsList className="flex flex-wrap w-full max-w-7xl mx-auto h-auto gap-1">
             <TabsTrigger value="analytics" className="gap-2">
               <BarChart3 className="w-4 h-4" />
               <span className="hidden sm:inline">Analytics</span>
@@ -337,20 +338,37 @@ const Admin = () => {
           </TabsContent>
 
           <TabsContent value="whatsapp">
-            <Card className="border-primary/20 shadow-lg">
-              <CardHeader>
-                <CardTitle className="text-2xl flex items-center gap-2">
-                  <Phone className="h-6 w-6 text-primary" />
-                  WhatsApp Subscribers
-                </CardTitle>
-                <CardDescription>
-                  View and manage phone numbers collected for movie notifications. Click a number to open WhatsApp.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <WhatsAppSubscribersManager />
-              </CardContent>
-            </Card>
+            <div className="space-y-6">
+              <Card className="border-primary/20 shadow-lg">
+                <CardHeader>
+                  <CardTitle className="text-2xl flex items-center gap-2">
+                    <Phone className="h-6 w-6 text-primary" />
+                    WhatsApp Subscribers
+                  </CardTitle>
+                  <CardDescription>
+                    View and manage phone numbers collected for movie notifications.
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <WhatsAppSubscribersManager />
+                </CardContent>
+              </Card>
+
+              <Card className="border-primary/20 shadow-lg">
+                <CardHeader>
+                  <CardTitle className="text-2xl flex items-center gap-2">
+                    <Send className="h-6 w-6 text-primary" />
+                    Movie Notification Generator
+                  </CardTitle>
+                  <CardDescription>
+                    Auto-generate WhatsApp messages for new movies with poster, watch link, download link, and details. Copy & send to all subscribers.
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <WhatsAppNotificationGenerator />
+                </CardContent>
+              </Card>
+            </div>
           </TabsContent>
           <TabsContent value="editor">
             <Card className="border-primary/20 shadow-lg">
