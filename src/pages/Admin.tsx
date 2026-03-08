@@ -309,6 +309,23 @@ const Admin = () => {
             </Card>
           </TabsContent>
 
+          <TabsContent value="shorts">
+            <Card className="border-primary/20 shadow-lg">
+              <CardHeader>
+                <CardTitle className="text-2xl flex items-center gap-2">
+                  <Clapperboard className="h-6 w-6 text-primary" />
+                  Short Creator
+                </CardTitle>
+                <CardDescription>
+                  Upload a movie clip, scrub to mark start/end, add your branding overlay, and export a ready-to-post short.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ShortCreator />
+              </CardContent>
+            </Card>
+          </TabsContent>
+
         </Tabs>
       </div>
     </div>
