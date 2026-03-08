@@ -177,10 +177,6 @@ const Admin = () => {
               <Clapperboard className="w-4 h-4" />
               <span className="hidden sm:inline">Shorts</span>
             </TabsTrigger>
-            <TabsTrigger value="whatsapp" className="gap-2">
-              <Phone className="w-4 h-4" />
-              <span className="hidden sm:inline">WhatsApp</span>
-            </TabsTrigger>
           </TabsList>
 
           <TabsContent value="analytics">
