@@ -282,17 +282,47 @@ const ShortCreator = () => {
         if (e.data.size > 0) chunksRef.current.push(e.data);
       };
 
-      recorder.onstop = () => {
-        const blob = new Blob(chunksRef.current, { type: mimeType });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement("a");
-        a.href = url;
-        a.download = `rwaflix-short-${Date.now()}.webm`;
-        a.click();
-        URL.revokeObjectURL(url);
+      recorder.onstop = async () => {
+        const webmBlob = new Blob(chunksRef.current, { type: mimeType });
+        
+        // Convert webm to mp4 using ffmpeg.wasm
+        setExportProgress(80);
+        toast.info("Converting to MP4...");
+        
+        try {
+          const ffmpeg = new FFmpeg();
+          await ffmpeg.load({
+            coreURL: "https://unpkg.com/@ffmpeg/core@0.12.6/dist/umd/ffmpeg-core.js",
+          });
+          
+          const webmData = new Uint8Array(await webmBlob.arrayBuffer());
+          await ffmpeg.writeFile("input.webm", webmData);
+          await ffmpeg.exec(["-i", "input.webm", "-c:v", "libx264", "-preset", "fast", "-crf", "23", "-c:a", "aac", "-movflags", "+faststart", "output.mp4"]);
+          
+          const mp4Data = await ffmpeg.readFile("output.mp4");
+          const mp4Blob = new Blob([mp4Data], { type: "video/mp4" });
+          const url = URL.createObjectURL(mp4Blob);
+          const a = document.createElement("a");
+          a.href = url;
+          a.download = `rwaflix-short-${Date.now()}.mp4`;
+          a.click();
+          URL.revokeObjectURL(url);
+          ffmpeg.terminate();
+          toast.success("MP4 short downloaded! 🎬");
+        } catch (convErr) {
+          console.warn("MP4 conversion failed, downloading as webm:", convErr);
+          // Fallback: download as webm
+          const url = URL.createObjectURL(webmBlob);
+          const a = document.createElement("a");
+          a.href = url;
+          a.download = `rwaflix-short-${Date.now()}.webm`;
+          a.click();
+          URL.revokeObjectURL(url);
+          toast.success("Downloaded as .webm (MP4 conversion unavailable in this browser)");
+        }
+        
         setExporting(false);
         setExportProgress(100);
-        toast.success("Short downloaded! 🎬");
       };
 
       recorder.start(100);
@@ -302,8 +332,8 @@ const ShortCreator = () => {
       const exportLoop = () => {
         if (!vid.paused && vid.currentTime < endTime) {
           drawFrame();
-          const progress = ((vid.currentTime - startTime) / clipDuration) * 100;
-          setExportProgress(Math.min(progress, 99));
+          const progress = ((vid.currentTime - startTime) / clipDuration) * 70;
+          setExportProgress(Math.min(progress, 75));
           requestAnimationFrame(exportLoop);
         } else {
           vid.pause();
