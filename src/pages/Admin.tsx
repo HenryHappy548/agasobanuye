@@ -16,6 +16,7 @@ import { ProductsManager } from "@/components/admin/ProductsManager";
 import CommentsManager from "@/components/admin/CommentsManager";
 import PremiumManager from "@/components/admin/PremiumManager";
 import AnalyticsDashboard from "@/components/admin/AnalyticsDashboard";
+import ShortCreator from "@/components/admin/ShortCreator";
 
 
 const Admin = () => {
