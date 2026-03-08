@@ -35,18 +35,22 @@ const SeriesEpisodes = () => {
   const seriesPoster = episodes[0]?.poster || "";
   const dubberName = episodes[0]?.rating || "";
   const dubberSuffix = dubberName ? ` by ${dubberName}` : "";
-  const seoTitle = `Agasobanuye ${decodedName}${dubberSuffix} | Rwaflix Store`;
-  const seoDesc = `Reba ${decodedName} episodes zose agasobanuye${dubberSuffix} ku buntu kuri Rwaflix Store. ${episodes[0]?.genre || ''} series HD quality.`;
+  const seoTitle = `${decodedName} Agasobanuye${dubberSuffix} | Rwaflix Store`;
+  const seoDesc = `Reba ${decodedName} episodes zose agasobanuye${dubberSuffix} ku buntu kuri Rwaflix Store. ${episodes[0]?.genre || ''} series HD quality. Watch ${decodedName} dubbed free online.`;
+  const seoKeywords = `${decodedName}, ${decodedName} agasobanuye, agasobanuye ${decodedName}, ${dubberName}, ${episodes[0]?.genre || ''}, Rwaflix, rwaflix store, watch ${decodedName} online, ${decodedName} dubbed`;
 
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Helmet>
         <title>{seoTitle}</title>
         <meta name="description" content={seoDesc} />
+        <meta name="keywords" content={seoKeywords} />
         <link rel="canonical" href={`https://rwaflix.store/series/${encodeURIComponent(decodedName)}`} />
+        <meta name="robots" content="index, follow, max-image-preview:large" />
         <meta property="og:title" content={seoTitle} />
         <meta property="og:description" content={seoDesc} />
         <meta property="og:image" content={seriesPoster} />
+        <meta property="og:type" content="video.tv_show" />
       </Helmet>
       <StreamingHeader onSearch={() => {}} searchQuery="" onPlayVideo={() => {}} />
 
