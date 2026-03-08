@@ -17,6 +17,7 @@ import CommentsManager from "@/components/admin/CommentsManager";
 import PremiumManager from "@/components/admin/PremiumManager";
 import AnalyticsDashboard from "@/components/admin/AnalyticsDashboard";
 import ShortCreator from "@/components/admin/ShortCreator";
+import WhatsAppSubscribersManager from "@/components/admin/WhatsAppSubscribersManager";
 
 
 const Admin = () => {
