@@ -195,6 +195,7 @@ const MovieDetail = memo(() => {
         <meta name="twitter:image" content={movie.poster} />
         <script type="application/ld+json">{JSON.stringify(videoSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
+        <script type="application/ld+json">{JSON.stringify(movieSchema)}</script>
       </Helmet>
 
       {/* Navigation Bar */}
