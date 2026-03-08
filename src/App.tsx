@@ -26,6 +26,7 @@ const ProMovies = lazy(() => import("./pages/ProMovies"));
 
 const GenreMovies = lazy(() => import("./pages/GenreMovies"));
 const DubberMovies = lazy(() => import("./pages/DubberMovies"));
+const SeriesEpisodes = lazy(() => import("./pages/SeriesEpisodes"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const RouteAdsBootstrap = () => {

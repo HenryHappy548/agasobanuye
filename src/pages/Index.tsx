@@ -275,12 +275,13 @@ const Index = () => {
                 className="w-full"
               >
                 <CarouselContent className="-ml-1.5 sm:-ml-2 md:-ml-3">
-                  {featuredMovies.map((movie) => (
-                    <CarouselItem key={movie.id} className="pl-1.5 sm:pl-2 md:pl-3 basis-1/3 sm:basis-1/4 md:basis-1/5 lg:basis-1/6">
-                      <MovieCard
-                        movie={movie}
-                        onPlay={handlePlayVideo}
-                      />
+                  {featuredItems.map((item, index) => (
+                    <CarouselItem key={item.type === 'series' ? item.group.baseName : item.movie.id} className="pl-1.5 sm:pl-2 md:pl-3 basis-1/3 sm:basis-1/4 md:basis-1/5 lg:basis-1/6">
+                      {item.type === 'series' ? (
+                        <SeriesCard group={item.group} />
+                      ) : (
+                        <MovieCard movie={item.movie} onPlay={handlePlayVideo} />
+                      )}
                     </CarouselItem>
                   ))}
                 </CarouselContent>
