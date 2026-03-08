@@ -5,7 +5,7 @@ import { User } from "@supabase/supabase-js";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { LogOut, Film, Plus, Download, Video, MessageSquare, ShoppingBag, MessagesSquare, Crown, BarChart3, ShieldAlert, Clapperboard } from "lucide-react";
+import { LogOut, Film, Plus, Download, Video, MessageSquare, ShoppingBag, MessagesSquare, Crown, BarChart3, ShieldAlert, Clapperboard, Phone } from "lucide-react";
 import { toast } from "sonner";
 import MovieForm from "@/components/admin/MovieForm";
 import MovieList from "@/components/admin/MovieList";
@@ -17,6 +17,7 @@ import CommentsManager from "@/components/admin/CommentsManager";
 import PremiumManager from "@/components/admin/PremiumManager";
 import AnalyticsDashboard from "@/components/admin/AnalyticsDashboard";
 import ShortCreator from "@/components/admin/ShortCreator";
+import WhatsAppSubscribersManager from "@/components/admin/WhatsAppSubscribersManager";
 
 
 const Admin = () => {
@@ -134,7 +135,7 @@ const Admin = () => {
 
         {/* Main Content */}
         <Tabs defaultValue="analytics" className="space-y-6">
-          <TabsList className="grid w-full grid-cols-10 max-w-6xl mx-auto">
+          <TabsList className="grid w-full grid-cols-11 max-w-6xl mx-auto">
             <TabsTrigger value="analytics" className="gap-2">
               <BarChart3 className="w-4 h-4" />
               <span className="hidden sm:inline">Analytics</span>
@@ -174,6 +175,10 @@ const Admin = () => {
             <TabsTrigger value="shorts" className="gap-2">
               <Clapperboard className="w-4 h-4" />
               <span className="hidden sm:inline">Shorts</span>
+            </TabsTrigger>
+            <TabsTrigger value="whatsapp" className="gap-2">
+              <Phone className="w-4 h-4" />
+              <span className="hidden sm:inline">WhatsApp</span>
             </TabsTrigger>
           </TabsList>
 
@@ -322,6 +327,23 @@ const Admin = () => {
               </CardHeader>
               <CardContent>
                 <ShortCreator />
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          <TabsContent value="whatsapp">
+            <Card className="border-primary/20 shadow-lg">
+              <CardHeader>
+                <CardTitle className="text-2xl flex items-center gap-2">
+                  <Phone className="h-6 w-6 text-primary" />
+                  WhatsApp Subscribers
+                </CardTitle>
+                <CardDescription>
+                  View and manage phone numbers collected for movie notifications. Click a number to open WhatsApp.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <WhatsAppSubscribersManager />
               </CardContent>
             </Card>
           </TabsContent>
