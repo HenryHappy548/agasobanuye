@@ -85,6 +85,7 @@ const VideoEditor = () => {
     if (!file) return;
     const url = URL.createObjectURL(file);
     setVideoSrc(url);
+    setVideoFile(file);
     setFileName(file.name);
     setPlaying(false);
 
