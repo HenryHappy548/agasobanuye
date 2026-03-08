@@ -245,13 +245,13 @@ const EmbeddedPlayer = memo(({ movieId, movieTitle, fallbackVideoUrl, fallbackDo
         <RewardedAdButton variant="inline" />
       </div>
 
-      {/* Download Section - Clean & visible */}
+      {/* Download Section */}
       {videoData.downloadLinks.length > 0 ? (
-        <div className="rounded-xl border border-border bg-card/80 p-4">
+        <div className="rounded-xl border-2 border-primary/30 bg-primary/5 p-4">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
             <div>
-              <h3 className="font-bold text-base text-foreground">Download</h3>
-              <p className="text-xs text-muted-foreground">Kurura filime hano</p>
+              <h3 className="font-bold text-lg text-foreground">Download</h3>
+              <p className="text-sm text-muted-foreground">Kurura filime hano</p>
             </div>
             <div className="flex flex-wrap gap-2 w-full sm:w-auto">
               {videoData.downloadLinks.map((link, index) => (
@@ -260,11 +260,11 @@ const EmbeddedPlayer = memo(({ movieId, movieTitle, fallbackVideoUrl, fallbackDo
                   href={normalizeUrl(link.url)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-5 py-2.5 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold rounded-lg transition-colors text-sm min-w-[120px]"
+                  className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-6 py-3 bg-primary hover:bg-primary/90 text-primary-foreground font-bold rounded-lg transition-colors text-base min-w-[140px]"
                 >
                   <Download className="h-4 w-4" />
                   <span>Kurura {link.quality}</span>
-                  {link.size && <span className="text-xs opacity-80">({link.size})</span>}
+                  {link.size && <span className="text-sm font-semibold">({link.size})</span>}
                 </a>
               ))}
             </div>

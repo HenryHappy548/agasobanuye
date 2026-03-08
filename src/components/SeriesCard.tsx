@@ -61,7 +61,7 @@ const SeriesCard = memo(({ group, priority = false }: SeriesCardProps) => {
             <span className="truncate">{group.latestEpisode.genre}</span>
           </div>
           {group.latestEpisode.rating && (
-            <p className="text-[9px] sm:text-[11px] text-muted-foreground font-bold mt-0.5 sm:mt-1 truncate">
+            <p className="text-[10px] sm:text-xs text-primary font-bold mt-0.5 sm:mt-1 truncate">
               🎙 {group.latestEpisode.rating}
             </p>
           )}
