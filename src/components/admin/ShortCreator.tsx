@@ -589,7 +589,7 @@ const ShortCreator = () => {
               )}
 
               <p className="text-xs text-muted-foreground">
-                💡 Output is .webm — works on TikTok, YouTube Shorts, Instagram Reels & WhatsApp Status
+                💡 Exports as .mp4 — works everywhere: TikTok, YouTube Shorts, Instagram Reels, WhatsApp Status
               </p>
             </CardContent>
           </Card>
