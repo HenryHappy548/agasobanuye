@@ -13,8 +13,10 @@ const SeriesCard = memo(({ group, priority = false }: SeriesCardProps) => {
   const seriesPath = `/series/${encodeURIComponent(group.baseName)}`;
 
   return (
-    <Link
-      to={seriesPath}
+    <a
+      href={seriesPath}
+      target="_blank"
+      rel="noopener noreferrer"
       className="block gpu-accelerate"
       title={`Watch ${group.baseName} - ${group.episodeCount} Episodes on Rwaflix`}
     >
