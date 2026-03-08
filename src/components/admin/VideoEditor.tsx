@@ -569,7 +569,7 @@ const VideoEditor = () => {
               className="gap-2 ml-auto"
             >
               <Download className="h-4 w-4" />
-              {exporting ? `Exporting… ${exportProgress}%` : "Export as MP4"}
+              {exporting ? `Exporting… ${exportProgress}%` : "Export Video"}
             </Button>
           </div>
         </>
