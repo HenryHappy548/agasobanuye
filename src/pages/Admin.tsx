@@ -338,20 +338,37 @@ const Admin = () => {
           </TabsContent>
 
           <TabsContent value="whatsapp">
-            <Card className="border-primary/20 shadow-lg">
-              <CardHeader>
-                <CardTitle className="text-2xl flex items-center gap-2">
-                  <Phone className="h-6 w-6 text-primary" />
-                  WhatsApp Subscribers
-                </CardTitle>
-                <CardDescription>
-                  View and manage phone numbers collected for movie notifications. Click a number to open WhatsApp.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <WhatsAppSubscribersManager />
-              </CardContent>
-            </Card>
+            <div className="space-y-6">
+              <Card className="border-primary/20 shadow-lg">
+                <CardHeader>
+                  <CardTitle className="text-2xl flex items-center gap-2">
+                    <Phone className="h-6 w-6 text-primary" />
+                    WhatsApp Subscribers
+                  </CardTitle>
+                  <CardDescription>
+                    View and manage phone numbers collected for movie notifications.
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <WhatsAppSubscribersManager />
+                </CardContent>
+              </Card>
+
+              <Card className="border-primary/20 shadow-lg">
+                <CardHeader>
+                  <CardTitle className="text-2xl flex items-center gap-2">
+                    <Send className="h-6 w-6 text-primary" />
+                    Movie Notification Generator
+                  </CardTitle>
+                  <CardDescription>
+                    Auto-generate WhatsApp messages for new movies with poster, watch link, download link, and details. Copy & send to all subscribers.
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <WhatsAppNotificationGenerator />
+                </CardContent>
+              </Card>
+            </div>
           </TabsContent>
           <TabsContent value="editor">
             <Card className="border-primary/20 shadow-lg">
