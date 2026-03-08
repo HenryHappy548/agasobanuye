@@ -331,6 +331,23 @@ const Admin = () => {
             </Card>
           </TabsContent>
 
+          <TabsContent value="whatsapp">
+            <Card className="border-primary/20 shadow-lg">
+              <CardHeader>
+                <CardTitle className="text-2xl flex items-center gap-2">
+                  <Phone className="h-6 w-6 text-primary" />
+                  WhatsApp Subscribers
+                </CardTitle>
+                <CardDescription>
+                  View and manage phone numbers collected for movie notifications. Click a number to open WhatsApp.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <WhatsAppSubscribersManager />
+              </CardContent>
+            </Card>
+          </TabsContent>
+
         </Tabs>
       </div>
     </div>
