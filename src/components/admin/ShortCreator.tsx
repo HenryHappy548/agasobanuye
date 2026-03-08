@@ -573,7 +573,7 @@ const ShortCreator = () => {
                   ) : (
                     <>
                       <Download className="w-4 h-4" />
-                      Export Short (.webm)
+                      Export Short (.mp4)
                     </>
                   )}
                 </Button>
