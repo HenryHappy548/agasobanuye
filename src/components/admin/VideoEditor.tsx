@@ -5,8 +5,6 @@ import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { toast } from "sonner";
 import { Upload, Play, Pause, Download, RotateCcw, Save, Eye } from "lucide-react";
-import { FFmpeg } from "@ffmpeg/ffmpeg";
-import { fetchFile } from "@ffmpeg/util";
 
 const STORAGE_KEY = "rwaflix.videoeditor.progress";
 
