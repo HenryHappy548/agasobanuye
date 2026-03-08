@@ -373,49 +373,34 @@ const ShortCreator = () => {
 
       toast.info(`Recording ${formatTime(clipDuration)} of video... Please wait.`);
 
-      // Robust export loop that handles buffering pauses
-      const runExportLoop = () => {
+      // Use fixed 30fps interval for consistent frame drawing (no skipping)
+      const FPS = 30;
+      const frameInterval = 1000 / FPS;
+      
+      const exportInterval = setInterval(() => {
         if (vid.currentTime >= endTime || vid.ended) {
+          clearInterval(exportInterval);
           vid.pause();
-          recorder.stop();
+          if (recorder.state === "recording") {
+            recorder.stop();
+          }
           return;
         }
 
-        // If video is paused due to buffering, wait and retry
+        // If video is buffering, just skip this tick (don't stop)
         if (vid.paused || vid.readyState < 3) {
-          // Video is buffering — don't stop, just wait
-          setTimeout(runExportLoop, 100);
           return;
         }
 
         drawFrame();
         const progress = ((vid.currentTime - startTime) / clipDuration) * 80;
         setExportProgress(Math.min(progress, 82));
-        requestAnimationFrame(runExportLoop);
-      };
+      }, frameInterval);
 
-      // Also handle video waiting/stalling events
-      const onWaiting = () => {
-        // Video is buffering, just let the loop handle it
-        console.log("Video buffering at", vid.currentTime);
-      };
-      const onPlaying = () => {
-        // Resume drawing when playback resumes
-        console.log("Video resumed at", vid.currentTime);
-      };
-      const onEnded = () => {
-        if (recorder.state === "recording") {
-          recorder.stop();
-        }
-      };
-
-      vid.addEventListener("waiting", onWaiting);
-      vid.addEventListener("playing", onPlaying);
-      vid.addEventListener("ended", onEnded);
-
-      // Set up a timeupdate listener as backup to detect when we pass endTime
+      // Backup: stop at endTime via timeupdate
       const onTimeUpdate = () => {
         if (vid.currentTime >= endTime) {
+          clearInterval(exportInterval);
           vid.pause();
           vid.removeEventListener("timeupdate", onTimeUpdate);
           if (recorder.state === "recording") {
@@ -425,7 +410,13 @@ const ShortCreator = () => {
       };
       vid.addEventListener("timeupdate", onTimeUpdate);
 
-      requestAnimationFrame(runExportLoop);
+      const onEnded = () => {
+        clearInterval(exportInterval);
+        if (recorder.state === "recording") {
+          recorder.stop();
+        }
+      };
+      vid.addEventListener("ended", onEnded);
 
     } catch (error: any) {
       console.error("Export error:", error);
