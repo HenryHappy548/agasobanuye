@@ -297,17 +297,15 @@ const VideoEditor = () => {
         coreURL: "https://unpkg.com/@ffmpeg/core@0.12.6/dist/umd/ffmpeg-core.js",
       });
 
-      // Fetch the original file
-      const fileInput = document.querySelector<HTMLInputElement>('input[type="file"][accept="video/*"]');
-      const file = fileInput?.files?.[0];
-      if (!file) {
+      // Use stored file reference
+      if (!videoFile) {
         toast.error("Please re-upload the video file before exporting.");
         setExporting(false);
         return;
       }
 
-      const inputData = await fetchFile(file);
-      const ext = file.name.split(".").pop() || "mp4";
+      const inputData = await fetchFile(videoFile);
+      const ext = videoFile.name.split(".").pop() || "mp4";
       await ffmpeg.writeFile(`input.${ext}`, inputData);
 
       // Build the blur filter
