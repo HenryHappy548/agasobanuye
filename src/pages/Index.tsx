@@ -15,6 +15,8 @@ import { MonetagInpush, MonetagVignette } from "@/components/MonetagAds";
 import SupportButton from "@/components/SupportButton";
 import { usePageVisitTracker } from "@/hooks/usePageVisitTracker";
 import { buildWatchPath } from "@/lib/watchRoute";
+import { groupSeriesMovies, getSeriesBaseName } from "@/lib/seriesUtils";
+import SeriesCard from "@/components/SeriesCard";
 
 import {
   Carousel,
