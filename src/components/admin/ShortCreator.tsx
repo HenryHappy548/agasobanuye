@@ -300,8 +300,8 @@ const ShortCreator = () => {
           await ffmpeg.exec(["-i", "input.webm", "-c:v", "libx264", "-preset", "fast", "-crf", "23", "-c:a", "aac", "-movflags", "+faststart", "output.mp4"]);
           
           const mp4Data = await ffmpeg.readFile("output.mp4");
-          const mp4Uint8 = mp4Data instanceof Uint8Array ? mp4Data : new TextEncoder().encode(mp4Data as string);
-          const mp4Blob = new Blob([mp4Uint8.buffer], { type: "video/mp4" });
+          const mp4Bytes = mp4Data instanceof Uint8Array ? new Uint8Array(mp4Data) : new TextEncoder().encode(mp4Data as string);
+          const mp4Blob = new Blob([mp4Bytes], { type: "video/mp4" });
           const url = URL.createObjectURL(mp4Blob);
           const a = document.createElement("a");
           a.href = url;
