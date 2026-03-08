@@ -149,13 +149,13 @@ const Admin = () => {
               <Film className="w-4 h-4" />
               <span className="hidden sm:inline">Movies</span>
             </TabsTrigger>
-            <TabsTrigger value="videos" className="gap-2">
-              <Video className="w-4 h-4" />
-              <span className="hidden sm:inline">Videos</span>
+            <TabsTrigger value="whatsapp" className="gap-2">
+              <Phone className="w-4 h-4" />
+              <span className="hidden sm:inline">WhatsApp</span>
             </TabsTrigger>
-            <TabsTrigger value="downloads" className="gap-2">
-              <Download className="w-4 h-4" />
-              <span className="hidden sm:inline">Downloads</span>
+            <TabsTrigger value="editor" className="gap-2">
+              <Wand2 className="w-4 h-4" />
+              <span className="hidden sm:inline">Editor</span>
             </TabsTrigger>
             <TabsTrigger value="premium" className="gap-2">
               <Crown className="w-4 h-4 text-amber-500" />
