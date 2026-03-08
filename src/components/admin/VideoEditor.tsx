@@ -277,7 +277,7 @@ const VideoEditor = () => {
     toast.success("Settings reset");
   };
 
-  // Export using Canvas + MediaRecorder
+  // Simple, bulletproof export: frame-by-frame with setInterval
   const handleExport = async () => {
     const vid = videoRef.current;
     if (!vid || !videoSrc) {
@@ -287,121 +287,148 @@ const VideoEditor = () => {
 
     setExporting(true);
     setExportProgress(0);
+    console.log("[Export] Starting export...");
 
     try {
-      // Stop any current playback
       vid.pause();
       setPlaying(false);
       cancelAnimationFrame(animRef.current);
 
       const w = vid.videoWidth;
       const h = vid.videoHeight;
-      if (!w || !h) throw new Error("Video not loaded properly. Try re-uploading.");
+      console.log("[Export] Video dimensions:", w, "x", h);
+      if (!w || !h) throw new Error("Video dimensions are 0. Re-upload the video.");
 
-      // Offscreen canvas for export
       const exportCanvas = document.createElement("canvas");
       exportCanvas.width = w;
       exportCanvas.height = h;
-      const ctx = exportCanvas.getContext("2d")!;
+      const ctx = exportCanvas.getContext("2d");
+      if (!ctx) throw new Error("Failed to get canvas context");
+
+      // Test that we can draw the video to canvas
+      try {
+        ctx.drawImage(vid, 0, 0, w, h);
+        console.log("[Export] Canvas draw test passed");
+      } catch (drawErr) {
+        throw new Error("Cannot draw video to canvas (CORS issue). Try a different video file.");
+      }
 
       const stream = exportCanvas.captureStream(30);
-      const mimeType = MediaRecorder.isTypeSupported("video/webm;codecs=vp9")
-        ? "video/webm;codecs=vp9"
-        : "video/webm";
+      console.log("[Export] captureStream created, tracks:", stream.getTracks().length);
 
-      const recorder = new MediaRecorder(stream, { mimeType, videoBitsPerSecond: 8_000_000 });
+      // Find supported mime type
+      let mimeType = "video/webm";
+      for (const mt of ["video/webm;codecs=vp9", "video/webm;codecs=vp8", "video/webm"]) {
+        if (MediaRecorder.isTypeSupported(mt)) { mimeType = mt; break; }
+      }
+      console.log("[Export] Using mimeType:", mimeType);
+
+      const recorder = new MediaRecorder(stream, { mimeType, videoBitsPerSecond: 5_000_000 });
       const chunks: Blob[] = [];
-      recorder.ondataavailable = (e) => { if (e.data.size > 0) chunks.push(e.data); };
+      recorder.ondataavailable = (e) => {
+        if (e.data.size > 0) chunks.push(e.data);
+      };
 
-      // Wrap the full export in one promise
-      const blob = await new Promise<Blob>((resolve, reject) => {
-        recorder.onstop = () => resolve(new Blob(chunks, { type: mimeType }));
-        recorder.onerror = () => reject(new Error("MediaRecorder error"));
-
-        let exportAnimId = 0;
-        const drawExportFrame = () => {
-          if (vid.ended) {
-            cancelAnimationFrame(exportAnimId);
-            setTimeout(() => {
-              if (recorder.state === "recording") recorder.stop();
-            }, 300);
+      const exportComplete = new Promise<Blob>((resolve, reject) => {
+        recorder.onstop = () => {
+          console.log("[Export] Recorder stopped, chunks:", chunks.length);
+          if (chunks.length === 0) {
+            reject(new Error("No video data was recorded. The video may be too short or unsupported."));
             return;
           }
-
-          if (vid.readyState >= 2) {
-            setExportProgress(Math.round((vid.currentTime / (vid.duration || 1)) * 100));
-
-            // Draw clean frame
-            ctx.filter = "none";
-            ctx.drawImage(vid, 0, 0, w, h);
-
-            if (fullBlur) {
-              ctx.filter = `blur(${blurIntensity}px)`;
-              ctx.drawImage(vid, 0, 0, w, h);
-              ctx.filter = "none";
-            } else {
-              const rx = (region.x / 100) * w;
-              const ry = (region.y / 100) * h;
-              const rw = (region.width / 100) * w;
-              const rh = (region.height / 100) * h;
-              ctx.save();
-              ctx.beginPath();
-              ctx.rect(rx, ry, rw, rh);
-              ctx.clip();
-              ctx.filter = `blur(${blurIntensity}px)`;
-              ctx.drawImage(vid, 0, 0, w, h);
-              ctx.filter = "none";
-              ctx.restore();
-            }
-          }
-          exportAnimId = requestAnimationFrame(drawExportFrame);
+          resolve(new Blob(chunks, { type: mimeType }));
         };
-
-        // Start everything
-        recorder.start(500);
-
-        // Seek to beginning, then play
-        const startPlayback = () => {
-          vid.muted = true;
-          vid.playbackRate = 2;
-          vid.play().then(() => {
-            drawExportFrame();
-          }).catch((playErr) => {
-            recorder.stop();
-            reject(new Error("Cannot play video for export: " + playErr.message));
-          });
+        recorder.onerror = (ev) => {
+          console.error("[Export] Recorder error:", ev);
+          reject(new Error("MediaRecorder encountered an error"));
         };
+      });
 
-        if (vid.currentTime > 0.1) {
-          vid.currentTime = 0;
-          vid.addEventListener("seeked", startPlayback, { once: true });
-        } else {
-          startPlayback();
+      // Start recording FIRST
+      recorder.start(500);
+      console.log("[Export] Recorder started");
+
+      // Seek to 0
+      vid.currentTime = 0;
+      vid.muted = true;
+      vid.playbackRate = 2;
+
+      // Wait a moment for seek
+      await new Promise(r => setTimeout(r, 200));
+      console.log("[Export] Seeking done, currentTime:", vid.currentTime);
+
+      // Play
+      try {
+        await vid.play();
+        console.log("[Export] Playback started");
+      } catch (e) {
+        console.error("[Export] Play failed:", e);
+        throw new Error("Browser blocked video playback. Try clicking play first, then export.");
+      }
+
+      // Use setInterval for reliability instead of rAF
+      const intervalId = setInterval(() => {
+        if (!vid || vid.ended || vid.paused) {
+          clearInterval(intervalId);
+          setTimeout(() => {
+            if (recorder.state === "recording") recorder.stop();
+          }, 500);
+          return;
         }
 
-        // Safety timeout for very long videos (4 hours max)
-        setTimeout(() => {
-          if (recorder.state === "recording") {
-            cancelAnimationFrame(exportAnimId);
-            recorder.stop();
+        const progress = Math.round((vid.currentTime / (vid.duration || 1)) * 100);
+        setExportProgress(progress);
+
+        if (vid.readyState >= 2) {
+          // Draw clean blurred frame
+          ctx.filter = "none";
+          ctx.drawImage(vid, 0, 0, w, h);
+          if (fullBlur) {
+            ctx.filter = `blur(${blurIntensity}px)`;
+            ctx.drawImage(vid, 0, 0, w, h);
+            ctx.filter = "none";
+          } else {
+            const rx = (region.x / 100) * w;
+            const ry = (region.y / 100) * h;
+            const rw = (region.width / 100) * w;
+            const rh = (region.height / 100) * h;
+            ctx.save();
+            ctx.beginPath();
+            ctx.rect(rx, ry, rw, rh);
+            ctx.clip();
+            ctx.filter = `blur(${blurIntensity}px)`;
+            ctx.drawImage(vid, 0, 0, w, h);
+            ctx.filter = "none";
+            ctx.restore();
           }
-        }, 4 * 60 * 60 * 1000);
-      });
+        }
+      }, 33); // ~30fps
+
+      // Listen for video end
+      vid.onended = () => {
+        console.log("[Export] Video ended");
+        clearInterval(intervalId);
+        setTimeout(() => {
+          if (recorder.state === "recording") recorder.stop();
+        }, 500);
+      };
+
+      const blob = await exportComplete;
+      console.log("[Export] Blob size:", blob.size);
 
       downloadBlob(blob, fileName.replace(/\.\w+$/, "") + "-blurred.webm");
       toast.success("Video exported successfully! 🎬");
 
-      // Restore state
       vid.playbackRate = 1;
       vid.muted = false;
       vid.currentTime = currentTime;
       drawPreview();
     } catch (err) {
-      console.error("Export failed:", err);
-      toast.error(err instanceof Error ? err.message : "Export failed unexpectedly");
+      console.error("[Export] FAILED:", err);
+      toast.error(err instanceof Error ? err.message : "Export failed");
     } finally {
-      const vid2 = videoRef.current;
-      if (vid2) { vid2.playbackRate = 1; vid2.muted = false; }
+      const v = videoRef.current;
+      if (v) { v.playbackRate = 1; v.muted = false; }
       setExporting(false);
       setExportProgress(0);
     }
