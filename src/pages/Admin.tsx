@@ -5,7 +5,7 @@ import { User } from "@supabase/supabase-js";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { LogOut, Film, Plus, Download, Video, MessageSquare, ShoppingBag, MessagesSquare, Crown, BarChart3, ShieldAlert, Clapperboard, Phone } from "lucide-react";
+import { LogOut, Film, Plus, Download, Video, MessageSquare, ShoppingBag, MessagesSquare, Crown, BarChart3, ShieldAlert, Clapperboard, Phone, Wand2 } from "lucide-react";
 import { toast } from "sonner";
 import MovieForm from "@/components/admin/MovieForm";
 import MovieList from "@/components/admin/MovieList";
@@ -18,6 +18,7 @@ import PremiumManager from "@/components/admin/PremiumManager";
 import AnalyticsDashboard from "@/components/admin/AnalyticsDashboard";
 import ShortCreator from "@/components/admin/ShortCreator";
 import WhatsAppSubscribersManager from "@/components/admin/WhatsAppSubscribersManager";
+import VideoEditor from "@/components/admin/VideoEditor";
 
 
 const Admin = () => {
@@ -135,7 +136,7 @@ const Admin = () => {
 
         {/* Main Content */}
         <Tabs defaultValue="analytics" className="space-y-6">
-          <TabsList className="grid w-full grid-cols-11 max-w-6xl mx-auto">
+          <TabsList className="grid w-full grid-cols-12 max-w-7xl mx-auto">
             <TabsTrigger value="analytics" className="gap-2">
               <BarChart3 className="w-4 h-4" />
               <span className="hidden sm:inline">Analytics</span>
@@ -179,6 +180,10 @@ const Admin = () => {
             <TabsTrigger value="whatsapp" className="gap-2">
               <Phone className="w-4 h-4" />
               <span className="hidden sm:inline">WhatsApp</span>
+            </TabsTrigger>
+            <TabsTrigger value="editor" className="gap-2">
+              <Wand2 className="w-4 h-4" />
+              <span className="hidden sm:inline">Editor</span>
             </TabsTrigger>
           </TabsList>
 
@@ -344,6 +349,22 @@ const Admin = () => {
               </CardHeader>
               <CardContent>
                 <WhatsAppSubscribersManager />
+              </CardContent>
+            </Card>
+          </TabsContent>
+          <TabsContent value="editor">
+            <Card className="border-primary/20 shadow-lg">
+              <CardHeader>
+                <CardTitle className="text-2xl flex items-center gap-2">
+                  <Wand2 className="h-6 w-6 text-primary" />
+                  Video Editor
+                </CardTitle>
+                <CardDescription>
+                  Upload a video, add blur to a specific region or the entire video, control intensity, and export as MP4. Progress is saved automatically.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <VideoEditor />
               </CardContent>
             </Card>
           </TabsContent>
