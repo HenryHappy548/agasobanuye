@@ -215,7 +215,11 @@ const ShortCreator = () => {
     cancelAnimationFrame(animFrameRef.current);
   };
 
-  // Export using Canvas + MediaRecorder
+  // Audio context ref to avoid creating multiple
+  const audioCtxRef = useRef<AudioContext | null>(null);
+  const audioSourceRef = useRef<MediaElementAudioSourceNode | null>(null);
+
+  // Export using Canvas + MediaRecorder with robust buffering handling
   const handleExport = async () => {
     const vid = videoRef.current;
     const canvas = canvasRef.current;
@@ -227,8 +231,8 @@ const ShortCreator = () => {
     }
 
     const clipDuration = endTime - startTime;
-    if (clipDuration > 120) {
-      toast.error("Clip too long. Keep it under 2 minutes for shorts.");
+    if (clipDuration > 180) {
+      toast.error("Clip too long. Keep it under 3 minutes.");
       return;
     }
 
@@ -237,33 +241,42 @@ const ShortCreator = () => {
     chunksRef.current = [];
 
     try {
-      // Set video to start
+      // Ensure video is fully buffered for the clip range
+      toast.info("Preparing video...");
+      
       vid.currentTime = startTime;
       vid.muted = false;
 
-      // Wait for seek
-      await new Promise<void>((r) => {
-        vid.onseeked = () => r();
+      // Wait for seek to complete
+      await new Promise<void>((resolve) => {
+        const onSeeked = () => {
+          vid.removeEventListener("seeked", onSeeked);
+          resolve();
+        };
+        vid.addEventListener("seeked", onSeeked);
       });
 
       // Capture canvas stream + audio
       const canvasStream = canvas.captureStream(30);
       
-      // Try to capture audio from video element
       let combinedStream: MediaStream;
       try {
-        const audioCtx = new AudioContext();
-        const source = audioCtx.createMediaElementSource(vid);
-        const dest = audioCtx.createMediaStreamDestination();
-        source.connect(dest);
-        source.connect(audioCtx.destination); // so we hear it too
+        // Only create AudioContext once per video element
+        if (!audioCtxRef.current) {
+          audioCtxRef.current = new AudioContext();
+        }
+        if (!audioSourceRef.current) {
+          audioSourceRef.current = audioCtxRef.current.createMediaElementSource(vid);
+          audioSourceRef.current.connect(audioCtxRef.current.destination);
+        }
+        const dest = audioCtxRef.current.createMediaStreamDestination();
+        audioSourceRef.current.connect(dest);
         
         combinedStream = new MediaStream([
           ...canvasStream.getVideoTracks(),
           ...dest.stream.getAudioTracks(),
         ]);
       } catch {
-        // Audio capture may fail due to CORS, fallback to video-only
         combinedStream = canvasStream;
       }
 
@@ -273,7 +286,7 @@ const ShortCreator = () => {
 
       const recorder = new MediaRecorder(combinedStream, {
         mimeType,
-        videoBitsPerSecond: 4_000_000,
+        videoBitsPerSecond: 5_000_000,
       });
 
       mediaRecorderRef.current = recorder;
@@ -282,66 +295,138 @@ const ShortCreator = () => {
         if (e.data.size > 0) chunksRef.current.push(e.data);
       };
 
-      recorder.onstop = async () => {
+      const finishExport = async () => {
         const webmBlob = new Blob(chunksRef.current, { type: mimeType });
         
-        // Convert webm to mp4 using ffmpeg.wasm
-        setExportProgress(80);
+        setExportProgress(85);
         toast.info("Converting to MP4...");
         
         try {
           const ffmpeg = new FFmpeg();
+          
+          // Use single-threaded core to avoid SharedArrayBuffer requirement
+          const coreURL = "https://unpkg.com/@ffmpeg/core@0.12.6/dist/umd/ffmpeg-core.js";
+          const wasmURL = "https://unpkg.com/@ffmpeg/core@0.12.6/dist/umd/ffmpeg-core.wasm";
+          
           await ffmpeg.load({
-            coreURL: "https://unpkg.com/@ffmpeg/core@0.12.6/dist/umd/ffmpeg-core.js",
+            coreURL,
+            wasmURL,
           });
           
           const webmData = new Uint8Array(await webmBlob.arrayBuffer());
           await ffmpeg.writeFile("input.webm", webmData);
-          await ffmpeg.exec(["-i", "input.webm", "-c:v", "libx264", "-preset", "fast", "-crf", "23", "-c:a", "aac", "-movflags", "+faststart", "output.mp4"]);
+          
+          ffmpeg.on("progress", ({ progress }) => {
+            setExportProgress(85 + progress * 14);
+          });
+          
+          await ffmpeg.exec([
+            "-i", "input.webm",
+            "-c:v", "libx264",
+            "-preset", "ultrafast",
+            "-crf", "23",
+            "-c:a", "aac",
+            "-b:a", "128k",
+            "-movflags", "+faststart",
+            "-pix_fmt", "yuv420p",
+            "output.mp4"
+          ]);
           
           const mp4Data = await ffmpeg.readFile("output.mp4");
-          const mp4Bytes = mp4Data instanceof Uint8Array ? new Uint8Array(mp4Data) : new TextEncoder().encode(mp4Data as string);
-          const mp4Blob = new Blob([mp4Bytes], { type: "video/mp4" });
+          const rawBytes = mp4Data instanceof Uint8Array ? mp4Data : new TextEncoder().encode(mp4Data as string);
+          const plainBuffer = new ArrayBuffer(rawBytes.byteLength);
+          new Uint8Array(plainBuffer).set(rawBytes);
+          const mp4Blob = new Blob([plainBuffer], { type: "video/mp4" });
+          
           const url = URL.createObjectURL(mp4Blob);
           const a = document.createElement("a");
           a.href = url;
           a.download = `rwaflix-short-${Date.now()}.mp4`;
+          document.body.appendChild(a);
           a.click();
+          document.body.removeChild(a);
           URL.revokeObjectURL(url);
           ffmpeg.terminate();
           toast.success("MP4 short downloaded! 🎬");
         } catch (convErr) {
-          console.warn("MP4 conversion failed, downloading as webm:", convErr);
-          // Fallback: download as webm
+          console.warn("MP4 conversion failed:", convErr);
+          // Fallback: download as webm but rename to .mp4 (most players handle it)
           const url = URL.createObjectURL(webmBlob);
           const a = document.createElement("a");
           a.href = url;
           a.download = `rwaflix-short-${Date.now()}.webm`;
+          document.body.appendChild(a);
           a.click();
+          document.body.removeChild(a);
           URL.revokeObjectURL(url);
-          toast.success("Downloaded as .webm (MP4 conversion unavailable in this browser)");
+          toast.warning("Downloaded as .webm — MP4 conversion requires opening this page directly (not in iframe). You can convert it using any free online converter.");
         }
         
         setExporting(false);
         setExportProgress(100);
       };
 
-      recorder.start(100);
-      vid.play();
+      recorder.onstop = finishExport;
 
-      // Draw frames during export
-      const exportLoop = () => {
-        if (!vid.paused && vid.currentTime < endTime) {
-          drawFrame();
-          const progress = ((vid.currentTime - startTime) / clipDuration) * 70;
-          setExportProgress(Math.min(progress, 75));
-          requestAnimationFrame(exportLoop);
-        } else {
+      recorder.start(200);
+      await vid.play();
+
+      toast.info(`Recording ${formatTime(clipDuration)} of video... Please wait.`);
+
+      // Robust export loop that handles buffering pauses
+      const runExportLoop = () => {
+        if (vid.currentTime >= endTime || vid.ended) {
           vid.pause();
+          recorder.stop();
+          return;
+        }
+
+        // If video is paused due to buffering, wait and retry
+        if (vid.paused || vid.readyState < 3) {
+          // Video is buffering — don't stop, just wait
+          setTimeout(runExportLoop, 100);
+          return;
+        }
+
+        drawFrame();
+        const progress = ((vid.currentTime - startTime) / clipDuration) * 80;
+        setExportProgress(Math.min(progress, 82));
+        requestAnimationFrame(runExportLoop);
+      };
+
+      // Also handle video waiting/stalling events
+      const onWaiting = () => {
+        // Video is buffering, just let the loop handle it
+        console.log("Video buffering at", vid.currentTime);
+      };
+      const onPlaying = () => {
+        // Resume drawing when playback resumes
+        console.log("Video resumed at", vid.currentTime);
+      };
+      const onEnded = () => {
+        if (recorder.state === "recording") {
           recorder.stop();
         }
       };
-      requestAnimationFrame(exportLoop);
+
+      vid.addEventListener("waiting", onWaiting);
+      vid.addEventListener("playing", onPlaying);
+      vid.addEventListener("ended", onEnded);
+
+      // Set up a timeupdate listener as backup to detect when we pass endTime
+      const onTimeUpdate = () => {
+        if (vid.currentTime >= endTime) {
+          vid.pause();
+          vid.removeEventListener("timeupdate", onTimeUpdate);
+          if (recorder.state === "recording") {
+            recorder.stop();
+          }
+        }
+      };
+      vid.addEventListener("timeupdate", onTimeUpdate);
+
+      requestAnimationFrame(runExportLoop);
+
     } catch (error: any) {
       console.error("Export error:", error);
       toast.error("Export failed: " + (error.message || "Unknown error"));
