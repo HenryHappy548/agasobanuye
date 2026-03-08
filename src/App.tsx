@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-route
 import { HelmetProvider } from "react-helmet-async";
 import LoadingScreen from "@/components/LoadingScreen";
 import { MonetagAdsBootstrap } from "@/components/MonetagAds";
+import WhatsAppSignup from "@/components/WhatsAppSignup";
 
 // Lazy load pages for better performance
 const Index = lazy(() => import("./pages/Index"));

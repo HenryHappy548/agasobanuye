@@ -1,8 +1,6 @@
-import { useState } from "react";
-import { Phone, Mail, ExternalLink, Home, Film, Tv, TrendingUp, HelpCircle, MessageCircle, Instagram, Crown, CheckCircle2 } from "lucide-react";
+import { Phone, Mail, ExternalLink, Home, Film, Tv, TrendingUp, HelpCircle, MessageCircle, Instagram, Crown } from "lucide-react";
 import { Link } from "react-router-dom";
 import CommentSection from "./CommentSection";
-import { supabase } from "@/integrations/supabase/client";
 
 interface FooterProps {
   showComments?: boolean;
