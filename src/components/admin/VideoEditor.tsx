@@ -35,7 +35,7 @@ const VideoEditor = () => {
   const [playing, setPlaying] = useState(false);
   const [duration, setDuration] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
-  const [blurIntensity, setBlurIntensity] = useState(15);
+  const [blurIntensity, setBlurIntensity] = useState(20);
   const [fullBlur, setFullBlur] = useState(false);
   const [exporting, setExporting] = useState(false);
   const [exportProgress, setExportProgress] = useState(0);
