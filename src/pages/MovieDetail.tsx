@@ -115,9 +115,10 @@ const MovieDetail = memo(() => {
     );
   }
 
-  const pageTitle = `${movie.title} (${movie.year}) - Reba Agasobanuye | Rwaflix`;
-  const pageDescription = `Reba ${movie.title} (${movie.year}) ku buntu kuri Rwaflix. ${movie.genre} movie agasobanuye. Stream HD quality, download options.`;
-  const seoKeywords = `${movie.title}, watch ${movie.title} online, ${movie.title} agasobanuye, ${movie.genre}, ${movie.year} movies, Rwaflix, Agasobanuye, free streaming Rwanda`;
+  const dubberName = movie.rating ? ` by ${movie.rating}` : '';
+  const pageTitle = `Agasobanuye ${movie.title}${dubberName} | Rwaflix Store`;
+  const pageDescription = `Reba ${movie.title} (${movie.year}) agasobanuye${dubberName} ku buntu kuri Rwaflix Store. ${movie.genre} movie HD quality. Stream & download free.`;
+  const seoKeywords = `${movie.title}, ${movie.title} agasobanuye, ${movie.rating || ''}, watch ${movie.title} online, ${movie.genre}, ${movie.year}, Rwaflix, Agasobanuye, Oshakur, Cinebeta, free streaming Rwanda`;
 
   // Schema.org structured data
   const videoSchema = {
