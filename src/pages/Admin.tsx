@@ -5,7 +5,7 @@ import { User } from "@supabase/supabase-js";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { LogOut, Film, Plus, Download, Video, MessageSquare, ShoppingBag, MessagesSquare, Crown, BarChart3, ShieldAlert, Clapperboard } from "lucide-react";
+import { LogOut, Film, Plus, Download, Video, MessageSquare, ShoppingBag, MessagesSquare, Crown, BarChart3, ShieldAlert, Clapperboard, Phone } from "lucide-react";
 import { toast } from "sonner";
 import MovieForm from "@/components/admin/MovieForm";
 import MovieList from "@/components/admin/MovieList";
