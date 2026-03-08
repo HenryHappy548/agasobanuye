@@ -285,7 +285,7 @@ const VideoEditor = () => {
 
     setExporting(true);
     setExportProgress(0);
-    toast.info("Preparing export with FFmpeg… this works for videos up to 3 hours.");
+    toast.info("Preparing export… please wait while your video is processed.");
 
     try {
       const ffmpeg = new FFmpeg();
@@ -350,8 +350,8 @@ const VideoEditor = () => {
 
       args.push(
         "-c:v", "libx264",
-        "-preset", "ultrafast",
-        "-crf", "28",
+        "-preset", "fast",
+        "-crf", "23",
         "-c:a", "copy",
         "-movflags", "+faststart",
         "output.mp4"
