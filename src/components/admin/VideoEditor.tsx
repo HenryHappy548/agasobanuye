@@ -485,7 +485,7 @@ const VideoEditor = () => {
               <Slider
                 value={[blurIntensity]}
                 min={1}
-                max={50}
+                max={100}
                 step={1}
                 onValueChange={(v) => setBlurIntensity(v[0])}
               />
