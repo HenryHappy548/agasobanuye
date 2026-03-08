@@ -224,30 +224,19 @@ const Admin = () => {
             </Card>
           </TabsContent>
 
-          <TabsContent value="videos">
+          <TabsContent value="editor">
             <Card className="border-primary/20 shadow-lg">
               <CardHeader>
-                <CardTitle className="text-2xl">Manage Videos</CardTitle>
+                <CardTitle className="text-2xl flex items-center gap-2">
+                  <Wand2 className="h-6 w-6 text-primary" />
+                  Video Editor
+                </CardTitle>
                 <CardDescription>
-                  Add videos here first, then go to Downloads tab to add download links for each video.
+                  Upload a video, add blur to a specific region or the entire video, control intensity, and export as MP4.
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <VideoManager />
-              </CardContent>
-            </Card>
-          </TabsContent>
-
-          <TabsContent value="downloads">
-            <Card className="border-primary/20 shadow-lg">
-              <CardHeader>
-                <CardTitle className="text-2xl">Manage Download Links</CardTitle>
-                <CardDescription>
-                  Add and manage download links for your videos. Select a video first, then add download links with different qualities.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <DownloadLinksManager />
+                <VideoEditor />
               </CardContent>
             </Card>
           </TabsContent>
