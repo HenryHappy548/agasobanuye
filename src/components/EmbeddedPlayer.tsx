@@ -245,33 +245,48 @@ const EmbeddedPlayer = memo(({ movieId, movieTitle, fallbackVideoUrl, fallbackDo
         <RewardedAdButton variant="inline" />
       </div>
 
-      {/* Download Section */}
-      <div className="flex flex-col sm:flex-row items-center justify-between gap-3 p-3 bg-green-500/10 rounded-xl border border-green-500/30">
-        <div className="flex items-center gap-2">
-          <Download className="h-5 w-5 text-green-500" />
-          <span className="font-semibold text-foreground text-sm">Download</span>
-        </div>
+      {/* Download Section - HIGHLY VISIBLE */}
+      {videoData.downloadLinks.length > 0 ? (
+        <div className="relative overflow-hidden rounded-2xl border-2 border-green-500/50 bg-gradient-to-r from-green-600 via-green-500 to-emerald-500 p-1 shadow-[0_0_30px_-5px_rgba(34,197,94,0.4)] animate-pulse-slow">
+          <div className="bg-background/95 backdrop-blur-sm rounded-xl p-4">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div className="flex items-center gap-3">
+                <div className="relative">
+                  <div className="absolute inset-0 bg-green-500 rounded-full animate-ping opacity-20"></div>
+                  <div className="relative w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full flex items-center justify-center shadow-lg">
+                    <Download className="h-6 w-6 text-white" />
+                  </div>
+                </div>
+                <div>
+                  <h3 className="font-black text-lg text-foreground">⬇️ DOWNLOAD</h3>
+                  <p className="text-xs text-muted-foreground">Kurura filime hano 👇</p>
+                </div>
+              </div>
 
-        {videoData.downloadLinks.length > 0 ? (
-          <div className="flex flex-wrap gap-2">
-            {videoData.downloadLinks.map((link, index) => (
-              <a
-                key={index}
-                href={normalizeUrl(link.url)}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-1.5 px-4 py-2 bg-green-600 hover:bg-green-500 text-white font-medium rounded-lg transition-all text-sm"
-              >
-                <Download className="h-3.5 w-3.5" />
-                <span>{link.quality}</span>
-                {link.size && <span className="text-xs opacity-80">({link.size})</span>}
-              </a>
-            ))}
+              <div className="flex flex-wrap gap-2 w-full sm:w-auto">
+                {videoData.downloadLinks.map((link, index) => (
+                  <a
+                    key={index}
+                    href={normalizeUrl(link.url)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-green-600 to-emerald-500 hover:from-green-500 hover:to-emerald-400 text-white font-bold rounded-xl transition-all duration-300 shadow-lg hover:shadow-green-500/30 hover:scale-105 text-base min-w-[140px]"
+                  >
+                    <Download className="h-5 w-5" />
+                    <span>Kurura {link.quality}</span>
+                    {link.size && <span className="text-xs opacity-80">({link.size})</span>}
+                  </a>
+                ))}
+              </div>
+            </div>
           </div>
-        ) : (
-          <span className="text-muted-foreground text-sm">Coming soon</span>
-        )}
-      </div>
+        </div>
+      ) : (
+        <div className="flex items-center justify-center gap-2 p-3 bg-muted/30 rounded-xl border border-border/50">
+          <Download className="h-4 w-4 text-muted-foreground" />
+          <span className="text-muted-foreground text-sm">Download coming soon</span>
+        </div>
+      )}
 
       {/* Host Badge + Support - Minimal */}
       <div className="flex items-center justify-between gap-2 text-xs text-muted-foreground">
