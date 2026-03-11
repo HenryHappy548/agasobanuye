@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
-import { Play, ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { buildWatchPath } from "@/lib/watchRoute";
 import { useMovies, DBMovie } from "@/hooks/useMovies";
 import { useMemo, memo } from "react";
+import MovieCard from "@/components/MovieCard";
 
 interface RecommendedMoviesProps {
   currentMovieId: string;
