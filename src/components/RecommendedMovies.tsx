@@ -190,33 +190,20 @@ const RecommendedMovies = memo(({ currentMovieId, currentMovieTitle }: Recommend
             <h3 className="text-sm font-bold text-foreground">Izindi Movie Nziza</h3>
           </div>
           
-          {/* Netflix-style row: smaller cards + horizontal scroll (prevents huge posters on desktop) */}
-          <div className="-mx-4 px-4 flex gap-2 overflow-x-auto pb-1">
+          {/* Same grid as homepage - 3 cols mobile, 4 cols desktop */}
+          <div className="grid grid-cols-3 sm:grid-cols-4 gap-2 sm:gap-3">
             {recommendations.map((movie) => (
-              <Link
+              <MovieCard
                 key={movie.id}
-                to={buildWatchPath(movie.title, movie.id)}
-                className="block group shrink-0 w-[92px] sm:w-[110px] md:w-[128px]"
-                title={`Watch ${movie.title} - Rwaflix`}
-              >
-                {/* Ultra compact card */}
-                <div className="relative aspect-[2/3] rounded-md overflow-hidden bg-muted border border-border/50">
-                  <img
-                    src={movie.poster}
-                    alt={movie.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200"
-                    loading="lazy"
-                  />
-                  {/* Subtle hover overlay with play */}
-                  <div className="absolute inset-0 bg-background/70 backdrop-blur-[1px] opacity-0 group-hover:opacity-100 transition-opacity duration-150 flex items-center justify-center">
-                    <Play className="h-4 w-4 text-primary fill-primary" />
-                  </div>
-                </div>
-                {/* Clear visible title below */}
-                <p className="mt-1 text-[10px] font-medium text-foreground line-clamp-2 leading-tight">
-                  {movie.title}
-                </p>
-              </Link>
+                movie={{
+                  id: movie.id,
+                  title: movie.title,
+                  poster: movie.poster,
+                  year: movie.year,
+                  genre: movie.genre,
+                  rating: movie.rating,
+                }}
+              />
             ))}
           </div>
         </div>
