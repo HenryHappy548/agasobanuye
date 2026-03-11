@@ -283,6 +283,20 @@ const StreamingHeader = ({ onSearch, searchQuery, onPlayVideo }: StreamingHeader
               <Link to="/popular" onClick={() => setIsMobileMenuOpen(false)}>
                 <Button variant="ghost" className="w-full justify-start text-foreground hover:text-primary">Popular</Button>
               </Link>
+              <Button
+                variant="ghost"
+                className="w-full justify-start text-foreground hover:text-primary gap-2"
+                onClick={() => {
+                  if (movies.length > 0) {
+                    const rand = movies[Math.floor(Math.random() * movies.length)];
+                    setIsMobileMenuOpen(false);
+                    navigate(buildWatchPath(rand.title, rand.id));
+                  }
+                }}
+              >
+                <Shuffle className="h-4 w-4" />
+                Random Movie
+              </Button>
               <Link to="/pro-movies" onClick={() => setIsMobileMenuOpen(false)}>
                 <Button variant="ghost" className="w-full justify-start text-amber-500 hover:text-amber-400 gap-2">
                   <Crown className="h-4 w-4" />Pro Movies
