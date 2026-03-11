@@ -38,6 +38,7 @@ const StreamingHeader = ({ onSearch, searchQuery, onPlayVideo }: StreamingHeader
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isSupportOpen, setIsSupportOpen] = useState(false);
   const { movies } = useMovies();
+  const navigate = useNavigate();
 
   // Extract unique genres and dubbers from movies
   const { genres, dubbers } = useMemo(() => {
