@@ -1,8 +1,9 @@
-import { Play } from "lucide-react";
-import { memo } from "react";
+import { Play, Share2 } from "lucide-react";
+import { memo, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { buildWatchPath } from "@/lib/watchRoute";
 import OptimizedImage from "@/components/OptimizedImage";
+import { toast } from "sonner";
 
 interface Movie {
   id: string;
