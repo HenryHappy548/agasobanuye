@@ -89,12 +89,23 @@ const MovieDetail = memo(() => {
     window.open(`https://wa.me/?text=${text}`, '_blank');
   };
 
+  // Track movie in Continue Watching
+  const { trackMovie } = useContinueWatching();
+  useEffect(() => {
+    if (movie) {
+      trackMovie({
+        movieId: movie.id,
+        title: movie.title,
+        poster: movie.poster,
+        year: movie.year,
+        genre: movie.genre,
+        rating: movie.rating,
+      });
+    }
+  }, [movie, trackMovie]);
+
   if (loading) {
-    return (
-      <div className="min-h-screen bg-background flex items-center justify-center">
-        <div className="animate-pulse text-primary text-xl">Loading...</div>
-      </div>
-    );
+    return <WatchPageSkeleton />;
   }
 
   if (!movie) {

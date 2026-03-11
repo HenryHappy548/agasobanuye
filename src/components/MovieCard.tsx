@@ -23,6 +23,18 @@ interface MovieCardProps {
 const MovieCard = memo(({ movie, priority = false }: MovieCardProps) => {
   const watchPath = buildWatchPath(movie.title, movie.id);
 
+  const handleShare = useCallback((e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const url = `${window.location.origin}${watchPath}`;
+    if (navigator.share) {
+      navigator.share({ title: movie.title, url }).catch(() => {});
+    } else {
+      navigator.clipboard.writeText(url);
+      toast.success("Link copied!");
+    }
+  }, [movie.title, watchPath]);
+
   return (
     <Link 
       to={watchPath}
@@ -46,6 +58,15 @@ const MovieCard = memo(({ movie, priority = false }: MovieCardProps) => {
               <Play className="h-4 w-4 sm:h-5 sm:w-5 text-primary-foreground fill-primary-foreground ml-0.5" />
             </div>
           </div>
+
+          {/* Share button on hover */}
+          <button
+            onClick={handleShare}
+            className="absolute top-1 left-1 sm:top-1.5 sm:left-1.5 w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-background/80 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 border border-border/50 hover:bg-primary hover:text-primary-foreground z-10"
+            aria-label={`Share ${movie.title}`}
+          >
+            <Share2 className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
+          </button>
           
           {/* Dubbed indicator badge */}
           {movie.rating && (
