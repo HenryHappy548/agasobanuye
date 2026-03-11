@@ -5,7 +5,7 @@
     "": {
       "name": "vite_react_shadcn_ts",
       "dependencies": {
-        "@ffmpeg/ffmpeg": "0.12.10",
+        "@ffmpeg/util": "0.12.1",
         "@hookform/resolvers": "^3.10.0",
         "@radix-ui/react-accordion": "^1.2.11",
         "@radix-ui/react-alert-dialog": "^1.1.14",
@@ -163,9 +163,7 @@
 
     "@eslint/plugin-kit": ["@eslint/plugin-kit@0.3.4", "", { "dependencies": { "@eslint/core": "^0.15.1", "levn": "^0.4.1" } }, "sha512-Ul5l+lHEcw3L5+k8POx6r74mxEYKG5kOb6Xpy2gCRW6zweT6TEhAf8vhxGgjhqrd/VO/Dirhsb+1hNpD1ue9hw=="],
 
-    "@ffmpeg/ffmpeg": ["@ffmpeg/ffmpeg@0.12.10", "", { "dependencies": { "@ffmpeg/types": "^0.12.2" } }, "sha512-lVtk8PW8e+NUzGZhPTWj2P1J4/NyuCrbDD3O9IGpSeLYtUZKBqZO8CNj1WYGghep/MXoM8e1qVY1GztTkf8YYQ=="],
-
-    "@ffmpeg/types": ["@ffmpeg/types@0.12.4", "", {}, "sha512-k9vJQNBGTxE5AhYDtOYR5rO5fKsspbg51gbcwtbkw2lCdoIILzklulcjJfIDwrtn7XhDeF2M+THwJ2FGrLeV6A=="],
+    "@ffmpeg/util": ["@ffmpeg/util@0.12.1", "", {}, "sha512-10jjfAKWaDyb8+nAkijcsi9wgz/y26LOc1NKJradNMyCIl6usQcBbhkjX5qhALrSBcOy6TOeksunTYa+a03qNQ=="],
 
     "@floating-ui/core": ["@floating-ui/core@1.7.2", "", { "dependencies": { "@floating-ui/utils": "^0.2.10" } }, "sha512-wNB5ooIKHQc+Kui96jE/n69rHFWAVoxn5CAzL1Xdd8FG03cgY3MLO+GF9U3W737fYDSgPWA6MReKhBQBop6Pcw=="],
 
