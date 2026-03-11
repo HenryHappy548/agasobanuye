@@ -17,6 +17,8 @@ import { usePageVisitTracker } from "@/hooks/usePageVisitTracker";
 import { buildWatchPath } from "@/lib/watchRoute";
 import { groupSeriesMovies, getSeriesBaseName } from "@/lib/seriesUtils";
 import SeriesCard from "@/components/SeriesCard";
+import ContinueWatching from "@/components/ContinueWatching";
+import { useContinueWatching } from "@/hooks/useContinueWatching";
 
 import {
   Carousel,
