@@ -36,6 +36,7 @@ const Index = () => {
   const { movies, loading } = useMovies();
   const navigate = useNavigate();
   usePageVisitTracker();
+  const { continueWatchingItems, removeMovie } = useContinueWatching();
 
   // Filter states
   const [genreFilter, setGenreFilter] = useState<string>("");
