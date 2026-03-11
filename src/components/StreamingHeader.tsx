@@ -164,14 +164,12 @@ const StreamingHeader = ({ onSearch, searchQuery, onPlayVideo }: StreamingHeader
 
           {/* Right Side Actions */}
           <div className="flex items-center space-x-2 sm:space-x-4">
-            <div className="hidden md:block relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
-              <Input
-                placeholder="Shakisha..."
-                className="pl-10 w-48 lg:w-64 bg-input border-border focus:border-primary"
-                value={searchQuery}
-                onChange={(e) => handleSearchChange(e.target.value)}
-                maxLength={100}
+            <div className="hidden md:block">
+              <SearchAutocomplete
+                movies={movies}
+                searchQuery={searchQuery}
+                onSearch={handleSearchChange}
+                className="w-48 lg:w-64"
               />
             </div>
 
