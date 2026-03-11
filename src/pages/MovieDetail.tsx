@@ -12,6 +12,8 @@ import { useMovies, DBMovie } from "@/hooks/useMovies";
 import SupportButton from "@/components/SupportButton";
 import RecommendedMovies from "@/components/RecommendedMovies";
 import { supabase } from "@/integrations/supabase/client";
+import WatchPageSkeleton from "@/components/WatchPageSkeleton";
+import { useContinueWatching } from "@/hooks/useContinueWatching";
 
 const MovieDetail = memo(() => {
   const { slug, id } = useParams<{ slug: string; id?: string }>();
@@ -87,12 +89,23 @@ const MovieDetail = memo(() => {
     window.open(`https://wa.me/?text=${text}`, '_blank');
   };
 
+  // Track movie in Continue Watching
+  const { trackMovie } = useContinueWatching();
+  useEffect(() => {
+    if (movie) {
+      trackMovie({
+        movieId: movie.id,
+        title: movie.title,
+        poster: movie.poster,
+        year: movie.year,
+        genre: movie.genre,
+        rating: movie.rating,
+      });
+    }
+  }, [movie, trackMovie]);
+
   if (loading) {
-    return (
-      <div className="min-h-screen bg-background flex items-center justify-center">
-        <div className="animate-pulse text-primary text-xl">Loading...</div>
-      </div>
-    );
+    return <WatchPageSkeleton />;
   }
 
   if (!movie) {

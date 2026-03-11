@@ -1,11 +1,13 @@
-import { Search, Menu, X, MessageCircle, Crown, Mic, Film, ChevronDown } from "lucide-react";
+import { Search, Menu, X, MessageCircle, Crown, Mic, Film, ChevronDown, Shuffle } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState, useCallback, useMemo } from "react";
 import SimpleLogo from "@/components/SimpleLogo";
 import DOMPurify from "dompurify";
 import { useMovies } from "@/hooks/useMovies";
+import SearchAutocomplete from "@/components/SearchAutocomplete";
+import { buildWatchPath } from "@/lib/watchRoute";
 import {
   Dialog,
   DialogContent,
@@ -36,6 +38,7 @@ const StreamingHeader = ({ onSearch, searchQuery, onPlayVideo }: StreamingHeader
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isSupportOpen, setIsSupportOpen] = useState(false);
   const { movies } = useMovies();
+  const navigate = useNavigate();
 
   // Extract unique genres and dubbers from movies
   const { genres, dubbers } = useMemo(() => {
@@ -139,6 +142,19 @@ const StreamingHeader = ({ onSearch, searchQuery, onPlayVideo }: StreamingHeader
             <Link to="/popular">
               <Button variant="ghost" className="text-foreground hover:text-primary">Popular</Button>
             </Link>
+            <Button
+              variant="ghost"
+              className="text-foreground hover:text-primary gap-1"
+              onClick={() => {
+                if (movies.length > 0) {
+                  const rand = movies[Math.floor(Math.random() * movies.length)];
+                  navigate(buildWatchPath(rand.title, rand.id));
+                }
+              }}
+            >
+              <Shuffle className="h-4 w-4" />
+              Random
+            </Button>
             <Link to="/pro-movies">
               <Button variant="ghost" className="text-amber-500 hover:text-amber-400 gap-1">
                 <Crown className="h-4 w-4" />Pro
@@ -148,14 +164,12 @@ const StreamingHeader = ({ onSearch, searchQuery, onPlayVideo }: StreamingHeader
 
           {/* Right Side Actions */}
           <div className="flex items-center space-x-2 sm:space-x-4">
-            <div className="hidden md:block relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
-              <Input
-                placeholder="Shakisha..."
-                className="pl-10 w-48 lg:w-64 bg-input border-border focus:border-primary"
-                value={searchQuery}
-                onChange={(e) => handleSearchChange(e.target.value)}
-                maxLength={100}
+            <div className="hidden md:block">
+              <SearchAutocomplete
+                movies={movies}
+                searchQuery={searchQuery}
+                onSearch={handleSearchChange}
+                className="w-48 lg:w-64"
               />
             </div>
 
@@ -210,10 +224,12 @@ const StreamingHeader = ({ onSearch, searchQuery, onPlayVideo }: StreamingHeader
         {/* Mobile Search Bar */}
         {isSearchOpen && (
           <div className="md:hidden mt-4 pb-2">
-            <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
-              <Input placeholder="Shakisha..." className="pl-10 w-full bg-input border-border focus:border-primary" value={searchQuery} onChange={(e) => handleSearchChange(e.target.value)} maxLength={100} />
-            </div>
+            <SearchAutocomplete
+              movies={movies}
+              searchQuery={searchQuery}
+              onSearch={handleSearchChange}
+              className="w-full"
+            />
           </div>
         )}
 
@@ -267,6 +283,20 @@ const StreamingHeader = ({ onSearch, searchQuery, onPlayVideo }: StreamingHeader
               <Link to="/popular" onClick={() => setIsMobileMenuOpen(false)}>
                 <Button variant="ghost" className="w-full justify-start text-foreground hover:text-primary">Popular</Button>
               </Link>
+              <Button
+                variant="ghost"
+                className="w-full justify-start text-foreground hover:text-primary gap-2"
+                onClick={() => {
+                  if (movies.length > 0) {
+                    const rand = movies[Math.floor(Math.random() * movies.length)];
+                    setIsMobileMenuOpen(false);
+                    navigate(buildWatchPath(rand.title, rand.id));
+                  }
+                }}
+              >
+                <Shuffle className="h-4 w-4" />
+                Random Movie
+              </Button>
               <Link to="/pro-movies" onClick={() => setIsMobileMenuOpen(false)}>
                 <Button variant="ghost" className="w-full justify-start text-amber-500 hover:text-amber-400 gap-2">
                   <Crown className="h-4 w-4" />Pro Movies

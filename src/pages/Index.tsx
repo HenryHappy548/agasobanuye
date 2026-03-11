@@ -17,6 +17,8 @@ import { usePageVisitTracker } from "@/hooks/usePageVisitTracker";
 import { buildWatchPath } from "@/lib/watchRoute";
 import { groupSeriesMovies, getSeriesBaseName } from "@/lib/seriesUtils";
 import SeriesCard from "@/components/SeriesCard";
+import ContinueWatching from "@/components/ContinueWatching";
+import { useContinueWatching } from "@/hooks/useContinueWatching";
 
 import {
   Carousel,
@@ -34,6 +36,7 @@ const Index = () => {
   const { movies, loading } = useMovies();
   const navigate = useNavigate();
   usePageVisitTracker();
+  const { continueWatchingItems, removeMovie } = useContinueWatching();
 
   // Filter states
   const [genreFilter, setGenreFilter] = useState<string>("");
@@ -162,6 +165,8 @@ const Index = () => {
       
       {!isFiltering && (
         <div className="container mx-auto px-4 py-6">
+          {/* Continue Watching Section */}
+          <ContinueWatching items={continueWatchingItems} onRemove={removeMovie} />
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
             {/* Hero Section - Takes 3 columns */}
             <div className="lg:col-span-3">

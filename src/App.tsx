@@ -8,6 +8,8 @@ import { HelmetProvider } from "react-helmet-async";
 import LoadingScreen from "@/components/LoadingScreen";
 import { MonetagAdsBootstrap } from "@/components/MonetagAds";
 import WhatsAppSignup from "@/components/WhatsAppSignup";
+import ScrollToTop from "@/components/ScrollToTop";
+import BackToTop from "@/components/BackToTop";
 
 // Lazy load pages for better performance
 const Index = lazy(() => import("./pages/Index"));
@@ -63,6 +65,8 @@ const App = () => {
           <Toaster />
           <Sonner />
           <BrowserRouter>
+            <ScrollToTop />
+            <BackToTop />
             <RouteAdsBootstrap />
             {isLoading ? (
               <LoadingScreen onLoadingComplete={handleLoadingComplete} />
