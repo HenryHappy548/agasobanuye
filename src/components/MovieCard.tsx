@@ -34,8 +34,6 @@ const MovieCard = memo(({ movie, priority = false }: MovieCardProps) => {
           <OptimizedImage
             src={movie.poster}
             alt={`${movie.title} (${movie.year}) - Rwaflix Agasobanuye`}
-            width={200}
-            height={300}
             priority={priority}
             className="w-full h-full"
           />
