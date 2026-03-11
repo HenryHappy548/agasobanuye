@@ -224,10 +224,12 @@ const StreamingHeader = ({ onSearch, searchQuery, onPlayVideo }: StreamingHeader
         {/* Mobile Search Bar */}
         {isSearchOpen && (
           <div className="md:hidden mt-4 pb-2">
-            <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
-              <Input placeholder="Shakisha..." className="pl-10 w-full bg-input border-border focus:border-primary" value={searchQuery} onChange={(e) => handleSearchChange(e.target.value)} maxLength={100} />
-            </div>
+            <SearchAutocomplete
+              movies={movies}
+              searchQuery={searchQuery}
+              onSearch={handleSearchChange}
+              className="w-full"
+            />
           </div>
         )}
 
