@@ -1,11 +1,13 @@
-import { Search, Menu, X, MessageCircle, Crown, Mic, Film, ChevronDown } from "lucide-react";
+import { Search, Menu, X, MessageCircle, Crown, Mic, Film, ChevronDown, Shuffle } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState, useCallback, useMemo } from "react";
 import SimpleLogo from "@/components/SimpleLogo";
 import DOMPurify from "dompurify";
 import { useMovies } from "@/hooks/useMovies";
+import SearchAutocomplete from "@/components/SearchAutocomplete";
+import { buildWatchPath } from "@/lib/watchRoute";
 import {
   Dialog,
   DialogContent,
