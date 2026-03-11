@@ -12,6 +12,8 @@ import { useMovies, DBMovie } from "@/hooks/useMovies";
 import SupportButton from "@/components/SupportButton";
 import RecommendedMovies from "@/components/RecommendedMovies";
 import { supabase } from "@/integrations/supabase/client";
+import WatchPageSkeleton from "@/components/WatchPageSkeleton";
+import { useContinueWatching } from "@/hooks/useContinueWatching";
 
 const MovieDetail = memo(() => {
   const { slug, id } = useParams<{ slug: string; id?: string }>();
