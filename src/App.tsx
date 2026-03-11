@@ -65,6 +65,8 @@ const App = () => {
           <Toaster />
           <Sonner />
           <BrowserRouter>
+            <ScrollToTop />
+            <BackToTop />
             <RouteAdsBootstrap />
             {isLoading ? (
               <LoadingScreen onLoadingComplete={handleLoadingComplete} />
