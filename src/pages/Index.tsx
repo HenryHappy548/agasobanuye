@@ -165,6 +165,8 @@ const Index = () => {
       
       {!isFiltering && (
         <div className="container mx-auto px-4 py-6">
+          {/* Continue Watching Section */}
+          <ContinueWatching items={continueWatchingItems} onRemove={removeMovie} />
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
             {/* Hero Section - Takes 3 columns */}
             <div className="lg:col-span-3">
