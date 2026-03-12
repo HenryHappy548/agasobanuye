@@ -254,6 +254,9 @@ const Index = () => {
               </div>
             </div>
           </div>
+
+          {/* Continue Watching Section - between recently added and featured */}
+          <ContinueWatching items={continueWatchingItems} onRemove={removeMovie} />
           
           {/* Featured Movies Carousel */}
           <section className="mt-8">
