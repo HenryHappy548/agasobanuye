@@ -70,29 +70,29 @@ const StreamingHeader = ({ onSearch, searchQuery, onPlayVideo }: StreamingHeader
         <div className="flex items-center justify-between">
           <SimpleLogo />
 
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-4">
+          {/* Desktop Navigation - compact */}
+          <nav className="hidden lg:flex items-center space-x-1">
             <Link to="/">
-              <Button variant="ghost" className="text-foreground hover:text-primary">Home</Button>
+              <Button variant="ghost" size="sm" className="text-foreground hover:text-primary">Home</Button>
             </Link>
             <Link to="/movies">
-              <Button variant="ghost" className="text-foreground hover:text-primary">Movies</Button>
+              <Button variant="ghost" size="sm" className="text-foreground hover:text-primary">Movies</Button>
             </Link>
             <Link to="/tv-shows">
-              <Button variant="ghost" className="text-foreground hover:text-primary">Series</Button>
+              <Button variant="ghost" size="sm" className="text-foreground hover:text-primary">Series</Button>
             </Link>
 
-            {/* Genre Dropdown */}
+            {/* Browse Dropdown - combines Genre + Dubbers */}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="text-foreground hover:text-primary gap-1">
+                <Button variant="ghost" size="sm" className="text-foreground hover:text-primary gap-1">
                   <Film className="h-4 w-4" />
-                  Genre
+                  Browse
                   <ChevronDown className="h-3 w-3" />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="bg-popover border-border z-[60] w-48 max-h-72 overflow-y-auto animate-in fade-in-0 zoom-in-95 slide-in-from-top-2 duration-200">
-                <DropdownMenuLabel className="text-xs text-muted-foreground">Genre Zigaragara</DropdownMenuLabel>
+              <DropdownMenuContent className="bg-popover border-border z-[60] w-52 max-h-80 overflow-y-auto animate-in fade-in-0 zoom-in-95 slide-in-from-top-2 duration-200">
+                <DropdownMenuLabel className="text-xs text-muted-foreground">Genre</DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 {MAIN_GENRES.filter((g) => genres.some((eg) => eg.toLowerCase() === g.toLowerCase())).map((genre) => (
                   <DropdownMenuItem key={genre} asChild>
@@ -101,8 +101,6 @@ const StreamingHeader = ({ onSearch, searchQuery, onPlayVideo }: StreamingHeader
                 ))}
                 {genres.filter((g) => !MAIN_GENRES.some((mg) => mg.toLowerCase() === g.toLowerCase())).length > 0 && (
                   <>
-                    <DropdownMenuSeparator />
-                    <DropdownMenuLabel className="text-xs text-muted-foreground">Izindi</DropdownMenuLabel>
                     {genres.filter((g) => !MAIN_GENRES.some((mg) => mg.toLowerCase() === g.toLowerCase())).map((genre) => (
                       <DropdownMenuItem key={genre} asChild>
                         <Link to={`/genre/${encodeURIComponent(genre)}`} className="cursor-pointer">{genre}</Link>
@@ -110,40 +108,30 @@ const StreamingHeader = ({ onSearch, searchQuery, onPlayVideo }: StreamingHeader
                     ))}
                   </>
                 )}
-              </DropdownMenuContent>
-            </DropdownMenu>
-
-            {/* Abasobanuzi Dropdown */}
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="text-foreground hover:text-primary gap-1">
-                  <Mic className="h-4 w-4" />
-                  Abasobanuzi
-                  <ChevronDown className="h-3 w-3" />
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent className="bg-popover border-border z-[60] w-52 max-h-72 overflow-y-auto animate-in fade-in-0 zoom-in-95 slide-in-from-top-2 duration-200">
-                <DropdownMenuLabel className="text-xs text-muted-foreground">Hitamo Umusobanuzi</DropdownMenuLabel>
-                <DropdownMenuSeparator />
-                {dubbers.map((dubber) => (
-                  <DropdownMenuItem key={dubber} asChild>
-                    <Link to={`/dubber/${encodeURIComponent(dubber)}`} className="flex items-center gap-2 cursor-pointer">
-                      <Mic className="h-3 w-3 text-primary" />
-                      {dubber}
-                    </Link>
-                  </DropdownMenuItem>
-                ))}
-                {dubbers.length === 0 && (
-                  <DropdownMenuItem disabled>Nta basobanuzi babonetse</DropdownMenuItem>
+                {dubbers.length > 0 && (
+                  <>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuLabel className="text-xs text-muted-foreground">Abasobanuzi</DropdownMenuLabel>
+                    <DropdownMenuSeparator />
+                    {dubbers.map((dubber) => (
+                      <DropdownMenuItem key={dubber} asChild>
+                        <Link to={`/dubber/${encodeURIComponent(dubber)}`} className="flex items-center gap-2 cursor-pointer">
+                          <Mic className="h-3 w-3 text-primary" />
+                          {dubber}
+                        </Link>
+                      </DropdownMenuItem>
+                    ))}
+                  </>
                 )}
               </DropdownMenuContent>
             </DropdownMenu>
 
             <Link to="/popular">
-              <Button variant="ghost" className="text-foreground hover:text-primary">Popular</Button>
+              <Button variant="ghost" size="sm" className="text-foreground hover:text-primary">Popular</Button>
             </Link>
             <Button
               variant="ghost"
+              size="sm"
               className="text-foreground hover:text-primary gap-1"
               onClick={() => {
                 if (movies.length > 0) {
@@ -153,11 +141,10 @@ const StreamingHeader = ({ onSearch, searchQuery, onPlayVideo }: StreamingHeader
               }}
             >
               <Shuffle className="h-4 w-4" />
-              Random
             </Button>
             <Link to="/pro-movies">
-              <Button variant="ghost" className="text-amber-500 hover:text-amber-400 gap-1">
-                <Crown className="h-4 w-4" />Pro
+              <Button variant="ghost" size="sm" className="text-amber-500 hover:text-amber-400 gap-1">
+                <Crown className="h-4 w-4" />
               </Button>
             </Link>
           </nav>

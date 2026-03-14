@@ -59,6 +59,7 @@ const fetchMoviesFromDB = async (): Promise<DBMovie[]> => {
       dubbed: movie.dubbed || "",
       featured: movie.featured || false,
       show_in_recent: movie.show_in_recent !== false,
+      show_in_featured: (movie as any).show_in_featured || false,
     };
   });
 
