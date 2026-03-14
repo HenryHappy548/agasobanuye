@@ -18,6 +18,7 @@ export interface DBMovie {
   dubbed?: string;
   featured?: boolean;
   show_in_recent?: boolean;
+  show_in_featured?: boolean;
 }
 
 // Create a lookup map for mockMovies posters
