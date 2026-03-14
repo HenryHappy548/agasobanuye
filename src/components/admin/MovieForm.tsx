@@ -63,6 +63,7 @@ const MovieForm = ({ movie, onSuccess }: MovieFormProps) => {
       dubbed: "",
       featured: false,
       show_in_recent: true,
+      show_in_featured: false,
     });
   }, []);
 
