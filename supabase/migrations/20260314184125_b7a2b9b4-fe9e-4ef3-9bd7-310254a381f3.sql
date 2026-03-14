@@ -1,0 +1,1 @@
+ALTER TABLE public.movies ADD COLUMN IF NOT EXISTS show_in_featured BOOLEAN NOT NULL DEFAULT false;
