@@ -188,14 +188,14 @@ const RecommendedMovies = memo(({ currentMovieId, currentMovieTitle }: Recommend
             <h3 className="text-sm font-bold text-foreground">Izindi Movie Nziza</h3>
           </div>
           
-          <div className="grid grid-cols-4 sm:grid-cols-4 gap-1.5 sm:gap-2">
+          <div className="grid grid-cols-3 sm:grid-cols-4 gap-2 sm:gap-3">
             {recommendations.map((movie) => (
               <Link
                 key={movie.id}
                 to={buildWatchPath(movie.title, movie.id)}
                 className="block group"
               >
-                <article className="relative overflow-hidden rounded-md bg-card border border-border hover:border-primary/50 transition-colors">
+                <article className="relative overflow-hidden rounded-lg bg-card border border-border hover:border-primary/50 transition-colors">
                   <div className="aspect-[2/3] overflow-hidden relative">
                     <img
                       src={movie.poster}
@@ -205,11 +205,11 @@ const RecommendedMovies = memo(({ currentMovieId, currentMovieTitle }: Recommend
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                   </div>
-                  <div className="p-1.5">
-                    <h4 className="font-bold text-foreground text-[9px] sm:text-[10px] leading-tight line-clamp-1">
+                  <div className="p-2 sm:p-2.5">
+                    <h4 className="font-bold text-foreground text-[11px] sm:text-xs leading-tight line-clamp-2">
                       {movie.title}
                     </h4>
-                    <p className="text-[8px] text-muted-foreground mt-0.5 truncate">
+                    <p className="text-[9px] sm:text-[10px] text-muted-foreground mt-0.5 truncate">
                       {movie.genre} • {movie.year}
                     </p>
                   </div>
