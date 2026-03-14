@@ -143,7 +143,7 @@ const Index = () => {
     trendingMovies: movies.filter(movie => movie.category === 'trending').slice(0, 10),
     moviesOnly: movies.filter(movie => movie.category === 'movie').slice(0, 10),
     tvShows: movies.filter(movie => movie.category === 'tv').slice(0, 10),
-    featuredItems: groupSeriesMovies(movies).slice(0, 20),
+    featuredItems: groupSeriesMovies(movies.filter(m => m.show_in_featured)).slice(0, 20),
     recentlyAdded: deduplicateSeries(movies.filter(m => m.show_in_recent !== false)).slice(0, 5),
   }), [movies]);
 

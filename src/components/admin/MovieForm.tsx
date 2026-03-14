@@ -46,6 +46,7 @@ const MovieForm = ({ movie, onSuccess }: MovieFormProps) => {
     dubbed: movie?.dubbed || "",
     featured: movie?.featured || false,
     show_in_recent: movie?.show_in_recent !== undefined ? movie.show_in_recent : true,
+    show_in_featured: movie?.show_in_featured || false,
   });
 
   const resetForm = useCallback(() => {
@@ -62,6 +63,7 @@ const MovieForm = ({ movie, onSuccess }: MovieFormProps) => {
       dubbed: "",
       featured: false,
       show_in_recent: true,
+      show_in_featured: false,
     });
   }, []);
 
@@ -99,6 +101,7 @@ const MovieForm = ({ movie, onSuccess }: MovieFormProps) => {
         dubbed: formData.dubbed.trim(),
         featured: formData.featured,
         show_in_recent: formData.show_in_recent,
+        show_in_featured: formData.show_in_featured,
       };
 
       if (movie?.id) {
@@ -400,6 +403,25 @@ const MovieForm = ({ movie, onSuccess }: MovieFormProps) => {
             </Label>
             <p className="text-xs text-muted-foreground mt-0.5">
               Display this movie in the recently added sidebar on homepage
+            </p>
+          </div>
+        </div>
+
+        <div className="flex items-center gap-3 p-3 bg-amber-500/5 border border-amber-500/20 rounded-lg">
+          <input
+            type="checkbox"
+            id="show_in_featured"
+            checked={formData.show_in_featured}
+            onChange={(e) => handleInputChange("show_in_featured", e.target.checked)}
+            className="w-5 h-5 rounded border-amber-500 accent-amber-500"
+            disabled={loading}
+          />
+          <div>
+            <Label htmlFor="show_in_featured" className="cursor-pointer font-medium">
+              ⭐ Show in "Featured Movies"
+            </Label>
+            <p className="text-xs text-muted-foreground mt-0.5">
+              Display this movie in the Featured Movies carousel on homepage
             </p>
           </div>
         </div>

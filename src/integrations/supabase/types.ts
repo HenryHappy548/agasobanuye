@@ -194,6 +194,7 @@ export type Database = {
           id: string
           poster_url: string | null
           rating: string
+          show_in_featured: boolean
           show_in_recent: boolean
           title: string
           updated_at: string
@@ -211,6 +212,7 @@ export type Database = {
           id?: string
           poster_url?: string | null
           rating: string
+          show_in_featured?: boolean
           show_in_recent?: boolean
           title: string
           updated_at?: string
@@ -228,6 +230,7 @@ export type Database = {
           id?: string
           poster_url?: string | null
           rating?: string
+          show_in_featured?: boolean
           show_in_recent?: boolean
           title?: string
           updated_at?: string
