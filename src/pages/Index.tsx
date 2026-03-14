@@ -146,7 +146,8 @@ const Index = () => {
     featuredItems: (() => {
       // Find base names of any series episode marked as featured
       const featuredSeriesBases = new Set<string>();
-      movies.filter(m => m.show_in_featured).forEach(m => {
+      const explicitlyFeatured = movies.filter(m => m.show_in_featured);
+      explicitlyFeatured.forEach(m => {
         const base = getSeriesBaseName(m.title).toLowerCase();
         if (base !== m.title.toLowerCase()) featuredSeriesBases.add(base);
       });
@@ -156,7 +157,12 @@ const Index = () => {
         const base = getSeriesBaseName(m.title).toLowerCase();
         return featuredSeriesBases.has(base);
       });
-      return groupSeriesMovies(featuredPool).slice(0, 20);
+      const grouped = groupSeriesMovies(featuredPool).slice(0, 20);
+      // Fallback: if no movies are marked as featured, show recent movies
+      if (grouped.length === 0) {
+        return groupSeriesMovies(movies).slice(0, 20);
+      }
+      return grouped;
     })(),
     recentlyAdded: deduplicateSeries(movies.filter(m => m.show_in_recent !== false)).slice(0, 5),
   }), [movies]);
