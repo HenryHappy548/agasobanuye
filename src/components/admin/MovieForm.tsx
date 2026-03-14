@@ -101,6 +101,7 @@ const MovieForm = ({ movie, onSuccess }: MovieFormProps) => {
         dubbed: formData.dubbed.trim(),
         featured: formData.featured,
         show_in_recent: formData.show_in_recent,
+        show_in_featured: formData.show_in_featured,
       };
 
       if (movie?.id) {
