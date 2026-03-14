@@ -29,7 +29,7 @@ const mockPosterLookup = new Map(
 const fetchMoviesFromDB = async (): Promise<DBMovie[]> => {
   const { data: dbMovies, error } = await supabase
     .from("movies")
-    .select("id,title,poster_url,year,genre,rating,category,description,video_url,download_url,dubbed,featured,show_in_recent")
+    .select("id,title,poster_url,year,genre,rating,category,description,video_url,download_url,dubbed,featured,show_in_recent,show_in_featured")
     .order("created_at", { ascending: false });
 
   if (error) {
