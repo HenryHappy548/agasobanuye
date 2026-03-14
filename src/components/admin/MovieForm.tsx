@@ -46,6 +46,7 @@ const MovieForm = ({ movie, onSuccess }: MovieFormProps) => {
     dubbed: movie?.dubbed || "",
     featured: movie?.featured || false,
     show_in_recent: movie?.show_in_recent !== undefined ? movie.show_in_recent : true,
+    show_in_featured: movie?.show_in_featured || false,
   });
 
   const resetForm = useCallback(() => {
