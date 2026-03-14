@@ -143,7 +143,21 @@ const Index = () => {
     trendingMovies: movies.filter(movie => movie.category === 'trending').slice(0, 10),
     moviesOnly: movies.filter(movie => movie.category === 'movie').slice(0, 10),
     tvShows: movies.filter(movie => movie.category === 'tv').slice(0, 10),
-    featuredItems: groupSeriesMovies(movies.filter(m => m.show_in_featured)).slice(0, 20),
+    featuredItems: (() => {
+      // Find base names of any series episode marked as featured
+      const featuredSeriesBases = new Set<string>();
+      movies.filter(m => m.show_in_featured).forEach(m => {
+        const base = getSeriesBaseName(m.title).toLowerCase();
+        if (base !== m.title.toLowerCase()) featuredSeriesBases.add(base);
+      });
+      // Include ALL episodes of featured series + standalone featured movies
+      const featuredPool = movies.filter(m => {
+        if (m.show_in_featured) return true;
+        const base = getSeriesBaseName(m.title).toLowerCase();
+        return featuredSeriesBases.has(base);
+      });
+      return groupSeriesMovies(featuredPool).slice(0, 20);
+    })(),
     recentlyAdded: deduplicateSeries(movies.filter(m => m.show_in_recent !== false)).slice(0, 5),
   }), [movies]);
 
