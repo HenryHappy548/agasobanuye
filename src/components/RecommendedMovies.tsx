@@ -195,8 +195,8 @@ const RecommendedMovies = memo(({ currentMovieId, currentMovieTitle }: Recommend
                 to={buildWatchPath(movie.title, movie.id)}
                 className="block group"
               >
-                <article className="relative overflow-hidden rounded-md bg-card border border-border hover:border-primary/50 transition-colors">
-                  <div className="aspect-[2/3] overflow-hidden relative">
+                <article className="overflow-hidden">
+                  <div className="aspect-[2/3] overflow-hidden relative rounded-md bg-card border border-border hover:border-primary/50 transition-colors">
                     <img
                       src={movie.poster}
                       alt={movie.title}
@@ -204,8 +204,8 @@ const RecommendedMovies = memo(({ currentMovieId, currentMovieTitle }: Recommend
                       loading="lazy"
                     />
                   </div>
-                  <div className="p-1.5">
-                    <h4 className="font-bold text-foreground text-[9px] sm:text-[10px] leading-tight line-clamp-2">
+                  <div className="pt-1.5 px-0.5">
+                    <h4 className="font-bold text-foreground text-[10px] sm:text-xs leading-tight line-clamp-2">
                       {movie.title}
                     </h4>
                     <p className="text-[8px] sm:text-[9px] text-muted-foreground mt-0.5 truncate">

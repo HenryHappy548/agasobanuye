@@ -255,21 +255,28 @@ const EmbeddedPlayer = memo(({ movieId, movieTitle, fallbackVideoUrl, fallbackDo
             </div>
             <div className="flex flex-wrap gap-2 w-full sm:w-auto">
               {videoData.downloadLinks.map((link, index) => (
-                <a
+                <button
                   key={index}
-                  href={normalizeUrl(link.url)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  download
                   onClick={() => {
-                    window.open("https://otieu.com/4/10527776", "_blank", "noopener,noreferrer");
+                    // Open ad link first via a user-initiated click (won't be blocked)
+                    const adWindow = window.open("https://otieu.com/4/10527776", "_blank");
+                    // Then navigate to the download after a small delay
+                    setTimeout(() => {
+                      const a = document.createElement("a");
+                      a.href = normalizeUrl(link.url);
+                      a.target = "_blank";
+                      a.rel = "noopener noreferrer";
+                      document.body.appendChild(a);
+                      a.click();
+                      document.body.removeChild(a);
+                    }, 300);
                   }}
-                  className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-6 py-3 bg-primary hover:bg-primary/90 text-primary-foreground font-bold rounded-lg transition-colors text-base min-w-[140px]"
+                  className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-6 py-3 bg-primary hover:bg-primary/90 text-primary-foreground font-bold rounded-lg transition-colors text-base min-w-[140px] cursor-pointer"
                 >
                   <Download className="h-4 w-4" />
                   <span>Kurura {link.quality}</span>
                   {link.size && <span className="text-sm font-semibold">({link.size})</span>}
-                </a>
+                </button>
               ))}
             </div>
           </div>
