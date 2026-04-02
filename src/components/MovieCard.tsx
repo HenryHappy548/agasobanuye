@@ -48,7 +48,7 @@ const MovieCard = memo(({ movie, priority = false }: MovieCardProps) => {
             src={movie.poster}
             alt={`${movie.title} (${movie.year}) - Rwaflix Agasobanuye`}
             priority={priority}
-            className="w-full h-full"
+            className="w-full h-full object-cover object-top"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
           

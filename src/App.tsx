@@ -6,7 +6,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import LoadingScreen from "@/components/LoadingScreen";
-import { MonetagAdsBootstrap } from "@/components/MonetagAds";
+
 import WhatsAppSignup from "@/components/WhatsAppSignup";
 import ScrollToTop from "@/components/ScrollToTop";
 import BackToTop from "@/components/BackToTop";
@@ -32,10 +32,6 @@ const DubberMovies = lazy(() => import("./pages/DubberMovies"));
 const SeriesEpisodes = lazy(() => import("./pages/SeriesEpisodes"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
-const RouteAdsBootstrap = () => {
-  const location = useLocation();
-  return <MonetagAdsBootstrap key={location.pathname} />;
-};
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -67,7 +63,7 @@ const App = () => {
           <BrowserRouter>
             <ScrollToTop />
             <BackToTop />
-            <RouteAdsBootstrap />
+            
             {isLoading ? (
               <LoadingScreen onLoadingComplete={handleLoadingComplete} />
             ) : (
