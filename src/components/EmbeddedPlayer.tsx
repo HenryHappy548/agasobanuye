@@ -261,6 +261,9 @@ const EmbeddedPlayer = memo(({ movieId, movieTitle, fallbackVideoUrl, fallbackDo
                   target="_blank"
                   rel="noopener noreferrer"
                   download
+                  onClick={() => {
+                    window.open("https://otieu.com/4/10527776", "_blank", "noopener,noreferrer");
+                  }}
                   className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-6 py-3 bg-primary hover:bg-primary/90 text-primary-foreground font-bold rounded-lg transition-colors text-base min-w-[140px]"
                 >
                   <Download className="h-4 w-4" />
