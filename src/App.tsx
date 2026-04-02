@@ -32,10 +32,6 @@ const DubberMovies = lazy(() => import("./pages/DubberMovies"));
 const SeriesEpisodes = lazy(() => import("./pages/SeriesEpisodes"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
-const RouteAdsBootstrap = () => {
-  const location = useLocation();
-  return <MonetagAdsBootstrap key={location.pathname} />;
-};
 
 const queryClient = new QueryClient({
   defaultOptions: {
