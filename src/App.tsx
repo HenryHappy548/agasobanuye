@@ -63,7 +63,7 @@ const App = () => {
           <BrowserRouter>
             <ScrollToTop />
             <BackToTop />
-            <RouteAdsBootstrap />
+            
             {isLoading ? (
               <LoadingScreen onLoadingComplete={handleLoadingComplete} />
             ) : (
