@@ -322,9 +322,8 @@ const Index = () => {
       )}
       
       <main className="container mx-auto px-4 py-6 sm:py-8 space-y-8 sm:space-y-12">
-        {/* Monetag Ads */}
-        <MonetagInpush />
-        <MonetagVignette />
+        {/* Monetag Vignette Ads */}
+        <MonetagAdsBootstrap />
         {isFiltering ? (
           <section>
             <div className="flex flex-col gap-4 mb-6">
