@@ -11,7 +11,7 @@ import { ContactAdminButton } from "@/components/ContactAdminButton";
 import { Button } from "@/components/ui/button";
 import { useMovies } from "@/hooks/useMovies";
 import { isValidVideoId, sanitizeTextInput } from "@/lib/security";
-import { MonetagInpush, MonetagVignette } from "@/components/MonetagAds";
+import { MonetagAdsBootstrap } from "@/components/MonetagAds";
 import SupportButton from "@/components/SupportButton";
 import { usePageVisitTracker } from "@/hooks/usePageVisitTracker";
 import { buildWatchPath } from "@/lib/watchRoute";
