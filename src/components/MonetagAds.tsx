@@ -42,27 +42,18 @@ export const MonetagVignette = () => {
 };
 
 /**
- * Loads Monetag scripts once per page session (refresh/new page = new ads).
- * Requested timing:
- * - Wait ~10s after page loads, then show Vignette
- * - Wait another ~10s, then load Inpush
+ * Loads 2 Monetag Vignette banners (zone 10527843) after page loads successfully.
+ * Only fires once per page session.
  */
 export const MonetagAdsBootstrap = ({
-  vignetteDelayMs = 10_000,
-  inpushDelayMs = 20_000,
+  delayMs = 5_000,
 }: {
-  vignetteDelayMs?: number;
-  inpushDelayMs?: number;
+  delayMs?: number;
 }) => {
   const [shouldLoad, setShouldLoad] = useState(false);
 
   useEffect(() => {
-    // Check if we already showed ads on this page this session
-    if (hasShownAdsThisSession()) {
-      return;
-    }
-
-    // Mark that we're showing ads this session
+    if (hasShownAdsThisSession()) return;
     markAdsShownThisSession();
     setShouldLoad(true);
   }, []);
@@ -70,19 +61,21 @@ export const MonetagAdsBootstrap = ({
   useEffect(() => {
     if (!shouldLoad) return;
 
-    const vignetteTimer = window.setTimeout(() => {
-      appendMonetagScriptOnce("10527712", "https://gizokraijaw.net/vignette.min.js");
-    }, vignetteDelayMs);
+    // Load first vignette banner after delay
+    const timer1 = window.setTimeout(() => {
+      appendMonetagScriptOnce("10527843_1", "https://nap5k.com/tag.min.js");
+    }, delayMs);
 
-    const inpushTimer = window.setTimeout(() => {
-      appendMonetagScriptOnce("10527843", "https://nap5k.com/tag.min.js");
-    }, inpushDelayMs);
+    // Load second vignette banner shortly after
+    const timer2 = window.setTimeout(() => {
+      appendMonetagScriptOnce("10527843_2", "https://nap5k.com/tag.min.js");
+    }, delayMs + 3_000);
 
     return () => {
-      window.clearTimeout(vignetteTimer);
-      window.clearTimeout(inpushTimer);
+      window.clearTimeout(timer1);
+      window.clearTimeout(timer2);
     };
-  }, [shouldLoad, vignetteDelayMs, inpushDelayMs]);
+  }, [shouldLoad, delayMs]);
 
   return null;
 };
