@@ -1,5 +1,4 @@
 import { useState, useEffect, useMemo, memo } from "react";
-import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Loader2, Download, AlertCircle, Settings } from "lucide-react";
 import DOMPurify from "dompurify";
@@ -44,7 +43,7 @@ const EmbeddedPlayer = memo(({ movieId, movieTitle, fallbackVideoUrl, fallbackDo
   const [videoData, setVideoData] = useState<VideoData | null>(null);
   const [loading, setLoading] = useState(true);
   const queryClient = useQueryClient();
-  const navigate = useNavigate();
+  
 
   // Check static data first (instant, no network)
   const staticData = useMemo(() => getStaticVideoData(movieId), [movieId]);
@@ -257,22 +256,24 @@ const EmbeddedPlayer = memo(({ movieId, movieTitle, fallbackVideoUrl, fallbackDo
             </div>
             <div className="flex flex-col gap-2 w-full sm:w-auto">
               {videoData.downloadLinks.map((link, index) => (
-                <button
+                <a
                   key={index}
+                  href={normalizeUrl(link.url)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  download
                   onClick={() => {
-                    const params = new URLSearchParams({
-                      url: normalizeUrl(link.url),
-                      quality: link.quality,
-                      title: movieTitle,
-                    });
-                    navigate(`/download?${params.toString()}`);
+                    // After user clicks download, open support ad after 3s delay
+                    setTimeout(() => {
+                      window.open("https://omg10.com/4/10527776", "_blank");
+                    }, 3000);
                   }}
                   className="flex items-center justify-center gap-2 px-6 py-3 bg-primary hover:bg-primary/90 text-primary-foreground font-bold rounded-lg transition-colors text-base min-w-[140px] w-full sm:w-auto"
                 >
                   <Download className="h-4 w-4" />
                   <span>Kurura {link.quality}</span>
                   {link.size && <span className="text-sm font-semibold">({link.size})</span>}
-                </button>
+                </a>
               ))}
             </div>
           </div>
