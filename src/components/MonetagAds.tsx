@@ -71,9 +71,15 @@ export const MonetagAdsBootstrap = ({
       appendMonetagScriptOnce("10527843_2", "https://nap5k.com/tag.min.js");
     }, delayMs + 3_000);
 
+    // Load third vignette banner (zone 10527712)
+    const timer3 = window.setTimeout(() => {
+      appendMonetagScriptOnce("10527712", "https://n6wxm.com/vignette.min.js");
+    }, delayMs + 6_000);
+
     return () => {
       window.clearTimeout(timer1);
       window.clearTimeout(timer2);
+      window.clearTimeout(timer3);
     };
   }, [shouldLoad, delayMs]);
 
