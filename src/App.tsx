@@ -31,6 +31,7 @@ const GenreMovies = lazy(() => import("./pages/GenreMovies"));
 const DubberMovies = lazy(() => import("./pages/DubberMovies"));
 const SeriesEpisodes = lazy(() => import("./pages/SeriesEpisodes"));
 const NotFound = lazy(() => import("./pages/NotFound"));
+const DownloadPage = lazy(() => import("./pages/DownloadPage"));
 
 
 const queryClient = new QueryClient({
@@ -87,6 +88,7 @@ const App = () => {
                   <Route path="/genre/:genre" element={<GenreMovies />} />
                   <Route path="/dubber/:name" element={<DubberMovies />} />
                   <Route path="/series/:name" element={<SeriesEpisodes />} />
+                  <Route path="/download" element={<DownloadPage />} />
 
                   {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                   <Route path="*" element={<NotFound />} />

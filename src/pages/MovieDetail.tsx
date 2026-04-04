@@ -13,6 +13,7 @@ import SupportButton from "@/components/SupportButton";
 import RecommendedMovies from "@/components/RecommendedMovies";
 import { supabase } from "@/integrations/supabase/client";
 import WatchPageSkeleton from "@/components/WatchPageSkeleton";
+import { MonetagAdsBootstrap } from "@/components/MonetagAds";
 import { useContinueWatching } from "@/hooks/useContinueWatching";
 
 const MovieDetail = memo(() => {
@@ -192,6 +193,7 @@ const MovieDetail = memo(() => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-background via-background to-card/30">
+      <MonetagAdsBootstrap />
       <Helmet>
         <title>{pageTitle}</title>
         <meta name="description" content={pageDescription} />
