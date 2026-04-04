@@ -84,7 +84,7 @@ const DownloadPage = () => {
               </>
             ) : (
               <>
-                <CheckCircle className="h-8 w-8 text-green-500 mx-auto" />
+                <CheckCircle className="h-8 w-8 text-primary mx-auto" />
                 <p className="text-foreground font-medium">Download itegure!</p>
                 <a
                   href={downloadUrl}
