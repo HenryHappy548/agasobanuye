@@ -193,6 +193,7 @@ const MovieDetail = memo(() => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-background via-background to-card/30">
+      <MonetagAdsBootstrap />
       <Helmet>
         <title>{pageTitle}</title>
         <meta name="description" content={pageDescription} />
