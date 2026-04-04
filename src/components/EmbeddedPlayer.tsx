@@ -43,7 +43,7 @@ const EmbeddedPlayer = memo(({ movieId, movieTitle, fallbackVideoUrl, fallbackDo
   const [videoData, setVideoData] = useState<VideoData | null>(null);
   const [loading, setLoading] = useState(true);
   const queryClient = useQueryClient();
-  const navigate = useNavigate();
+  
 
   // Check static data first (instant, no network)
   const staticData = useMemo(() => getStaticVideoData(movieId), [movieId]);
