@@ -43,7 +43,6 @@ const EmbeddedPlayer = memo(({ movieId, movieTitle, fallbackVideoUrl, fallbackDo
   const [videoData, setVideoData] = useState<VideoData | null>(null);
   const [loading, setLoading] = useState(true);
   const queryClient = useQueryClient();
-  
 
   // Check static data first (instant, no network)
   const staticData = useMemo(() => getStaticVideoData(movieId), [movieId]);
@@ -256,24 +255,28 @@ const EmbeddedPlayer = memo(({ movieId, movieTitle, fallbackVideoUrl, fallbackDo
             </div>
             <div className="flex flex-col gap-2 w-full sm:w-auto">
               {videoData.downloadLinks.map((link, index) => (
-                <a
-                  key={index}
-                  href={normalizeUrl(link.url)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  download
-                  onClick={() => {
-                    // After user clicks download, open support ad after 3s delay
-                    setTimeout(() => {
-                      window.open("https://omg10.com/4/10527776", "_blank");
-                    }, 3000);
-                  }}
-                  className="flex items-center justify-center gap-2 px-6 py-3 bg-primary hover:bg-primary/90 text-primary-foreground font-bold rounded-lg transition-colors text-base min-w-[140px] w-full sm:w-auto"
-                >
-                  <Download className="h-4 w-4" />
-                  <span>Kurura {link.quality}</span>
-                  {link.size && <span className="text-sm font-semibold">({link.size})</span>}
-                </a>
+                <div key={index} className="flex gap-2 w-full sm:w-auto">
+                  <a
+                    href={normalizeUrl(link.url)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    download
+                    className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-6 py-3 bg-primary hover:bg-primary/90 text-primary-foreground font-bold rounded-lg transition-colors text-base min-w-[140px]"
+                  >
+                    <Download className="h-4 w-4" />
+                    <span>Kurura {link.quality}</span>
+                    {link.size && <span className="text-sm font-semibold">({link.size})</span>}
+                  </a>
+
+                  <a
+                    href="https://otieu.com/4/10527776"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center px-4 py-3 bg-secondary hover:bg-secondary/80 text-secondary-foreground font-medium rounded-lg transition-colors text-sm whitespace-nowrap"
+                  >
+                    Open link
+                  </a>
+                </div>
               ))}
             </div>
           </div>
