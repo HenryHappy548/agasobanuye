@@ -34,26 +34,30 @@ const enhanceIframe = (iframe: HTMLIFrameElement) => {
 
   const btn = document.createElement("button");
   btn.className = "fs-btn-overlay";
-  btn.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>`;
+  btn.innerHTML = `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg><span style="font-size:12px;font-weight:600;margin-left:6px">Fullscreen</span>`;
   btn.title = "Fullscreen";
   
   Object.assign(btn.style, {
     position: "absolute",
-    bottom: "12px",
-    right: "12px",
+    bottom: "10px",
+    right: "10px",
     zIndex: "10",
-    background: "rgba(0,0,0,0.7)",
+    background: "rgba(0,0,0,0.75)",
+    backdropFilter: "blur(4px)",
     color: "white",
-    border: "none",
-    borderRadius: "6px",
-    padding: "8px",
+    border: "1px solid rgba(255,255,255,0.2)",
+    borderRadius: "8px",
+    padding: "8px 14px",
     cursor: "pointer",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    opacity: "0",
-    transition: "opacity 0.2s",
+    opacity: "0.85",
+    transition: "opacity 0.2s, transform 0.15s",
     pointerEvents: "auto",
+    fontFamily: "system-ui, -apple-system, sans-serif",
+    letterSpacing: "0.02em",
+    boxShadow: "0 2px 8px rgba(0,0,0,0.4)",
   });
 
   // Show on hover
