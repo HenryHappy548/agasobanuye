@@ -11,6 +11,7 @@ import { toast } from "sonner";
 import { useMovies, DBMovie } from "@/hooks/useMovies";
 import SupportButton from "@/components/SupportButton";
 import RecommendedMovies from "@/components/RecommendedMovies";
+import MovieSEOContent from "@/components/MovieSEOContent";
 import { supabase } from "@/integrations/supabase/client";
 import WatchPageSkeleton from "@/components/WatchPageSkeleton";
 import { useContinueWatching } from "@/hooks/useContinueWatching";
@@ -130,8 +131,8 @@ const MovieDetail = memo(() => {
 
   const dubberName = movie.rating ? ` by ${movie.rating}` : '';
   const pageTitle = `Agasobanuye ${movie.title}${dubberName} | Rwaflix Store`;
-  const pageDescription = `Reba ${movie.title} (${movie.year}) agasobanuye${dubberName} ku buntu kuri Rwaflix Store. ${movie.genre} movie HD quality. Stream & download free.`;
-  const seoKeywords = `${movie.title}, ${movie.title} agasobanuye, ${movie.rating || ''}, watch ${movie.title} online, ${movie.genre}, ${movie.year}, Rwaflix, Agasobanuye, Oshakur, Cinebeta, free streaming Rwanda`;
+  const pageDescription = `Reba ${movie.title} (${movie.year}) agasobanuye${dubberName} ku buntu kuri Rwaflix Store. ${movie.genre} movie HD quality. Stream & download free. Films z'agasobanuye mu Kinyarwanda.`;
+  const seoKeywords = `${movie.title}, ${movie.title} agasobanuye, agasobanuye movies, films z'agasobanuye, movies explained in Kinyarwanda, ${movie.rating || ''}, watch ${movie.title} online, ${movie.genre}, ${movie.year}, Rwaflix, Agasobanuye, Oshakur, Cinebeta, free streaming Rwanda`;
 
   // Schema.org structured data - enhanced for Google
   const videoSchema = {
@@ -190,6 +191,28 @@ const MovieDetail = memo(() => {
     }
   };
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": `Nshobora kureba ${movie.title} agasobanuye hehe?`,
+        "acceptedAnswer": { "@type": "Answer", "text": `Urashobora kureba ${movie.title} agasobanuye ku buntu kuri Rwaflix Store.` }
+      },
+      {
+        "@type": "Question",
+        "name": `Nshobora kurura (download) ${movie.title}?`,
+        "acceptedAnswer": { "@type": "Answer", "text": `Yego! Urashobora kurura ${movie.title} mu HD quality kuri Rwaflix Store.` }
+      },
+      {
+        "@type": "Question",
+        "name": `${movie.title} yasobanuwe na nde?`,
+        "acceptedAnswer": { "@type": "Answer", "text": movie.rating ? `${movie.title} yasobanuwe na ${movie.rating} mu Kinyarwanda.` : `${movie.title} iraboneka agasobanuye mu Kinyarwanda kuri Rwaflix Store.` }
+      }
+    ]
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-background via-background to-card/30">
       <Helmet>
@@ -209,6 +232,7 @@ const MovieDetail = memo(() => {
         <script type="application/ld+json">{JSON.stringify(videoSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(movieSchema)}</script>
+        <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
       </Helmet>
 
       {/* Navigation Bar */}
@@ -322,30 +346,17 @@ const MovieDetail = memo(() => {
         {/* Recommended Movies - below Download + Shyigikira */}
         <RecommendedMovies currentMovieId={movie.id} currentMovieTitle={movie.title} />
 
-        {/* About Section */}
-        <section className="bg-gradient-to-br from-card/80 to-card/40 rounded-xl p-5 border border-border/50">
-          <h2 className="text-base font-bold text-foreground mb-3 flex items-center gap-2">
-            <Film className="h-4 w-4 text-primary" />
-            About
-          </h2>
-          <p className="text-muted-foreground text-sm leading-relaxed mb-3">
-            Reba {movie.title} ({movie.year}) ku buntu kuri Rwaflix. Iyi {movie.genre.toLowerCase()} movie iraboneka mu HD quality.
-          </p>
-          <p className="text-muted-foreground text-sm leading-relaxed">
-            Watch {movie.title} ({movie.year}) online for free on Rwaflix. This {movie.genre.toLowerCase()} is available in HD quality with streaming and download options.
-          </p>
-
-          {/* Tags */}
-          <div className="mt-4 pt-3 border-t border-border/30">
-            <div className="flex flex-wrap gap-1.5">
-              {[movie.genre, 'Agasobanuye', 'HD', movie.year, 'Rwaflix'].map((tag) => (
-                <span key={tag} className="px-2 py-0.5 bg-primary/10 rounded-full text-xs text-primary font-medium">
-                  {tag}
-                </span>
-              ))}
-            </div>
-          </div>
-        </section>
+        {/* Rich SEO Content - FAQ, Keywords, Internal Links */}
+        <MovieSEOContent
+          title={movie.title}
+          year={movie.year}
+          genre={movie.genre}
+          rating={movie.rating}
+          category={movie.category}
+          description={(movie as DBMovie).description || undefined}
+          dubbed={(movie as DBMovie).dubbed || undefined}
+          id={movie.id}
+        />
 
         {/* Comments Section - Movie Specific */}
         <section>
