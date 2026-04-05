@@ -60,11 +60,16 @@ const enhanceIframe = (iframe: HTMLIFrameElement) => {
     boxShadow: "0 2px 8px rgba(0,0,0,0.4)",
   });
 
-  // Show on hover
+  // Show on hover (desktop), always visible on mobile
   wrapper.style.position = "relative";
-  wrapper.addEventListener("mouseenter", () => { btn.style.opacity = "1"; });
-  wrapper.addEventListener("mouseleave", () => { btn.style.opacity = "0"; });
-  // Always visible on touch
+  const isMobile = "ontouchstart" in window || navigator.maxTouchPoints > 0;
+  if (isMobile) {
+    btn.style.opacity = "1";
+  } else {
+    btn.style.opacity = "0.6";
+    wrapper.addEventListener("mouseenter", () => { btn.style.opacity = "1"; btn.style.transform = "scale(1.05)"; });
+    wrapper.addEventListener("mouseleave", () => { btn.style.opacity = "0.6"; btn.style.transform = "scale(1)"; });
+  }
   wrapper.addEventListener("touchstart", () => { btn.style.opacity = "1"; }, { passive: true });
 
   btn.addEventListener("click", (e) => {
