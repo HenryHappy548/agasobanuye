@@ -346,30 +346,17 @@ const MovieDetail = memo(() => {
         {/* Recommended Movies - below Download + Shyigikira */}
         <RecommendedMovies currentMovieId={movie.id} currentMovieTitle={movie.title} />
 
-        {/* About Section */}
-        <section className="bg-gradient-to-br from-card/80 to-card/40 rounded-xl p-5 border border-border/50">
-          <h2 className="text-base font-bold text-foreground mb-3 flex items-center gap-2">
-            <Film className="h-4 w-4 text-primary" />
-            About
-          </h2>
-          <p className="text-muted-foreground text-sm leading-relaxed mb-3">
-            Reba {movie.title} ({movie.year}) ku buntu kuri Rwaflix. Iyi {movie.genre.toLowerCase()} movie iraboneka mu HD quality.
-          </p>
-          <p className="text-muted-foreground text-sm leading-relaxed">
-            Watch {movie.title} ({movie.year}) online for free on Rwaflix. This {movie.genre.toLowerCase()} is available in HD quality with streaming and download options.
-          </p>
-
-          {/* Tags */}
-          <div className="mt-4 pt-3 border-t border-border/30">
-            <div className="flex flex-wrap gap-1.5">
-              {[movie.genre, 'Agasobanuye', 'HD', movie.year, 'Rwaflix'].map((tag) => (
-                <span key={tag} className="px-2 py-0.5 bg-primary/10 rounded-full text-xs text-primary font-medium">
-                  {tag}
-                </span>
-              ))}
-            </div>
-          </div>
-        </section>
+        {/* Rich SEO Content - FAQ, Keywords, Internal Links */}
+        <MovieSEOContent
+          title={movie.title}
+          year={movie.year}
+          genre={movie.genre}
+          rating={movie.rating}
+          category={movie.category}
+          description={(movie as DBMovie).description || undefined}
+          dubbed={(movie as DBMovie).dubbed || undefined}
+          id={movie.id}
+        />
 
         {/* Comments Section - Movie Specific */}
         <section>
