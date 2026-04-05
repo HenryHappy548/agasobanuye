@@ -11,6 +11,7 @@ import { toast } from "sonner";
 import { useMovies, DBMovie } from "@/hooks/useMovies";
 import SupportButton from "@/components/SupportButton";
 import RecommendedMovies from "@/components/RecommendedMovies";
+import MovieSEOContent from "@/components/MovieSEOContent";
 import { supabase } from "@/integrations/supabase/client";
 import WatchPageSkeleton from "@/components/WatchPageSkeleton";
 import { useContinueWatching } from "@/hooks/useContinueWatching";
