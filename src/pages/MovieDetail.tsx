@@ -191,6 +191,28 @@ const MovieDetail = memo(() => {
     }
   };
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": `Nshobora kureba ${movie.title} agasobanuye hehe?`,
+        "acceptedAnswer": { "@type": "Answer", "text": `Urashobora kureba ${movie.title} agasobanuye ku buntu kuri Rwaflix Store.` }
+      },
+      {
+        "@type": "Question",
+        "name": `Nshobora kurura (download) ${movie.title}?`,
+        "acceptedAnswer": { "@type": "Answer", "text": `Yego! Urashobora kurura ${movie.title} mu HD quality kuri Rwaflix Store.` }
+      },
+      {
+        "@type": "Question",
+        "name": `${movie.title} yasobanuwe na nde?`,
+        "acceptedAnswer": { "@type": "Answer", "text": movie.rating ? `${movie.title} yasobanuwe na ${movie.rating} mu Kinyarwanda.` : `${movie.title} iraboneka agasobanuye mu Kinyarwanda kuri Rwaflix Store.` }
+      }
+    ]
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-background via-background to-card/30">
       <Helmet>
@@ -210,6 +232,7 @@ const MovieDetail = memo(() => {
         <script type="application/ld+json">{JSON.stringify(videoSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(movieSchema)}</script>
+        <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
       </Helmet>
 
       {/* Navigation Bar */}
