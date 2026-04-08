@@ -162,6 +162,7 @@ export const getRelatedMovies = (currentMovie: DBMovie, allMovies: DBMovie[], li
       const otherMatch = m.title.match(/(.+?)\s*S(\d+)\s*E(\d+)/i);
       return otherMatch && 
         otherMatch[1].trim().toLowerCase() === baseName.toLowerCase() &&
+        (m.rating || '').toLowerCase() === (currentMovie.rating || '').toLowerCase() &&
         m.id !== currentMovie.id &&
         !related.find(r => r.id === m.id);
     }).sort((a, b) => {

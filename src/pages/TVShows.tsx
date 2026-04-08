@@ -1,12 +1,14 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { Helmet } from "react-helmet-async";
 import StreamingHeader from "@/components/StreamingHeader";
 import MovieCard from "@/components/MovieCard";
+import SeriesCard from "@/components/SeriesCard";
 import VideoPlayer from "@/components/VideoPlayer";
 import Footer from "@/components/Footer";
 import { useMovies } from "@/hooks/useMovies";
 import { Skeleton } from "@/components/ui/skeleton";
 import SupportButton from "@/components/SupportButton";
+import { groupSeriesMovies } from "@/lib/seriesUtils";
 
 const TVShows = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -16,10 +18,17 @@ const TVShows = () => {
 
   const tvShows = movies.filter(movie => movie.category === 'tv');
   
-  const filteredShows = tvShows.filter(show =>
-    show.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    show.genre.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  const filteredShows = useMemo(() => {
+    let filtered = tvShows;
+    if (searchQuery.trim()) {
+      const query = searchQuery.toLowerCase();
+      filtered = tvShows.filter(show =>
+        show.title.toLowerCase().includes(query) ||
+        show.genre.toLowerCase().includes(query)
+      );
+    }
+    return groupSeriesMovies(filtered);
+  }, [tvShows, searchQuery]);
 
   const handlePlayVideo = (videoId: string) => {
     setSelectedVideoId(videoId);
@@ -70,12 +79,12 @@ const TVShows = () => {
             </div>
           ) : (
             <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-2 sm:gap-3">
-              {filteredShows.map((show) => (
-                <MovieCard
-                  key={show.id}
-                  movie={show}
-                  onPlay={handlePlayVideo}
-                />
+              {filteredShows.map((item) => (
+                item.type === 'series' ? (
+                  <SeriesCard key={`${item.group.baseName}-${item.group.dubber}`} group={item.group} />
+                ) : (
+                  <MovieCard key={item.movie.id} movie={item.movie} onPlay={handlePlayVideo} />
+                )
               ))}
             </div>
           )}
