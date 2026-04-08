@@ -1,4 +1,4 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useSearchParams } from "react-router-dom";
 import { useMemo } from "react";
 import { Helmet } from "react-helmet-async";
 import { ArrowLeft, Play, ExternalLink } from "lucide-react";
@@ -12,25 +12,31 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 const SeriesEpisodes = () => {
   const { name } = useParams<{ name: string }>();
+  const [searchParams] = useSearchParams();
   const { movies, loading } = useMovies();
 
   const decodedName = decodeURIComponent(name || "");
+  const dubberFilter = searchParams.get("dubber") || "";
 
   const episodes = useMemo(() => {
     return movies
       .filter((m) => {
         const base = getSeriesBaseName(m.title).toLowerCase();
-        return base === decodedName.toLowerCase();
+        const matchesName = base === decodedName.toLowerCase();
+        // If dubber filter is set, also match by dubber (rating field)
+        if (dubberFilter) {
+          return matchesName && (m.rating || '').toLowerCase() === dubberFilter.toLowerCase();
+        }
+        return matchesName;
       })
       .sort((a, b) => {
-        // Sort by episode number
         const aMatch = a.title.match(/E(\d+)/i) || a.title.match(/Episode\s*(\d+)/i) || a.title.match(/Part\s*(\d+)/i) || a.title.match(/EP?\s*(\d+)/i);
         const bMatch = b.title.match(/E(\d+)/i) || b.title.match(/Episode\s*(\d+)/i) || b.title.match(/Part\s*(\d+)/i) || b.title.match(/EP?\s*(\d+)/i);
         const aNum = aMatch ? parseInt(aMatch[1]) : 0;
         const bNum = bMatch ? parseInt(bMatch[1]) : 0;
         return aNum - bNum;
       });
-  }, [movies, decodedName]);
+  }, [movies, decodedName, dubberFilter]);
 
   const seriesPoster = episodes[0]?.poster || "";
   const dubberName = episodes[0]?.rating || "";

@@ -15,7 +15,7 @@ import { MonetagAdsBootstrap } from "@/components/MonetagAds";
 import SupportButton from "@/components/SupportButton";
 import { usePageVisitTracker } from "@/hooks/usePageVisitTracker";
 import { buildWatchPath } from "@/lib/watchRoute";
-import { groupSeriesMovies, getSeriesBaseName } from "@/lib/seriesUtils";
+import { groupSeriesMovies, getSeriesBaseName, getSeriesKey } from "@/lib/seriesUtils";
 import SeriesCard from "@/components/SeriesCard";
 import ContinueWatching from "@/components/ContinueWatching";
 import { useContinueWatching } from "@/hooks/useContinueWatching";
@@ -128,13 +128,13 @@ const Index = () => {
     setSearchQuery(sanitized);
   }, []);
 
-  // Deduplicate series: keep only the first (latest) episode per series
+  // Deduplicate series: keep only the first (latest) episode per series+dubber combo
   const deduplicateSeries = (movieList: typeof movies) => {
     const seen = new Set<string>();
     return movieList.filter(movie => {
-      const base = getSeriesBaseName(movie.title).toLowerCase();
-      if (seen.has(base)) return false;
-      seen.add(base);
+      const key = getSeriesKey(movie.title, movie.rating);
+      if (seen.has(key)) return false;
+      seen.add(key);
       return true;
     });
   };
@@ -144,18 +144,19 @@ const Index = () => {
     moviesOnly: movies.filter(movie => movie.category === 'movie').slice(0, 10),
     tvShows: movies.filter(movie => movie.category === 'tv').slice(0, 10),
     featuredItems: (() => {
-      // Find base names of any series episode marked as featured
-      const featuredSeriesBases = new Set<string>();
+      // Find series keys of any series episode marked as featured
+      const featuredSeriesKeys = new Set<string>();
       const explicitlyFeatured = movies.filter(m => m.show_in_featured);
       explicitlyFeatured.forEach(m => {
+        const key = getSeriesKey(m.title, m.rating);
         const base = getSeriesBaseName(m.title).toLowerCase();
-        if (base !== m.title.toLowerCase()) featuredSeriesBases.add(base);
+        if (base !== m.title.toLowerCase()) featuredSeriesKeys.add(key);
       });
       // Include ALL episodes of featured series + standalone featured movies
       const featuredPool = movies.filter(m => {
         if (m.show_in_featured) return true;
-        const base = getSeriesBaseName(m.title).toLowerCase();
-        return featuredSeriesBases.has(base);
+        const key = getSeriesKey(m.title, m.rating);
+        return featuredSeriesKeys.has(key);
       });
       const grouped = groupSeriesMovies(featuredPool).slice(0, 20);
       // Fallback: if no movies are marked as featured, show recent movies
