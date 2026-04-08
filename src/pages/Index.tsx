@@ -128,13 +128,13 @@ const Index = () => {
     setSearchQuery(sanitized);
   }, []);
 
-  // Deduplicate series: keep only the first (latest) episode per series
+  // Deduplicate series: keep only the first (latest) episode per series+dubber combo
   const deduplicateSeries = (movieList: typeof movies) => {
     const seen = new Set<string>();
     return movieList.filter(movie => {
-      const base = getSeriesBaseName(movie.title).toLowerCase();
-      if (seen.has(base)) return false;
-      seen.add(base);
+      const key = getSeriesKey(movie.title, movie.rating);
+      if (seen.has(key)) return false;
+      seen.add(key);
       return true;
     });
   };
