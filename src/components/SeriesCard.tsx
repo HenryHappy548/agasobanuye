@@ -10,7 +10,8 @@ interface SeriesCardProps {
 }
 
 const SeriesCard = memo(({ group, priority = false }: SeriesCardProps) => {
-  const seriesPath = `/series/${encodeURIComponent(group.baseName)}`;
+  const dubberParam = group.dubber ? `?dubber=${encodeURIComponent(group.dubber)}` : '';
+  const seriesPath = `/series/${encodeURIComponent(group.baseName)}${dubberParam}`;
 
   return (
     <a
