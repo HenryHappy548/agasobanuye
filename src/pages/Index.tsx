@@ -15,7 +15,7 @@ import { MonetagAdsBootstrap } from "@/components/MonetagAds";
 import SupportButton from "@/components/SupportButton";
 import { usePageVisitTracker } from "@/hooks/usePageVisitTracker";
 import { buildWatchPath } from "@/lib/watchRoute";
-import { groupSeriesMovies, getSeriesBaseName } from "@/lib/seriesUtils";
+import { groupSeriesMovies, getSeriesBaseName, getSeriesKey } from "@/lib/seriesUtils";
 import SeriesCard from "@/components/SeriesCard";
 import ContinueWatching from "@/components/ContinueWatching";
 import { useContinueWatching } from "@/hooks/useContinueWatching";
