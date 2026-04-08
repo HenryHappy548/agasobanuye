@@ -1,4 +1,4 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useSearchParams } from "react-router-dom";
 import { useMemo } from "react";
 import { Helmet } from "react-helmet-async";
 import { ArrowLeft, Play, ExternalLink } from "lucide-react";
