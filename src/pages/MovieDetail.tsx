@@ -130,7 +130,7 @@ const MovieDetail = memo(() => {
   }
 
   const dubberName = movie.rating ? ` by ${movie.rating}` : '';
-  const pageTitle = `Agasobanuye ${movie.title}${dubberName} | Rwaflix Store`;
+  const pageTitle = `Agasobanuye ${movie.title}${dubberName} Yirebe kuri www.rwaflix.store`;
   const pageDescription = `Reba ${movie.title} (${movie.year}) agasobanuye${dubberName} ku buntu kuri Rwaflix Store. ${movie.genre} movie HD quality. Stream & download free. Films z'agasobanuye mu Kinyarwanda.`;
   const seoKeywords = `${movie.title}, ${movie.title} agasobanuye, agasobanuye movies, films z'agasobanuye, movies explained in Kinyarwanda, ${movie.rating || ''}, watch ${movie.title} online, ${movie.genre}, ${movie.year}, Rwaflix, Agasobanuye, Oshakur, Cinebeta, free streaming Rwanda`;
 
