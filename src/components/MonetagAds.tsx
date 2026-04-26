@@ -1,32 +1,43 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
-const appendMonetagScriptOnce = (zone: string, src: string) => {
-  if (typeof document === "undefined") return;
-  if (document.querySelector(`script[data-zone="${zone}"]`)) return;
-
-  const script = document.createElement("script");
-  script.dataset.zone = zone;
-  script.src = src;
-  script.async = true;
-
-  const target = (document.body || document.documentElement) as HTMLElement;
-  target.appendChild(script);
-  console.log(`Monetag vignette ad loaded for zone: ${zone}`);
-};
-
-export const MonetagInpush = () => {
-  return null;
-};
-
-export const MonetagVignette = () => {
-  return null;
-};
+export const MonetagInpush = () => null;
+export const MonetagVignette = () => null;
 
 export const MonetagAdsBootstrap = () => {
   useEffect(() => {
-    // Load both vignette ads immediately without any check
-    appendMonetagScriptOnce("10527776", "https://omg10.com/vignette.min.js");
-    appendMonetagScriptOnce("10527843", "https://nap5k.com/tag.min.js");
+    const loadVignette = (zoneId: string) => {
+      try {
+        const script = document.createElement("script");
+        script.src = `https://omg10.com/vignette.min.js?zone=${zoneId}`;
+        script.setAttribute("data-zone", zoneId);
+        script.async = true;
+        script.onload = () => console.log(`Vignette ${zoneId} loaded`);
+        script.onerror = () => console.error(`Failed to load vignette ${zoneId}`);
+        document.body.appendChild(script);
+      } catch (e) {
+        console.error("Error loading vignette:", e);
+      }
+    };
+
+    const loadGeneral = () => {
+      try {
+        const script = document.createElement("script");
+        script.src = "https://nap5k.com/vignette.min.js?zone=10527843";
+        script.setAttribute("data-zone", "10527843");
+        script.async = true;
+        script.onload = () => console.log("General vignette loaded");
+        script.onerror = () => console.error("Failed to load general vignette");
+        document.body.appendChild(script);
+      } catch (e) {
+        console.error("Error loading general vignette:", e);
+      }
+    };
+
+    // Load supporters vignette first
+    loadVignette("10527776");
+    
+    // Load general vignette after short delay
+    setTimeout(loadGeneral, 3000);
   }, []);
 
   return null;
