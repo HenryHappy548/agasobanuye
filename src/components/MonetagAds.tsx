@@ -42,8 +42,9 @@ export const MonetagVignette = () => {
 };
 
 /**
- * Loads 2 Monetag Vignette banners (zone 10527843) after page loads successfully.
+ * Loads 2 Monetag Vignette banners - one supporters ad, one general ad.
  * Only fires once per page session.
+ * The supporters ad is shown first (less annoying) after a shorter delay.
  */
 export const MonetagAdsBootstrap = ({
   delayMs = 5_000,
@@ -61,33 +62,20 @@ export const MonetagAdsBootstrap = ({
   useEffect(() => {
     if (!shouldLoad) return;
 
-    // Load first vignette banner after delay
+    // Supporters vignette ad (zone 10527776) - shows first, less annoying
     const timer1 = window.setTimeout(() => {
-      appendMonetagScriptOnce("10527843_1", "https://nap5k.com/tag.min.js");
+      appendMonetagScriptOnce("10527776", "https://omg10.com/vignette.min.js");
     }, delayMs);
 
-    // Load second vignette banner shortly after
+    // General vignette ad (zone 10527843) - shows second
     const timer2 = window.setTimeout(() => {
-      appendMonetagScriptOnce("10527843_2", "https://nap5k.com/tag.min.js");
-    }, delayMs + 3_000);
+      appendMonetagScriptOnce("10527843", "https://nap5k.com/tag.min.js");
+    }, delayMs + 8_000);
 
-// Load third vignette banner (zone 10527712)
-  const timer3 = window.setTimeout(() => {
-    appendMonetagScriptOnce("10527712", "https://n6wxm.com/vignette.min.js");
-  }, delayMs + 6_000);
-
-  // Custom vignette ad for supporters (zone 10527776)
-  const timer4 = window.setTimeout(() => {
-    appendMonetagScriptOnce("10527776", "https://omg10.com/vignette.min.js");
-  }, delayMs + 9_000);
-
-  return () => {
-    window.clearTimeout(timer1);
-    window.clearTimeout(timer2);
-    window.clearTimeout(timer3);
-    window.clearTimeout(timer4);
-  };
-};
+    return () => {
+      window.clearTimeout(timer1);
+      window.clearTimeout(timer2);
+    };
   }, [shouldLoad, delayMs]);
 
   return null;
