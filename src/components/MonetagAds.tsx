@@ -5,39 +5,29 @@ export const MonetagVignette = () => null;
 
 export const MonetagAdsBootstrap = () => {
   useEffect(() => {
-    const loadVignette = (zoneId: string) => {
-      try {
-        const script = document.createElement("script");
-        script.src = `https://omg10.com/vignette.min.js?zone=${zoneId}`;
-        script.setAttribute("data-zone", zoneId);
-        script.async = true;
-        script.onload = () => console.log(`Vignette ${zoneId} loaded`);
-        script.onerror = () => console.error(`Failed to load vignette ${zoneId}`);
-        document.body.appendChild(script);
-      } catch (e) {
-        console.error("Error loading vignette:", e);
-      }
-    };
-
-    const loadGeneral = () => {
-      try {
-        const script = document.createElement("script");
-        script.src = "https://nap5k.com/vignette.min.js?zone=10527843";
-        script.setAttribute("data-zone", "10527843");
-        script.async = true;
-        script.onload = () => console.log("General vignette loaded");
-        script.onerror = () => console.error("Failed to load general vignette");
-        document.body.appendChild(script);
-      } catch (e) {
-        console.error("Error loading general vignette:", e);
-      }
-    };
-
-    // Load supporters vignette first
-    loadVignette("10527776");
+    if (window.monetag) return;
     
-    // Load general vignette after short delay
-    setTimeout(loadGeneral, 3000);
+    (window as any).monetag = {
+      zoneid: 10527776
+    };
+
+    const script = document.createElement("script");
+    script.src = "https://omg10.com/vignette.min.js";
+    script.async = true;
+    script.onload = () => {
+      console.log("Monetag vignette loaded successfully");
+      
+      // Try loading second zone after a short delay
+      setTimeout(() => {
+        (window as any).monetag = { zoneid: 10527843 };
+        const script2 = document.createElement("script");
+        script2.src = "https://nap5k.com/vignette.min.js";
+        script2.async = true;
+        document.head.appendChild(script2);
+      }, 2000);
+    };
+    
+    document.head.appendChild(script);
   }, []);
 
   return null;
