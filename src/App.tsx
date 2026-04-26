@@ -11,6 +11,7 @@ import WhatsAppSignup from "@/components/WhatsAppSignup";
 import ScrollToTop from "@/components/ScrollToTop";
 import BackToTop from "@/components/BackToTop";
 import { useIframeFullscreen } from "@/hooks/useIframeFullscreen";
+import { MonetagAdsBootstrap } from "@/components/MonetagAds";
 
 // Lazy load pages for better performance
 const Index = lazy(() => import("./pages/Index"));
@@ -65,6 +66,7 @@ const App = () => {
           <BrowserRouter>
             <ScrollToTop />
             <BackToTop />
+            <MonetagAdsBootstrap />
             
             {isLoading ? (
               <LoadingScreen onLoadingComplete={handleLoadingComplete} />
