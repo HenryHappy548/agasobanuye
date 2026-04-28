@@ -13,7 +13,6 @@ import BackToTop from "@/components/BackToTop";
 
 import { MonetagAdsBootstrap } from "@/components/MonetagAds";
 import VignetteAd from "@/components/VignetteAd";
-import AdSenseLoader from "@/components/AdSenseLoader";
 
 // Lazy load pages for better performance
 const Index = lazy(() => import("./pages/Index"));
@@ -70,7 +69,6 @@ const App = () => {
             <BackToTop />
             <MonetagAdsBootstrap />
 <VignetteAd />
-<AdSenseLoader />
             
             {isLoading ? (
               <LoadingScreen onLoadingComplete={handleLoadingComplete} />

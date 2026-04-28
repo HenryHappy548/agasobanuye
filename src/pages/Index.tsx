@@ -19,7 +19,6 @@ import { groupSeriesMovies, getSeriesBaseName, getSeriesKey } from "@/lib/series
 import SeriesCard from "@/components/SeriesCard";
 import ContinueWatching from "@/components/ContinueWatching";
 import { useContinueWatching } from "@/hooks/useContinueWatching";
-import { AdSenseBanner, AdSenseInArticle, AdSenseFooter } from "@/components/AdSense";
 
 import {
   Carousel,
@@ -280,9 +279,6 @@ const Index = () => {
           {/* Continue Watching Section - between recently added and featured */}
           <ContinueWatching items={continueWatchingItems} onRemove={removeMovie} />
           
-          {/* AdSense Banner - Below fold */}
-          <AdSenseBanner />
-          
           {/* Featured Movies Carousel */}
           <section className="mt-8">
             <div className="flex items-center justify-between mb-6">
@@ -392,13 +388,141 @@ const Index = () => {
               <p className="text-muted-foreground text-center py-8 sm:py-12">
                 Nta filime zibonetse. Gerageza ubundi.
               </p>
-)}
-              </section>
-
-              {/* AdSense In-Article */}
-              <AdSenseInArticle />
+            )}
+          </section>
+        ) : (
+          <>
+            <section>
+              <div className="flex items-center justify-between mb-4 sm:mb-6">
+                <div className="flex items-center gap-3">
+                  <h2 className="text-xl sm:text-2xl font-bold text-foreground">
+                    Top 10 Ubu
+                  </h2>
+                  <span className="px-3 py-1 bg-gradient-to-r from-red-600 to-red-500 text-white text-xs font-bold rounded-md shadow-lg">
+                    🔥 TRENDING
+                  </span>
+                </div>
+                <Link to="/popular">
+                  <Button size="lg" className="group bg-primary hover:bg-primary/90 text-primary-foreground font-semibold shadow-lg">
+                    View More
+                    <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                  </Button>
+                </Link>
+              </div>
+              {loading ? (
+                <LoadingSkeleton />
+              ) : (
+                <Carousel
+                  opts={{
+                    align: "start",
+                    loop: true,
+                  }}
+                  className="w-full"
+                >
+                <CarouselContent className="-ml-1.5 sm:-ml-2 md:-ml-3">
+                    {trendingMovies.map((movie) => (
+                      <CarouselItem key={movie.id} className="pl-1.5 sm:pl-2 md:pl-3 basis-1/3 sm:basis-1/4 md:basis-1/5 lg:basis-1/6">
+                        <MovieCard
+                          movie={movie}
+                          onPlay={handlePlayVideo}
+                        />
+                      </CarouselItem>
+                    ))}
+                  </CarouselContent>
+                  <CarouselPrevious className="left-2" />
+                  <CarouselNext className="right-2" />
+                </Carousel>
+              )}
               
-              {/* Genre Rows below Series */}
+            </section>
+
+            {/* Support Button */}
+            <div className="flex justify-center">
+              <SupportButton />
+            </div>
+
+            <section>
+              <div className="flex items-center justify-between mb-4 sm:mb-6">
+                <h2 className="text-xl sm:text-2xl font-bold text-foreground">
+                  Popular Movies
+                </h2>
+                <Link to="/movies">
+                  <Button size="lg" className="group bg-primary hover:bg-primary/90 text-primary-foreground font-semibold shadow-lg">
+                    View More
+                    <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                  </Button>
+                </Link>
+              </div>
+              {loading ? (
+                <LoadingSkeleton />
+              ) : (
+                <Carousel
+                  opts={{
+                    align: "start",
+                    loop: true,
+                  }}
+                  className="w-full"
+                >
+                <CarouselContent className="-ml-1.5 sm:-ml-2 md:-ml-3">
+                    {moviesOnly.map((movie) => (
+                      <CarouselItem key={movie.id} className="pl-1.5 sm:pl-2 md:pl-3 basis-1/3 sm:basis-1/4 md:basis-1/5 lg:basis-1/6">
+                        <MovieCard
+                          movie={movie}
+                          onPlay={handlePlayVideo}
+                        />
+                      </CarouselItem>
+                    ))}
+                  </CarouselContent>
+                  <CarouselPrevious className="left-2" />
+                  <CarouselNext className="right-2" />
+                </Carousel>
+              )}
+              
+            </section>
+
+            
+
+            <section>
+              <div className="flex items-center justify-between mb-4 sm:mb-6">
+                <h2 className="text-xl sm:text-2xl font-bold text-foreground">
+                  Series
+                </h2>
+                <Link to="/tv-shows">
+                  <Button size="lg" className="group bg-primary hover:bg-primary/90 text-primary-foreground font-semibold shadow-lg">
+                    View More
+                    <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                  </Button>
+                </Link>
+              </div>
+              {loading ? (
+                <LoadingSkeleton />
+              ) : (
+                <Carousel
+                  opts={{
+                    align: "start",
+                    loop: true,
+                  }}
+                  className="w-full"
+                >
+                <CarouselContent className="-ml-1.5 sm:-ml-2 md:-ml-3">
+                    {tvShows.map((item, index) => (
+                      <CarouselItem key={item.type === 'series' ? `${item.group.baseName}-${item.group.dubber}` : item.movie.id} className="pl-1.5 sm:pl-2 md:pl-3 basis-1/3 sm:basis-1/4 md:basis-1/5 lg:basis-1/6">
+                        {item.type === 'series' ? (
+                          <SeriesCard group={item.group} />
+                        ) : (
+                          <MovieCard movie={item.movie} onPlay={handlePlayVideo} />
+                        )}
+                      </CarouselItem>
+                    ))}
+                  </CarouselContent>
+                  <CarouselPrevious className="left-2" />
+                  <CarouselNext className="right-2" />
+                </Carousel>
+              )}
+              
+             </section>
+
+             {/* Genre Rows below Series */}
              {["Action", "Horror", "Drama", "Animation"].map((genre) => {
                const genreMovies = movies.filter(m => m.genre.toLowerCase() === genre.toLowerCase()).slice(0, 10);
                if (genreMovies.length === 0) return null;
