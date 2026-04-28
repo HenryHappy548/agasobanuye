@@ -3,6 +3,7 @@ import { useEffect, useMemo } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { mockMovies, Movie } from "@/data/mockData";
 import { readMoviesCache, writeMoviesCache } from "@/lib/moviesCache";
+import { TMDB_ID } from "@/lib/tmdbService";
 
 export interface DBMovie {
   id: string;
@@ -62,6 +63,35 @@ const fetchMoviesFromDB = async (): Promise<DBMovie[]> => {
       show_in_featured: (movie as any).show_in_featured || false,
     };
   });
+
+  // Enrich with TMDB data for complete movie details
+  const enrichedMovies = [];
+  for (const movie of formattedDbMovies) {
+    try {
+      const tmdbId = movie[TMDB_ID as keyof DBMovie];
+      if (tmdbId) {
+        const movieDetails = await tmdbService.getMovieDetails(Number(tmdbId));
+        const videos = await tmdbService.getMovieVideos(Number(tmdbId));
+        const streamingEmbed = extractStreamingEmbed(videos);
+        
+        enrichedMovies.push({
+          ...movie,
+          ...movieDetails,
+          video_url: streamingEmbed?.embedCode || movie.video_url,
+          external_ids: movieDetails.external_ids,
+        });
+      } else {
+        enrichedMovies.push(movie);
+      }
+    } catch (error) {
+      console.error('Error enriching movie:', error);
+      enrichedMovies.push(movie);
+    }
+  }
+  
+  writeMoviesCache(enrichedMovies);
+  return enrichedMovies;
+};
 
   const dbTitles = new Set(formattedDbMovies.map(m => m.title.toLowerCase()));
   const uniqueMockMovies = mockMovies.filter(

@@ -10,7 +10,7 @@ import LoadingScreen from "@/components/LoadingScreen";
 import WhatsAppSignup from "@/components/WhatsAppSignup";
 import ScrollToTop from "@/components/ScrollToTop";
 import BackToTop from "@/components/BackToTop";
-import { useIframeFullscreen } from "@/hooks/useIframeFullscreen";
+
 import { MonetagAdsBootstrap } from "@/components/MonetagAds";
 import VignetteAd from "@/components/VignetteAd";
 
